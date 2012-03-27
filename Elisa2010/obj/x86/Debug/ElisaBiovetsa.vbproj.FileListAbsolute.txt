@@ -1,0 +1,13 @@
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.exe
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.xml
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.pdb
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.exe
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.pdb
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.xml
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmElisaBiovetsa.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmConfLector.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.Resources.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.fmbSalidaDatos.resources
