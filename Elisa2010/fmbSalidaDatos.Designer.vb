@@ -90,7 +90,7 @@ Partial Class fmbSalidaDatos
       'lblCoefVariacion
       '
       Me.lblCoefVariacion.AutoSize = True
-      Me.lblCoefVariacion.Location = New System.Drawing.Point(266, 36)
+      Me.lblCoefVariacion.Location = New System.Drawing.Point(260, 36)
       Me.lblCoefVariacion.Name = "lblCoefVariacion"
       Me.lblCoefVariacion.Size = New System.Drawing.Size(122, 13)
       Me.lblCoefVariacion.TabIndex = 6
