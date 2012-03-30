@@ -53,10 +53,15 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -77,12 +82,34 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculaValores.vb" />
-    <Compile Include="fmbELISA.vb">
+    <Compile Include="bvtselisaDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bvtselisaDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaAnalisis.Designer.vb">
+      <DependentUpon>frmListaAnalisis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListaAnalisis.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmbELISA.Designer.vb">
-      <DependentUpon>fmbELISA.vb</DependentUpon>
+    <Compile Include="frmRegistraNuevoAnalisis.Designer.vb">
+      <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistraNuevoAnalisis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdlCalculaValores.vb" />
+    <Compile Include="frmELISA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmELISA.Designer.vb">
+      <DependentUpon>frmELISA.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fmbSalidaDatos.Designer.vb">
@@ -91,12 +118,10 @@
     <Compile Include="fmbSalidaDatos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLector.Designer.vb">
-      <DependentUpon>frmLector.vb</DependentUpon>
+    <Compile Include="frmConfLector.Designer.vb">
+      <DependentUpon>frmConfLector.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmLector.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmConfLector.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -114,14 +139,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="fmbELISA.resx">
-      <DependentUpon>fmbELISA.vb</DependentUpon>
+    <EmbeddedResource Include="frmELISA.resx">
+      <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmbSalidaDatos.resx">
       <DependentUpon>fmbSalidaDatos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLector.resx">
-      <DependentUpon>frmLector.vb</DependentUpon>
+    <EmbeddedResource Include="frmConfLector.resx">
+      <DependentUpon>frmConfLector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaAnalisis.resx">
+      <DependentUpon>frmListaAnalisis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistraNuevoAnalisis.resx">
+      <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -131,6 +162,29 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bvtselisaDataSet.xsc">
+      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bvtselisaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bvtselisaDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bvtselisaDataSet.xss">
+      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bvtselisaDataSet1.xsc">
+      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bvtselisaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bvtselisaDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bvtselisaDataSet1.xss">
+      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
