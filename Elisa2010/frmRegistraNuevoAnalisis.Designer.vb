@@ -40,7 +40,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'TextBox1
       '
-      Me.TextBox1.Location = New System.Drawing.Point(119, 47)
+      Me.TextBox1.Location = New System.Drawing.Point(123, 57)
       Me.TextBox1.Name = "TextBox1"
       Me.TextBox1.Size = New System.Drawing.Size(149, 20)
       Me.TextBox1.TabIndex = 0
@@ -48,7 +48,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblNoCaso
       '
       Me.lblNoCaso.AutoSize = True
-      Me.lblNoCaso.Location = New System.Drawing.Point(15, 47)
+      Me.lblNoCaso.Location = New System.Drawing.Point(19, 57)
       Me.lblNoCaso.Name = "lblNoCaso"
       Me.lblNoCaso.Size = New System.Drawing.Size(88, 13)
       Me.lblNoCaso.TabIndex = 1
@@ -57,7 +57,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblNombreCliente
       '
       Me.lblNombreCliente.AutoSize = True
-      Me.lblNombreCliente.Location = New System.Drawing.Point(15, 99)
+      Me.lblNombreCliente.Location = New System.Drawing.Point(19, 109)
       Me.lblNombreCliente.Name = "lblNombreCliente"
       Me.lblNombreCliente.Size = New System.Drawing.Size(99, 13)
       Me.lblNombreCliente.TabIndex = 2
@@ -66,7 +66,7 @@ Partial Class frmRegistraNuevoAnalisis
       'cbbNombreCliente
       '
       Me.cbbNombreCliente.FormattingEnabled = True
-      Me.cbbNombreCliente.Location = New System.Drawing.Point(120, 96)
+      Me.cbbNombreCliente.Location = New System.Drawing.Point(124, 106)
       Me.cbbNombreCliente.Name = "cbbNombreCliente"
       Me.cbbNombreCliente.Size = New System.Drawing.Size(466, 21)
       Me.cbbNombreCliente.TabIndex = 3
@@ -74,7 +74,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblFechaRecepcion
       '
       Me.lblFechaRecepcion.AutoSize = True
-      Me.lblFechaRecepcion.Location = New System.Drawing.Point(274, 50)
+      Me.lblFechaRecepcion.Location = New System.Drawing.Point(278, 60)
       Me.lblFechaRecepcion.Name = "lblFechaRecepcion"
       Me.lblFechaRecepcion.Size = New System.Drawing.Size(105, 13)
       Me.lblFechaRecepcion.TabIndex = 4
@@ -83,7 +83,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblNombreAnalisis
       '
       Me.lblNombreAnalisis.AutoSize = True
-      Me.lblNombreAnalisis.Location = New System.Drawing.Point(15, 150)
+      Me.lblNombreAnalisis.Location = New System.Drawing.Point(19, 160)
       Me.lblNombreAnalisis.Name = "lblNombreAnalisis"
       Me.lblNombreAnalisis.Size = New System.Drawing.Size(101, 13)
       Me.lblNombreAnalisis.TabIndex = 6
@@ -92,14 +92,14 @@ Partial Class frmRegistraNuevoAnalisis
       'cbbNombreAnalisis
       '
       Me.cbbNombreAnalisis.FormattingEnabled = True
-      Me.cbbNombreAnalisis.Location = New System.Drawing.Point(119, 147)
+      Me.cbbNombreAnalisis.Location = New System.Drawing.Point(123, 157)
       Me.cbbNombreAnalisis.Name = "cbbNombreAnalisis"
       Me.cbbNombreAnalisis.Size = New System.Drawing.Size(467, 21)
       Me.cbbNombreAnalisis.TabIndex = 7
       '
       'btnLeerDatosPlaca
       '
-      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(247, 192)
+      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(251, 202)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(75, 23)
       Me.btnLeerDatosPlaca.TabIndex = 9
@@ -108,7 +108,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'btnCambiarLector
       '
-      Me.btnCambiarLector.Location = New System.Drawing.Point(328, 192)
+      Me.btnCambiarLector.Location = New System.Drawing.Point(332, 202)
       Me.btnCambiarLector.Name = "btnCambiarLector"
       Me.btnCambiarLector.Size = New System.Drawing.Size(177, 23)
       Me.btnCambiarLector.TabIndex = 10
@@ -117,7 +117,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'DateTimePicker1
       '
-      Me.DateTimePicker1.Location = New System.Drawing.Point(386, 47)
+      Me.DateTimePicker1.Location = New System.Drawing.Point(390, 57)
       Me.DateTimePicker1.Name = "DateTimePicker1"
       Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
       Me.DateTimePicker1.TabIndex = 11
@@ -125,7 +125,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnNuevoAnalisisCancelar
       '
       Me.btnNuevoAnalisisCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(511, 192)
+      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(515, 202)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
       Me.btnNuevoAnalisisCancelar.TabIndex = 12
@@ -144,12 +144,12 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'LineShape1
       '
-      Me.LineShape1.BorderColor = System.Drawing.SystemColors.ControlDark
+      Me.LineShape1.BorderColor = System.Drawing.SystemColors.ActiveCaption
       Me.LineShape1.Name = "LineShape1"
-      Me.LineShape1.X1 = 17
-      Me.LineShape1.X2 = 580
-      Me.LineShape1.Y1 = 236
-      Me.LineShape1.Y2 = 236
+      Me.LineShape1.X1 = 22
+      Me.LineShape1.X2 = 585
+      Me.LineShape1.Y1 = 238
+      Me.LineShape1.Y2 = 238
       '
       'frmRegistraNuevoAnalisis
       '
@@ -168,6 +168,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Controls.Add(Me.lblNoCaso)
       Me.Controls.Add(Me.TextBox1)
       Me.Controls.Add(Me.ShapeContainer1)
+      Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmRegistraNuevoAnalisis"
       Me.Text = "Registra Nuevo Análisis"

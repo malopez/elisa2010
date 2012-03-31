@@ -87,11 +87,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="bvtselisaDataSet1.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="frmListaAnalisis.Designer.vb">
       <DependentUpon>frmListaAnalisis.vb</DependentUpon>
     </Compile>
@@ -137,6 +132,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="frmAcercaDe.Designer.vb">
+      <DependentUpon>frmAcercaDe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAcercaDe.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmELISA.resx">
@@ -160,6 +161,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAcercaDe.resx">
+      <DependentUpon>frmAcercaDe.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -173,17 +177,6 @@
     </None>
     <None Include="bvtselisaDataSet.xss">
       <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="bvtselisaDataSet1.xsc">
-      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="bvtselisaDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bvtselisaDataSet1.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bvtselisaDataSet1.xss">
-      <DependentUpon>bvtselisaDataSet1.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

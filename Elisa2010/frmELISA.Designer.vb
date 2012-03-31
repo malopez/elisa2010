@@ -27,29 +27,30 @@ Partial Class frmElisaBiovetsa
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
+      Me.ListarAnálisisDisponiblesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.ConfigurarLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainImprimir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.tbbToolMenu = New System.Windows.Forms.ToolStrip()
       Me.tbbAbrir = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
       Me.tbbOpciones = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tbbConfiguraLector = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
       Me.lblClock = New System.Windows.Forms.Label()
-      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-      Me.tbbConfiguraLector = New System.Windows.Forms.ToolStripButton()
-      Me.ListarAnálisisDisponiblesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.tbbToolMenu.SuspendLayout()
       Me.SuspendLayout()
       '
       'mnuMainMenu
       '
-      Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMainAnalisis, Me.mnuMainOpciones, Me.mnuMainImprimir, Me.mnuMainSalir})
+      Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMainAnalisis, Me.mnuMainOpciones, Me.mnuMainImprimir, Me.AcercaDeToolStripMenuItem, Me.mnuMainSalir})
       Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
       Me.mnuMainMenu.Name = "mnuMainMenu"
       Me.mnuMainMenu.Size = New System.Drawing.Size(1008, 24)
@@ -67,15 +68,21 @@ Partial Class frmElisaBiovetsa
       'mnuNuevo
       '
       Me.mnuNuevo.Name = "mnuNuevo"
-      Me.mnuNuevo.Size = New System.Drawing.Size(152, 22)
+      Me.mnuNuevo.Size = New System.Drawing.Size(209, 22)
       Me.mnuNuevo.Text = "&Nuevo"
       Me.mnuNuevo.ToolTipText = "Realice nuevo análisis"
+      '
+      'ListarAnálisisDisponiblesToolStripMenuItem
+      '
+      Me.ListarAnálisisDisponiblesToolStripMenuItem.Name = "ListarAnálisisDisponiblesToolStripMenuItem"
+      Me.ListarAnálisisDisponiblesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.ListarAnálisisDisponiblesToolStripMenuItem.Text = "&Operaciones sobre análisis"
       '
       'mnuSalir
       '
       Me.mnuSalir.Name = "mnuSalir"
-      Me.mnuSalir.Size = New System.Drawing.Size(152, 22)
-      Me.mnuSalir.Text = "Sali&r"
+      Me.mnuSalir.Size = New System.Drawing.Size(213, 22)
+      Me.mnuSalir.Text = "&Salir"
       Me.mnuSalir.ToolTipText = "Abandone la aplicación"
       '
       'mnuMainOpciones
@@ -104,6 +111,12 @@ Partial Class frmElisaBiovetsa
       Me.mnuMainImprimir.Name = "mnuMainImprimir"
       Me.mnuMainImprimir.Size = New System.Drawing.Size(65, 20)
       Me.mnuMainImprimir.Text = "&Imprimir"
+      '
+      'AcercaDeToolStripMenuItem
+      '
+      Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
+      Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+      Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
       '
       'mnuMainSalir
       '
@@ -151,6 +164,20 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
       Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
       '
+      'tbbConfiguraLector
+      '
+      Me.tbbConfiguraLector.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tbbConfiguraLector.Image = CType(resources.GetObject("tbbConfiguraLector.Image"), System.Drawing.Image)
+      Me.tbbConfiguraLector.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tbbConfiguraLector.Name = "tbbConfiguraLector"
+      Me.tbbConfiguraLector.Size = New System.Drawing.Size(23, 22)
+      Me.tbbConfiguraLector.Text = "Configurar el lector de ELISA"
+      '
+      'ToolStripSeparator4
+      '
+      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+      '
       'tmrClock
       '
       Me.tmrClock.Enabled = True
@@ -168,43 +195,25 @@ Partial Class frmElisaBiovetsa
       Me.lblClock.Text = "Horario"
       Me.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
       '
-      'ToolStripSeparator4
-      '
-      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-      '
-      'tbbConfiguraLector
-      '
-      Me.tbbConfiguraLector.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tbbConfiguraLector.Image = CType(resources.GetObject("tbbConfiguraLector.Image"), System.Drawing.Image)
-      Me.tbbConfiguraLector.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tbbConfiguraLector.Name = "tbbConfiguraLector"
-      Me.tbbConfiguraLector.Size = New System.Drawing.Size(23, 22)
-      Me.tbbConfiguraLector.Text = "Configurar el lector de ELISA"
-      '
-      'ListarAnálisisDisponiblesToolStripMenuItem
-      '
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Name = "ListarAnálisisDisponiblesToolStripMenuItem"
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Text = "&Listar Análisis Disponibles"
-      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+      Me.BackColor = System.Drawing.SystemColors.Window
       Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
       Me.ClientSize = New System.Drawing.Size(1008, 742)
       Me.Controls.Add(Me.lblClock)
       Me.Controls.Add(Me.tbbToolMenu)
       Me.Controls.Add(Me.mnuMainMenu)
       Me.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+      Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.IsMdiContainer = True
       Me.MainMenuStrip = Me.mnuMainMenu
       Me.Name = "frmElisaBiovetsa"
       Me.RightToLeft = System.Windows.Forms.RightToLeft.No
       Me.Text = "ELISA BIOVETSA"
+      Me.TransparencyKey = System.Drawing.SystemColors.ActiveCaption
       Me.mnuMainMenu.ResumeLayout(False)
       Me.mnuMainMenu.PerformLayout()
       Me.tbbToolMenu.ResumeLayout(False)
@@ -232,5 +241,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tbbConfiguraLector As System.Windows.Forms.ToolStripButton
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents ListarAnálisisDisponiblesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents AcercaDeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

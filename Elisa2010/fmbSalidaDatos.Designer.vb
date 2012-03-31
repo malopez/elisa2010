@@ -262,6 +262,7 @@ Partial Class frmSalidaDatos
       Me.Controls.Add(Me.txtMediaGeometrica)
       Me.Controls.Add(Me.txtMediaAritmetica)
       Me.Controls.Add(Me.btnCalculaResultados)
+      Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Name = "frmSalidaDatos"
       Me.Text = "fmbSalidaDatos"
       Me.ResumeLayout(False)

@@ -37,7 +37,8 @@
 
    'Permite abrir en forma nomodal configurar lector del menu de Opciones
    Private Sub ConfigurarLectorToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConfigurarLectorToolStripMenuItem.Click
-      frmConfLector.ShowDialog()
+      frmConfLector.MdiParent = Me
+      frmConfLector.Show()
    End Sub
 
    'Coloca el timer clock indicando la hora en la ventana principal
@@ -46,8 +47,10 @@
    End Sub
 
    Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
-      frmRegistraNuevoAnalisis.ShowDialog()
-      frmSalidaDatos.ShowDialog()
+      frmRegistraNuevoAnalisis.MdiParent = Me
+      frmSalidaDatos.MdiParent = Me
+      frmRegistraNuevoAnalisis.Show()
+      frmSalidaDatos.Show()
    End Sub
 
    Private Sub mnuMainImprimir_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainImprimir.Click
@@ -55,14 +58,22 @@
    End Sub
 
    Private Sub tbbConfiguraLector_Click(sender As System.Object, e As System.EventArgs) Handles tbbConfiguraLector.Click
-      frmConfLector.ShowDialog()
+      frmConfLector.MdiParent = Me
+      frmConfLector.Show()
    End Sub
 
    Private Sub ListarAnálisisDisponiblesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ListarAnálisisDisponiblesToolStripMenuItem.Click
-      frmListaAnalisis.ShowDialog()
+      frmEditarListaAnalisis.MdiParent = Me
+      frmEditarListaAnalisis.Show()
    End Sub
 
    Private Sub tbbOpciones_Click(sender As System.Object, e As System.EventArgs) Handles tbbOpciones.Click
-      frmListaAnalisis.ShowDialog()
+      frmEditarListaAnalisis.MdiParent = Me
+      frmEditarListaAnalisis.Show()
+   End Sub
+
+   Private Sub AcercaDeToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AcercaDeToolStripMenuItem.Click
+      frmAcercaDe.MdiParent = Me
+      frmAcercaDe.Show()
    End Sub
 End Class

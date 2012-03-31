@@ -597,7 +597,7 @@ Partial Public Class bvtselisaDataSet
             Me.columnidAnalisis.Unique = true
             Me.columnidAnalisis.MaxLength = 10
             Me.columnnombreAnalisis.AllowDBNull = false
-            Me.columnnombreAnalisis.MaxLength = 50
+            Me.columnnombreAnalisis.MaxLength = 180
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
