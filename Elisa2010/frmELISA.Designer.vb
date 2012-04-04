@@ -68,7 +68,7 @@ Partial Class frmElisaBiovetsa
       'mnuNuevo
       '
       Me.mnuNuevo.Name = "mnuNuevo"
-      Me.mnuNuevo.Size = New System.Drawing.Size(209, 22)
+      Me.mnuNuevo.Size = New System.Drawing.Size(213, 22)
       Me.mnuNuevo.Text = "&Nuevo"
       Me.mnuNuevo.ToolTipText = "Realice nuevo análisis"
       '

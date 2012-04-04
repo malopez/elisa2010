@@ -1,570 +1,638 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmConfLector
-   Inherits System.Windows.Forms.Form
+    Inherits System.Windows.Forms.Form
 
-   'Form overrides dispose to clean up the component list.
-   <System.Diagnostics.DebuggerNonUserCode()> _
-   Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-      Try
-         If disposing AndAlso components IsNot Nothing Then
-            components.Dispose()
-         End If
-      Finally
-         MyBase.Dispose(disposing)
-      End Try
-   End Sub
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
 
-   'Required by the Windows Form Designer
-   Private components As System.ComponentModel.IContainer
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
 
-   'NOTE: The following procedure is required by the Windows Form Designer
-   'It can be modified using the Windows Form Designer.  
-   'Do not modify it using the code editor.
-   <System.Diagnostics.DebuggerStepThrough()> _
-   Private Sub InitializeComponent()
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+      Me.components = New System.ComponentModel.Container()
+      Dim NomLectorLabel As System.Windows.Forms.Label
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfLector))
-      Me.rdbBPS1 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS2 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS3 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD1 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD3 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD2 = New System.Windows.Forms.RadioButton()
-      Me.rdbParidad1 = New System.Windows.Forms.RadioButton()
-      Me.rdbParidad2 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDP1 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDP2 = New System.Windows.Forms.RadioButton()
-      Me.grbBaudiossPorSegundo = New System.Windows.Forms.GroupBox()
-      Me.rdbBPS8 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS7 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS6 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS5 = New System.Windows.Forms.RadioButton()
-      Me.rdbBPS4 = New System.Windows.Forms.RadioButton()
+      Me.btnAceptar = New System.Windows.Forms.Button()
+      Me.btnCancelar = New System.Windows.Forms.Button()
+      Me.grbDefineLector = New System.Windows.Forms.GroupBox()
+      Me.NomLectorComboBox = New System.Windows.Forms.ComboBox()
+      Me.TbllectorplacasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+      Me.BvtselisaDataSet = New Elisa2010.bvtselisaDataSet()
+      Me.LectorDefaultCheckBox = New System.Windows.Forms.CheckBox()
+      Me.TbllectorplacasTableAdapter = New Elisa2010.bvtselisaDataSetTableAdapters.tbllectorplacasTableAdapter()
+      Me.TableAdapterManager = New Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager()
+      Me.TbllectorplacasBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+      Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+      Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
+      Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
+      Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+      Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
+      Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+      Me.TbllectorplacasBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+      Me.grbBaudiosPorSegundo = New System.Windows.Forms.GroupBox()
+      Me.rbtBPS9600 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS4800 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS2400 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS1200 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS600 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS300 = New System.Windows.Forms.RadioButton()
+      Me.rbtBPS110 = New System.Windows.Forms.RadioButton()
       Me.grbBitsDeDatos = New System.Windows.Forms.GroupBox()
-      Me.rdbBDD8 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD7 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD6 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD5 = New System.Windows.Forms.RadioButton()
-      Me.rdbBDD4 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos8 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos7 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos6 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos5 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos4 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos3 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos2 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeDatos1 = New System.Windows.Forms.RadioButton()
       Me.grbParidad = New System.Windows.Forms.GroupBox()
+      Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+      Me.rbtParidad1 = New System.Windows.Forms.RadioButton()
       Me.grbBitsDeParada = New System.Windows.Forms.GroupBox()
-      Me.rdbBDP3 = New System.Windows.Forms.RadioButton()
-      Me.btnLectorAceptar = New System.Windows.Forms.Button()
-      Me.btnLectorCancelar = New System.Windows.Forms.Button()
-      Me.grbPuertoCom = New System.Windows.Forms.GroupBox()
-      Me.rbtPuertoCom4 = New System.Windows.Forms.RadioButton()
-      Me.rbtPuertoCom3 = New System.Windows.Forms.RadioButton()
-      Me.rbtPuertoCom2 = New System.Windows.Forms.RadioButton()
-      Me.rbtPuertoCom1 = New System.Windows.Forms.RadioButton()
-      Me.lblmaxOdd = New System.Windows.Forms.Label()
-      Me.TextBox1 = New System.Windows.Forms.TextBox()
-      Me.txtnomLector = New System.Windows.Forms.TextBox()
-      Me.chkLectorDefault = New System.Windows.Forms.CheckBox()
-      Me.lblNombreLector = New System.Windows.Forms.Label()
-      Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-      Me.grbBaudiossPorSegundo.SuspendLayout()
+      Me.rdbBitsDeParada3 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeParada2 = New System.Windows.Forms.RadioButton()
+      Me.rbtBitsDeParada1 = New System.Windows.Forms.RadioButton()
+      NomLectorLabel = New System.Windows.Forms.Label()
+      Me.grbDefineLector.SuspendLayout()
+      CType(Me.TbllectorplacasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+      CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+      CType(Me.TbllectorplacasBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+      Me.TbllectorplacasBindingNavigator.SuspendLayout()
+      Me.grbBaudiosPorSegundo.SuspendLayout()
       Me.grbBitsDeDatos.SuspendLayout()
       Me.grbParidad.SuspendLayout()
       Me.grbBitsDeParada.SuspendLayout()
-      Me.grbPuertoCom.SuspendLayout()
-      Me.GroupBox1.SuspendLayout()
       Me.SuspendLayout()
       '
-      'rdbBPS1
+      'NomLectorLabel
       '
-      Me.rdbBPS1.Location = New System.Drawing.Point(9, 31)
-      Me.rdbBPS1.Name = "rdbBPS1"
-      Me.rdbBPS1.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS1.TabIndex = 0
-      Me.rdbBPS1.Text = "110"
-      Me.rdbBPS1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS1.UseVisualStyleBackColor = True
+      NomLectorLabel.AutoSize = True
+      NomLectorLabel.Location = New System.Drawing.Point(6, 19)
+      NomLectorLabel.Name = "NomLectorLabel"
+      NomLectorLabel.Size = New System.Drawing.Size(97, 13)
+      NomLectorLabel.TabIndex = 1
+      NomLectorLabel.Text = "Nombre del Lector:"
       '
-      'rdbBPS2
+      'btnAceptar
       '
-      Me.rdbBPS2.Location = New System.Drawing.Point(9, 54)
-      Me.rdbBPS2.Name = "rdbBPS2"
-      Me.rdbBPS2.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS2.TabIndex = 1
-      Me.rdbBPS2.Text = "300"
-      Me.rdbBPS2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS2.UseVisualStyleBackColor = True
+      Me.btnAceptar.Location = New System.Drawing.Point(365, 280)
+      Me.btnAceptar.Name = "btnAceptar"
+      Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+      Me.btnAceptar.TabIndex = 0
+      Me.btnAceptar.Text = "Aceptar"
+      Me.btnAceptar.UseVisualStyleBackColor = True
       '
-      'rdbBPS3
+      'btnCancelar
       '
-      Me.rdbBPS3.Location = New System.Drawing.Point(9, 77)
-      Me.rdbBPS3.Name = "rdbBPS3"
-      Me.rdbBPS3.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS3.TabIndex = 2
-      Me.rdbBPS3.Text = "600"
-      Me.rdbBPS3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS3.UseVisualStyleBackColor = True
+      Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+      Me.btnCancelar.Location = New System.Drawing.Point(446, 280)
+      Me.btnCancelar.Name = "btnCancelar"
+      Me.btnCancelar.Size = New System.Drawing.Size(75, 23)
+      Me.btnCancelar.TabIndex = 1
+      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.UseVisualStyleBackColor = True
       '
-      'rdbBDD1
+      'grbDefineLector
       '
-      Me.rdbBDD1.Checked = True
-      Me.rdbBDD1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD1.Location = New System.Drawing.Point(11, 31)
-      Me.rdbBDD1.Name = "rdbBDD1"
-      Me.rdbBDD1.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD1.TabIndex = 4
-      Me.rdbBDD1.TabStop = True
-      Me.rdbBDD1.Text = "1 bits"
-      Me.rdbBDD1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD1.UseVisualStyleBackColor = True
+      Me.grbDefineLector.Controls.Add(Me.NomLectorComboBox)
+      Me.grbDefineLector.Controls.Add(Me.LectorDefaultCheckBox)
+      Me.grbDefineLector.Controls.Add(NomLectorLabel)
+      Me.grbDefineLector.Location = New System.Drawing.Point(12, 28)
+      Me.grbDefineLector.Name = "grbDefineLector"
+      Me.grbDefineLector.Size = New System.Drawing.Size(509, 44)
+      Me.grbDefineLector.TabIndex = 2
+      Me.grbDefineLector.TabStop = False
       '
-      'rdbBDD3
+      'NomLectorComboBox
       '
-      Me.rdbBDD3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD3.Location = New System.Drawing.Point(11, 77)
-      Me.rdbBDD3.Name = "rdbBDD3"
-      Me.rdbBDD3.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD3.TabIndex = 6
-      Me.rdbBDD3.Text = "3 bits"
-      Me.rdbBDD3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD3.UseVisualStyleBackColor = True
+      Me.NomLectorComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TbllectorplacasBindingSource, "nomLector", True))
+      Me.NomLectorComboBox.FormattingEnabled = True
+      Me.NomLectorComboBox.Location = New System.Drawing.Point(127, 16)
+      Me.NomLectorComboBox.Name = "NomLectorComboBox"
+      Me.NomLectorComboBox.Size = New System.Drawing.Size(305, 21)
+      Me.NomLectorComboBox.TabIndex = 4
       '
-      'rdbBDD2
+      'TbllectorplacasBindingSource
       '
-      Me.rdbBDD2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD2.Location = New System.Drawing.Point(11, 54)
-      Me.rdbBDD2.Name = "rdbBDD2"
-      Me.rdbBDD2.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD2.TabIndex = 7
-      Me.rdbBDD2.Text = "2 bits"
-      Me.rdbBDD2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD2.UseVisualStyleBackColor = True
+      Me.TbllectorplacasBindingSource.DataMember = "tbllectorplacas"
+      Me.TbllectorplacasBindingSource.DataSource = Me.BvtselisaDataSet
       '
-      'rdbParidad1
+      'BvtselisaDataSet
       '
-      Me.rdbParidad1.Location = New System.Drawing.Point(6, 31)
-      Me.rdbParidad1.Name = "rdbParidad1"
-      Me.rdbParidad1.Size = New System.Drawing.Size(82, 17)
-      Me.rdbParidad1.TabIndex = 8
-      Me.rdbParidad1.Text = "Con paridad"
-      Me.rdbParidad1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbParidad1.UseVisualStyleBackColor = True
+      Me.BvtselisaDataSet.DataSetName = "bvtselisaDataSet"
+      Me.BvtselisaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
       '
-      'rdbParidad2
+      'LectorDefaultCheckBox
       '
-      Me.rdbParidad2.Checked = True
-      Me.rdbParidad2.Location = New System.Drawing.Point(6, 54)
-      Me.rdbParidad2.Name = "rdbParidad2"
-      Me.rdbParidad2.Size = New System.Drawing.Size(82, 17)
-      Me.rdbParidad2.TabIndex = 9
-      Me.rdbParidad2.TabStop = True
-      Me.rdbParidad2.Text = "Sin paridad"
-      Me.rdbParidad2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbParidad2.UseVisualStyleBackColor = True
+      Me.LectorDefaultCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.TbllectorplacasBindingSource, "lectorDefault", True))
+      Me.LectorDefaultCheckBox.Location = New System.Drawing.Point(438, 13)
+      Me.LectorDefaultCheckBox.Name = "LectorDefaultCheckBox"
+      Me.LectorDefaultCheckBox.Size = New System.Drawing.Size(63, 24)
+      Me.LectorDefaultCheckBox.TabIndex = 3
+      Me.LectorDefaultCheckBox.Text = "Default"
+      Me.LectorDefaultCheckBox.UseVisualStyleBackColor = True
       '
-      'rdbBDP1
+      'TbllectorplacasTableAdapter
       '
-      Me.rdbBDP1.Checked = True
-      Me.rdbBDP1.Location = New System.Drawing.Point(6, 31)
-      Me.rdbBDP1.Name = "rdbBDP1"
-      Me.rdbBDP1.Size = New System.Drawing.Size(43, 17)
-      Me.rdbBDP1.TabIndex = 10
-      Me.rdbBDP1.TabStop = True
-      Me.rdbBDP1.Text = "1"
-      Me.rdbBDP1.UseVisualStyleBackColor = True
+      Me.TbllectorplacasTableAdapter.ClearBeforeFill = True
       '
-      'rdbBDP2
+      'TableAdapterManager
       '
-      Me.rdbBDP2.Location = New System.Drawing.Point(6, 54)
-      Me.rdbBDP2.Name = "rdbBDP2"
-      Me.rdbBDP2.Size = New System.Drawing.Size(43, 17)
-      Me.rdbBDP2.TabIndex = 11
-      Me.rdbBDP2.Text = "1.5 "
-      Me.rdbBDP2.UseVisualStyleBackColor = True
+      Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+      Me.TableAdapterManager.tblanalisisTableAdapter = Nothing
+      Me.TableAdapterManager.tblclienteTableAdapter = Nothing
+      Me.TableAdapterManager.tbllectorplacasTableAdapter = Me.TbllectorplacasTableAdapter
+      Me.TableAdapterManager.tblplacaleidaTableAdapter = Nothing
+      Me.TableAdapterManager.tblregistroanalisisTableAdapter = Nothing
+      Me.TableAdapterManager.tblresultadosTableAdapter = Nothing
+      Me.TableAdapterManager.UpdateOrder = Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
       '
-      'grbBaudiossPorSegundo
+      'TbllectorplacasBindingNavigator
       '
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS8)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS7)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS6)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS5)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS4)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS3)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS2)
-      Me.grbBaudiossPorSegundo.Controls.Add(Me.rdbBPS1)
-      Me.grbBaudiossPorSegundo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.grbBaudiossPorSegundo.Location = New System.Drawing.Point(11, 66)
-      Me.grbBaudiossPorSegundo.Name = "grbBaudiossPorSegundo"
-      Me.grbBaudiossPorSegundo.Size = New System.Drawing.Size(92, 215)
-      Me.grbBaudiossPorSegundo.TabIndex = 18
-      Me.grbBaudiossPorSegundo.TabStop = False
-      Me.grbBaudiossPorSegundo.Text = "Baudios por segundo"
+      Me.TbllectorplacasBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+      Me.TbllectorplacasBindingNavigator.BindingSource = Me.TbllectorplacasBindingSource
+      Me.TbllectorplacasBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+      Me.TbllectorplacasBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+      Me.TbllectorplacasBindingNavigator.Enabled = False
+      Me.TbllectorplacasBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.TbllectorplacasBindingNavigatorSaveItem})
+      Me.TbllectorplacasBindingNavigator.Location = New System.Drawing.Point(0, 0)
+      Me.TbllectorplacasBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+      Me.TbllectorplacasBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+      Me.TbllectorplacasBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+      Me.TbllectorplacasBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+      Me.TbllectorplacasBindingNavigator.Name = "TbllectorplacasBindingNavigator"
+      Me.TbllectorplacasBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+      Me.TbllectorplacasBindingNavigator.Size = New System.Drawing.Size(533, 25)
+      Me.TbllectorplacasBindingNavigator.TabIndex = 3
+      Me.TbllectorplacasBindingNavigator.Text = "BindingNavigator1"
       '
-      'rdbBPS8
+      'BindingNavigatorAddNewItem
       '
-      Me.rdbBPS8.Location = New System.Drawing.Point(9, 192)
-      Me.rdbBPS8.Name = "rdbBPS8"
-      Me.rdbBPS8.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS8.TabIndex = 7
-      Me.rdbBPS8.Text = "19200"
-      Me.rdbBPS8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS8.UseVisualStyleBackColor = True
+      Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+      Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorAddNewItem.Text = "Add new"
       '
-      'rdbBPS7
+      'BindingNavigatorCountItem
       '
-      Me.rdbBPS7.Location = New System.Drawing.Point(9, 169)
-      Me.rdbBPS7.Name = "rdbBPS7"
-      Me.rdbBPS7.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS7.TabIndex = 6
-      Me.rdbBPS7.Text = "9600"
-      Me.rdbBPS7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS7.UseVisualStyleBackColor = True
+      Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+      Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
+      Me.BindingNavigatorCountItem.Text = "of {0}"
+      Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
       '
-      'rdbBPS6
+      'BindingNavigatorDeleteItem
       '
-      Me.rdbBPS6.Checked = True
-      Me.rdbBPS6.Location = New System.Drawing.Point(9, 146)
-      Me.rdbBPS6.Name = "rdbBPS6"
-      Me.rdbBPS6.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS6.TabIndex = 5
-      Me.rdbBPS6.TabStop = True
-      Me.rdbBPS6.Text = "4800"
-      Me.rdbBPS6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS6.UseVisualStyleBackColor = True
+      Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+      Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorDeleteItem.Text = "Delete"
       '
-      'rdbBPS5
+      'BindingNavigatorMoveFirstItem
       '
-      Me.rdbBPS5.Location = New System.Drawing.Point(9, 123)
-      Me.rdbBPS5.Name = "rdbBPS5"
-      Me.rdbBPS5.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS5.TabIndex = 4
-      Me.rdbBPS5.Text = "2400"
-      Me.rdbBPS5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS5.UseVisualStyleBackColor = True
+      Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
+      Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorMoveFirstItem.Text = "Move first"
       '
-      'rdbBPS4
+      'BindingNavigatorMovePreviousItem
       '
-      Me.rdbBPS4.Location = New System.Drawing.Point(9, 100)
-      Me.rdbBPS4.Name = "rdbBPS4"
-      Me.rdbBPS4.Size = New System.Drawing.Size(55, 17)
-      Me.rdbBPS4.TabIndex = 3
-      Me.rdbBPS4.Text = "1200"
-      Me.rdbBPS4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBPS4.UseVisualStyleBackColor = True
+      Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
+      Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
+      '
+      'BindingNavigatorSeparator
+      '
+      Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
+      Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
+      '
+      'BindingNavigatorPositionItem
+      '
+      Me.BindingNavigatorPositionItem.AccessibleName = "Position"
+      Me.BindingNavigatorPositionItem.AutoSize = False
+      Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
+      Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
+      Me.BindingNavigatorPositionItem.Text = "0"
+      Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
+      '
+      'BindingNavigatorSeparator1
+      '
+      Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
+      Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
+      '
+      'BindingNavigatorMoveNextItem
+      '
+      Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
+      Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorMoveNextItem.Text = "Move next"
+      '
+      'BindingNavigatorMoveLastItem
+      '
+      Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
+      Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
+      Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
+      Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
+      Me.BindingNavigatorMoveLastItem.Text = "Move last"
+      '
+      'BindingNavigatorSeparator2
+      '
+      Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+      Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
+      '
+      'TbllectorplacasBindingNavigatorSaveItem
+      '
+      Me.TbllectorplacasBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.TbllectorplacasBindingNavigatorSaveItem.Image = CType(resources.GetObject("TbllectorplacasBindingNavigatorSaveItem.Image"), System.Drawing.Image)
+      Me.TbllectorplacasBindingNavigatorSaveItem.Name = "TbllectorplacasBindingNavigatorSaveItem"
+      Me.TbllectorplacasBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
+      Me.TbllectorplacasBindingNavigatorSaveItem.Text = "Save Data"
+      '
+      'grbBaudiosPorSegundo
+      '
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS9600)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS4800)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS2400)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS1200)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS600)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS300)
+      Me.grbBaudiosPorSegundo.Controls.Add(Me.rbtBPS110)
+      Me.grbBaudiosPorSegundo.Location = New System.Drawing.Point(48, 88)
+      Me.grbBaudiosPorSegundo.Name = "grbBaudiosPorSegundo"
+      Me.grbBaudiosPorSegundo.Size = New System.Drawing.Size(103, 208)
+      Me.grbBaudiosPorSegundo.TabIndex = 4
+      Me.grbBaudiosPorSegundo.TabStop = False
+      Me.grbBaudiosPorSegundo.Text = "Baudios por segundo"
+      '
+      'rbtBPS9600
+      '
+      Me.rbtBPS9600.Location = New System.Drawing.Point(6, 172)
+      Me.rbtBPS9600.Name = "rbtBPS9600"
+      Me.rbtBPS9600.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS9600.TabIndex = 6
+      Me.rbtBPS9600.TabStop = True
+      Me.rbtBPS9600.Text = "9600"
+      Me.rbtBPS9600.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS9600.UseVisualStyleBackColor = True
+      '
+      'rbtBPS4800
+      '
+      Me.rbtBPS4800.Location = New System.Drawing.Point(6, 149)
+      Me.rbtBPS4800.Name = "rbtBPS4800"
+      Me.rbtBPS4800.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS4800.TabIndex = 5
+      Me.rbtBPS4800.TabStop = True
+      Me.rbtBPS4800.Text = "4800"
+      Me.rbtBPS4800.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS4800.UseVisualStyleBackColor = True
+      '
+      'rbtBPS2400
+      '
+      Me.rbtBPS2400.Location = New System.Drawing.Point(6, 126)
+      Me.rbtBPS2400.Name = "rbtBPS2400"
+      Me.rbtBPS2400.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS2400.TabIndex = 4
+      Me.rbtBPS2400.TabStop = True
+      Me.rbtBPS2400.Text = "2400"
+      Me.rbtBPS2400.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS2400.UseVisualStyleBackColor = True
+      '
+      'rbtBPS1200
+      '
+      Me.rbtBPS1200.Location = New System.Drawing.Point(6, 103)
+      Me.rbtBPS1200.Name = "rbtBPS1200"
+      Me.rbtBPS1200.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS1200.TabIndex = 3
+      Me.rbtBPS1200.TabStop = True
+      Me.rbtBPS1200.Text = "1200"
+      Me.rbtBPS1200.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS1200.UseVisualStyleBackColor = True
+      '
+      'rbtBPS600
+      '
+      Me.rbtBPS600.Location = New System.Drawing.Point(6, 80)
+      Me.rbtBPS600.Name = "rbtBPS600"
+      Me.rbtBPS600.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS600.TabIndex = 2
+      Me.rbtBPS600.TabStop = True
+      Me.rbtBPS600.Text = "600"
+      Me.rbtBPS600.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS600.UseVisualStyleBackColor = True
+      '
+      'rbtBPS300
+      '
+      Me.rbtBPS300.Location = New System.Drawing.Point(6, 57)
+      Me.rbtBPS300.Name = "rbtBPS300"
+      Me.rbtBPS300.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS300.TabIndex = 1
+      Me.rbtBPS300.TabStop = True
+      Me.rbtBPS300.Text = "300"
+      Me.rbtBPS300.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS300.UseVisualStyleBackColor = True
+      '
+      'rbtBPS110
+      '
+      Me.rbtBPS110.Location = New System.Drawing.Point(6, 34)
+      Me.rbtBPS110.Name = "rbtBPS110"
+      Me.rbtBPS110.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBPS110.TabIndex = 0
+      Me.rbtBPS110.TabStop = True
+      Me.rbtBPS110.Text = "110"
+      Me.rbtBPS110.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtBPS110.UseVisualStyleBackColor = True
       '
       'grbBitsDeDatos
       '
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD8)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD7)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD6)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD5)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD4)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD2)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD3)
-      Me.grbBitsDeDatos.Controls.Add(Me.rdbBDD1)
-      Me.grbBitsDeDatos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.grbBitsDeDatos.Location = New System.Drawing.Point(112, 66)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos8)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos7)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos6)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos5)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos4)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos3)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos2)
+      Me.grbBitsDeDatos.Controls.Add(Me.rbtBitsDeDatos1)
+      Me.grbBitsDeDatos.Location = New System.Drawing.Point(157, 88)
       Me.grbBitsDeDatos.Name = "grbBitsDeDatos"
-      Me.grbBitsDeDatos.Size = New System.Drawing.Size(96, 215)
-      Me.grbBitsDeDatos.TabIndex = 19
+      Me.grbBitsDeDatos.Size = New System.Drawing.Size(103, 219)
+      Me.grbBitsDeDatos.TabIndex = 5
       Me.grbBitsDeDatos.TabStop = False
       Me.grbBitsDeDatos.Text = "Bits de datos"
       '
-      'rdbBDD8
+      'rbtBitsDeDatos8
       '
-      Me.rdbBDD8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD8.Location = New System.Drawing.Point(11, 192)
-      Me.rdbBDD8.Name = "rdbBDD8"
-      Me.rdbBDD8.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD8.TabIndex = 12
-      Me.rdbBDD8.Text = "8 bits"
-      Me.rdbBDD8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD8.UseVisualStyleBackColor = True
+      Me.rbtBitsDeDatos8.Location = New System.Drawing.Point(6, 195)
+      Me.rbtBitsDeDatos8.Name = "rbtBitsDeDatos8"
+      Me.rbtBitsDeDatos8.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos8.TabIndex = 14
+      Me.rbtBitsDeDatos8.TabStop = True
+      Me.rbtBitsDeDatos8.Text = "8"
+      Me.rbtBitsDeDatos8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos8.UseVisualStyleBackColor = True
       '
-      'rdbBDD7
+      'rbtBitsDeDatos7
       '
-      Me.rdbBDD7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD7.Location = New System.Drawing.Point(11, 169)
-      Me.rdbBDD7.Name = "rdbBDD7"
-      Me.rdbBDD7.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD7.TabIndex = 11
-      Me.rdbBDD7.Text = "7 bits"
-      Me.rdbBDD7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD7.UseVisualStyleBackColor = True
+      Me.rbtBitsDeDatos7.Location = New System.Drawing.Point(6, 172)
+      Me.rbtBitsDeDatos7.Name = "rbtBitsDeDatos7"
+      Me.rbtBitsDeDatos7.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos7.TabIndex = 13
+      Me.rbtBitsDeDatos7.TabStop = True
+      Me.rbtBitsDeDatos7.Text = "7"
+      Me.rbtBitsDeDatos7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos7.UseVisualStyleBackColor = True
       '
-      'rdbBDD6
+      'rbtBitsDeDatos6
       '
-      Me.rdbBDD6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD6.Location = New System.Drawing.Point(11, 146)
-      Me.rdbBDD6.Name = "rdbBDD6"
-      Me.rdbBDD6.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD6.TabIndex = 10
-      Me.rdbBDD6.Text = "6 bits"
-      Me.rdbBDD6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD6.UseVisualStyleBackColor = True
+      Me.rbtBitsDeDatos6.Location = New System.Drawing.Point(6, 149)
+      Me.rbtBitsDeDatos6.Name = "rbtBitsDeDatos6"
+      Me.rbtBitsDeDatos6.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos6.TabIndex = 12
+      Me.rbtBitsDeDatos6.TabStop = True
+      Me.rbtBitsDeDatos6.Text = "6"
+      Me.rbtBitsDeDatos6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos6.UseVisualStyleBackColor = True
       '
-      'rdbBDD5
+      'rbtBitsDeDatos5
       '
-      Me.rdbBDD5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD5.Location = New System.Drawing.Point(11, 123)
-      Me.rdbBDD5.Name = "rdbBDD5"
-      Me.rdbBDD5.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD5.TabIndex = 9
-      Me.rdbBDD5.Text = "5 bits"
-      Me.rdbBDD5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD5.UseVisualStyleBackColor = True
+      Me.rbtBitsDeDatos5.Location = New System.Drawing.Point(6, 126)
+      Me.rbtBitsDeDatos5.Name = "rbtBitsDeDatos5"
+      Me.rbtBitsDeDatos5.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos5.TabIndex = 11
+      Me.rbtBitsDeDatos5.TabStop = True
+      Me.rbtBitsDeDatos5.Text = "5"
+      Me.rbtBitsDeDatos5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos5.UseVisualStyleBackColor = True
       '
-      'rdbBDD4
+      'rbtBitsDeDatos4
       '
-      Me.rdbBDD4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD4.Location = New System.Drawing.Point(11, 100)
-      Me.rdbBDD4.Name = "rdbBDD4"
-      Me.rdbBDD4.Size = New System.Drawing.Size(50, 17)
-      Me.rdbBDD4.TabIndex = 8
-      Me.rdbBDD4.Text = "4 bits"
-      Me.rdbBDD4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-      Me.rdbBDD4.UseVisualStyleBackColor = True
+      Me.rbtBitsDeDatos4.Location = New System.Drawing.Point(6, 103)
+      Me.rbtBitsDeDatos4.Name = "rbtBitsDeDatos4"
+      Me.rbtBitsDeDatos4.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos4.TabIndex = 10
+      Me.rbtBitsDeDatos4.TabStop = True
+      Me.rbtBitsDeDatos4.Text = "4"
+      Me.rbtBitsDeDatos4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos4.UseVisualStyleBackColor = True
+      '
+      'rbtBitsDeDatos3
+      '
+      Me.rbtBitsDeDatos3.Location = New System.Drawing.Point(6, 80)
+      Me.rbtBitsDeDatos3.Name = "rbtBitsDeDatos3"
+      Me.rbtBitsDeDatos3.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos3.TabIndex = 9
+      Me.rbtBitsDeDatos3.TabStop = True
+      Me.rbtBitsDeDatos3.Text = "3"
+      Me.rbtBitsDeDatos3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos3.UseVisualStyleBackColor = True
+      '
+      'rbtBitsDeDatos2
+      '
+      Me.rbtBitsDeDatos2.Location = New System.Drawing.Point(6, 57)
+      Me.rbtBitsDeDatos2.Name = "rbtBitsDeDatos2"
+      Me.rbtBitsDeDatos2.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos2.TabIndex = 8
+      Me.rbtBitsDeDatos2.TabStop = True
+      Me.rbtBitsDeDatos2.Text = "2"
+      Me.rbtBitsDeDatos2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos2.UseVisualStyleBackColor = True
+      '
+      'rbtBitsDeDatos1
+      '
+      Me.rbtBitsDeDatos1.Location = New System.Drawing.Point(6, 34)
+      Me.rbtBitsDeDatos1.Name = "rbtBitsDeDatos1"
+      Me.rbtBitsDeDatos1.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeDatos1.TabIndex = 7
+      Me.rbtBitsDeDatos1.TabStop = True
+      Me.rbtBitsDeDatos1.Text = "1"
+      Me.rbtBitsDeDatos1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeDatos1.UseVisualStyleBackColor = True
       '
       'grbParidad
       '
-      Me.grbParidad.Controls.Add(Me.rdbParidad1)
-      Me.grbParidad.Controls.Add(Me.rdbParidad2)
-      Me.grbParidad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.grbParidad.Location = New System.Drawing.Point(211, 66)
+      Me.grbParidad.Controls.Add(Me.RadioButton1)
+      Me.grbParidad.Controls.Add(Me.rbtParidad1)
+      Me.grbParidad.Location = New System.Drawing.Point(266, 88)
       Me.grbParidad.Name = "grbParidad"
-      Me.grbParidad.Size = New System.Drawing.Size(102, 126)
-      Me.grbParidad.TabIndex = 20
+      Me.grbParidad.Size = New System.Drawing.Size(103, 106)
+      Me.grbParidad.TabIndex = 6
       Me.grbParidad.TabStop = False
       Me.grbParidad.Text = "Paridad"
       '
+      'RadioButton1
+      '
+      Me.RadioButton1.AutoSize = True
+      Me.RadioButton1.Location = New System.Drawing.Point(6, 57)
+      Me.RadioButton1.Name = "RadioButton1"
+      Me.RadioButton1.Size = New System.Drawing.Size(83, 17)
+      Me.RadioButton1.TabIndex = 8
+      Me.RadioButton1.TabStop = True
+      Me.RadioButton1.Text = "Con Paridad"
+      Me.RadioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.RadioButton1.UseVisualStyleBackColor = True
+      '
+      'rbtParidad1
+      '
+      Me.rbtParidad1.AutoSize = True
+      Me.rbtParidad1.Location = New System.Drawing.Point(6, 34)
+      Me.rbtParidad1.Name = "rbtParidad1"
+      Me.rbtParidad1.Size = New System.Drawing.Size(79, 17)
+      Me.rbtParidad1.TabIndex = 7
+      Me.rbtParidad1.TabStop = True
+      Me.rbtParidad1.Text = "Sin Paridad"
+      Me.rbtParidad1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+      Me.rbtParidad1.UseVisualStyleBackColor = True
+      '
       'grbBitsDeParada
       '
-      Me.grbBitsDeParada.Controls.Add(Me.rdbBDP3)
-      Me.grbBitsDeParada.Controls.Add(Me.rdbBDP2)
-      Me.grbBitsDeParada.Controls.Add(Me.rdbBDP1)
-      Me.grbBitsDeParada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.grbBitsDeParada.Location = New System.Drawing.Point(319, 66)
+      Me.grbBitsDeParada.Controls.Add(Me.rdbBitsDeParada3)
+      Me.grbBitsDeParada.Controls.Add(Me.rbtBitsDeParada2)
+      Me.grbBitsDeParada.Controls.Add(Me.rbtBitsDeParada1)
+      Me.grbBitsDeParada.Location = New System.Drawing.Point(375, 88)
       Me.grbBitsDeParada.Name = "grbBitsDeParada"
-      Me.grbBitsDeParada.Size = New System.Drawing.Size(106, 126)
-      Me.grbBitsDeParada.TabIndex = 21
+      Me.grbBitsDeParada.Size = New System.Drawing.Size(103, 106)
+      Me.grbBitsDeParada.TabIndex = 7
       Me.grbBitsDeParada.TabStop = False
-      Me.grbBitsDeParada.Text = "Bits de Parada"
+      Me.grbBitsDeParada.Text = "Bits de parada"
       '
-      'rdbBDP3
+      'rdbBitsDeParada3
       '
-      Me.rdbBDP3.Location = New System.Drawing.Point(6, 77)
-      Me.rdbBDP3.Name = "rdbBDP3"
-      Me.rdbBDP3.Size = New System.Drawing.Size(43, 17)
-      Me.rdbBDP3.TabIndex = 12
-      Me.rdbBDP3.Text = "2"
-      Me.rdbBDP3.UseVisualStyleBackColor = True
+      Me.rdbBitsDeParada3.Location = New System.Drawing.Point(6, 80)
+      Me.rdbBitsDeParada3.Name = "rdbBitsDeParada3"
+      Me.rdbBitsDeParada3.Size = New System.Drawing.Size(49, 17)
+      Me.rdbBitsDeParada3.TabIndex = 12
+      Me.rdbBitsDeParada3.TabStop = True
+      Me.rdbBitsDeParada3.Text = "1.5"
+      Me.rdbBitsDeParada3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rdbBitsDeParada3.UseVisualStyleBackColor = True
       '
-      'btnLectorAceptar
+      'rbtBitsDeParada2
       '
-      Me.btnLectorAceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-      Me.btnLectorAceptar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnLectorAceptar.Location = New System.Drawing.Point(369, 258)
-      Me.btnLectorAceptar.Name = "btnLectorAceptar"
-      Me.btnLectorAceptar.Size = New System.Drawing.Size(75, 23)
-      Me.btnLectorAceptar.TabIndex = 23
-      Me.btnLectorAceptar.Text = "Aceptar"
-      Me.btnLectorAceptar.UseVisualStyleBackColor = True
+      Me.rbtBitsDeParada2.Location = New System.Drawing.Point(6, 57)
+      Me.rbtBitsDeParada2.Name = "rbtBitsDeParada2"
+      Me.rbtBitsDeParada2.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeParada2.TabIndex = 11
+      Me.rbtBitsDeParada2.TabStop = True
+      Me.rbtBitsDeParada2.Text = "2"
+      Me.rbtBitsDeParada2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeParada2.UseVisualStyleBackColor = True
       '
-      'btnLectorCancelar
+      'rbtBitsDeParada1
       '
-      Me.btnLectorCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-      Me.btnLectorCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnLectorCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnLectorCancelar.Location = New System.Drawing.Point(450, 258)
-      Me.btnLectorCancelar.Name = "btnLectorCancelar"
-      Me.btnLectorCancelar.Size = New System.Drawing.Size(75, 23)
-      Me.btnLectorCancelar.TabIndex = 24
-      Me.btnLectorCancelar.Text = "Cancelar"
-      Me.btnLectorCancelar.UseVisualStyleBackColor = True
-      '
-      'grbPuertoCom
-      '
-      Me.grbPuertoCom.Controls.Add(Me.rbtPuertoCom4)
-      Me.grbPuertoCom.Controls.Add(Me.rbtPuertoCom3)
-      Me.grbPuertoCom.Controls.Add(Me.rbtPuertoCom2)
-      Me.grbPuertoCom.Controls.Add(Me.rbtPuertoCom1)
-      Me.grbPuertoCom.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.grbPuertoCom.Location = New System.Drawing.Point(431, 66)
-      Me.grbPuertoCom.Name = "grbPuertoCom"
-      Me.grbPuertoCom.Size = New System.Drawing.Size(94, 126)
-      Me.grbPuertoCom.TabIndex = 25
-      Me.grbPuertoCom.TabStop = False
-      Me.grbPuertoCom.Text = "Puerto Com"
-      '
-      'rbtPuertoCom4
-      '
-      Me.rbtPuertoCom4.AutoSize = True
-      Me.rbtPuertoCom4.Location = New System.Drawing.Point(6, 100)
-      Me.rbtPuertoCom4.Name = "rbtPuertoCom4"
-      Me.rbtPuertoCom4.Size = New System.Drawing.Size(55, 17)
-      Me.rbtPuertoCom4.TabIndex = 12
-      Me.rbtPuertoCom4.Text = "COM4"
-      Me.rbtPuertoCom4.UseVisualStyleBackColor = True
-      '
-      'rbtPuertoCom3
-      '
-      Me.rbtPuertoCom3.AutoSize = True
-      Me.rbtPuertoCom3.Location = New System.Drawing.Point(6, 77)
-      Me.rbtPuertoCom3.Name = "rbtPuertoCom3"
-      Me.rbtPuertoCom3.Size = New System.Drawing.Size(55, 17)
-      Me.rbtPuertoCom3.TabIndex = 11
-      Me.rbtPuertoCom3.Text = "COM3"
-      Me.rbtPuertoCom3.UseVisualStyleBackColor = True
-      '
-      'rbtPuertoCom2
-      '
-      Me.rbtPuertoCom2.AutoSize = True
-      Me.rbtPuertoCom2.Location = New System.Drawing.Point(6, 54)
-      Me.rbtPuertoCom2.Name = "rbtPuertoCom2"
-      Me.rbtPuertoCom2.Size = New System.Drawing.Size(55, 17)
-      Me.rbtPuertoCom2.TabIndex = 10
-      Me.rbtPuertoCom2.Text = "COM2"
-      Me.rbtPuertoCom2.UseVisualStyleBackColor = True
-      '
-      'rbtPuertoCom1
-      '
-      Me.rbtPuertoCom1.AutoSize = True
-      Me.rbtPuertoCom1.Checked = True
-      Me.rbtPuertoCom1.Location = New System.Drawing.Point(6, 31)
-      Me.rbtPuertoCom1.Name = "rbtPuertoCom1"
-      Me.rbtPuertoCom1.Size = New System.Drawing.Size(55, 17)
-      Me.rbtPuertoCom1.TabIndex = 9
-      Me.rbtPuertoCom1.TabStop = True
-      Me.rbtPuertoCom1.Text = "COM1"
-      Me.rbtPuertoCom1.UseVisualStyleBackColor = True
-      '
-      'lblmaxOdd
-      '
-      Me.lblmaxOdd.AutoSize = True
-      Me.lblmaxOdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.lblmaxOdd.Location = New System.Drawing.Point(214, 212)
-      Me.lblmaxOdd.Name = "lblmaxOdd"
-      Me.lblmaxOdd.Size = New System.Drawing.Size(53, 13)
-      Me.lblmaxOdd.TabIndex = 28
-      Me.lblmaxOdd.Text = "Max Odd:"
-      '
-      'TextBox1
-      '
-      Me.TextBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.TextBox1.Location = New System.Drawing.Point(274, 209)
-      Me.TextBox1.Name = "TextBox1"
-      Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-      Me.TextBox1.TabIndex = 29
-      '
-      'txtnomLector
-      '
-      Me.txtnomLector.Location = New System.Drawing.Point(109, 13)
-      Me.txtnomLector.Name = "txtnomLector"
-      Me.txtnomLector.Size = New System.Drawing.Size(277, 20)
-      Me.txtnomLector.TabIndex = 31
-      '
-      'chkLectorDefault
-      '
-      Me.chkLectorDefault.AutoSize = True
-      Me.chkLectorDefault.Checked = True
-      Me.chkLectorDefault.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.chkLectorDefault.Location = New System.Drawing.Point(426, 16)
-      Me.chkLectorDefault.Name = "chkLectorDefault"
-      Me.chkLectorDefault.Size = New System.Drawing.Size(60, 17)
-      Me.chkLectorDefault.TabIndex = 33
-      Me.chkLectorDefault.Text = "Default"
-      Me.chkLectorDefault.UseVisualStyleBackColor = True
-      '
-      'lblNombreLector
-      '
-      Me.lblNombreLector.AutoSize = True
-      Me.lblNombreLector.Location = New System.Drawing.Point(6, 15)
-      Me.lblNombreLector.Name = "lblNombreLector"
-      Me.lblNombreLector.Size = New System.Drawing.Size(97, 13)
-      Me.lblNombreLector.TabIndex = 32
-      Me.lblNombreLector.Text = "Nombre del Lector:"
-      '
-      'GroupBox1
-      '
-      Me.GroupBox1.Controls.Add(Me.lblNombreLector)
-      Me.GroupBox1.Controls.Add(Me.txtnomLector)
-      Me.GroupBox1.Controls.Add(Me.chkLectorDefault)
-      Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.GroupBox1.Location = New System.Drawing.Point(11, 12)
-      Me.GroupBox1.Name = "GroupBox1"
-      Me.GroupBox1.Size = New System.Drawing.Size(514, 40)
-      Me.GroupBox1.TabIndex = 34
-      Me.GroupBox1.TabStop = False
+      Me.rbtBitsDeParada1.Location = New System.Drawing.Point(6, 34)
+      Me.rbtBitsDeParada1.Name = "rbtBitsDeParada1"
+      Me.rbtBitsDeParada1.Size = New System.Drawing.Size(49, 17)
+      Me.rbtBitsDeParada1.TabIndex = 10
+      Me.rbtBitsDeParada1.TabStop = True
+      Me.rbtBitsDeParada1.Text = "1"
+      Me.rbtBitsDeParada1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+      Me.rbtBitsDeParada1.UseVisualStyleBackColor = True
       '
       'frmConfLector
       '
-      Me.AcceptButton = Me.btnLectorAceptar
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.AutoScroll = True
-      Me.CancelButton = Me.btnLectorCancelar
-      Me.ClientSize = New System.Drawing.Size(536, 289)
-      Me.Controls.Add(Me.GroupBox1)
-      Me.Controls.Add(Me.TextBox1)
-      Me.Controls.Add(Me.lblmaxOdd)
-      Me.Controls.Add(Me.grbPuertoCom)
-      Me.Controls.Add(Me.btnLectorCancelar)
-      Me.Controls.Add(Me.btnLectorAceptar)
+      Me.ClientSize = New System.Drawing.Size(533, 321)
       Me.Controls.Add(Me.grbBitsDeParada)
       Me.Controls.Add(Me.grbParidad)
       Me.Controls.Add(Me.grbBitsDeDatos)
-      Me.Controls.Add(Me.grbBaudiossPorSegundo)
-      Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+      Me.Controls.Add(Me.grbBaudiosPorSegundo)
+      Me.Controls.Add(Me.TbllectorplacasBindingNavigator)
+      Me.Controls.Add(Me.grbDefineLector)
+      Me.Controls.Add(Me.btnCancelar)
+      Me.Controls.Add(Me.btnAceptar)
+      Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmConfLector"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Configuración del Lector "
-      Me.grbBaudiossPorSegundo.ResumeLayout(False)
+      Me.grbDefineLector.ResumeLayout(False)
+      Me.grbDefineLector.PerformLayout()
+      CType(Me.TbllectorplacasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+      CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+      CType(Me.TbllectorplacasBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+      Me.TbllectorplacasBindingNavigator.ResumeLayout(False)
+      Me.TbllectorplacasBindingNavigator.PerformLayout()
+      Me.grbBaudiosPorSegundo.ResumeLayout(False)
       Me.grbBitsDeDatos.ResumeLayout(False)
       Me.grbParidad.ResumeLayout(False)
+      Me.grbParidad.PerformLayout()
       Me.grbBitsDeParada.ResumeLayout(False)
-      Me.grbPuertoCom.ResumeLayout(False)
-      Me.grbPuertoCom.PerformLayout()
-      Me.GroupBox1.ResumeLayout(False)
-      Me.GroupBox1.PerformLayout()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
    End Sub
-   Friend WithEvents rdbBPS1 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS2 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS3 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD1 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD3 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD2 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbParidad1 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbParidad2 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDP1 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDP2 As System.Windows.Forms.RadioButton
-   Friend WithEvents grbBaudiossPorSegundo As System.Windows.Forms.GroupBox
-   Friend WithEvents rdbBPS8 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS7 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS6 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS5 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBPS4 As System.Windows.Forms.RadioButton
+   Friend WithEvents btnAceptar As System.Windows.Forms.Button
+   Friend WithEvents btnCancelar As System.Windows.Forms.Button
+   Friend WithEvents grbDefineLector As System.Windows.Forms.GroupBox
+   Friend WithEvents BvtselisaDataSet As Elisa2010.bvtselisaDataSet
+   Friend WithEvents TbllectorplacasBindingSource As System.Windows.Forms.BindingSource
+   Friend WithEvents TbllectorplacasTableAdapter As Elisa2010.bvtselisaDataSetTableAdapters.tbllectorplacasTableAdapter
+   Friend WithEvents TableAdapterManager As Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager
+   Friend WithEvents TbllectorplacasBindingNavigator As System.Windows.Forms.BindingNavigator
+   Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
+   Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents BindingNavigatorPositionItem As System.Windows.Forms.ToolStripTextBox
+   Friend WithEvents BindingNavigatorSeparator1 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents TbllectorplacasBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
+   Friend WithEvents LectorDefaultCheckBox As System.Windows.Forms.CheckBox
+   Friend WithEvents grbBaudiosPorSegundo As System.Windows.Forms.GroupBox
+   Friend WithEvents rbtBPS2400 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBPS1200 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBPS600 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBPS300 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBPS110 As System.Windows.Forms.RadioButton
    Friend WithEvents grbBitsDeDatos As System.Windows.Forms.GroupBox
-   Friend WithEvents rdbBDD8 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD7 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD6 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD5 As System.Windows.Forms.RadioButton
-   Friend WithEvents rdbBDD4 As System.Windows.Forms.RadioButton
    Friend WithEvents grbParidad As System.Windows.Forms.GroupBox
    Friend WithEvents grbBitsDeParada As System.Windows.Forms.GroupBox
-   Friend WithEvents rdbBDP3 As System.Windows.Forms.RadioButton
-   Friend WithEvents btnLectorAceptar As System.Windows.Forms.Button
-   Friend WithEvents btnLectorCancelar As System.Windows.Forms.Button
-   Friend WithEvents grbPuertoCom As System.Windows.Forms.GroupBox
-   Friend WithEvents lblmaxOdd As System.Windows.Forms.Label
-   Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-   Friend WithEvents rbtPuertoCom4 As System.Windows.Forms.RadioButton
-   Friend WithEvents rbtPuertoCom3 As System.Windows.Forms.RadioButton
-   Friend WithEvents rbtPuertoCom2 As System.Windows.Forms.RadioButton
-   Friend WithEvents rbtPuertoCom1 As System.Windows.Forms.RadioButton
-   Friend WithEvents txtnomLector As System.Windows.Forms.TextBox
-   Friend WithEvents chkLectorDefault As System.Windows.Forms.CheckBox
-   Friend WithEvents lblNombreLector As System.Windows.Forms.Label
-   Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-
-   Private Sub btnLectorCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnLectorCancelar.Click
-      Me.Close()
-   End Sub
+   Friend WithEvents rbtBPS9600 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBPS4800 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos8 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos7 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos6 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos5 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos4 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos3 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos2 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeDatos1 As System.Windows.Forms.RadioButton
+   Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtParidad1 As System.Windows.Forms.RadioButton
+   Friend WithEvents rdbBitsDeParada3 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeParada2 As System.Windows.Forms.RadioButton
+   Friend WithEvents rbtBitsDeParada1 As System.Windows.Forms.RadioButton
+   Friend WithEvents NomLectorComboBox As System.Windows.Forms.ComboBox
 End Class

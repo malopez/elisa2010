@@ -87,6 +87,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="bvtselisaDataSet.vb">
+      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfLector.Designer.vb">
+      <DependentUpon>frmConfLector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfLector.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmListaAnalisis.Designer.vb">
       <DependentUpon>frmListaAnalisis.vb</DependentUpon>
     </Compile>
@@ -113,10 +122,6 @@
     <Compile Include="fmbSalidaDatos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConfLector.Designer.vb">
-      <DependentUpon>frmConfLector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmConfLector.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -140,14 +145,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmConfLector.resx">
+      <DependentUpon>frmConfLector.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmbSalidaDatos.resx">
       <DependentUpon>fmbSalidaDatos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmConfLector.resx">
-      <DependentUpon>frmConfLector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaAnalisis.resx">
       <DependentUpon>frmListaAnalisis.vb</DependentUpon>

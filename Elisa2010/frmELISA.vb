@@ -49,8 +49,8 @@
    Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
       frmRegistraNuevoAnalisis.MdiParent = Me
       frmSalidaDatos.MdiParent = Me
-      frmRegistraNuevoAnalisis.Show()
       frmSalidaDatos.Show()
+      frmRegistraNuevoAnalisis.Show()
    End Sub
 
    Private Sub mnuMainImprimir_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainImprimir.Click
@@ -75,5 +75,9 @@
    Private Sub AcercaDeToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AcercaDeToolStripMenuItem.Click
       frmAcercaDe.MdiParent = Me
       frmAcercaDe.Show()
+   End Sub
+
+   Private Sub mnuMainAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainAnalisis.Click
+
    End Sub
 End Class

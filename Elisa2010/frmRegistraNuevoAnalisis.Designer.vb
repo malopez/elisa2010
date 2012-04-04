@@ -22,6 +22,7 @@ Partial Class frmRegistraNuevoAnalisis
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+      Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRegistraNuevoAnalisis))
       Me.TextBox1 = New System.Windows.Forms.TextBox()
       Me.lblNoCaso = New System.Windows.Forms.Label()
@@ -34,8 +35,11 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnCambiarLector = New System.Windows.Forms.Button()
       Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
       Me.btnNuevoAnalisisCancelar = New System.Windows.Forms.Button()
-      Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-      Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+      Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
+      Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
+      Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
+      Me.btnGuardarDatos = New System.Windows.Forms.Button()
+      Me.sfdGuardarPlaca = New System.Windows.Forms.SaveFileDialog()
       Me.SuspendLayout()
       '
       'TextBox1
@@ -99,7 +103,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'btnLeerDatosPlaca
       '
-      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(251, 202)
+      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(324, 184)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(75, 23)
       Me.btnLeerDatosPlaca.TabIndex = 9
@@ -108,11 +112,12 @@ Partial Class frmRegistraNuevoAnalisis
       '
       'btnCambiarLector
       '
-      Me.btnCambiarLector.Location = New System.Drawing.Point(332, 202)
+      Me.btnCambiarLector.Enabled = False
+      Me.btnCambiarLector.Location = New System.Drawing.Point(405, 184)
       Me.btnCambiarLector.Name = "btnCambiarLector"
-      Me.btnCambiarLector.Size = New System.Drawing.Size(177, 23)
+      Me.btnCambiarLector.Size = New System.Drawing.Size(102, 23)
       Me.btnCambiarLector.TabIndex = 10
-      Me.btnCambiarLector.Text = "Cambiar Configuración del Lector"
+      Me.btnCambiarLector.Text = "Cambiar Lector"
       Me.btnCambiarLector.UseVisualStyleBackColor = True
       '
       'DateTimePicker1
@@ -125,37 +130,52 @@ Partial Class frmRegistraNuevoAnalisis
       'btnNuevoAnalisisCancelar
       '
       Me.btnNuevoAnalisisCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(515, 202)
+      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(513, 184)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
       Me.btnNuevoAnalisisCancelar.TabIndex = 12
       Me.btnNuevoAnalisisCancelar.Text = "Cancelar"
       Me.btnNuevoAnalisisCancelar.UseVisualStyleBackColor = True
       '
-      'ShapeContainer1
+      'SerialPort1
       '
-      Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
-      Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
-      Me.ShapeContainer1.Name = "ShapeContainer1"
-      Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
-      Me.ShapeContainer1.Size = New System.Drawing.Size(864, 412)
-      Me.ShapeContainer1.TabIndex = 13
-      Me.ShapeContainer1.TabStop = False
+      Me.SerialPort1.PortName = "COM3"
+      Me.SerialPort1.StopBits = System.IO.Ports.StopBits.Two
       '
-      'LineShape1
+      'cmbComboPorts
       '
-      Me.LineShape1.BorderColor = System.Drawing.SystemColors.ActiveCaption
-      Me.LineShape1.Name = "LineShape1"
-      Me.LineShape1.X1 = 22
-      Me.LineShape1.X2 = 585
-      Me.LineShape1.Y1 = 238
-      Me.LineShape1.Y2 = 238
+      Me.cmbComboPorts.FormattingEnabled = True
+      Me.cmbComboPorts.Location = New System.Drawing.Point(197, 184)
+      Me.cmbComboPorts.Name = "cmbComboPorts"
+      Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
+      Me.cmbComboPorts.TabIndex = 13
+      '
+      'txtDatosRecibidos
+      '
+      Me.txtDatosRecibidos.Location = New System.Drawing.Point(22, 213)
+      Me.txtDatosRecibidos.Multiline = True
+      Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
+      Me.txtDatosRecibidos.Size = New System.Drawing.Size(568, 139)
+      Me.txtDatosRecibidos.TabIndex = 14
+      Me.txtDatosRecibidos.Text = resources.GetString("txtDatosRecibidos.Text")
+      '
+      'btnGuardarDatos
+      '
+      Me.btnGuardarDatos.Location = New System.Drawing.Point(503, 358)
+      Me.btnGuardarDatos.Name = "btnGuardarDatos"
+      Me.btnGuardarDatos.Size = New System.Drawing.Size(87, 23)
+      Me.btnGuardarDatos.TabIndex = 15
+      Me.btnGuardarDatos.Text = "Guardar Datos"
+      Me.btnGuardarDatos.UseVisualStyleBackColor = True
       '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(864, 412)
+      Me.Controls.Add(Me.btnGuardarDatos)
+      Me.Controls.Add(Me.txtDatosRecibidos)
+      Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnNuevoAnalisisCancelar)
       Me.Controls.Add(Me.DateTimePicker1)
       Me.Controls.Add(Me.btnCambiarLector)
@@ -167,7 +187,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Controls.Add(Me.lblNombreCliente)
       Me.Controls.Add(Me.lblNoCaso)
       Me.Controls.Add(Me.TextBox1)
-      Me.Controls.Add(Me.ShapeContainer1)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmRegistraNuevoAnalisis"
@@ -187,6 +206,9 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents btnCambiarLector As System.Windows.Forms.Button
    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
    Friend WithEvents btnNuevoAnalisisCancelar As System.Windows.Forms.Button
-   Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-   Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+   Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
+   Friend WithEvents cmbComboPorts As System.Windows.Forms.ComboBox
+   Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
+   Friend WithEvents btnGuardarDatos As System.Windows.Forms.Button
+   Friend WithEvents sfdGuardarPlaca As System.Windows.Forms.SaveFileDialog
 End Class

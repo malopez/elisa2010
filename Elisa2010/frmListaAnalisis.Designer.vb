@@ -26,8 +26,6 @@ Partial Class frmEditarListaAnalisis
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditarListaAnalisis))
       Dim IdAnalisisLabel As System.Windows.Forms.Label
       Dim NombreAnalisisLabel As System.Windows.Forms.Label
-      Dim Id_clienteLabel As System.Windows.Forms.Label
-      Dim NomClienteLabel As System.Windows.Forms.Label
       Me.BvtselisaDataSet = New Elisa2010.bvtselisaDataSet()
       Me.TblanalisisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
       Me.TblanalisisTableAdapter = New Elisa2010.bvtselisaDataSetTableAdapters.tblanalisisTableAdapter()
@@ -49,12 +47,8 @@ Partial Class frmEditarListaAnalisis
       Me.IdAnalisisTextBox = New System.Windows.Forms.TextBox()
       Me.TblclienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
       Me.TblclienteTableAdapter = New Elisa2010.bvtselisaDataSetTableAdapters.tblclienteTableAdapter()
-      Me.Id_clienteTextBox = New System.Windows.Forms.TextBox()
-      Me.NomClienteTextBox = New System.Windows.Forms.TextBox()
       IdAnalisisLabel = New System.Windows.Forms.Label()
       NombreAnalisisLabel = New System.Windows.Forms.Label()
-      Id_clienteLabel = New System.Windows.Forms.Label()
-      NomClienteLabel = New System.Windows.Forms.Label()
       CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
       CType(Me.TblanalisisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
       CType(Me.TblanalisisBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,49 +235,11 @@ Partial Class frmEditarListaAnalisis
       '
       Me.TblclienteTableAdapter.ClearBeforeFill = True
       '
-      'Id_clienteLabel
-      '
-      Id_clienteLabel.AutoSize = True
-      Id_clienteLabel.Location = New System.Drawing.Point(128, 187)
-      Id_clienteLabel.Name = "Id_clienteLabel"
-      Id_clienteLabel.Size = New System.Drawing.Size(52, 13)
-      Id_clienteLabel.TabIndex = 5
-      Id_clienteLabel.Text = "id cliente:"
-      '
-      'Id_clienteTextBox
-      '
-      Me.Id_clienteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TblclienteBindingSource, "id_cliente", True))
-      Me.Id_clienteTextBox.Location = New System.Drawing.Point(199, 187)
-      Me.Id_clienteTextBox.Name = "Id_clienteTextBox"
-      Me.Id_clienteTextBox.Size = New System.Drawing.Size(100, 20)
-      Me.Id_clienteTextBox.TabIndex = 6
-      '
-      'NomClienteLabel
-      '
-      NomClienteLabel.AutoSize = True
-      NomClienteLabel.Location = New System.Drawing.Point(128, 242)
-      NomClienteLabel.Name = "NomClienteLabel"
-      NomClienteLabel.Size = New System.Drawing.Size(65, 13)
-      NomClienteLabel.TabIndex = 7
-      NomClienteLabel.Text = "nom Cliente:"
-      '
-      'NomClienteTextBox
-      '
-      Me.NomClienteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TblclienteBindingSource, "nomCliente", True))
-      Me.NomClienteTextBox.Location = New System.Drawing.Point(199, 239)
-      Me.NomClienteTextBox.Name = "NomClienteTextBox"
-      Me.NomClienteTextBox.Size = New System.Drawing.Size(100, 20)
-      Me.NomClienteTextBox.TabIndex = 8
-      '
       'frmEditarListaAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(567, 460)
-      Me.Controls.Add(NomClienteLabel)
-      Me.Controls.Add(Me.NomClienteTextBox)
-      Me.Controls.Add(Id_clienteLabel)
-      Me.Controls.Add(Me.Id_clienteTextBox)
+      Me.ClientSize = New System.Drawing.Size(567, 142)
       Me.Controls.Add(Me.IdAnalisisTextBox)
       Me.Controls.Add(NombreAnalisisLabel)
       Me.Controls.Add(Me.NombreAnalisisTextBox)
@@ -325,6 +281,4 @@ Partial Class frmEditarListaAnalisis
    Friend WithEvents IdAnalisisTextBox As System.Windows.Forms.TextBox
    Friend WithEvents TblclienteTableAdapter As Elisa2010.bvtselisaDataSetTableAdapters.tblclienteTableAdapter
    Friend WithEvents TblclienteBindingSource As System.Windows.Forms.BindingSource
-   Friend WithEvents Id_clienteTextBox As System.Windows.Forms.TextBox
-   Friend WithEvents NomClienteTextBox As System.Windows.Forms.TextBox
 End Class
