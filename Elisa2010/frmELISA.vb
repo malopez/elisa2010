@@ -77,7 +77,4 @@
       frmAcercaDe.Show()
    End Sub
 
-   Private Sub mnuMainAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainAnalisis.Click
-
-   End Sub
 End Class

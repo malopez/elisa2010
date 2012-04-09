@@ -264,7 +264,7 @@ Partial Class frmSalidaDatos
       Me.Controls.Add(Me.btnCalculaResultados)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Name = "frmSalidaDatos"
-      Me.Text = "fmbSalidaDatos"
+      Me.Text = "Resultados del análisis"
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
