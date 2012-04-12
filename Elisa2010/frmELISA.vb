@@ -48,9 +48,11 @@
 
    Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
       frmRegistraNuevoAnalisis.MdiParent = Me
-      frmSalidaDatos.MdiParent = Me
-      frmSalidaDatos.Show()
       frmRegistraNuevoAnalisis.Show()
+      'Comentado el 12-Abril-2012 para que la ventana de resultados se abra cuando se solicita calcular resultados
+      'Utilizando el boton de obtener resultados
+      frmSalidaDatos.MdiParent = Me
+      'frmSalidaDatos.Show()
    End Sub
 
    Private Sub mnuMainImprimir_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainImprimir.Click

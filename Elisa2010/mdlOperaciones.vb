@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
+Imports MySql.Data.MySqlClient
 
 Module mdlOperaciones
    '################################
@@ -20,6 +22,95 @@ Module mdlOperaciones
    Public placaLector(7, 11) As Decimal
    'Permite la lectura del archivo que contiene los datos de la placa
 
+   '#################################################
+   '#CREA TABLA TEMPORAL PARA LA FRECUENCIA RELATIVA#
+   '#################################################
+   Private Sub cargaTablaFrecRel(ByVal frecuenciaRelativa() As Decimal)
+
+      Dim i As Integer
+      Dim resultado As Integer
+      Dim comando As New MySqlCommand
+      Try
+         'Crear la conexion para establecer el acceso a la BD de MySQL
+         Dim oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         'Abrir la conexion a la base de datos
+         oConexion.Open()
+         'Asigna la cadena de conexion
+         comando.Connection = oConexion
+         'Trunca la tabla utilizada temporalmente para guardar los datos
+         comando.CommandText = "truncate table tblfrecrelativa"
+         resultado = comando.ExecuteNonQuery()
+         'Guardar los datos de la frecuencia relativa en la BD
+         For i = 0 To 14
+            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor) VALUES ('" & i + 1 & "','" & frecuenciaRelativa(i) & "')"
+            resultado = comando.ExecuteNonQuery()
+         Next
+         oConexion.Close()
+      Catch ex As Exception
+         MessageBox.Show("Error al insertar datos de la frecuencia relativa en la base de datos.")
+      End Try
+   End Sub
+   
+
+   '#################################################
+   '#CREA GRAFICA DE BARRAS EN LAPANTALLA           #
+   '#################################################
+   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String)
+      Dim oConexion As MySqlConnection = New MySqlConnection()
+      oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+      oConexion.Open()
+      Dim sqlfrecrel As String = "Select * from tblfrecrelativa"
+      Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
+      Dim ds As New DataSet()
+      da.Fill(ds, "tblfrecrelativa")
+
+      'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
+      Dim ChartArea1 As ChartArea = New ChartArea()
+      Dim Legend1 As Legend = New Legend()
+      Dim Series1 As Series = New Series()
+      Dim Chart1 = New Chart()
+
+      frmSalidaDatos.Controls.Add(Chart1)
+
+      'Define la nueva colección, asigna el nombre del gráfico.
+      ChartArea1.Name = "ChartArea1"
+      Chart1.ChartAreas.Add(ChartArea1)
+      Chart1.Titles.Add(nombre)
+
+      'Coloca los nombres de las etiquetas del gráfico para X y Y, habilita el 3d para las barras.
+      Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
+      Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
+      Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+
+      'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
+      'Legend1.Name = "Legend1"
+      'Chart1.Legends.Add(Legend1)
+      'Series1.Legend = "Legend1"
+      Chart1.Name = "Chart1"
+      Series1.ChartArea = "ChartArea1"
+      Series1.Name = "Series1"
+      Series1.ChartType = SeriesChartType.Column
+      Chart1.Series.Add(Series1)
+      'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
+      Chart1.Series("Series1").IsValueShownAsLabel = True
+
+      'Ubicacion del grafico
+      Chart1.Location = New System.Drawing.Point(600, 100)
+      Chart1.Size = New System.Drawing.Size(400, 400)
+      Chart1.TabIndex = 21
+      Chart1.Anchor = AnchorStyles.Right
+      Chart1.Anchor = AnchorStyles.Top
+      'Asigna los valores de las series para miembros que se trazan en X y Y
+      Chart1.Series("Series1").XValueMember = "rango"
+      Chart1.Series("Series1").YValueMembers = "valor"
+      Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
+      'Cerrar la conexion a la base de datos 
+      oConexion.Close()
+      oConexion.Dispose()
+   End Sub
+
+
    '##################################################
    '# SECCION VALIDACION DE FORMATOS PARA textBoxes  #
    '##################################################
@@ -33,9 +124,19 @@ Module mdlOperaciones
       End If
    End Function
 
+   Public Function siEsLargoUno(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
+      If textBox.Text.Length > 1 Then
+         MessageBox.Show(nombre & "El control debe tener una letra solamente entre A y H.", " ERROR de datos")
+         textBox.Select()
+         Return False
+      Else
+         Return True
+      End If
+   End Function
+
    Public Function siNoEsBlancoMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text = "" Or (textBox.Text.Length >= 3) Then
-         MessageBox.Show(nombre & "El control debe tener un valor !!!!.", " ERROR de datos")
+         MessageBox.Show(nombre & "El control debe tener un valor numerico entre 0 y 11.", " ERROR de datos")
          textBox.Select()
          Return False
       Else
@@ -48,7 +149,7 @@ Module mdlOperaciones
          Convert.ToInt32(textBox.Text)
          Return True
       Catch ex As Exception
-         MessageBox.Show(nombre & "El valor debe ser un numero.", " ERROR de datos")
+         MessageBox.Show(nombre & "El valor debe ser un numero entero .", " ERROR de datos")
          textBox.Select()
          textBox.SelectAll()
          Return False
@@ -58,7 +159,7 @@ Module mdlOperaciones
    Public Function siEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As Integer, ByVal max As Integer) As Boolean
       Dim numero As Integer = CInt(textbox.Text)
       If numero < min OrElse numero > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser un numero entre 1 y 12.", "ERROR de datos")
+         MessageBox.Show(" El valor " & nombre & "debe ser un numero entre 0 y 11.", " ERROR de datos")
          textbox.Select()
          textbox.SelectAll()
          Return False
@@ -70,7 +171,7 @@ Module mdlOperaciones
    Public Function siLetraEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As String, ByVal max As String) As Boolean
       Dim letra As String = textbox.Text.ToUpper
       If letra < min OrElse letra > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser una letra entre A y H.", "ERROR de datos")
+         MessageBox.Show(" El valor " & nombre & "debe ser una letra entre A y H.", " ERROR de datos")
          textbox.Select()
          textbox.SelectAll()
          Return False
@@ -100,7 +201,7 @@ Module mdlOperaciones
          Case "H"
             retorno = 7
          Case Else
-            MessageBox.Show(" El valor debe ser una letra entre A y H.", "ERROR de datos")
+            MessageBox.Show(" El valor debe ser una letra entre A y H.", " ERROR de datos")
             textbox.Select()
             textbox.SelectAll()
       End Select
@@ -110,8 +211,9 @@ Module mdlOperaciones
    Public Function controlesValidosLetra(ByVal textbox As TextBox, ByVal nombre As String, _
                                          ByVal min1 As String, ByVal max1 As String) As Boolean
       Return _
-         siNoEsBlanco(textbox, nombre) andAlso 
-         siLetraEstaEnRango(textbox, nombre, min1, max1) 
+         siNoEsBlanco(textbox, nombre) AndAlso
+         siEsLargoUno(textbox, nombre) AndAlso
+         siLetraEstaEnRango(textbox, nombre, min1, max1)
    End Function
 
    Public Function controlesValidosNumero(ByVal textbox As TextBox, ByVal nombre As String, _
@@ -332,7 +434,8 @@ Module mdlOperaciones
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
    'seleccionada
-   Public Sub calculaValores(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
+   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, _
+                             ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                              ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
@@ -340,7 +443,8 @@ Module mdlOperaciones
       'Para controlar el ciclo for, y posteriormente para calcular los valores de la "L, DESDE" y los valores de la matriz 15x96
       Dim i As Integer = 0
       Dim j As Integer = 0
-
+      'Para presentar el resultado del análisis campo texto de la forma
+      Dim resultado As String = ""
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
       'Para identificar los rangos de los datos introducidos 
@@ -609,6 +713,10 @@ Module mdlOperaciones
       'calcula la Media Geometrica
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
+      'Crea la tabla temporal para la frecuencia relativa y posterior creación de la gráfica
+      cargaTablaFrecRel(frecuenciaRelativa)
+      creaChartFrecRel(nombre, titulox, tituloy)
+
       'Presenta datos
       frmSalidaDatos.txtMediaAritmetica.Text = CStr(calculaMedia)
       frmSalidaDatos.txtMediaAritmetica2.Text = CStr(mediaAritmetica)
@@ -620,5 +728,12 @@ Module mdlOperaciones
       frmSalidaDatos.txtCoefVariacion2.Text = CStr(coeficienteDeVariacionDatosNoAgrupados)
       frmSalidaDatos.txtDesvEstandar2.Text = CStr(desviacionEstandarDatosNoAgrupados)
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
+
+      For i = 0 To numDeColumnas - 1
+         For j = 0 To numDeRegistros - 1
+            resultado &= CStr(calculoDeTitulos(i, j)) & vbTab
+         Next
+      Next
+
    End Sub
 End Module

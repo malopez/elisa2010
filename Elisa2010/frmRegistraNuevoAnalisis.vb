@@ -70,14 +70,14 @@ Public Class frmRegistraNuevoAnalisis
       Dim nombreArchivo As String
       nombreArchivo = formateaDatos(placaLector)
       nombreArchivo = guardaDatos(nombreArchivo)
-      'MessageBox.Show("nombre del archivo" & nombreArchivo)
+      grbControlesPositivos.Enabled = True
+      grbControlesNegativos.Enabled = True
+      btnCalcularValores.Enabled = True
    End Sub
 
    Private Sub btnCalcularValores_Click(sender As System.Object, e As System.EventArgs) Handles btnCalcularValores.Click
-
       Dim cpx1, cpx2, cpx3, cnx1, cnx2, cnx3 As Integer
       Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
-
       'Valor positivo uno, letra y numero
       If controlesValidosLetra(txtCP1Letra1, "Letra primer control positivo", "A", "Z") Then
          cpx1 = siValorEsLetra(txtCP1Letra1)
@@ -85,7 +85,6 @@ Public Class frmRegistraNuevoAnalisis
       If controlesValidosNumero(txtCP1Valor1, "Número primer control positivo", 0, 11) Then
          cpy1 = Convert.ToInt32(txtCP1Valor1.Text)
       End If
-
       'Valor positivo dos, letra y numero
       If controlesValidosLetra(txtCP2Letra2, "Letra segundo control positivo", "A", "Z") Then
          cpx2 = siValorEsLetra(txtCP2Letra2)
@@ -101,9 +100,7 @@ Public Class frmRegistraNuevoAnalisis
       If controlesValidosNumero(txtCP3Valor3, "Número tercer control positivo", 0, 11) Then
          cpy3 = Convert.ToInt32(txtCP3Valor3.Text)
          txtCP3Valor3.Select()
-         MessageBox.Show("El valor de CPY3 es:" & CStr(cpy3))
       End If
-
       'Valor negativo uno, letra y numero
       If controlesValidosLetra(txtCN1Letra1, "Letra primer control negativo", "A", "Z") Then
          cnx1 = siValorEsLetra(txtCN1Letra1)
@@ -111,7 +108,6 @@ Public Class frmRegistraNuevoAnalisis
       If controlesValidosNumero(txtCP1Valor1, "Número primer control negativo", 0, 11) Then
          cny1 = Convert.ToInt32(txtCN1Valor1.Text)
       End If
-
       'Valor negativo dos, letra y numero
       If controlesValidosLetra(txtCN2Letra2, "Letra segundo control negativo", "A", "Z") Then
          cnx2 = siValorEsLetra(txtCN2Letra2)
@@ -126,10 +122,9 @@ Public Class frmRegistraNuevoAnalisis
       End If
       If controlesValidosNumero(txtCN3Valor3, "Número tecer control negativo", 0, 11) Then
          cny3 = Convert.ToInt32(txtCN3Valor3.Text)
-         MessageBox.Show("El valor de CNY3 es:" & CStr(cny3))
       End If
-
-      calculaValores(cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726))
+      calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726))
+      frmSalidaDatos.Show()
    End Sub
 
    
@@ -143,6 +138,5 @@ Public Class frmRegistraNuevoAnalisis
    Private Sub frmRegistraNuevoAnalisis_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       'TODO: This line of code loads data into the 'BvtselisaDataSet.tblregistroanalisis' table. You can move, or remove it, as needed.
       Me.TblregistroanalisisTableAdapter.Fill(Me.BvtselisaDataSet.tblregistroanalisis)
-
    End Sub
 End Class
