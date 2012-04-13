@@ -45,8 +45,16 @@ Partial Class frmSalidaDatos
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
       Me.Label7 = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
-      Me.txtResultadoTitulos = New System.Windows.Forms.TextBox()
+      Me.txtResultadoTitulosA = New System.Windows.Forms.TextBox()
       Me.lblResultadoTitulos = New System.Windows.Forms.Label()
+      Me.txtResultadoTitulosB = New System.Windows.Forms.TextBox()
+      Me.txtResultadoTitulosC = New System.Windows.Forms.TextBox()
+      Me.Label2 = New System.Windows.Forms.Label()
+      Me.Label3 = New System.Windows.Forms.Label()
+      Me.Label4 = New System.Windows.Forms.Label()
+      Me.Label5 = New System.Windows.Forms.Label()
+      Me.Label6 = New System.Windows.Forms.Label()
+      Me.Label8 = New System.Windows.Forms.Label()
       Me.SuspendLayout()
       '
       'txtMediaAritmetica
@@ -154,14 +162,14 @@ Partial Class frmSalidaDatos
       Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(163, 465)
       Me.txtTotalDatosCalculados.Name = "txtTotalDatosCalculados"
       Me.txtTotalDatosCalculados.ReadOnly = True
-      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(117, 21)
+      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(122, 21)
       Me.txtTotalDatosCalculados.TabIndex = 11
       '
       'lblTotalDatosCalculados
       '
       Me.lblTotalDatosCalculados.AutoSize = True
       Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(166, 427)
+      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(155, 427)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
       Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(149, 16)
       Me.lblTotalDatosCalculados.TabIndex = 12
@@ -246,50 +254,135 @@ Partial Class frmSalidaDatos
       'Label7
       '
       Me.Label7.AutoSize = True
-      Me.Label7.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label7.Location = New System.Drawing.Point(28, 28)
+      Me.Label7.Font = New System.Drawing.Font("Century Gothic", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label7.Location = New System.Drawing.Point(12, 25)
       Me.Label7.Name = "Label7"
-      Me.Label7.Size = New System.Drawing.Size(277, 20)
+      Me.Label7.Size = New System.Drawing.Size(280, 18)
       Me.Label7.TabIndex = 24
       Me.Label7.Text = "Usando calculo de datos agrupados"
       '
       'Label1
       '
       Me.Label1.AutoSize = True
-      Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label1.Location = New System.Drawing.Point(28, 225)
+      Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label1.Location = New System.Drawing.Point(12, 226)
       Me.Label1.Name = "Label1"
-      Me.Label1.Size = New System.Drawing.Size(300, 20)
+      Me.Label1.Size = New System.Drawing.Size(303, 18)
       Me.Label1.TabIndex = 25
       Me.Label1.Text = "Usando calculo de datos no agrupados"
       '
-      'txtResultadoTitulos
+      'txtResultadoTitulosA
       '
-      Me.txtResultadoTitulos.BackColor = System.Drawing.SystemColors.ActiveBorder
-      Me.txtResultadoTitulos.Location = New System.Drawing.Point(347, 68)
-      Me.txtResultadoTitulos.Multiline = True
-      Me.txtResultadoTitulos.Name = "txtResultadoTitulos"
-      Me.txtResultadoTitulos.ReadOnly = True
-      Me.txtResultadoTitulos.Size = New System.Drawing.Size(288, 388)
-      Me.txtResultadoTitulos.TabIndex = 26
+      Me.txtResultadoTitulosA.BackColor = System.Drawing.Color.White
+      Me.txtResultadoTitulosA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtResultadoTitulosA.Location = New System.Drawing.Point(318, 68)
+      Me.txtResultadoTitulosA.Multiline = True
+      Me.txtResultadoTitulosA.Name = "txtResultadoTitulosA"
+      Me.txtResultadoTitulosA.ReadOnly = True
+      Me.txtResultadoTitulosA.Size = New System.Drawing.Size(113, 418)
+      Me.txtResultadoTitulosA.TabIndex = 26
       '
       'lblResultadoTitulos
       '
       Me.lblResultadoTitulos.AutoSize = True
-      Me.lblResultadoTitulos.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblResultadoTitulos.Location = New System.Drawing.Point(420, 28)
+      Me.lblResultadoTitulos.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblResultadoTitulos.Location = New System.Drawing.Point(434, 25)
       Me.lblResultadoTitulos.Name = "lblResultadoTitulos"
-      Me.lblResultadoTitulos.Size = New System.Drawing.Size(134, 20)
+      Me.lblResultadoTitulos.Size = New System.Drawing.Size(135, 18)
       Me.lblResultadoTitulos.TabIndex = 27
-      Me.lblResultadoTitulos.Text = "Titulos Obtenidos "
+      Me.lblResultadoTitulos.Text = "Títulos Obtenidos "
+      '
+      'txtResultadoTitulosB
+      '
+      Me.txtResultadoTitulosB.BackColor = System.Drawing.Color.White
+      Me.txtResultadoTitulosB.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtResultadoTitulosB.Location = New System.Drawing.Point(437, 68)
+      Me.txtResultadoTitulosB.Multiline = True
+      Me.txtResultadoTitulosB.Name = "txtResultadoTitulosB"
+      Me.txtResultadoTitulosB.ReadOnly = True
+      Me.txtResultadoTitulosB.Size = New System.Drawing.Size(112, 418)
+      Me.txtResultadoTitulosB.TabIndex = 28
+      '
+      'txtResultadoTitulosC
+      '
+      Me.txtResultadoTitulosC.BackColor = System.Drawing.Color.White
+      Me.txtResultadoTitulosC.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtResultadoTitulosC.Location = New System.Drawing.Point(555, 68)
+      Me.txtResultadoTitulosC.Multiline = True
+      Me.txtResultadoTitulosC.Name = "txtResultadoTitulosC"
+      Me.txtResultadoTitulosC.ReadOnly = True
+      Me.txtResultadoTitulosC.Size = New System.Drawing.Size(112, 418)
+      Me.txtResultadoTitulosC.TabIndex = 29
+      '
+      'Label2
+      '
+      Me.Label2.AutoSize = True
+      Me.Label2.Location = New System.Drawing.Point(318, 49)
+      Me.Label2.Name = "Label2"
+      Me.Label2.Size = New System.Drawing.Size(55, 13)
+      Me.Label2.TabIndex = 30
+      Me.Label2.Text = "No. Suero"
+      '
+      'Label3
+      '
+      Me.Label3.AutoSize = True
+      Me.Label3.Location = New System.Drawing.Point(392, 49)
+      Me.Label3.Name = "Label3"
+      Me.Label3.Size = New System.Drawing.Size(35, 13)
+      Me.Label3.TabIndex = 31
+      Me.Label3.Text = "Título"
+      '
+      'Label4
+      '
+      Me.Label4.AutoSize = True
+      Me.Label4.Location = New System.Drawing.Point(508, 49)
+      Me.Label4.Name = "Label4"
+      Me.Label4.Size = New System.Drawing.Size(35, 13)
+      Me.Label4.TabIndex = 33
+      Me.Label4.Text = "Título"
+      '
+      'Label5
+      '
+      Me.Label5.AutoSize = True
+      Me.Label5.Location = New System.Drawing.Point(434, 49)
+      Me.Label5.Name = "Label5"
+      Me.Label5.Size = New System.Drawing.Size(55, 13)
+      Me.Label5.TabIndex = 32
+      Me.Label5.Text = "No. Suero"
+      '
+      'Label6
+      '
+      Me.Label6.AutoSize = True
+      Me.Label6.Location = New System.Drawing.Point(626, 49)
+      Me.Label6.Name = "Label6"
+      Me.Label6.Size = New System.Drawing.Size(35, 13)
+      Me.Label6.TabIndex = 35
+      Me.Label6.Text = "Título"
+      '
+      'Label8
+      '
+      Me.Label8.AutoSize = True
+      Me.Label8.Location = New System.Drawing.Point(552, 49)
+      Me.Label8.Name = "Label8"
+      Me.Label8.Size = New System.Drawing.Size(55, 13)
+      Me.Label8.TabIndex = 34
+      Me.Label8.Text = "No. Suero"
       '
       'frmSalidaDatos
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(870, 498)
+      Me.ClientSize = New System.Drawing.Size(967, 498)
+      Me.Controls.Add(Me.Label6)
+      Me.Controls.Add(Me.Label8)
+      Me.Controls.Add(Me.Label4)
+      Me.Controls.Add(Me.Label5)
+      Me.Controls.Add(Me.Label3)
+      Me.Controls.Add(Me.Label2)
+      Me.Controls.Add(Me.txtResultadoTitulosC)
+      Me.Controls.Add(Me.txtResultadoTitulosB)
       Me.Controls.Add(Me.lblResultadoTitulos)
-      Me.Controls.Add(Me.txtResultadoTitulos)
+      Me.Controls.Add(Me.txtResultadoTitulosA)
       Me.Controls.Add(Me.Label1)
       Me.Controls.Add(Me.Label7)
       Me.Controls.Add(Me.lbDesviacionEstandarDNA)
@@ -342,6 +435,14 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtCoefVariacion2 As System.Windows.Forms.TextBox
    Friend WithEvents Label7 As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
-   Friend WithEvents txtResultadoTitulos As System.Windows.Forms.TextBox
+   Friend WithEvents txtResultadoTitulosA As System.Windows.Forms.TextBox
    Friend WithEvents lblResultadoTitulos As System.Windows.Forms.Label
+   Friend WithEvents txtResultadoTitulosB As System.Windows.Forms.TextBox
+   Friend WithEvents txtResultadoTitulosC As System.Windows.Forms.TextBox
+   Friend WithEvents Label2 As System.Windows.Forms.Label
+   Friend WithEvents Label3 As System.Windows.Forms.Label
+   Friend WithEvents Label4 As System.Windows.Forms.Label
+   Friend WithEvents Label5 As System.Windows.Forms.Label
+   Friend WithEvents Label6 As System.Windows.Forms.Label
+   Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

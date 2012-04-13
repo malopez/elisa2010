@@ -48,7 +48,7 @@ Module mdlOperaciones
          Next
          oConexion.Close()
       Catch ex As Exception
-         MessageBox.Show("Error al insertar datos de la frecuencia relativa en la base de datos.")
+         MessageBox.Show("Error al tratar de insertar datos de la frecuencia relativa en la base de datos.")
       End Try
    End Sub
    
@@ -58,12 +58,14 @@ Module mdlOperaciones
    '#################################################
    Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
-      oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-      oConexion.Open()
-      Dim sqlfrecrel As String = "Select * from tblfrecrelativa"
-      Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
-      Dim ds As New DataSet()
-      da.Fill(ds, "tblfrecrelativa")
+      Try
+         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.Open()
+         Dim sqlfrecrel As String = "Select * from tblfrecrelativa"
+         Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
+         Dim ds As New DataSet()
+         da.Fill(ds, "tblfrecrelativa")
+      
 
       'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
       Dim ChartArea1 As ChartArea = New ChartArea()
@@ -96,7 +98,7 @@ Module mdlOperaciones
       Chart1.Series("Series1").IsValueShownAsLabel = True
 
       'Ubicacion del grafico
-      Chart1.Location = New System.Drawing.Point(600, 100)
+         Chart1.Location = New System.Drawing.Point(600, 50)
       Chart1.Size = New System.Drawing.Size(400, 400)
       Chart1.TabIndex = 21
       Chart1.Anchor = AnchorStyles.Right
@@ -106,8 +108,11 @@ Module mdlOperaciones
       Chart1.Series("Series1").YValueMembers = "valor"
       Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
       'Cerrar la conexion a la base de datos 
-      oConexion.Close()
-      oConexion.Dispose()
+         oConexion.Close()
+         oConexion.Dispose()
+      Catch ex As Exception
+         MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
+      End Try
    End Sub
 
 
@@ -443,8 +448,12 @@ Module mdlOperaciones
       'Para controlar el ciclo for, y posteriormente para calcular los valores de la "L, DESDE" y los valores de la matriz 15x96
       Dim i As Integer = 0
       Dim j As Integer = 0
+      Dim k As Integer = 0
       'Para presentar el resultado del análisis campo texto de la forma
       Dim resultado As String = ""
+      Dim resultado1 As String = ""
+      Dim resultado2 As String = ""
+      Dim resultado3 As String = ""
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
       'Para identificar los rangos de los datos introducidos 
@@ -728,12 +737,25 @@ Module mdlOperaciones
       frmSalidaDatos.txtCoefVariacion2.Text = CStr(coeficienteDeVariacionDatosNoAgrupados)
       frmSalidaDatos.txtDesvEstandar2.Text = CStr(desviacionEstandarDatosNoAgrupados)
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
-
+      k = 1
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
-            resultado &= CStr(calculoDeTitulos(i, j)) & vbTab
+            resultado &= CStr(k) & vbTab & CStr(calculoDeTitulos(i, j)) & vbCrLf
+            k += 1
+            If (k >= 24) Then
+               resultado1 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+            End If
+            If (k >= 48) Then
+               resultado2 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+            End If
+            If (k >= 72) Then
+               resultado3 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+            End If
          Next
       Next
-
+      frmSalidaDatos.txtResultadoTitulosA.Text = resultado
+      frmSalidaDatos.txtResultadoTitulosB.Text = resultado1
+      frmSalidaDatos.txtResultadoTitulosC.Text = resultado2
+      'frmSalidaDatos.txtResultadoTitulosD.Text = resultado3
    End Sub
 End Module
