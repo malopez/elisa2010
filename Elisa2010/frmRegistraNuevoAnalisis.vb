@@ -69,7 +69,8 @@ Public Class frmRegistraNuevoAnalisis
    Private Sub btnGuardarDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatos.Click
       Dim nombreArchivo As String
       nombreArchivo = formateaDatos(placaLector)
-      nombreArchivo = guardaDatos(nombreArchivo)
+      'nombreArchivo = guardaDatos(nombreArchivo)
+      guardaDatosExcel(placaLector)
       grbControlesPositivos.Enabled = True
       grbControlesNegativos.Enabled = True
       btnCalcularValores.Enabled = True

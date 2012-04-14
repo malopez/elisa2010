@@ -21,9 +21,60 @@ Module mdlOperaciones
 "0129", "0227", "0211", "0252", "0351", "0101", "0172", "0268", "0199", "0297", "0394", "0318",
 "0389", "0338", "0158", "0302", "0214", "0262", "0570", "0083", "0144", "0058", "0726", "0062"}
    Public placaLector(7, 11) As Decimal
+   'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
+   Public Function obtenLetra(ByVal i As Integer) As String
+      Dim letra As String = ""
+      Select Case i
+         Case 0
+            letra = "A"
+         Case 1
+            letra = "B"
+         Case 2
+            letra = "C"
+         Case 3
+            letra = "D"
+         Case 4
+            letra = "E"
+         Case 5
+            letra = "F"
+         Case 6
+            letra = "G"
+         Case 7
+            letra = "H"
+      End Select
+      Return letra
+   End Function
+
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal nombrelibro As String, ByVal nombre As String, ByVal cliente As String)
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal)
+      Dim excelApp As New Excel.Application
+      Dim libroExcel As Excel.Workbook
+      'Sirve para controlar el ciclo for
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      'Mostrar Excel en pantalla y crea el workbook
+      excelApp.Visible = True
+      libroExcel = excelApp.Workbooks.Add()
+
+      'Darle nombre la primer hoja activa del libro de trabajo
+      excelApp.ActiveSheet.Name = "PlacaLeida"
+
+      'Agregar datos a la hoja de Excel de la frecuencia relativa
+      For i = 0 To 7
+         For j = 0 To 11
+            'MessageBox.Show("valor de placa lector " & placaLector(i, j))
+            excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
+         Next
+      Next
+      'Cierra el libro activo de Excel
+      excelApp.ActiveWorkbook.Close()
+      'Libera la aplicacion Excel
+      releaseObject(excelApp)
+   End Sub
+
+   'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
+   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal nombrelibro As String, ByVal nombre As String)
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
@@ -171,7 +222,6 @@ Module mdlOperaciones
          Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
          Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
          Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
-
          'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
          'Legend1.Name = "Legend1"
          'Chart1.Legends.Add(Legend1)
@@ -183,7 +233,6 @@ Module mdlOperaciones
          Chart1.Series.Add(Series1)
          'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
          Chart1.Series("Series1").IsValueShownAsLabel = True
-
          'Ubicacion del grafico
          Chart1.Location = New System.Drawing.Point(600, 50)
          Chart1.Size = New System.Drawing.Size(400, 400)
