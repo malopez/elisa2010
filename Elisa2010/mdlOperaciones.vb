@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports MySql.Data.MySqlClient
+Imports Excel = Microsoft.Office.Interop.Excel
 
 Module mdlOperaciones
    '################################
@@ -20,11 +21,97 @@ Module mdlOperaciones
 "0129", "0227", "0211", "0252", "0351", "0101", "0172", "0268", "0199", "0297", "0394", "0318",
 "0389", "0338", "0158", "0302", "0214", "0262", "0570", "0083", "0144", "0058", "0726", "0062"}
    Public placaLector(7, 11) As Decimal
-   'Permite la lectura del archivo que contiene los datos de la placa
+
+   'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
+   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal nombrelibro As String, ByVal nombre As String, ByVal cliente As String)
+      Dim excelApp As New Excel.Application
+      Dim libroExcel As Excel.Workbook
+      'Sirve para controlar el ciclo for
+      Dim i As Integer = 0
+      'Mostrar Excel en pantalla y crea el workbook
+      excelApp.Visible = True
+      libroExcel = excelApp.Workbooks.Add()
+
+      'Darle nombre la primer hoja activa del libro de trabajo
+      excelApp.ActiveSheet.Name = nombrelibro
+
+      'Colocar las cabeceras para los rangos de datos
+      excelApp.Range("A1").Value2 = "Porcentaje"
+      excelApp.Range("B1").Value2 = "Grupo de títulos"
+
+      'Agregar datos a la hoja de Excel de la frecuencia relativa
+      For i = 2 To 16
+         excelApp.Range("A" & i).Value2 = i - 1
+         excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2))
+      Next
+      'Crear grafica para la frecuencia relativa
+      Dim chartFrecRel As Excel.Chart
+      Dim graficaFR As Excel.ChartObject
+      Dim rangoGrafica As Excel.Range
+      Dim j As Integer = 1
+      'Asignar ubicacion a la grafica
+      graficaFR = excelApp.ActiveSheet.ChartObjects.Add(400, 50, 500, 150)
+      chartFrecRel = graficaFR.Chart
+      'Establecer rango que utilizara la frafica
+      rangoGrafica = excelApp.Range("B1", "B16")
+      chartFrecRel.SetSourceData(Source:=rangoGrafica)
+      'Tipo de gráfica: barras
+      chartFrecRel.ChartType = Excel.XlChartType.xlColumnClustered
+      'Cambia el titulo a la grafica
+      With chartFrecRel
+         .HasTitle = True
+         .ChartTitle.Text = nombre
+         'Coloca la etiqueta de la serie
+         i = 1
+         For j = 1 To 15
+            .SeriesCollection(i).Points(j).HasDatalabel = True
+         Next
+         'Deshabilita el cuadro de leyenda de la serie
+         With .Legend
+            .IncludeInLayout = True
+            .Delete()
+         End With
+      End With
+
+      'Cambiar el nombre del eje x
+      Dim ejex As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlValue, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
+      ejex.HasTitle = True
+      ejex.AxisTitle.Text = "Porcentaje"
+      ejex.AxisTitle.Font.Bold = True
+      ejex.AxisTitle.Font.Size = 8
+      'Cambiar el nombre del eje y
+      Dim ejey As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlCategory, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
+      ejey.HasTitle = True
+      ejey.AxisTitle.Text = "Grupo de Títulos"
+      ejey.AxisTitle.Font.Bold = True
+      ejey.AxisTitle.Font.Size = 8
+      'xlApp.ActiveWorkbook.SaveAs() 'aqui meter el procedimiento de guardar archivo con un nombre
+      'Cierra el libro activo de Excel
+      excelApp.ActiveWorkbook.Close()
+      'Libera la aplicacion Excel
+      releaseObject(excelApp)
+   End Sub
+
+
+   '###########################################################
+   '#SECCION PARA LIBERAR OBJETOS DE MEMORIA TIPO PROGRAMA    #
+   '###########################################################
+   'Se utiliza para liberar el excel de la memoria utilizada por el programa
+   Public Sub releaseObject(ByVal obj As Object)
+      Try
+         System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
+         obj = Nothing
+      Catch ex As Exception
+         obj = Nothing
+      Finally
+         GC.Collect()
+      End Try
+   End Sub
 
    '#################################################
-   '#CREA TABLA TEMPORAL PARA LA FRECUENCIA RELATIVA#
+   '#   SECCION DE CREACION DE TABLA TEMPORAL EN BD #
    '#################################################
+   '#Crea la tabla temporal donde se aloja la frecuencia relativa
    Private Sub cargaTablaFrecRel(ByVal frecuenciaRelativa() As Decimal)
 
       Dim i As Integer
@@ -51,10 +138,10 @@ Module mdlOperaciones
          MessageBox.Show("Error al tratar de insertar datos de la frecuencia relativa en la base de datos.")
       End Try
    End Sub
-   
+
 
    '#################################################
-   '#CREA GRAFICA DE BARRAS EN LAPANTALLA           #
+   '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
    '#################################################
    Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
@@ -65,49 +152,49 @@ Module mdlOperaciones
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
          Dim ds As New DataSet()
          da.Fill(ds, "tblfrecrelativa")
-      
 
-      'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
-      Dim ChartArea1 As ChartArea = New ChartArea()
-      Dim Legend1 As Legend = New Legend()
-      Dim Series1 As Series = New Series()
-      Dim Chart1 = New Chart()
 
-      frmSalidaDatos.Controls.Add(Chart1)
+         'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
+         Dim ChartArea1 As ChartArea = New ChartArea()
+         Dim Legend1 As Legend = New Legend()
+         Dim Series1 As Series = New Series()
+         Dim Chart1 = New Chart()
 
-      'Define la nueva colección, asigna el nombre del gráfico.
-      ChartArea1.Name = "ChartArea1"
-      Chart1.ChartAreas.Add(ChartArea1)
-      Chart1.Titles.Add(nombre)
+         frmSalidaDatos.Controls.Add(Chart1)
 
-      'Coloca los nombres de las etiquetas del gráfico para X y Y, habilita el 3d para las barras.
-      Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
-      Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
-      Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+         'Define la nueva colección, asigna el nombre del gráfico.
+         ChartArea1.Name = "ChartArea1"
+         Chart1.ChartAreas.Add(ChartArea1)
+         Chart1.Titles.Add(nombre)
 
-      'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
-      'Legend1.Name = "Legend1"
-      'Chart1.Legends.Add(Legend1)
-      'Series1.Legend = "Legend1"
-      Chart1.Name = "Chart1"
-      Series1.ChartArea = "ChartArea1"
-      Series1.Name = "Series1"
-      Series1.ChartType = SeriesChartType.Column
-      Chart1.Series.Add(Series1)
-      'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
-      Chart1.Series("Series1").IsValueShownAsLabel = True
+         'Coloca los nombres de las etiquetas del gráfico para X y Y, habilita el 3d para las barras.
+         Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
+         Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
+         Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
 
-      'Ubicacion del grafico
+         'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
+         'Legend1.Name = "Legend1"
+         'Chart1.Legends.Add(Legend1)
+         'Series1.Legend = "Legend1"
+         Chart1.Name = "Chart1"
+         Series1.ChartArea = "ChartArea1"
+         Series1.Name = "Series1"
+         Series1.ChartType = SeriesChartType.Column
+         Chart1.Series.Add(Series1)
+         'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
+         Chart1.Series("Series1").IsValueShownAsLabel = True
+
+         'Ubicacion del grafico
          Chart1.Location = New System.Drawing.Point(600, 50)
-      Chart1.Size = New System.Drawing.Size(400, 400)
-      Chart1.TabIndex = 21
-      Chart1.Anchor = AnchorStyles.Right
-      Chart1.Anchor = AnchorStyles.Top
-      'Asigna los valores de las series para miembros que se trazan en X y Y
-      Chart1.Series("Series1").XValueMember = "rango"
-      Chart1.Series("Series1").YValueMembers = "valor"
-      Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
-      'Cerrar la conexion a la base de datos 
+         Chart1.Size = New System.Drawing.Size(400, 400)
+         Chart1.TabIndex = 21
+         Chart1.Anchor = AnchorStyles.Right
+         Chart1.Anchor = AnchorStyles.Top
+         'Asigna los valores de las series para miembros que se trazan en X y Y
+         Chart1.Series("Series1").XValueMember = "rango"
+         Chart1.Series("Series1").YValueMembers = "valor"
+         Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
+         'Cerrar la conexion a la base de datos 
          oConexion.Close()
          oConexion.Dispose()
       Catch ex As Exception
@@ -757,5 +844,6 @@ Module mdlOperaciones
       frmSalidaDatos.txtResultadoTitulosB.Text = resultado1
       frmSalidaDatos.txtResultadoTitulosC.Text = resultado2
       'frmSalidaDatos.txtResultadoTitulosD.Text = resultado3
+      guardaResultadosExcel(frecuenciaRelativa, "Laringo", nombre)
    End Sub
 End Module

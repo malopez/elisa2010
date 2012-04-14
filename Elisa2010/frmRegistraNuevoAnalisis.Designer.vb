@@ -183,7 +183,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.TblregistroanalisisBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
       Me.TblregistroanalisisBindingNavigator.Name = "TblregistroanalisisBindingNavigator"
       Me.TblregistroanalisisBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-      Me.TblregistroanalisisBindingNavigator.Size = New System.Drawing.Size(606, 25)
+      Me.TblregistroanalisisBindingNavigator.Size = New System.Drawing.Size(707, 25)
       Me.TblregistroanalisisBindingNavigator.TabIndex = 31
       Me.TblregistroanalisisBindingNavigator.Text = "BindingNavigator1"
       '
@@ -548,7 +548,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(606, 449)
+      Me.ClientSize = New System.Drawing.Size(707, 426)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.lblNoCaso)

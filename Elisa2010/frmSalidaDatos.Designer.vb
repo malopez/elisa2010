@@ -55,6 +55,7 @@ Partial Class frmSalidaDatos
       Me.Label5 = New System.Windows.Forms.Label()
       Me.Label6 = New System.Windows.Forms.Label()
       Me.Label8 = New System.Windows.Forms.Label()
+      Me.Button1 = New System.Windows.Forms.Button()
       Me.SuspendLayout()
       '
       'txtMediaAritmetica
@@ -368,11 +369,21 @@ Partial Class frmSalidaDatos
       Me.Label8.TabIndex = 34
       Me.Label8.Text = "No. Suero"
       '
+      'Button1
+      '
+      Me.Button1.Location = New System.Drawing.Point(546, 492)
+      Me.Button1.Name = "Button1"
+      Me.Button1.Size = New System.Drawing.Size(121, 23)
+      Me.Button1.TabIndex = 36
+      Me.Button1.Text = "Guardar Resultados"
+      Me.Button1.UseVisualStyleBackColor = True
+      '
       'frmSalidaDatos
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(967, 498)
+      Me.ClientSize = New System.Drawing.Size(1006, 519)
+      Me.Controls.Add(Me.Button1)
       Me.Controls.Add(Me.Label6)
       Me.Controls.Add(Me.Label8)
       Me.Controls.Add(Me.Label4)
@@ -445,4 +456,5 @@ Partial Class frmSalidaDatos
    Friend WithEvents Label5 As System.Windows.Forms.Label
    Friend WithEvents Label6 As System.Windows.Forms.Label
    Friend WithEvents Label8 As System.Windows.Forms.Label
+   Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
