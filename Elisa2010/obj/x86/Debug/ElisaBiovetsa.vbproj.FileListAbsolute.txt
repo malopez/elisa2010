@@ -34,3 +34,4 @@ C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\obj\x86\Debug\Elisa2010.
 C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\obj\x86\Debug\Elisa2010.frmAcercaDe.resources
 C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmAbrirArchivoExistente.resources

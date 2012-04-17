@@ -66,19 +66,34 @@ Public Class frmRegistraNuevoAnalisis
    '   End Try
    'End Sub
 
-   Private Sub btnGuardarDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatos.Click
+   Private Sub btnDefinirControlesPN_Click(sender As System.Object, e As System.EventArgs) Handles btnDefinirControlesPN.Click
       Dim nombreArchivo As String
       nombreArchivo = formateaDatos(placaLector)
       'nombreArchivo = guardaDatos(nombreArchivo)
-      guardaDatosExcel(placaLector)
+      If btnDefinirControlesPN.Text = "Definir Controles" Then
+         btnDefinirControlesPN.Text = "Cambiar Controles"
+         btnAceptarControles.Enabled = True
+      End If
       grbControlesPositivos.Enabled = True
-      grbControlesNegativos.Enabled = True
-      btnCalcularValores.Enabled = True
+      grbControlesNegativos.Enabled = False
+      txtCP1Letra1.Enabled = True
+      txtCP1Valor1.Enabled = False
+      txtCP2Letra2.Enabled = False
+      txtCP2Valor2.Enabled = False
+      txtCP3Letra3.Enabled = False
+      txtCP3Valor3.Enabled = False
+      'grbControlesNegativos.Enabled = True
+      'btnCalcularValores.Enabled = True
+      'cambiado el 16-Abril-2012 para hacer pruebas de guardar los controles positivos y negativos  con los 
+      'datos leidos desde puerto
+
    End Sub
 
-   Private Sub btnCalcularValores_Click(sender As System.Object, e As System.EventArgs) Handles btnCalcularValores.Click
+   Private Sub btnCalcularValores_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
       Dim cpx1, cpx2, cpx3, cnx1, cnx2, cnx3 As Integer
       Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
+
+      btnAceptarControles.Enabled = False
       'Valor positivo uno, letra y numero
       If controlesValidosLetra(txtCP1Letra1, "Letra primer control positivo", "A", "Z") Then
          cpx1 = siValorEsLetra(txtCP1Letra1)
@@ -124,11 +139,12 @@ Public Class frmRegistraNuevoAnalisis
       If controlesValidosNumero(txtCN3Valor3, "Número tecer control negativo", 0, 11) Then
          cny3 = Convert.ToInt32(txtCN3Valor3.Text)
       End If
+      guardaDatosExcel(placaLector, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3)
       calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726))
       frmSalidaDatos.Show()
    End Sub
 
-   
+
    Private Sub TblregistroanalisisBindingNavigatorSaveItem_Click(sender As System.Object, e As System.EventArgs) Handles TblregistroanalisisBindingNavigatorSaveItem.Click
       Me.Validate()
       Me.TblregistroanalisisBindingSource.EndEdit()
@@ -139,5 +155,96 @@ Public Class frmRegistraNuevoAnalisis
    Private Sub frmRegistraNuevoAnalisis_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       'TODO: This line of code loads data into the 'BvtselisaDataSet.tblregistroanalisis' table. You can move, or remove it, as needed.
       Me.TblregistroanalisisTableAdapter.Fill(Me.BvtselisaDataSet.tblregistroanalisis)
+   End Sub
+
+   Private Sub txtCP1Letra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP1Letra1.TextChanged
+      'Valor positivo uno, letra y numero
+      If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "Z") Then
+         txtCP1Valor1.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCP1Valor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP1Valor1.TextChanged
+      If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) Then
+         txtCP2Letra2.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCP2Letra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP2Letra2.TextChanged
+      'Valor positivo uno, letra y numero
+      If controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") Then
+         txtCP2Valor2.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCP2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP2Valor2.TextChanged
+      If controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) Then
+         txtCP3Letra3.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCP3Letra3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP3Letra3.TextChanged
+      'Valor positivo uno, letra y numero
+      If controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") Then
+         txtCP3Valor3.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCP3Valor3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP3Valor3.TextChanged
+      If controlesValidosNumero(txtCP3Valor3, " Número terce control positivo ", 0, 11) Then
+         grbControlesNegativos.Enabled = True
+         txtCN1Valor1.Enabled = False
+         txtCN2Letra2.Enabled = False
+         txtCN2Valor2.Enabled = False
+         txtCN3Letra3.Enabled = False
+         txtCN3Valor3.Enabled = False
+         txtCN1Letra1.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN1Letra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN1Letra1.TextChanged
+      'Valor positivo uno, letra y numero
+      grbControlesPositivos.Enabled = False
+      If controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") Then
+         txtCN1Valor1.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN1Valor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN1Valor1.TextChanged
+      If controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) Then
+         txtCN2Letra2.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN2Letra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN2Letra2.TextChanged
+      'Valor positivo uno, letra y numero
+      If controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "Z") Then
+         txtCN2Valor2.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN2Valor2.TextChanged
+      If controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) Then
+         txtCN3Letra3.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN3Letra3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN3Letra3.TextChanged
+      'Valor positivo uno, letra y numero
+      If controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "Z") Then
+         txtCN3Valor3.Enabled = True
+      End If
+   End Sub
+
+   Private Sub txtCN3Valor3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN3Valor3.TextChanged
+      If controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+         btnDefinirControlesPN.Enabled = True
+      End If
+   End Sub
+
+   Private Sub btnAceptarControles_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarControles.Click
+      grbControlesNegativos.Enabled = False
+      btnDefinirControlesPN.Enabled = False
+      btnObtenerResultados.Enabled = True
    End Sub
 End Class

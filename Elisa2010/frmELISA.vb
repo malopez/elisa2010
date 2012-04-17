@@ -79,4 +79,8 @@
       frmAcercaDe.Show()
    End Sub
 
+   Private Sub AbrirArchivoExistenteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AbrirArchivoExistenteToolStripMenuItem.Click
+      frmAbrirArchivoExistente.MdiParent = Me
+      frmAbrirArchivoExistente.Show()
+   End Sub
 End Class

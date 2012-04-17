@@ -44,6 +44,7 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
       Me.lblClock = New System.Windows.Forms.Label()
+      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.tbbToolMenu.SuspendLayout()
       Me.SuspendLayout()
@@ -59,7 +60,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir, Me.AbrirArchivoExistenteToolStripMenuItem})
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
       Me.mnuMainAnalisis.Size = New System.Drawing.Size(59, 20)
@@ -195,6 +196,12 @@ Partial Class frmElisaBiovetsa
       Me.lblClock.Text = "Horario"
       Me.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
       '
+      'AbrirArchivoExistenteToolStripMenuItem
+      '
+      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
+      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
+      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -242,5 +249,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents ListarAnálisisDisponiblesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents AcercaDeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents AbrirArchivoExistenteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

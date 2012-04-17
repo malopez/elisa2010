@@ -51,7 +51,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.TblregistroanalisisBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
       Me.NoCasoTextBox = New System.Windows.Forms.TextBox()
       Me.FechaRecepcionDateTimePicker = New System.Windows.Forms.DateTimePicker()
-      Me.btnGuardarDatos = New System.Windows.Forms.Button()
+      Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.txtCP3Valor3 = New System.Windows.Forms.TextBox()
       Me.lblCPNo1 = New System.Windows.Forms.Label()
@@ -75,9 +75,10 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
       Me.btnCambiarLector = New System.Windows.Forms.Button()
-      Me.btnCalcularValores = New System.Windows.Forms.Button()
+      Me.btnObtenerResultados = New System.Windows.Forms.Button()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
+      Me.btnAceptarControles = New System.Windows.Forms.Button()
       CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
       CType(Me.TblregistroanalisisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
       CType(Me.TblregistroanalisisBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -183,7 +184,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.TblregistroanalisisBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
       Me.TblregistroanalisisBindingNavigator.Name = "TblregistroanalisisBindingNavigator"
       Me.TblregistroanalisisBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-      Me.TblregistroanalisisBindingNavigator.Size = New System.Drawing.Size(707, 25)
+      Me.TblregistroanalisisBindingNavigator.Size = New System.Drawing.Size(694, 25)
       Me.TblregistroanalisisBindingNavigator.TabIndex = 31
       Me.TblregistroanalisisBindingNavigator.Text = "BindingNavigator1"
       '
@@ -296,14 +297,14 @@ Partial Class frmRegistraNuevoAnalisis
       Me.FechaRecepcionDateTimePicker.Size = New System.Drawing.Size(200, 20)
       Me.FechaRecepcionDateTimePicker.TabIndex = 2
       '
-      'btnGuardarDatos
+      'btnDefinirControlesPN
       '
-      Me.btnGuardarDatos.Location = New System.Drawing.Point(474, 296)
-      Me.btnGuardarDatos.Name = "btnGuardarDatos"
-      Me.btnGuardarDatos.Size = New System.Drawing.Size(113, 23)
-      Me.btnGuardarDatos.TabIndex = 6
-      Me.btnGuardarDatos.Text = "Guardar Datos"
-      Me.btnGuardarDatos.UseVisualStyleBackColor = True
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(312, 337)
+      Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
+      Me.btnDefinirControlesPN.Size = New System.Drawing.Size(113, 23)
+      Me.btnDefinirControlesPN.TabIndex = 6
+      Me.btnDefinirControlesPN.Text = "Definir Controles"
+      Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
       '
       'txtDatosRecibidos
       '
@@ -409,7 +410,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnNuevoAnalisisCancelar
       '
       Me.btnNuevoAnalisisCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(512, 388)
+      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(597, 395)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
       Me.btnNuevoAnalisisCancelar.TabIndex = 20
@@ -517,15 +518,15 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnCambiarLector.Text = "Cambiar Lector"
       Me.btnCambiarLector.UseVisualStyleBackColor = True
       '
-      'btnCalcularValores
+      'btnObtenerResultados
       '
-      Me.btnCalcularValores.Enabled = False
-      Me.btnCalcularValores.Location = New System.Drawing.Point(387, 389)
-      Me.btnCalcularValores.Name = "btnCalcularValores"
-      Me.btnCalcularValores.Size = New System.Drawing.Size(113, 23)
-      Me.btnCalcularValores.TabIndex = 19
-      Me.btnCalcularValores.Text = "Obtener Resultados"
-      Me.btnCalcularValores.UseVisualStyleBackColor = True
+      Me.btnObtenerResultados.Enabled = False
+      Me.btnObtenerResultados.Location = New System.Drawing.Point(474, 395)
+      Me.btnObtenerResultados.Name = "btnObtenerResultados"
+      Me.btnObtenerResultados.Size = New System.Drawing.Size(113, 23)
+      Me.btnObtenerResultados.TabIndex = 19
+      Me.btnObtenerResultados.Text = "Obtener Resultados"
+      Me.btnObtenerResultados.UseVisualStyleBackColor = True
       '
       'btnLeerDatosPlaca
       '
@@ -544,15 +545,26 @@ Partial Class frmRegistraNuevoAnalisis
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
       '
+      'btnAceptarControles
+      '
+      Me.btnAceptarControles.Enabled = False
+      Me.btnAceptarControles.Location = New System.Drawing.Point(312, 369)
+      Me.btnAceptarControles.Name = "btnAceptarControles"
+      Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
+      Me.btnAceptarControles.TabIndex = 32
+      Me.btnAceptarControles.Text = "Aceptar Controles"
+      Me.btnAceptarControles.UseVisualStyleBackColor = True
+      '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(707, 426)
+      Me.ClientSize = New System.Drawing.Size(694, 426)
+      Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.lblNoCaso)
-      Me.Controls.Add(Me.btnCalcularValores)
+      Me.Controls.Add(Me.btnObtenerResultados)
       Me.Controls.Add(Me.btnCambiarLector)
       Me.Controls.Add(Me.FechaRecepcionDateTimePicker)
       Me.Controls.Add(Me.grbControlesNegativos)
@@ -563,7 +575,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Controls.Add(Me.NoCasoTextBox)
       Me.Controls.Add(Me.txtDatosRecibidos)
       Me.Controls.Add(Me.cbbNombreAnalisis)
-      Me.Controls.Add(Me.btnGuardarDatos)
+      Me.Controls.Add(Me.btnDefinirControlesPN)
       Me.Controls.Add(Me.cbbNombreCliente)
       Me.Controls.Add(Me.lblNombreAnalisis)
       Me.Controls.Add(Me.lblFechaRecepcion)
@@ -611,7 +623,7 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents TblregistroanalisisBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
    Friend WithEvents NoCasoTextBox As System.Windows.Forms.TextBox
    Friend WithEvents FechaRecepcionDateTimePicker As System.Windows.Forms.DateTimePicker
-   Friend WithEvents btnGuardarDatos As System.Windows.Forms.Button
+   Friend WithEvents btnDefinirControlesPN As System.Windows.Forms.Button
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
@@ -635,7 +647,8 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents txtCN2Letra2 As System.Windows.Forms.TextBox
    Friend WithEvents grbControlesNegativos As System.Windows.Forms.GroupBox
    Friend WithEvents btnCambiarLector As System.Windows.Forms.Button
-   Friend WithEvents btnCalcularValores As System.Windows.Forms.Button
+   Friend WithEvents btnObtenerResultados As System.Windows.Forms.Button
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
    Friend WithEvents cmbComboPorts As System.Windows.Forms.ComboBox
+   Friend WithEvents btnAceptarControles As System.Windows.Forms.Button
 End Class

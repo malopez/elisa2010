@@ -45,9 +45,12 @@ Module mdlOperaciones
       Return letra
    End Function
 
-
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal)
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, _
+                               ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
+                               ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
+                               ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
+                               ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer)
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
@@ -67,6 +70,14 @@ Module mdlOperaciones
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
+      excelApp.Range("B15").Value2 = "Controles Positivos"
+      excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+      excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
+      excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
+      excelApp.Range("C15").Value2 = "Controles Negativos"
+      excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
+      excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
+      excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
       'Cierra el libro activo de Excel
       excelApp.ActiveWorkbook.Close()
       'Libera la aplicacion Excel
@@ -74,7 +85,19 @@ Module mdlOperaciones
    End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal nombrelibro As String, ByVal nombre As String)
+   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal calculoDeTitulos(,) As Decimal, ByVal nombrelibro As String, ByVal nombre As String, _
+                                    ByRef calculaMedia As Decimal, ByRef mediaAritmetica As Decimal, ByRef mediaGeometrica As Decimal, _
+                                    ByRef coeficienteDeVariacion As Decimal, ByRef desviacionEstandar As Decimal, ByRef calculaVarianza As Decimal, _
+                                    ByRef cuentaNoDatos As Decimal, ByRef desviacionEstandarDatosNoAgrupados As Decimal, _
+                                    ByRef coeficienteDeVariacionDatosNoAgrupados As Decimal, ByRef calculaVarianzaDatosNoAgrupados As Decimal)
+
+      'PAra formatear la salida de datos en excel de resultados
+      Dim k As Integer = 1
+      Dim sueros As String = "A"
+      Dim titulos As String = "B"
+      Dim temp As Integer = 3
+      Dim l As Integer = 18
+
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
@@ -85,16 +108,24 @@ Module mdlOperaciones
 
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = nombrelibro
-
-      'Colocar las cabeceras para los rangos de datos
-      excelApp.Range("A1").Value2 = "Porcentaje"
-      excelApp.Range("B1").Value2 = "Grupo de títulos"
-
       'Agregar datos a la hoja de Excel de la frecuencia relativa
       For i = 2 To 16
          excelApp.Range("A" & i).Value2 = i - 1
          excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2))
       Next
+
+      'Colocar las cabeceras para los rangos de datos
+      excelApp.Range("A1").Value2 = "Grupo de Títulos"
+      excelApp.Range("B1").Value2 = "Porcentaje"
+      excelApp.Range("C1").Value2 = "Media"
+      excelApp.Range("C2").Value2 = mediaAritmetica
+      excelApp.Range("D1").Value2 = "Media Geométrica"
+      excelApp.Range("D2").Value2 = mediaGeometrica
+      excelApp.Range("E1").Value2 = "Desv. Estándar"
+      excelApp.Range("E2").Value2 = desviacionEstandarDatosNoAgrupados
+      excelApp.Range("F1").Value2 = "Coef. Variación"
+      excelApp.Range("F2").Value2 = coeficienteDeVariacionDatosNoAgrupados
+
       'Crear grafica para la frecuencia relativa
       Dim chartFrecRel As Excel.Chart
       Dim graficaFR As Excel.ChartObject
@@ -138,11 +169,98 @@ Module mdlOperaciones
       ejey.AxisTitle.Font.Size = 8
       'xlApp.ActiveWorkbook.SaveAs() 'aqui meter el procedimiento de guardar archivo con un nombre
       'Cierra el libro activo de Excel
+
+
+      'copia los valores de los títulos resultantes
+
+      excelApp.Range("A17").Value2 = "Sueros"
+      excelApp.Range("B17").Value2 = "Títulos"
+
+      For i = 0 To 7
+         For j = temp To 11
+            excelApp.Range(sueros & l).Value2 = k
+            excelApp.Range(titulos & l).Value2 = Math.Round(calculoDeTitulos(i, j))
+            k += 1
+            l += 1
+            If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
+               l = 17
+               If (k = 21) Then
+                  sueros = "C"
+                  titulos = "D"
+               End If
+               If (k = 41) Then
+                  sueros = "E"
+                  titulos = "F"
+               End If
+               If (k = 61) Then
+                  sueros = "G"
+                  titulos = "H"
+               End If
+               If (k = 81) Then
+                  sueros = "I"
+                  titulos = "J"
+               End If
+            excelApp.Range(sueros & l).Value2 = "Sueros"
+            excelApp.Range(titulos & l).Value2 = "Títulos"
+               l = 18
+            End If
+            If (i = 0) Then
+               temp = 0
+            End If
+         Next
+      Next
       excelApp.ActiveWorkbook.Close()
       'Libera la aplicacion Excel
       releaseObject(excelApp)
    End Sub
 
+
+
+
+   '##################################################################
+   '#SECCION PARA ABRIR DATOS EXISTENTES DESDE UN ARCHIVO DE EXCEL   #
+   '##################################################################
+   'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
+   'de una placa leida previamente
+   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal)
+      'Define variables para archivo de excel
+      Dim excelApp As New Excel.Application
+      'Dim libroExcel As Excel.Workbook
+      Dim hojaExcel As Excel.Worksheet
+      'Variables para nombre del archivo
+      Dim rutaArchivo As String = ""
+      Dim nombreArchivo As String = ""
+      'Variables para manipular x,y y asignar los valores a la placa que se tomara como leida
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      'Leer la columna donde se encuentra
+      Dim columna As String = ""
+      frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo de datos"
+      ' Show the open file dialog box.
+      If frmAbrirArchivoExistente.ofdSelArchivo.ShowDialog = DialogResult.OK Then
+         ' Load the picture into the picture box.
+         frmAbrirArchivoExistente.ofdSelArchivo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+         ' Show the name of the file in the statusbar.
+      End If
+      rutaArchivo = frmAbrirArchivoExistente.ofdSelArchivo.FileName
+      nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
+
+      excelApp.Workbooks.Open(rutaArchivo)
+      hojaExcel = excelApp.Worksheets(1)
+      excelApp.Visible = True
+
+      For i = 0 To 7
+         columna = obtenLetra(i)
+         For j = 0 To 11
+            placaLector(i, j) = CDec(hojaExcel.Range(columna & (j + 1)).Value2)
+            MessageBox.Show("Valor de placa leida: " & placaLector(i, j))
+         Next
+      Next
+
+      excelApp.ActiveWorkbook.Close()
+      'Libera la aplicacion Excel
+      releaseObject(excelApp)
+   End Sub
 
    '###########################################################
    '#SECCION PARA LIBERAR OBJETOS DE MEMORIA TIPO PROGRAMA    #
@@ -893,6 +1011,8 @@ Module mdlOperaciones
       frmSalidaDatos.txtResultadoTitulosB.Text = resultado1
       frmSalidaDatos.txtResultadoTitulosC.Text = resultado2
       'frmSalidaDatos.txtResultadoTitulosD.Text = resultado3
-      guardaResultadosExcel(frecuenciaRelativa, "Laringo", nombre)
+      guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Laringo", nombre, calculaMedia, mediaAritmetica, mediaGeometrica, _
+                            coeficienteDeVariacion, desviacionEstandar, calculaVarianza, cuentaNoDatos, _
+                            desviacionEstandarDatosNoAgrupados, coeficienteDeVariacionDatosNoAgrupados, calculaVarianzaDatosNoAgrupados)
    End Sub
 End Module
