@@ -10,17 +10,47 @@ Module mdlOperaciones
    'utilizada para almacenar los datos que se reciben por el puerto
    Public az As String
    ' sera utilizada como contador
-   Public sib As Integer = 0
+   'Public sib As Integer = 0 modificado 18-Abril-2012
    'Arreglo que servira de buffer para los datos que van llegando al puerto
-   Public msn() As String = {"0142", "0220", "0200", "0230", "0128", "0134", "0119", "0349", "0364", "0812", "0057", "0743",
-"0436", "0424", "0427", "0386", "0306", "0145", "0110", "0303", "0147", "0281", "0229", "0232",
-"0152", "0422", "0186", "0173", "0381", "0232", "0219", "0241", "0339", "0193", "0226", "0186",
-"0430", "0188", "0424", "0158", "0493", "0227", "0285", "0249", "0098", "0222", "0122", "0158",
-"0332", "0139", "0379", "0375", "0282", "0395", "0549", "0181", "0765", "0346", "0236", "0322",
-"0242", "0165", "0279", "0735", "0326", "0165", "0205", "0175", "0155", "0176", "0212", "0268",
-"0129", "0227", "0211", "0252", "0351", "0101", "0172", "0268", "0199", "0297", "0394", "0318",
-"0389", "0338", "0158", "0302", "0214", "0262", "0570", "0083", "0144", "0058", "0726", "0062"}
+   Public msn As String = ""
+   'Guarda la placa leida desde el lector debidamente formateada
    Public placaLector(7, 11) As Decimal
+
+   'se utiliza para validar la entrada desde el puerto
+   Public Sub convierteCadena(ByVal msn As String)
+      'Arreglo de cadenas temporal para eliminar las comas
+      Dim a() As String
+      'control del ciclo de recorrido
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      Dim k As Integer = 1
+      msn = Replace(msn, " ", "")
+      msn = Replace(msn, vbCrLf, "")
+      msn = Replace(msn, vbCr, "")
+      msn = Replace(msn, vbTab, "")
+      msn = Replace(msn, vbNewLine, "")
+      msn = Replace(msn, "_Quick", "")
+      'Copia en el Arreglo los valores de datos separados por comas
+      a = Split(msn, ",")
+      'MessageBox.Show("Llegue al split valor de msn es " & msn & "valor de largo de a: " & a.Length)
+      Dim temporal As Decimal
+      Dim tmp As String = ""
+      For i = 0 To 7
+         For j = 0 To 11
+            'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es nuérico, entonces coloca un 0.
+            temporal = (Val(a(k)) / 1000)
+            'MessageBox.Show("Valor del temporal" & temporal)
+            If (temporal > 1) Then
+               placaLector(i, j) = 0
+            Else
+               placaLector(i, j) = temporal
+            End If
+            'MessageBox.Show("Valor de placaLector en " & i & "," & j & ": " & placaLector(i, j))
+            k += 1
+         Next
+      Next
+   End Sub
+
    'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
    Public Function obtenLetra(ByVal i As Integer) As String
       Dim letra As String = ""
@@ -70,14 +100,14 @@ Module mdlOperaciones
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
-      excelApp.Range("B15").Value2 = "Controles Positivos"
-      excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-      excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-      excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
-      excelApp.Range("C15").Value2 = "Controles Negativos"
-      excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
-      excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
-      excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
+      excelApp.Range("A14").Value2 = "Controles Positivos"
+      excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
+      excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
+      excelApp.Range("A17").Value2 = placaLector(cpx3, cpy3)
+      excelApp.Range("B14").Value2 = "Controles Negativos"
+      excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
+      excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
+      excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
       'Cierra el libro activo de Excel
       excelApp.ActiveWorkbook.Close()
       'Libera la aplicacion Excel
@@ -95,7 +125,7 @@ Module mdlOperaciones
       Dim k As Integer = 1
       Dim sueros As String = "A"
       Dim titulos As String = "B"
-      Dim temp As Integer = 3
+      Dim temp As Integer = 1
       Dim l As Integer = 18
 
       Dim excelApp As New Excel.Application
@@ -111,7 +141,7 @@ Module mdlOperaciones
       'Agregar datos a la hoja de Excel de la frecuencia relativa
       For i = 2 To 16
          excelApp.Range("A" & i).Value2 = i - 1
-         excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2))
+         excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2), 2)
       Next
 
       'Colocar las cabeceras para los rangos de datos
@@ -167,12 +197,8 @@ Module mdlOperaciones
       ejey.AxisTitle.Text = "Grupo de Títulos"
       ejey.AxisTitle.Font.Bold = True
       ejey.AxisTitle.Font.Size = 8
-      'xlApp.ActiveWorkbook.SaveAs() 'aqui meter el procedimiento de guardar archivo con un nombre
-      'Cierra el libro activo de Excel
-
-
+      
       'copia los valores de los títulos resultantes
-
       excelApp.Range("A17").Value2 = "Sueros"
       excelApp.Range("B17").Value2 = "Títulos"
 
@@ -214,9 +240,6 @@ Module mdlOperaciones
       releaseObject(excelApp)
    End Sub
 
-
-
-
    '##################################################################
    '#SECCION PARA ABRIR DATOS EXISTENTES DESDE UN ARCHIVO DE EXCEL   #
    '##################################################################
@@ -235,31 +258,58 @@ Module mdlOperaciones
       Dim j As Integer = 0
       'Leer la columna donde se encuentra
       Dim columna As String = ""
-      frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo de datos"
-      ' Show the open file dialog box.
-      If frmAbrirArchivoExistente.ofdSelArchivo.ShowDialog = DialogResult.OK Then
-         ' Load the picture into the picture box.
-         frmAbrirArchivoExistente.ofdSelArchivo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-         ' Show the name of the file in the statusbar.
-      End If
-      rutaArchivo = frmAbrirArchivoExistente.ofdSelArchivo.FileName
-      nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
+      Dim resultado As String = ""
+      Dim temporal As String = ""
+      Try
+         frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo de datos"
+         ' Show the open file dialog box.
+         If frmAbrirArchivoExistente.ofdSelArchivo.ShowDialog = DialogResult.OK Then
+            ' Load the picture into the picture box.
+            frmAbrirArchivoExistente.ofdSelArchivo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            ' Show the name of the file in the statusbar.
+         End If
+         rutaArchivo = frmAbrirArchivoExistente.ofdSelArchivo.FileName
+         nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
 
-      excelApp.Workbooks.Open(rutaArchivo)
-      hojaExcel = excelApp.Worksheets(1)
-      excelApp.Visible = True
+         excelApp.Workbooks.Open(rutaArchivo)
+         hojaExcel = excelApp.Worksheets(1)
+         excelApp.Visible = True
+         Try
+            For i = 0 To 7
+               columna = obtenLetra(i)
+               For j = 0 To 11
+                  temporal = hojaExcel.Range(columna & (j + 1)).Value2
+                  If (temporal <> "") Then
+                     placaLector(i, j) = CDec(temporal)
+                     'MessageBox.Show("Valor de placa leida: " & placaLector(i, j))
+                  Else
+                     placaLector(i, j) = 0
+                  End If
+                  resultado &= CStr(placaLector(i, j)) & vbTab
+               Next
+               resultado &= vbCrLf
+            Next
+         Catch ex As Exception
+            MessageBox.Show("El archivo no contiene el formato esperado, defina un archivo válido.")
+         End Try
 
-      For i = 0 To 7
-         columna = obtenLetra(i)
-         For j = 0 To 11
-            placaLector(i, j) = CDec(hojaExcel.Range(columna & (j + 1)).Value2)
-            MessageBox.Show("Valor de placa leida: " & placaLector(i, j))
-         Next
-      Next
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "Nombre del archivo abierto: " & nombreArchivo
+         frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
+         frmAbrirArchivoExistente.txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
+         frmAbrirArchivoExistente.txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
+         frmAbrirArchivoExistente.txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
+         frmAbrirArchivoExistente.txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
+         frmAbrirArchivoExistente.txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
+         frmAbrirArchivoExistente.txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
 
-      excelApp.ActiveWorkbook.Close()
-      'Libera la aplicacion Excel
-      releaseObject(excelApp)
+         excelApp.ActiveWorkbook.Close()
+
+         'Libera la aplicacion Excel
+         releaseObject(excelApp)
+      Catch ex As FormatException
+         MessageBox.Show("Error al cargar el archivo de datos, verifique que el formato tenga el formato correcto.")
+      End Try
+
    End Sub
 
    '###########################################################
@@ -321,7 +371,6 @@ Module mdlOperaciones
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
          Dim ds As New DataSet()
          da.Fill(ds, "tblfrecrelativa")
-
 
          'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
          Dim ChartArea1 As ChartArea = New ChartArea()
@@ -483,7 +532,6 @@ Module mdlOperaciones
          siEstaEnRango(textbox, nombre, min, max)
    End Function
 
-
    '#####################################
    '# SECCION CONTROLES DEL PUERTO SERIE#
    '#####################################
@@ -495,7 +543,7 @@ Module mdlOperaciones
             If .IsOpen Then
                .Close()
             End If
-            .PortName = frmRegistraNuevoAnalisis.cmbComboPorts.Text
+            .PortName = "COM3"
             .BaudRate = 9600 '// 19200 baud rate
             .DataBits = 8 '// 8 data bits
             .StopBits = IO.Ports.StopBits.Two '// 1 Stop bit
@@ -630,9 +678,17 @@ Module mdlOperaciones
       'recorrer el indice de el arreglo recibido desde el puerto serie
       Dim contador1 As Integer = 0
       'Arreglo temporal para alojar los valores que se encuentran en inversa
-      Dim temporal(11) As String
+      Dim temporal(11) As Decimal
       'Permite guardar los datos ya organizados y formateados como matriz, que después se enviaran al archivo de texto
       Dim resultado As String = ""
+      Dim copia(95) As Decimal
+      k = 0
+      For i = 0 To 7
+         For j = 0 To 11
+            copia(k) = placaLector(i, j)
+            k += 1
+         Next
+      Next
       For i = 0 To 7
          'Los valores invertidos son los pares, es decir las lineas pares A, C, E y G, si el numero es divisible entre dos,
          ' quiere decir que la i es par entonces se mueve en el indice de msn hasta limite superior y va regresando 11 valores
@@ -640,7 +696,7 @@ Module mdlOperaciones
             limInferior = i * 12
             limSuperior = limInferior + 12
             For k = limSuperior - 1 To limInferior Step -1
-               temporal(contador) = msn(k)
+               temporal(contador) = copia(k)
                contador += 1
                contador1 += 1
             Next
@@ -648,12 +704,12 @@ Module mdlOperaciones
             contador = 0
             'Lee todos los datos del temporal ahora organizados y se los pasa a la placa leida ya en orden correcto
             For j = 0 To 11
-               placaLector(i, j) = CDec(temporal(j)) / 1000
+               placaLector(i, j) = temporal(j)
             Next
          Else
             'si i no es par, entonces le asigna los valores del arreglo leido desde el puerto
             For j = 0 To 11
-               placaLector(i, j) = CDec(msn(contador1)) / 1000
+               placaLector(i, j) = copia(contador1)
                contador1 += 1
             Next
          End If
@@ -673,7 +729,7 @@ Module mdlOperaciones
 
 
    'Funcion que calcula el valor de los promedios positivos
-   Public Function calculaPromedioPositvos(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
+   Public Function calculaPromedioPositivos(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
                                            , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer) As Decimal
       Dim promedioPositivos As Decimal
       promedioPositivos = CDec(Microsoft.VisualBasic.Left(CStr(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3)), 14))
@@ -688,17 +744,33 @@ Module mdlOperaciones
       Return promedioNegativos
    End Function
 
-   'Funcion que calcula los resultados del analisis
+   'Funcion que calcula el valor de los promedios positivos leidos desde archivo
+   Public Function calculaPromedioPositivosDA(ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal) As Decimal
+      Dim promedioPositivos As Decimal
+      promedioPositivos = CDec(Microsoft.VisualBasic.Left(CStr((cp1 + cp2 + cp3) / 3), 14))
+      Return promedioPositivos
+   End Function
+
+   'Funcion que calcula el valor de los promedios negativos leidos desde archivo
+   Public Function calculaPromedioNegativosDA(ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal) As Decimal
+      Dim promedioNegativos As Decimal
+      promedioNegativos = CDec(Microsoft.VisualBasic.Left(CStr((cn1 + cn2 + cn3) / 3), 14))
+      Return promedioNegativos
+   End Function
+
+   'Funcion que calcula los resultados del analisis, recibe el nombre del analisis,el titulo de eje x-y, desdeArchivo =1 indica lectura desde archivo
    'cpx y cny son los valores de A..H,  es decir, el valor de la placa por columna   usada para control positivo-negativo
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
-   'seleccionada
-   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, _
+   'seleccionada.
+   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                              ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
-                             ByVal logsps As Decimal, ByVal logtit1 As Decimal, ByVal logtit2 As Decimal)
+                             ByVal logsps As Decimal, ByVal logtit1 As Decimal, ByVal logtit2 As Decimal, _
+                             ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal, _
+                             ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal)
       'Para controlar el ciclo for, y posteriormente para calcular los valores de la "L, DESDE" y los valores de la matriz 15x96
       Dim i As Integer = 0
       Dim j As Integer = 0
@@ -708,6 +780,8 @@ Module mdlOperaciones
       Dim resultado1 As String = ""
       Dim resultado2 As String = ""
       Dim resultado3 As String = ""
+      Dim resultado4 As String = ""
+      Dim resultado5 As String = ""
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
       'Para identificar los rangos de los datos introducidos 
@@ -790,31 +864,51 @@ Module mdlOperaciones
       numDeColumnas = placaLector.GetLength(0)
       numDeRegistros = placaLector.GetLength(1)
 
-      'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
-      Try
-         promCP = calculaPromedioPositvos(cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
-      Catch ex As Exception
-         MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
-      End Try
-      'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
-      Try
-         promCN = calculaPromedioNegativos(cnx1, cnx2, cnx3, cny1, cny2, cny3)
-      Catch ex As Exception
-         MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
-      End Try
-
+      'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
+      If (desdeArchivo <> 1) Then
+         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
+         Try
+            promCP = calculaPromedioPositivos(cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
+         Catch ex As Exception
+            MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
+         End Try
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
+         Try
+            promCN = calculaPromedioNegativos(cnx1, cnx2, cnx3, cny1, cny2, cny3)
+         Catch ex As Exception
+            MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
+         End Try
+      Else
+         'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
+         Try
+            promCP = calculaPromedioPositivosDA(cp1, cp2, cp3)
+         Catch ex As Exception
+            MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
+         End Try
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
+         Try
+            promCN = calculaPromedioNegativosDA(cn1, cn2, cn3)
+         Catch ex As Exception
+            MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
+         End Try
+      End If
       'Calcula la diferencia de controles positivos y negativos
       difCPS = CDec(Microsoft.VisualBasic.Left(CStr(CDec(promCP - promCN)), 14))
 
       'Calcula la tabla SPS
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
-            If IsNumeric(placaLector(i, j)) Then
+            'If IsNumeric(placaLector(i, j)) Then MODIFICADO 18-Abril-2012
+            If (placaLector(i, j) > 0) Then
                calculaSPS(i, j) = CDec(Microsoft.VisualBasic.Left(CStr((placaLector(i, j) - promCN) / difCPS), 14))
             Else
                calculaSPS(i, j) = 0
             End If
+            resultado1 += placaLector(i, j) & vbTab
+            resultado2 += calculaSPS(i, j) & vbTab
          Next
+         resultado1 += vbCrLf
+         resultado2 += vbCrLf
       Next
 
       'Calcula los logaritmos de la tabla SPS
@@ -825,14 +919,18 @@ Module mdlOperaciones
             Else
                logaritmoSPS(i, j) = -4
             End If
+            resultado3 += logaritmoSPS(i, j) & vbTab
          Next
+         resultado3 += vbCrLf
       Next
 
       'Calcula los Titulos de la tabla de logaritmos SPS
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
             logaritmoTitulos(i, j) = CDec(Microsoft.VisualBasic.Left(CStr((logtit1 * logaritmoSPS(i, j)) + logtit2), 14))
+            resultado4 += logaritmoTitulos(i, j) & vbTab
          Next
+         resultado4 += vbCrLf
       Next
 
       'Calcula el titulo mendiante la exponenciacion 10 ^ A1..H1, en la hoja de excel corresponde a la columna K, y que tambien 
@@ -844,7 +942,9 @@ Module mdlOperaciones
             Else
                calculoDeTitulos(i, j) = 0
             End If
+            resultado5 += calculoDeTitulos(i, j) & vbTab
          Next
+         resultado5 += vbCrLf
       Next
 
       'Inicializa la columna L a ceros para evitar validaciones posteriores
@@ -856,7 +956,7 @@ Module mdlOperaciones
 
       'Obtiene los valores desde Ax hasta Hx que se utilizaron de una placa para hacer el analisis
       desdeX = 0
-      hastaX = 8
+      hastaX = 3
       desdeY = 0
       hastaY = 12
 
@@ -991,26 +1091,28 @@ Module mdlOperaciones
       frmSalidaDatos.txtCoefVariacion2.Text = CStr(coeficienteDeVariacionDatosNoAgrupados)
       frmSalidaDatos.txtDesvEstandar2.Text = CStr(desviacionEstandarDatosNoAgrupados)
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
-      k = 1
-      For i = 0 To numDeColumnas - 1
-         For j = 0 To numDeRegistros - 1
-            resultado &= CStr(k) & vbTab & CStr(calculoDeTitulos(i, j)) & vbCrLf
-            k += 1
-            If (k >= 24) Then
-               resultado1 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-            End If
-            If (k >= 48) Then
-               resultado2 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-            End If
-            If (k >= 72) Then
-               resultado3 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-            End If
-         Next
-      Next
-      frmSalidaDatos.txtResultadoTitulosA.Text = resultado
-      frmSalidaDatos.txtResultadoTitulosB.Text = resultado1
-      frmSalidaDatos.txtResultadoTitulosC.Text = resultado2
-      'frmSalidaDatos.txtResultadoTitulosD.Text = resultado3
+      ' k = 1
+      ' For i = 0 To numDeColumnas - 1
+      'For j = 0 To numDeRegistros - 1
+      'resultado &= CStr(k) & vbTab & CStr(calculoDeTitulos(i, j)) & vbCrLf
+      'k += 1
+      'If (k >= 24) Then
+      ' resultado1 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+      ' End If
+      ' If (k >= 48) Then
+      'resultado2 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+      'End If
+      'If (k >= 72) Then
+      ' resultado3 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
+      'End If
+      'Next
+      'Next
+      'frmSalidaDatos.txtResPlacaLector.Text = resultado
+      frmSalidaDatos.txtCalPlacaLector.Text = resultado1
+      frmSalidaDatos.txtCalSPS.Text = resultado2
+      frmSalidaDatos.txtCalLogSPS.Text = resultado3
+      frmSalidaDatos.txtCalLogTit.Text = resultado4
+      frmSalidaDatos.txtCalColL.Text = resultado5
       guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Laringo", nombre, calculaMedia, mediaAritmetica, mediaGeometrica, _
                             coeficienteDeVariacion, desviacionEstandar, calculaVarianza, cuentaNoDatos, _
                             desviacionEstandarDatosNoAgrupados, coeficienteDeVariacionDatosNoAgrupados, calculaVarianzaDatosNoAgrupados)

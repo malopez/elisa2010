@@ -544,6 +544,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
+      Me.cmbComboPorts.Text = "COM3"
       '
       'btnAceptarControles
       '

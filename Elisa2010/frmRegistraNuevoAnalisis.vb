@@ -36,24 +36,23 @@ Public Class frmRegistraNuevoAnalisis
             Me.btnLeerDatosPlaca.Text = "Leer Datos"
          End If
       Catch ex As Exception
+         MessageBox.Show("Error al recuperar datos desde el lector")
       End Try
    End Sub
 
-   Private Sub PuertoCom_Load(sender As System.Object, e As System.EventArgs)
-      GetSerialPortNames()
-      CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
-   End Sub
 
-   Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs)
-
+   Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
       Try
          az = Me.SerialPort1.ReadExisting.Trim
-         msn(sib) = az
-         'Me.txtDatosRecibidos.Text += msn(sib)
-         sib += 1
+         'msn(sib) = az
+         msn += az
+
+         MessageBox.Show("Valor del serial port cuando inicia la lectura para msn: " & msn)
+         'sib += 1
       Catch ex As Exception
          MsgBox(ex.Message)
       End Try
+      Me.txtDatosRecibidos.Text = msn
    End Sub
 
    '  Private Sub btnEnviardato_Click(sender As System.Object, e As System.EventArgs) Handles btnEnviardato.Click
@@ -68,6 +67,7 @@ Public Class frmRegistraNuevoAnalisis
 
    Private Sub btnDefinirControlesPN_Click(sender As System.Object, e As System.EventArgs) Handles btnDefinirControlesPN.Click
       Dim nombreArchivo As String
+      convierteCadena(msn)
       nombreArchivo = formateaDatos(placaLector)
       'nombreArchivo = guardaDatos(nombreArchivo)
       If btnDefinirControlesPN.Text = "Definir Controles" Then
@@ -140,7 +140,7 @@ Public Class frmRegistraNuevoAnalisis
          cny3 = Convert.ToInt32(txtCN3Valor3.Text)
       End If
       guardaDatosExcel(placaLector, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3)
-      calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726))
+      calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", 0, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726), 0, 0, 0, 0, 0, 0)
       frmSalidaDatos.Show()
    End Sub
 
@@ -154,7 +154,9 @@ Public Class frmRegistraNuevoAnalisis
 
    Private Sub frmRegistraNuevoAnalisis_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       'TODO: This line of code loads data into the 'BvtselisaDataSet.tblregistroanalisis' table. You can move, or remove it, as needed.
-      Me.TblregistroanalisisTableAdapter.Fill(Me.BvtselisaDataSet.tblregistroanalisis)
+      'Me.TblregistroanalisisTableAdapter.Fill(Me.BvtselisaDataSet.tblregistroanalisis)
+      GetSerialPortNames()
+      CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
    End Sub
 
    Private Sub txtCP1Letra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP1Letra1.TextChanged

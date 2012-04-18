@@ -29,6 +29,7 @@ Partial Class frmElisaBiovetsa
       Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
       Me.ListarAnálisisDisponiblesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.ConfigurarLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,7 +45,6 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
       Me.lblClock = New System.Windows.Forms.Label()
-      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.tbbToolMenu.SuspendLayout()
       Me.SuspendLayout()
@@ -60,7 +60,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir, Me.AbrirArchivoExistenteToolStripMenuItem})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.AbrirArchivoExistenteToolStripMenuItem, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir})
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
       Me.mnuMainAnalisis.Size = New System.Drawing.Size(59, 20)
@@ -85,6 +85,12 @@ Partial Class frmElisaBiovetsa
       Me.mnuSalir.Size = New System.Drawing.Size(213, 22)
       Me.mnuSalir.Text = "&Salir"
       Me.mnuSalir.ToolTipText = "Abandone la aplicación"
+      '
+      'AbrirArchivoExistenteToolStripMenuItem
+      '
+      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
+      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
       '
       'mnuMainOpciones
       '
@@ -195,12 +201,6 @@ Partial Class frmElisaBiovetsa
       Me.lblClock.TabIndex = 2
       Me.lblClock.Text = "Horario"
       Me.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-      '
-      'AbrirArchivoExistenteToolStripMenuItem
-      '
-      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
-      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
       '
       'frmElisaBiovetsa
       '
