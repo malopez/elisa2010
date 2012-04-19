@@ -23,263 +23,211 @@ Partial Class frmEditarListaAnalisis
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
-      Dim IdAnalisisLabel As System.Windows.Forms.Label
-      Dim NombreAnalisisLabel As System.Windows.Forms.Label
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmEditarListaAnalisis))
-      Me.BvtselisaDataSet = New Elisa2010.bvtselisaDataSet()
-      Me.TblanalisisBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-      Me.TblanalisisTableAdapter = New Elisa2010.bvtselisaDataSetTableAdapters.tblanalisisTableAdapter()
-      Me.TableAdapterManager = New Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager()
       Me.TblclienteTableAdapter = New Elisa2010.bvtselisaDataSetTableAdapters.tblclienteTableAdapter()
-      Me.TblanalisisBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-      Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-      Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-      Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-      Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-      Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-      Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-      Me.TblanalisisBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-      Me.NombreAnalisisTextBox = New System.Windows.Forms.TextBox()
       Me.TblclienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-      Me.IdAnalisisTextBox = New System.Windows.Forms.TextBox()
-      IdAnalisisLabel = New System.Windows.Forms.Label()
-      NombreAnalisisLabel = New System.Windows.Forms.Label()
-      CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-      CType(Me.TblanalisisBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-      CType(Me.TblanalisisBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-      Me.TblanalisisBindingNavigator.SuspendLayout()
+      Me.Button1 = New System.Windows.Forms.Button()
+      Me.btnEditAnalisis = New System.Windows.Forms.Button()
+      Me.txtBuscaAnalisis = New System.Windows.Forms.Button()
+      Me.lblNRAnalisis = New System.Windows.Forms.Label()
+      Me.Label2 = New System.Windows.Forms.Label()
+      Me.Label1 = New System.Windows.Forms.Label()
+      Me.txtNombreAnalisis = New System.Windows.Forms.TextBox()
+      Me.txtClaveAnalisis = New System.Windows.Forms.TextBox()
+      Me.btnUpdAnalisis = New System.Windows.Forms.Button()
+      Me.btnDelAnalisis = New System.Windows.Forms.Button()
+      Me.btnInsAnalisis = New System.Windows.Forms.Button()
+      Me.btnFin = New System.Windows.Forms.Button()
+      Me.btnHaciaAdelante = New System.Windows.Forms.Button()
+      Me.btnHaciaAtras = New System.Windows.Forms.Button()
+      Me.btnInicio = New System.Windows.Forms.Button()
       CType(Me.TblclienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
-      '
-      'IdAnalisisLabel
-      '
-      IdAnalisisLabel.AutoSize = True
-      IdAnalisisLabel.Location = New System.Drawing.Point(23, 55)
-      IdAnalisisLabel.Name = "IdAnalisisLabel"
-      IdAnalisisLabel.Size = New System.Drawing.Size(65, 13)
-      IdAnalisisLabel.TabIndex = 1
-      IdAnalisisLabel.Text = "No. Analisis:"
-      '
-      'NombreAnalisisLabel
-      '
-      NombreAnalisisLabel.AutoSize = True
-      NombreAnalisisLabel.Location = New System.Drawing.Point(23, 96)
-      NombreAnalisisLabel.Name = "NombreAnalisisLabel"
-      NombreAnalisisLabel.Size = New System.Drawing.Size(102, 13)
-      NombreAnalisisLabel.TabIndex = 3
-      NombreAnalisisLabel.Text = "Nombre del Analisis:"
-      '
-      'BvtselisaDataSet
-      '
-      Me.BvtselisaDataSet.DataSetName = "bvtselisaDataSet"
-      Me.BvtselisaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-      '
-      'TblanalisisBindingSource
-      '
-      Me.TblanalisisBindingSource.DataMember = "tblanalisis"
-      Me.TblanalisisBindingSource.DataSource = Me.BvtselisaDataSet
-      '
-      'TblanalisisTableAdapter
-      '
-      Me.TblanalisisTableAdapter.ClearBeforeFill = True
-      '
-      'TableAdapterManager
-      '
-      Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-      Me.TableAdapterManager.tblanalisisTableAdapter = Me.TblanalisisTableAdapter
-      Me.TableAdapterManager.tblclienteTableAdapter = Me.TblclienteTableAdapter
-      Me.TableAdapterManager.tbllectorplacasTableAdapter = Nothing
-      Me.TableAdapterManager.tblplacaleidaTableAdapter = Nothing
-      Me.TableAdapterManager.tblregistroanalisisTableAdapter = Nothing
-      Me.TableAdapterManager.tblresultadosTableAdapter = Nothing
-      Me.TableAdapterManager.UpdateOrder = Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
       '
       'TblclienteTableAdapter
       '
       Me.TblclienteTableAdapter.ClearBeforeFill = True
       '
-      'TblanalisisBindingNavigator
+      'Button1
       '
-      Me.TblanalisisBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-      Me.TblanalisisBindingNavigator.BindingSource = Me.TblanalisisBindingSource
-      Me.TblanalisisBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-      Me.TblanalisisBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-      Me.TblanalisisBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.TblanalisisBindingNavigatorSaveItem})
-      Me.TblanalisisBindingNavigator.Location = New System.Drawing.Point(0, 0)
-      Me.TblanalisisBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-      Me.TblanalisisBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-      Me.TblanalisisBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-      Me.TblanalisisBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-      Me.TblanalisisBindingNavigator.Name = "TblanalisisBindingNavigator"
-      Me.TblanalisisBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-      Me.TblanalisisBindingNavigator.Size = New System.Drawing.Size(567, 25)
-      Me.TblanalisisBindingNavigator.TabIndex = 0
-      Me.TblanalisisBindingNavigator.Text = "Permite realizar acciones sobre la tabla"
+      Me.Button1.Location = New System.Drawing.Point(643, 234)
+      Me.Button1.Name = "Button1"
+      Me.Button1.Size = New System.Drawing.Size(91, 23)
+      Me.Button1.TabIndex = 28
+      Me.Button1.Text = "Cancelar"
+      Me.Button1.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorAddNewItem
+      'btnEditAnalisis
       '
-      Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-      Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorAddNewItem.Text = "Agregar Análisis"
+      Me.btnEditAnalisis.Image = CType(resources.GetObject("btnEditAnalisis.Image"), System.Drawing.Image)
+      Me.btnEditAnalisis.Location = New System.Drawing.Point(514, 191)
+      Me.btnEditAnalisis.Name = "btnEditAnalisis"
+      Me.btnEditAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnEditAnalisis.TabIndex = 22
+      Me.btnEditAnalisis.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorCountItem
+      'txtBuscaAnalisis
       '
-      Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-      Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-      Me.BindingNavigatorCountItem.Text = "of {0}"
-      Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
+      Me.txtBuscaAnalisis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtBuscaAnalisis.ForeColor = System.Drawing.Color.SteelBlue
+      Me.txtBuscaAnalisis.Image = CType(resources.GetObject("txtBuscaAnalisis.Image"), System.Drawing.Image)
+      Me.txtBuscaAnalisis.Location = New System.Drawing.Point(357, 95)
+      Me.txtBuscaAnalisis.Name = "txtBuscaAnalisis"
+      Me.txtBuscaAnalisis.Size = New System.Drawing.Size(48, 23)
+      Me.txtBuscaAnalisis.TabIndex = 15
+      Me.txtBuscaAnalisis.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorDeleteItem
+      'lblNRAnalisis
       '
-      Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-      Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorDeleteItem.Text = "Eliminar Análisis"
+      Me.lblNRAnalisis.AutoSize = True
+      Me.lblNRAnalisis.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNRAnalisis.ForeColor = System.Drawing.Color.DimGray
+      Me.lblNRAnalisis.Location = New System.Drawing.Point(269, 194)
+      Me.lblNRAnalisis.Name = "lblNRAnalisis"
+      Me.lblNRAnalisis.Size = New System.Drawing.Size(0, 15)
+      Me.lblNRAnalisis.TabIndex = 27
       '
-      'BindingNavigatorMoveFirstItem
+      'Label2
       '
-      Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-      Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorMoveFirstItem.Text = "Regresar al primero"
+      Me.Label2.AutoSize = True
+      Me.Label2.Location = New System.Drawing.Point(119, 141)
+      Me.Label2.Name = "Label2"
+      Me.Label2.Size = New System.Drawing.Size(101, 13)
+      Me.Label2.TabIndex = 25
+      Me.Label2.Text = "Nombre del análisis:"
       '
-      'BindingNavigatorMovePreviousItem
+      'Label1
       '
-      Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-      Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorMovePreviousItem.Text = "Regresar al anterior"
+      Me.Label1.AutoSize = True
+      Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.Label1.Location = New System.Drawing.Point(119, 95)
+      Me.Label1.Name = "Label1"
+      Me.Label1.Size = New System.Drawing.Size(91, 13)
+      Me.Label1.TabIndex = 24
+      Me.Label1.Text = "Clave del análisis:"
       '
-      'BindingNavigatorSeparator
+      'txtNombreAnalisis
       '
-      Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-      Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
+      Me.txtNombreAnalisis.Location = New System.Drawing.Point(226, 138)
+      Me.txtNombreAnalisis.Name = "txtNombreAnalisis"
+      Me.txtNombreAnalisis.Size = New System.Drawing.Size(508, 20)
+      Me.txtNombreAnalisis.TabIndex = 16
       '
-      'BindingNavigatorPositionItem
+      'txtClaveAnalisis
       '
-      Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-      Me.BindingNavigatorPositionItem.AutoSize = False
-      Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-      Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-      Me.BindingNavigatorPositionItem.Text = "0"
-      Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
+      Me.txtClaveAnalisis.Location = New System.Drawing.Point(226, 95)
+      Me.txtClaveAnalisis.Name = "txtClaveAnalisis"
+      Me.txtClaveAnalisis.Size = New System.Drawing.Size(125, 20)
+      Me.txtClaveAnalisis.TabIndex = 14
       '
-      'BindingNavigatorSeparator1
+      'btnUpdAnalisis
       '
-      Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-      Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
+      Me.btnUpdAnalisis.Image = CType(resources.GetObject("btnUpdAnalisis.Image"), System.Drawing.Image)
+      Me.btnUpdAnalisis.Location = New System.Drawing.Point(557, 191)
+      Me.btnUpdAnalisis.Name = "btnUpdAnalisis"
+      Me.btnUpdAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnUpdAnalisis.TabIndex = 23
+      Me.btnUpdAnalisis.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorMoveNextItem
+      'btnDelAnalisis
       '
-      Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-      Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorMoveNextItem.Text = "Avanzar al siguiente"
+      Me.btnDelAnalisis.Image = CType(resources.GetObject("btnDelAnalisis.Image"), System.Drawing.Image)
+      Me.btnDelAnalisis.Location = New System.Drawing.Point(600, 191)
+      Me.btnDelAnalisis.Name = "btnDelAnalisis"
+      Me.btnDelAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnDelAnalisis.TabIndex = 26
+      Me.btnDelAnalisis.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorMoveLastItem
+      'btnInsAnalisis
       '
-      Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-      Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-      Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-      Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-      Me.BindingNavigatorMoveLastItem.Text = "Avanzar al último elemento"
+      Me.btnInsAnalisis.Image = CType(resources.GetObject("btnInsAnalisis.Image"), System.Drawing.Image)
+      Me.btnInsAnalisis.Location = New System.Drawing.Point(471, 191)
+      Me.btnInsAnalisis.Name = "btnInsAnalisis"
+      Me.btnInsAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnInsAnalisis.TabIndex = 21
+      Me.btnInsAnalisis.UseVisualStyleBackColor = True
       '
-      'BindingNavigatorSeparator2
+      'btnFin
       '
-      Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-      Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
+      Me.btnFin.Location = New System.Drawing.Point(428, 191)
+      Me.btnFin.Name = "btnFin"
+      Me.btnFin.Size = New System.Drawing.Size(37, 23)
+      Me.btnFin.TabIndex = 20
+      Me.btnFin.Text = ">>"
+      Me.btnFin.UseVisualStyleBackColor = True
       '
-      'TblanalisisBindingNavigatorSaveItem
+      'btnHaciaAdelante
       '
-      Me.TblanalisisBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.TblanalisisBindingNavigatorSaveItem.Image = CType(resources.GetObject("TblanalisisBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-      Me.TblanalisisBindingNavigatorSaveItem.Name = "TblanalisisBindingNavigatorSaveItem"
-      Me.TblanalisisBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-      Me.TblanalisisBindingNavigatorSaveItem.Text = "Salvar Cambios"
+      Me.btnHaciaAdelante.Location = New System.Drawing.Point(385, 191)
+      Me.btnHaciaAdelante.Name = "btnHaciaAdelante"
+      Me.btnHaciaAdelante.Size = New System.Drawing.Size(37, 23)
+      Me.btnHaciaAdelante.TabIndex = 19
+      Me.btnHaciaAdelante.Text = ">"
+      Me.btnHaciaAdelante.UseVisualStyleBackColor = True
       '
-      'NombreAnalisisTextBox
+      'btnHaciaAtras
       '
-      Me.NombreAnalisisTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TblanalisisBindingSource, "nombreAnalisis", True))
-      Me.NombreAnalisisTextBox.Location = New System.Drawing.Point(132, 93)
-      Me.NombreAnalisisTextBox.Name = "NombreAnalisisTextBox"
-      Me.NombreAnalisisTextBox.Size = New System.Drawing.Size(415, 20)
-      Me.NombreAnalisisTextBox.TabIndex = 4
+      Me.btnHaciaAtras.Location = New System.Drawing.Point(226, 191)
+      Me.btnHaciaAtras.Name = "btnHaciaAtras"
+      Me.btnHaciaAtras.Size = New System.Drawing.Size(37, 23)
+      Me.btnHaciaAtras.TabIndex = 18
+      Me.btnHaciaAtras.Text = "<"
+      Me.btnHaciaAtras.UseVisualStyleBackColor = True
       '
-      'TblclienteBindingSource
+      'btnInicio
       '
-      Me.TblclienteBindingSource.DataMember = "tblcliente"
-      Me.TblclienteBindingSource.DataSource = Me.BvtselisaDataSet
-      '
-      'IdAnalisisTextBox
-      '
-      Me.IdAnalisisTextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
-      Me.IdAnalisisTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TblanalisisBindingSource, "idAnalisis", True))
-      Me.IdAnalisisTextBox.Location = New System.Drawing.Point(132, 52)
-      Me.IdAnalisisTextBox.Name = "IdAnalisisTextBox"
-      Me.IdAnalisisTextBox.Size = New System.Drawing.Size(137, 20)
-      Me.IdAnalisisTextBox.TabIndex = 5
+      Me.btnInicio.Location = New System.Drawing.Point(183, 191)
+      Me.btnInicio.Name = "btnInicio"
+      Me.btnInicio.Size = New System.Drawing.Size(37, 23)
+      Me.btnInicio.TabIndex = 17
+      Me.btnInicio.Text = "<<"
+      Me.btnInicio.UseVisualStyleBackColor = True
       '
       'frmEditarListaAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(567, 158)
-      Me.Controls.Add(Me.IdAnalisisTextBox)
-      Me.Controls.Add(NombreAnalisisLabel)
-      Me.Controls.Add(Me.NombreAnalisisTextBox)
-      Me.Controls.Add(IdAnalisisLabel)
-      Me.Controls.Add(Me.TblanalisisBindingNavigator)
+      Me.ClientSize = New System.Drawing.Size(746, 268)
+      Me.Controls.Add(Me.Button1)
+      Me.Controls.Add(Me.btnEditAnalisis)
+      Me.Controls.Add(Me.txtBuscaAnalisis)
+      Me.Controls.Add(Me.lblNRAnalisis)
+      Me.Controls.Add(Me.Label2)
+      Me.Controls.Add(Me.Label1)
+      Me.Controls.Add(Me.txtNombreAnalisis)
+      Me.Controls.Add(Me.txtClaveAnalisis)
+      Me.Controls.Add(Me.btnUpdAnalisis)
+      Me.Controls.Add(Me.btnDelAnalisis)
+      Me.Controls.Add(Me.btnInsAnalisis)
+      Me.Controls.Add(Me.btnFin)
+      Me.Controls.Add(Me.btnHaciaAdelante)
+      Me.Controls.Add(Me.btnHaciaAtras)
+      Me.Controls.Add(Me.btnInicio)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmEditarListaAnalisis"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Operaciones sobre Análisis Disponibles"
-      CType(Me.BvtselisaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-      CType(Me.TblanalisisBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-      CType(Me.TblanalisisBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-      Me.TblanalisisBindingNavigator.ResumeLayout(False)
-      Me.TblanalisisBindingNavigator.PerformLayout()
       CType(Me.TblclienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
    End Sub
-   Friend WithEvents BvtselisaDataSet As Elisa2010.bvtselisaDataSet
-   Friend WithEvents TblanalisisBindingSource As System.Windows.Forms.BindingSource
-   Friend WithEvents TblanalisisTableAdapter As Elisa2010.bvtselisaDataSetTableAdapters.tblanalisisTableAdapter
-   Friend WithEvents TableAdapterManager As Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager
-   Friend WithEvents TblanalisisBindingNavigator As System.Windows.Forms.BindingNavigator
-   Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
-   Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents BindingNavigatorPositionItem As System.Windows.Forms.ToolStripTextBox
-   Friend WithEvents BindingNavigatorSeparator1 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents TblanalisisBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
-   Friend WithEvents NombreAnalisisTextBox As System.Windows.Forms.TextBox
    Friend WithEvents TblclienteTableAdapter As Elisa2010.bvtselisaDataSetTableAdapters.tblclienteTableAdapter
    Friend WithEvents TblclienteBindingSource As System.Windows.Forms.BindingSource
-   Friend WithEvents IdAnalisisTextBox As System.Windows.Forms.TextBox
+   Friend WithEvents Button1 As System.Windows.Forms.Button
+   Friend WithEvents btnEditAnalisis As System.Windows.Forms.Button
+   Friend WithEvents txtBuscaAnalisis As System.Windows.Forms.Button
+   Friend WithEvents lblNRAnalisis As System.Windows.Forms.Label
+   Friend WithEvents Label2 As System.Windows.Forms.Label
+   Friend WithEvents Label1 As System.Windows.Forms.Label
+   Friend WithEvents txtNombreAnalisis As System.Windows.Forms.TextBox
+   Friend WithEvents txtClaveAnalisis As System.Windows.Forms.TextBox
+   Friend WithEvents btnUpdAnalisis As System.Windows.Forms.Button
+   Friend WithEvents btnDelAnalisis As System.Windows.Forms.Button
+   Friend WithEvents btnInsAnalisis As System.Windows.Forms.Button
+   Friend WithEvents btnFin As System.Windows.Forms.Button
+   Friend WithEvents btnHaciaAdelante As System.Windows.Forms.Button
+   Friend WithEvents btnHaciaAtras As System.Windows.Forms.Button
+   Friend WithEvents btnInicio As System.Windows.Forms.Button
 End Class
