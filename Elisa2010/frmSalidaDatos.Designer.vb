@@ -56,6 +56,7 @@ Partial Class frmSalidaDatos
       Me.Label5 = New System.Windows.Forms.Label()
       Me.Label6 = New System.Windows.Forms.Label()
       Me.txtCalColL = New System.Windows.Forms.TextBox()
+      Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
       Me.SuspendLayout()
       '
       'txtMediaAritmetica
@@ -381,6 +382,13 @@ Partial Class frmSalidaDatos
       Me.txtCalColL.Size = New System.Drawing.Size(673, 126)
       Me.txtCalColL.TabIndex = 40
       '
+      'HScrollBar1
+      '
+      Me.HScrollBar1.Location = New System.Drawing.Point(9, 727)
+      Me.HScrollBar1.Name = "HScrollBar1"
+      Me.HScrollBar1.Size = New System.Drawing.Size(999, 11)
+      Me.HScrollBar1.TabIndex = 42
+      '
       'frmSalidaDatos
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -389,6 +397,7 @@ Partial Class frmSalidaDatos
       Me.AutoSize = True
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(1023, 737)
+      Me.Controls.Add(Me.HScrollBar1)
       Me.Controls.Add(Me.Label6)
       Me.Controls.Add(Me.txtCalColL)
       Me.Controls.Add(Me.Label5)
@@ -463,4 +472,5 @@ Partial Class frmSalidaDatos
    Friend WithEvents Label5 As System.Windows.Forms.Label
    Friend WithEvents Label6 As System.Windows.Forms.Label
    Friend WithEvents txtCalColL As System.Windows.Forms.TextBox
+   Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
 End Class

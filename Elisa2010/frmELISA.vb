@@ -65,13 +65,13 @@
    End Sub
 
    Private Sub ListarAnálisisDisponiblesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ListarAnálisisDisponiblesToolStripMenuItem.Click
-      frmEditarListaAnalisis.MdiParent = Me
-      frmEditarListaAnalisis.Show()
+      frmOperacionesAnalisis.MdiParent = Me
+      frmOperacionesAnalisis.Show()
    End Sub
 
    Private Sub tbbOpciones_Click(sender As System.Object, e As System.EventArgs) Handles tbbOpciones.Click
-      frmEditarListaAnalisis.MdiParent = Me
-      frmEditarListaAnalisis.Show()
+      frmOperacionesAnalisis.MdiParent = Me
+      frmOperacionesAnalisis.Show()
    End Sub
 
    Private Sub AcercaDeToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AcercaDeToolStripMenuItem.Click

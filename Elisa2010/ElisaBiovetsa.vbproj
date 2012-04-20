@@ -105,10 +105,10 @@
     <Compile Include="frmConfLector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListaAnalisis.Designer.vb">
-      <DependentUpon>frmListaAnalisis.vb</DependentUpon>
+    <Compile Include="frmOperacionesAnalisis.Designer.vb">
+      <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmListaAnalisis.vb">
+    <Compile Include="frmOperacionesAnalisis.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmRegistraNuevoAnalisis.Designer.vb">
@@ -163,11 +163,11 @@
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOperacionesAnalisis.resx">
+      <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaDatos.resx">
       <DependentUpon>frmSalidaDatos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmListaAnalisis.resx">
-      <DependentUpon>frmListaAnalisis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistraNuevoAnalisis.resx">
       <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>

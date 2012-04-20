@@ -27,9 +27,9 @@ Partial Class frmElisaBiovetsa
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
+      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.ListarAnálisisDisponiblesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.ConfigurarLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,6 +61,7 @@ Partial Class frmElisaBiovetsa
       'mnuMainAnalisis
       '
       Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.AbrirArchivoExistenteToolStripMenuItem, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir})
+      Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
       Me.mnuMainAnalisis.Size = New System.Drawing.Size(59, 20)
@@ -72,6 +73,12 @@ Partial Class frmElisaBiovetsa
       Me.mnuNuevo.Size = New System.Drawing.Size(213, 22)
       Me.mnuNuevo.Text = "&Nuevo"
       Me.mnuNuevo.ToolTipText = "Realice nuevo análisis"
+      '
+      'AbrirArchivoExistenteToolStripMenuItem
+      '
+      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
+      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
       '
       'ListarAnálisisDisponiblesToolStripMenuItem
       '
@@ -86,15 +93,10 @@ Partial Class frmElisaBiovetsa
       Me.mnuSalir.Text = "&Salir"
       Me.mnuSalir.ToolTipText = "Abandone la aplicación"
       '
-      'AbrirArchivoExistenteToolStripMenuItem
-      '
-      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
-      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
-      '
       'mnuMainOpciones
       '
       Me.mnuMainOpciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarLectorToolStripMenuItem, Me.mnuConfirmarSalir})
+      Me.mnuMainOpciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainOpciones.Name = "mnuMainOpciones"
       Me.mnuMainOpciones.Size = New System.Drawing.Size(69, 20)
       Me.mnuMainOpciones.Text = "&Opciones"
@@ -115,18 +117,21 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainImprimir
       '
+      Me.mnuMainImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainImprimir.Name = "mnuMainImprimir"
       Me.mnuMainImprimir.Size = New System.Drawing.Size(65, 20)
       Me.mnuMainImprimir.Text = "&Imprimir"
       '
       'AcercaDeToolStripMenuItem
       '
+      Me.AcercaDeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
       Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
       Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
       '
       'mnuMainSalir
       '
+      Me.mnuMainSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainSalir.Name = "mnuMainSalir"
       Me.mnuMainSalir.Size = New System.Drawing.Size(41, 20)
       Me.mnuMainSalir.Text = "&Salir"
@@ -220,7 +225,7 @@ Partial Class frmElisaBiovetsa
       Me.Name = "frmElisaBiovetsa"
       Me.RightToLeft = System.Windows.Forms.RightToLeft.No
       Me.Text = "ELISA BIOVETSA"
-      Me.TransparencyKey = System.Drawing.SystemColors.ActiveCaption
+      Me.TransparencyKey = System.Drawing.SystemColors.ControlLightLight
       Me.mnuMainMenu.ResumeLayout(False)
       Me.mnuMainMenu.PerformLayout()
       Me.tbbToolMenu.ResumeLayout(False)
