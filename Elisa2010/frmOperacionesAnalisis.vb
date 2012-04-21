@@ -2,9 +2,6 @@
 Imports System.IO
 Imports MySql.Data.MySqlClient
 Public Class frmOperacionesAnalisis
-
-
-
    Dim iposicFilaActual As Integer = 0
    Dim oDataAdapter As MySqlDataAdapter
    Dim oDataSet As DataSet
@@ -101,26 +98,34 @@ Public Class frmOperacionesAnalisis
          oConexion.Close()
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Green
          lblMensajeAnalisis.Text = "Mensaje: Los datos se han guardado exitosamente."
+
       Catch ex As MySqlException
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
-         lblMensajeAnalisis.Text = "ERROR:: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
       Catch ex As DataException
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
          lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      Catch ex As Exception
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
       End Try
-      btnInicio.Enabled = True
-      btnHaciaAtras.Enabled = True
-      btnHaciaAdelante.Enabled = True
-      btnFin.Enabled = True
-      btnInsAnalisis.Enabled = True
-      btnGuardaAnalisis.Enabled = True
-      btnUpdAnalisis.Enabled = True
-      btnDelAnalisis.Enabled = True
+
       'Recarga los datos
       Dim dbConsulta = "SELECT * FROM tblanalisis"
       Dim nombreTabla = "tblanalisis"
       'EStablecer la posicion del registro a mostrar en la tabla
       Me.iposicFilaActual = 0
+      txtClaveAnalisis.ReadOnly = True
+      txtNombreAnalisis.ReadOnly = True
+      btnInicio.Enabled = True
+      btnHaciaAtras.Enabled = True
+      btnHaciaAdelante.Enabled = True
+      btnFin.Enabled = True
+      btnInsAnalisis.Enabled = True
+      btnGuardaAnalisis.Enabled = False
+      btnUpdAnalisis.Enabled = True
+      btnDelAnalisis.Enabled = True
+      btnBuscaAnalisis.Enabled = True
       'Cargar columnas del registro en controles del formulario
       llenaDataSet(dbConsulta, nombreTabla)
       Me.cargarDatosAnalisis()
@@ -139,6 +144,7 @@ Public Class frmOperacionesAnalisis
       btnGuardaAnalisis.Enabled = True
       btnUpdAnalisis.Enabled = False
       btnDelAnalisis.Enabled = False
+      btnBuscaAnalisis.Enabled = False
    End Sub
 
 
@@ -159,6 +165,7 @@ Public Class frmOperacionesAnalisis
          oConexion.Close()
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Green
          lblMensajeAnalisis.Text = "Mensaje: Los datos del análisis se han eliminado exitosamente."
+
       Catch ex As MySqlException
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
          lblMensajeAnalisis.Text = "ERROR:: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
@@ -171,7 +178,7 @@ Public Class frmOperacionesAnalisis
       btnHaciaAdelante.Enabled = True
       btnFin.Enabled = True
       btnInsAnalisis.Enabled = True
-      btnGuardaAnalisis.Enabled = True
+      btnGuardaAnalisis.Enabled = False
       btnUpdAnalisis.Enabled = True
       btnDelAnalisis.Enabled = True
       'EStablecer la posicion del registro a mostrar en la tabla
@@ -183,10 +190,123 @@ Public Class frmOperacionesAnalisis
       Me.cargarDatosAnalisis()
    End Sub
 
+   Private Sub btnUpdAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnUpdAnalisis.Click
+      Dim resultado As Integer
+      Try
+         txtNombreAnalisis.ReadOnly = False
+         txtClaveAnalisis.ReadOnly = True
+         btnInicio.Enabled = False
+         btnHaciaAtras.Enabled = False
+         btnHaciaAdelante.Enabled = False
+         btnFin.Enabled = False
+         btnInsAnalisis.Enabled = False
+         btnGuardaAnalisis.Enabled = True
+         btnUpdAnalisis.Enabled = False
+         btnDelAnalisis.Enabled = False
+         btnBuscaAnalisis.Enabled = False
+         Dim oConexion As MySqlConnection
+         Dim aConsulta As String = ""
+         Dim oComando As New MySqlCommand
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         aConsulta = "UPDATE tblanalisis SET nombreAnalisis='" & txtNombreAnalisis.Text & "'" & " WHERE idAnalisis='" & txtClaveAnalisis.Text & "'" & ";"
+         oComando.Connection = oConexion
+         oComando.CommandText = aConsulta
+         oConexion.Open()
+         resultado = oComando.ExecuteNonQuery()
+         oConexion.Close()
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Green
+         lblMensajeAnalisis.Text = "Mensaje: El nombre del análisis se ha actualizado exitosamente."
+         btnInicio.Enabled = True
+         btnHaciaAtras.Enabled = True
+         btnHaciaAdelante.Enabled = True
+         btnFin.Enabled = True
+         btnInsAnalisis.Enabled = True
+         btnGuardaAnalisis.Enabled = True
+         btnUpdAnalisis.Enabled = True
+         btnDelAnalisis.Enabled = True
+         btnBuscaAnalisis.Enabled = True
+      Catch ex As MySqlException
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+      Catch ex As DataException
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      Catch ex As Exception
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      End Try
+   End Sub
 
+   Private Sub btnBuscaAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaAnalisis.Click
+      txtClaveAnalisis.ReadOnly = False
+      Try
+         Dim oConexion As MySqlConnection
+         Dim aConsulta As String = ""
+         Dim oComando As New MySqlCommand
+         Dim oDataReader As MySqlDataReader
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         aConsulta = "SELECT * FROM tblanalisis WHERE idAnalisis='" & txtClaveAnalisis.Text & "'" & ";"
+         oComando.Connection = oConexion
+         oComando.CommandText = aConsulta
+         If txtClaveAnalisis.Text = "" Then
+            txtNombreAnalisis.Text = ""
+            lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+            lblMensajeAnalisis.Text = "Mensaje:Escriba un valor en la clave del análisis."
+         Else
+            oConexion.Open()
+            oDataReader = oComando.ExecuteReader()
+            If oDataReader.HasRows Then
+               While oDataReader.Read()
+                  txtClaveAnalisis.Text = oDataReader("idAnalisis")
+                  txtNombreAnalisis.Text = oDataReader("NombreAnalisis")
+               End While
+               oDataReader.Close()
+               lblMensajeAnalisis.Text = ""
+            Else
+               lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+               lblMensajeAnalisis.Text = "Mensaje: No existe un análisis con la clave indicada."
+            End If
+            oConexion.Close()
+            txtClaveAnalisis.Focus()
+            'Verifica que no sea vacia la consulta
+         End If
+      Catch ex As MySqlException
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+      Catch ex As DataException
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      Catch ex As Exception
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      End Try
+   End Sub
+
+   Private Sub txtClaveAnalisis_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtClaveAnalisis.TextChanged
+      txtNombreAnalisis.Text = ""
+   End Sub
+
+
+
+   Private Sub btnEditarAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnEditarAnalisis.Click
+      'Deshabilitar todos los botones excepto editar y UpdateAnalisis
+      btnInicio.Enabled = False
+      btnHaciaAtras.Enabled = False
+      btnHaciaAdelante.Enabled = False
+      btnFin.Enabled = False
+      btnInsAnalisis.Enabled = False
+      btnGuardaAnalisis.Enabled = False
+      btnUpdAnalisis.Enabled = True
+      btnDelAnalisis.Enabled = False
+      btnBuscaAnalisis.Enabled = False
+      'Permito la escritura sobre los campos
+      txtNombreAnalisis.ReadOnly = False
+      txtClaveAnalisis.ReadOnly = True
+   End Sub
 
    Private Sub btnCancelarAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelarAnalisis.Click
       Me.Close()
    End Sub
-
 End Class

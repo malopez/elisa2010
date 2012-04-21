@@ -32,7 +32,7 @@ Partial Class frmOperacionesAnalisis
       Me.lblNRAnalisis = New System.Windows.Forms.Label()
       Me.btnHaciaAtras = New System.Windows.Forms.Button()
       Me.btnInicio = New System.Windows.Forms.Button()
-      Me.txtBuscaAnalisis = New System.Windows.Forms.Button()
+      Me.btnBuscaAnalisis = New System.Windows.Forms.Button()
       Me.Label2 = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
       Me.txtNombreAnalisis = New System.Windows.Forms.TextBox()
@@ -41,22 +41,25 @@ Partial Class frmOperacionesAnalisis
       Me.btnCancelarAnalisis = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.btnEditarAnalisis = New System.Windows.Forms.Button()
       Me.Panel2.SuspendLayout()
+      Me.Panel1.SuspendLayout()
       Me.SuspendLayout()
       '
       'btnGuardaAnalisis
       '
+      Me.btnGuardaAnalisis.Enabled = False
       Me.btnGuardaAnalisis.Image = CType(resources.GetObject("btnGuardaAnalisis.Image"), System.Drawing.Image)
-      Me.btnGuardaAnalisis.Location = New System.Drawing.Point(498, 146)
+      Me.btnGuardaAnalisis.Location = New System.Drawing.Point(539, 144)
       Me.btnGuardaAnalisis.Name = "btnGuardaAnalisis"
-      Me.btnGuardaAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnGuardaAnalisis.Size = New System.Drawing.Size(38, 23)
       Me.btnGuardaAnalisis.TabIndex = 65
       Me.btnGuardaAnalisis.UseVisualStyleBackColor = True
       '
       'btnUpdAnalisis
       '
       Me.btnUpdAnalisis.Image = CType(resources.GetObject("btnUpdAnalisis.Image"), System.Drawing.Image)
-      Me.btnUpdAnalisis.Location = New System.Drawing.Point(455, 146)
+      Me.btnUpdAnalisis.Location = New System.Drawing.Point(497, 144)
       Me.btnUpdAnalisis.Name = "btnUpdAnalisis"
       Me.btnUpdAnalisis.Size = New System.Drawing.Size(37, 23)
       Me.btnUpdAnalisis.TabIndex = 66
@@ -65,9 +68,9 @@ Partial Class frmOperacionesAnalisis
       'btnDelAnalisis
       '
       Me.btnDelAnalisis.Image = CType(resources.GetObject("btnDelAnalisis.Image"), System.Drawing.Image)
-      Me.btnDelAnalisis.Location = New System.Drawing.Point(541, 146)
+      Me.btnDelAnalisis.Location = New System.Drawing.Point(582, 144)
       Me.btnDelAnalisis.Name = "btnDelAnalisis"
-      Me.btnDelAnalisis.Size = New System.Drawing.Size(37, 23)
+      Me.btnDelAnalisis.Size = New System.Drawing.Size(38, 23)
       Me.btnDelAnalisis.TabIndex = 69
       Me.btnDelAnalisis.UseVisualStyleBackColor = True
       '
@@ -132,16 +135,16 @@ Partial Class frmOperacionesAnalisis
       Me.btnInicio.Text = "<<"
       Me.btnInicio.UseVisualStyleBackColor = True
       '
-      'txtBuscaAnalisis
+      'btnBuscaAnalisis
       '
-      Me.txtBuscaAnalisis.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtBuscaAnalisis.ForeColor = System.Drawing.Color.SteelBlue
-      Me.txtBuscaAnalisis.Image = CType(resources.GetObject("txtBuscaAnalisis.Image"), System.Drawing.Image)
-      Me.txtBuscaAnalisis.Location = New System.Drawing.Point(321, 54)
-      Me.txtBuscaAnalisis.Name = "txtBuscaAnalisis"
-      Me.txtBuscaAnalisis.Size = New System.Drawing.Size(48, 23)
-      Me.txtBuscaAnalisis.TabIndex = 58
-      Me.txtBuscaAnalisis.UseVisualStyleBackColor = True
+      Me.btnBuscaAnalisis.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.btnBuscaAnalisis.ForeColor = System.Drawing.Color.SteelBlue
+      Me.btnBuscaAnalisis.Image = CType(resources.GetObject("btnBuscaAnalisis.Image"), System.Drawing.Image)
+      Me.btnBuscaAnalisis.Location = New System.Drawing.Point(321, 54)
+      Me.btnBuscaAnalisis.Name = "btnBuscaAnalisis"
+      Me.btnBuscaAnalisis.Size = New System.Drawing.Size(48, 23)
+      Me.btnBuscaAnalisis.TabIndex = 58
+      Me.btnBuscaAnalisis.UseVisualStyleBackColor = True
       '
       'Label2
       '
@@ -222,26 +225,36 @@ Partial Class frmOperacionesAnalisis
       'Panel1
       '
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.btnUpdAnalisis)
+      Me.Panel1.Controls.Add(Me.btnGuardaAnalisis)
+      Me.Panel1.Controls.Add(Me.btnEditarAnalisis)
+      Me.Panel1.Controls.Add(Me.btnDelAnalisis)
       Me.Panel1.Location = New System.Drawing.Point(0, 0)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(724, 223)
       Me.Panel1.TabIndex = 72
+      '
+      'btnEditarAnalisis
+      '
+      Me.btnEditarAnalisis.Image = CType(resources.GetObject("btnEditarAnalisis.Image"), System.Drawing.Image)
+      Me.btnEditarAnalisis.Location = New System.Drawing.Point(453, 144)
+      Me.btnEditarAnalisis.Name = "btnEditarAnalisis"
+      Me.btnEditarAnalisis.Size = New System.Drawing.Size(38, 23)
+      Me.btnEditarAnalisis.TabIndex = 74
+      Me.btnEditarAnalisis.UseVisualStyleBackColor = True
       '
       'frmOperacionesAnalisis
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(726, 262)
-      Me.Controls.Add(Me.btnGuardaAnalisis)
-      Me.Controls.Add(Me.btnUpdAnalisis)
-      Me.Controls.Add(Me.btnDelAnalisis)
       Me.Controls.Add(Me.btnInsAnalisis)
       Me.Controls.Add(Me.btnFin)
       Me.Controls.Add(Me.btnHaciaAdelante)
       Me.Controls.Add(Me.lblNRAnalisis)
       Me.Controls.Add(Me.btnHaciaAtras)
       Me.Controls.Add(Me.btnInicio)
-      Me.Controls.Add(Me.txtBuscaAnalisis)
+      Me.Controls.Add(Me.btnBuscaAnalisis)
       Me.Controls.Add(Me.Label2)
       Me.Controls.Add(Me.Label1)
       Me.Controls.Add(Me.txtNombreAnalisis)
@@ -253,6 +266,7 @@ Partial Class frmOperacionesAnalisis
       Me.Text = "Operaciones sobre análisis"
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
+      Me.Panel1.ResumeLayout(False)
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -266,7 +280,7 @@ Partial Class frmOperacionesAnalisis
    Friend WithEvents lblNRAnalisis As System.Windows.Forms.Label
    Friend WithEvents btnHaciaAtras As System.Windows.Forms.Button
    Friend WithEvents btnInicio As System.Windows.Forms.Button
-   Friend WithEvents txtBuscaAnalisis As System.Windows.Forms.Button
+   Friend WithEvents btnBuscaAnalisis As System.Windows.Forms.Button
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents txtNombreAnalisis As System.Windows.Forms.TextBox
@@ -275,4 +289,5 @@ Partial Class frmOperacionesAnalisis
    Friend WithEvents btnCancelarAnalisis As System.Windows.Forms.Button
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+   Friend WithEvents btnEditarAnalisis As System.Windows.Forms.Button
 End Class
