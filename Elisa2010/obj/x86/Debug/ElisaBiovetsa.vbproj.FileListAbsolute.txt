@@ -12,7 +12,6 @@ C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\GenerateResour
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaDatos.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.exe.config
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmRegistraNuevoAnalisis.resources
-C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmConfLector.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmAcercaDe.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\ElisaBiovetsa.vbproj.ResolveComReference.cache
 C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\bin\Debug\Elisa2010.exe.config

@@ -6,7 +6,219 @@ Elisa2010
 </name>
 </assembly>
 <members>
-<member name="P:Elisa2010.My.Resources.Resources.ResourceManager">
+<member name="T:Elisa2010.elisasandboxDataSet.analisisDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.archivo_resultadosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.areasDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.clientesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.estadosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.muestrasDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.ordenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.proveedoresDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblfrecrelativaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tbllectorDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblplacaleidaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.analisisRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.archivo_resultadosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.areasRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.clientesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.estadosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.muestrasRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.ordenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.proveedoresRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblfrecrelativaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tbllectorRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblplacaleidaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.analisisRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.archivo_resultadosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.areasRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.clientesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.estadosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.muestrasRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.ordenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.proveedoresRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblfrecrelativaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tbllectorRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet.tblplacaleidaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.analisisTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.archivo_resultadosTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.areasTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.clientesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.estadosTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.muestrasTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.ordenesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.proveedoresTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.tblfrecrelativaTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.tbllectorTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.tblplacaleidaTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Elisa2010.elisasandboxDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Elisa2010.elisasandboxDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Elisa2010.elisasandboxDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.UpdateAll(Elisa2010.elisasandboxDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:Elisa2010.elisasandboxDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="P:Elisa2010.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -18,154 +230,6 @@ Elisa2010
 </member><member name="T:Elisa2010.My.Resources.Resources">
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblanalisisDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblclienteDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblfrecrelativaDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tbllectorplacasDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblplacaleidaDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblregistroanalisisDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblresultadosDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblanalisisRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblclienteRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblfrecrelativaRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tbllectorplacasRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblplacaleidaRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblregistroanalisisRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblresultadosRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblanalisisRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblclienteRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblfrecrelativaRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tbllectorplacasRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblplacaleidaRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblregistroanalisisRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet.tblresultadosRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSet">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblanalisisTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblclienteTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblfrecrelativaTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tbllectorplacasTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblplacaleidaTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblregistroanalisisTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.tblresultadosTableAdapter">
-	<summary>
-Represents the connection and commands used to retrieve and save data.
-</summary>
-</member><member name="M:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(Elisa2010.bvtselisaDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Update rows in top-down order.
-</summary>
-</member><member name="M:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(Elisa2010.bvtselisaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Insert rows in top-down order.
-</summary>
-</member><member name="M:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(Elisa2010.bvtselisaDataSet,System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Delete rows in bottom-up order.
-</summary>
-</member><member name="M:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
-	<summary>
-Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
-</summary>
-</member><member name="M:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateAll(Elisa2010.bvtselisaDataSet)">
-	<summary>
-Update all changes to the dataset.
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
-	<summary>
-Update Order Option
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
-	<summary>
-Used to sort self-referenced table's rows
-</summary>
-</member><member name="T:Elisa2010.bvtselisaDataSetTableAdapters.TableAdapterManager">
-	<summary>
-TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
 </summary>
 </member>
 </members>

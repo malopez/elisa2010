@@ -58,6 +58,7 @@ Partial Class frmOperacionesAnalisis
       '
       'btnUpdAnalisis
       '
+      Me.btnUpdAnalisis.Enabled = False
       Me.btnUpdAnalisis.Image = CType(resources.GetObject("btnUpdAnalisis.Image"), System.Drawing.Image)
       Me.btnUpdAnalisis.Location = New System.Drawing.Point(497, 144)
       Me.btnUpdAnalisis.Name = "btnUpdAnalisis"
@@ -149,6 +150,7 @@ Partial Class frmOperacionesAnalisis
       'Label2
       '
       Me.Label2.AutoSize = True
+      Me.Label2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Label2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label2.ForeColor = System.Drawing.Color.SteelBlue
       Me.Label2.Location = New System.Drawing.Point(62, 101)
@@ -160,6 +162,7 @@ Partial Class frmOperacionesAnalisis
       'Label1
       '
       Me.Label1.AutoSize = True
+      Me.Label1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label1.ForeColor = System.Drawing.Color.SteelBlue
       Me.Label1.Location = New System.Drawing.Point(62, 56)
@@ -224,6 +227,7 @@ Partial Class frmOperacionesAnalisis
       '
       'Panel1
       '
+      Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel1.Controls.Add(Me.btnUpdAnalisis)
       Me.Panel1.Controls.Add(Me.btnGuardaAnalisis)

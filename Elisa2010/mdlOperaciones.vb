@@ -535,19 +535,68 @@ Module mdlOperaciones
    '#####################################
    '# SECCION CONTROLES DEL PUERTO SERIE#
    '#####################################
+   'Obtiene de la BD los datos del lector que se utilizarán para el puerto serie
+   Public Sub datosLector(ByRef nomLector As String, ByRef bpsLector As Integer, ByRef paridadLector As Integer, _
+                          ByRef bitsLector As Integer, ByRef stopBitsLector As Integer)
+      Try
+         Dim oConexion As MySqlConnection
+         Dim aConsulta As String = ""
+         Dim oComando As New MySqlCommand
+         Dim oDataReader As MySqlDataReader
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "SELECT * FROM tbllector WHERE lectorDefault=1;"
+         oComando.Connection = oConexion
+         oComando.CommandText = aConsulta
+         oConexion.Open()
+         oDataReader = oComando.ExecuteReader()
+         If oDataReader.HasRows Then
+            While oDataReader.Read()
+               nomLector = oDataReader("nomLector")
+               bpsLector = oDataReader("bpsLector")
+               paridadLector = oDataReader("paridadLector")
+               bitsLector = oDataReader("bitsLector")
+               stopBitsLector = oDataReader("stopBitsLector")
+            End While
+            oDataReader.Close()
+            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = ""
+         Else
+            frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "Mensaje: No se ha encontrado un lector default."
+         End If
+         oConexion.Close()
+      Catch ex As MySqlException
+         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+      Catch ex As DataException
+         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      Catch ex As Exception
+         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      End Try
+
+   End Sub
+
    'configura el puerto serial
    Public Sub Setup_Puerto_Serie()
+      Dim nomLector As String = ""
+      Dim bpsLector As Integer
+      Dim paridadLector As Integer
+      Dim bitsLector As Integer
+      Dim stopBitsLector As Integer
       Try
+         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
          With frmRegistraNuevoAnalisis.SerialPort1
             'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
             If .IsOpen Then
                .Close()
             End If
-            .PortName = "COM3"
-            .BaudRate = 9600 '// 19200 baud rate
-            .DataBits = 8 '// 8 data bits
-            .StopBits = IO.Ports.StopBits.Two '// 1 Stop bit
-            .Parity = IO.Ports.Parity.None 'No utiliza paridad
+            .PortName = frmRegistraNuevoAnalisis.cmbComboPorts.Text
+            .BaudRate = bpsLector
+            .DataBits = bitsLector
+            .StopBits = stopBitsLector
+            .Parity = paridadLector
             .DtrEnable = False
             .Handshake = IO.Ports.Handshake.None
             .ReadBufferSize = 2048
@@ -558,7 +607,8 @@ Module mdlOperaciones
             .Open() ' ABRE EL PUERTO SERIE
          End With
       Catch ex As Exception
-         MsgBox("Error al abrir el puerto serial: " & ex.Message, MsgBoxStyle.Critical)
+         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: Al abrir el puerto serial con los datos configurados." & ex.Message
       End Try
    End Sub
 

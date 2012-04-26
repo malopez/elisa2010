@@ -37,8 +37,8 @@
 
    'Permite abrir en forma nomodal configurar lector del menu de Opciones
    Private Sub ConfigurarLectorToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConfigurarLectorToolStripMenuItem.Click
-      frmConfLector.MdiParent = Me
-      frmConfLector.Show()
+      'frmConfLector.MdiParent = Me
+      ' frmConfLector.Show()
    End Sub
 
    'Coloca el timer clock indicando la hora en la ventana principal
@@ -60,8 +60,8 @@
    End Sub
 
    Private Sub tbbConfiguraLector_Click(sender As System.Object, e As System.EventArgs) Handles tbbConfiguraLector.Click
-      frmConfLector.MdiParent = Me
-      frmConfLector.Show()
+      ' frmConfLector.MdiParent = Me
+      'frmConfLector.Show()
    End Sub
 
    Private Sub ListarAnálisisDisponiblesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ListarAnálisisDisponiblesToolStripMenuItem.Click

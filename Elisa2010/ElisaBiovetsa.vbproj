@@ -94,16 +94,10 @@
     <Compile Include="AbrirArchivoExistente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bvtselisaDataSet.Designer.vb">
+    <Compile Include="elisasandboxDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="frmConfLector.Designer.vb">
-      <DependentUpon>frmConfLector.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmConfLector.vb">
-      <SubType>Form</SubType>
+      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
@@ -157,9 +151,6 @@
     <EmbeddedResource Include="AbrirArchivoExistente.resx">
       <DependentUpon>AbrirArchivoExistente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConfLector.resx">
-      <DependentUpon>frmConfLector.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
@@ -184,16 +175,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="bvtselisaDataSet.xsc">
-      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    <None Include="elisasandboxDataSet.xsc">
+      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
     </None>
-    <None Include="bvtselisaDataSet.xsd">
+    <None Include="elisasandboxDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bvtselisaDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>elisasandboxDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="bvtselisaDataSet.xss">
-      <DependentUpon>bvtselisaDataSet.xsd</DependentUpon>
+    <None Include="elisasandboxDataSet.xss">
+      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

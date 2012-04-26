@@ -1,18 +1,22 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports MySql.Data.MySqlClient
+
 Public Class frmOperacionesAnalisis
    Dim iposicFilaActual As Integer = 0
    Dim oDataAdapter As MySqlDataAdapter
    Dim oDataSet As DataSet
+
    Private Sub frmOperacionesAnalisis_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       Dim oConexion As MySqlConnection
       oConexion = New MySqlConnection
-      oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+      'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+      oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+
       Dim dbConsulta As String = ""
       Dim nombreTabla As String = ""
-      dbConsulta = "SELECT * FROM tblanalisis"
-      nombreTabla = "tblanalisis"
+      dbConsulta = "SELECT * FROM analisis"
+      nombreTabla = "analisis"
       'EStablecer la posicion del registro a mostrar en la tabla
       Me.iposicFilaActual = 0
       'Cargar columnas del registro en controles del formulario
@@ -21,36 +25,43 @@ Public Class frmOperacionesAnalisis
    End Sub
 
    Private Sub llenaDataSet(ByRef dbConsulta As String, ByRef nombreTabla As String)
-      Dim oConexion As New MySqlConnection
-      oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-      'Crear un adaptador, que permite a traves de un evento llamar una consulta que se guarda en un command builder
-      Me.oDataAdapter = New MySqlDataAdapter(dbConsulta, oConexion)
-      'Crear el command builder para ejecutar las consultas
-      Dim oCommBuild As MySqlCommandBuilder = New MySqlCommandBuilder(oDataAdapter)
-      'Crear dataset es un almacen de datos desconectado
-      Me.oDataSet = New DataSet
-      'Abrir la conexion a la BD MySQL
-      oConexion.Open()
-      'Llenar el adaptador con el conjunto de datos 
-      Me.oDataAdapter.Fill(oDataSet, nombreTabla)
-      'Cerrar la conexion a la BD
-      oConexion.Close()
+      Try
+         Dim oConexion As New MySqlConnection
+         'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         'Crear un adaptador, que permite a traves de un evento llamar una consulta que se guarda en un command builder
+         Me.oDataAdapter = New MySqlDataAdapter(dbConsulta, oConexion)
+         'Crear el command builder para ejecutar las consultas
+         Dim oCommBuild As MySqlCommandBuilder = New MySqlCommandBuilder(oDataAdapter)
+         'Crear dataset es un almacen de datos desconectado
+         Me.oDataSet = New DataSet
+         'Abrir la conexion a la BD MySQL
+         oConexion.Open()
+         'Llenar el adaptador con el conjunto de datos 
+         Me.oDataAdapter.Fill(oDataSet, nombreTabla)
+         'Cerrar la conexion a la BD
+         oConexion.Close()
+      Catch ex As Exception
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      End Try
+
    End Sub
 
 
    Private Sub cargarDatosAnalisis()
       Dim oDataRow As DataRow
       'Toma la primer fila de la tabla
-      oDataRow = oDataSet.Tables("tblanalisis").Rows(Me.iposicFilaActual)
-      Me.txtClaveAnalisis.Text = oDataRow("idAnalisis")
-      Me.txtNombreAnalisis.Text = oDataRow("nombreAnalisis")
+      oDataRow = oDataSet.Tables("analisis").Rows(Me.iposicFilaActual)
+      Me.txtClaveAnalisis.Text = oDataRow("id_analysis")
+      Me.txtNombreAnalisis.Text = oDataRow("analysis_desc")
       'Mostrar la posicion actual del registro, los registros comienzan siempre en 0, por ello colocamos +1
       ' para el desplegado en la etiqueta
-      Me.lblNRAnalisis.Text = "Registro: " & Me.iposicFilaActual + 1 & " de " & Me.oDataSet.Tables("tblanalisis").Rows.Count
+      Me.lblNRAnalisis.Text = "Registro: " & Me.iposicFilaActual + 1 & " de " & Me.oDataSet.Tables("analisis").Rows.Count
    End Sub
 
    Private Sub btnHaciaAdelante_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAdelante.Click
-      If Me.iposicFilaActual = (Me.oDataSet.Tables("tblanalisis").Rows.Count - 1) Then
+      If Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1) Then
          MessageBox.Show("Usted se encuentra en el último registro.")
       Else
          Me.iposicFilaActual += 1
@@ -76,7 +87,7 @@ Public Class frmOperacionesAnalisis
 
    Private Sub btnFin_Click(sender As System.Object, e As System.EventArgs) Handles btnFin.Click
       'Ira l ultimo registro colocando la variable al no. máximo de datos en la tabla menos 1 porque las posiciones comienzan en cero
-      Me.iposicFilaActual = (Me.oDataSet.Tables("tblanalisis").Rows.Count - 1)
+      Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1)
       Me.cargarDatosAnalisis()
    End Sub
 
@@ -89,8 +100,10 @@ Public Class frmOperacionesAnalisis
          Dim oComando As New MySqlCommand
          Dim resultado As Integer
          oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-         aConsulta = "INSERT INTO tblanalisis (tblanalisis.idAnalisis,tblanalisis.nombreAnalisis) VALUES ('" & txtClaveAnalisis.Text & "','" & txtNombreAnalisis.Text & "')"
+
+         'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "INSERT INTO analisis (id_analysis,analysis_desc) VALUES ('" & txtClaveAnalisis.Text & "','" & txtNombreAnalisis.Text & "')"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -111,8 +124,8 @@ Public Class frmOperacionesAnalisis
       End Try
 
       'Recarga los datos
-      Dim dbConsulta = "SELECT * FROM tblanalisis"
-      Dim nombreTabla = "tblanalisis"
+      Dim dbConsulta = "SELECT * FROM analisis"
+      Dim nombreTabla = "analisis"
       'EStablecer la posicion del registro a mostrar en la tabla
       Me.iposicFilaActual = 0
       txtClaveAnalisis.ReadOnly = True
@@ -122,10 +135,11 @@ Public Class frmOperacionesAnalisis
       btnHaciaAdelante.Enabled = True
       btnFin.Enabled = True
       btnInsAnalisis.Enabled = True
-      btnGuardaAnalisis.Enabled = False
-      btnUpdAnalisis.Enabled = True
       btnDelAnalisis.Enabled = True
       btnBuscaAnalisis.Enabled = True
+      btnEditarAnalisis.Enabled = True
+      btnGuardaAnalisis.Enabled = False
+      btnUpdAnalisis.Enabled = False
       'Cargar columnas del registro en controles del formulario
       llenaDataSet(dbConsulta, nombreTabla)
       Me.cargarDatosAnalisis()
@@ -143,6 +157,7 @@ Public Class frmOperacionesAnalisis
       btnInsAnalisis.Enabled = False
       btnGuardaAnalisis.Enabled = True
       btnUpdAnalisis.Enabled = False
+      btnEditarAnalisis.Enabled = False
       btnDelAnalisis.Enabled = False
       btnBuscaAnalisis.Enabled = False
    End Sub
@@ -156,8 +171,9 @@ Public Class frmOperacionesAnalisis
          Dim oComando As New MySqlCommand
          Dim resultado As Integer
          oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-         aConsulta = "DELETE FROM tblanalisis WHERE idAnalisis='" & txtClaveAnalisis.Text & "'" & ";"
+         'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "DELETE FROM analisis WHERE id_analysis='" & txtClaveAnalisis.Text & "'" & ";"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -179,13 +195,13 @@ Public Class frmOperacionesAnalisis
       btnFin.Enabled = True
       btnInsAnalisis.Enabled = True
       btnGuardaAnalisis.Enabled = False
-      btnUpdAnalisis.Enabled = True
       btnDelAnalisis.Enabled = True
+      btnUpdAnalisis.Enabled = False
       'EStablecer la posicion del registro a mostrar en la tabla
       Me.iposicFilaActual = 0
       'Recarga los datos
-      Dim dbConsulta = "SELECT * FROM tblanalisis"
-      Dim nombreTabla = "tblanalisis"
+      Dim dbConsulta = "SELECT * FROM analisis"
+      Dim nombreTabla = "analisis"
       llenaDataSet(dbConsulta, nombreTabla)
       Me.cargarDatosAnalisis()
    End Sub
@@ -200,7 +216,7 @@ Public Class frmOperacionesAnalisis
          btnHaciaAdelante.Enabled = False
          btnFin.Enabled = False
          btnInsAnalisis.Enabled = False
-         btnGuardaAnalisis.Enabled = True
+         btnGuardaAnalisis.Enabled = False
          btnUpdAnalisis.Enabled = False
          btnDelAnalisis.Enabled = False
          btnBuscaAnalisis.Enabled = False
@@ -208,8 +224,9 @@ Public Class frmOperacionesAnalisis
          Dim aConsulta As String = ""
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-         aConsulta = "UPDATE tblanalisis SET nombreAnalisis='" & txtNombreAnalisis.Text & "'" & " WHERE idAnalisis='" & txtClaveAnalisis.Text & "'" & ";"
+         'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "UPDATE analisis SET analysis_desc='" & txtNombreAnalisis.Text & "'" & " WHERE id_analysis='" & txtClaveAnalisis.Text & "'" & ";"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -222,10 +239,9 @@ Public Class frmOperacionesAnalisis
          btnHaciaAdelante.Enabled = True
          btnFin.Enabled = True
          btnInsAnalisis.Enabled = True
-         btnGuardaAnalisis.Enabled = True
-         btnUpdAnalisis.Enabled = True
          btnDelAnalisis.Enabled = True
          btnBuscaAnalisis.Enabled = True
+         txtNombreAnalisis.ReadOnly = True
       Catch ex As MySqlException
          lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
          lblMensajeAnalisis.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
@@ -246,8 +262,9 @@ Public Class frmOperacionesAnalisis
          Dim oComando As New MySqlCommand
          Dim oDataReader As MySqlDataReader
          oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
-         aConsulta = "SELECT * FROM tblanalisis WHERE idAnalisis='" & txtClaveAnalisis.Text & "'" & ";"
+         'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "SELECT * FROM analisis WHERE id_analysis='" & txtClaveAnalisis.Text & "'" & ";"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          If txtClaveAnalisis.Text = "" Then
@@ -259,8 +276,8 @@ Public Class frmOperacionesAnalisis
             oDataReader = oComando.ExecuteReader()
             If oDataReader.HasRows Then
                While oDataReader.Read()
-                  txtClaveAnalisis.Text = oDataReader("idAnalisis")
-                  txtNombreAnalisis.Text = oDataReader("NombreAnalisis")
+                  txtClaveAnalisis.Text = oDataReader("id_analysis")
+                  txtNombreAnalisis.Text = oDataReader("analysis_desc")
                End While
                oDataReader.Close()
                lblMensajeAnalisis.Text = ""

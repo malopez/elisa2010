@@ -75,6 +75,17 @@ Namespace My
                 Return CType(Me("bvtselisaConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=biovetsa.dyndns.org;User Id=bvtselisa;Persist Security Info=True;database="& _ 
+            "elisasandbox")>  _
+        Public ReadOnly Property elisasandboxConnectionString() As String
+            Get
+                Return CType(Me("elisasandboxConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

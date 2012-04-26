@@ -1,4 +1,7 @@
 ﻿Imports System.IO
+Imports System.Data.SqlClient
+Imports MySql.Data.MySqlClient
+
 
 Public Class frmRegistraNuevoAnalisis
 
@@ -7,6 +10,7 @@ Public Class frmRegistraNuevoAnalisis
    'Laringo           0.15       1.45        3.726
    'Bronquitis        0.15       1.642       3.568
    'Encefalomielitis  0.15       1.642       3.726
+
    'IBF               0.18       1.172       3.614
    'NC                0.15       1.464       3.74
    'Reovirus          0.15       1.077       3.46
@@ -14,10 +18,9 @@ Public Class frmRegistraNuevoAnalisis
    Dim logtit1 As Decimal = 0
    Dim logtit2 As Decimal = 0
 
-
-   Private Sub btnCambiarLector_Click(sender As System.Object, e As System.EventArgs) Handles btnCambiarLector.Click
-      frmConfLector.MdiParent = frmElisaBiovetsa
-      frmConfLector.Show()
+   Private Sub btnCambiarLector_Click(sender As System.Object, e As System.EventArgs)
+      'frmConfLector.MdiParent = frmElisaBiovetsa
+      ' frmConfLector.Show()
    End Sub
 
    Private Sub btnNuevoAnalisisCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnNuevoAnalisisCancelar.Click
@@ -36,7 +39,7 @@ Public Class frmRegistraNuevoAnalisis
             Me.btnLeerDatosPlaca.Text = "Leer Datos"
          End If
       Catch ex As Exception
-         MessageBox.Show("Error al recuperar datos desde el lector")
+         MessageBox.Show("Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -44,26 +47,13 @@ Public Class frmRegistraNuevoAnalisis
    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
       Try
          az = Me.SerialPort1.ReadExisting.Trim
-         'msn(sib) = az
          msn += az
-
-         MessageBox.Show("Valor del serial port cuando inicia la lectura para msn: " & msn)
-         'sib += 1
       Catch ex As Exception
          MsgBox(ex.Message)
       End Try
       Me.txtDatosRecibidos.Text = msn
+      btnDefinirControlesPN.Enabled = True
    End Sub
-
-   '  Private Sub btnEnviardato_Click(sender As System.Object, e As System.EventArgs) Handles btnEnviardato.Click
-   '     sib = 0
-   '    Try
-   '      SerialPort1.Write(Me.txtDatosEnviados.Text)
-   '     Me.txtDatosRecibidos.Clear()
-   ' Catch ex As Exception
-   '      MsgBox(ex.Message)
-   '   End Try
-   'End Sub
 
    Private Sub btnDefinirControlesPN_Click(sender As System.Object, e As System.EventArgs) Handles btnDefinirControlesPN.Click
       Dim nombreArchivo As String
@@ -77,11 +67,17 @@ Public Class frmRegistraNuevoAnalisis
       grbControlesPositivos.Enabled = True
       grbControlesNegativos.Enabled = False
       txtCP1Letra1.Enabled = True
+      txtCP1Letra1.Clear()
       txtCP1Valor1.Enabled = False
+      txtCP1Valor1.Clear()
       txtCP2Letra2.Enabled = False
+      txtCP2Letra2.Clear()
       txtCP2Valor2.Enabled = False
+      txtCP2Valor2.Clear()
       txtCP3Letra3.Enabled = False
+      txtCP3Letra3.Clear()
       txtCP3Valor3.Enabled = False
+      txtCP3Valor3.Clear()
       'grbControlesNegativos.Enabled = True
       'btnCalcularValores.Enabled = True
       'cambiado el 16-Abril-2012 para hacer pruebas de guardar los controles positivos y negativos  con los 
@@ -89,7 +85,7 @@ Public Class frmRegistraNuevoAnalisis
 
    End Sub
 
-   Private Sub btnCalcularValores_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
+   Private Sub btnObtenerResultados_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
       Dim cpx1, cpx2, cpx3, cnx1, cnx2, cnx3 As Integer
       Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
 
@@ -144,13 +140,6 @@ Public Class frmRegistraNuevoAnalisis
       frmSalidaDatos.Show()
    End Sub
 
-
-   Private Sub TblregistroanalisisBindingNavigatorSaveItem_Click(sender As System.Object, e As System.EventArgs) Handles TblregistroanalisisBindingNavigatorSaveItem.Click
-      Me.Validate()
-      Me.TblregistroanalisisBindingSource.EndEdit()
-      Me.TableAdapterManager.UpdateAll(Me.BvtselisaDataSet)
-
-   End Sub
 
    Private Sub frmRegistraNuevoAnalisis_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       'TODO: This line of code loads data into the 'BvtselisaDataSet.tblregistroanalisis' table. You can move, or remove it, as needed.
@@ -248,5 +237,77 @@ Public Class frmRegistraNuevoAnalisis
       grbControlesNegativos.Enabled = False
       btnDefinirControlesPN.Enabled = False
       btnObtenerResultados.Enabled = True
+   End Sub
+
+   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs) Handles cmbNoCaso.Click
+      Try
+         cmbNoCaso.Items.Clear()
+         txtNombreCliente.Text = ""
+         txtAnalisisSolicitado.Text = ""
+         Dim oConexion As MySqlConnection
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         Dim oDataAdapter = New MySqlDataAdapter("SELECT DISTINCT caso FROM ordenes WHERE id_area=3 and id_status=1", oConexion)
+         Dim oDataSet As New DataSet()
+         oConexion.Open()
+         oDataAdapter.Fill(oDataSet, "ordenes")
+         oConexion.Close()
+         Dim oTabla As DataTable
+         oTabla = oDataSet.Tables("ordenes")
+         'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la búsqueda.
+         Dim oFila As DataRow
+         For Each oFila In oTabla.Rows
+            cmbNoCaso.Items.Add(oFila.Item("caso"))
+         Next
+      Catch ex As Exception
+         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         lblMensajeCaso.Text = "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis."
+      End Try
+
+   End Sub
+
+   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaCaso.Click
+      Try
+         Dim oConexion As MySqlConnection
+         Dim aConsulta As String = ""
+         Dim oDataReader As MySqlDataReader
+         Dim oComando As New MySqlCommand
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;;password=password;Persist Security Info=True;database=elisasandbox"
+         'oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis"
+         oComando.Connection = oConexion
+         oComando.CommandText = aConsulta
+         oConexion.Open()
+        
+         oDataReader = oComando.ExecuteReader()
+            If oDataReader.HasRows Then
+               While oDataReader.Read()
+               txtNombreCliente.Text = oDataReader("NombreCliente")
+               txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados")
+               End While
+               oDataReader.Close()
+            lblMensajeCaso.Text = ""
+            Else
+            lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+            lblMensajeCaso.Text = "Mensaje: Seleccione un número de caso."
+            End If
+         oConexion.Close()
+         Me.btnLeerDatosPlaca.Enabled = True
+      Catch ex As MySqlException
+         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+      Catch ex As DataException
+         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      Catch ex As Exception
+         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
+         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+      End Try
+   End Sub
+
+
+   Private Sub txtAnalisisSolicitado_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtAnalisisSolicitado.TextChanged
+
    End Sub
 End Class
