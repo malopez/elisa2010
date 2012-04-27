@@ -3354,8 +3354,6 @@ Partial Public Class elisasandboxDataSet
     Partial Public Class tbllectorDataTable
         Inherits Global.System.Data.TypedTableBase(Of tbllectorRow)
         
-        Private columnidLector As Global.System.Data.DataColumn
-        
         Private columnnomLector As Global.System.Data.DataColumn
         
         Private columnbpsLector As Global.System.Data.DataColumn
@@ -3402,14 +3400,6 @@ Partial Public Class elisasandboxDataSet
             MyBase.New(info, context)
             Me.InitVars
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property idLectorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidLector
-            End Get
-        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -3496,18 +3486,12 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtbllectorRow(ByVal idLector As Integer, ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As SByte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Boolean) As tbllectorRow
+        Public Overloads Function AddtbllectorRow(ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As SByte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Integer) As tbllectorRow
             Dim rowtbllectorRow As tbllectorRow = CType(Me.NewRow,tbllectorRow)
-            Dim columnValuesArray() As Object = New Object() {idLector, nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector, lectorDefault}
+            Dim columnValuesArray() As Object = New Object() {nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector, lectorDefault}
             rowtbllectorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtbllectorRow)
             Return rowtbllectorRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByidLector(ByVal idLector As Integer) As tbllectorRow
-            Return CType(Me.Rows.Find(New Object() {idLector}),tbllectorRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3527,7 +3511,6 @@ Partial Public Class elisasandboxDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnidLector = MyBase.Columns("idLector")
             Me.columnnomLector = MyBase.Columns("nomLector")
             Me.columnbpsLector = MyBase.Columns("bpsLector")
             Me.columnparidadLector = MyBase.Columns("paridadLector")
@@ -3539,8 +3522,6 @@ Partial Public Class elisasandboxDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnidLector = New Global.System.Data.DataColumn("idLector", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidLector)
             Me.columnnomLector = New Global.System.Data.DataColumn("nomLector", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnomLector)
             Me.columnbpsLector = New Global.System.Data.DataColumn("bpsLector", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -3551,11 +3532,8 @@ Partial Public Class elisasandboxDataSet
             MyBase.Columns.Add(Me.columnbitsLector)
             Me.columnstopBitsLector = New Global.System.Data.DataColumn("stopBitsLector", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstopBitsLector)
-            Me.columnlectorDefault = New Global.System.Data.DataColumn("lectorDefault", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnlectorDefault = New Global.System.Data.DataColumn("lectorDefault", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnlectorDefault)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnidLector}, true))
-            Me.columnidLector.AllowDBNull = false
-            Me.columnidLector.Unique = true
             Me.columnnomLector.AllowDBNull = false
             Me.columnnomLector.MaxLength = 50
             Me.columnbpsLector.AllowDBNull = false
@@ -4910,17 +4888,6 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property idLector() As Integer
-            Get
-                Return CType(Me(Me.tabletbllector.idLectorColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletbllector.idLectorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property nomLector() As String
             Get
                 Return CType(Me(Me.tabletbllector.nomLectorColumn),String)
@@ -4976,9 +4943,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property lectorDefault() As Boolean
+        Public Property lectorDefault() As Integer
             Get
-                Return CType(Me(Me.tabletbllector.lectorDefaultColumn),Boolean)
+                Return CType(Me(Me.tabletbllector.lectorDefaultColumn),Integer)
             End Get
             Set
                 Me(Me.tabletbllector.lectorDefaultColumn) = value
@@ -9909,7 +9876,6 @@ Namespace elisasandboxDataSetTableAdapters
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "tbllector"
-            tableMapping.ColumnMappings.Add("idLector", "idLector")
             tableMapping.ColumnMappings.Add("nomLector", "nomLector")
             tableMapping.ColumnMappings.Add("bpsLector", "bpsLector")
             tableMapping.ColumnMappings.Add("paridadLector", "paridadLector")
@@ -9917,84 +9883,13 @@ Namespace elisasandboxDataSetTableAdapters
             tableMapping.ColumnMappings.Add("stopBitsLector", "stopBitsLector")
             tableMapping.ColumnMappings.Add("lectorDefault", "lectorDefault")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `tbllector` WHERE ((`idLector` = @Original_idLector) AND (`nomLector`"& _ 
-                " = @Original_nomLector) AND (`bpsLector` = @Original_bpsLector) AND (`paridadLec"& _ 
-                "tor` = @Original_paridadLector) AND (`bitsLector` = @Original_bitsLector) AND (`"& _ 
-                "stopBitsLector` = @Original_stopBitsLector) AND (`lectorDefault` = @Original_lec"& _ 
-                "torDefault))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_nomLector"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nomLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_bpsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bpsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_paridadLector"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "paridadLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_bitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bitsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_stopBitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "stopBitsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_lectorDefault"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "lectorDefault"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `tbllector` (`idLector`, `nomLector`, `bpsLector`, `paridadLector`, `"& _ 
-                "bitsLector`, `stopBitsLector`, `lectorDefault`) VALUES (@idLector, @nomLector, @"& _ 
-                "bpsLector, @paridadLector, @bitsLector, @stopBitsLector, @lectorDefault)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `tbllector` (`nomLector`, `bpsLector`, `paridadLector`, `bitsLector`,"& _ 
+                " `stopBitsLector`, `lectorDefault`) VALUES (@nomLector, @bpsLector, @paridadLect"& _ 
+                "or, @bitsLector, @stopBitsLector, @lectorDefault)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@nomLector"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
@@ -10031,126 +9926,11 @@ Namespace elisasandboxDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@lectorDefault"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "lectorDefault"
             Me._adapter.InsertCommand.Parameters.Add(param)
-            Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `tbllector` SET `idLector` = @idLector, `nomLector` = @nomLector, `bpsLect"& _ 
-                "or` = @bpsLector, `paridadLector` = @paridadLector, `bitsLector` = @bitsLector, "& _ 
-                "`stopBitsLector` = @stopBitsLector, `lectorDefault` = @lectorDefault WHERE ((`id"& _ 
-                "Lector` = @Original_idLector) AND (`nomLector` = @Original_nomLector) AND (`bpsL"& _ 
-                "ector` = @Original_bpsLector) AND (`paridadLector` = @Original_paridadLector) AN"& _ 
-                "D (`bitsLector` = @Original_bitsLector) AND (`stopBitsLector` = @Original_stopBi"& _ 
-                "tsLector) AND (`lectorDefault` = @Original_lectorDefault))"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@nomLector"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nomLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@bpsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bpsLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@paridadLector"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "paridadLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@bitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bitsLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@stopBitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "stopBitsLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@lectorDefault"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "lectorDefault"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_nomLector"
-            param.DbType = Global.System.Data.DbType.[String]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
-            param.IsNullable = true
-            param.SourceColumn = "nomLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_bpsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bpsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_paridadLector"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "paridadLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_bitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "bitsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_stopBitsLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "stopBitsLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_lectorDefault"
-            param.DbType = Global.System.Data.DbType.[SByte]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Byte]
-            param.IsNullable = true
-            param.SourceColumn = "lectorDefault"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10166,8 +9946,8 @@ Namespace elisasandboxDataSetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `idLector`, `nomLector`, `bpsLector`, `paridadLector`, `bitsLector`, `stop"& _ 
-                "BitsLector`, `lectorDefault` FROM `tbllector`"
+            Me._commandCollection(0).CommandText = "SELECT `nomLector`, `bpsLector`, `paridadLector`, `bitsLector`, `stopBitsLector`,"& _ 
+                " `lectorDefault` FROM `tbllector`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -10226,50 +10006,18 @@ Namespace elisasandboxDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_idLector As Integer, ByVal Original_nomLector As String, ByVal Original_bpsLector As Integer, ByVal Original_paridadLector As Byte, ByVal Original_bitsLector As Integer, ByVal Original_stopBitsLector As Integer, ByVal Original_lectorDefault As Byte) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_idLector,Integer)
-            If (Original_nomLector Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_nomLector")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_nomLector,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_bpsLector,Integer)
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_paridadLector,Byte)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_bitsLector,Integer)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_stopBitsLector,Integer)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_lectorDefault,Byte)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal idLector As Integer, ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As Byte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Byte) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(idLector,Integer)
+        Public Overloads Overridable Function Insert(ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As Byte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Integer) As Integer
             If (nomLector Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("nomLector")
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(nomLector,String)
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(nomLector,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(bpsLector,Integer)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(paridadLector,Byte)
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(bitsLector,Integer)
-            Me.Adapter.InsertCommand.Parameters(5).Value = CType(stopBitsLector,Integer)
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(lectorDefault,Byte)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(bpsLector,Integer)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(paridadLector,Byte)
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(bitsLector,Integer)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(stopBitsLector,Integer)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(lectorDefault,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10283,56 +10031,6 @@ Namespace elisasandboxDataSetTableAdapters
                     Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal idLector As Integer, ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As Byte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Byte, ByVal Original_idLector As Integer, ByVal Original_nomLector As String, ByVal Original_bpsLector As Integer, ByVal Original_paridadLector As Byte, ByVal Original_bitsLector As Integer, ByVal Original_stopBitsLector As Integer, ByVal Original_lectorDefault As Byte) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(idLector,Integer)
-            If (nomLector Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("nomLector")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(nomLector,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(bpsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(paridadLector,Byte)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(bitsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(stopBitsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(lectorDefault,Byte)
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_idLector,Integer)
-            If (Original_nomLector Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_nomLector")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_nomLector,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_bpsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_paridadLector,Byte)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_bitsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_stopBitsLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_lectorDefault,Byte)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal nomLector As String, ByVal bpsLector As Integer, ByVal paridadLector As Byte, ByVal bitsLector As Integer, ByVal stopBitsLector As Integer, ByVal lectorDefault As Byte, ByVal Original_idLector As Integer, ByVal Original_nomLector As String, ByVal Original_bpsLector As Integer, ByVal Original_paridadLector As Byte, ByVal Original_bitsLector As Integer, ByVal Original_stopBitsLector As Integer, ByVal Original_lectorDefault As Byte) As Integer
-            Return Me.Update(Original_idLector, nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector, lectorDefault, Original_idLector, Original_nomLector, Original_bpsLector, Original_paridadLector, Original_bitsLector, Original_stopBitsLector, Original_lectorDefault)
         End Function
     End Class
     

@@ -28,17 +28,17 @@ Partial Class frmConfiguraLector
       Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.chkLectorDefault = New System.Windows.Forms.CheckBox()
       Me.Panel2 = New System.Windows.Forms.Panel()
-      Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+      Me.gpbSB = New System.Windows.Forms.GroupBox()
       Me.rdbStopB2 = New System.Windows.Forms.RadioButton()
       Me.rdbStopB15 = New System.Windows.Forms.RadioButton()
       Me.rdbStopB1 = New System.Windows.Forms.RadioButton()
-      Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+      Me.gpbBDD = New System.Windows.Forms.GroupBox()
       Me.rdbBDD8 = New System.Windows.Forms.RadioButton()
       Me.rdbBDD7 = New System.Windows.Forms.RadioButton()
       Me.rdbBDD6 = New System.Windows.Forms.RadioButton()
       Me.rdbBDD5 = New System.Windows.Forms.RadioButton()
       Me.rdbBDD4 = New System.Windows.Forms.RadioButton()
-      Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+      Me.gpbParidad = New System.Windows.Forms.GroupBox()
       Me.rdbParidadSpace = New System.Windows.Forms.RadioButton()
       Me.rdbParidadOdd = New System.Windows.Forms.RadioButton()
       Me.rdbParidadNone = New System.Windows.Forms.RadioButton()
@@ -66,15 +66,15 @@ Partial Class frmConfiguraLector
       Me.btnEditar = New System.Windows.Forms.Button()
       Me.btnBorrar = New System.Windows.Forms.Button()
       Me.Panel4 = New System.Windows.Forms.Panel()
-      Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.lblMensajeLector = New System.Windows.Forms.Label()
       Me.lblMensajeAnalisis = New System.Windows.Forms.Label()
       Me.TextBox1 = New System.Windows.Forms.TextBox()
+      Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.lblMensajeLector = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
-      Me.GroupBox4.SuspendLayout()
-      Me.GroupBox3.SuspendLayout()
-      Me.GroupBox2.SuspendLayout()
+      Me.gpbSB.SuspendLayout()
+      Me.gpbBDD.SuspendLayout()
+      Me.gpbParidad.SuspendLayout()
       Me.gpbBPS.SuspendLayout()
       Me.Panel4.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -114,6 +114,7 @@ Partial Class frmConfiguraLector
       'chkLectorDefault
       '
       Me.chkLectorDefault.AutoSize = True
+      Me.chkLectorDefault.Enabled = False
       Me.chkLectorDefault.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.chkLectorDefault.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.chkLectorDefault.Location = New System.Drawing.Point(464, 13)
@@ -127,31 +128,31 @@ Partial Class frmConfiguraLector
       '
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel2.Controls.Add(Me.GroupBox4)
-      Me.Panel2.Controls.Add(Me.GroupBox3)
-      Me.Panel2.Controls.Add(Me.GroupBox2)
+      Me.Panel2.Controls.Add(Me.gpbSB)
+      Me.Panel2.Controls.Add(Me.gpbBDD)
+      Me.Panel2.Controls.Add(Me.gpbParidad)
       Me.Panel2.Controls.Add(Me.gpbBPS)
-      Me.Panel2.Enabled = False
       Me.Panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Panel2.Location = New System.Drawing.Point(8, 111)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(616, 200)
       Me.Panel2.TabIndex = 1
       '
-      'GroupBox4
+      'gpbSB
       '
-      Me.GroupBox4.BackColor = System.Drawing.Color.Transparent
-      Me.GroupBox4.Controls.Add(Me.rdbStopB2)
-      Me.GroupBox4.Controls.Add(Me.rdbStopB15)
-      Me.GroupBox4.Controls.Add(Me.rdbStopB1)
-      Me.GroupBox4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.GroupBox4.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.GroupBox4.Location = New System.Drawing.Point(425, 12)
-      Me.GroupBox4.Name = "GroupBox4"
-      Me.GroupBox4.Size = New System.Drawing.Size(117, 115)
-      Me.GroupBox4.TabIndex = 3
-      Me.GroupBox4.TabStop = False
-      Me.GroupBox4.Text = "Bits de Parada"
+      Me.gpbSB.BackColor = System.Drawing.Color.Transparent
+      Me.gpbSB.Controls.Add(Me.rdbStopB2)
+      Me.gpbSB.Controls.Add(Me.rdbStopB15)
+      Me.gpbSB.Controls.Add(Me.rdbStopB1)
+      Me.gpbSB.Enabled = False
+      Me.gpbSB.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.gpbSB.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.gpbSB.Location = New System.Drawing.Point(425, 12)
+      Me.gpbSB.Name = "gpbSB"
+      Me.gpbSB.Size = New System.Drawing.Size(117, 115)
+      Me.gpbSB.TabIndex = 3
+      Me.gpbSB.TabStop = False
+      Me.gpbSB.Text = "Bits de Parada"
       '
       'rdbStopB2
       '
@@ -187,22 +188,23 @@ Partial Class frmConfiguraLector
       Me.rdbStopB1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
       Me.rdbStopB1.UseVisualStyleBackColor = True
       '
-      'GroupBox3
+      'gpbBDD
       '
-      Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
-      Me.GroupBox3.Controls.Add(Me.rdbBDD8)
-      Me.GroupBox3.Controls.Add(Me.rdbBDD7)
-      Me.GroupBox3.Controls.Add(Me.rdbBDD6)
-      Me.GroupBox3.Controls.Add(Me.rdbBDD5)
-      Me.GroupBox3.Controls.Add(Me.rdbBDD4)
-      Me.GroupBox3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.GroupBox3.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.GroupBox3.Location = New System.Drawing.Point(223, 12)
-      Me.GroupBox3.Name = "GroupBox3"
-      Me.GroupBox3.Size = New System.Drawing.Size(99, 181)
-      Me.GroupBox3.TabIndex = 2
-      Me.GroupBox3.TabStop = False
-      Me.GroupBox3.Text = "Bits de Datos"
+      Me.gpbBDD.BackColor = System.Drawing.Color.Transparent
+      Me.gpbBDD.Controls.Add(Me.rdbBDD8)
+      Me.gpbBDD.Controls.Add(Me.rdbBDD7)
+      Me.gpbBDD.Controls.Add(Me.rdbBDD6)
+      Me.gpbBDD.Controls.Add(Me.rdbBDD5)
+      Me.gpbBDD.Controls.Add(Me.rdbBDD4)
+      Me.gpbBDD.Enabled = False
+      Me.gpbBDD.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.gpbBDD.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.gpbBDD.Location = New System.Drawing.Point(223, 12)
+      Me.gpbBDD.Name = "gpbBDD"
+      Me.gpbBDD.Size = New System.Drawing.Size(99, 181)
+      Me.gpbBDD.TabIndex = 2
+      Me.gpbBDD.TabStop = False
+      Me.gpbBDD.Text = "Bits de Datos"
       '
       'rdbBDD8
       '
@@ -256,22 +258,23 @@ Partial Class frmConfiguraLector
       Me.rdbBDD4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
       Me.rdbBDD4.UseVisualStyleBackColor = True
       '
-      'GroupBox2
+      'gpbParidad
       '
-      Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-      Me.GroupBox2.Controls.Add(Me.rdbParidadSpace)
-      Me.GroupBox2.Controls.Add(Me.rdbParidadOdd)
-      Me.GroupBox2.Controls.Add(Me.rdbParidadNone)
-      Me.GroupBox2.Controls.Add(Me.rdbParidadMark)
-      Me.GroupBox2.Controls.Add(Me.rdbParidadEven)
-      Me.GroupBox2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.GroupBox2.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.GroupBox2.Location = New System.Drawing.Point(328, 12)
-      Me.GroupBox2.Name = "GroupBox2"
-      Me.GroupBox2.Size = New System.Drawing.Size(91, 181)
-      Me.GroupBox2.TabIndex = 1
-      Me.GroupBox2.TabStop = False
-      Me.GroupBox2.Text = "Paridad"
+      Me.gpbParidad.BackColor = System.Drawing.Color.Transparent
+      Me.gpbParidad.Controls.Add(Me.rdbParidadSpace)
+      Me.gpbParidad.Controls.Add(Me.rdbParidadOdd)
+      Me.gpbParidad.Controls.Add(Me.rdbParidadNone)
+      Me.gpbParidad.Controls.Add(Me.rdbParidadMark)
+      Me.gpbParidad.Controls.Add(Me.rdbParidadEven)
+      Me.gpbParidad.Enabled = False
+      Me.gpbParidad.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.gpbParidad.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.gpbParidad.Location = New System.Drawing.Point(328, 12)
+      Me.gpbParidad.Name = "gpbParidad"
+      Me.gpbParidad.Size = New System.Drawing.Size(91, 181)
+      Me.gpbParidad.TabIndex = 1
+      Me.gpbParidad.TabStop = False
+      Me.gpbParidad.Text = "Paridad"
       '
       'rdbParidadSpace
       '
@@ -340,6 +343,7 @@ Partial Class frmConfiguraLector
       Me.gpbBPS.Controls.Add(Me.rdbBPS600)
       Me.gpbBPS.Controls.Add(Me.rdbBPS300)
       Me.gpbBPS.Controls.Add(Me.rdbBPS110)
+      Me.gpbBPS.Enabled = False
       Me.gpbBPS.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.gpbBPS.ForeColor = System.Drawing.Color.MidnightBlue
       Me.gpbBPS.Location = New System.Drawing.Point(67, 12)
@@ -569,27 +573,6 @@ Partial Class frmConfiguraLector
       Me.Panel4.Size = New System.Drawing.Size(616, 38)
       Me.Panel4.TabIndex = 2
       '
-      'Panel3
-      '
-      Me.Panel3.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.lblMensajeLector)
-      Me.Panel3.Location = New System.Drawing.Point(12, 346)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(616, 33)
-      Me.Panel3.TabIndex = 81
-      '
-      'lblMensajeLector
-      '
-      Me.lblMensajeLector.AutoSize = True
-      Me.lblMensajeLector.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeLector.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeLector.Location = New System.Drawing.Point(3, 9)
-      Me.lblMensajeLector.Name = "lblMensajeLector"
-      Me.lblMensajeLector.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeLector.TabIndex = 71
-      Me.lblMensajeLector.Text = "Mensaje:"
-      '
       'lblMensajeAnalisis
       '
       Me.lblMensajeAnalisis.AutoSize = True
@@ -608,11 +591,32 @@ Partial Class frmConfiguraLector
       Me.TextBox1.Size = New System.Drawing.Size(311, 20)
       Me.TextBox1.TabIndex = 3
       '
+      'Panel3
+      '
+      Me.Panel3.AutoSize = True
+      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.lblMensajeLector)
+      Me.Panel3.Location = New System.Drawing.Point(8, 346)
+      Me.Panel3.Name = "Panel3"
+      Me.Panel3.Size = New System.Drawing.Size(616, 30)
+      Me.Panel3.TabIndex = 75
+      '
+      'lblMensajeLector
+      '
+      Me.lblMensajeLector.AutoSize = True
+      Me.lblMensajeLector.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMensajeLector.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+      Me.lblMensajeLector.Location = New System.Drawing.Point(3, 7)
+      Me.lblMensajeLector.Name = "lblMensajeLector"
+      Me.lblMensajeLector.Size = New System.Drawing.Size(58, 13)
+      Me.lblMensajeLector.TabIndex = 72
+      Me.lblMensajeLector.Text = "Mensaje:"
+      '
       'frmConfiguraLector
       '
-      Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-      Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(632, 385)
+      Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+      Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+      Me.ClientSize = New System.Drawing.Size(632, 379)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnCancelaCL)
       Me.Controls.Add(Me.btnAceptarCL)
@@ -620,30 +624,32 @@ Partial Class frmConfiguraLector
       Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.Panel1)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+      Me.MaximizeBox = False
       Me.Name = "frmConfiguraLector"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Configura Lector"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
-      Me.GroupBox4.ResumeLayout(False)
-      Me.GroupBox3.ResumeLayout(False)
-      Me.GroupBox2.ResumeLayout(False)
+      Me.gpbSB.ResumeLayout(False)
+      Me.gpbBDD.ResumeLayout(False)
+      Me.gpbParidad.ResumeLayout(False)
       Me.gpbBPS.ResumeLayout(False)
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
       Me.ResumeLayout(False)
+      Me.PerformLayout()
 
    End Sub
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents lblNombreLector As System.Windows.Forms.Label
    Friend WithEvents chkLectorDefault As System.Windows.Forms.CheckBox
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-   Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-   Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-   Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+   Friend WithEvents gpbSB As System.Windows.Forms.GroupBox
+   Friend WithEvents gpbBDD As System.Windows.Forms.GroupBox
+   Friend WithEvents gpbParidad As System.Windows.Forms.GroupBox
    Friend WithEvents gpbBPS As System.Windows.Forms.GroupBox
    Friend WithEvents btnAceptarCL As System.Windows.Forms.Button
    Friend WithEvents btnCancelaCL As System.Windows.Forms.Button
@@ -658,8 +664,6 @@ Partial Class frmConfiguraLector
    Friend WithEvents btnEditar As System.Windows.Forms.Button
    Friend WithEvents btnBorrar As System.Windows.Forms.Button
    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
-   Friend WithEvents lblMensajeLector As System.Windows.Forms.Label
    Friend WithEvents rdbStopB15 As System.Windows.Forms.RadioButton
    Friend WithEvents rdbStopB1 As System.Windows.Forms.RadioButton
    Friend WithEvents rdbBDD8 As System.Windows.Forms.RadioButton
@@ -684,4 +688,6 @@ Partial Class frmConfiguraLector
    Friend WithEvents lblMensajeAnalisis As System.Windows.Forms.Label
    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
    Friend WithEvents txtNombreLector As System.Windows.Forms.TextBox
+   Friend WithEvents Panel3 As System.Windows.Forms.Panel
+   Friend WithEvents lblMensajeLector As System.Windows.Forms.Label
 End Class

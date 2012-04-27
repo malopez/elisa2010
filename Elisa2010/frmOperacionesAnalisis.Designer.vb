@@ -272,14 +272,15 @@ Partial Class frmOperacionesAnalisis
       '
       'frmOperacionesAnalisis
       '
-      Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-      Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+      Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+      Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(635, 244)
       Me.Controls.Add(Me.btnCancelarAnalisis)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel3)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+      Me.MaximizeBox = False
       Me.Name = "frmOperacionesAnalisis"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Operaciones sobre análisis"
