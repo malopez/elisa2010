@@ -273,7 +273,7 @@ Module mdlOperaciones
 
          excelApp.Workbooks.Open(rutaArchivo)
          hojaExcel = excelApp.Worksheets(1)
-         excelApp.Visible = True
+         'excelApp.Visible = True
          Try
             For i = 0 To 7
                columna = obtenLetra(i)
@@ -290,9 +290,12 @@ Module mdlOperaciones
                resultado &= vbCrLf
             Next
          Catch ex As Exception
-            MessageBox.Show("El archivo no contiene el formato esperado, defina un archivo válido.")
+            frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
+            frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR:" & ex.Message & " " & ex.GetType.ToString
+            frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
+            frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
          End Try
-
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Green
          frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "Nombre del archivo abierto: " & nombreArchivo
          frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
          frmAbrirArchivoExistente.txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
@@ -301,15 +304,23 @@ Module mdlOperaciones
          frmAbrirArchivoExistente.txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
          frmAbrirArchivoExistente.txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
          frmAbrirArchivoExistente.txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
-
          excelApp.ActiveWorkbook.Close()
-
          'Libera la aplicacion Excel
          releaseObject(excelApp)
+         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = False
+         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = True
       Catch ex As FormatException
-         MessageBox.Show("Error al cargar el archivo de datos, verifique que el formato tenga el formato correcto.")
-      End Try
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
+         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
+      Catch ex As Exception
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
+         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
+         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
 
+      End Try
    End Sub
 
    '###########################################################

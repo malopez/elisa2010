@@ -5,23 +5,67 @@
 
    Private Sub frmElisaBiovetsa_Load(sender As Object, e As System.EventArgs) Handles Me.Load
       m_blnConfirmarSalir = c_mnuConfirmarSalir
-      mnuConfirmarSalir.Checked = m_blnConfirmarSalir
+      tsmConfirmarSalir.Checked = m_blnConfirmarSalir
    End Sub
 
-   'En el menu de Opciones configura el check de salir confirmando la acción o solo abandonar el programa
-   Private Sub mnuConfirmarSalir_Click(sender As System.Object, e As System.EventArgs) Handles mnuConfirmarSalir.Click
-      mnuConfirmarSalir.Checked = Not (mnuConfirmarSalir.Checked)
-      m_blnConfirmarSalir = mnuConfirmarSalir.Checked
+
+   '###################################
+   '##    Opcion de Analisis        ###
+   '###################################
+   Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
+      frmRegistraNuevoAnalisis.MdiParent = Me
+      frmRegistraNuevoAnalisis.Show()
+      'Comentado el 12-Abril-2012 para que la ventana de resultados se abra cuando se solicita calcular resultados
+      'Utilizando el boton de obtener resultados
+      frmSalidaDatos.MdiParent = Me
+      'frmSalidaDatos.Show()
+   End Sub
+
+   Private Sub tsmAbrirArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles tsmAbrirArchivoExistente.Click
+      frmAbrirArchivoExistente.MdiParent = Me
+      frmAbrirArchivoExistente.Show()
+   End Sub
+
+   Private Sub tsmOperacionesAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles tsmOperacionesAnalisis.Click
+      frmOperacionesAnalisis.MdiParent = Me
+      frmOperacionesAnalisis.Show()
    End Sub
 
    'Permite salir de la aplicacion haciendo clik desde el menu de Analisis
+   Private Sub tsmSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsmSalir.Click
+      Me.Close()
+   End Sub
+
+   '###################################
+   '##    Opcion de Acerca de       ###
+   '###################################
+
+   Private Sub mnuAcercaDe_Click(sender As System.Object, e As System.EventArgs) Handles mnuAcercaDe.Click
+      frmAcercaDe.MdiParent = Me
+      frmAcercaDe.Show()
+   End Sub
+
+   '###################################
+   '##    Opcion de Salir           ###
+   '###################################
+   'Permite salir de la aplicacion haciendo click desde el menu principal
    Private Sub mnuSalir_Click(sender As System.Object, e As System.EventArgs) Handles mnuSalir.Click
       Me.Close()
    End Sub
 
-   'Permite salir de la aplicacion haciendo click desde el menu principal
-   Private Sub mnuMainSalir_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainSalir.Click
-      Me.Close()
+   '###################################
+   '##    Opcion de Opciones        ###
+   '###################################
+
+   Private Sub tsmConfigurarLector_Click(sender As System.Object, e As System.EventArgs) Handles tsmConfigurarLector.Click
+      frmConfiguraLector.MdiParent = Me
+      frmConfiguraLector.Show()
+   End Sub
+
+   'En el menu de Opciones configura el check de salir confirmando la acción o solo abandonar el programa
+   Private Sub tsmConfirmarSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsmConfirmarSalir.Click
+      tsmConfirmarSalir.Checked = Not (tsmConfirmarSalir.Checked)
+      m_blnConfirmarSalir = tsmConfirmarSalir.Checked
    End Sub
 
    'Aparece la ventana de mensaje para preguntar si desea salir de la aplicación, solo se mostrará cuando se configura
@@ -35,52 +79,25 @@
       End If
    End Sub
 
-   'Permite abrir en forma nomodal configurar lector del menu de Opciones
-   Private Sub ConfigurarLectorToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConfigurarLectorToolStripMenuItem.Click
-      'frmConfLector.MdiParent = Me
-      ' frmConfLector.Show()
-   End Sub
-
    'Coloca el timer clock indicando la hora en la ventana principal
    Private Sub tmrClock_Tick(sender As System.Object, e As System.EventArgs) Handles tmrClock.Tick
       lblClock.Text = CStr(TimeOfDay)
    End Sub
 
-   Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
-      frmRegistraNuevoAnalisis.MdiParent = Me
-      frmRegistraNuevoAnalisis.Show()
-      'Comentado el 12-Abril-2012 para que la ventana de resultados se abra cuando se solicita calcular resultados
-      'Utilizando el boton de obtener resultados
-      frmSalidaDatos.MdiParent = Me
-      'frmSalidaDatos.Show()
-   End Sub
-
-   Private Sub mnuMainImprimir_Click(sender As System.Object, e As System.EventArgs) Handles mnuMainImprimir.Click
-
-   End Sub
-
-   Private Sub tbbConfiguraLector_Click(sender As System.Object, e As System.EventArgs) Handles tbbConfiguraLector.Click
-      ' frmConfLector.MdiParent = Me
-      'frmConfLector.Show()
-   End Sub
-
-   Private Sub ListarAnálisisDisponiblesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ListarAnálisisDisponiblesToolStripMenuItem.Click
-      frmOperacionesAnalisis.MdiParent = Me
-      frmOperacionesAnalisis.Show()
-   End Sub
-
-   Private Sub tbbOpciones_Click(sender As System.Object, e As System.EventArgs) Handles tbbOpciones.Click
-      frmOperacionesAnalisis.MdiParent = Me
-      frmOperacionesAnalisis.Show()
-   End Sub
-
-   Private Sub AcercaDeToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AcercaDeToolStripMenuItem.Click
-      frmAcercaDe.MdiParent = Me
-      frmAcercaDe.Show()
-   End Sub
-
-   Private Sub AbrirArchivoExistenteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AbrirArchivoExistenteToolStripMenuItem.Click
+   '###################################
+   '##    Menu de iconitos          ###
+   '###################################
+   Private Sub tsbAbrirExcel_Click(sender As System.Object, e As System.EventArgs) Handles tsbAbrirExcel.Click
       frmAbrirArchivoExistente.MdiParent = Me
       frmAbrirArchivoExistente.Show()
+   End Sub
+
+   Private Sub tsbConfigurarLector_Click(sender As System.Object, e As System.EventArgs) Handles tsbConfigurarLector.Click
+      frmConfiguraLector.MdiParent = Me
+      frmConfiguraLector.Show()
+   End Sub
+
+   Private Sub tsbSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsbSalir.Click
+      Me.Close()
    End Sub
 End Class

@@ -27,31 +27,35 @@ Partial Class frmElisaBiovetsa
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
-      Me.AbrirArchivoExistenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-      Me.ListarAnálisisDisponiblesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmAbrirArchivoExistente = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmConfigurarLector = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.mnuImprimir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.mnuAcercaDe = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.mnuMainOpciones = New System.Windows.Forms.ToolStripMenuItem()
-      Me.ConfigurarLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-      Me.mnuConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.mnuMainImprimir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-      Me.mnuMainSalir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tbbToolMenu = New System.Windows.Forms.ToolStrip()
-      Me.tbbAbrir = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-      Me.tbbOpciones = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-      Me.tbbConfiguraLector = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
       Me.lblClock = New System.Windows.Forms.Label()
+      Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+      Me.tsbAbrirExcel = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tsbConfigurarLector = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
       Me.mnuMainMenu.SuspendLayout()
-      Me.tbbToolMenu.SuspendLayout()
+      Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
       '
       'mnuMainMenu
       '
-      Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMainAnalisis, Me.mnuMainOpciones, Me.mnuMainImprimir, Me.AcercaDeToolStripMenuItem, Me.mnuMainSalir})
+      Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMainAnalisis, Me.mnuOpciones, Me.mnuImprimir, Me.mnuAcercaDe, Me.mnuSalir})
       Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
       Me.mnuMainMenu.Name = "mnuMainMenu"
       Me.mnuMainMenu.Size = New System.Drawing.Size(1008, 24)
@@ -60,7 +64,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.AbrirArchivoExistenteToolStripMenuItem, Me.ListarAnálisisDisponiblesToolStripMenuItem, Me.mnuSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
@@ -74,121 +78,68 @@ Partial Class frmElisaBiovetsa
       Me.mnuNuevo.Text = "&Nuevo"
       Me.mnuNuevo.ToolTipText = "Realice nuevo análisis"
       '
-      'AbrirArchivoExistenteToolStripMenuItem
+      'tsmAbrirArchivoExistente
       '
-      Me.AbrirArchivoExistenteToolStripMenuItem.Name = "AbrirArchivoExistenteToolStripMenuItem"
-      Me.AbrirArchivoExistenteToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.AbrirArchivoExistenteToolStripMenuItem.Text = "Abrir archivo existente"
+      Me.tsmAbrirArchivoExistente.Name = "tsmAbrirArchivoExistente"
+      Me.tsmAbrirArchivoExistente.Size = New System.Drawing.Size(213, 22)
+      Me.tsmAbrirArchivoExistente.Text = "Abrir archivo existente"
       '
-      'ListarAnálisisDisponiblesToolStripMenuItem
+      'tsmOperacionesAnalisis
       '
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Name = "ListarAnálisisDisponiblesToolStripMenuItem"
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.ListarAnálisisDisponiblesToolStripMenuItem.Text = "&Operaciones sobre análisis"
+      Me.tsmOperacionesAnalisis.Name = "tsmOperacionesAnalisis"
+      Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(213, 22)
+      Me.tsmOperacionesAnalisis.Text = "&Operaciones sobre análisis"
+      '
+      'tsmSalir
+      '
+      Me.tsmSalir.Name = "tsmSalir"
+      Me.tsmSalir.Size = New System.Drawing.Size(213, 22)
+      Me.tsmSalir.Text = "&Salir"
+      Me.tsmSalir.ToolTipText = "Abandone la aplicación"
+      '
+      'mnuOpciones
+      '
+      Me.mnuOpciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConfigurarLector, Me.tsmConfirmarSalir})
+      Me.mnuOpciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.mnuOpciones.Name = "mnuOpciones"
+      Me.mnuOpciones.Size = New System.Drawing.Size(69, 20)
+      Me.mnuOpciones.Text = "&Opciones"
+      '
+      'tsmConfigurarLector
+      '
+      Me.tsmConfigurarLector.Name = "tsmConfigurarLector"
+      Me.tsmConfigurarLector.Size = New System.Drawing.Size(199, 22)
+      Me.tsmConfigurarLector.Text = "&Configurar Lector"
+      '
+      'tsmConfirmarSalir
+      '
+      Me.tsmConfirmarSalir.Checked = True
+      Me.tsmConfirmarSalir.CheckState = System.Windows.Forms.CheckState.Checked
+      Me.tsmConfirmarSalir.Name = "tsmConfirmarSalir"
+      Me.tsmConfirmarSalir.Size = New System.Drawing.Size(199, 22)
+      Me.tsmConfirmarSalir.Text = "Co&nfirmar antes de salir"
+      '
+      'mnuImprimir
+      '
+      Me.mnuImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.mnuImprimir.Name = "mnuImprimir"
+      Me.mnuImprimir.Size = New System.Drawing.Size(65, 20)
+      Me.mnuImprimir.Text = "&Imprimir"
+      '
+      'mnuAcercaDe
+      '
+      Me.mnuAcercaDe.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.mnuAcercaDe.Name = "mnuAcercaDe"
+      Me.mnuAcercaDe.Size = New System.Drawing.Size(71, 20)
+      Me.mnuAcercaDe.Text = "Acerca de"
       '
       'mnuSalir
       '
+      Me.mnuSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuSalir.Name = "mnuSalir"
-      Me.mnuSalir.Size = New System.Drawing.Size(213, 22)
+      Me.mnuSalir.Size = New System.Drawing.Size(41, 20)
       Me.mnuSalir.Text = "&Salir"
-      Me.mnuSalir.ToolTipText = "Abandone la aplicación"
-      '
-      'mnuMainOpciones
-      '
-      Me.mnuMainOpciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigurarLectorToolStripMenuItem, Me.mnuConfirmarSalir})
-      Me.mnuMainOpciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.mnuMainOpciones.Name = "mnuMainOpciones"
-      Me.mnuMainOpciones.Size = New System.Drawing.Size(69, 20)
-      Me.mnuMainOpciones.Text = "&Opciones"
-      '
-      'ConfigurarLectorToolStripMenuItem
-      '
-      Me.ConfigurarLectorToolStripMenuItem.Name = "ConfigurarLectorToolStripMenuItem"
-      Me.ConfigurarLectorToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
-      Me.ConfigurarLectorToolStripMenuItem.Text = "&Configurar Lector"
-      '
-      'mnuConfirmarSalir
-      '
-      Me.mnuConfirmarSalir.Checked = True
-      Me.mnuConfirmarSalir.CheckState = System.Windows.Forms.CheckState.Checked
-      Me.mnuConfirmarSalir.Name = "mnuConfirmarSalir"
-      Me.mnuConfirmarSalir.Size = New System.Drawing.Size(199, 22)
-      Me.mnuConfirmarSalir.Text = "Co&nfirmar antes de salir"
-      '
-      'mnuMainImprimir
-      '
-      Me.mnuMainImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.mnuMainImprimir.Name = "mnuMainImprimir"
-      Me.mnuMainImprimir.Size = New System.Drawing.Size(65, 20)
-      Me.mnuMainImprimir.Text = "&Imprimir"
-      '
-      'AcercaDeToolStripMenuItem
-      '
-      Me.AcercaDeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
-      Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
-      Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
-      '
-      'mnuMainSalir
-      '
-      Me.mnuMainSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.mnuMainSalir.Name = "mnuMainSalir"
-      Me.mnuMainSalir.Size = New System.Drawing.Size(41, 20)
-      Me.mnuMainSalir.Text = "&Salir"
-      Me.mnuMainSalir.ToolTipText = "Salir de la aplicación"
-      '
-      'tbbToolMenu
-      '
-      Me.tbbToolMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tbbAbrir, Me.ToolStripSeparator2, Me.tbbOpciones, Me.ToolStripSeparator3, Me.tbbConfiguraLector, Me.ToolStripSeparator4})
-      Me.tbbToolMenu.Location = New System.Drawing.Point(0, 24)
-      Me.tbbToolMenu.Name = "tbbToolMenu"
-      Me.tbbToolMenu.Size = New System.Drawing.Size(1008, 25)
-      Me.tbbToolMenu.TabIndex = 1
-      Me.tbbToolMenu.Text = "ToolStrip1"
-      '
-      'tbbAbrir
-      '
-      Me.tbbAbrir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tbbAbrir.Image = CType(resources.GetObject("tbbAbrir.Image"), System.Drawing.Image)
-      Me.tbbAbrir.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tbbAbrir.Name = "tbbAbrir"
-      Me.tbbAbrir.Size = New System.Drawing.Size(23, 22)
-      Me.tbbAbrir.Text = "Abrir "
-      Me.tbbAbrir.ToolTipText = "Abrir análisis existente"
-      '
-      'ToolStripSeparator2
-      '
-      Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-      Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-      '
-      'tbbOpciones
-      '
-      Me.tbbOpciones.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tbbOpciones.Image = CType(resources.GetObject("tbbOpciones.Image"), System.Drawing.Image)
-      Me.tbbOpciones.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tbbOpciones.Name = "tbbOpciones"
-      Me.tbbOpciones.Size = New System.Drawing.Size(23, 22)
-      Me.tbbOpciones.Text = "Opciones"
-      Me.tbbOpciones.ToolTipText = "Opciones de configuración"
-      '
-      'ToolStripSeparator3
-      '
-      Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-      Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-      '
-      'tbbConfiguraLector
-      '
-      Me.tbbConfiguraLector.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tbbConfiguraLector.Image = CType(resources.GetObject("tbbConfiguraLector.Image"), System.Drawing.Image)
-      Me.tbbConfiguraLector.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tbbConfiguraLector.Name = "tbbConfiguraLector"
-      Me.tbbConfiguraLector.Size = New System.Drawing.Size(23, 22)
-      Me.tbbConfiguraLector.Text = "Configurar el lector de ELISA"
-      '
-      'ToolStripSeparator4
-      '
-      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+      Me.mnuSalir.ToolTipText = "Salir de la aplicación"
       '
       'tmrClock
       '
@@ -207,6 +158,83 @@ Partial Class frmElisaBiovetsa
       Me.lblClock.Text = "Horario"
       Me.lblClock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
       '
+      'ToolStrip1
+      '
+      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAbrirExcel, Me.ToolStripSeparator1, Me.tsbConfigurarLector, Me.ToolStripSeparator2, Me.tsbReporte, Me.ToolStripSeparator3, Me.tsbImprimir, Me.ToolStripSeparator4, Me.tsbSalir, Me.ToolStripSeparator5})
+      Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
+      Me.ToolStrip1.Name = "ToolStrip1"
+      Me.ToolStrip1.Size = New System.Drawing.Size(1008, 25)
+      Me.ToolStrip1.TabIndex = 4
+      Me.ToolStrip1.Text = "ToolStrip1"
+      '
+      'tsbAbrirExcel
+      '
+      Me.tsbAbrirExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbAbrirExcel.Image = CType(resources.GetObject("tsbAbrirExcel.Image"), System.Drawing.Image)
+      Me.tsbAbrirExcel.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbAbrirExcel.Name = "tsbAbrirExcel"
+      Me.tsbAbrirExcel.Size = New System.Drawing.Size(23, 22)
+      Me.tsbAbrirExcel.ToolTipText = "Abrir datos desde excel"
+      '
+      'ToolStripSeparator1
+      '
+      Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+      Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+      '
+      'tsbConfigurarLector
+      '
+      Me.tsbConfigurarLector.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbConfigurarLector.Image = CType(resources.GetObject("tsbConfigurarLector.Image"), System.Drawing.Image)
+      Me.tsbConfigurarLector.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbConfigurarLector.Name = "tsbConfigurarLector"
+      Me.tsbConfigurarLector.Size = New System.Drawing.Size(23, 22)
+      '
+      'ToolStripSeparator2
+      '
+      Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+      Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+      '
+      'tsbSalir
+      '
+      Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
+      Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbSalir.Name = "tsbSalir"
+      Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
+      Me.tsbSalir.ToolTipText = "Salir de la aplicación"
+      '
+      'ToolStripSeparator3
+      '
+      Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+      Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+      '
+      'tsbReporte
+      '
+      Me.tsbReporte.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbReporte.Image = CType(resources.GetObject("tsbReporte.Image"), System.Drawing.Image)
+      Me.tsbReporte.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbReporte.Name = "tsbReporte"
+      Me.tsbReporte.Size = New System.Drawing.Size(23, 22)
+      '
+      'ToolStripSeparator4
+      '
+      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+      '
+      'tsbImprimir
+      '
+      Me.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbImprimir.Image = CType(resources.GetObject("tsbImprimir.Image"), System.Drawing.Image)
+      Me.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbImprimir.Name = "tsbImprimir"
+      Me.tsbImprimir.Size = New System.Drawing.Size(23, 22)
+      Me.tsbImprimir.Text = "ToolStripButton1"
+      '
+      'ToolStripSeparator5
+      '
+      Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+      Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
+      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -214,8 +242,8 @@ Partial Class frmElisaBiovetsa
       Me.BackColor = System.Drawing.SystemColors.Window
       Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
       Me.ClientSize = New System.Drawing.Size(1008, 742)
+      Me.Controls.Add(Me.ToolStrip1)
       Me.Controls.Add(Me.lblClock)
-      Me.Controls.Add(Me.tbbToolMenu)
       Me.Controls.Add(Me.mnuMainMenu)
       Me.ForeColor = System.Drawing.SystemColors.ButtonHighlight
       Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -228,8 +256,8 @@ Partial Class frmElisaBiovetsa
       Me.TransparencyKey = System.Drawing.SystemColors.ControlLightLight
       Me.mnuMainMenu.ResumeLayout(False)
       Me.mnuMainMenu.PerformLayout()
-      Me.tbbToolMenu.ResumeLayout(False)
-      Me.tbbToolMenu.PerformLayout()
+      Me.ToolStrip1.ResumeLayout(False)
+      Me.ToolStrip1.PerformLayout()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -237,23 +265,27 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents mnuMainMenu As System.Windows.Forms.MenuStrip
    Friend WithEvents mnuMainAnalisis As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuNuevo As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmSalir As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents mnuOpciones As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmConfigurarLector As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents mnuImprimir As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuSalir As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents mnuMainOpciones As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents ConfigurarLectorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents mnuMainImprimir As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents mnuMainSalir As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tbbToolMenu As System.Windows.Forms.ToolStrip
-   Friend WithEvents tbbAbrir As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents tbbOpciones As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents tmrClock As System.Windows.Forms.Timer
    Friend WithEvents lblClock As System.Windows.Forms.Label
-   Friend WithEvents mnuConfirmarSalir As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tbbConfiguraLector As System.Windows.Forms.ToolStripButton
+   Friend WithEvents tsmConfirmarSalir As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmOperacionesAnalisis As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents mnuAcercaDe As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmAbrirArchivoExistente As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+   Friend WithEvents tsbAbrirExcel As System.Windows.Forms.ToolStripButton
+   Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents tsbConfigurarLector As System.Windows.Forms.ToolStripButton
+   Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
+   Friend WithEvents tsbReporte As System.Windows.Forms.ToolStripButton
+   Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents ListarAnálisisDisponiblesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents AcercaDeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents AbrirArchivoExistenteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
 
 End Class

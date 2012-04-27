@@ -12,7 +12,7 @@ Public Class frmOperacionesAnalisis
       oConexion = New MySqlConnection
       'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
       oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
-
+      lblMensajeAnalisis.Text = ""
       Dim dbConsulta As String = ""
       Dim nombreTabla As String = ""
       dbConsulta = "SELECT * FROM analisis"
@@ -26,6 +26,7 @@ Public Class frmOperacionesAnalisis
 
    Private Sub llenaDataSet(ByRef dbConsulta As String, ByRef nombreTabla As String)
       Try
+         lblMensajeAnalisis.Text = ""
          Dim oConexion As New MySqlConnection
          'oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
          oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
@@ -51,6 +52,7 @@ Public Class frmOperacionesAnalisis
 
    Private Sub cargarDatosAnalisis()
       Dim oDataRow As DataRow
+      lblMensajeAnalisis.Text = ""
       'Toma la primer fila de la tabla
       oDataRow = oDataSet.Tables("analisis").Rows(Me.iposicFilaActual)
       Me.txtClaveAnalisis.Text = oDataRow("id_analysis")
@@ -61,8 +63,10 @@ Public Class frmOperacionesAnalisis
    End Sub
 
    Private Sub btnHaciaAdelante_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAdelante.Click
+      lblMensajeAnalisis.Text = ""
       If Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1) Then
-         MessageBox.Show("Usted se encuentra en el último registro.")
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "Mensaje: Usted se encuentra en el último registro."
       Else
          Me.iposicFilaActual += 1
          Me.cargarDatosAnalisis()
@@ -70,14 +74,17 @@ Public Class frmOperacionesAnalisis
    End Sub
 
    Private Sub btnInicio_Click(sender As System.Object, e As System.EventArgs) Handles btnInicio.Click
+      lblMensajeAnalisis.Text = ""
       'Enviar la posicion del registro al 1er. elemento
       Me.iposicFilaActual = 0
       Me.cargarDatosAnalisis()
    End Sub
 
    Private Sub btnHaciaAtras_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAtras.Click
+      lblMensajeAnalisis.Text = ""
       If Me.iposicFilaActual = 0 Then
-         MessageBox.Show("Usted se encuentra en el primer registro.")
+         lblMensajeAnalisis.ForeColor = System.Drawing.Color.Red
+         lblMensajeAnalisis.Text = "Mensaje: Usted se encuentra en el primer registro."
       Else
          'Disminuir el marcador del registro y actualizar en pantalla con los datos del registro actual
          Me.iposicFilaActual -= 1
@@ -86,6 +93,7 @@ Public Class frmOperacionesAnalisis
    End Sub
 
    Private Sub btnFin_Click(sender As System.Object, e As System.EventArgs) Handles btnFin.Click
+      lblMensajeAnalisis.Text = ""
       'Ira l ultimo registro colocando la variable al no. máximo de datos en la tabla menos 1 porque las posiciones comienzan en cero
       Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1)
       Me.cargarDatosAnalisis()
@@ -93,6 +101,7 @@ Public Class frmOperacionesAnalisis
 
 
    Private Sub btnGuardaAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaAnalisis.Click
+      lblMensajeAnalisis.Text = ""
       Try
          'Crear la conexion a la BD
          Dim oConexion As MySqlConnection
@@ -148,6 +157,7 @@ Public Class frmOperacionesAnalisis
    Private Sub btnInsAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnInsAnalisis.Click
       txtClaveAnalisis.Text = ""
       txtNombreAnalisis.Text = ""
+      lblMensajeAnalisis.Text = ""
       txtClaveAnalisis.ReadOnly = False
       txtNombreAnalisis.ReadOnly = False
       btnInicio.Enabled = False
@@ -164,6 +174,7 @@ Public Class frmOperacionesAnalisis
 
 
    Private Sub btnDelAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnDelAnalisis.Click
+      lblMensajeAnalisis.Text = ""
       Try
          'Crear la conexion a la BD
          Dim oConexion As MySqlConnection
@@ -207,6 +218,7 @@ Public Class frmOperacionesAnalisis
    End Sub
 
    Private Sub btnUpdAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnUpdAnalisis.Click
+      lblMensajeAnalisis.Text = ""
       Dim resultado As Integer
       Try
          txtNombreAnalisis.ReadOnly = False
@@ -256,6 +268,7 @@ Public Class frmOperacionesAnalisis
 
    Private Sub btnBuscaAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaAnalisis.Click
       txtClaveAnalisis.ReadOnly = False
+      lblMensajeAnalisis.Text = ""
       Try
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
@@ -303,6 +316,7 @@ Public Class frmOperacionesAnalisis
 
    Private Sub txtClaveAnalisis_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtClaveAnalisis.TextChanged
       txtNombreAnalisis.Text = ""
+      lblMensajeAnalisis.Text = ""
    End Sub
 
 

@@ -88,16 +88,22 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbrirArchivoExistente.Designer.vb">
-      <DependentUpon>AbrirArchivoExistente.vb</DependentUpon>
+    <Compile Include="frmAbrirArchivoExistente.Designer.vb">
+      <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
     </Compile>
-    <Compile Include="AbrirArchivoExistente.vb">
+    <Compile Include="frmAbrirArchivoExistente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="elisasandboxDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfiguraLector.Designer.vb">
+      <DependentUpon>frmConfiguraLector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfiguraLector.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
@@ -148,8 +154,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AbrirArchivoExistente.resx">
-      <DependentUpon>AbrirArchivoExistente.vb</DependentUpon>
+    <EmbeddedResource Include="frmAbrirArchivoExistente.resx">
+      <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfiguraLector.resx">
+      <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>

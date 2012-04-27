@@ -54,16 +54,16 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
-      Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
-      Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo1 = New System.Windows.Forms.Label()
-      Me.txtCN2Valor2 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo2 = New System.Windows.Forms.Label()
-      Me.txtCN1Valor1 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo3 = New System.Windows.Forms.Label()
-      Me.txtCN1Letra1 = New System.Windows.Forms.TextBox()
-      Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
+      Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
+      Me.txtCN1Letra1 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo3 = New System.Windows.Forms.Label()
+      Me.txtCN1Valor1 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo2 = New System.Windows.Forms.Label()
+      Me.txtCN2Valor2 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo1 = New System.Windows.Forms.Label()
+      Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
+      Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -75,11 +75,11 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.lblNoCaso.AutoSize = True
       Me.lblNoCaso.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-      Me.lblNoCaso.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNoCaso.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoCaso.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCaso.Location = New System.Drawing.Point(6, 29)
+      Me.lblNoCaso.Location = New System.Drawing.Point(7, 23)
       Me.lblNoCaso.Name = "lblNoCaso"
-      Me.lblNoCaso.Size = New System.Drawing.Size(99, 15)
+      Me.lblNoCaso.Size = New System.Drawing.Size(109, 16)
       Me.lblNoCaso.TabIndex = 1
       Me.lblNoCaso.Text = "Número de caso:"
       '
@@ -87,11 +87,11 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.lblNombreCliente.AutoSize = True
       Me.lblNombreCliente.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-      Me.lblNombreCliente.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreCliente.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreCliente.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNombreCliente.Location = New System.Drawing.Point(6, 56)
+      Me.lblNombreCliente.Location = New System.Drawing.Point(7, 60)
       Me.lblNombreCliente.Name = "lblNombreCliente"
-      Me.lblNombreCliente.Size = New System.Drawing.Size(114, 15)
+      Me.lblNombreCliente.Size = New System.Drawing.Size(125, 16)
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
       '
@@ -99,11 +99,11 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.lblNombreAnalisis.AutoSize = True
       Me.lblNombreAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-      Me.lblNombreAnalisis.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreAnalisis.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreAnalisis.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNombreAnalisis.Location = New System.Drawing.Point(7, 83)
+      Me.lblNombreAnalisis.Location = New System.Drawing.Point(7, 96)
       Me.lblNombreAnalisis.Name = "lblNombreAnalisis"
-      Me.lblNombreAnalisis.Size = New System.Drawing.Size(116, 15)
+      Me.lblNombreAnalisis.Size = New System.Drawing.Size(126, 16)
       Me.lblNombreAnalisis.TabIndex = 6
       Me.lblNombreAnalisis.Text = "Nombre del análisis:"
       '
@@ -116,17 +116,17 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnDefinirControlesPN.BackColor = System.Drawing.SystemColors.Control
       Me.btnDefinirControlesPN.Enabled = False
-      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(428, 32)
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(472, 32)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(113, 23)
-      Me.btnDefinirControlesPN.TabIndex = 6
+      Me.btnDefinirControlesPN.TabIndex = 5
       Me.btnDefinirControlesPN.Text = "Definir Controles"
       Me.btnDefinirControlesPN.UseVisualStyleBackColor = False
       '
       'txtDatosRecibidos
       '
       Me.txtDatosRecibidos.BackColor = System.Drawing.Color.White
-      Me.txtDatosRecibidos.Location = New System.Drawing.Point(4, 164)
+      Me.txtDatosRecibidos.Location = New System.Drawing.Point(4, 189)
       Me.txtDatosRecibidos.Multiline = True
       Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
       Me.txtDatosRecibidos.ReadOnly = True
@@ -138,8 +138,8 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.txtCP3Valor3.Location = New System.Drawing.Point(78, 77)
       Me.txtCP3Valor3.Name = "txtCP3Valor3"
-      Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 21)
-      Me.txtCP3Valor3.TabIndex = 12
+      Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP3Valor3.TabIndex = 11
       '
       'lblCPNo1
       '
@@ -147,7 +147,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblCPNo1.ForeColor = System.Drawing.Color.MidnightBlue
       Me.lblCPNo1.Location = New System.Drawing.Point(5, 28)
       Me.lblCPNo1.Name = "lblCPNo1"
-      Me.lblCPNo1.Size = New System.Drawing.Size(35, 15)
+      Me.lblCPNo1.Size = New System.Drawing.Size(38, 16)
       Me.lblCPNo1.TabIndex = 22
       Me.lblCPNo1.Text = "No. 1"
       '
@@ -155,8 +155,8 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.txtCP3Letra3.Location = New System.Drawing.Point(46, 77)
       Me.txtCP3Letra3.Name = "txtCP3Letra3"
-      Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 21)
-      Me.txtCP3Letra3.TabIndex = 11
+      Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP3Letra3.TabIndex = 10
       '
       'lblCPNo2
       '
@@ -164,7 +164,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblCPNo2.ForeColor = System.Drawing.Color.MidnightBlue
       Me.lblCPNo2.Location = New System.Drawing.Point(4, 54)
       Me.lblCPNo2.Name = "lblCPNo2"
-      Me.lblCPNo2.Size = New System.Drawing.Size(35, 15)
+      Me.lblCPNo2.Size = New System.Drawing.Size(38, 16)
       Me.lblCPNo2.TabIndex = 23
       Me.lblCPNo2.Text = "No. 2"
       '
@@ -172,8 +172,8 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.txtCP2Valor2.Location = New System.Drawing.Point(79, 50)
       Me.txtCP2Valor2.Name = "txtCP2Valor2"
-      Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 21)
-      Me.txtCP2Valor2.TabIndex = 10
+      Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
+      Me.txtCP2Valor2.TabIndex = 9
       '
       'lblCPNo3
       '
@@ -181,7 +181,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblCPNo3.ForeColor = System.Drawing.Color.MidnightBlue
       Me.lblCPNo3.Location = New System.Drawing.Point(5, 77)
       Me.lblCPNo3.Name = "lblCPNo3"
-      Me.lblCPNo3.Size = New System.Drawing.Size(35, 15)
+      Me.lblCPNo3.Size = New System.Drawing.Size(38, 16)
       Me.lblCPNo3.TabIndex = 24
       Me.lblCPNo3.Text = "No. 3"
       '
@@ -189,22 +189,22 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.txtCP2Letra2.Location = New System.Drawing.Point(46, 50)
       Me.txtCP2Letra2.Name = "txtCP2Letra2"
-      Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 21)
-      Me.txtCP2Letra2.TabIndex = 9
+      Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP2Letra2.TabIndex = 8
       '
       'txtCP1Valor1
       '
       Me.txtCP1Valor1.Location = New System.Drawing.Point(78, 25)
       Me.txtCP1Valor1.Name = "txtCP1Valor1"
-      Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 21)
-      Me.txtCP1Valor1.TabIndex = 8
+      Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP1Valor1.TabIndex = 7
       '
       'txtCP1Letra1
       '
       Me.txtCP1Letra1.Location = New System.Drawing.Point(46, 25)
       Me.txtCP1Letra1.Name = "txtCP1Letra1"
-      Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 21)
-      Me.txtCP1Letra1.TabIndex = 7
+      Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP1Letra1.TabIndex = 6
       '
       'grbControlesPositivos
       '
@@ -218,11 +218,11 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesPositivos.Controls.Add(Me.lblCPNo1)
       Me.grbControlesPositivos.Controls.Add(Me.txtCP3Valor3)
       Me.grbControlesPositivos.Enabled = False
-      Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.grbControlesPositivos.ForeColor = System.Drawing.Color.SteelBlue
-      Me.grbControlesPositivos.Location = New System.Drawing.Point(106, 8)
+      Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.grbControlesPositivos.Location = New System.Drawing.Point(98, 8)
       Me.grbControlesPositivos.Name = "grbControlesPositivos"
-      Me.grbControlesPositivos.Size = New System.Drawing.Size(129, 110)
+      Me.grbControlesPositivos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesPositivos.TabIndex = 28
       Me.grbControlesPositivos.TabStop = False
       Me.grbControlesPositivos.Text = "Controles Positivos"
@@ -230,7 +230,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnNuevoAnalisisCancelar
       '
       Me.btnNuevoAnalisisCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(525, 418)
+      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(525, 448)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
       Me.btnNuevoAnalisisCancelar.TabIndex = 20
@@ -240,7 +240,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnObtenerResultados
       '
       Me.btnObtenerResultados.Enabled = False
-      Me.btnObtenerResultados.Location = New System.Drawing.Point(405, 418)
+      Me.btnObtenerResultados.Location = New System.Drawing.Point(406, 448)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(113, 23)
       Me.btnObtenerResultados.TabIndex = 19
@@ -250,10 +250,10 @@ Partial Class frmRegistraNuevoAnalisis
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.Enabled = False
-      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(149, 133)
+      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(487, 160)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(113, 23)
-      Me.btnLeerDatosPlaca.TabIndex = 5
+      Me.btnLeerDatosPlaca.TabIndex = 4
       Me.btnLeerDatosPlaca.Text = "Leer Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
@@ -261,7 +261,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.cmbComboPorts.Enabled = False
       Me.cmbComboPorts.FormattingEnabled = True
-      Me.cmbComboPorts.Location = New System.Drawing.Point(22, 135)
+      Me.cmbComboPorts.Location = New System.Drawing.Point(360, 162)
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
@@ -270,46 +270,46 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnAceptarControles.BackColor = System.Drawing.SystemColors.Control
       Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.Location = New System.Drawing.Point(428, 74)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(472, 78)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
-      Me.btnAceptarControles.TabIndex = 32
+      Me.btnAceptarControles.TabIndex = 18
       Me.btnAceptarControles.Text = "Aceptar Controles"
       Me.btnAceptarControles.UseVisualStyleBackColor = False
       '
       'cmbNoCaso
       '
       Me.cmbNoCaso.FormattingEnabled = True
-      Me.cmbNoCaso.Location = New System.Drawing.Point(124, 27)
+      Me.cmbNoCaso.Location = New System.Drawing.Point(136, 22)
       Me.cmbNoCaso.Name = "cmbNoCaso"
       Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso.TabIndex = 0
+      Me.cmbNoCaso.TabIndex = 1
       '
       'txtNombreCliente
       '
-      Me.txtNombreCliente.Location = New System.Drawing.Point(124, 54)
+      Me.txtNombreCliente.Location = New System.Drawing.Point(136, 59)
       Me.txtNombreCliente.Name = "txtNombreCliente"
       Me.txtNombreCliente.ReadOnly = True
       Me.txtNombreCliente.Size = New System.Drawing.Size(449, 20)
-      Me.txtNombreCliente.TabIndex = 34
+      Me.txtNombreCliente.TabIndex = 2
       '
       'txtAnalisisSolicitado
       '
-      Me.txtAnalisisSolicitado.Location = New System.Drawing.Point(124, 81)
+      Me.txtAnalisisSolicitado.Location = New System.Drawing.Point(136, 94)
       Me.txtAnalisisSolicitado.Name = "txtAnalisisSolicitado"
       Me.txtAnalisisSolicitado.ReadOnly = True
       Me.txtAnalisisSolicitado.Size = New System.Drawing.Size(449, 20)
-      Me.txtAnalisisSolicitado.TabIndex = 35
+      Me.txtAnalisisSolicitado.TabIndex = 3
       '
       'btnBuscaCaso
       '
       Me.btnBuscaCaso.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.btnBuscaCaso.ForeColor = System.Drawing.Color.SteelBlue
       Me.btnBuscaCaso.Image = CType(resources.GetObject("btnBuscaCaso.Image"), System.Drawing.Image)
-      Me.btnBuscaCaso.Location = New System.Drawing.Point(312, 26)
+      Me.btnBuscaCaso.Location = New System.Drawing.Point(324, 21)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso.TabIndex = 59
+      Me.btnBuscaCaso.TabIndex = 0
       Me.btnBuscaCaso.UseVisualStyleBackColor = True
       '
       'lblMensajeCaso
@@ -335,9 +335,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.cmbNoCaso)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreAnalisis)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
-      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(4, 12)
+      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(4, 9)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(596, 115)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(596, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 73
       '
       'Panel1
@@ -345,9 +345,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel1.AutoSize = True
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel1.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel1.Location = New System.Drawing.Point(4, 451)
+      Me.Panel1.Location = New System.Drawing.Point(4, 477)
       Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(601, 30)
+      Me.Panel1.Size = New System.Drawing.Size(596, 30)
       Me.Panel1.TabIndex = 74
       '
       'Panel2
@@ -360,82 +360,10 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.Controls.Add(Me.grbControlesPositivos)
       Me.Panel2.Controls.Add(Me.grbControlesNegativos)
       Me.Panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Panel2.Location = New System.Drawing.Point(4, 287)
+      Me.Panel2.Location = New System.Drawing.Point(4, 317)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(596, 125)
       Me.Panel2.TabIndex = 75
-      '
-      'txtCN3Valor3
-      '
-      Me.txtCN3Valor3.Location = New System.Drawing.Point(79, 76)
-      Me.txtCN3Valor3.Name = "txtCN3Valor3"
-      Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 21)
-      Me.txtCN3Valor3.TabIndex = 18
-      '
-      'txtCN3Letra3
-      '
-      Me.txtCN3Letra3.Location = New System.Drawing.Point(46, 76)
-      Me.txtCN3Letra3.Name = "txtCN3Letra3"
-      Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 21)
-      Me.txtCN3Letra3.TabIndex = 17
-      '
-      'lblCNNo1
-      '
-      Me.lblCNNo1.AutoSize = True
-      Me.lblCNNo1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo1.Location = New System.Drawing.Point(6, 28)
-      Me.lblCNNo1.Name = "lblCNNo1"
-      Me.lblCNNo1.Size = New System.Drawing.Size(35, 15)
-      Me.lblCNNo1.TabIndex = 25
-      Me.lblCNNo1.Text = "No. 1"
-      '
-      'txtCN2Valor2
-      '
-      Me.txtCN2Valor2.Location = New System.Drawing.Point(79, 50)
-      Me.txtCN2Valor2.Name = "txtCN2Valor2"
-      Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 21)
-      Me.txtCN2Valor2.TabIndex = 16
-      '
-      'lblCNNo2
-      '
-      Me.lblCNNo2.AutoSize = True
-      Me.lblCNNo2.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo2.Location = New System.Drawing.Point(6, 54)
-      Me.lblCNNo2.Name = "lblCNNo2"
-      Me.lblCNNo2.Size = New System.Drawing.Size(35, 15)
-      Me.lblCNNo2.TabIndex = 26
-      Me.lblCNNo2.Text = "No. 2"
-      '
-      'txtCN1Valor1
-      '
-      Me.txtCN1Valor1.Location = New System.Drawing.Point(79, 25)
-      Me.txtCN1Valor1.Name = "txtCN1Valor1"
-      Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 21)
-      Me.txtCN1Valor1.TabIndex = 14
-      '
-      'lblCNNo3
-      '
-      Me.lblCNNo3.AutoSize = True
-      Me.lblCNNo3.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo3.Location = New System.Drawing.Point(6, 80)
-      Me.lblCNNo3.Name = "lblCNNo3"
-      Me.lblCNNo3.Size = New System.Drawing.Size(35, 15)
-      Me.lblCNNo3.TabIndex = 27
-      Me.lblCNNo3.Text = "No. 3"
-      '
-      'txtCN1Letra1
-      '
-      Me.txtCN1Letra1.Location = New System.Drawing.Point(46, 25)
-      Me.txtCN1Letra1.Name = "txtCN1Letra1"
-      Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 21)
-      Me.txtCN1Letra1.TabIndex = 13
-      '
-      'txtCN2Letra2
-      '
-      Me.txtCN2Letra2.Location = New System.Drawing.Point(46, 50)
-      Me.txtCN2Letra2.Name = "txtCN2Letra2"
-      Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 21)
-      Me.txtCN2Letra2.TabIndex = 15
       '
       'grbControlesNegativos
       '
@@ -449,20 +377,92 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesNegativos.Controls.Add(Me.txtCN3Letra3)
       Me.grbControlesNegativos.Controls.Add(Me.txtCN3Valor3)
       Me.grbControlesNegativos.Enabled = False
-      Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.grbControlesNegativos.ForeColor = System.Drawing.Color.SteelBlue
-      Me.grbControlesNegativos.Location = New System.Drawing.Point(259, 8)
+      Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.grbControlesNegativos.Location = New System.Drawing.Point(256, 8)
       Me.grbControlesNegativos.Name = "grbControlesNegativos"
-      Me.grbControlesNegativos.Size = New System.Drawing.Size(134, 110)
+      Me.grbControlesNegativos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesNegativos.TabIndex = 25
       Me.grbControlesNegativos.TabStop = False
       Me.grbControlesNegativos.Text = "Controles Negativos"
+      '
+      'txtCN2Letra2
+      '
+      Me.txtCN2Letra2.Location = New System.Drawing.Point(46, 50)
+      Me.txtCN2Letra2.Name = "txtCN2Letra2"
+      Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
+      Me.txtCN2Letra2.TabIndex = 14
+      '
+      'txtCN1Letra1
+      '
+      Me.txtCN1Letra1.Location = New System.Drawing.Point(46, 25)
+      Me.txtCN1Letra1.Name = "txtCN1Letra1"
+      Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN1Letra1.TabIndex = 12
+      '
+      'lblCNNo3
+      '
+      Me.lblCNNo3.AutoSize = True
+      Me.lblCNNo3.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo3.Location = New System.Drawing.Point(6, 80)
+      Me.lblCNNo3.Name = "lblCNNo3"
+      Me.lblCNNo3.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo3.TabIndex = 27
+      Me.lblCNNo3.Text = "No. 3"
+      '
+      'txtCN1Valor1
+      '
+      Me.txtCN1Valor1.Location = New System.Drawing.Point(79, 25)
+      Me.txtCN1Valor1.Name = "txtCN1Valor1"
+      Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN1Valor1.TabIndex = 13
+      '
+      'lblCNNo2
+      '
+      Me.lblCNNo2.AutoSize = True
+      Me.lblCNNo2.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo2.Location = New System.Drawing.Point(6, 54)
+      Me.lblCNNo2.Name = "lblCNNo2"
+      Me.lblCNNo2.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo2.TabIndex = 26
+      Me.lblCNNo2.Text = "No. 2"
+      '
+      'txtCN2Valor2
+      '
+      Me.txtCN2Valor2.Location = New System.Drawing.Point(79, 50)
+      Me.txtCN2Valor2.Name = "txtCN2Valor2"
+      Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN2Valor2.TabIndex = 15
+      '
+      'lblCNNo1
+      '
+      Me.lblCNNo1.AutoSize = True
+      Me.lblCNNo1.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo1.Location = New System.Drawing.Point(6, 28)
+      Me.lblCNNo1.Name = "lblCNNo1"
+      Me.lblCNNo1.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo1.TabIndex = 25
+      Me.lblCNNo1.Text = "No. 1"
+      '
+      'txtCN3Letra3
+      '
+      Me.txtCN3Letra3.Location = New System.Drawing.Point(46, 76)
+      Me.txtCN3Letra3.Name = "txtCN3Letra3"
+      Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN3Letra3.TabIndex = 16
+      '
+      'txtCN3Valor3
+      '
+      Me.txtCN3Valor3.Location = New System.Drawing.Point(79, 76)
+      Me.txtCN3Valor3.Name = "txtCN3Valor3"
+      Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN3Valor3.TabIndex = 17
       '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.ClientSize = New System.Drawing.Size(608, 485)
+      Me.ClientSize = New System.Drawing.Size(605, 510)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnObtenerResultados)
@@ -475,6 +475,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmRegistraNuevoAnalisis"
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Registra nuevo análisis"
       Me.grbControlesPositivos.ResumeLayout(False)
       Me.grbControlesPositivos.PerformLayout()

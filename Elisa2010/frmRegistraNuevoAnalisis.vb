@@ -305,9 +305,4 @@ Public Class frmRegistraNuevoAnalisis
          lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
       End Try
    End Sub
-
-
-   Private Sub txtAnalisisSolicitado_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtAnalisisSolicitado.TextChanged
-
-   End Sub
 End Class
