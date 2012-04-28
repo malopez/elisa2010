@@ -44,8 +44,9 @@ Public Class frmConfiguraLector
          'Cerrar la conexion a la BD
          oConexion.Close()
       Catch ex As Exception
-         lblMensajeLector.ForeColor = System.Drawing.Color.Red
-         lblMensajeLector.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(lblMensajeLector, ex)
+         'lblMensajeLector.ForeColor = System.Drawing.Color.Red
+         'lblMensajeLector.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
       End Try
    End Sub
 
@@ -241,16 +242,6 @@ Public Class frmConfiguraLector
       gpbSB.Enabled = False
    End Sub
 
-   Private Sub mensajeException(ByRef ex As Exception)
-      lblMensajeLector.ForeColor = System.Drawing.Color.Red
-      lblMensajeLector.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
-   End Sub
-
-   Private Sub mensajeExceptionSQL(ByRef ex As MySqlException)
-      lblMensajeLector.ForeColor = System.Drawing.Color.Red
-      lblMensajeLector.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
-   End Sub
-
 
    Private Sub cargarDatosLector()
       Try
@@ -279,11 +270,11 @@ Public Class frmConfiguraLector
          ' para el desplegado en la etiqueta
          Me.lblNRLector.Text = "Registro: " & Me.iposicFilaActual + 1 & " de " & Me.oDataSet.Tables("tbllector").Rows.Count
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-          mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
 
    End Sub
@@ -298,11 +289,11 @@ Public Class frmConfiguraLector
             Me.cargarDatosLector()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -313,11 +304,11 @@ Public Class frmConfiguraLector
          Me.iposicFilaActual = 0
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -333,11 +324,11 @@ Public Class frmConfiguraLector
             Me.cargarDatosLector()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -347,11 +338,11 @@ Public Class frmConfiguraLector
          Me.iposicFilaActual = (Me.oDataSet.Tables("tbllector").Rows.Count - 1)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -369,11 +360,11 @@ Public Class frmConfiguraLector
          chkLectorDefault.Enabled = True
          habilitaGroupBox()
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -410,14 +401,15 @@ Public Class frmConfiguraLector
                oComando.CommandText = aConsulta1
                resultado = oComando.ExecuteNonQuery()
                oConexion.Close()
-               lblMensajeLector.ForeColor = System.Drawing.Color.Green
-               lblMensajeLector.Text = "Mensaje: Los datos se han guardado exitosamente."
+               mensajeVerde(lblMensajeLector, "Mensaje: Los datos se han guardado exitosamente.")
+               'lblMensajeLector.ForeColor = System.Drawing.Color.Green
+               'lblMensajeLector.Text = "Mensaje: Los datos se han guardado exitosamente."
             Catch ex As MySqlException
-               mensajeExceptionSQL(ex)
+               mensajeExceptionSQL(lblMensajeLector, ex)
             Catch ex As DataException
-               mensajeException(ex)
+               mensajeException(lblMensajeLector, ex)
             Catch ex As Exception
-               mensajeException(ex)
+               mensajeException(lblMensajeLector, ex)
             End Try
          Else
             Try
@@ -429,12 +421,12 @@ Public Class frmConfiguraLector
                oConexion.Close()
                lblMensajeLector.ForeColor = System.Drawing.Color.Green
                lblMensajeLector.Text = "Mensaje: Los datos se han guardado exitosamente."
-           Catch ex As MySqlException
-               mensajeExceptionSQL(ex)
+            Catch ex As MySqlException
+               mensajeExceptionSQL(lblMensajeLector, ex)
             Catch ex As DataException
-               mensajeException(ex)
+               mensajeException(lblMensajeLector, ex)
             Catch ex As Exception
-               mensajeException(ex)
+               mensajeException(lblMensajeLector, ex)
             End Try
          End If
          'Recarga los datos
@@ -453,11 +445,11 @@ Public Class frmConfiguraLector
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
     
    End Sub
@@ -480,11 +472,11 @@ Public Class frmConfiguraLector
          lblMensajeLector.ForeColor = System.Drawing.Color.Green
          lblMensajeLector.Text = "Mensaje: Los datos del lector se han eliminado exitosamente."
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
       habilitaBarra()
       btnInsertar.Enabled = True
@@ -534,11 +526,11 @@ Public Class frmConfiguraLector
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 
@@ -577,11 +569,11 @@ Public Class frmConfiguraLector
             'Verifica que no sea vacia la consulta
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(ex)
+         mensajeExceptionSQL(lblMensajeLector, ex)
       Catch ex As DataException
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       Catch ex As Exception
-         mensajeException(ex)
+         mensajeException(lblMensajeLector, ex)
       End Try
    End Sub
 

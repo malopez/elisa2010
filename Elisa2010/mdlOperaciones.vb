@@ -16,8 +16,11 @@ Module mdlOperaciones
    Public msn As String = ""
    'Guarda la placa leida desde el lector debidamente formateada
    Public placaLector(7, 11) As Decimal
+   'Guarda los valores de la frecuencia Relativa
+   Public frecuenciaRelativa(14) As Decimal
+   'Matriz para calculo de Logaritmo de Titulos
+   Public calculoDeTitulos(7, 11) As Decimal
 
-   'se utiliza para validar la entrada desde el puerto
    Public Sub convierteCadena(ByVal msn As String)
       'Arreglo de cadenas temporal para eliminar las comas
       Dim a() As String
@@ -430,6 +433,29 @@ Module mdlOperaciones
       End Try
    End Sub
 
+   '##################################################
+   '#    MENSAJES DEFAULT EN COLOR ROJO Y VERDE      #
+   '##################################################
+
+   Public Sub mensajeException(ByRef etiqueta As Label, ByRef ex As Exception)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+   End Sub
+
+   Public Sub mensajeExceptionSQL(ByRef etiqueta As Label, ByRef ex As MySqlException)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+   End Sub
+
+   Public Sub mensajeVerde(ByRef etiqueta As Label, ByRef mensaje As String)
+      etiqueta.ForeColor = System.Drawing.Color.Green
+      etiqueta.Text = mensaje
+   End Sub
+
+   Public Sub mensajeRojo(ByRef etiqueta As Label, ByRef mensaje As String)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = mensaje
+   End Sub
 
    '##################################################
    '# SECCION VALIDACION DE FORMATOS PARA textBoxes  #
@@ -687,7 +713,7 @@ Module mdlOperaciones
          Beep()
          MessageBox.Show("Errores al guardar el archivo solicitado.")
       End Try
-      'MessageBox.Show("nombre del archivo" & nombreArchivo)
+
       Return nombreArchivo
    End Function
 
@@ -886,9 +912,6 @@ Module mdlOperaciones
       Dim logaritmoTitulos(7, 11) As Decimal
 
       'Matriz para calculo de Logaritmo de Titulos
-      Dim calculoDeTitulos(7, 11) As Decimal
-
-      'Matriz para calculo de Logaritmo de Titulos
       Dim calculaL(7, 11) As Decimal
 
       'Arreglo para definir la marca de clase
@@ -898,7 +921,7 @@ Module mdlOperaciones
       Dim rangoDatos() As Integer
 
       'Arreglo para la guardar la frecuencia relativa
-      Dim frecuenciaRelativa(14) As Decimal
+
 
       'Controles positivos
       Dim promCP As Decimal
@@ -1027,7 +1050,6 @@ Module mdlOperaciones
          For j = desdeY To numDeRegistros - 1
             calculaL(i, j) = CDec(calculoDeTitulos(i, j))
             'Calcula la sumatoria de los datos que se guardan en columna L
-
             totalcalculaL += CDec(calculaL(i, j))
             'Sirve para calcular el numero de datos (pozos utilizados para el caso)
             cuentaNoDatos += 1
@@ -1108,7 +1130,6 @@ Module mdlOperaciones
       'Asigno al arreglo los datos que son frecuencia de clase
       rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
 
-
       'Calculo de la sumatoria de la fecuencia de los datos por la marca de clase (xi*fi)
       For i = 0 To 14
          calculaMedia += CDec(rangoDatos(i) * marcaDeClase(i))
@@ -1153,30 +1174,9 @@ Module mdlOperaciones
       frmSalidaDatos.txtCoefVariacion2.Text = CStr(coeficienteDeVariacionDatosNoAgrupados)
       frmSalidaDatos.txtDesvEstandar2.Text = CStr(desviacionEstandarDatosNoAgrupados)
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
-      ' k = 1
-      ' For i = 0 To numDeColumnas - 1
-      'For j = 0 To numDeRegistros - 1
-      'resultado &= CStr(k) & vbTab & CStr(calculoDeTitulos(i, j)) & vbCrLf
-      'k += 1
-      'If (k >= 24) Then
-      ' resultado1 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-      ' End If
-      ' If (k >= 48) Then
-      'resultado2 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-      'End If
-      'If (k >= 72) Then
-      ' resultado3 &= CStr(k) & " " & CStr(calculoDeTitulos(i, j)) & vbCrLf
-      'End If
-      'Next
-      'Next
-      'frmSalidaDatos.txtResPlacaLector.Text = resultado
-      frmSalidaDatos.txtCalPlacaLector.Text = resultado1
-      frmSalidaDatos.txtCalSPS.Text = resultado2
-      frmSalidaDatos.txtCalLogSPS.Text = resultado3
-      frmSalidaDatos.txtCalLogTit.Text = resultado4
-      frmSalidaDatos.txtCalColL.Text = resultado5
-      guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Laringo", nombre, calculaMedia, mediaAritmetica, mediaGeometrica, _
-                            coeficienteDeVariacion, desviacionEstandar, calculaVarianza, cuentaNoDatos, _
-                            desviacionEstandarDatosNoAgrupados, coeficienteDeVariacionDatosNoAgrupados, calculaVarianzaDatosNoAgrupados)
+      frmSalidaDatos.lblNombreEnfermedad.Text = nombre
+      'guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Laringo", nombre, calculaMedia, mediaAritmetica, mediaGeometrica, _
+      '                     coeficienteDeVariacion, desviacionEstandar, calculaVarianza, cuentaNoDatos, _
+      '                     desviacionEstandarDatosNoAgrupados, coeficienteDeVariacionDatosNoAgrupados, calculaVarianzaDatosNoAgrupados)
    End Sub
 End Module

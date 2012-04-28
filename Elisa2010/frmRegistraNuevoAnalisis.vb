@@ -37,9 +37,9 @@ Public Class frmRegistraNuevoAnalisis
                SerialPort1.Close()
                lblMensajeCaso.ForeColor = System.Drawing.Color.Green
                lblMensajeCaso.Text = "Mensaje: Cerrando el puerto COM del lector."
+               btnLeerDatosPlaca.Enabled = False
+               btnFormateaDatos.Enabled = True
             End If
-            'Me.btnLeerDatosPlaca.Text = "Leer Datos"
-            btnLeerDatosPlaca.Enabled = False
          End If
       Catch ex As Exception
          MessageBox.Show("Error al recuperar datos desde el lector de Placa.")
@@ -49,35 +49,27 @@ Public Class frmRegistraNuevoAnalisis
 
    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
       Try
+         txtDatosRecibidos.Text = ""
          az = Me.SerialPort1.ReadExisting.Trim
          msn += az
       Catch ex As Exception
          MsgBox(ex.Message)
       End Try
       Me.txtDatosRecibidos.Text = msn
-      'btnDefinirControlesPN.Enabled = True
-      btnFormateaDatos.Enabled = True
+      'btnFormateaDatos.Enabled = True
    End Sub
 
    Private Sub btnDefinirControlesPN_Click(sender As System.Object, e As System.EventArgs) Handles btnDefinirControlesPN.Click
-      'nombreArchivo = guardaDatos(nombreArchivo)
+      grbControlesPositivos.Enabled = True
+      grbControlesNegativos.Enabled = True
       If btnDefinirControlesPN.Text = "Definir Controles" Then
          btnDefinirControlesPN.Text = "Cambiar Controles"
          btnFormateaDatos.Enabled = False
          btnLeerDatosPlaca.Enabled = False
-         btnAceptarControles.Enabled = True
-         grbControlesPositivos.Enabled = True
-         grbControlesNegativos.Enabled = False
-         txtCP1Letra1.Enabled = True
-         txtCP1Valor1.Enabled = False
-         txtCP2Letra2.Enabled = False
-         txtCP2Valor2.Enabled = False
-         txtCP3Letra3.Enabled = False
-         txtCP3Valor3.Enabled = False
+
       Else
          defineValoresDefault()
       End If
-      
    End Sub
 
    'Define valores default para controles positivos y negativos
@@ -102,6 +94,7 @@ Public Class frmRegistraNuevoAnalisis
       Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
       Try
          btnAceptarControles.Enabled = False
+         btnDefinirControlesPN.Enabled = False
          Try
             cpx1 = siValorEsLetra(txtCP1Letra1)
             cpy1 = Convert.ToInt32(txtCP1Valor1.Text)
@@ -121,11 +114,10 @@ Public Class frmRegistraNuevoAnalisis
             btnDefinirControlesPN.Enabled = True
          End Try
          btnObtenerResultados.Enabled = False
-         guardaDatosExcel(placaLector, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3)
          calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", 0, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
-      Catch ex As Exception
-         MessageBox.Show("Ha ocurrido un error al calcular los resultados.")
+      Catch ex As DataException
+         mensajeException(lblMensajeCaso, ex)
       End Try
 
    End Sub
@@ -226,21 +218,25 @@ Public Class frmRegistraNuevoAnalisis
       grbControlesNegativos.Enabled = False
       grbControlesPositivos.Enabled = False
       btnDefinirControlesPN.Enabled = False
+      btnGuardarDatosExcel.Enabled = False
       If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
          controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
          controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
          controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
-         controlesValidosNumero(txtCP3Valor3, " Número terce control positivo ", 0, 11) AndAlso _
+         controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 0, 11) AndAlso _
          controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
          controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
          controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
          controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
          controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
          controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+         ckbControlesDefault.Enabled = False
          btnAceptarControles.Enabled = False
+         btnDefinirControlesPN.Enabled = False
          btnObtenerResultados.Enabled = True
       Else
          MessageBox.Show("Los valores que ha introducido no son válidos, trate nuevamente.")
+         btnDefinirControlesPN.Enabled = True
          btnAceptarControles.Enabled = True
       End If
    End Sub
@@ -265,10 +261,14 @@ Public Class frmRegistraNuevoAnalisis
          For Each oFila In oTabla.Rows
             cmbNoCaso.Items.Add(oFila.Item("caso"))
          Next
+      Catch ex As MySqlException
+         mensajeExceptionSQL(lblMensajeCaso, ex)
+      Catch ex As DataException
+         mensajeException(lblMensajeCaso, ex)
       Catch ex As Exception
-         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         lblMensajeCaso.Text = "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis."
+         mensajeRojo(lblMensajeCaso, "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
+
 
    End Sub
 
@@ -299,14 +299,11 @@ Public Class frmRegistraNuevoAnalisis
          oConexion.Close()
          Me.btnLeerDatosPlaca.Enabled = True
       Catch ex As MySqlException
-         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+         mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
-         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(lblMensajeCaso, ex)
       Catch ex As Exception
-         lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(lblMensajeCaso, ex)
       End Try
    End Sub
 
@@ -323,12 +320,22 @@ Public Class frmRegistraNuevoAnalisis
          nombreArchivo = formateaDatos(placaLector)
          btnDefinirControlesPN.Enabled = True
       Catch ex As Exception
-         MessageBox.Show(" Se ha presentado un error al formatear datos")
+         mensajeRojo(lblMensajeCaso, "Se ha presentado un error al formatear datos.")
       End Try
 
    End Sub
 
    Private Sub ckbControlesDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbControlesDefault.CheckedChanged
       defineValoresDefault()
+      ckbControlesDefault.Enabled = False
+      btnAceptarControles.Enabled = True
+   End Sub
+
+
+   Private Sub btnGuardarDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatosExcel.Click
+      guardaDatosExcel(placaLector, Me.txtCP1Letra1.Text, Me.txtCP2Letra2.Text, Me.txtCP3Letra3.Text, Me.txtCN1Letra1.Text, _
+                       Me.txtCN2Letra2.Text, Me.txtCN3Letra3.Text, Me.txtCP1Valor1.Text, Me.txtCP2Valor2.Text, Me.txtCP3Valor3.Text, _
+                       Me.txtCN1Valor1.Text, Me.txtCN2Valor2.Text, Me.txtCN3Valor3.Text)
+      btnAceptarControles.Enabled = True
    End Sub
 End Class

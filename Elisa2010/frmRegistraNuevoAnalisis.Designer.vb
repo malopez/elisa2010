@@ -54,6 +54,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
       Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
       Me.txtCN1Letra1 = New System.Windows.Forms.TextBox()
@@ -65,7 +66,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
       Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
-      Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
+      Me.btnGuardarDatosExcel = New System.Windows.Forms.Button()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -139,6 +140,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP3Valor3
       '
       Me.txtCP3Valor3.Location = New System.Drawing.Point(78, 77)
+      Me.txtCP3Valor3.MaxLength = 2
       Me.txtCP3Valor3.Name = "txtCP3Valor3"
       Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
       Me.txtCP3Valor3.TabIndex = 11
@@ -156,6 +158,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP3Letra3
       '
       Me.txtCP3Letra3.Location = New System.Drawing.Point(46, 77)
+      Me.txtCP3Letra3.MaxLength = 1
       Me.txtCP3Letra3.Name = "txtCP3Letra3"
       Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
       Me.txtCP3Letra3.TabIndex = 10
@@ -173,6 +176,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP2Valor2
       '
       Me.txtCP2Valor2.Location = New System.Drawing.Point(79, 50)
+      Me.txtCP2Valor2.MaxLength = 2
       Me.txtCP2Valor2.Name = "txtCP2Valor2"
       Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
       Me.txtCP2Valor2.TabIndex = 9
@@ -190,6 +194,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP2Letra2
       '
       Me.txtCP2Letra2.Location = New System.Drawing.Point(46, 50)
+      Me.txtCP2Letra2.MaxLength = 1
       Me.txtCP2Letra2.Name = "txtCP2Letra2"
       Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
       Me.txtCP2Letra2.TabIndex = 8
@@ -197,6 +202,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP1Valor1
       '
       Me.txtCP1Valor1.Location = New System.Drawing.Point(78, 25)
+      Me.txtCP1Valor1.MaxLength = 2
       Me.txtCP1Valor1.Name = "txtCP1Valor1"
       Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
       Me.txtCP1Valor1.TabIndex = 7
@@ -204,6 +210,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCP1Letra1
       '
       Me.txtCP1Letra1.Location = New System.Drawing.Point(46, 25)
+      Me.txtCP1Letra1.MaxLength = 1
       Me.txtCP1Letra1.Name = "txtCP1Letra1"
       Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
       Me.txtCP1Letra1.TabIndex = 6
@@ -242,7 +249,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnObtenerResultados
       '
       Me.btnObtenerResultados.Enabled = False
-      Me.btnObtenerResultados.Location = New System.Drawing.Point(406, 448)
+      Me.btnObtenerResultados.Location = New System.Drawing.Point(407, 448)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(113, 23)
       Me.btnObtenerResultados.TabIndex = 19
@@ -272,7 +279,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnAceptarControles.BackColor = System.Drawing.SystemColors.Control
       Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.Location = New System.Drawing.Point(286, 448)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(288, 448)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
       Me.btnAceptarControles.TabIndex = 18
@@ -367,6 +374,17 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.Size = New System.Drawing.Size(596, 125)
       Me.Panel2.TabIndex = 75
       '
+      'ckbControlesDefault
+      '
+      Me.ckbControlesDefault.AutoSize = True
+      Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
+      Me.ckbControlesDefault.Location = New System.Drawing.Point(400, 35)
+      Me.ckbControlesDefault.Name = "ckbControlesDefault"
+      Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
+      Me.ckbControlesDefault.TabIndex = 29
+      Me.ckbControlesDefault.Text = "Valores por default"
+      Me.ckbControlesDefault.UseVisualStyleBackColor = True
+      '
       'grbControlesNegativos
       '
       Me.grbControlesNegativos.Controls.Add(Me.txtCN2Letra2)
@@ -381,7 +399,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesNegativos.Enabled = False
       Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesNegativos.Location = New System.Drawing.Point(231, 8)
+      Me.grbControlesNegativos.Location = New System.Drawing.Point(232, 8)
       Me.grbControlesNegativos.Name = "grbControlesNegativos"
       Me.grbControlesNegativos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesNegativos.TabIndex = 25
@@ -391,6 +409,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN2Letra2
       '
       Me.txtCN2Letra2.Location = New System.Drawing.Point(46, 50)
+      Me.txtCN2Letra2.MaxLength = 1
       Me.txtCN2Letra2.Name = "txtCN2Letra2"
       Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
       Me.txtCN2Letra2.TabIndex = 14
@@ -398,6 +417,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN1Letra1
       '
       Me.txtCN1Letra1.Location = New System.Drawing.Point(46, 25)
+      Me.txtCN1Letra1.MaxLength = 1
       Me.txtCN1Letra1.Name = "txtCN1Letra1"
       Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
       Me.txtCN1Letra1.TabIndex = 12
@@ -415,6 +435,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN1Valor1
       '
       Me.txtCN1Valor1.Location = New System.Drawing.Point(79, 25)
+      Me.txtCN1Valor1.MaxLength = 2
       Me.txtCN1Valor1.Name = "txtCN1Valor1"
       Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
       Me.txtCN1Valor1.TabIndex = 13
@@ -432,6 +453,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN2Valor2
       '
       Me.txtCN2Valor2.Location = New System.Drawing.Point(79, 50)
+      Me.txtCN2Valor2.MaxLength = 2
       Me.txtCN2Valor2.Name = "txtCN2Valor2"
       Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
       Me.txtCN2Valor2.TabIndex = 15
@@ -449,6 +471,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN3Letra3
       '
       Me.txtCN3Letra3.Location = New System.Drawing.Point(46, 76)
+      Me.txtCN3Letra3.MaxLength = 1
       Me.txtCN3Letra3.Name = "txtCN3Letra3"
       Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
       Me.txtCN3Letra3.TabIndex = 16
@@ -456,6 +479,7 @@ Partial Class frmRegistraNuevoAnalisis
       'txtCN3Valor3
       '
       Me.txtCN3Valor3.Location = New System.Drawing.Point(79, 76)
+      Me.txtCN3Valor3.MaxLength = 2
       Me.txtCN3Valor3.Name = "txtCN3Valor3"
       Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
       Me.txtCN3Valor3.TabIndex = 17
@@ -470,22 +494,23 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnFormateaDatos.Text = "Formatear Datos"
       Me.btnFormateaDatos.UseVisualStyleBackColor = True
       '
-      'ckbControlesDefault
+      'btnGuardarDatosExcel
       '
-      Me.ckbControlesDefault.AutoSize = True
-      Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
-      Me.ckbControlesDefault.Location = New System.Drawing.Point(400, 35)
-      Me.ckbControlesDefault.Name = "ckbControlesDefault"
-      Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 29
-      Me.ckbControlesDefault.Text = "Valores por default"
-      Me.ckbControlesDefault.UseVisualStyleBackColor = True
+      Me.btnGuardarDatosExcel.BackColor = System.Drawing.SystemColors.Control
+      Me.btnGuardarDatosExcel.Enabled = False
+      Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(142, 448)
+      Me.btnGuardarDatosExcel.Name = "btnGuardarDatosExcel"
+      Me.btnGuardarDatosExcel.Size = New System.Drawing.Size(140, 23)
+      Me.btnGuardarDatosExcel.TabIndex = 77
+      Me.btnGuardarDatosExcel.Text = "Guardar Datos en Excel"
+      Me.btnGuardarDatosExcel.UseVisualStyleBackColor = False
       '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(605, 510)
+      Me.Controls.Add(Me.btnGuardarDatosExcel)
       Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.btnFormateaDatos)
       Me.Controls.Add(Me.cmbComboPorts)
@@ -558,4 +583,5 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents txtCN3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents btnFormateaDatos As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
+   Friend WithEvents btnGuardarDatosExcel As System.Windows.Forms.Button
 End Class

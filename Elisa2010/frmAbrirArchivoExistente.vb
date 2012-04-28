@@ -18,6 +18,7 @@
          cn3 = CDec(Me.txtCNDAValor3.Text)
          Me.btnObtenResultadosDA.Enabled = False
          calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", desdeArchivo, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, CDec(0.15), CDec(1.45), CDec(3.726), cp1, cp2, cp3, cn1, cn2, cn3)
+         frmSalidaDatos.ShowDialog()
       Catch ex As Exception
          Me.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
          Me.lblNombrePlacaDesdeArchivo.Text = "ERROR: Formato no válido. " & ex.Message & " " & ex.GetType.ToString
