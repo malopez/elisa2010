@@ -64,6 +64,8 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblCNNo1 = New System.Windows.Forms.Label()
       Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
       Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
+      Me.btnFormateaDatos = New System.Windows.Forms.Button()
+      Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -116,7 +118,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnDefinirControlesPN.BackColor = System.Drawing.SystemColors.Control
       Me.btnDefinirControlesPN.Enabled = False
-      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(472, 32)
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(400, 78)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(113, 23)
       Me.btnDefinirControlesPN.TabIndex = 5
@@ -220,7 +222,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesPositivos.Enabled = False
       Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesPositivos.Location = New System.Drawing.Point(98, 8)
+      Me.grbControlesPositivos.Location = New System.Drawing.Point(73, 8)
       Me.grbControlesPositivos.Name = "grbControlesPositivos"
       Me.grbControlesPositivos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesPositivos.TabIndex = 28
@@ -250,7 +252,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.Enabled = False
-      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(487, 160)
+      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(368, 157)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(113, 23)
       Me.btnLeerDatosPlaca.TabIndex = 4
@@ -261,7 +263,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.cmbComboPorts.Enabled = False
       Me.cmbComboPorts.FormattingEnabled = True
-      Me.cmbComboPorts.Location = New System.Drawing.Point(360, 162)
+      Me.cmbComboPorts.Location = New System.Drawing.Point(241, 157)
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
@@ -270,7 +272,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnAceptarControles.BackColor = System.Drawing.SystemColors.Control
       Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.Location = New System.Drawing.Point(472, 78)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(286, 448)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
       Me.btnAceptarControles.TabIndex = 18
@@ -355,7 +357,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.AutoSize = True
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel2.Controls.Add(Me.btnAceptarControles)
+      Me.Panel2.Controls.Add(Me.ckbControlesDefault)
       Me.Panel2.Controls.Add(Me.btnDefinirControlesPN)
       Me.Panel2.Controls.Add(Me.grbControlesPositivos)
       Me.Panel2.Controls.Add(Me.grbControlesNegativos)
@@ -379,7 +381,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesNegativos.Enabled = False
       Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesNegativos.Location = New System.Drawing.Point(256, 8)
+      Me.grbControlesNegativos.Location = New System.Drawing.Point(231, 8)
       Me.grbControlesNegativos.Name = "grbControlesNegativos"
       Me.grbControlesNegativos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesNegativos.TabIndex = 25
@@ -458,11 +460,34 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
       Me.txtCN3Valor3.TabIndex = 17
       '
+      'btnFormateaDatos
+      '
+      Me.btnFormateaDatos.Enabled = False
+      Me.btnFormateaDatos.Location = New System.Drawing.Point(487, 157)
+      Me.btnFormateaDatos.Name = "btnFormateaDatos"
+      Me.btnFormateaDatos.Size = New System.Drawing.Size(113, 23)
+      Me.btnFormateaDatos.TabIndex = 76
+      Me.btnFormateaDatos.Text = "Formatear Datos"
+      Me.btnFormateaDatos.UseVisualStyleBackColor = True
+      '
+      'ckbControlesDefault
+      '
+      Me.ckbControlesDefault.AutoSize = True
+      Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
+      Me.ckbControlesDefault.Location = New System.Drawing.Point(400, 35)
+      Me.ckbControlesDefault.Name = "ckbControlesDefault"
+      Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
+      Me.ckbControlesDefault.TabIndex = 29
+      Me.ckbControlesDefault.Text = "Valores por default"
+      Me.ckbControlesDefault.UseVisualStyleBackColor = True
+      '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(605, 510)
+      Me.Controls.Add(Me.btnAceptarControles)
+      Me.Controls.Add(Me.btnFormateaDatos)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnObtenerResultados)
@@ -484,6 +509,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
+      Me.Panel2.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
       Me.grbControlesNegativos.PerformLayout()
       Me.ResumeLayout(False)
@@ -530,4 +556,6 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents lblCNNo1 As System.Windows.Forms.Label
    Friend WithEvents txtCN3Letra3 As System.Windows.Forms.TextBox
    Friend WithEvents txtCN3Valor3 As System.Windows.Forms.TextBox
+   Friend WithEvents btnFormateaDatos As System.Windows.Forms.Button
+   Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
 End Class

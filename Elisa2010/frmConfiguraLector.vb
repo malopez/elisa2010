@@ -517,7 +517,7 @@ Public Class frmConfiguraLector
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "UPDATE tbllector SET analysis_desc='" & txtNombreLector.Text & "'" & " WHERE nomLector='" & txtNombreLector.Text & "'" & ";"
+         aConsulta = "UPDATE tbllector SET analysis_desc='" & txtNombreLector.Text & "'" & " WHERE nomLector like '" & txtNombreLector.Text & "'" & ";"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()

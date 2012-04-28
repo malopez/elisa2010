@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Module mdlOperaciones
+   Private Const cadenaConexion = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
    '################################
@@ -197,7 +198,7 @@ Module mdlOperaciones
       ejey.AxisTitle.Text = "Grupo de Títulos"
       ejey.AxisTitle.Font.Bold = True
       ejey.AxisTitle.Font.Size = 8
-      
+
       'copia los valores de los títulos resultantes
       excelApp.Range("A17").Value2 = "Sueros"
       excelApp.Range("B17").Value2 = "Títulos"
@@ -226,8 +227,8 @@ Module mdlOperaciones
                   sueros = "I"
                   titulos = "J"
                End If
-            excelApp.Range(sueros & l).Value2 = "Sueros"
-            excelApp.Range(titulos & l).Value2 = "Títulos"
+               excelApp.Range(sueros & l).Value2 = "Sueros"
+               excelApp.Range(titulos & l).Value2 = "Títulos"
                l = 18
             End If
             If (i = 0) Then
@@ -350,7 +351,7 @@ Module mdlOperaciones
       Try
          'Crear la conexion para establecer el acceso a la BD de MySQL
          Dim oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = cadenaConexion
          'Abrir la conexion a la base de datos
          oConexion.Open()
          'Asigna la cadena de conexion
@@ -376,7 +377,7 @@ Module mdlOperaciones
    Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
-         oConexion.ConnectionString = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+         oConexion.ConnectionString = cadenaConexion
          oConexion.Open()
          Dim sqlfrecrel As String = "Select * from tblfrecrelativa"
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
@@ -435,7 +436,7 @@ Module mdlOperaciones
    '##################################################
    Public Function siNoEsBlanco(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text = "" Or textBox.Text.Length > 1 Then
-         MessageBox.Show(nombre & "El control debe tener un valor.", " ERROR de datos")
+         MessageBox.Show(nombre & "El control debe tener un valor distinto a blanco.")
          textBox.Select()
          Return False
       Else
@@ -445,7 +446,7 @@ Module mdlOperaciones
 
    Public Function siEsLargoUno(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text.Length > 1 Then
-         MessageBox.Show(nombre & "El control debe tener una letra solamente entre A y H.", " ERROR de datos")
+         MessageBox.Show(nombre & "El control debe tener una letra solamente.")
          textBox.Select()
          Return False
       Else
@@ -455,7 +456,7 @@ Module mdlOperaciones
 
    Public Function siNoEsBlancoMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text = "" Or (textBox.Text.Length >= 3) Then
-         MessageBox.Show(nombre & "El control debe tener un valor numerico entre 0 y 11.", " ERROR de datos")
+         MessageBox.Show(nombre & "El control debe tener un valor numérico entre 0 y 11.")
          textBox.Select()
          Return False
       Else
@@ -468,7 +469,7 @@ Module mdlOperaciones
          Convert.ToInt32(textBox.Text)
          Return True
       Catch ex As Exception
-         MessageBox.Show(nombre & "El valor debe ser un numero entero .", " ERROR de datos")
+         MessageBox.Show(nombre & "El valor debe ser un numero entero entre 0 y 11.")
          textBox.Select()
          textBox.SelectAll()
          Return False
@@ -478,7 +479,7 @@ Module mdlOperaciones
    Public Function siEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As Integer, ByVal max As Integer) As Boolean
       Dim numero As Integer = CInt(textbox.Text)
       If numero < min OrElse numero > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser un numero entre 0 y 11.", " ERROR de datos")
+         MessageBox.Show(" El valor " & nombre & "debe ser un número entre 0 y 11.")
          textbox.Select()
          textbox.SelectAll()
          Return False
@@ -490,7 +491,7 @@ Module mdlOperaciones
    Public Function siLetraEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As String, ByVal max As String) As Boolean
       Dim letra As String = textbox.Text.ToUpper
       If letra < min OrElse letra > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser una letra entre A y H.", " ERROR de datos")
+         MessageBox.Show(" El valor " & nombre & "debe ser una letra entre A y H.")
          textbox.Select()
          textbox.SelectAll()
          Return False
@@ -520,7 +521,7 @@ Module mdlOperaciones
          Case "H"
             retorno = 7
          Case Else
-            MessageBox.Show(" El valor debe ser una letra entre A y H.", " ERROR de datos")
+            MessageBox.Show(" El valor debe ser una letra entre A y H.")
             textbox.Select()
             textbox.SelectAll()
       End Select
@@ -555,7 +556,7 @@ Module mdlOperaciones
          Dim oComando As New MySqlCommand
          Dim oDataReader As MySqlDataReader
          oConexion = New MySqlConnection
-         oConexion.ConnectionString = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+         oConexion.ConnectionString = cadenaConexion
          aConsulta = "SELECT * FROM tbllector WHERE lectorDefault=1;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
