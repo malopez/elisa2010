@@ -4,7 +4,7 @@ Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
 
 Module mdlOperaciones
-   Private Const cadenaConexion = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   Public Const cadenaConexion = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
    '################################
@@ -249,7 +249,7 @@ Module mdlOperaciones
    '##################################################################
    'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
    'de una placa leida previamente
-   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal)
+   Public Function abreArchivoExcel(ByVal placaLector(,) As Decimal) As String
       'Define variables para archivo de excel
       Dim excelApp As New Excel.Application
       'Dim libroExcel As Excel.Workbook
@@ -294,13 +294,13 @@ Module mdlOperaciones
                resultado &= vbCrLf
             Next
          Catch ex As Exception
-            frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
-            frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR:" & ex.Message & " " & ex.GetType.ToString
+            frmAbrirArchivoExistente.lblMensajeAAE.ForeColor = System.Drawing.Color.Red
+            frmAbrirArchivoExistente.lblMensajeAAE.Text = "ERROR:" & ex.Message & " " & ex.GetType.ToString
             frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
             frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
          End Try
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Green
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "Nombre del archivo abierto: " & nombreArchivo
+         frmAbrirArchivoExistente.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
+         frmAbrirArchivoExistente.lblMensajeAAE.Text = "Nombre del archivo abierto: " & nombreArchivo
          frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
          frmAbrirArchivoExistente.txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
          frmAbrirArchivoExistente.txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
@@ -314,18 +314,16 @@ Module mdlOperaciones
          frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = False
          frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = True
       Catch ex As FormatException
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
          frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
          frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
       Catch ex As Exception
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.ForeColor = System.Drawing.Color.Red
-         frmAbrirArchivoExistente.lblNombrePlacaDesdeArchivo.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
          frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
          frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
-
       End Try
-   End Sub
+
+   End Function
 
    '###########################################################
    '#SECCION PARA LIBERAR OBJETOS DE MEMORIA TIPO PROGRAMA    #
@@ -343,10 +341,47 @@ Module mdlOperaciones
    End Sub
 
    '#################################################
-   '#   SECCION DE CREACION DE TABLA TEMPORAL EN BD #
+   '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
-   '#Crea la tabla temporal donde se aloja la frecuencia relativa
-   Private Sub cargaTablaFrecRel(ByVal frecuenciaRelativa() As Decimal)
+
+   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByVal promCP As Decimal, ByVal promCN As Decimal, _
+                                 ByVal promCPS As Decimal, ByVal mediaAritmetica As Decimal, mediaGeometrica As Decimal, _
+                                 ByVal desviacionEstandarDatosNoAgrupados As Decimal, ByVal coeficienteDeVariacionDatosNoAgrupados As Decimal)
+      Dim resultado As Integer
+      Dim comando As New MySqlCommand
+      Try
+         'Crear la conexion para establecer el acceso a la BD de MySQL
+         Dim oConexion = New MySqlConnection
+         oConexion.ConnectionString = cadenaConexion
+         'Abrir la conexion a la base de datos
+         oConexion.Open()
+         'Asigna la cadena de conexion
+         comando.Connection = oConexion
+         comando.CommandText = "INSERT INTO tblplacaleida (caso,placaLeida,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
+                                & "('" & numcaso & "','" & msn & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
+                                & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
+         resultado = comando.ExecuteNonQuery()
+         oConexion.Close()
+      Catch ex As MySqlException
+         'mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+      Catch ex As DataException
+         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+      Catch ex As Exception
+         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+      End Try
+   End Sub
+
+   Public Function reduceDecimal(ByVal numero As Decimal) As Decimal
+      Dim v As Decimal
+      v = CDec(Microsoft.VisualBasic.Left(CStr(numero), 10))
+      Return v
+   End Function
+
+
+   Private Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String)
 
       Dim i As Integer
       Dim resultado As Integer
@@ -359,34 +394,40 @@ Module mdlOperaciones
          oConexion.Open()
          'Asigna la cadena de conexion
          comando.Connection = oConexion
-         'Trunca la tabla utilizada temporalmente para guardar los datos
-         comando.CommandText = "truncate table tblfrecrelativa"
+         comando.CommandText = "truncate table tblfrecrelativa;"
          resultado = comando.ExecuteNonQuery()
          'Guardar los datos de la frecuencia relativa en la BD
          For i = 0 To 14
-            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor) VALUES ('" & i + 1 & "','" & frecuenciaRelativa(i) & "')"
+            comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
+            resultado = comando.ExecuteNonQuery()
+            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor) values (" & i + 1 & "," & reduceDecimal(frecuenciaRelativa(i)) & ");"
             resultado = comando.ExecuteNonQuery()
          Next
          oConexion.Close()
+      Catch ex As MySqlException
+         'mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+      Catch ex As DataException
+         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
       Catch ex As Exception
-         MessageBox.Show("Error al tratar de insertar datos de la frecuencia relativa en la base de datos.")
+         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
       End Try
    End Sub
-
 
    '#################################################
    '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
    '#################################################
-   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String)
+   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numcaso As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
          oConexion.ConnectionString = cadenaConexion
          oConexion.Open()
-         Dim sqlfrecrel As String = "Select * from tblfrecrelativa"
+         Dim sqlfrecrel As String = "SELECT * FROM tblfrecrelativa;"
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
          Dim ds As New DataSet()
          da.Fill(ds, "tblfrecrelativa")
-
          'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
          Dim ChartArea1 As ChartArea = New ChartArea()
          Dim Legend1 As Legend = New Legend()
@@ -422,7 +463,7 @@ Module mdlOperaciones
          Chart1.Anchor = AnchorStyles.Right
          Chart1.Anchor = AnchorStyles.Top
          'Asigna los valores de las series para miembros que se trazan en X y Y
-         Chart1.Series("Series1").XValueMember = "rango"
+         'Chart1.Series("Series1").XValueMember = "rango"
          Chart1.Series("Series1").YValueMembers = "valor"
          Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
          'Cerrar la conexion a la base de datos 
@@ -547,7 +588,7 @@ Module mdlOperaciones
          Case "H"
             retorno = 7
          Case Else
-            MessageBox.Show(" El valor debe ser una letra entre A y H.")
+            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, " El valor debe ser una letra entre A y H. ")
             textbox.Select()
             textbox.SelectAll()
       End Select
@@ -604,14 +645,11 @@ Module mdlOperaciones
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+         mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
       Catch ex As DataException
-         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
       Catch ex As Exception
-         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
       End Try
 
    End Sub
@@ -645,8 +683,7 @@ Module mdlOperaciones
             .Open() ' ABRE EL PUERTO SERIE
          End With
       Catch ex As Exception
-         frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-         frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "ERROR: Al abrir el puerto serial con los datos configurados." & ex.Message
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: Al abrir el puerto serial con los datos configurados.")
       End Try
    End Sub
 
@@ -672,6 +709,7 @@ Module mdlOperaciones
             frmRegistraNuevoAnalisis.cmbComboPorts.Text = ""
          End If
       Catch ex As Exception
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
       End Try
    End Sub
 
@@ -820,7 +858,7 @@ Module mdlOperaciones
    Public Function calculaPromedioPositivos(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
                                            , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer) As Decimal
       Dim promedioPositivos As Decimal
-      promedioPositivos = CDec(Microsoft.VisualBasic.Left(CStr(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3)), 14))
+      promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
       Return promedioPositivos
    End Function
 
@@ -828,21 +866,21 @@ Module mdlOperaciones
    Public Function calculaPromedioNegativos(ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer _
                                            , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer) As Decimal
       Dim promedioNegativos As Decimal
-      promedioNegativos = CDec(Microsoft.VisualBasic.Left(CStr(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3)), 14))
+      promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
       Return promedioNegativos
    End Function
 
    'Funcion que calcula el valor de los promedios positivos leidos desde archivo
    Public Function calculaPromedioPositivosDA(ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal) As Decimal
       Dim promedioPositivos As Decimal
-      promedioPositivos = CDec(Microsoft.VisualBasic.Left(CStr((cp1 + cp2 + cp3) / 3), 14))
+      promedioPositivos = reduceDecimal(((cp1 + cp2 + cp3) / 3))
       Return promedioPositivos
    End Function
 
    'Funcion que calcula el valor de los promedios negativos leidos desde archivo
    Public Function calculaPromedioNegativosDA(ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal) As Decimal
       Dim promedioNegativos As Decimal
-      promedioNegativos = CDec(Microsoft.VisualBasic.Left(CStr((cn1 + cn2 + cn3) / 3), 14))
+      promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
       Return promedioNegativos
    End Function
 
@@ -851,7 +889,7 @@ Module mdlOperaciones
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
    'seleccionada.
-   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, _
+   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, ByRef numcaso As String, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
@@ -865,14 +903,11 @@ Module mdlOperaciones
       Dim k As Integer = 0
       'Para presentar el resultado del análisis campo texto de la forma
       Dim resultado As String = ""
-      Dim resultado1 As String = ""
-      Dim resultado2 As String = ""
-      Dim resultado3 As String = ""
-      Dim resultado4 As String = ""
-      Dim resultado5 As String = ""
+      Dim placaoriginal As String = ""
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
       'Para identificar los rangos de los datos introducidos 
+      Dim totalCeros As Integer = 0
       Dim rangoUno As Integer = 0
       Dim rangoDos As Integer = 0
       Dim rangoTres As Integer = 0
@@ -978,44 +1013,40 @@ Module mdlOperaciones
          End Try
       End If
       'Calcula la diferencia de controles positivos y negativos
-      difCPS = CDec(Microsoft.VisualBasic.Left(CStr(CDec(promCP - promCN)), 14))
+      difCPS = reduceDecimal(CDec(promCP - promCN))
 
       'Calcula la tabla SPS
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
             'If IsNumeric(placaLector(i, j)) Then MODIFICADO 18-Abril-2012
             If (placaLector(i, j) > 0) Then
-               calculaSPS(i, j) = CDec(Microsoft.VisualBasic.Left(CStr((placaLector(i, j) - promCN) / difCPS), 14))
+               calculaSPS(i, j) = reduceDecimal(((placaLector(i, j) - promCN) / difCPS))
+               'Sirve para calcular el numero de datos (pozos utilizados para el caso) AGREGADO 30-Abril-2012
+               cuentaNoDatos += 1
             Else
                calculaSPS(i, j) = 0
             End If
-            resultado1 += placaLector(i, j) & vbTab
-            resultado2 += calculaSPS(i, j) & vbTab
+            placaoriginal += placaLector(i, j) & vbTab
          Next
-         resultado1 += vbCrLf
-         resultado2 += vbCrLf
+         placaoriginal += vbCrLf
       Next
 
       'Calcula los logaritmos de la tabla SPS
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
             If (calculaSPS(i, j) > logsps) Then
-               logaritmoSPS(i, j) = CDec((Microsoft.VisualBasic.Left(CStr(Math.Log10(calculaSPS(i, j))), 14)))
+               logaritmoSPS(i, j) = reduceDecimal(Math.Log10(calculaSPS(i, j)))
             Else
                logaritmoSPS(i, j) = -4
             End If
-            resultado3 += logaritmoSPS(i, j) & vbTab
          Next
-         resultado3 += vbCrLf
       Next
 
       'Calcula los Titulos de la tabla de logaritmos SPS
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
-            logaritmoTitulos(i, j) = CDec(Microsoft.VisualBasic.Left(CStr((logtit1 * logaritmoSPS(i, j)) + logtit2), 14))
-            resultado4 += logaritmoTitulos(i, j) & vbTab
+            logaritmoTitulos(i, j) = reduceDecimal(((logtit1 * logaritmoSPS(i, j)) + logtit2))
          Next
-         resultado4 += vbCrLf
       Next
 
       'Calcula el titulo mendiante la exponenciacion 10 ^ A1..H1, en la hoja de excel corresponde a la columna K, y que tambien 
@@ -1023,13 +1054,11 @@ Module mdlOperaciones
       For i = 0 To numDeColumnas - 1
          For j = 0 To numDeRegistros - 1
             If (logaritmoTitulos(i, j) > 0) Then
-               calculoDeTitulos(i, j) = CDec(Microsoft.VisualBasic.Left(CStr(CDec((10 ^ logaritmoTitulos(i, j)))), 14))
+               calculoDeTitulos(i, j) = reduceDecimal(CDec((10 ^ logaritmoTitulos(i, j))))
             Else
                calculoDeTitulos(i, j) = 0
             End If
-            resultado5 += calculoDeTitulos(i, j) & vbTab
          Next
-         resultado5 += vbCrLf
       Next
 
       'Inicializa la columna L a ceros para evitar validaciones posteriores
@@ -1041,22 +1070,22 @@ Module mdlOperaciones
 
       'Obtiene los valores desde Ax hasta Hx que se utilizaron de una placa para hacer el analisis
       desdeX = 0
-      hastaX = 3
+      hastaX = 7
       desdeY = 0
       hastaY = 12
 
       'Calcula el valor de la matriz para llenar la columna L
-      For i = desdeX To numDeColumnas - 1
+      For i = desdeX To hastaX 'numDeColumnas - 1 COMENTADO EL 30 DE ABRIL
          For j = desdeY To numDeRegistros - 1
             calculaL(i, j) = CDec(calculoDeTitulos(i, j))
             'Calcula la sumatoria de los datos que se guardan en columna L
             totalcalculaL += CDec(calculaL(i, j))
-            'Sirve para calcular el numero de datos (pozos utilizados para el caso)
-            cuentaNoDatos += 1
+            'Sirve para calcular el numero de datos (pozos utilizados para el caso) MODIFICADO 30-Abril-2012
+            'cuentaNoDatos += 1
 
             'Calcula el logaritmo  base 10 del la columna L, que se utilizara para la calcular ma media geometrica
             If (calculaL(i, j) > 0) Or (calculaL(i, j) < 0) Then
-               calculaSumatoriaMG += CDec(Microsoft.VisualBasic.Left(CStr(CDec(Math.Log10(calculaL(i, j)))), 14))
+               calculaSumatoriaMG += reduceDecimal(CDec(Math.Log10(calculaL(i, j))))
             End If
 
             Select Case calculaL(i, j)
@@ -1091,8 +1120,9 @@ Module mdlOperaciones
                Case Is > 12501
                   rangoQuince += 1
             End Select
+
          Next
-         'desdeY = hastaY
+         ' desdeY = hastaY
       Next
 
       '--------------------------------------------------
@@ -1104,9 +1134,9 @@ Module mdlOperaciones
 
       'calcula la varianza para datos no agrupados
 
-      For i = desdeX To numDeColumnas - 1
+      For i = desdeX To hastaX 'numDeColumnas - 1 COMENTADO EL 30 de ABRIL!!
          For j = desdeY To numDeRegistros - 1
-            temp = CDec(Microsoft.VisualBasic.Left(CStr((calculaL(i, j) - mediaAritmetica) ^ 2), 14))
+            temp = reduceDecimal(((calculaL(i, j) - mediaAritmetica) ^ 2))
             calculaVarianzaDatosNoAgrupados += temp
          Next
       Next
@@ -1141,7 +1171,7 @@ Module mdlOperaciones
       temp = 0
       'Calculo Varianza que se obtiene por sumatoria (xi - Media)^2 * fi / n-1 para las marca de datos (15)
       For i = 0 To 14
-         temp += CDec(Microsoft.VisualBasic.Left(CStr(((marcaDeClase(i) - calculaMedia) ^ 2)), 14)) * rangoDatos(i)
+         temp += reduceDecimal(((marcaDeClase(i) - calculaMedia) ^ 2)) * rangoDatos(i)
          calculaVarianza = CDec(temp / (rangoTotal - 1))
          'Calcula la frecuencia relativa de los valores, que se utilizará después para graficar los datos
          frecuenciaRelativa(i) = CDec((rangoDatos(i) / rangoTotal) * 100)
@@ -1159,9 +1189,13 @@ Module mdlOperaciones
       'calcula la Media Geometrica
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
-      'Crea la tabla temporal para la frecuencia relativa y posterior creación de la gráfica
-      cargaTablaFrecRel(frecuenciaRelativa)
-      creaChartFrecRel(nombre, titulox, tituloy)
+      'Carga los datos para la frecuencia relativa y crea la gráfica
+      cargaResultadosBD(numcaso, placaoriginal, promCP, promCN, difCPS, _
+                        reduceDecimal(mediaAritmetica), reduceDecimal(mediaGeometrica), _
+                        reduceDecimal(desviacionEstandarDatosNoAgrupados), reduceDecimal(coeficienteDeVariacionDatosNoAgrupados))
+      'DESCOMENTAR PARA CARGAR LA TABLA DE FREC REL
+      cargaFrecRelBD(frecuenciaRelativa, numcaso)
+      creaChartFrecRel(nombre, titulox, tituloy, numcaso)
 
       'Presenta datos
       frmSalidaDatos.txtMediaAritmetica.Text = CStr(calculaMedia)

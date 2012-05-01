@@ -279,7 +279,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnAceptarControles.BackColor = System.Drawing.SystemColors.Control
       Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.Location = New System.Drawing.Point(288, 448)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(142, 448)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
       Me.btnAceptarControles.TabIndex = 18
@@ -498,7 +498,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnGuardarDatosExcel.BackColor = System.Drawing.SystemColors.Control
       Me.btnGuardarDatosExcel.Enabled = False
-      Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(142, 448)
+      Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(261, 448)
       Me.btnGuardarDatosExcel.Name = "btnGuardarDatosExcel"
       Me.btnGuardarDatosExcel.Size = New System.Drawing.Size(140, 23)
       Me.btnGuardarDatosExcel.TabIndex = 77

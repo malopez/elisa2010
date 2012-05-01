@@ -172,7 +172,7 @@ Partial Class frmSalidaDatos
       '
       Me.lblMediaPromedio.AutoSize = True
       Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaPromedio.Location = New System.Drawing.Point(325, 113)
+      Me.lblMediaPromedio.Location = New System.Drawing.Point(310, 113)
       Me.lblMediaPromedio.Name = "lblMediaPromedio"
       Me.lblMediaPromedio.Size = New System.Drawing.Size(120, 16)
       Me.lblMediaPromedio.TabIndex = 14
@@ -181,7 +181,7 @@ Partial Class frmSalidaDatos
       'txtMediaAritmetica2
       '
       Me.txtMediaAritmetica2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(329, 141)
+      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(314, 141)
       Me.txtMediaAritmetica2.Name = "txtMediaAritmetica2"
       Me.txtMediaAritmetica2.ReadOnly = True
       Me.txtMediaAritmetica2.Size = New System.Drawing.Size(116, 21)
@@ -191,7 +191,7 @@ Partial Class frmSalidaDatos
       '
       Me.lbDesviacionEstandarDNA.AutoSize = True
       Me.lbDesviacionEstandarDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lbDesviacionEstandarDNA.Location = New System.Drawing.Point(327, 182)
+      Me.lbDesviacionEstandarDNA.Location = New System.Drawing.Point(310, 182)
       Me.lbDesviacionEstandarDNA.Name = "lbDesviacionEstandarDNA"
       Me.lbDesviacionEstandarDNA.Size = New System.Drawing.Size(119, 16)
       Me.lbDesviacionEstandarDNA.TabIndex = 22
@@ -201,7 +201,7 @@ Partial Class frmSalidaDatos
       '
       Me.lblVarianzaDNA.AutoSize = True
       Me.lblVarianzaDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblVarianzaDNA.Location = New System.Drawing.Point(484, 110)
+      Me.lblVarianzaDNA.Location = New System.Drawing.Point(468, 113)
       Me.lblVarianzaDNA.Name = "lblVarianzaDNA"
       Me.lblVarianzaDNA.Size = New System.Drawing.Size(56, 16)
       Me.lblVarianzaDNA.TabIndex = 21
@@ -210,7 +210,7 @@ Partial Class frmSalidaDatos
       'txtDesvEstandar2
       '
       Me.txtDesvEstandar2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtDesvEstandar2.Location = New System.Drawing.Point(330, 210)
+      Me.txtDesvEstandar2.Location = New System.Drawing.Point(313, 210)
       Me.txtDesvEstandar2.Name = "txtDesvEstandar2"
       Me.txtDesvEstandar2.ReadOnly = True
       Me.txtDesvEstandar2.Size = New System.Drawing.Size(115, 21)
@@ -219,7 +219,7 @@ Partial Class frmSalidaDatos
       'txtVarianza2
       '
       Me.txtVarianza2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtVarianza2.Location = New System.Drawing.Point(459, 141)
+      Me.txtVarianza2.Location = New System.Drawing.Point(444, 141)
       Me.txtVarianza2.Name = "txtVarianza2"
       Me.txtVarianza2.ReadOnly = True
       Me.txtVarianza2.Size = New System.Drawing.Size(123, 21)
@@ -229,7 +229,7 @@ Partial Class frmSalidaDatos
       '
       Me.lblCoefVariacionDNA.AutoSize = True
       Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(458, 182)
+      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(441, 182)
       Me.lblCoefVariacionDNA.Name = "lblCoefVariacionDNA"
       Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(142, 16)
       Me.lblCoefVariacionDNA.TabIndex = 18
@@ -238,7 +238,7 @@ Partial Class frmSalidaDatos
       'txtCoefVariacion2
       '
       Me.txtCoefVariacion2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtCoefVariacion2.Location = New System.Drawing.Point(459, 210)
+      Me.txtCoefVariacion2.Location = New System.Drawing.Point(442, 210)
       Me.txtCoefVariacion2.Name = "txtCoefVariacion2"
       Me.txtCoefVariacion2.ReadOnly = True
       Me.txtCoefVariacion2.Size = New System.Drawing.Size(123, 21)
@@ -258,7 +258,7 @@ Partial Class frmSalidaDatos
       '
       Me.Label1.AutoSize = True
       Me.Label1.Font = New System.Drawing.Font("Century Gothic", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label1.Location = New System.Drawing.Point(308, 64)
+      Me.Label1.Location = New System.Drawing.Point(302, 64)
       Me.Label1.Name = "Label1"
       Me.Label1.Size = New System.Drawing.Size(303, 18)
       Me.Label1.TabIndex = 25
@@ -266,7 +266,7 @@ Partial Class frmSalidaDatos
       '
       'Button1
       '
-      Me.Button1.Location = New System.Drawing.Point(461, 304)
+      Me.Button1.Location = New System.Drawing.Point(320, 292)
       Me.Button1.Name = "Button1"
       Me.Button1.Size = New System.Drawing.Size(121, 23)
       Me.Button1.TabIndex = 36
@@ -286,18 +286,17 @@ Partial Class frmSalidaDatos
       Me.lblNombreEnfermedad.Font = New System.Drawing.Font("Century Gothic", 11.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreEnfermedad.Location = New System.Drawing.Point(12, 25)
       Me.lblNombreEnfermedad.Name = "lblNombreEnfermedad"
-      Me.lblNombreEnfermedad.Size = New System.Drawing.Size(205, 18)
+      Me.lblNombreEnfermedad.Size = New System.Drawing.Size(209, 18)
       Me.lblNombreEnfermedad.TabIndex = 43
-      Me.lblNombreEnfermedad.Text = "Nombre de la Enfermedad"
+      Me.lblNombreEnfermedad.Text = "Nombre de la Enfermedad:"
       '
       'frmSalidaDatos
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.AutoScroll = True
       Me.AutoSize = True
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.ClientSize = New System.Drawing.Size(969, 346)
+      Me.ClientSize = New System.Drawing.Size(1087, 343)
       Me.Controls.Add(Me.lblNombreEnfermedad)
       Me.Controls.Add(Me.HScrollBar1)
       Me.Controls.Add(Me.Button1)

@@ -4,13 +4,12 @@ Imports MySql.Data.MySqlClient
 
 
 Public Class frmRegistraNuevoAnalisis
-   Private Const cadenaConexion = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   ' Private Const cadenaConexion = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    'Para realizar los calculos de titulos
    'ENFERMEDAD       LOGSPS     LOGTIT1   LOGTIT2
    'Laringo           0.15       1.45        3.726
    'Bronquitis        0.15       1.642       3.568
    'Encefalomielitis  0.15       1.642       3.726
-
    'IBF               0.18       1.172       3.614
    'NC                0.15       1.464       3.74
    'Reovirus          0.15       1.077       3.46
@@ -42,7 +41,7 @@ Public Class frmRegistraNuevoAnalisis
             End If
          End If
       Catch ex As Exception
-         MessageBox.Show("Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(Me.lblMensajeCaso,"Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -66,7 +65,6 @@ Public Class frmRegistraNuevoAnalisis
          btnDefinirControlesPN.Text = "Cambiar Controles"
          btnFormateaDatos.Enabled = False
          btnLeerDatosPlaca.Enabled = False
-
       Else
          defineValoresDefault()
       End If
@@ -97,24 +95,24 @@ Public Class frmRegistraNuevoAnalisis
          btnDefinirControlesPN.Enabled = False
          Try
             cpx1 = siValorEsLetra(txtCP1Letra1)
-            cpy1 = Convert.ToInt32(txtCP1Valor1.Text)
+            cpy1 = Val(txtCP1Valor1.Text)
             cpx2 = siValorEsLetra(txtCP2Letra2)
-            cpy2 = Convert.ToInt32(txtCP2Valor2.Text)
+            cpy2 = Val(txtCP2Valor2.Text)
             cpx3 = siValorEsLetra(txtCP3Letra3)
-            cpy3 = Convert.ToInt32(txtCP3Valor3.Text)
+            cpy3 = Val(txtCP3Valor3.Text)
             cnx1 = siValorEsLetra(txtCN1Letra1)
-            cny1 = Convert.ToInt32(txtCN1Valor1.Text)
+            cny1 = Val(txtCN1Valor1.Text)
             cnx2 = siValorEsLetra(txtCN2Letra2)
-            cny2 = Convert.ToInt32(txtCN2Valor2.Text)
+            cny2 = Val(txtCN2Valor2.Text)
             cnx3 = siValorEsLetra(txtCN3Letra3)
-            cny3 = Convert.ToInt32(txtCN3Valor3.Text)
+            cny3 = Val(txtCN3Valor3.Text)
          Catch ex As Exception
-            MessageBox.Show("Los datos no son válidos, cambie los controles e intente nuevamente.")
+            mensajeRojo(Me.lblMensajeCaso, "Los datos no son válidos, cambie los controles e intente nuevamente.")
             btnObtenerResultados.Enabled = False
             btnDefinirControlesPN.Enabled = True
          End Try
          btnObtenerResultados.Enabled = False
-         calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", 0, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726), 0, 0, 0, 0, 0, 0)
+         calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", 0, cmbNoCaso.Text, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
       Catch ex As DataException
          mensajeException(lblMensajeCaso, ex)
@@ -218,7 +216,6 @@ Public Class frmRegistraNuevoAnalisis
       grbControlesNegativos.Enabled = False
       grbControlesPositivos.Enabled = False
       btnDefinirControlesPN.Enabled = False
-      btnGuardarDatosExcel.Enabled = False
       If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
          controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
          controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
@@ -233,9 +230,10 @@ Public Class frmRegistraNuevoAnalisis
          ckbControlesDefault.Enabled = False
          btnAceptarControles.Enabled = False
          btnDefinirControlesPN.Enabled = False
+         btnGuardarDatosExcel.Enabled = True
          btnObtenerResultados.Enabled = True
       Else
-         MessageBox.Show("Los valores que ha introducido no son válidos, trate nuevamente.")
+         mensajeRojo(Me.lblMensajeCaso,"Los valores que ha introducido no son válidos, trate nuevamente.")
          btnDefinirControlesPN.Enabled = True
          btnAceptarControles.Enabled = True
       End If
@@ -249,7 +247,7 @@ Public Class frmRegistraNuevoAnalisis
          Dim oConexion As MySqlConnection
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         Dim oDataAdapter = New MySqlDataAdapter("SELECT DISTINCT caso FROM ordenes WHERE id_area=3 and id_status=1", oConexion)
+         Dim oDataAdapter = New MySqlDataAdapter("SELECT DISTINCT o.caso FROM ordenes o,analisis a WHERE o.id_area=3 and o.id_status=1 and o.AnalisisSolicitados=a.id_analysis and  a.analysis_desc like '%INMUNOENSAYO%'", oConexion)
          Dim oDataSet As New DataSet()
          oConexion.Open()
          oDataAdapter.Fill(oDataSet, "ordenes")
@@ -280,21 +278,20 @@ Public Class frmRegistraNuevoAnalisis
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and a.analysis_desc like '%INMUNOENSAYO%';"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
          oDataReader = oComando.ExecuteReader()
             If oDataReader.HasRows Then
                While oDataReader.Read()
-               txtNombreCliente.Text = oDataReader("NombreCliente")
-               txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados")
+               txtNombreCliente.Text = oDataReader("NombreCliente").ToString()
+               txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados").ToString()
                End While
                oDataReader.Close()
             lblMensajeCaso.Text = ""
             Else
-            lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-            lblMensajeCaso.Text = "Mensaje: Seleccione un número de caso."
+            mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso.")
             End If
          oConexion.Close()
          Me.btnLeerDatosPlaca.Enabled = True
@@ -313,7 +310,7 @@ Public Class frmRegistraNuevoAnalisis
       Try
          convierteCadena(msn)
       Catch ex As Exception
-         MessageBox.Show(" Se ha presentado un error al convertir la cadena en valores.")
+         mensajeRojo(Me.lblMensajeCaso," Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
          Dim nombreArchivo As String
@@ -333,9 +330,11 @@ Public Class frmRegistraNuevoAnalisis
 
 
    Private Sub btnGuardarDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatosExcel.Click
-      guardaDatosExcel(placaLector, Me.txtCP1Letra1.Text, Me.txtCP2Letra2.Text, Me.txtCP3Letra3.Text, Me.txtCN1Letra1.Text, _
-                       Me.txtCN2Letra2.Text, Me.txtCN3Letra3.Text, Me.txtCP1Valor1.Text, Me.txtCP2Valor2.Text, Me.txtCP3Valor3.Text, _
-                       Me.txtCN1Valor1.Text, Me.txtCN2Valor2.Text, Me.txtCN3Valor3.Text)
-      btnAceptarControles.Enabled = True
+      btnGuardarDatosExcel.Enabled = False
+      guardaDatosExcel(placaLector, siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
+                       siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
+                       Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text))
    End Sub
+
+
 End Class
