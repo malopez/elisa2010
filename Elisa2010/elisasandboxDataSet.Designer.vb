@@ -49,14 +49,6 @@ Partial Public Class elisasandboxDataSet
     
     Private relationanalisis_ibfk_1 As Global.System.Data.DataRelation
     
-    Private relationordenes_ibfk_1 As Global.System.Data.DataRelation
-    
-    Private relationordenes_ibfk_11 As Global.System.Data.DataRelation
-    
-    Private relationordenes_ibfk_18 As Global.System.Data.DataRelation
-    
-    Private relationtblplacaleida_ibfk_1 As Global.System.Data.DataRelation
-    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -445,10 +437,6 @@ Partial Public Class elisasandboxDataSet
             End If
         End If
         Me.relationanalisis_ibfk_1 = Me.Relations("analisis_ibfk_1")
-        Me.relationordenes_ibfk_1 = Me.Relations("ordenes_ibfk_1")
-        Me.relationordenes_ibfk_11 = Me.Relations("ordenes_ibfk_11")
-        Me.relationordenes_ibfk_18 = Me.Relations("ordenes_ibfk_18")
-        Me.relationtblplacaleida_ibfk_1 = Me.Relations("tblplacaleida_ibfk_1")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -483,14 +471,6 @@ Partial Public Class elisasandboxDataSet
         MyBase.Tables.Add(Me.tabletblplacaleida)
         Me.relationanalisis_ibfk_1 = New Global.System.Data.DataRelation("analisis_ibfk_1", New Global.System.Data.DataColumn() {Me.tableareas.id_areaColumn}, New Global.System.Data.DataColumn() {Me.tableanalisis.id_areaColumn}, false)
         Me.Relations.Add(Me.relationanalisis_ibfk_1)
-        Me.relationordenes_ibfk_1 = New Global.System.Data.DataRelation("ordenes_ibfk_1", New Global.System.Data.DataColumn() {Me.tableareas.id_areaColumn}, New Global.System.Data.DataColumn() {Me.tableordenes.id_areaColumn}, false)
-        Me.Relations.Add(Me.relationordenes_ibfk_1)
-        Me.relationordenes_ibfk_11 = New Global.System.Data.DataRelation("ordenes_ibfk_11", New Global.System.Data.DataColumn() {Me.tableestados.id_statusColumn}, New Global.System.Data.DataColumn() {Me.tableordenes.id_statusColumn}, false)
-        Me.Relations.Add(Me.relationordenes_ibfk_11)
-        Me.relationordenes_ibfk_18 = New Global.System.Data.DataRelation("ordenes_ibfk_18", New Global.System.Data.DataColumn() {Me.tablearchivo_resultados.id_archivoColumn}, New Global.System.Data.DataColumn() {Me.tableordenes.id_archivoColumn}, false)
-        Me.Relations.Add(Me.relationordenes_ibfk_18)
-        Me.relationtblplacaleida_ibfk_1 = New Global.System.Data.DataRelation("tblplacaleida_ibfk_1", New Global.System.Data.DataColumn() {Me.tableordenes.CasoColumn}, New Global.System.Data.DataColumn() {Me.tabletblplacaleida.casoColumn}, false)
-        Me.Relations.Add(Me.relationtblplacaleida_ibfk_1)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -664,6 +644,12 @@ Partial Public Class elisasandboxDataSet
         
         Private columnid_area As Global.System.Data.DataColumn
         
+        Private columnlogSPS As Global.System.Data.DataColumn
+        
+        Private columnlogTit1 As Global.System.Data.DataColumn
+        
+        Private columnlogTit2 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -724,6 +710,30 @@ Partial Public Class elisasandboxDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property logSPSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogSPS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property logTit1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogTit1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property logTit2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlogTit2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -760,9 +770,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddanalisisRow(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal parentareasRowByanalisis_ibfk_1 As areasRow) As analisisRow
+        Public Overloads Function AddanalisisRow(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal parentareasRowByanalisis_ibfk_1 As areasRow, ByVal logSPS As Single, ByVal logTit1 As Single, ByVal logTit2 As Single) As analisisRow
             Dim rowanalisisRow As analisisRow = CType(Me.NewRow,analisisRow)
-            Dim columnValuesArray() As Object = New Object() {id_analysis, analysis_desc, Nothing}
+            Dim columnValuesArray() As Object = New Object() {id_analysis, analysis_desc, Nothing, logSPS, logTit1, logTit2}
             If (Not (parentareasRowByanalisis_ibfk_1) Is Nothing) Then
                 columnValuesArray(2) = parentareasRowByanalisis_ibfk_1(0)
             End If
@@ -797,6 +807,9 @@ Partial Public Class elisasandboxDataSet
             Me.columnid_analysis = MyBase.Columns("id_analysis")
             Me.columnanalysis_desc = MyBase.Columns("analysis_desc")
             Me.columnid_area = MyBase.Columns("id_area")
+            Me.columnlogSPS = MyBase.Columns("logSPS")
+            Me.columnlogTit1 = MyBase.Columns("logTit1")
+            Me.columnlogTit2 = MyBase.Columns("logTit2")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -808,6 +821,12 @@ Partial Public Class elisasandboxDataSet
             MyBase.Columns.Add(Me.columnanalysis_desc)
             Me.columnid_area = New Global.System.Data.DataColumn("id_area", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnid_area)
+            Me.columnlogSPS = New Global.System.Data.DataColumn("logSPS", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogSPS)
+            Me.columnlogTit1 = New Global.System.Data.DataColumn("logTit1", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogTit1)
+            Me.columnlogTit2 = New Global.System.Data.DataColumn("logTit2", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlogTit2)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnid_analysis}, true))
             Me.columnid_analysis.AllowDBNull = false
             Me.columnid_analysis.Unique = true
@@ -2572,18 +2591,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddordenesRow(ByVal Caso As String, ByVal UltimaModificacion As Date, ByVal ClaveCliente As String, ByVal NombreCliente As String, ByVal Solicita As String, ByVal Presenta As String, ByVal Descripcion As String, ByVal Observaciones As String, ByVal TipoMuestras As Integer, ByVal CantidadMuestras_1 As Integer, ByVal CantidadMuestras_2 As Integer, ByVal AnalisisSolicitados As String, ByVal parentareasRowByordenes_ibfk_1 As areasRow, ByVal parentestadosRowByordenes_ibfk_11 As estadosRow, ByVal parentarchivo_resultadosRowByordenes_ibfk_18 As archivo_resultadosRow) As ordenesRow
+        Public Overloads Function AddordenesRow(ByVal Caso As String, ByVal UltimaModificacion As Date, ByVal ClaveCliente As String, ByVal NombreCliente As String, ByVal Solicita As String, ByVal Presenta As String, ByVal Descripcion As String, ByVal Observaciones As String, ByVal TipoMuestras As Integer, ByVal CantidadMuestras_1 As Integer, ByVal CantidadMuestras_2 As Integer, ByVal AnalisisSolicitados As String, ByVal id_area As Integer, ByVal id_status As Integer, ByVal id_archivo As Long) As ordenesRow
             Dim rowordenesRow As ordenesRow = CType(Me.NewRow,ordenesRow)
-            Dim columnValuesArray() As Object = New Object() {Caso, UltimaModificacion, ClaveCliente, NombreCliente, Solicita, Presenta, Descripcion, Observaciones, TipoMuestras, CantidadMuestras_1, CantidadMuestras_2, AnalisisSolicitados, Nothing, Nothing, Nothing}
-            If (Not (parentareasRowByordenes_ibfk_1) Is Nothing) Then
-                columnValuesArray(12) = parentareasRowByordenes_ibfk_1(0)
-            End If
-            If (Not (parentestadosRowByordenes_ibfk_11) Is Nothing) Then
-                columnValuesArray(13) = parentestadosRowByordenes_ibfk_11(0)
-            End If
-            If (Not (parentarchivo_resultadosRowByordenes_ibfk_18) Is Nothing) Then
-                columnValuesArray(14) = parentarchivo_resultadosRowByordenes_ibfk_18(0)
-            End If
+            Dim columnValuesArray() As Object = New Object() {Caso, UltimaModificacion, ClaveCliente, NombreCliente, Solicita, Presenta, Descripcion, Observaciones, TipoMuestras, CantidadMuestras_1, CantidadMuestras_2, AnalisisSolicitados, id_area, id_status, id_archivo}
             rowordenesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowordenesRow)
             Return rowordenesRow
@@ -3217,6 +3227,8 @@ Partial Public Class elisasandboxDataSet
             MyBase.Columns.Add(Me.columnrango)
             Me.columnvalor = New Global.System.Data.DataColumn("valor", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnvalor)
+            Me.columnrango.AllowDBNull = false
+            Me.columnvalor.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3682,21 +3694,49 @@ Partial Public Class elisasandboxDataSet
         
         Private columnplacaLeida As Global.System.Data.DataColumn
         
-        Private columnidLector As Global.System.Data.DataColumn
-        
         Private columnpromCP As Global.System.Data.DataColumn
         
         Private columnpromCN As Global.System.Data.DataColumn
         
         Private columnpromCPS As Global.System.Data.DataColumn
         
-        Private columnmedArti As Global.System.Data.DataColumn
+        Private columnmedArit As Global.System.Data.DataColumn
         
         Private columnmedGeom As Global.System.Data.DataColumn
         
         Private columndesvEst As Global.System.Data.DataColumn
         
-        Private columncoefvar As Global.System.Data.DataColumn
+        Private columncoefVar As Global.System.Data.DataColumn
+        
+        Private columnrango1 As Global.System.Data.DataColumn
+        
+        Private columnrango2 As Global.System.Data.DataColumn
+        
+        Private columnrango3 As Global.System.Data.DataColumn
+        
+        Private columnrango4 As Global.System.Data.DataColumn
+        
+        Private columnrango5 As Global.System.Data.DataColumn
+        
+        Private columnrango6 As Global.System.Data.DataColumn
+        
+        Private columnrango7 As Global.System.Data.DataColumn
+        
+        Private columnrango8 As Global.System.Data.DataColumn
+        
+        Private columnrango9 As Global.System.Data.DataColumn
+        
+        Private columnrango10 As Global.System.Data.DataColumn
+        
+        Private columnrango11 As Global.System.Data.DataColumn
+        
+        Private columnrango12 As Global.System.Data.DataColumn
+        
+        Private columnrango13 As Global.System.Data.DataColumn
+        
+        Private columnrango14 As Global.System.Data.DataColumn
+        
+        Private columnrango15 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -3751,14 +3791,6 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property idLectorColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnidLector
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property promCPColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnpromCP
@@ -3783,9 +3815,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property medArtiColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property medAritColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnmedArti
+                Return Me.columnmedArit
             End Get
         End Property
         
@@ -3807,9 +3839,129 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property coefvarColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property coefVarColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncoefvar
+                Return Me.columncoefVar
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango5Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango5
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango6Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango6
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango7Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango7
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango8Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango8
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango9Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango9
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango10Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango10
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango11Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango11
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango12Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango12
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango13Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango13
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango14Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango14
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rango15Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrango15
             End Get
         End Property
         
@@ -3850,12 +4002,33 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddtblplacaleidaRow(ByVal parentordenesRowBytblplacaleida_ibfk_1 As ordenesRow, ByVal placaLeida As String, ByVal idLector As Integer, ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal promCPS As Decimal, ByVal medArti As Decimal, ByVal medGeom As Decimal, ByVal desvEst As Decimal, ByVal coefvar As Decimal) As tblplacaleidaRow
+        Public Overloads Function AddtblplacaleidaRow( _
+                    ByVal caso As String,  _
+                    ByVal placaLeida As String,  _
+                    ByVal promCP As Single,  _
+                    ByVal promCN As Single,  _
+                    ByVal promCPS As Single,  _
+                    ByVal medArit As Single,  _
+                    ByVal medGeom As Single,  _
+                    ByVal desvEst As Single,  _
+                    ByVal coefVar As Single,  _
+                    ByVal rango1 As Single,  _
+                    ByVal rango2 As Single,  _
+                    ByVal rango3 As Single,  _
+                    ByVal rango4 As Single,  _
+                    ByVal rango5 As Single,  _
+                    ByVal rango6 As Single,  _
+                    ByVal rango7 As Single,  _
+                    ByVal rango8 As Single,  _
+                    ByVal rango9 As Single,  _
+                    ByVal rango10 As Single,  _
+                    ByVal rango11 As Single,  _
+                    ByVal rango12 As Single,  _
+                    ByVal rango13 As Single,  _
+                    ByVal rango14 As Single,  _
+                    ByVal rango15 As Single) As tblplacaleidaRow
             Dim rowtblplacaleidaRow As tblplacaleidaRow = CType(Me.NewRow,tblplacaleidaRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, placaLeida, idLector, promCP, promCN, promCPS, medArti, medGeom, desvEst, coefvar}
-            If (Not (parentordenesRowBytblplacaleida_ibfk_1) Is Nothing) Then
-                columnValuesArray(0) = parentordenesRowBytblplacaleida_ibfk_1(0)
-            End If
+            Dim columnValuesArray() As Object = New Object() {caso, placaLeida, promCP, promCN, promCPS, medArit, medGeom, desvEst, coefVar, rango1, rango2, rango3, rango4, rango5, rango6, rango7, rango8, rango9, rango10, rango11, rango12, rango13, rango14, rango15}
             rowtblplacaleidaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowtblplacaleidaRow)
             Return rowtblplacaleidaRow
@@ -3886,14 +4059,28 @@ Partial Public Class elisasandboxDataSet
         Friend Sub InitVars()
             Me.columncaso = MyBase.Columns("caso")
             Me.columnplacaLeida = MyBase.Columns("placaLeida")
-            Me.columnidLector = MyBase.Columns("idLector")
             Me.columnpromCP = MyBase.Columns("promCP")
             Me.columnpromCN = MyBase.Columns("promCN")
             Me.columnpromCPS = MyBase.Columns("promCPS")
-            Me.columnmedArti = MyBase.Columns("medArti")
+            Me.columnmedArit = MyBase.Columns("medArit")
             Me.columnmedGeom = MyBase.Columns("medGeom")
             Me.columndesvEst = MyBase.Columns("desvEst")
-            Me.columncoefvar = MyBase.Columns("coefvar")
+            Me.columncoefVar = MyBase.Columns("coefVar")
+            Me.columnrango1 = MyBase.Columns("rango1")
+            Me.columnrango2 = MyBase.Columns("rango2")
+            Me.columnrango3 = MyBase.Columns("rango3")
+            Me.columnrango4 = MyBase.Columns("rango4")
+            Me.columnrango5 = MyBase.Columns("rango5")
+            Me.columnrango6 = MyBase.Columns("rango6")
+            Me.columnrango7 = MyBase.Columns("rango7")
+            Me.columnrango8 = MyBase.Columns("rango8")
+            Me.columnrango9 = MyBase.Columns("rango9")
+            Me.columnrango10 = MyBase.Columns("rango10")
+            Me.columnrango11 = MyBase.Columns("rango11")
+            Me.columnrango12 = MyBase.Columns("rango12")
+            Me.columnrango13 = MyBase.Columns("rango13")
+            Me.columnrango14 = MyBase.Columns("rango14")
+            Me.columnrango15 = MyBase.Columns("rango15")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3903,36 +4090,63 @@ Partial Public Class elisasandboxDataSet
             MyBase.Columns.Add(Me.columncaso)
             Me.columnplacaLeida = New Global.System.Data.DataColumn("placaLeida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnplacaLeida)
-            Me.columnidLector = New Global.System.Data.DataColumn("idLector", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnidLector)
-            Me.columnpromCP = New Global.System.Data.DataColumn("promCP", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnpromCP = New Global.System.Data.DataColumn("promCP", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnpromCP)
-            Me.columnpromCN = New Global.System.Data.DataColumn("promCN", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnpromCN = New Global.System.Data.DataColumn("promCN", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnpromCN)
-            Me.columnpromCPS = New Global.System.Data.DataColumn("promCPS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnpromCPS = New Global.System.Data.DataColumn("promCPS", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnpromCPS)
-            Me.columnmedArti = New Global.System.Data.DataColumn("medArti", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnmedArti)
-            Me.columnmedGeom = New Global.System.Data.DataColumn("medGeom", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnmedArit = New Global.System.Data.DataColumn("medArit", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmedArit)
+            Me.columnmedGeom = New Global.System.Data.DataColumn("medGeom", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnmedGeom)
-            Me.columndesvEst = New Global.System.Data.DataColumn("desvEst", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            Me.columndesvEst = New Global.System.Data.DataColumn("desvEst", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndesvEst)
-            Me.columncoefvar = New Global.System.Data.DataColumn("coefvar", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncoefvar)
+            Me.columncoefVar = New Global.System.Data.DataColumn("coefVar", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncoefVar)
+            Me.columnrango1 = New Global.System.Data.DataColumn("rango1", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango1)
+            Me.columnrango2 = New Global.System.Data.DataColumn("rango2", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango2)
+            Me.columnrango3 = New Global.System.Data.DataColumn("rango3", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango3)
+            Me.columnrango4 = New Global.System.Data.DataColumn("rango4", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango4)
+            Me.columnrango5 = New Global.System.Data.DataColumn("rango5", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango5)
+            Me.columnrango6 = New Global.System.Data.DataColumn("rango6", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango6)
+            Me.columnrango7 = New Global.System.Data.DataColumn("rango7", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango7)
+            Me.columnrango8 = New Global.System.Data.DataColumn("rango8", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango8)
+            Me.columnrango9 = New Global.System.Data.DataColumn("rango9", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango9)
+            Me.columnrango10 = New Global.System.Data.DataColumn("rango10", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango10)
+            Me.columnrango11 = New Global.System.Data.DataColumn("rango11", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango11)
+            Me.columnrango12 = New Global.System.Data.DataColumn("rango12", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango12)
+            Me.columnrango13 = New Global.System.Data.DataColumn("rango13", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango13)
+            Me.columnrango14 = New Global.System.Data.DataColumn("rango14", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango14)
+            Me.columnrango15 = New Global.System.Data.DataColumn("rango15", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrango15)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columncaso}, true))
             Me.columncaso.AllowDBNull = false
             Me.columncaso.Unique = true
-            Me.columncaso.MaxLength = 20
+            Me.columncaso.MaxLength = 15
             Me.columnplacaLeida.AllowDBNull = false
             Me.columnplacaLeida.MaxLength = 1000
-            Me.columnidLector.AllowDBNull = false
             Me.columnpromCP.AllowDBNull = false
             Me.columnpromCN.AllowDBNull = false
             Me.columnpromCPS.AllowDBNull = false
-            Me.columnmedArti.AllowDBNull = false
+            Me.columnmedArit.AllowDBNull = false
             Me.columnmedGeom.AllowDBNull = false
             Me.columndesvEst.AllowDBNull = false
-            Me.columncoefvar.AllowDBNull = false
+            Me.columncoefVar.AllowDBNull = false
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4112,6 +4326,51 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property logSPS() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tableanalisis.logSPSColumn),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logSPS' in table 'analisis' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableanalisis.logSPSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property logTit1() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tableanalisis.logTit1Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logTit1' in table 'analisis' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableanalisis.logTit1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property logTit2() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tableanalisis.logTit2Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'logTit2' in table 'analisis' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableanalisis.logTit2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property areasRow() As areasRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("analisis_ibfk_1")),areasRow)
@@ -4120,6 +4379,42 @@ Partial Public Class elisasandboxDataSet
                 Me.SetParentRow(value, Me.Table.ParentRelations("analisis_ibfk_1"))
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IslogSPSNull() As Boolean
+            Return Me.IsNull(Me.tableanalisis.logSPSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetlogSPSNull()
+            Me(Me.tableanalisis.logSPSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IslogTit1Null() As Boolean
+            Return Me.IsNull(Me.tableanalisis.logTit1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetlogTit1Null()
+            Me(Me.tableanalisis.logTit1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IslogTit2Null() As Boolean
+            Return Me.IsNull(Me.tableanalisis.logTit2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetlogTit2Null()
+            Me(Me.tableanalisis.logTit2Column) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -4169,16 +4464,6 @@ Partial Public Class elisasandboxDataSet
                 Me(Me.tablearchivo_resultados.nombre_archivoColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetordenesRows() As ordenesRow()
-            If (Me.Table.ChildRelations("ordenes_ibfk_18") Is Nothing) Then
-                Return New ordenesRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("ordenes_ibfk_18")),ordenesRow())
-            End If
-        End Function
     End Class
     
     '''<summary>
@@ -4225,16 +4510,6 @@ Partial Public Class elisasandboxDataSet
                 Return New analisisRow(-1) {}
             Else
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("analisis_ibfk_1")),analisisRow())
-            End If
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetordenesRows() As ordenesRow()
-            If (Me.Table.ChildRelations("ordenes_ibfk_1") Is Nothing) Then
-                Return New ordenesRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("ordenes_ibfk_1")),ordenesRow())
             End If
         End Function
     End Class
@@ -4313,16 +4588,6 @@ Partial Public Class elisasandboxDataSet
                 Me(Me.tableestados.status_nameColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GetordenesRows() As ordenesRow()
-            If (Me.Table.ChildRelations("ordenes_ibfk_11") Is Nothing) Then
-                Return New ordenesRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("ordenes_ibfk_11")),ordenesRow())
-            End If
-        End Function
     End Class
     
     '''<summary>
@@ -4589,39 +4854,6 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property areasRow() As areasRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("ordenes_ibfk_1")),areasRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("ordenes_ibfk_1"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property estadosRow() As estadosRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("ordenes_ibfk_11")),estadosRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("ordenes_ibfk_11"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property archivo_resultadosRow() As archivo_resultadosRow
-            Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("ordenes_ibfk_18")),archivo_resultadosRow)
-            End Get
-            Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("ordenes_ibfk_18"))
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsUltimaModificacionNull() As Boolean
             Return Me.IsNull(Me.tableordenes.UltimaModificacionColumn)
         End Function
@@ -4751,16 +4983,6 @@ Partial Public Class elisasandboxDataSet
         Public Sub Setid_archivoNull()
             Me(Me.tableordenes.id_archivoColumn) = Global.System.Convert.DBNull
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function GettblplacaleidaRows() As tblplacaleidaRow()
-            If (Me.Table.ChildRelations("tblplacaleida_ibfk_1") Is Nothing) Then
-                Return New tblplacaleidaRow(-1) {}
-            Else
-                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("tblplacaleida_ibfk_1")),tblplacaleidaRow())
-            End If
-        End Function
     End Class
     
     '''<summary>
@@ -4820,11 +5042,7 @@ Partial Public Class elisasandboxDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property rango() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tabletblfrecrelativa.rangoColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango' in table 'tblfrecrelativa' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tabletblfrecrelativa.rangoColumn),Integer)
             End Get
             Set
                 Me(Me.tabletblfrecrelativa.rangoColumn) = value
@@ -4835,40 +5053,12 @@ Partial Public Class elisasandboxDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property valor() As Decimal
             Get
-                Try 
-                    Return CType(Me(Me.tabletblfrecrelativa.valorColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'valor' in table 'tblfrecrelativa' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tabletblfrecrelativa.valorColumn),Decimal)
             End Get
             Set
                 Me(Me.tabletblfrecrelativa.valorColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsrangoNull() As Boolean
-            Return Me.IsNull(Me.tabletblfrecrelativa.rangoColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetrangoNull()
-            Me(Me.tabletblfrecrelativa.rangoColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsvalorNull() As Boolean
-            Return Me.IsNull(Me.tabletblfrecrelativa.valorColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetvalorNull()
-            Me(Me.tabletblfrecrelativa.valorColumn) = Global.System.Convert.DBNull
-        End Sub
     End Class
     
     '''<summary>
@@ -4992,20 +5182,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property idLector() As Integer
+        Public Property promCP() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.idLectorColumn),Integer)
-            End Get
-            Set
-                Me(Me.tabletblplacaleida.idLectorColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property promCP() As Decimal
-            Get
-                Return CType(Me(Me.tabletblplacaleida.promCPColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.promCPColumn),Single)
             End Get
             Set
                 Me(Me.tabletblplacaleida.promCPColumn) = value
@@ -5014,9 +5193,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property promCN() As Decimal
+        Public Property promCN() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.promCNColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.promCNColumn),Single)
             End Get
             Set
                 Me(Me.tabletblplacaleida.promCNColumn) = value
@@ -5025,9 +5204,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property promCPS() As Decimal
+        Public Property promCPS() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.promCPSColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.promCPSColumn),Single)
             End Get
             Set
                 Me(Me.tabletblplacaleida.promCPSColumn) = value
@@ -5036,20 +5215,20 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property medArti() As Decimal
+        Public Property medArit() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.medArtiColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.medAritColumn),Single)
             End Get
             Set
-                Me(Me.tabletblplacaleida.medArtiColumn) = value
+                Me(Me.tabletblplacaleida.medAritColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property medGeom() As Decimal
+        Public Property medGeom() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.medGeomColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.medGeomColumn),Single)
             End Get
             Set
                 Me(Me.tabletblplacaleida.medGeomColumn) = value
@@ -5058,9 +5237,9 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property desvEst() As Decimal
+        Public Property desvEst() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.desvEstColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.desvEstColumn),Single)
             End Get
             Set
                 Me(Me.tabletblplacaleida.desvEstColumn) = value
@@ -5069,25 +5248,419 @@ Partial Public Class elisasandboxDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property coefvar() As Decimal
+        Public Property coefVar() As Single
             Get
-                Return CType(Me(Me.tabletblplacaleida.coefvarColumn),Decimal)
+                Return CType(Me(Me.tabletblplacaleida.coefVarColumn),Single)
             End Get
             Set
-                Me(Me.tabletblplacaleida.coefvarColumn) = value
+                Me(Me.tabletblplacaleida.coefVarColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ordenesRow() As ordenesRow
+        Public Property rango1() As Single
             Get
-                Return CType(Me.GetParentRow(Me.Table.ParentRelations("tblplacaleida_ibfk_1")),ordenesRow)
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango1Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango1' in table 'tblplacaleida' is DBNull.", e)
+                End Try
             End Get
             Set
-                Me.SetParentRow(value, Me.Table.ParentRelations("tblplacaleida_ibfk_1"))
+                Me(Me.tabletblplacaleida.rango1Column) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango2() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango2Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango2' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango3() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango3Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango3' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango4() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango4Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango4' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango5() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango5Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango5' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango5Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango6() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango6Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango6' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango6Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango7() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango7Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango7' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango7Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango8() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango8Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango8' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango8Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango9() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango9Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango9' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango9Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango10() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango10Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango10' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango10Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango11() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango11Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango11' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango11Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango12() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango12Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango12' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango12Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango13() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango13Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango13' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango13Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango14() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango14Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango14' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango14Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rango15() As Single
+            Get
+                Try 
+                    Return CType(Me(Me.tabletblplacaleida.rango15Column),Single)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'rango15' in table 'tblplacaleida' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tabletblplacaleida.rango15Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango1Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango1Null()
+            Me(Me.tabletblplacaleida.rango1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango2Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango2Null()
+            Me(Me.tabletblplacaleida.rango2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango3Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango3Null()
+            Me(Me.tabletblplacaleida.rango3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango4Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango4Null()
+            Me(Me.tabletblplacaleida.rango4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango5Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango5Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango5Null()
+            Me(Me.tabletblplacaleida.rango5Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango6Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango6Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango6Null()
+            Me(Me.tabletblplacaleida.rango6Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango7Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango7Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango7Null()
+            Me(Me.tabletblplacaleida.rango7Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango8Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango8Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango8Null()
+            Me(Me.tabletblplacaleida.rango8Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango9Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango9Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango9Null()
+            Me(Me.tabletblplacaleida.rango9Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango10Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango10Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango10Null()
+            Me(Me.tabletblplacaleida.rango10Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango11Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango11Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango11Null()
+            Me(Me.tabletblplacaleida.rango11Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango12Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango12Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango12Null()
+            Me(Me.tabletblplacaleida.rango12Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango13Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango13Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango13Null()
+            Me(Me.tabletblplacaleida.rango13Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango14Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango14Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango14Null()
+            Me(Me.tabletblplacaleida.rango14Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isrango15Null() As Boolean
+            Return Me.IsNull(Me.tabletblplacaleida.rango15Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setrango15Null()
+            Me(Me.tabletblplacaleida.rango15Column) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -5619,11 +6192,18 @@ Namespace elisasandboxDataSetTableAdapters
             tableMapping.ColumnMappings.Add("id_analysis", "id_analysis")
             tableMapping.ColumnMappings.Add("analysis_desc", "analysis_desc")
             tableMapping.ColumnMappings.Add("id_area", "id_area")
+            tableMapping.ColumnMappings.Add("logSPS", "logSPS")
+            tableMapping.ColumnMappings.Add("logTit1", "logTit1")
+            tableMapping.ColumnMappings.Add("logTit2", "logTit2")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `analisis` WHERE ((`id_analysis` = @Original_id_analysis) AND (`analy"& _ 
-                "sis_desc` = @Original_analysis_desc) AND (`id_area` = @Original_id_area))"
+                "sis_desc` = @Original_analysis_desc) AND (`id_area` = @Original_id_area) AND ((@"& _ 
+                "IsNull_logSPS = 1 AND `logSPS` IS NULL) OR (`logSPS` = @Original_logSPS)) AND (("& _ 
+                "@IsNull_logTit1 = 1 AND `logTit1` IS NULL) OR (`logTit1` = @Original_logTit1)) A"& _ 
+                "ND ((@IsNull_logTit2 = 1 AND `logTit2` IS NULL) OR (`logTit2` = @Original_logTit"& _ 
+                "2)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_id_analysis"
@@ -5649,10 +6229,62 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceColumn = "id_area"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logSPS"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logSPS"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logTit1"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logTit1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logTit2"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logTit2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `analisis` (`id_analysis`, `analysis_desc`, `id_area`) VALUES (@id_an"& _ 
-                "alysis, @analysis_desc, @id_area)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `analisis` (`id_analysis`, `analysis_desc`, `id_area`, `logSPS`, `log"& _ 
+                "Tit1`, `logTit2`) VALUES (@id_analysis, @analysis_desc, @id_area, @logSPS, @logT"& _ 
+                "it1, @logTit2)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@id_analysis"
@@ -5675,11 +6307,36 @@ Namespace elisasandboxDataSetTableAdapters
             param.IsNullable = true
             param.SourceColumn = "id_area"
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logSPS"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logTit1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logTit2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `analisis` SET `id_analysis` = @id_analysis, `analysis_desc` = @analysis_d"& _ 
-                "esc, `id_area` = @id_area WHERE ((`id_analysis` = @Original_id_analysis) AND (`a"& _ 
-                "nalysis_desc` = @Original_analysis_desc) AND (`id_area` = @Original_id_area))"
+                "esc, `id_area` = @id_area, `logSPS` = @logSPS, `logTit1` = @logTit1, `logTit2` ="& _ 
+                " @logTit2 WHERE ((`id_analysis` = @Original_id_analysis) AND (`analysis_desc` = "& _ 
+                "@Original_analysis_desc) AND (`id_area` = @Original_id_area) AND ((@IsNull_logSP"& _ 
+                "S = 1 AND `logSPS` IS NULL) OR (`logSPS` = @Original_logSPS)) AND ((@IsNull_logT"& _ 
+                "it1 = 1 AND `logTit1` IS NULL) OR (`logTit1` = @Original_logTit1)) AND ((@IsNull"& _ 
+                "_logTit2 = 1 AND `logTit2` IS NULL) OR (`logTit2` = @Original_logTit2)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@id_analysis"
@@ -5701,6 +6358,27 @@ Namespace elisasandboxDataSetTableAdapters
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
             param.SourceColumn = "id_area"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logSPS"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logTit1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@logTit2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_id_analysis"
@@ -5726,13 +6404,64 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceColumn = "id_area"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logSPS"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logSPS"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logSPS"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logTit1"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logTit1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_logTit2"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_logTit2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "logTit2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5741,7 +6470,8 @@ Namespace elisasandboxDataSetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `id_analysis`, `analysis_desc`, `id_area` FROM `analisis`"
+            Me._commandCollection(0).CommandText = "SELECT `id_analysis`, `analysis_desc`, `id_area`, `logSPS`, `logTit1`, `logTit2` "& _ 
+                "FROM `analisis`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -5801,7 +6531,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer, ByVal Original_logSPS As Global.System.Nullable(Of Single), ByVal Original_logTit1 As Global.System.Nullable(Of Single), ByVal Original_logTit2 As Global.System.Nullable(Of Single)) As Integer
             If (Original_id_analysis Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_id_analysis")
             Else
@@ -5813,6 +6543,27 @@ Namespace elisasandboxDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_analysis_desc,String)
             End If
             Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_id_area,Integer)
+            If (Original_logSPS.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_logSPS.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (Original_logTit1.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_logTit1.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Original_logTit2.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_logTit2.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5832,7 +6583,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal id_area As Integer) As Integer
+        Public Overloads Overridable Function Insert(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal id_area As Integer, ByVal logSPS As Global.System.Nullable(Of Single), ByVal logTit1 As Global.System.Nullable(Of Single), ByVal logTit2 As Global.System.Nullable(Of Single)) As Integer
             If (id_analysis Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("id_analysis")
             Else
@@ -5844,6 +6595,21 @@ Namespace elisasandboxDataSetTableAdapters
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(analysis_desc,String)
             End If
             Me.Adapter.InsertCommand.Parameters(2).Value = CType(id_area,Integer)
+            If (logSPS.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(logSPS.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (logTit1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(logTit1.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (logTit2.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(logTit2.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5863,7 +6629,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal id_area As Integer, ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal id_analysis As String, ByVal analysis_desc As String, ByVal id_area As Integer, ByVal logSPS As Global.System.Nullable(Of Single), ByVal logTit1 As Global.System.Nullable(Of Single), ByVal logTit2 As Global.System.Nullable(Of Single), ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer, ByVal Original_logSPS As Global.System.Nullable(Of Single), ByVal Original_logTit1 As Global.System.Nullable(Of Single), ByVal Original_logTit2 As Global.System.Nullable(Of Single)) As Integer
             If (id_analysis Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("id_analysis")
             Else
@@ -5875,17 +6641,53 @@ Namespace elisasandboxDataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(analysis_desc,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(2).Value = CType(id_area,Integer)
+            If (logSPS.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(logSPS.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (logTit1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(logTit1.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (logTit2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(logTit2.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
             If (Original_id_analysis Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_id_analysis")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_id_analysis,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_id_analysis,String)
             End If
             If (Original_analysis_desc Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_analysis_desc")
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_analysis_desc,String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_analysis_desc,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_id_area,Integer)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_id_area,Integer)
+            If (Original_logSPS.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_logSPS.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_logTit1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_logTit1.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_logTit2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_logTit2.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5905,8 +6707,8 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal analysis_desc As String, ByVal id_area As Integer, ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer) As Integer
-            Return Me.Update(Original_id_analysis, analysis_desc, id_area, Original_id_analysis, Original_analysis_desc, Original_id_area)
+        Public Overloads Overridable Function Update(ByVal analysis_desc As String, ByVal id_area As Integer, ByVal logSPS As Global.System.Nullable(Of Single), ByVal logTit1 As Global.System.Nullable(Of Single), ByVal logTit2 As Global.System.Nullable(Of Single), ByVal Original_id_analysis As String, ByVal Original_analysis_desc As String, ByVal Original_id_area As Integer, ByVal Original_logSPS As Global.System.Nullable(Of Single), ByVal Original_logTit1 As Global.System.Nullable(Of Single), ByVal Original_logTit2 As Global.System.Nullable(Of Single)) As Integer
+            Return Me.Update(Original_id_analysis, analysis_desc, id_area, logSPS, logTit1, logTit2, Original_id_analysis, Original_analysis_desc, Original_id_area, Original_logSPS, Original_logTit1, Original_logTit2)
         End Function
     End Class
     
@@ -6155,7 +6957,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6543,7 +7345,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6913,7 +7715,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7299,7 +8101,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7653,7 +8455,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8648,7 +9450,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9351,7 +10153,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9653,7 +10455,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9722,17 +10524,9 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal rango As Global.System.Nullable(Of Integer), ByVal valor As Global.System.Nullable(Of Decimal)) As Integer
-            If (rango.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(rango.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (valor.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(valor.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            End If
+        Public Overloads Overridable Function Insert(ByVal rango As Integer, ByVal valor As Decimal) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(rango,Integer)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(valor,Decimal)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9937,7 +10731,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10163,22 +10957,51 @@ Namespace elisasandboxDataSetTableAdapters
             tableMapping.DataSetTable = "tblplacaleida"
             tableMapping.ColumnMappings.Add("caso", "caso")
             tableMapping.ColumnMappings.Add("placaLeida", "placaLeida")
-            tableMapping.ColumnMappings.Add("idLector", "idLector")
             tableMapping.ColumnMappings.Add("promCP", "promCP")
             tableMapping.ColumnMappings.Add("promCN", "promCN")
             tableMapping.ColumnMappings.Add("promCPS", "promCPS")
-            tableMapping.ColumnMappings.Add("medArti", "medArti")
+            tableMapping.ColumnMappings.Add("medArit", "medArit")
             tableMapping.ColumnMappings.Add("medGeom", "medGeom")
             tableMapping.ColumnMappings.Add("desvEst", "desvEst")
-            tableMapping.ColumnMappings.Add("coefvar", "coefvar")
+            tableMapping.ColumnMappings.Add("coefVar", "coefVar")
+            tableMapping.ColumnMappings.Add("rango1", "rango1")
+            tableMapping.ColumnMappings.Add("rango2", "rango2")
+            tableMapping.ColumnMappings.Add("rango3", "rango3")
+            tableMapping.ColumnMappings.Add("rango4", "rango4")
+            tableMapping.ColumnMappings.Add("rango5", "rango5")
+            tableMapping.ColumnMappings.Add("rango6", "rango6")
+            tableMapping.ColumnMappings.Add("rango7", "rango7")
+            tableMapping.ColumnMappings.Add("rango8", "rango8")
+            tableMapping.ColumnMappings.Add("rango9", "rango9")
+            tableMapping.ColumnMappings.Add("rango10", "rango10")
+            tableMapping.ColumnMappings.Add("rango11", "rango11")
+            tableMapping.ColumnMappings.Add("rango12", "rango12")
+            tableMapping.ColumnMappings.Add("rango13", "rango13")
+            tableMapping.ColumnMappings.Add("rango14", "rango14")
+            tableMapping.ColumnMappings.Add("rango15", "rango15")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `tblplacaleida` WHERE ((`caso` = @Original_caso) AND (`placaLeida` = "& _ 
-                "@Original_placaLeida) AND (`idLector` = @Original_idLector) AND (`promCP` = @Ori"& _ 
-                "ginal_promCP) AND (`promCN` = @Original_promCN) AND (`promCPS` = @Original_promC"& _ 
-                "PS) AND (`medArti` = @Original_medArti) AND (`medGeom` = @Original_medGeom) AND "& _ 
-                "(`desvEst` = @Original_desvEst) AND (`coefvar` = @Original_coefvar))"
+                "@Original_placaLeida) AND (`promCP` = @Original_promCP) AND (`promCN` = @Origina"& _ 
+                "l_promCN) AND (`promCPS` = @Original_promCPS) AND (`medArit` = @Original_medArit"& _ 
+                ") AND (`medGeom` = @Original_medGeom) AND (`desvEst` = @Original_desvEst) AND (`"& _ 
+                "coefVar` = @Original_coefVar) AND ((@IsNull_rango1 = 1 AND `rango1` IS NULL) OR "& _ 
+                "(`rango1` = @Original_rango1)) AND ((@IsNull_rango2 = 1 AND `rango2` IS NULL) OR"& _ 
+                " (`rango2` = @Original_rango2)) AND ((@IsNull_rango3 = 1 AND `rango3` IS NULL) O"& _ 
+                "R (`rango3` = @Original_rango3)) AND ((@IsNull_rango4 = 1 AND `rango4` IS NULL) "& _ 
+                "OR (`rango4` = @Original_rango4)) AND ((@IsNull_rango5 = 1 AND `rango5` IS NULL)"& _ 
+                " OR (`rango5` = @Original_rango5)) AND ((@IsNull_rango6 = 1 AND `rango6` IS NULL"& _ 
+                ") OR (`rango6` = @Original_rango6)) AND ((@IsNull_rango7 = 1 AND `rango7` IS NUL"& _ 
+                "L) OR (`rango7` = @Original_rango7)) AND ((@IsNull_rango8 = 1 AND `rango8` IS NU"& _ 
+                "LL) OR (`rango8` = @Original_rango8)) AND ((@IsNull_rango9 = 1 AND `rango9` IS N"& _ 
+                "ULL) OR (`rango9` = @Original_rango9)) AND ((@IsNull_rango10 = 1 AND `rango10` I"& _ 
+                "S NULL) OR (`rango10` = @Original_rango10)) AND ((@IsNull_rango11 = 1 AND `rango"& _ 
+                "11` IS NULL) OR (`rango11` = @Original_rango11)) AND ((@IsNull_rango12 = 1 AND `"& _ 
+                "rango12` IS NULL) OR (`rango12` = @Original_rango12)) AND ((@IsNull_rango13 = 1 "& _ 
+                "AND `rango13` IS NULL) OR (`rango13` = @Original_rango13)) AND ((@IsNull_rango14"& _ 
+                " = 1 AND `rango14` IS NULL) OR (`rango14` = @Original_rango14)) AND ((@IsNull_ra"& _ 
+                "ngo15 = 1 AND `rango15` IS NULL) OR (`rango15` = @Original_rango15)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_caso"
@@ -10197,75 +11020,325 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.DeleteCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCP"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCP"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCN"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCPS"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCPS"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_medArti"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@Original_medArit"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "medArti"
+            param.SourceColumn = "medArit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_medGeom"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "medGeom"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_desvEst"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "desvEst"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_coefvar"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@Original_coefVar"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "coefvar"
+            param.SourceColumn = "coefVar"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango1"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango2"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango3"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango3"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango4"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango4"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango5"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango5"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango6"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango6"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango7"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango7"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango8"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango8"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango9"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango9"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango10"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango10"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango11"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango11"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango12"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango12"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango13"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango13"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango14"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango14"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango15"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.DeleteCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango15"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.DeleteCommand.Parameters.Add(param)
             Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `tblplacaleida` (`caso`, `placaLeida`, `idLector`, `promCP`, `promCN`"& _ 
-                ", `promCPS`, `medArti`, `medGeom`, `desvEst`, `coefvar`) VALUES (@caso, @placaLe"& _ 
-                "ida, @idLector, @promCP, @promCN, @promCPS, @medArti, @medGeom, @desvEst, @coefv"& _ 
-                "ar)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `tblplacaleida` (`caso`, `placaLeida`, `promCP`, `promCN`, `promCPS`,"& _ 
+                " `medArit`, `medGeom`, `desvEst`, `coefVar`, `rango1`, `rango2`, `rango3`, `rang"& _ 
+                "o4`, `rango5`, `rango6`, `rango7`, `rango8`, `rango9`, `rango10`, `rango11`, `ra"& _ 
+                "ngo12`, `rango13`, `rango14`, `rango15`) VALUES (@caso, @placaLeida, @promCP, @p"& _ 
+                "romCN, @promCPS, @medArit, @medGeom, @desvEst, @coefVar, @rango1, @rango2, @rang"& _ 
+                "o3, @rango4, @rango5, @rango6, @rango7, @rango8, @rango9, @rango10, @rango11, @r"& _ 
+                "ango12, @rango13, @rango14, @rango15)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@caso"
@@ -10282,71 +11355,188 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceColumn = "placaLeida"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            Me._adapter.InsertCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCP"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCP"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCN"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCN"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCPS"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCPS"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@medArti"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@medArit"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "medArti"
+            param.SourceColumn = "medArit"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@medGeom"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "medGeom"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@desvEst"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "desvEst"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@coefvar"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@coefVar"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "coefvar"
+            param.SourceColumn = "coefVar"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango3"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango4"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango5"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango6"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango7"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango8"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango9"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango10"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango11"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango12"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango13"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango14"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango15"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
             Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `tblplacaleida` SET `caso` = @caso, `placaLeida` = @placaLeida, `idLector`"& _ 
-                " = @idLector, `promCP` = @promCP, `promCN` = @promCN, `promCPS` = @promCPS, `med"& _ 
-                "Arti` = @medArti, `medGeom` = @medGeom, `desvEst` = @desvEst, `coefvar` = @coefv"& _ 
-                "ar WHERE ((`caso` = @Original_caso) AND (`placaLeida` = @Original_placaLeida) AN"& _ 
-                "D (`idLector` = @Original_idLector) AND (`promCP` = @Original_promCP) AND (`prom"& _ 
-                "CN` = @Original_promCN) AND (`promCPS` = @Original_promCPS) AND (`medArti` = @Or"& _ 
-                "iginal_medArti) AND (`medGeom` = @Original_medGeom) AND (`desvEst` = @Original_d"& _ 
-                "esvEst) AND (`coefvar` = @Original_coefvar))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `tblplacaleida` SET `caso` = @caso, `placaLeida` = @placaLeida, `promCP` ="& _ 
+                " @promCP, `promCN` = @promCN, `promCPS` = @promCPS, `medArit` = @medArit, `medGe"& _ 
+                "om` = @medGeom, `desvEst` = @desvEst, `coefVar` = @coefVar, `rango1` = @rango1, "& _ 
+                "`rango2` = @rango2, `rango3` = @rango3, `rango4` = @rango4, `rango5` = @rango5, "& _ 
+                "`rango6` = @rango6, `rango7` = @rango7, `rango8` = @rango8, `rango9` = @rango9, "& _ 
+                "`rango10` = @rango10, `rango11` = @rango11, `rango12` = @rango12, `rango13` = @r"& _ 
+                "ango13, `rango14` = @rango14, `rango15` = @rango15 WHERE ((`caso` = @Original_ca"& _ 
+                "so) AND (`placaLeida` = @Original_placaLeida) AND (`promCP` = @Original_promCP) "& _ 
+                "AND (`promCN` = @Original_promCN) AND (`promCPS` = @Original_promCPS) AND (`medA"& _ 
+                "rit` = @Original_medArit) AND (`medGeom` = @Original_medGeom) AND (`desvEst` = @"& _ 
+                "Original_desvEst) AND (`coefVar` = @Original_coefVar) AND ((@IsNull_rango1 = 1 A"& _ 
+                "ND `rango1` IS NULL) OR (`rango1` = @Original_rango1)) AND ((@IsNull_rango2 = 1 "& _ 
+                "AND `rango2` IS NULL) OR (`rango2` = @Original_rango2)) AND ((@IsNull_rango3 = 1"& _ 
+                " AND `rango3` IS NULL) OR (`rango3` = @Original_rango3)) AND ((@IsNull_rango4 = "& _ 
+                "1 AND `rango4` IS NULL) OR (`rango4` = @Original_rango4)) AND ((@IsNull_rango5 ="& _ 
+                " 1 AND `rango5` IS NULL) OR (`rango5` = @Original_rango5)) AND ((@IsNull_rango6 "& _ 
+                "= 1 AND `rango6` IS NULL) OR (`rango6` = @Original_rango6)) AND ((@IsNull_rango7"& _ 
+                " = 1 AND `rango7` IS NULL) OR (`rango7` = @Original_rango7)) AND ((@IsNull_rango"& _ 
+                "8 = 1 AND `rango8` IS NULL) OR (`rango8` = @Original_rango8)) AND ((@IsNull_rang"& _ 
+                "o9 = 1 AND `rango9` IS NULL) OR (`rango9` = @Original_rango9)) AND ((@IsNull_ran"& _ 
+                "go10 = 1 AND `rango10` IS NULL) OR (`rango10` = @Original_rango10)) AND ((@IsNul"& _ 
+                "l_rango11 = 1 AND `rango11` IS NULL) OR (`rango11` = @Original_rango11)) AND ((@"& _ 
+                "IsNull_rango12 = 1 AND `rango12` IS NULL) OR (`rango12` = @Original_rango12)) AN"& _ 
+                "D ((@IsNull_rango13 = 1 AND `rango13` IS NULL) OR (`rango13` = @Original_rango13"& _ 
+                ")) AND ((@IsNull_rango14 = 1 AND `rango14` IS NULL) OR (`rango14` = @Original_ra"& _ 
+                "ngo14)) AND ((@IsNull_rango15 = 1 AND `rango15` IS NULL) OR (`rango15` = @Origin"& _ 
+                "al_rango15)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@caso"
@@ -10363,60 +11553,158 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceColumn = "placaLeida"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCP"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCP"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCN"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCN"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@promCPS"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCPS"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@medArti"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@medArit"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "medArti"
+            param.SourceColumn = "medArit"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@medGeom"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "medGeom"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@desvEst"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "desvEst"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@coefvar"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@coefVar"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "coefvar"
+            param.SourceColumn = "coefVar"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango3"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango4"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango5"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango6"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango7"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango8"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango9"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango10"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango11"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango12"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango13"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango14"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@rango15"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_caso"
@@ -10435,67 +11723,314 @@ Namespace elisasandboxDataSetTableAdapters
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_idLector"
-            param.DbType = Global.System.Data.DbType.Int32
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
-            param.IsNullable = true
-            param.SourceColumn = "idLector"
-            param.SourceVersion = Global.System.Data.DataRowVersion.Original
-            Me._adapter.UpdateCommand.Parameters.Add(param)
-            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCP"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCP"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCN"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCN"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_promCPS"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "promCPS"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_medArti"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@Original_medArit"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "medArti"
+            param.SourceColumn = "medArit"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_medGeom"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "medGeom"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@Original_desvEst"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
             param.SourceColumn = "desvEst"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@Original_coefvar"
-            param.DbType = Global.System.Data.DbType.[Decimal]
-            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.ParameterName = "@Original_coefVar"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
             param.IsNullable = true
-            param.SourceColumn = "coefvar"
+            param.SourceColumn = "coefVar"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango1"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango1"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango1"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango2"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango2"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango2"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango3"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango3"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango3"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango4"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango4"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango4"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango5"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango5"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango5"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango6"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango6"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango6"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango7"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango7"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango7"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango8"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango8"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango8"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango9"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango9"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango9"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango10"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango10"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango10"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango11"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango11"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango11"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango12"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango12"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango12"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango13"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango13"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango13"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango14"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango14"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango14"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@IsNull_rango15"
+            param.DbType = Global.System.Data.DbType.Int32
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
+            param.SourceVersion = Global.System.Data.DataRowVersion.Original
+            param.SourceColumnNullMapping = true
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@Original_rango15"
+            param.DbType = Global.System.Data.DbType.[Single]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Float
+            param.IsNullable = true
+            param.SourceColumn = "rango15"
             param.SourceVersion = Global.System.Data.DataRowVersion.Original
             Me._adapter.UpdateCommand.Parameters.Add(param)
         End Sub
@@ -10504,7 +12039,7 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString
+            Me._connection.ConnectionString = Global.Elisa2010.My.MySettings.Default.elisasandboxConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10513,8 +12048,10 @@ Namespace elisasandboxDataSetTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `caso`, `placaLeida`, `idLector`, `promCP`, `promCN`, `promCPS`, `medArti`"& _ 
-                ", `medGeom`, `desvEst`, `coefvar` FROM `tblplacaleida`"
+            Me._commandCollection(0).CommandText = "SELECT `caso`, `placaLeida`, `promCP`, `promCN`, `promCPS`, `medArit`, `medGeom`,"& _ 
+                " `desvEst`, `coefVar`, `rango1`, `rango2`, `rango3`, `rango4`, `rango5`, `rango6"& _ 
+                "`, `rango7`, `rango8`, `rango9`, `rango10`, `rango11`, `rango12`, `rango13`, `ra"& _ 
+                "ngo14`, `rango15` FROM `tblplacaleida`"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -10574,7 +12111,31 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_caso As String, ByVal Original_placaLeida As String, ByVal Original_idLector As Integer, ByVal Original_promCP As Decimal, ByVal Original_promCN As Decimal, ByVal Original_promCPS As Decimal, ByVal Original_medArti As Decimal, ByVal Original_medGeom As Decimal, ByVal Original_desvEst As Decimal, ByVal Original_coefvar As Decimal) As Integer
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_caso As String,  _
+                    ByVal Original_placaLeida As String,  _
+                    ByVal Original_promCP As Single,  _
+                    ByVal Original_promCN As Single,  _
+                    ByVal Original_promCPS As Single,  _
+                    ByVal Original_medArit As Single,  _
+                    ByVal Original_medGeom As Single,  _
+                    ByVal Original_desvEst As Single,  _
+                    ByVal Original_coefVar As Single,  _
+                    ByVal Original_rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango15 As Global.System.Nullable(Of Single)) As Integer
             If (Original_caso Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_caso")
             Else
@@ -10585,14 +12146,118 @@ Namespace elisasandboxDataSetTableAdapters
             Else
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_placaLeida,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_idLector,Integer)
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_promCP,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_promCN,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_promCPS,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_medArti,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_medGeom,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_desvEst,Decimal)
-            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_coefvar,Decimal)
+            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_promCP,Single)
+            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_promCN,Single)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_promCPS,Single)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_medArit,Single)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_medGeom,Single)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_desvEst,Single)
+            Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_coefVar,Single)
+            If (Original_rango1.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_rango1.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango2.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_rango2.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango3.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_rango3.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango4.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_rango4.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango5.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_rango5.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango6.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_rango6.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango7.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_rango7.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango8.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_rango8.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango9.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_rango9.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango10.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_rango10.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango11.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_rango11.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango12.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_rango12.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango13.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_rango13.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango14.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_rango14.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango15.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_rango15.Value,Single)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10612,7 +12277,31 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal caso As String, ByVal placaLeida As String, ByVal idLector As Integer, ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal promCPS As Decimal, ByVal medArti As Decimal, ByVal medGeom As Decimal, ByVal desvEst As Decimal, ByVal coefvar As Decimal) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal caso As String,  _
+                    ByVal placaLeida As String,  _
+                    ByVal promCP As Single,  _
+                    ByVal promCN As Single,  _
+                    ByVal promCPS As Single,  _
+                    ByVal medArit As Single,  _
+                    ByVal medGeom As Single,  _
+                    ByVal desvEst As Single,  _
+                    ByVal coefVar As Single,  _
+                    ByVal rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal rango15 As Global.System.Nullable(Of Single)) As Integer
             If (caso Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("caso")
             Else
@@ -10623,14 +12312,88 @@ Namespace elisasandboxDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(placaLeida,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(idLector,Integer)
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(promCP,Decimal)
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(promCN,Decimal)
-            Me.Adapter.InsertCommand.Parameters(5).Value = CType(promCPS,Decimal)
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(medArti,Decimal)
-            Me.Adapter.InsertCommand.Parameters(7).Value = CType(medGeom,Decimal)
-            Me.Adapter.InsertCommand.Parameters(8).Value = CType(desvEst,Decimal)
-            Me.Adapter.InsertCommand.Parameters(9).Value = CType(coefvar,Decimal)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(promCP,Single)
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(promCN,Single)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(promCPS,Single)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(medArit,Single)
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(medGeom,Single)
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(desvEst,Single)
+            Me.Adapter.InsertCommand.Parameters(8).Value = CType(coefVar,Single)
+            If (rango1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(rango1.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (rango2.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(rango2.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (rango3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(rango3.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (rango4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(rango4.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (rango5.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(rango5.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (rango6.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(rango6.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (rango7.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(rango7.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (rango8.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(rango8.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (rango9.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(rango9.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (rango10.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(rango10.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (rango11.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(rango11.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (rango12.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(rango12.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (rango13.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(rango13.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (rango14.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(rango14.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (rango15.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(rango15.Value,Single)
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10653,24 +12416,52 @@ Namespace elisasandboxDataSetTableAdapters
         Public Overloads Overridable Function Update( _
                     ByVal caso As String,  _
                     ByVal placaLeida As String,  _
-                    ByVal idLector As Integer,  _
-                    ByVal promCP As Decimal,  _
-                    ByVal promCN As Decimal,  _
-                    ByVal promCPS As Decimal,  _
-                    ByVal medArti As Decimal,  _
-                    ByVal medGeom As Decimal,  _
-                    ByVal desvEst As Decimal,  _
-                    ByVal coefvar As Decimal,  _
+                    ByVal promCP As Single,  _
+                    ByVal promCN As Single,  _
+                    ByVal promCPS As Single,  _
+                    ByVal medArit As Single,  _
+                    ByVal medGeom As Single,  _
+                    ByVal desvEst As Single,  _
+                    ByVal coefVar As Single,  _
+                    ByVal rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal rango15 As Global.System.Nullable(Of Single),  _
                     ByVal Original_caso As String,  _
                     ByVal Original_placaLeida As String,  _
-                    ByVal Original_idLector As Integer,  _
-                    ByVal Original_promCP As Decimal,  _
-                    ByVal Original_promCN As Decimal,  _
-                    ByVal Original_promCPS As Decimal,  _
-                    ByVal Original_medArti As Decimal,  _
-                    ByVal Original_medGeom As Decimal,  _
-                    ByVal Original_desvEst As Decimal,  _
-                    ByVal Original_coefvar As Decimal) As Integer
+                    ByVal Original_promCP As Single,  _
+                    ByVal Original_promCN As Single,  _
+                    ByVal Original_promCPS As Single,  _
+                    ByVal Original_medArit As Single,  _
+                    ByVal Original_medGeom As Single,  _
+                    ByVal Original_desvEst As Single,  _
+                    ByVal Original_coefVar As Single,  _
+                    ByVal Original_rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango15 As Global.System.Nullable(Of Single)) As Integer
             If (caso Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("caso")
             Else
@@ -10681,32 +12472,210 @@ Namespace elisasandboxDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(placaLeida,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(idLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(promCP,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(promCN,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(promCPS,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(medArti,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(medGeom,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(desvEst,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(coefvar,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(promCP,Single)
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(promCN,Single)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(promCPS,Single)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(medArit,Single)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(medGeom,Single)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(desvEst,Single)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(coefVar,Single)
+            If (rango1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(rango1.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (rango2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(rango2.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (rango3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(rango3.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (rango4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(rango4.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (rango5.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(rango5.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (rango6.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(rango6.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (rango7.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(rango7.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (rango8.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(rango8.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (rango9.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(rango9.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (rango10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(rango10.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (rango11.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(rango11.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (rango12.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(rango12.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (rango13.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(rango13.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (rango14.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(rango14.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (rango15.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(rango15.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
             If (Original_caso Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_caso")
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_caso,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_caso,String)
             End If
             If (Original_placaLeida Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_placaLeida")
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_placaLeida,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_placaLeida,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_idLector,Integer)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_promCP,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_promCN,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_promCPS,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_medArti,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_medGeom,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_desvEst,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_coefvar,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_promCP,Single)
+            Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_promCN,Single)
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_promCPS,Single)
+            Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_medArit,Single)
+            Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_medGeom,Single)
+            Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_desvEst,Single)
+            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_coefVar,Single)
+            If (Original_rango1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_rango1.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_rango2.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_rango3.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_rango4.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango5.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_rango5.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango6.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_rango6.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango7.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_rango7.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango8.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_rango8.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango9.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_rango9.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_rango10.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango11.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_rango11.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango12.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_rango12.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango13.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_rango13.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango14.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_rango14.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+            End If
+            If (Original_rango15.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_rango15.Value,Single)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10728,25 +12697,53 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
                     ByVal placaLeida As String,  _
-                    ByVal idLector As Integer,  _
-                    ByVal promCP As Decimal,  _
-                    ByVal promCN As Decimal,  _
-                    ByVal promCPS As Decimal,  _
-                    ByVal medArti As Decimal,  _
-                    ByVal medGeom As Decimal,  _
-                    ByVal desvEst As Decimal,  _
-                    ByVal coefvar As Decimal,  _
+                    ByVal promCP As Single,  _
+                    ByVal promCN As Single,  _
+                    ByVal promCPS As Single,  _
+                    ByVal medArit As Single,  _
+                    ByVal medGeom As Single,  _
+                    ByVal desvEst As Single,  _
+                    ByVal coefVar As Single,  _
+                    ByVal rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal rango15 As Global.System.Nullable(Of Single),  _
                     ByVal Original_caso As String,  _
                     ByVal Original_placaLeida As String,  _
-                    ByVal Original_idLector As Integer,  _
-                    ByVal Original_promCP As Decimal,  _
-                    ByVal Original_promCN As Decimal,  _
-                    ByVal Original_promCPS As Decimal,  _
-                    ByVal Original_medArti As Decimal,  _
-                    ByVal Original_medGeom As Decimal,  _
-                    ByVal Original_desvEst As Decimal,  _
-                    ByVal Original_coefvar As Decimal) As Integer
-            Return Me.Update(Original_caso, placaLeida, idLector, promCP, promCN, promCPS, medArti, medGeom, desvEst, coefvar, Original_caso, Original_placaLeida, Original_idLector, Original_promCP, Original_promCN, Original_promCPS, Original_medArti, Original_medGeom, Original_desvEst, Original_coefvar)
+                    ByVal Original_promCP As Single,  _
+                    ByVal Original_promCN As Single,  _
+                    ByVal Original_promCPS As Single,  _
+                    ByVal Original_medArit As Single,  _
+                    ByVal Original_medGeom As Single,  _
+                    ByVal Original_desvEst As Single,  _
+                    ByVal Original_coefVar As Single,  _
+                    ByVal Original_rango1 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango2 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango3 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango4 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango5 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango6 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango7 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango8 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango9 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango10 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango11 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango12 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango13 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango14 As Global.System.Nullable(Of Single),  _
+                    ByVal Original_rango15 As Global.System.Nullable(Of Single)) As Integer
+            Return Me.Update(Original_caso, placaLeida, promCP, promCN, promCPS, medArit, medGeom, desvEst, coefVar, rango1, rango2, rango3, rango4, rango5, rango6, rango7, rango8, rango9, rango10, rango11, rango12, rango13, rango14, rango15, Original_caso, Original_placaLeida, Original_promCP, Original_promCN, Original_promCPS, Original_medArit, Original_medGeom, Original_desvEst, Original_coefVar, Original_rango1, Original_rango2, Original_rango3, Original_rango4, Original_rango5, Original_rango6, Original_rango7, Original_rango8, Original_rango9, Original_rango10, Original_rango11, Original_rango12, Original_rango13, Original_rango14, Original_rango15)
         End Function
     End Class
     
@@ -11074,24 +13071,6 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As elisasandboxDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._estadosTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._estadosTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._archivo_resultadosTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
             If (Not (Me._areasTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.areas.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
@@ -11101,21 +13080,21 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._proveedoresTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             If (Not (Me._ordenesTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.ordenes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._ordenesTableAdapter.Update(updatedRows))
-                    allChangedRows.AddRange(updatedRows)
-                End If
-            End If
-            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
-                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing)  _
-                            AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._tblplacaleidaTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -11137,12 +13116,21 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
-            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
-                Dim updatedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
                 If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
-                    result = (result + Me._proveedoresTableAdapter.Update(updatedRows))
+                    result = (result + Me._tblplacaleidaTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._archivo_resultadosTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
@@ -11173,6 +13161,15 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._estadosTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._estadosTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -11183,22 +13180,6 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As elisasandboxDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
-            If (Not (Me._estadosTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._estadosTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._archivo_resultadosTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
             If (Not (Me._areasTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.areas.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
@@ -11207,19 +13188,19 @@ Namespace elisasandboxDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._proveedoresTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             If (Not (Me._ordenesTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.ordenes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._ordenesTableAdapter.Update(addedRows))
-                    allAddedRows.AddRange(addedRows)
-                End If
-            End If
-            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing)  _
-                            AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._tblplacaleidaTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -11239,11 +13220,19 @@ Namespace elisasandboxDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
-            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
-                Dim addedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
                 If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
-                    result = (result + Me._proveedoresTableAdapter.Update(addedRows))
+                    result = (result + Me._tblplacaleidaTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._archivo_resultadosTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
@@ -11271,6 +13260,14 @@ Namespace elisasandboxDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._estadosTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._estadosTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -11281,6 +13278,14 @@ Namespace elisasandboxDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As elisasandboxDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._estadosTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._estadosTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._muestrasTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.muestras.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -11305,11 +13310,19 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._proveedoresTableAdapter.Update(deletedRows))
+                    result = (result + Me._archivo_resultadosTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._tblplacaleidaTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
@@ -11329,14 +13342,6 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
-            If (Not (Me._tblplacaleidaTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.tblplacaleida.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._tblplacaleidaTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
             If (Not (Me._ordenesTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.ordenes.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -11345,27 +13350,19 @@ Namespace elisasandboxDataSetTableAdapters
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If
+            If (Not (Me._proveedoresTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.proveedores.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._proveedoresTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._areasTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.areas.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._areasTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._archivo_resultadosTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.archivo_resultados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._archivo_resultadosTableAdapter.Update(deletedRows))
-                    allChangedRows.AddRange(deletedRows)
-                End If
-            End If
-            If (Not (Me._estadosTableAdapter) Is Nothing) Then
-                Dim deletedRows() As Global.System.Data.DataRow = dataSet.estados.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing)  _
-                            AndAlso (0 < deletedRows.Length)) Then
-                    result = (result + Me._estadosTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
                 End If
             End If

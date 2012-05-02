@@ -10,8 +10,6 @@ Module mdlOperaciones
    '################################
    'utilizada para almacenar los datos que se reciben por el puerto
    Public az As String
-   ' sera utilizada como contador
-   'Public sib As Integer = 0 modificado 18-Abril-2012
    'Arreglo que servira de buffer para los datos que van llegando al puerto
    Public msn As String = ""
    'Guarda la placa leida desde el lector debidamente formateada
@@ -457,13 +455,13 @@ Module mdlOperaciones
          'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
          Chart1.Series("Series1").IsValueShownAsLabel = True
          'Ubicacion del grafico
-         Chart1.Location = New System.Drawing.Point(600, 50)
-         Chart1.Size = New System.Drawing.Size(400, 400)
+         Chart1.Location = New System.Drawing.Point(450, 50)
+         Chart1.Size = New System.Drawing.Size(300, 300)
          Chart1.TabIndex = 21
          Chart1.Anchor = AnchorStyles.Right
          Chart1.Anchor = AnchorStyles.Top
          'Asigna los valores de las series para miembros que se trazan en X y Y
-         'Chart1.Series("Series1").XValueMember = "rango"
+         Chart1.Series("Series1").XValueMember = "rango"
          Chart1.Series("Series1").YValueMembers = "valor"
          Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
          'Cerrar la conexion a la base de datos 
@@ -1191,26 +1189,23 @@ Module mdlOperaciones
 
       'Carga los datos para la frecuencia relativa y crea la gráfica
       cargaResultadosBD(numcaso, placaoriginal, promCP, promCN, difCPS, _
-                        reduceDecimal(mediaAritmetica), reduceDecimal(mediaGeometrica), _
-                        reduceDecimal(desviacionEstandarDatosNoAgrupados), reduceDecimal(coeficienteDeVariacionDatosNoAgrupados))
+                        Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                        Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
       'DESCOMENTAR PARA CARGAR LA TABLA DE FREC REL
       cargaFrecRelBD(frecuenciaRelativa, numcaso)
       creaChartFrecRel(nombre, titulox, tituloy, numcaso)
 
       'Presenta datos
       frmSalidaDatos.txtMediaAritmetica.Text = CStr(calculaMedia)
-      frmSalidaDatos.txtMediaAritmetica2.Text = CStr(mediaAritmetica)
-      frmSalidaDatos.txtMediaGeometrica.Text = CStr(mediaGeometrica)
+      frmSalidaDatos.txtMediaAritmetica2.Text = CStr(Convert.ToDouble(mediaAritmetica))
+      frmSalidaDatos.txtMediaGeometrica.Text = CStr(Convert.ToDouble(mediaGeometrica))
       frmSalidaDatos.txtCoefVariacion.Text = CStr(coeficienteDeVariacion)
       frmSalidaDatos.txtDesvEstandar.Text = CStr(desviacionEstandar)
       frmSalidaDatos.txtVarianza.Text = CStr(calculaVarianza)
       frmSalidaDatos.txtTotalDatosCalculados.Text = CStr(cuentaNoDatos)
-      frmSalidaDatos.txtCoefVariacion2.Text = CStr(coeficienteDeVariacionDatosNoAgrupados)
-      frmSalidaDatos.txtDesvEstandar2.Text = CStr(desviacionEstandarDatosNoAgrupados)
+      frmSalidaDatos.txtCoefVariacion2.Text = CStr(Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
+      frmSalidaDatos.txtDesvEstandar2.Text = CStr(Convert.ToDouble(desviacionEstandarDatosNoAgrupados))
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
       frmSalidaDatos.lblNombreEnfermedad.Text = nombre
-      'guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Laringo", nombre, calculaMedia, mediaAritmetica, mediaGeometrica, _
-      '                     coeficienteDeVariacion, desviacionEstandar, calculaVarianza, cuentaNoDatos, _
-      '                     desviacionEstandarDatosNoAgrupados, coeficienteDeVariacionDatosNoAgrupados, calculaVarianzaDatosNoAgrupados)
    End Sub
 End Module

@@ -52,6 +52,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnBuscaCaso = New System.Windows.Forms.Button()
       Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
+      Me.lblLogTit2 = New System.Windows.Forms.Label()
+      Me.lblLogTit1 = New System.Windows.Forms.Label()
+      Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
@@ -337,6 +340,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
       Me.pnlRegistraNuevoAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.pnlRegistraNuevoAnalisis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit2)
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit1)
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogSPS)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtAnalisisSolicitado)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNoCaso)
@@ -348,6 +354,36 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
       Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(596, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 73
+      '
+      'lblLogTit2
+      '
+      Me.lblLogTit2.AutoSize = True
+      Me.lblLogTit2.Location = New System.Drawing.Point(454, 42)
+      Me.lblLogTit2.Name = "lblLogTit2"
+      Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogTit2.TabIndex = 12
+      Me.lblLogTit2.Text = "logsSPS: "
+      Me.lblLogTit2.Visible = False
+      '
+      'lblLogTit1
+      '
+      Me.lblLogTit1.AutoSize = True
+      Me.lblLogTit1.Location = New System.Drawing.Point(454, 25)
+      Me.lblLogTit1.Name = "lblLogTit1"
+      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
+      Me.lblLogTit1.TabIndex = 11
+      Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
+      '
+      'lblLogSPS
+      '
+      Me.lblLogSPS.AutoSize = True
+      Me.lblLogSPS.Location = New System.Drawing.Point(454, 9)
+      Me.lblLogSPS.Name = "lblLogSPS"
+      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogSPS.TabIndex = 10
+      Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
       '
       'Panel1
       '
@@ -584,4 +620,7 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents btnFormateaDatos As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents btnGuardarDatosExcel As System.Windows.Forms.Button
+   Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
+   Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
+   Friend WithEvents lblLogSPS As System.Windows.Forms.Label
 End Class

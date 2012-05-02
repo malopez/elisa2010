@@ -112,7 +112,17 @@ Public Class frmRegistraNuevoAnalisis
             btnDefinirControlesPN.Enabled = True
          End Try
          btnObtenerResultados.Enabled = False
-         calculaValores("Laringotraqueitis Aviar", "Grupo de títulos", "%", 0, cmbNoCaso.Text, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, CDec(0.15), CDec(1.45), CDec(3.726), 0, 0, 0, 0, 0, 0)
+         'Permite obtener el nombre de la enfermedad
+         Dim cadena As String
+         Dim tabla() As String
+         cadena = txtAnalisisSolicitado.Text
+         tabla = Split(cadena, "/")
+         'Obtiene el numero de caso para ese análisis
+         Dim cadena1 As String
+         Dim tabla1() As String
+         cadena1 = cmbNoCaso.Text
+         tabla1 = Split(cadena1, " | ")
+         calculaValores(tabla(1), "Grupo de títulos", "%", 0, tabla1(0), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
       Catch ex As DataException
          mensajeException(lblMensajeCaso, ex)
@@ -247,7 +257,7 @@ Public Class frmRegistraNuevoAnalisis
          Dim oConexion As MySqlConnection
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         Dim oDataAdapter = New MySqlDataAdapter("SELECT DISTINCT o.caso FROM ordenes o,analisis a WHERE o.id_area=3 and o.id_status=1 and o.AnalisisSolicitados=a.id_analysis and  a.analysis_desc like '%INMUNOENSAYO%'", oConexion)
+         Dim oDataAdapter = New MySqlDataAdapter("SELECT  o.caso,a.id_analysis as IDAN FROM ordenes o,analisis a WHERE o.id_area=3 and o.id_status=1 and o.AnalisisSolicitados=a.id_analysis and  a.analysis_desc like '%INMUNOENSAYO%' order by o.caso,a.id_analysis asc", oConexion)
          Dim oDataSet As New DataSet()
          oConexion.Open()
          oDataAdapter.Fill(oDataSet, "ordenes")
@@ -257,7 +267,7 @@ Public Class frmRegistraNuevoAnalisis
          'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la búsqueda.
          Dim oFila As DataRow
          For Each oFila In oTabla.Rows
-            cmbNoCaso.Items.Add(oFila.Item("caso"))
+            cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
          Next
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
@@ -277,8 +287,15 @@ Public Class frmRegistraNuevoAnalisis
          Dim oDataReader As MySqlDataReader
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
+
+         'Separa el texto del comboBox 
+         Dim cadena As String
+         Dim tabla() As String
+         cadena = cmbNoCaso.Text
+         tabla = Split(cadena, " | ")
+
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and a.analysis_desc like '%INMUNOENSAYO%';"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()

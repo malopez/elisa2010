@@ -6,7 +6,7 @@ Public Class frmOperacionesAnalisis
    Dim iposicFilaActual As Integer = 0
    Dim oDataAdapter As MySqlDataAdapter
    Dim oDataSet As DataSet
-   Const cadenaConexion As String = "server=biovetsa.dyndns.org;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   Const cadenaConexion As String = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
 
    Private Sub habilitaBarra()
       btnInicio.Enabled = True

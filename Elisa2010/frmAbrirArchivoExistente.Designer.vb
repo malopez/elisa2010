@@ -29,6 +29,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblMensajeAAE = New System.Windows.Forms.Label()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.grbCNDesdeArchivo = New System.Windows.Forms.GroupBox()
       Me.Label4 = New System.Windows.Forms.Label()
       Me.Label5 = New System.Windows.Forms.Label()
@@ -36,6 +37,7 @@ Partial Class frmAbrirArchivoExistente
       Me.txtCNDAValor3 = New System.Windows.Forms.TextBox()
       Me.txtCNDAValor2 = New System.Windows.Forms.TextBox()
       Me.txtCNDAValor1 = New System.Windows.Forms.TextBox()
+      Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.grbCPDesdeArchivo = New System.Windows.Forms.GroupBox()
       Me.Label3 = New System.Windows.Forms.Label()
       Me.Label2 = New System.Windows.Forms.Label()
@@ -43,6 +45,7 @@ Partial Class frmAbrirArchivoExistente
       Me.txtCPDAValor3 = New System.Windows.Forms.TextBox()
       Me.txtCPDAValor2 = New System.Windows.Forms.TextBox()
       Me.txtCPDAValor1 = New System.Windows.Forms.TextBox()
+      Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.btnCancelarDA = New System.Windows.Forms.Button()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
@@ -53,9 +56,6 @@ Partial Class frmAbrirArchivoExistente
       Me.cmbNoCaso = New System.Windows.Forms.ComboBox()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
-      Me.lblLogSPS = New System.Windows.Forms.Label()
-      Me.lblLogTit1 = New System.Windows.Forms.Label()
-      Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.grbCNDesdeArchivo.SuspendLayout()
       Me.grbCPDesdeArchivo.SuspendLayout()
@@ -114,13 +114,26 @@ Partial Class frmAbrirArchivoExistente
       '
       Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.lblLogTit2)
       Me.Panel1.Controls.Add(Me.grbCNDesdeArchivo)
+      Me.Panel1.Controls.Add(Me.lblLogTit1)
       Me.Panel1.Controls.Add(Me.grbCPDesdeArchivo)
+      Me.Panel1.Controls.Add(Me.lblLogSPS)
       Me.Panel1.Controls.Add(Me.txtPlacaDesdeArchivo)
       Me.Panel1.Location = New System.Drawing.Point(4, 161)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(621, 254)
       Me.Panel1.TabIndex = 8
+      '
+      'lblLogTit2
+      '
+      Me.lblLogTit2.AutoSize = True
+      Me.lblLogTit2.Location = New System.Drawing.Point(524, 173)
+      Me.lblLogTit2.Name = "lblLogTit2"
+      Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogTit2.TabIndex = 9
+      Me.lblLogTit2.Text = "logsSPS: "
+      Me.lblLogTit2.Visible = False
       '
       'grbCNDesdeArchivo
       '
@@ -188,6 +201,16 @@ Partial Class frmAbrirArchivoExistente
       Me.txtCNDAValor1.Size = New System.Drawing.Size(71, 22)
       Me.txtCNDAValor1.TabIndex = 0
       '
+      'lblLogTit1
+      '
+      Me.lblLogTit1.AutoSize = True
+      Me.lblLogTit1.Location = New System.Drawing.Point(524, 156)
+      Me.lblLogTit1.Name = "lblLogTit1"
+      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
+      Me.lblLogTit1.TabIndex = 8
+      Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
+      '
       'grbCPDesdeArchivo
       '
       Me.grbCPDesdeArchivo.Controls.Add(Me.Label3)
@@ -254,6 +277,16 @@ Partial Class frmAbrirArchivoExistente
       Me.txtCPDAValor1.Size = New System.Drawing.Size(71, 22)
       Me.txtCPDAValor1.TabIndex = 0
       '
+      'lblLogSPS
+      '
+      Me.lblLogSPS.AutoSize = True
+      Me.lblLogSPS.Location = New System.Drawing.Point(524, 140)
+      Me.lblLogSPS.Name = "lblLogSPS"
+      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogSPS.TabIndex = 7
+      Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
+      '
       'Panel3
       '
       Me.Panel3.BackColor = System.Drawing.SystemColors.Window
@@ -279,9 +312,6 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
       Me.pnlRegistraNuevoAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.pnlRegistraNuevoAnalisis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit2)
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit1)
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogSPS)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtAnalisisSolicitado)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNoCaso)
@@ -364,36 +394,6 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente.Size = New System.Drawing.Size(125, 16)
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
-      '
-      'lblLogSPS
-      '
-      Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(447, 10)
-      Me.lblLogSPS.Name = "lblLogSPS"
-      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
-      Me.lblLogSPS.TabIndex = 7
-      Me.lblLogSPS.Text = "logsSPS: "
-      Me.lblLogSPS.Visible = False
-      '
-      'lblLogTit1
-      '
-      Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(447, 26)
-      Me.lblLogTit1.Name = "lblLogTit1"
-      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
-      Me.lblLogTit1.TabIndex = 8
-      Me.lblLogTit1.Text = "logTit1: "
-      Me.lblLogTit1.Visible = False
-      '
-      'lblLogTit2
-      '
-      Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(447, 43)
-      Me.lblLogTit2.Name = "lblLogTit2"
-      Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
-      Me.lblLogTit2.TabIndex = 9
-      Me.lblLogTit2.Text = "logsSPS: "
-      Me.lblLogTit2.Visible = False
       '
       'frmAbrirArchivoExistente
       '
