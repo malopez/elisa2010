@@ -8,16 +8,16 @@ Public Class frmSalidaDatos
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       guardaResultadosExcel(frecuenciaRelativa, calculoDeTitulos, "Resultados", _
                            Me.lblNombreEnfermedad.Text, _
-                           Me.txtMediaAritmetica.Text, _
-                           Me.txtMediaAritmetica2.Text, _
-                           Me.txtMediaGeometrica.Text, _
-                           Me.txtCoefVariacion.Text, _
-                           Me.txtDesvEstandar.Text, _
-                           Me.txtVarianza.Text, _
-                           Me.txtTotalDatosCalculados.Text, _
-                           Me.txtDesvEstandar2.Text, _
-                           Me.txtCoefVariacion2.Text, _
-                           Me.txtVarianza2.Text)
+                           Convert.ToDouble(txtMediaAritmetica.Text), _
+                           Convert.ToDouble(txtMediaAritmetica2.Text), _
+                           Convert.ToDouble(txtMediaGeometrica.Text), _
+                           Convert.ToDouble(txtCoefVariacion.Text), _
+                           Convert.ToDouble(txtDesvEstandar.Text), _
+                           Convert.ToDouble(txtVarianza.Text), _
+                           Convert.ToDouble(txtTotalDatosCalculados.Text), _
+                           Convert.ToDouble(txtDesvEstandar2.Text), _
+                           Convert.ToDouble(txtCoefVariacion2.Text), _
+                           Convert.ToDouble(txtVarianza2.Text))
    End Sub
 
    Private Sub btnGeneraReporte_Click(sender As System.Object, e As System.EventArgs) Handles btnGeneraReporte.Click
@@ -31,7 +31,7 @@ Public Class frmSalidaDatos
          Dim oDA As New MySqlDataAdapter
          oConexion.ConnectionString = cadenaConexion
 
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='110504-1817'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='E01/ELBI' ;"
+         aConsulta = "SELECT * FROM tblplacaleida WHERE caso='110504-1817';"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()

@@ -118,10 +118,10 @@ Module mdlOperaciones
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
    Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal calculoDeTitulos(,) As Decimal, ByVal nombrelibro As String, ByVal nombre As String, _
-                                    ByRef calculaMedia As Decimal, ByRef mediaAritmetica As Decimal, ByRef mediaGeometrica As Decimal, _
-                                    ByRef coeficienteDeVariacion As Decimal, ByRef desviacionEstandar As Decimal, ByRef calculaVarianza As Decimal, _
-                                    ByRef cuentaNoDatos As Decimal, ByRef desviacionEstandarDatosNoAgrupados As Decimal, _
-                                    ByRef coeficienteDeVariacionDatosNoAgrupados As Decimal, ByRef calculaVarianzaDatosNoAgrupados As Decimal)
+                                    ByRef calculaMedia As Double, ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
+                                    ByRef coeficienteDeVariacion As Double, ByRef desviacionEstandar As Double, ByRef calculaVarianza As Double, _
+                                    ByRef cuentaNoDatos As Double, ByRef desviacionEstandarDatosNoAgrupados As Double, _
+                                    ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
 
       'PAra formatear la salida de datos en excel de resultados
       Dim k As Integer = 1
@@ -140,11 +140,12 @@ Module mdlOperaciones
 
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = nombrelibro
+
       'Agregar datos a la hoja de Excel de la frecuencia relativa
-      For i = 2 To 16
-         excelApp.Range("A" & i).Value2 = i - 1
-         excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2), 2)
-      Next
+      'For i = 2 To 16
+      'excelApp.Range("A" & i).Value2 = i - 1
+      'excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2), 2)
+      'Next
 
       'Colocar las cabeceras para los rangos de datos
       excelApp.Range("A1").Value2 = "Grupo de Títulos"
@@ -158,47 +159,13 @@ Module mdlOperaciones
       excelApp.Range("F1").Value2 = "Coef. Variación"
       excelApp.Range("F2").Value2 = coeficienteDeVariacionDatosNoAgrupados
 
-      'Crear grafica para la frecuencia relativa
-      Dim chartFrecRel As Excel.Chart
-      Dim graficaFR As Excel.ChartObject
-      Dim rangoGrafica As Excel.Range
-      Dim j As Integer = 1
-      'Asignar ubicacion a la grafica
-      graficaFR = excelApp.ActiveSheet.ChartObjects.Add(400, 50, 500, 150)
-      chartFrecRel = graficaFR.Chart
-      'Establecer rango que utilizara la frafica
-      rangoGrafica = excelApp.Range("B1", "B16")
-      chartFrecRel.SetSourceData(Source:=rangoGrafica)
-      'Tipo de gráfica: barras
-      chartFrecRel.ChartType = Excel.XlChartType.xlColumnClustered
-      'Cambia el titulo a la grafica
-      With chartFrecRel
-         .HasTitle = True
-         .ChartTitle.Text = nombre
-         'Coloca la etiqueta de la serie
-         i = 1
-         For j = 1 To 15
-            .SeriesCollection(i).Points(j).HasDatalabel = True
-         Next
-         'Deshabilita el cuadro de leyenda de la serie
-         With .Legend
-            .IncludeInLayout = True
-            .Delete()
-         End With
-      End With
+      excelApp.Worksheets(1).cells(1, 1).select()
+      excelApp.ActiveSheet.Pictures.Insert("C:\ELISA2012\IMAGENES\110504-1817.jpeg").select()
 
-      'Cambiar el nombre del eje x
-      Dim ejex As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlValue, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
-      ejex.HasTitle = True
-      ejex.AxisTitle.Text = "Porcentaje"
-      ejex.AxisTitle.Font.Bold = True
-      ejex.AxisTitle.Font.Size = 8
-      'Cambiar el nombre del eje y
-      Dim ejey As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlCategory, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
-      ejey.HasTitle = True
-      ejey.AxisTitle.Text = "Grupo de Títulos"
-      ejey.AxisTitle.Font.Bold = True
-      ejey.AxisTitle.Font.Size = 8
+      'excelApp.Range("G9:L22").CopyPicturePicture(Excel.XlPictureAppearance.xlScreen, Excel.XlCopyPictureFormat.xlBitmap)
+
+      excelApp.ActiveSheet.PrintOut()
+
 
       'copia los valores de los títulos resultantes
       excelApp.Range("A17").Value2 = "Sueros"
@@ -238,7 +205,7 @@ Module mdlOperaciones
          Next
       Next
       excelApp.ActiveWorkbook.Close()
-      'Libera la aplicacion Excel
+      excelApp.Quit()
       releaseObject(excelApp)
    End Sub
 
@@ -342,9 +309,9 @@ Module mdlOperaciones
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByVal promCP As Decimal, ByVal promCN As Decimal, _
-                                 ByVal promCPS As Decimal, ByVal mediaAritmetica As Decimal, mediaGeometrica As Decimal, _
-                                 ByVal desviacionEstandarDatosNoAgrupados As Decimal, ByVal coeficienteDeVariacionDatosNoAgrupados As Decimal)
+   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByVal promCP As Double, ByVal promCN As Double, _
+                                 ByVal promCPS As Double, ByVal mediaAritmetica As Double, mediaGeometrica As Double, _
+                                 ByVal desviacionEstandarDatosNoAgrupados As Double, ByVal coeficienteDeVariacionDatosNoAgrupados As Double)
       Dim resultado As Integer
       Dim comando As New MySqlCommand
       Try
@@ -355,8 +322,8 @@ Module mdlOperaciones
          oConexion.Open()
          'Asigna la cadena de conexion
          comando.Connection = oConexion
-         comando.CommandText = "INSERT INTO tblplacaleida (caso,placaLeida,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
-                                & "('" & numcaso & "','" & msn & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
+         comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
+                                & "('" & numcaso & "',NOW(),'" & msn & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
@@ -439,10 +406,16 @@ Module mdlOperaciones
          Chart1.ChartAreas.Add(ChartArea1)
          Chart1.Titles.Add(nombre)
 
-         'Coloca los nombres de las etiquetas del gráfico para X y Y, habilita el 3d para las barras.
+         'Coloca los nombres de las etiquetas del gráfico para X y Y
          Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
          Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
-         Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+
+         'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+
+         'Elimina las lineas secundarias del gráfico
+         Chart1.ChartAreas("ChartArea1").AxisX.MajorGrid.Enabled = False
+         Chart1.ChartAreas("ChartArea1").AxisY.MajorGrid.Enabled = False
+
          'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
          'Legend1.Name = "Legend1"
          'Chart1.Legends.Add(Legend1)
@@ -456,17 +429,26 @@ Module mdlOperaciones
          Chart1.Series("Series1").IsValueShownAsLabel = True
          'Ubicacion del grafico
          Chart1.Location = New System.Drawing.Point(450, 50)
-         Chart1.Size = New System.Drawing.Size(300, 300)
+         Chart1.Size = New System.Drawing.Size(500, 300)
          Chart1.TabIndex = 21
          Chart1.Anchor = AnchorStyles.Right
          Chart1.Anchor = AnchorStyles.Top
          'Asigna los valores de las series para miembros que se trazan en X y Y
          Chart1.Series("Series1").XValueMember = "rango"
          Chart1.Series("Series1").YValueMembers = "valor"
-         Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0")
+         Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0 and rango <=15")
          'Cerrar la conexion a la base de datos 
          oConexion.Close()
          oConexion.Dispose()
+         'Salvar la imagen a un arreglo de bytes
+
+         Try
+            Dim ruta = "C:\ELISA2012\IMAGENES\" & numcaso & ".jpeg"
+            Chart1.SaveImage(ruta, System.Drawing.Imaging.ImageFormat.Jpeg)
+         Catch ex As Exception
+            mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+         End Try
+
       Catch ex As Exception
          MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
       End Try
