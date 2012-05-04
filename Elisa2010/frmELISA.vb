@@ -15,15 +15,13 @@
    Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
       frmRegistraNuevoAnalisis.MdiParent = Me
       frmRegistraNuevoAnalisis.Show()
-      'Comentado el 12-Abril-2012 para que la ventana de resultados se abra cuando se solicita calcular resultados
-      'Utilizando el boton de obtener resultados
       frmSalidaDatos.MdiParent = Me
-      'frmSalidaDatos.Show()
    End Sub
 
    Private Sub tsmAbrirArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles tsmAbrirArchivoExistente.Click
       frmAbrirArchivoExistente.MdiParent = Me
       frmAbrirArchivoExistente.Show()
+      frmSalidaDatos.MdiParent = Me
    End Sub
 
    Private Sub tsmOperacionesAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles tsmOperacionesAnalisis.Click
@@ -80,7 +78,7 @@
    End Sub
 
    'Coloca el timer clock indicando la hora en la ventana principal
-   Private Sub tmrClock_Tick(sender As System.Object, e As System.EventArgs) Handles tmrClock.Tick
+   Private Sub tmrClock_Tick(sender As System.Object, e As System.EventArgs)
       lblClock.Text = CStr(TimeOfDay)
    End Sub
 

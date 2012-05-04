@@ -106,7 +106,7 @@ Module mdlOperaciones
    End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
+   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
                                     ByVal observaciones As String, ByVal nombrelibro As String, ByVal calculoDeTitulos(,) As Decimal,
                                     ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
                                     ByRef cuentaNoDatos As Double, ByRef desviacionEstandarDatosNoAgrupados As Double, _
@@ -131,13 +131,14 @@ Module mdlOperaciones
       excelApp.ActiveSheet.Name = nombrelibro
 
       'Colocar las cabeceras para los rangos de datos
-      excelApp.Range("A5").Value2 = nombreCliente
-      excelApp.Range("G5").Value2 = "No. Caso:"
+      excelApp.Range("A5").Value2 = "Cliente:  " & nombreCliente
+      excelApp.Range("G5").Value2 = "No. Caso: "
       excelApp.Range("H5").Value2 = numCaso
       excelApp.Range("A6").Value2 = observaciones
       excelApp.Range("A8").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
       excelApp.Range("A10").Value2 = nombreEnfermedad
-      'excelApp.Range("E10").Value2 = fechaDelAnalisis
+      excelApp.Range("E4").Value2 = "Resultados de Serología"
+      excelApp.Range("E10").Value2 = "Fecha del análisis:  " & fechaElaboracion
 
       'excelApp.ActiveSheet.PrintOut()
 
@@ -226,7 +227,7 @@ Module mdlOperaciones
       Dim resultado As String = ""
       Dim temporal As String = ""
       Try
-         frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo de datos"
+         frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo con datos de placa"
          ' Show the open file dialog box.
          If frmAbrirArchivoExistente.ofdSelArchivo.ShowDialog = DialogResult.OK Then
             ' Load the picture into the picture box.
@@ -300,15 +301,22 @@ Module mdlOperaciones
       End Try
    End Sub
 
+
+
    '#################################################
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByRef resultadoTitulos As String, ByVal promCP As Double, ByVal promCN As Double, _
+   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
                                  ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
                                  ByVal desviacionEstandarDatosNoAgrupados As Double, ByVal coeficienteDeVariacionDatosNoAgrupados As Double)
       Dim resultado As Integer
       Dim comando As New MySqlCommand
+      Dim cadenafecha As String
+      Dim tabla() As String
+      cadenafecha = fechaElaboracion
+      tabla = Split(cadenafecha, "/")
+      fechaElaboracion = tabla(2) & "/" & tabla(1) & "/" & tabla(0)
       Try
          'Crear la conexion para establecer el acceso a la BD de MySQL
          Dim oConexion = New MySqlConnection
@@ -318,8 +326,10 @@ Module mdlOperaciones
          'Asigna la cadena de conexion
          comando.Connection = oConexion
          comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
-                                & "('" & numcaso & "',NOW(),'" & msn & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
+                                & "('" & numcaso & "', STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
+                                & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
+         MessageBox.Show("valor de la consulta:" & comando.CommandText)
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
       Catch ex As MySqlException
@@ -416,8 +426,9 @@ Module mdlOperaciones
          'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
          Chart1.Series("Series1").IsValueShownAsLabel = True
          'Ubicacion del grafico
-         Chart1.Location = New System.Drawing.Point(500, 100)
-         Chart1.Size = New System.Drawing.Size(500, 250)
+         Chart1.Location = New System.Drawing.Point(38, 110)
+
+         Chart1.Size = New System.Drawing.Size(500, 240)
          Chart1.TabIndex = 21
          Chart1.Anchor = AnchorStyles.Right
          Chart1.Anchor = AnchorStyles.Top
@@ -889,7 +900,9 @@ Module mdlOperaciones
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
    'seleccionada. El parametro nombre es el nombre del análisis/Enfermedad que se ha evaluado
-   Public Sub calculaValores(ByVal nombre As String, ByVal nombreCliente As String, ByVal observaciones As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, ByRef numcaso As String, _
+   Public Sub calculaValores(ByVal nombre As String, ByVal nombreCliente As String, ByVal observaciones As String, _
+                             ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer,
+                             ByRef numcaso As String, ByVal fechaElaboracion As String, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
@@ -1029,7 +1042,7 @@ Module mdlOperaciones
             End If
             placaoriginal += placaLector(i, j) & vbTab
          Next
-         placaoriginal += vbCrLf
+         'placaoriginal += vbCrLf MODIFICADO EL 04 MAYO 2012
       Next
 
       'Calcula los logaritmos de la tabla SPS
@@ -1049,7 +1062,8 @@ Module mdlOperaciones
             logaritmoTitulos(i, j) = reduceDecimal(((logtit1 * logaritmoSPS(i, j)) + logtit2))
          Next
       Next
-
+      Dim n As Integer = 0
+      Dim presenta1 As String = "Sueros  Títulos" & vbCrLf & " " & vbCrLf
       'Calcula el titulo mendiante la exponenciacion 10 ^ A1..H1, en la hoja de excel corresponde a la columna K, y que tambien 
       'se utilizan en la columna AE para tomar los titulos de los sueros en resultados finales
       For i = 0 To numDeColumnas - 1
@@ -1060,8 +1074,12 @@ Module mdlOperaciones
                calculoDeTitulos(i, j) = 0
             End If
             resultadoTitulos += calculoDeTitulos(i, j) & vbTab
+            n += 1
+            If (n <= 96) Then
+               presenta1 += n & "       " & reduceDecimal(calculoDeTitulos(i, j)) & vbCrLf
+            End If
          Next
-         resultadoTitulos += vbCrLf
+         'resultadoTitulos += vbCrLf
       Next
 
       'Inicializa la columna L a ceros para evitar validaciones posteriores
@@ -1190,7 +1208,7 @@ Module mdlOperaciones
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
       'Carga los datos para la frecuencia relativa y crea la gráfica
-      cargaResultadosBD(numcaso, placaoriginal, resultadoTitulos, promCP, promCN, difCPS, _
+      cargaResultadosBD(numcaso, placaoriginal, resultadoTitulos, fechaElaboracion, promCP, promCN, difCPS, _
                         Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                         Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
       'CARGAR LA TABLA DE FREC REL
@@ -1203,7 +1221,9 @@ Module mdlOperaciones
       frmSalidaDatos.lblNombreCliente.Text = nombreCliente
       frmSalidaDatos.lblNoCaso.Text = numcaso
       frmSalidaDatos.lblObservaciones.Text = observaciones
-     
+      frmSalidaDatos.lblFechaElaboracion.Text = fechaElaboracion
+      frmSalidaDatos.txtCalculoTitulos1.Text = presenta1
+
       frmSalidaDatos.txtMediaAritmetica2.Text = CStr(Convert.ToDouble(mediaAritmetica))
       frmSalidaDatos.txtMediaGeometrica.Text = CStr(Convert.ToDouble(mediaGeometrica))
       frmSalidaDatos.txtTotalDatosCalculados.Text = CStr(cuentaNoDatos)

@@ -71,6 +71,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnGuardarDatosExcel = New System.Windows.Forms.Button()
       Me.lblObservaciones = New System.Windows.Forms.Label()
+      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -341,9 +342,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
       Me.pnlRegistraNuevoAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.pnlRegistraNuevoAnalisis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit2)
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogTit1)
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblLogSPS)
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.dtpFechaElaboracion)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtAnalisisSolicitado)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNoCaso)
@@ -359,7 +358,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblLogTit2
       '
       Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(454, 42)
+      Me.lblLogTit2.Location = New System.Drawing.Point(532, 53)
       Me.lblLogTit2.Name = "lblLogTit2"
       Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
       Me.lblLogTit2.TabIndex = 12
@@ -369,7 +368,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblLogTit1
       '
       Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(454, 25)
+      Me.lblLogTit1.Location = New System.Drawing.Point(532, 36)
       Me.lblLogTit1.Name = "lblLogTit1"
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 11
@@ -379,7 +378,7 @@ Partial Class frmRegistraNuevoAnalisis
       'lblLogSPS
       '
       Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(454, 9)
+      Me.lblLogSPS.Location = New System.Drawing.Point(532, 20)
       Me.lblLogSPS.Name = "lblLogSPS"
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 10
@@ -401,8 +400,11 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.AutoSize = True
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblLogTit2)
       Me.Panel2.Controls.Add(Me.ckbControlesDefault)
+      Me.Panel2.Controls.Add(Me.lblLogTit1)
       Me.Panel2.Controls.Add(Me.btnDefinirControlesPN)
+      Me.Panel2.Controls.Add(Me.lblLogSPS)
       Me.Panel2.Controls.Add(Me.grbControlesPositivos)
       Me.Panel2.Controls.Add(Me.grbControlesNegativos)
       Me.Panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -552,6 +554,15 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblObservaciones.Text = "Observaciones:"
       Me.lblObservaciones.Visible = False
       '
+      'dtpFechaElaboracion
+      '
+      Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(480, 24)
+      Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
+      Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
+      Me.dtpFechaElaboracion.TabIndex = 8
+      Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
+      '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -636,4 +647,5 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
+   Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
 End Class

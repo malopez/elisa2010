@@ -123,7 +123,7 @@ Public Class frmRegistraNuevoAnalisis
          Dim tabla1() As String
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
-         calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.text, "Grupo de títulos", "%", 0, tabla1(0), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
+         calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.Text, "Grupo de títulos", "%", 0, tabla1(0), CStr(dtpFechaElaboracion.Value), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
       Catch ex As DataException
          mensajeException(lblMensajeCaso, ex)

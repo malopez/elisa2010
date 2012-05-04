@@ -6,7 +6,7 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Public Class frmSalidaDatos
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
-      guardaResultadosExcel(Me.lblNoCaso.Text, Me.lblNombreCliente.Text, Me.lblNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
+      guardaResultadosExcel(Me.lblNoCaso.Text, lblFechaElaboracion.Text, Me.lblNombreCliente.Text, Me.lblNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
                            calculoDeTitulos, _
                            Convert.ToDouble(txtMediaAritmetica2.Text), _
                            Convert.ToDouble(txtMediaGeometrica.Text), _
@@ -16,4 +16,7 @@ Public Class frmSalidaDatos
                            Convert.ToDouble(txtVarianza2.Text))
    End Sub
 
+   Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
+      Me.Close()
+   End Sub
 End Class

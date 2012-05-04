@@ -49,6 +49,7 @@ Partial Class frmAbrirArchivoExistente
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.btnCancelarDA = New System.Windows.Forms.Button()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
+      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtAnalisisSolicitado = New System.Windows.Forms.TextBox()
       Me.lblNoCaso = New System.Windows.Forms.Label()
@@ -56,7 +57,6 @@ Partial Class frmAbrirArchivoExistente
       Me.cmbNoCaso = New System.Windows.Forms.ComboBox()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
-      Me.dtpFechaDelAnalisis = New System.Windows.Forms.DateTimePicker()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.grbCNDesdeArchivo.SuspendLayout()
@@ -130,7 +130,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogTit2
       '
       Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(524, 173)
+      Me.lblLogTit2.Location = New System.Drawing.Point(524, 219)
       Me.lblLogTit2.Name = "lblLogTit2"
       Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
       Me.lblLogTit2.TabIndex = 9
@@ -206,7 +206,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogTit1
       '
       Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(524, 156)
+      Me.lblLogTit1.Location = New System.Drawing.Point(524, 202)
       Me.lblLogTit1.Name = "lblLogTit1"
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 8
@@ -282,7 +282,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogSPS
       '
       Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(524, 140)
+      Me.lblLogSPS.Location = New System.Drawing.Point(524, 186)
       Me.lblLogSPS.Name = "lblLogSPS"
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 7
@@ -314,7 +314,7 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
       Me.pnlRegistraNuevoAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.pnlRegistraNuevoAnalisis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.dtpFechaDelAnalisis)
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.dtpFechaElaboracion)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtAnalisisSolicitado)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNoCaso)
@@ -326,6 +326,15 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
       Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(619, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 74
+      '
+      'dtpFechaElaboracion
+      '
+      Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(480, 24)
+      Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
+      Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
+      Me.dtpFechaElaboracion.TabIndex = 7
+      Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'txtNombreCliente
       '
@@ -397,13 +406,6 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente.Size = New System.Drawing.Size(125, 16)
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
-      '
-      'dtpFechaDelAnalisis
-      '
-      Me.dtpFechaDelAnalisis.Location = New System.Drawing.Point(385, 24)
-      Me.dtpFechaDelAnalisis.Name = "dtpFechaDelAnalisis"
-      Me.dtpFechaDelAnalisis.Size = New System.Drawing.Size(200, 20)
-      Me.dtpFechaDelAnalisis.TabIndex = 7
       '
       'lblObservaciones
       '
@@ -480,6 +482,6 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
-   Friend WithEvents dtpFechaDelAnalisis As System.Windows.Forms.DateTimePicker
+   Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
 End Class

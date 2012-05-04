@@ -22,7 +22,6 @@ Partial Class frmElisaBiovetsa
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
-      Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmElisaBiovetsa))
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
@@ -36,18 +35,17 @@ Partial Class frmElisaBiovetsa
       Me.mnuImprimir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuAcercaDe = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tmrClock = New System.Windows.Forms.Timer(Me.components)
       Me.lblClock = New System.Windows.Forms.Label()
       Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
       Me.tsbAbrirExcel = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbConfigurarLector = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-      Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+      Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
+      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+      Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
@@ -141,11 +139,6 @@ Partial Class frmElisaBiovetsa
       Me.mnuSalir.Text = "&Salir"
       Me.mnuSalir.ToolTipText = "Salir de la aplicación"
       '
-      'tmrClock
-      '
-      Me.tmrClock.Enabled = True
-      Me.tmrClock.Interval = 1000
-      '
       'lblClock
       '
       Me.lblClock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -194,20 +187,6 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
       Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
       '
-      'tsbSalir
-      '
-      Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
-      Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tsbSalir.Name = "tsbSalir"
-      Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
-      Me.tsbSalir.ToolTipText = "Salir de la aplicación"
-      '
-      'ToolStripSeparator3
-      '
-      Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-      Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-      '
       'tsbReporte
       '
       Me.tsbReporte.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -216,10 +195,10 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte.Name = "tsbReporte"
       Me.tsbReporte.Size = New System.Drawing.Size(23, 22)
       '
-      'ToolStripSeparator4
+      'ToolStripSeparator3
       '
-      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+      Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+      Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
       '
       'tsbImprimir
       '
@@ -229,6 +208,20 @@ Partial Class frmElisaBiovetsa
       Me.tsbImprimir.Name = "tsbImprimir"
       Me.tsbImprimir.Size = New System.Drawing.Size(23, 22)
       Me.tsbImprimir.Text = "ToolStripButton1"
+      '
+      'ToolStripSeparator4
+      '
+      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+      '
+      'tsbSalir
+      '
+      Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+      Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
+      Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
+      Me.tsbSalir.Name = "tsbSalir"
+      Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
+      Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
       'ToolStripSeparator5
       '
@@ -270,7 +263,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmConfigurarLector As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuImprimir As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuSalir As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tmrClock As System.Windows.Forms.Timer
    Friend WithEvents lblClock As System.Windows.Forms.Label
    Friend WithEvents tsmConfirmarSalir As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmOperacionesAnalisis As System.Windows.Forms.ToolStripMenuItem
