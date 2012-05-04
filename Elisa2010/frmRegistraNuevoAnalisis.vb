@@ -67,6 +67,7 @@ Public Class frmRegistraNuevoAnalisis
          btnLeerDatosPlaca.Enabled = False
       Else
          defineValoresDefault()
+         btnAceptarControles.Enabled = True
       End If
    End Sub
 
@@ -122,7 +123,7 @@ Public Class frmRegistraNuevoAnalisis
          Dim tabla1() As String
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
-         calculaValores(tabla(1), "Grupo de títulos", "%", 0, tabla1(0), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
+         calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.text, "Grupo de títulos", "%", 0, tabla1(0), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
       Catch ex As DataException
          mensajeException(lblMensajeCaso, ex)
@@ -295,7 +296,7 @@ Public Class frmRegistraNuevoAnalisis
          tabla = Split(cadena, " | ")
 
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -304,6 +305,10 @@ Public Class frmRegistraNuevoAnalisis
                While oDataReader.Read()
                txtNombreCliente.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservaciones.Text = oDataReader("OBS").ToString()
+               lblLogSPS.Text = oDataReader("logSPS").ToString()
+               lblLogTit1.Text = oDataReader("logTit1").ToString()
+               lblLogTit2.Text = oDataReader("logTit2").ToString()
                End While
                oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -347,8 +352,12 @@ Public Class frmRegistraNuevoAnalisis
 
 
    Private Sub btnGuardarDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatosExcel.Click
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = cmbNoCaso.Text
+      tabla = Split(cadena, " | ")
       btnGuardarDatosExcel.Enabled = False
-      guardaDatosExcel(placaLector, siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
+      guardaDatosExcel(placaLector, tabla(0), siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
                        siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
                        Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text))
    End Sub

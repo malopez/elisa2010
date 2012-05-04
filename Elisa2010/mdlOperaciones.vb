@@ -2,6 +2,8 @@
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Runtime.InteropServices
+
 
 Module mdlOperaciones
    Public Const cadenaConexion = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
@@ -18,7 +20,14 @@ Module mdlOperaciones
    Public frecuenciaRelativa(14) As Decimal
    'Matriz para calculo de Logaritmo de Titulos
    Public calculoDeTitulos(7, 11) As Decimal
+   'Ruta donde se guardaran los archivos
+   Public rutaImagen As String = "C:\ELISA2012\IMAGENES\"
+   Public rutaPlacas As String = "C:\ELISA2012\PLACAS ORIGINALES\"
 
+   'Procedimiento utilizado para convertir la cadena de entrada desde el puerto en un arreglo, quitando los blancos
+   'Los <Enter>, <retorno de carro>, <Tabs>, <Nuevas líneas> y el <_Quick> que coloca el lector al final de lo que lee
+   'Como los valores vienen separados por comas, los elimina y obtiene mediante la funcion <val> el valor real de cada
+   'cadena, es una funcion estandar de visual basic.
    Public Sub convierteCadena(ByVal msn As String)
       'Arreglo de cadenas temporal para eliminar las comas
       Dim a() As String
@@ -53,32 +62,9 @@ Module mdlOperaciones
       Next
    End Sub
 
-   'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
-   Public Function obtenLetra(ByVal i As Integer) As String
-      Dim letra As String = ""
-      Select Case i
-         Case 0
-            letra = "A"
-         Case 1
-            letra = "B"
-         Case 2
-            letra = "C"
-         Case 3
-            letra = "D"
-         Case 4
-            letra = "E"
-         Case 5
-            letra = "F"
-         Case 6
-            letra = "G"
-         Case 7
-            letra = "H"
-      End Select
-      Return letra
-   End Function
-
+  
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, _
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal numCaso As String, _
                                ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                                ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
@@ -89,7 +75,7 @@ Module mdlOperaciones
       Dim i As Integer = 0
       Dim j As Integer = 0
       'Mostrar Excel en pantalla y crea el workbook
-      excelApp.Visible = True
+      'excelApp.Visible = True
       libroExcel = excelApp.Workbooks.Add()
 
       'Darle nombre la primer hoja activa del libro de trabajo
@@ -110,16 +96,19 @@ Module mdlOperaciones
       excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
       excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
       excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
+      'Salva el archivo de placa original leida con el nombre del caso
+      Dim nombreArchivo As String = rutaPlacas & numCaso & ".xlsx"
+      excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
       'Cierra el libro activo de Excel
       excelApp.ActiveWorkbook.Close()
-      'Libera la aplicacion Excel
+      excelApp.Quit()
       releaseObject(excelApp)
    End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal frecuenciaRelativa() As Decimal, ByVal calculoDeTitulos(,) As Decimal, ByVal nombrelibro As String, ByVal nombre As String, _
-                                    ByRef calculaMedia As Double, ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
-                                    ByRef coeficienteDeVariacion As Double, ByRef desviacionEstandar As Double, ByRef calculaVarianza As Double, _
+   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
+                                    ByVal observaciones As String, ByVal nombrelibro As String, ByVal calculoDeTitulos(,) As Decimal,
+                                    ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
                                     ByRef cuentaNoDatos As Double, ByRef desviacionEstandarDatosNoAgrupados As Double, _
                                     ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
 
@@ -128,7 +117,7 @@ Module mdlOperaciones
       Dim sueros As String = "A"
       Dim titulos As String = "B"
       Dim temp As Integer = 1
-      Dim l As Integer = 18
+      Dim l As Integer = 16
 
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
@@ -141,35 +130,20 @@ Module mdlOperaciones
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = nombrelibro
 
-      'Agregar datos a la hoja de Excel de la frecuencia relativa
-      'For i = 2 To 16
-      'excelApp.Range("A" & i).Value2 = i - 1
-      'excelApp.Range("B" & i).Value2 = Math.Round(frecuenciaRelativa(i - 2), 2)
-      'Next
-
       'Colocar las cabeceras para los rangos de datos
-      excelApp.Range("A1").Value2 = "Grupo de Títulos"
-      excelApp.Range("B1").Value2 = "Porcentaje"
-      excelApp.Range("C1").Value2 = "Media"
-      excelApp.Range("C2").Value2 = mediaAritmetica
-      excelApp.Range("D1").Value2 = "Media Geométrica"
-      excelApp.Range("D2").Value2 = mediaGeometrica
-      excelApp.Range("E1").Value2 = "Desv. Estándar"
-      excelApp.Range("E2").Value2 = desviacionEstandarDatosNoAgrupados
-      excelApp.Range("F1").Value2 = "Coef. Variación"
-      excelApp.Range("F2").Value2 = coeficienteDeVariacionDatosNoAgrupados
+      excelApp.Range("A5").Value2 = nombreCliente
+      excelApp.Range("G5").Value2 = "No. Caso:"
+      excelApp.Range("H5").Value2 = numCaso
+      excelApp.Range("A6").Value2 = observaciones
+      excelApp.Range("A8").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+      excelApp.Range("A10").Value2 = nombreEnfermedad
+      'excelApp.Range("E10").Value2 = fechaDelAnalisis
 
-      excelApp.Worksheets(1).cells(1, 1).select()
-      excelApp.ActiveSheet.Pictures.Insert("C:\ELISA2012\IMAGENES\110504-1817.jpeg").select()
-
-      'excelApp.Range("G9:L22").CopyPicturePicture(Excel.XlPictureAppearance.xlScreen, Excel.XlCopyPictureFormat.xlBitmap)
-
-      excelApp.ActiveSheet.PrintOut()
-
+      'excelApp.ActiveSheet.PrintOut()
 
       'copia los valores de los títulos resultantes
-      excelApp.Range("A17").Value2 = "Sueros"
-      excelApp.Range("B17").Value2 = "Títulos"
+      excelApp.Range("A15").Value2 = "Sueros"
+      excelApp.Range("B15").Value2 = "Títulos"
 
       For i = 0 To 7
          For j = temp To 11
@@ -178,7 +152,7 @@ Module mdlOperaciones
             k += 1
             l += 1
             If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
-               l = 17
+               l = 15
                If (k = 21) Then
                   sueros = "C"
                   titulos = "D"
@@ -197,13 +171,35 @@ Module mdlOperaciones
                End If
                excelApp.Range(sueros & l).Value2 = "Sueros"
                excelApp.Range(titulos & l).Value2 = "Títulos"
-               l = 18
+               l = 16
             End If
             If (i = 0) Then
                temp = 0
             End If
          Next
       Next
+      Try
+         'Inserta la gráfica en el archivo Excel
+         Dim strCelda As String = "E15"
+         Dim nombreArchivo = rutaImagen & numCaso & ".jpeg"
+         excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
+         'excelApp.Worksheets(1).Cells(5, 18).select()
+         'excelApp.ActiveSheet.Pictures.Insert(cadena2).select()
+      Catch ex As Exception
+         mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+      End Try
+      'coloca los valores de la estadística
+      excelApp.Range("A37").Value2 = "Media"
+      excelApp.Range("A41").Value2 = "* Numeración arbitraria"
+      excelApp.Range("B37").Value2 = "Med. Geom."
+      excelApp.Range("C37").Value2 = "Desv. Est."
+      excelApp.Range("D37").Value2 = "Coef.Var."
+
+      excelApp.Range("A38").Value2 = mediaAritmetica
+      excelApp.Range("B38").Value2 = mediaGeometrica
+      excelApp.Range("C38").Value2 = desviacionEstandarDatosNoAgrupados
+      excelApp.Range("D38").Value2 = coeficienteDeVariacionDatosNoAgrupados
+
       excelApp.ActiveWorkbook.Close()
       excelApp.Quit()
       releaseObject(excelApp)
@@ -214,7 +210,7 @@ Module mdlOperaciones
    '##################################################################
    'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
    'de una placa leida previamente
-   Public Function abreArchivoExcel(ByVal placaLector(,) As Decimal) As String
+   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal)
       'Define variables para archivo de excel
       Dim excelApp As New Excel.Application
       'Dim libroExcel As Excel.Workbook
@@ -250,7 +246,6 @@ Module mdlOperaciones
                   temporal = hojaExcel.Range(columna & (j + 1)).Value2
                   If (temporal <> "") Then
                      placaLector(i, j) = CDec(temporal)
-                     'MessageBox.Show("Valor de placa leida: " & placaLector(i, j))
                   Else
                      placaLector(i, j) = 0
                   End If
@@ -288,7 +283,7 @@ Module mdlOperaciones
          frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
       End Try
 
-   End Function
+   End Sub
 
    '###########################################################
    '#SECCION PARA LIBERAR OBJETOS DE MEMORIA TIPO PROGRAMA    #
@@ -309,8 +304,8 @@ Module mdlOperaciones
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByVal promCP As Double, ByVal promCN As Double, _
-                                 ByVal promCPS As Double, ByVal mediaAritmetica As Double, mediaGeometrica As Double, _
+   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal msn As String, ByRef resultadoTitulos As String, ByVal promCP As Double, ByVal promCN As Double, _
+                                 ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
                                  ByVal desviacionEstandarDatosNoAgrupados As Double, ByVal coeficienteDeVariacionDatosNoAgrupados As Double)
       Dim resultado As Integer
       Dim comando As New MySqlCommand
@@ -322,8 +317,8 @@ Module mdlOperaciones
          oConexion.Open()
          'Asigna la cadena de conexion
          comando.Connection = oConexion
-         comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
-                                & "('" & numcaso & "',NOW(),'" & msn & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
+         comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
+                                & "('" & numcaso & "',NOW(),'" & msn & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
@@ -338,13 +333,6 @@ Module mdlOperaciones
          mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
       End Try
    End Sub
-
-   Public Function reduceDecimal(ByVal numero As Decimal) As Decimal
-      Dim v As Decimal
-      v = CDec(Microsoft.VisualBasic.Left(CStr(numero), 10))
-      Return v
-   End Function
-
 
    Private Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String)
 
@@ -384,7 +372,7 @@ Module mdlOperaciones
    '#################################################
    '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
    '#################################################
-   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numcaso As String)
+   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
          oConexion.ConnectionString = cadenaConexion
@@ -428,8 +416,8 @@ Module mdlOperaciones
          'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
          Chart1.Series("Series1").IsValueShownAsLabel = True
          'Ubicacion del grafico
-         Chart1.Location = New System.Drawing.Point(450, 50)
-         Chart1.Size = New System.Drawing.Size(500, 300)
+         Chart1.Location = New System.Drawing.Point(500, 100)
+         Chart1.Size = New System.Drawing.Size(500, 250)
          Chart1.TabIndex = 21
          Chart1.Anchor = AnchorStyles.Right
          Chart1.Anchor = AnchorStyles.Top
@@ -440,23 +428,21 @@ Module mdlOperaciones
          'Cerrar la conexion a la base de datos 
          oConexion.Close()
          oConexion.Dispose()
-         'Salvar la imagen a un arreglo de bytes
-
+         'Salvar la imagen a disco, con el número de caso identificándole, con formato jpeg
          Try
-            Dim ruta = "C:\ELISA2012\IMAGENES\" & numcaso & ".jpeg"
-            Chart1.SaveImage(ruta, System.Drawing.Imaging.ImageFormat.Jpeg)
+            Dim nombreArchivo = rutaImagen & numCaso & ".jpeg"
+            Chart1.SaveImage(nombreArchivo, System.Drawing.Imaging.ImageFormat.Jpeg)
          Catch ex As Exception
             mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
          End Try
-
       Catch ex As Exception
          MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
       End Try
    End Sub
 
-   '##################################################
-   '#    MENSAJES DEFAULT EN COLOR ROJO Y VERDE      #
-   '##################################################
+   '######################################################################
+   '# MENSAJES DEFAULT PARA ATRAPAR EXCEPCIONES, Y EN COLOR ROJO Y VERDE #
+   '######################################################################
 
    Public Sub mensajeException(ByRef etiqueta As Label, ByRef ex As Exception)
       etiqueta.ForeColor = System.Drawing.Color.Red
@@ -479,8 +465,16 @@ Module mdlOperaciones
    End Sub
 
    '##################################################
-   '# SECCION VALIDACION DE FORMATOS PARA textBoxes  #
+   '# SECCION VALIDACION DE FORMATOS                 #
    '##################################################
+   'Utilizada para validación de datos, seleccionando solamente 10 posiciones contando de izquierda a derecha
+   Public Function reduceDecimal(ByVal numero As Decimal) As Decimal
+      Dim v As Decimal
+      v = CDec(Microsoft.VisualBasic.Left(CStr(numero), 10))
+      Return v
+   End Function
+
+   'Verifica que no sea blanco o de largo mayor a 1 lo escrito en el textbox
    Public Function siNoEsBlanco(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text = "" Or textBox.Text.Length > 1 Then
          MessageBox.Show(nombre & "El control debe tener un valor distinto a blanco.")
@@ -573,6 +567,32 @@ Module mdlOperaciones
             textbox.SelectAll()
       End Select
       Return CInt(retorno)
+   End Function
+
+
+
+   'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
+   Public Function obtenLetra(ByVal i As Integer) As String
+      Dim letra As String = ""
+      Select Case i
+         Case 0
+            letra = "A"
+         Case 1
+            letra = "B"
+         Case 2
+            letra = "C"
+         Case 3
+            letra = "D"
+         Case 4
+            letra = "E"
+         Case 5
+            letra = "F"
+         Case 6
+            letra = "G"
+         Case 7
+            letra = "H"
+      End Select
+      Return letra
    End Function
 
    Public Function controlesValidosLetra(ByVal textbox As TextBox, ByVal nombre As String, _
@@ -868,8 +888,8 @@ Module mdlOperaciones
    'cpx y cny son los valores de A..H,  es decir, el valor de la placa por columna   usada para control positivo-negativo
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
-   'seleccionada.
-   Public Sub calculaValores(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, ByRef numcaso As String, _
+   'seleccionada. El parametro nombre es el nombre del análisis/Enfermedad que se ha evaluado
+   Public Sub calculaValores(ByVal nombre As String, ByVal nombreCliente As String, ByVal observaciones As String, ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, ByRef numcaso As String, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
@@ -882,7 +902,8 @@ Module mdlOperaciones
       Dim j As Integer = 0
       Dim k As Integer = 0
       'Para presentar el resultado del análisis campo texto de la forma
-      Dim resultado As String = ""
+      'Dim resultado As String = "" COMENTADO EL 03-MAYO-2012
+      Dim resultadoTitulos As String = ""
       Dim placaoriginal As String = ""
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
@@ -1038,7 +1059,9 @@ Module mdlOperaciones
             Else
                calculoDeTitulos(i, j) = 0
             End If
+            resultadoTitulos += calculoDeTitulos(i, j) & vbTab
          Next
+         resultadoTitulos += vbCrLf
       Next
 
       'Inicializa la columna L a ceros para evitar validaciones posteriores
@@ -1060,9 +1083,6 @@ Module mdlOperaciones
             calculaL(i, j) = CDec(calculoDeTitulos(i, j))
             'Calcula la sumatoria de los datos que se guardan en columna L
             totalcalculaL += CDec(calculaL(i, j))
-            'Sirve para calcular el numero de datos (pozos utilizados para el caso) MODIFICADO 30-Abril-2012
-            'cuentaNoDatos += 1
-
             'Calcula el logaritmo  base 10 del la columna L, que se utilizara para la calcular ma media geometrica
             If (calculaL(i, j) > 0) Or (calculaL(i, j) < 0) Then
                calculaSumatoriaMG += reduceDecimal(CDec(Math.Log10(calculaL(i, j))))
@@ -1170,24 +1190,29 @@ Module mdlOperaciones
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
       'Carga los datos para la frecuencia relativa y crea la gráfica
-      cargaResultadosBD(numcaso, placaoriginal, promCP, promCN, difCPS, _
+      cargaResultadosBD(numcaso, placaoriginal, resultadoTitulos, promCP, promCN, difCPS, _
                         Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                         Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
-      'DESCOMENTAR PARA CARGAR LA TABLA DE FREC REL
+      'CARGAR LA TABLA DE FREC REL
       cargaFrecRelBD(frecuenciaRelativa, numcaso)
       creaChartFrecRel(nombre, titulox, tituloy, numcaso)
 
-      'Presenta datos
-      frmSalidaDatos.txtMediaAritmetica.Text = CStr(calculaMedia)
+      'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos
+
+      frmSalidaDatos.lblNombreEnfermedad.Text = nombre
+      frmSalidaDatos.lblNombreCliente.Text = nombreCliente
+      frmSalidaDatos.lblNoCaso.Text = numcaso
+      frmSalidaDatos.lblObservaciones.Text = observaciones
+     
       frmSalidaDatos.txtMediaAritmetica2.Text = CStr(Convert.ToDouble(mediaAritmetica))
       frmSalidaDatos.txtMediaGeometrica.Text = CStr(Convert.ToDouble(mediaGeometrica))
-      frmSalidaDatos.txtCoefVariacion.Text = CStr(coeficienteDeVariacion)
-      frmSalidaDatos.txtDesvEstandar.Text = CStr(desviacionEstandar)
-      frmSalidaDatos.txtVarianza.Text = CStr(calculaVarianza)
       frmSalidaDatos.txtTotalDatosCalculados.Text = CStr(cuentaNoDatos)
       frmSalidaDatos.txtCoefVariacion2.Text = CStr(Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
       frmSalidaDatos.txtDesvEstandar2.Text = CStr(Convert.ToDouble(desviacionEstandarDatosNoAgrupados))
       frmSalidaDatos.txtVarianza2.Text = CStr(calculaVarianzaDatosNoAgrupados)
-      frmSalidaDatos.lblNombreEnfermedad.Text = nombre
+      ' frmSalidaDatos.txtMediaAritmetica.Text = CStr(calculaMedia)
+      'frmSalidaDatos.txtCoefVariacion.Text = CStr(coeficienteDeVariacion)
+      'frmSalidaDatos.txtDesvEstandar.Text = CStr(desviacionEstandar)
+      'frmSalidaDatos.txtVarianza.Text = CStr(calculaVarianza)
    End Sub
 End Module

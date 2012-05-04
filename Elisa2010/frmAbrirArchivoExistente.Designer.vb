@@ -56,6 +56,8 @@ Partial Class frmAbrirArchivoExistente
       Me.cmbNoCaso = New System.Windows.Forms.ComboBox()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
+      Me.dtpFechaDelAnalisis = New System.Windows.Forms.DateTimePicker()
+      Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.grbCNDesdeArchivo.SuspendLayout()
       Me.grbCPDesdeArchivo.SuspendLayout()
@@ -312,6 +314,7 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
       Me.pnlRegistraNuevoAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.pnlRegistraNuevoAnalisis.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.dtpFechaDelAnalisis)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.txtAnalisisSolicitado)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNoCaso)
@@ -395,12 +398,30 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
       '
+      'dtpFechaDelAnalisis
+      '
+      Me.dtpFechaDelAnalisis.Location = New System.Drawing.Point(385, 24)
+      Me.dtpFechaDelAnalisis.Name = "dtpFechaDelAnalisis"
+      Me.dtpFechaDelAnalisis.Size = New System.Drawing.Size(200, 20)
+      Me.dtpFechaDelAnalisis.TabIndex = 7
+      '
+      'lblObservaciones
+      '
+      Me.lblObservaciones.AutoSize = True
+      Me.lblObservaciones.Location = New System.Drawing.Point(3, 426)
+      Me.lblObservaciones.Name = "lblObservaciones"
+      Me.lblObservaciones.Size = New System.Drawing.Size(39, 13)
+      Me.lblObservaciones.TabIndex = 75
+      Me.lblObservaciones.Text = "Label7"
+      Me.lblObservaciones.Visible = False
+      '
       'frmAbrirArchivoExistente
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.BackColor = System.Drawing.SystemColors.Control
       Me.ClientSize = New System.Drawing.Size(633, 485)
+      Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnCancelarDA)
@@ -459,4 +480,6 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
+   Friend WithEvents dtpFechaDelAnalisis As System.Windows.Forms.DateTimePicker
+   Friend WithEvents lblObservaciones As System.Windows.Forms.Label
 End Class

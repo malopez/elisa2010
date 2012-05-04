@@ -30,7 +30,7 @@ Public Class frmAbrirArchivoExistente
          Dim tabla1() As String
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
-         calculaValores(tabla(1), "Grupo de títulos", "%", desdeArchivo, tabla1(0), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3)
+         calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.Text, "Grupo de títulos", "%", desdeArchivo, tabla1(0), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3)
          frmSalidaDatos.ShowDialog()
       Catch ex As Exception
          mensajeException(Me.lblMensajeAAE, ex)
@@ -88,7 +88,7 @@ Public Class frmAbrirArchivoExistente
 
          oConexion.ConnectionString = cadenaConexion
 
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -97,6 +97,7 @@ Public Class frmAbrirArchivoExistente
             While oDataReader.Read()
                txtNombreCliente.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservaciones.Text = oDataReader("OBS").ToString()
                lblLogSPS.Text = oDataReader("logSPS").ToString()
                lblLogTit1.Text = oDataReader("logTit1").ToString()
                lblLogTit2.Text = oDataReader("logTit2").ToString()

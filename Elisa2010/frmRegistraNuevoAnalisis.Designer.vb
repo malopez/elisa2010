@@ -70,6 +70,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnGuardarDatosExcel = New System.Windows.Forms.Button()
+      Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -541,11 +542,22 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnGuardarDatosExcel.Text = "Guardar Datos en Excel"
       Me.btnGuardarDatosExcel.UseVisualStyleBackColor = False
       '
+      'lblObservaciones
+      '
+      Me.lblObservaciones.AutoSize = True
+      Me.lblObservaciones.Location = New System.Drawing.Point(9, 453)
+      Me.lblObservaciones.Name = "lblObservaciones"
+      Me.lblObservaciones.Size = New System.Drawing.Size(81, 13)
+      Me.lblObservaciones.TabIndex = 78
+      Me.lblObservaciones.Text = "Observaciones:"
+      Me.lblObservaciones.Visible = False
+      '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(605, 510)
+      Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.btnGuardarDatosExcel)
       Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.btnFormateaDatos)
@@ -623,4 +635,5 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
+   Friend WithEvents lblObservaciones As System.Windows.Forms.Label
 End Class
