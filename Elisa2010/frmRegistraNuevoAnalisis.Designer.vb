@@ -52,6 +52,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnBuscaCaso = New System.Windows.Forms.Button()
       Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
+      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.lblLogSPS = New System.Windows.Forms.Label()
@@ -71,7 +72,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnGuardarDatosExcel = New System.Windows.Forms.Button()
       Me.lblObservaciones = New System.Windows.Forms.Label()
-      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -234,7 +234,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesPositivos.Enabled = False
       Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesPositivos.Location = New System.Drawing.Point(73, 8)
+      Me.grbControlesPositivos.Location = New System.Drawing.Point(86, 8)
       Me.grbControlesPositivos.Name = "grbControlesPositivos"
       Me.grbControlesPositivos.Size = New System.Drawing.Size(140, 110)
       Me.grbControlesPositivos.TabIndex = 28
@@ -354,6 +354,15 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
       Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(596, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 73
+      '
+      'dtpFechaElaboracion
+      '
+      Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(480, 24)
+      Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
+      Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
+      Me.dtpFechaElaboracion.TabIndex = 8
+      Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'lblLogTit2
       '
@@ -553,15 +562,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblObservaciones.TabIndex = 78
       Me.lblObservaciones.Text = "Observaciones:"
       Me.lblObservaciones.Visible = False
-      '
-      'dtpFechaElaboracion
-      '
-      Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(480, 24)
-      Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
-      Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
-      Me.dtpFechaElaboracion.TabIndex = 8
-      Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'frmRegistraNuevoAnalisis
       '

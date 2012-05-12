@@ -110,6 +110,12 @@
     <Compile Include="frmConfiguraLector.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMultipleCaso.Designer.vb">
+      <DependentUpon>frmMultipleCaso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMultipleCaso.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMultipleCaso.resx">
+      <DependentUpon>frmMultipleCaso.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOperacionesAnalisis.resx">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>

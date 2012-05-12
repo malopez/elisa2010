@@ -98,4 +98,9 @@
    Private Sub tsbSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsbSalir.Click
       Me.Close()
    End Sub
+
+   Private Sub MultipleCasoPorPlacaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles MultipleCasoPorPlacaToolStripMenuItem.Click
+      frmMultipleCaso.MdiParent = Me
+      frmMultipleCaso.Show()
+   End Sub
 End Class

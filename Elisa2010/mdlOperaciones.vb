@@ -1079,7 +1079,6 @@ Module mdlOperaciones
                presenta1 += n & "       " & reduceDecimal(calculoDeTitulos(i, j)) & vbCrLf
             End If
          Next
-         'resultadoTitulos += vbCrLf
       Next
 
       'Inicializa la columna L a ceros para evitar validaciones posteriores

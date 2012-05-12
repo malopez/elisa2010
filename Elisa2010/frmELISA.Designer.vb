@@ -47,6 +47,7 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+      Me.MultipleCasoPorPlacaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
@@ -62,7 +63,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.MultipleCasoPorPlacaToolStripMenuItem, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
@@ -144,7 +145,7 @@ Partial Class frmElisaBiovetsa
       Me.lblClock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
       Me.lblClock.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.lblClock.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-      Me.lblClock.Location = New System.Drawing.Point(896, 710)
+      Me.lblClock.Location = New System.Drawing.Point(896, 297)
       Me.lblClock.Name = "lblClock"
       Me.lblClock.Size = New System.Drawing.Size(100, 23)
       Me.lblClock.TabIndex = 2
@@ -228,13 +229,19 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
       Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
       '
+      'MultipleCasoPorPlacaToolStripMenuItem
+      '
+      Me.MultipleCasoPorPlacaToolStripMenuItem.Name = "MultipleCasoPorPlacaToolStripMenuItem"
+      Me.MultipleCasoPorPlacaToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.MultipleCasoPorPlacaToolStripMenuItem.Text = "Multiple Caso por placa"
+      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.BackColor = System.Drawing.SystemColors.Window
       Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-      Me.ClientSize = New System.Drawing.Size(1008, 742)
+      Me.ClientSize = New System.Drawing.Size(1008, 329)
       Me.Controls.Add(Me.ToolStrip1)
       Me.Controls.Add(Me.lblClock)
       Me.Controls.Add(Me.mnuMainMenu)
@@ -279,5 +286,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
+   Friend WithEvents MultipleCasoPorPlacaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

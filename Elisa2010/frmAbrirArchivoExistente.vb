@@ -31,6 +31,7 @@ Public Class frmAbrirArchivoExistente
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
 
+         'Este es un comenterio
          calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.Text, "Grupo de títulos", "%", desdeArchivo, tabla1(0), CStr(dtpFechaElaboracion.Value), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3)
 
          frmSalidaDatos.Show()
