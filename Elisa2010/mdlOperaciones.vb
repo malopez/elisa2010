@@ -4,7 +4,6 @@ Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
 
-
 Module mdlOperaciones
    Public Const cadenaConexion = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    '################################
@@ -29,12 +28,13 @@ Module mdlOperaciones
    'Como los valores vienen separados por comas, los elimina y obtiene mediante la funcion <val> el valor real de cada
    'cadena, es una funcion estandar de visual basic.
    Public Sub convierteCadena(ByVal msn As String)
-      'Arreglo de cadenas temporal para eliminar las comas
+       'Arreglo de cadenas temporal para eliminar las comas
       Dim a() As String
       'control del ciclo de recorrido
       Dim i As Integer = 0
       Dim j As Integer = 0
       Dim k As Integer = 1
+      'MessageBox.Show("Valor de msn antes:" & msn)
       msn = Replace(msn, " ", "")
       msn = Replace(msn, vbCrLf, "")
       msn = Replace(msn, vbCr, "")
@@ -43,6 +43,7 @@ Module mdlOperaciones
       msn = Replace(msn, "_Quick", "")
       'Copia en el Arreglo los valores de datos separados por comas
       a = Split(msn, ",")
+      'MessageBox.Show("Valor de msn despues:" & msn)
       'MessageBox.Show("Llegue al split valor de msn es " & msn & "valor de largo de a: " & a.Length)
       Dim temporal As Decimal
       Dim tmp As String = ""
@@ -50,16 +51,52 @@ Module mdlOperaciones
          For j = 0 To 11
             'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es nuérico, entonces coloca un 0.
             temporal = (Val(a(k)) / 1000)
-            'MessageBox.Show("Valor del temporal" & temporal)
             If (temporal > 1) Then
                placaLector(i, j) = 0
             Else
                placaLector(i, j) = temporal
             End If
-            'MessageBox.Show("Valor de placaLector en " & i & "," & j & ": " & placaLector(i, j))
+            'MessageBox.Show("Valor de placaLector en " & i & " , " & j & ": " & placaLector(i, j) & "Valor de a(k): " & a(k) & "max val:" & UBound(a))
             k += 1
          Next
       Next
+   End Sub
+
+
+   Private Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
+      Dim i As Integer
+      'Quita el indicador de fila del datagridview
+      placa.RowHeadersVisible = False
+      placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+      placa.Columns.Add("pozo0", "")
+      placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
+      placa.Columns(0).AutoSizeMode = False
+
+      For i = 1 To 12
+         placa.Columns.Add("pozo" & i, i)
+         With placa.Columns(i)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+         End With
+      Next
+      placa.Rows.Add(8)
+      'dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      For i = 0 To 7
+         placa.Rows(i).Cells(0).Value = obtenLetra(i)
+         placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
+         placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
+      Next
+
+      For i = 0 To 7
+         For j = 0 To 11
+            placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
+         Next
+      Next
+   End Sub
+
+   Public Sub coloreaTabla(ByRef placa As DataGridView, ByVal color As System.Drawing.Color, ByVal col As Integer, ByVal reng As Integer)
+      placa.Rows(col).Cells(reng).Style.BackColor = color
    End Sub
 
   
@@ -88,14 +125,23 @@ Module mdlOperaciones
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
+
       excelApp.Range("A14").Value2 = "Controles Positivos"
       excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
       excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
       excelApp.Range("A17").Value2 = placaLector(cpx3, cpy3)
+      'Para que el fondo de la celda sea color Verde=4
+      excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+      excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+      excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
       excelApp.Range("B14").Value2 = "Controles Negativos"
       excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
       excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
       excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
+      'Hacer el fondo de la celda color Rojo=3
+      excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
+      excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
+      excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
       'Salva el archivo de placa original leida con el nombre del caso
       Dim nombreArchivo As String = rutaPlacas & numCaso & ".xlsx"
       excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
@@ -145,7 +191,7 @@ Module mdlOperaciones
       'copia los valores de los títulos resultantes
       excelApp.Range("A15").Value2 = "Sueros"
       excelApp.Range("B15").Value2 = "Títulos"
-
+      
       For i = 0 To 7
          For j = temp To 11
             excelApp.Range(sueros & l).Value2 = k
@@ -211,6 +257,7 @@ Module mdlOperaciones
    '##################################################################
    'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
    'de una placa leida previamente
+
    Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal)
       'Define variables para archivo de excel
       Dim excelApp As New Excel.Application
@@ -247,6 +294,7 @@ Module mdlOperaciones
                   temporal = hojaExcel.Range(columna & (j + 1)).Value2
                   If (temporal <> "") Then
                      placaLector(i, j) = CDec(temporal)
+
                   Else
                      placaLector(i, j) = 0
                   End If
@@ -254,14 +302,15 @@ Module mdlOperaciones
                Next
                resultado &= vbCrLf
             Next
+            'Escribe en el datagridview los datos obtenidos desde el archivo
+            organizaEnTabla(frmAbrirArchivoExistente.dgvPlacaLeida, placaLector)
+
          Catch ex As Exception
-            frmAbrirArchivoExistente.lblMensajeAAE.ForeColor = System.Drawing.Color.Red
-            frmAbrirArchivoExistente.lblMensajeAAE.Text = "ERROR:" & ex.Message & " " & ex.GetType.ToString
+            mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
             frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
             frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
          End Try
-         frmAbrirArchivoExistente.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
-         frmAbrirArchivoExistente.lblMensajeAAE.Text = "Nombre del archivo abierto: " & nombreArchivo
+         mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "Nombre del archivo abierto: " & nombreArchivo)
          frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
          frmAbrirArchivoExistente.txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
          frmAbrirArchivoExistente.txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
@@ -329,7 +378,7 @@ Module mdlOperaciones
                                 & "('" & numcaso & "', STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
                                 & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
-         MessageBox.Show("valor de la consulta:" & comando.CommandText)
+         'MessageBox.Show("valor de la consulta:" & comando.CommandText)
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
       Catch ex As MySqlException
@@ -508,7 +557,7 @@ Module mdlOperaciones
 
    Public Function siNoEsBlancoMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text = "" Or (textBox.Text.Length >= 3) Then
-         MessageBox.Show(nombre & "El control debe tener un valor numérico entre 0 y 11.")
+         MessageBox.Show(nombre & "El control debe tener un valor numérico.")
          textBox.Select()
          Return False
       Else
@@ -521,7 +570,7 @@ Module mdlOperaciones
          Convert.ToInt32(textBox.Text)
          Return True
       Catch ex As Exception
-         MessageBox.Show(nombre & "El valor debe ser un numero entero entre 0 y 11.")
+         MessageBox.Show(nombre & "El valor debe ser un valor numérico.")
          textBox.Select()
          textBox.SelectAll()
          Return False
@@ -531,7 +580,7 @@ Module mdlOperaciones
    Public Function siEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As Integer, ByVal max As Integer) As Boolean
       Dim numero As Integer = CInt(textbox.Text)
       If numero < min OrElse numero > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser un número entre 0 y 11.")
+         MessageBox.Show(" El valor " & nombre & "debe ser valor numérico entre " & min & " y " & max)
          textbox.Select()
          textbox.SelectAll()
          Return False
@@ -651,8 +700,7 @@ Module mdlOperaciones
             oDataReader.Close()
             frmRegistraNuevoAnalisis.lblMensajeCaso.Text = ""
          Else
-            frmRegistraNuevoAnalisis.lblMensajeCaso.ForeColor = System.Drawing.Color.Red
-            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = "Mensaje: No se ha encontrado un lector default."
+            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "Mensaje: No se ha encontrado un lector default.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
@@ -698,6 +746,41 @@ Module mdlOperaciones
       End Try
    End Sub
 
+   'configura el puerto serial utilizando parametros para el despliegue
+   Public Sub Setup_Puerto_SerieParametros(ByVal puerto As System.IO.Ports.SerialPort, ByRef comboPuerto As System.Windows.Forms.ComboBox, _
+                                           ByRef etiqueta As System.Windows.Forms.Label)
+      Dim nomLector As String = ""
+      Dim bpsLector As Integer
+      Dim paridadLector As Integer
+      Dim bitsLector As Integer
+      Dim stopBitsLector As Integer
+      Try
+         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
+         With puerto
+            'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
+            If .IsOpen Then
+               .Close()
+            End If
+            .PortName = comboPuerto.Text
+            .BaudRate = bpsLector
+            .DataBits = bitsLector
+            .StopBits = stopBitsLector
+            .Parity = paridadLector
+            .DtrEnable = False
+            .Handshake = IO.Ports.Handshake.None
+            .ReadBufferSize = 2048
+            .WriteBufferSize = 1024
+            '.ReceivedBytesThreshold = 1
+            .WriteTimeout = 500
+            .Encoding = System.Text.Encoding.Default
+            .Open() ' ABRE EL PUERTO SERIE
+         End With
+      Catch ex As Exception
+         mensajeRojo(etiqueta, "ERROR: Al abrir el puerto serial con los datos configurados.")
+      End Try
+   End Sub
+
+
    'Obtiene los puertos seriales disponibles
    Public Sub GetSerialPortNames()
       ' muestra COM ports disponibles.
@@ -721,6 +804,32 @@ Module mdlOperaciones
          End If
       Catch ex As Exception
          mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+      End Try
+   End Sub
+
+   'Obtiene los puertos seriales disponibles utilizando parametros para colocar el valor en la Forma indicada
+   Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As System.Windows.Forms.Label)
+      ' muestra COM ports disponibles.
+      Dim l As Integer
+      Dim ncom As String
+      Try
+         comboPuerto.Items.Clear()
+         For Each sp As String In My.Computer.Ports.SerialPortNames
+            l = sp.Length
+            If ((sp(l - 1) >= "0") And (sp(l - 1) <= "9")) Then
+               comboPuerto.Items.Add(sp)
+            Else
+               ncom = sp.Substring(0, l - 1)
+               comboPuerto.Items.Add(ncom)
+            End If
+         Next
+         If comboPuerto.Items.Count >= 1 Then
+            comboPuerto.Text = CStr(comboPuerto.Items(0))
+         Else
+            comboPuerto.Text = ""
+         End If
+      Catch ex As Exception
+         mensajeException(etiqueta, ex)
       End Try
    End Sub
 
@@ -861,6 +970,7 @@ Module mdlOperaciones
       Next
       'Presenta en pantalla los valores obtenidos desde el lector ya formateados
       frmRegistraNuevoAnalisis.txtDatosRecibidos.Text = resultado
+      organizaEnTabla(frmRegistraNuevoAnalisis.dgvPlacaLeida, placaLector)
       Return (resultado)
    End Function
 

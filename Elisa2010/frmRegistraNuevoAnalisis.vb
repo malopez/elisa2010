@@ -238,13 +238,21 @@ Public Class frmRegistraNuevoAnalisis
          controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
          controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
          controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+         'Rellena el fondo del datagridview de color verde para los controles positivos
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), Val(txtCP3Valor3.Text + 1))
+         'Rellena el fondo del datagridview de color rojo para los controles negativos
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), Val(txtCN3Valor3.Text) + 1)
          ckbControlesDefault.Enabled = False
          btnAceptarControles.Enabled = False
          btnDefinirControlesPN.Enabled = False
          btnGuardarDatosExcel.Enabled = True
          btnObtenerResultados.Enabled = True
       Else
-         mensajeRojo(Me.lblMensajeCaso,"Los valores que ha introducido no son válidos, trate nuevamente.")
+         mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
          btnDefinirControlesPN.Enabled = True
          btnAceptarControles.Enabled = True
       End If
@@ -329,11 +337,12 @@ Public Class frmRegistraNuevoAnalisis
    Private Sub btnFormateaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnFormateaDatos.Click
       btnLeerDatosPlaca.Enabled = False
       btnFormateaDatos.Enabled = False
-      Try
-         convierteCadena(msn)
-      Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso," Se ha presentado un error al convertir la cadena en valores.")
-      End Try
+      ' Try
+      convierteCadena(msn)
+      ' Catch ex As Exception
+      'mensajeRojo(Me.lblMensajeCaso," Se ha presentado un error al convertir la cadena en valores.")
+      'mensajeException(Me.lblMensajeCaso, ex)
+      ' End Try
       Try
          Dim nombreArchivo As String
          nombreArchivo = formateaDatos(placaLector)

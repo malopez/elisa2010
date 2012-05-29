@@ -22,6 +22,10 @@ Partial Class frmAbrirArchivoExistente
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
+      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbrirArchivoExistente))
       Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
@@ -29,6 +33,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblMensajeAAE = New System.Windows.Forms.Label()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.grbCNDesdeArchivo = New System.Windows.Forms.GroupBox()
       Me.Label4 = New System.Windows.Forms.Label()
@@ -59,6 +64,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.grbCNDesdeArchivo.SuspendLayout()
       Me.grbCPDesdeArchivo.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -73,7 +79,7 @@ Partial Class frmAbrirArchivoExistente
       'btnLeerArchivoExistente
       '
       Me.btnLeerArchivoExistente.Enabled = False
-      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(274, 421)
+      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(369, 495)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
       Me.btnLeerArchivoExistente.TabIndex = 0
@@ -84,28 +90,30 @@ Partial Class frmAbrirArchivoExistente
       '
       Me.txtPlacaDesdeArchivo.BackColor = System.Drawing.Color.White
       Me.txtPlacaDesdeArchivo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(12, 13)
+      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(12, 146)
       Me.txtPlacaDesdeArchivo.Multiline = True
       Me.txtPlacaDesdeArchivo.Name = "txtPlacaDesdeArchivo"
       Me.txtPlacaDesdeArchivo.ReadOnly = True
-      Me.txtPlacaDesdeArchivo.Size = New System.Drawing.Size(592, 121)
+      Me.txtPlacaDesdeArchivo.Size = New System.Drawing.Size(79, 16)
       Me.txtPlacaDesdeArchivo.TabIndex = 1
       Me.txtPlacaDesdeArchivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+      Me.txtPlacaDesdeArchivo.Visible = False
       '
       'lblMensajeAAE
       '
       Me.lblMensajeAAE.AutoSize = True
       Me.lblMensajeAAE.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
-      Me.lblMensajeAAE.Location = New System.Drawing.Point(5, 7)
+      Me.lblMensajeAAE.Location = New System.Drawing.Point(4, 5)
       Me.lblMensajeAAE.Name = "lblMensajeAAE"
-      Me.lblMensajeAAE.Size = New System.Drawing.Size(0, 15)
+      Me.lblMensajeAAE.Size = New System.Drawing.Size(56, 15)
       Me.lblMensajeAAE.TabIndex = 2
+      Me.lblMensajeAAE.Text = "Mensaje:"
       '
       'btnObtenResultadosDA
       '
       Me.btnObtenResultadosDA.Enabled = False
-      Me.btnObtenResultadosDA.Location = New System.Drawing.Point(393, 421)
+      Me.btnObtenResultadosDA.Location = New System.Drawing.Point(488, 495)
       Me.btnObtenResultadosDA.Name = "btnObtenResultadosDA"
       Me.btnObtenResultadosDA.Size = New System.Drawing.Size(113, 23)
       Me.btnObtenResultadosDA.TabIndex = 1
@@ -116,21 +124,57 @@ Partial Class frmAbrirArchivoExistente
       '
       Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.dgvPlacaLeida)
       Me.Panel1.Controls.Add(Me.lblLogTit2)
       Me.Panel1.Controls.Add(Me.grbCNDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogTit1)
       Me.Panel1.Controls.Add(Me.grbCPDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogSPS)
-      Me.Panel1.Controls.Add(Me.txtPlacaDesdeArchivo)
-      Me.Panel1.Location = New System.Drawing.Point(4, 161)
+      Me.Panel1.Location = New System.Drawing.Point(4, 166)
       Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(621, 254)
+      Me.Panel1.Size = New System.Drawing.Size(718, 323)
       Me.Panel1.TabIndex = 8
+      '
+      'dgvPlacaLeida
+      '
+      Me.dgvPlacaLeida.AllowUserToAddRows = False
+      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
+      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
+      Me.dgvPlacaLeida.AllowUserToResizeRows = False
+      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
+      Me.dgvPlacaLeida.Location = New System.Drawing.Point(8, 6)
+      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
+      Me.dgvPlacaLeida.ReadOnly = True
+      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
+      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
+      Me.dgvPlacaLeida.TabIndex = 80
       '
       'lblLogTit2
       '
       Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(524, 219)
+      Me.lblLogTit2.Location = New System.Drawing.Point(556, 295)
       Me.lblLogTit2.Name = "lblLogTit2"
       Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
       Me.lblLogTit2.TabIndex = 9
@@ -148,7 +192,7 @@ Partial Class frmAbrirArchivoExistente
       Me.grbCNDesdeArchivo.Enabled = False
       Me.grbCNDesdeArchivo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbCNDesdeArchivo.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbCNDesdeArchivo.Location = New System.Drawing.Point(326, 140)
+      Me.grbCNDesdeArchivo.Location = New System.Drawing.Point(358, 216)
       Me.grbCNDesdeArchivo.Name = "grbCNDesdeArchivo"
       Me.grbCNDesdeArchivo.Size = New System.Drawing.Size(162, 99)
       Me.grbCNDesdeArchivo.TabIndex = 6
@@ -206,7 +250,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogTit1
       '
       Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(524, 202)
+      Me.lblLogTit1.Location = New System.Drawing.Point(556, 278)
       Me.lblLogTit1.Name = "lblLogTit1"
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 8
@@ -224,7 +268,7 @@ Partial Class frmAbrirArchivoExistente
       Me.grbCPDesdeArchivo.Enabled = False
       Me.grbCPDesdeArchivo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbCPDesdeArchivo.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbCPDesdeArchivo.Location = New System.Drawing.Point(138, 140)
+      Me.grbCPDesdeArchivo.Location = New System.Drawing.Point(170, 216)
       Me.grbCPDesdeArchivo.Name = "grbCPDesdeArchivo"
       Me.grbCPDesdeArchivo.Size = New System.Drawing.Size(162, 99)
       Me.grbCPDesdeArchivo.TabIndex = 3
@@ -282,7 +326,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogSPS
       '
       Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(524, 186)
+      Me.lblLogSPS.Location = New System.Drawing.Point(556, 262)
       Me.lblLogSPS.Name = "lblLogSPS"
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 7
@@ -294,15 +338,15 @@ Partial Class frmAbrirArchivoExistente
       Me.Panel3.BackColor = System.Drawing.SystemColors.Window
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel3.Controls.Add(Me.lblMensajeAAE)
-      Me.Panel3.Location = New System.Drawing.Point(6, 450)
+      Me.Panel3.Location = New System.Drawing.Point(4, 524)
       Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(621, 29)
+      Me.Panel3.Size = New System.Drawing.Size(716, 30)
       Me.Panel3.TabIndex = 10
       '
       'btnCancelarDA
       '
       Me.btnCancelarDA.FlatStyle = System.Windows.Forms.FlatStyle.System
-      Me.btnCancelarDA.Location = New System.Drawing.Point(512, 421)
+      Me.btnCancelarDA.Location = New System.Drawing.Point(607, 495)
       Me.btnCancelarDA.Name = "btnCancelarDA"
       Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
       Me.btnCancelarDA.TabIndex = 7
@@ -322,9 +366,9 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.cmbNoCaso)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreAnalisis)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
-      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(6, 8)
+      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(28, 8)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(619, 142)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(668, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 74
       '
       'dtpFechaElaboracion
@@ -410,7 +454,7 @@ Partial Class frmAbrirArchivoExistente
       'lblObservaciones
       '
       Me.lblObservaciones.AutoSize = True
-      Me.lblObservaciones.Location = New System.Drawing.Point(3, 426)
+      Me.lblObservaciones.Location = New System.Drawing.Point(3, 500)
       Me.lblObservaciones.Name = "lblObservaciones"
       Me.lblObservaciones.Size = New System.Drawing.Size(39, 13)
       Me.lblObservaciones.TabIndex = 75
@@ -422,13 +466,14 @@ Partial Class frmAbrirArchivoExistente
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.BackColor = System.Drawing.SystemColors.Control
-      Me.ClientSize = New System.Drawing.Size(633, 485)
+      Me.ClientSize = New System.Drawing.Size(729, 558)
       Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnCancelarDA)
       Me.Controls.Add(Me.btnLeerArchivoExistente)
       Me.Controls.Add(Me.btnObtenResultadosDA)
+      Me.Controls.Add(Me.txtPlacaDesdeArchivo)
       Me.Controls.Add(Me.Panel1)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -437,6 +482,7 @@ Partial Class frmAbrirArchivoExistente
       Me.Text = "Abrir Archivo Existente"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.grbCNDesdeArchivo.ResumeLayout(False)
       Me.grbCNDesdeArchivo.PerformLayout()
       Me.grbCPDesdeArchivo.ResumeLayout(False)
@@ -484,4 +530,5 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
 End Class

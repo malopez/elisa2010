@@ -24,13 +24,16 @@ Partial Class frmRegistraNuevoAnalisis
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRegistraNuevoAnalisis))
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.lblNoCaso = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.sfdGuardarPlaca = New System.Windows.Forms.SaveFileDialog()
       Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
-      Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.txtCP3Valor3 = New System.Windows.Forms.TextBox()
       Me.lblCPNo1 = New System.Windows.Forms.Label()
       Me.txtCP3Letra3 = New System.Windows.Forms.TextBox()
@@ -72,11 +75,14 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnGuardarDatosExcel = New System.Windows.Forms.Button()
       Me.lblObservaciones = New System.Windows.Forms.Label()
+      Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
       'lblNoCaso
@@ -130,17 +136,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnDefinirControlesPN.TabIndex = 5
       Me.btnDefinirControlesPN.Text = "Definir Controles"
       Me.btnDefinirControlesPN.UseVisualStyleBackColor = False
-      '
-      'txtDatosRecibidos
-      '
-      Me.txtDatosRecibidos.BackColor = System.Drawing.Color.White
-      Me.txtDatosRecibidos.Location = New System.Drawing.Point(4, 189)
-      Me.txtDatosRecibidos.Multiline = True
-      Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
-      Me.txtDatosRecibidos.ReadOnly = True
-      Me.txtDatosRecibidos.Size = New System.Drawing.Size(596, 117)
-      Me.txtDatosRecibidos.TabIndex = 20
-      Me.txtDatosRecibidos.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
       '
       'txtCP3Valor3
       '
@@ -244,7 +239,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnNuevoAnalisisCancelar
       '
       Me.btnNuevoAnalisisCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(525, 448)
+      Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(626, 521)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
       Me.btnNuevoAnalisisCancelar.TabIndex = 20
@@ -254,7 +249,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnObtenerResultados
       '
       Me.btnObtenerResultados.Enabled = False
-      Me.btnObtenerResultados.Location = New System.Drawing.Point(407, 448)
+      Me.btnObtenerResultados.Location = New System.Drawing.Point(508, 521)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(113, 23)
       Me.btnObtenerResultados.TabIndex = 19
@@ -264,7 +259,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.Enabled = False
-      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(368, 157)
+      Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(422, 157)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(113, 23)
       Me.btnLeerDatosPlaca.TabIndex = 4
@@ -275,7 +270,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.cmbComboPorts.Enabled = False
       Me.cmbComboPorts.FormattingEnabled = True
-      Me.cmbComboPorts.Location = New System.Drawing.Point(241, 157)
+      Me.cmbComboPorts.Location = New System.Drawing.Point(295, 157)
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
@@ -284,7 +279,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnAceptarControles.BackColor = System.Drawing.SystemColors.Control
       Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.Location = New System.Drawing.Point(142, 448)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(243, 521)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(113, 23)
       Me.btnAceptarControles.TabIndex = 18
@@ -352,7 +347,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(4, 9)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(596, 142)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(698, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 73
       '
       'dtpFechaElaboracion
@@ -399,9 +394,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel1.AutoSize = True
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel1.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel1.Location = New System.Drawing.Point(4, 477)
+      Me.Panel1.Location = New System.Drawing.Point(4, 548)
       Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(596, 30)
+      Me.Panel1.Size = New System.Drawing.Size(698, 30)
       Me.Panel1.TabIndex = 74
       '
       'Panel2
@@ -417,9 +412,9 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.Controls.Add(Me.grbControlesPositivos)
       Me.Panel2.Controls.Add(Me.grbControlesNegativos)
       Me.Panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Panel2.Location = New System.Drawing.Point(4, 317)
+      Me.Panel2.Location = New System.Drawing.Point(4, 186)
       Me.Panel2.Name = "Panel2"
-      Me.Panel2.Size = New System.Drawing.Size(596, 125)
+      Me.Panel2.Size = New System.Drawing.Size(698, 125)
       Me.Panel2.TabIndex = 75
       '
       'ckbControlesDefault
@@ -535,7 +530,7 @@ Partial Class frmRegistraNuevoAnalisis
       'btnFormateaDatos
       '
       Me.btnFormateaDatos.Enabled = False
-      Me.btnFormateaDatos.Location = New System.Drawing.Point(487, 157)
+      Me.btnFormateaDatos.Location = New System.Drawing.Point(541, 157)
       Me.btnFormateaDatos.Name = "btnFormateaDatos"
       Me.btnFormateaDatos.Size = New System.Drawing.Size(113, 23)
       Me.btnFormateaDatos.TabIndex = 76
@@ -546,7 +541,7 @@ Partial Class frmRegistraNuevoAnalisis
       '
       Me.btnGuardarDatosExcel.BackColor = System.Drawing.SystemColors.Control
       Me.btnGuardarDatosExcel.Enabled = False
-      Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(261, 448)
+      Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(362, 521)
       Me.btnGuardarDatosExcel.Name = "btnGuardarDatosExcel"
       Me.btnGuardarDatosExcel.Size = New System.Drawing.Size(140, 23)
       Me.btnGuardarDatosExcel.TabIndex = 77
@@ -556,18 +551,65 @@ Partial Class frmRegistraNuevoAnalisis
       'lblObservaciones
       '
       Me.lblObservaciones.AutoSize = True
-      Me.lblObservaciones.Location = New System.Drawing.Point(9, 453)
+      Me.lblObservaciones.Location = New System.Drawing.Point(110, 526)
       Me.lblObservaciones.Name = "lblObservaciones"
       Me.lblObservaciones.Size = New System.Drawing.Size(81, 13)
       Me.lblObservaciones.TabIndex = 78
       Me.lblObservaciones.Text = "Observaciones:"
       Me.lblObservaciones.Visible = False
       '
+      'txtDatosRecibidos
+      '
+      Me.txtDatosRecibidos.Location = New System.Drawing.Point(4, 159)
+      Me.txtDatosRecibidos.Multiline = True
+      Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
+      Me.txtDatosRecibidos.ReadOnly = True
+      Me.txtDatosRecibidos.Size = New System.Drawing.Size(693, 208)
+      Me.txtDatosRecibidos.TabIndex = 80
+      Me.txtDatosRecibidos.Visible = False
+      '
+      'dgvPlacaLeida
+      '
+      Me.dgvPlacaLeida.AllowUserToAddRows = False
+      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
+      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
+      Me.dgvPlacaLeida.AllowUserToResizeRows = False
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
+      Me.dgvPlacaLeida.Location = New System.Drawing.Point(4, 317)
+      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
+      Me.dgvPlacaLeida.ReadOnly = True
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
+      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
+      Me.dgvPlacaLeida.TabIndex = 81
+      '
       'frmRegistraNuevoAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.ClientSize = New System.Drawing.Size(605, 510)
+      Me.ClientSize = New System.Drawing.Size(709, 582)
+      Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.btnGuardarDatosExcel)
       Me.Controls.Add(Me.btnAceptarControles)
@@ -576,10 +618,10 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnObtenerResultados)
       Me.Controls.Add(Me.btnNuevoAnalisisCancelar)
-      Me.Controls.Add(Me.txtDatosRecibidos)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel1)
+      Me.Controls.Add(Me.txtDatosRecibidos)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
@@ -596,6 +638,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
       Me.grbControlesNegativos.PerformLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -606,7 +649,6 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
    Friend WithEvents sfdGuardarPlaca As System.Windows.Forms.SaveFileDialog
    Friend WithEvents btnDefinirControlesPN As System.Windows.Forms.Button
-   Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
    Friend WithEvents txtCP3Letra3 As System.Windows.Forms.TextBox
@@ -648,4 +690,6 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
+   Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
 End Class
