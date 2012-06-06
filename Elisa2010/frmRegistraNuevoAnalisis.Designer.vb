@@ -242,7 +242,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnNuevoAnalisisCancelar.Location = New System.Drawing.Point(626, 521)
       Me.btnNuevoAnalisisCancelar.Name = "btnNuevoAnalisisCancelar"
       Me.btnNuevoAnalisisCancelar.Size = New System.Drawing.Size(75, 23)
-      Me.btnNuevoAnalisisCancelar.TabIndex = 20
+      Me.btnNuevoAnalisisCancelar.TabIndex = 21
       Me.btnNuevoAnalisisCancelar.Text = "Cancelar"
       Me.btnNuevoAnalisisCancelar.UseVisualStyleBackColor = True
       '
@@ -252,7 +252,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnObtenerResultados.Location = New System.Drawing.Point(508, 521)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(113, 23)
-      Me.btnObtenerResultados.TabIndex = 19
+      Me.btnObtenerResultados.TabIndex = 20
       Me.btnObtenerResultados.Text = "Obtener Resultados"
       Me.btnObtenerResultados.UseVisualStyleBackColor = True
       '
@@ -262,7 +262,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(422, 157)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(113, 23)
-      Me.btnLeerDatosPlaca.TabIndex = 4
+      Me.btnLeerDatosPlaca.TabIndex = 2
       Me.btnLeerDatosPlaca.Text = "Leer Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
@@ -274,6 +274,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(121, 21)
       Me.cmbComboPorts.TabIndex = 19
+      Me.cmbComboPorts.TabStop = False
       '
       'btnAceptarControles
       '
@@ -292,7 +293,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.cmbNoCaso.Location = New System.Drawing.Point(136, 22)
       Me.cmbNoCaso.Name = "cmbNoCaso"
       Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso.TabIndex = 1
+      Me.cmbNoCaso.TabIndex = 0
       '
       'txtNombreCliente
       '
@@ -301,6 +302,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtNombreCliente.ReadOnly = True
       Me.txtNombreCliente.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreCliente.TabIndex = 2
+      Me.txtNombreCliente.TabStop = False
       '
       'txtAnalisisSolicitado
       '
@@ -309,6 +311,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtAnalisisSolicitado.ReadOnly = True
       Me.txtAnalisisSolicitado.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitado.TabIndex = 3
+      Me.txtAnalisisSolicitado.TabStop = False
       '
       'btnBuscaCaso
       '
@@ -357,6 +360,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
       Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
       Me.dtpFechaElaboracion.TabIndex = 8
+      Me.dtpFechaElaboracion.TabStop = False
       Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'lblLogTit2
@@ -424,7 +428,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.ckbControlesDefault.Location = New System.Drawing.Point(400, 35)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
       Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 29
+      Me.ckbControlesDefault.TabIndex = 4
       Me.ckbControlesDefault.Text = "Valores por default"
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
@@ -533,7 +537,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnFormateaDatos.Location = New System.Drawing.Point(541, 157)
       Me.btnFormateaDatos.Name = "btnFormateaDatos"
       Me.btnFormateaDatos.Size = New System.Drawing.Size(113, 23)
-      Me.btnFormateaDatos.TabIndex = 76
+      Me.btnFormateaDatos.TabIndex = 3
       Me.btnFormateaDatos.Text = "Formatear Datos"
       Me.btnFormateaDatos.UseVisualStyleBackColor = True
       '
@@ -544,7 +548,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnGuardarDatosExcel.Location = New System.Drawing.Point(362, 521)
       Me.btnGuardarDatosExcel.Name = "btnGuardarDatosExcel"
       Me.btnGuardarDatosExcel.Size = New System.Drawing.Size(140, 23)
-      Me.btnGuardarDatosExcel.TabIndex = 77
+      Me.btnGuardarDatosExcel.TabIndex = 19
       Me.btnGuardarDatosExcel.Text = "Guardar Datos en Excel"
       Me.btnGuardarDatosExcel.UseVisualStyleBackColor = False
       '
@@ -603,6 +607,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 81
+      Me.dgvPlacaLeida.TabStop = False
       '
       'frmRegistraNuevoAnalisis
       '

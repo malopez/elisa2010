@@ -119,4 +119,8 @@ Public Class frmAbrirArchivoExistente
          mensajeException(lblMensajeAAE, ex)
       End Try
    End Sub
+
+   Private Sub frmAbrirArchivoExistente_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+      Me.cmbNoCaso.Focus()
+   End Sub
 End Class

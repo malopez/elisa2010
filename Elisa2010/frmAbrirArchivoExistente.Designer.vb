@@ -22,10 +22,10 @@ Partial Class frmAbrirArchivoExistente
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbrirArchivoExistente))
       Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
@@ -82,7 +82,7 @@ Partial Class frmAbrirArchivoExistente
       Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(369, 495)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
-      Me.btnLeerArchivoExistente.TabIndex = 0
+      Me.btnLeerArchivoExistente.TabIndex = 2
       Me.btnLeerArchivoExistente.Text = "Leer Archivo"
       Me.btnLeerArchivoExistente.UseVisualStyleBackColor = True
       '
@@ -116,7 +116,7 @@ Partial Class frmAbrirArchivoExistente
       Me.btnObtenResultadosDA.Location = New System.Drawing.Point(488, 495)
       Me.btnObtenResultadosDA.Name = "btnObtenResultadosDA"
       Me.btnObtenResultadosDA.Size = New System.Drawing.Size(113, 23)
-      Me.btnObtenResultadosDA.TabIndex = 1
+      Me.btnObtenResultadosDA.TabIndex = 3
       Me.btnObtenResultadosDA.Text = "Obtener Resultados"
       Me.btnObtenResultadosDA.UseVisualStyleBackColor = True
       '
@@ -141,35 +141,36 @@ Partial Class frmAbrirArchivoExistente
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(8, 6)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 80
+      Me.dgvPlacaLeida.TabStop = False
       '
       'lblLogTit2
       '
@@ -349,7 +350,7 @@ Partial Class frmAbrirArchivoExistente
       Me.btnCancelarDA.Location = New System.Drawing.Point(607, 495)
       Me.btnCancelarDA.Name = "btnCancelarDA"
       Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
-      Me.btnCancelarDA.TabIndex = 7
+      Me.btnCancelarDA.TabIndex = 4
       Me.btnCancelarDA.Text = "Cancelar"
       Me.btnCancelarDA.UseVisualStyleBackColor = True
       '
@@ -366,35 +367,38 @@ Partial Class frmAbrirArchivoExistente
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.cmbNoCaso)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreAnalisis)
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
-      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(28, 8)
+      Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(4, 8)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(668, 142)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(716, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 74
       '
       'dtpFechaElaboracion
       '
       Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(480, 24)
+      Me.dtpFechaElaboracion.Location = New System.Drawing.Point(542, 27)
       Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
       Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
       Me.dtpFechaElaboracion.TabIndex = 7
+      Me.dtpFechaElaboracion.TabStop = False
       Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'txtNombreCliente
       '
-      Me.txtNombreCliente.Location = New System.Drawing.Point(136, 59)
+      Me.txtNombreCliente.Location = New System.Drawing.Point(198, 62)
       Me.txtNombreCliente.Name = "txtNombreCliente"
       Me.txtNombreCliente.ReadOnly = True
       Me.txtNombreCliente.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreCliente.TabIndex = 2
+      Me.txtNombreCliente.TabStop = False
       '
       'txtAnalisisSolicitado
       '
-      Me.txtAnalisisSolicitado.Location = New System.Drawing.Point(136, 94)
+      Me.txtAnalisisSolicitado.Location = New System.Drawing.Point(198, 97)
       Me.txtAnalisisSolicitado.Name = "txtAnalisisSolicitado"
       Me.txtAnalisisSolicitado.ReadOnly = True
       Me.txtAnalisisSolicitado.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitado.TabIndex = 3
+      Me.txtAnalisisSolicitado.TabStop = False
       '
       'lblNoCaso
       '
@@ -402,7 +406,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNoCaso.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.lblNoCaso.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoCaso.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCaso.Location = New System.Drawing.Point(7, 23)
+      Me.lblNoCaso.Location = New System.Drawing.Point(69, 26)
       Me.lblNoCaso.Name = "lblNoCaso"
       Me.lblNoCaso.Size = New System.Drawing.Size(109, 16)
       Me.lblNoCaso.TabIndex = 1
@@ -413,19 +417,19 @@ Partial Class frmAbrirArchivoExistente
       Me.btnBuscaCaso.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.btnBuscaCaso.ForeColor = System.Drawing.Color.SteelBlue
       Me.btnBuscaCaso.Image = CType(resources.GetObject("btnBuscaCaso.Image"), System.Drawing.Image)
-      Me.btnBuscaCaso.Location = New System.Drawing.Point(324, 21)
+      Me.btnBuscaCaso.Location = New System.Drawing.Point(386, 24)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso.TabIndex = 0
+      Me.btnBuscaCaso.TabIndex = 1
       Me.btnBuscaCaso.UseVisualStyleBackColor = True
       '
       'cmbNoCaso
       '
       Me.cmbNoCaso.FormattingEnabled = True
-      Me.cmbNoCaso.Location = New System.Drawing.Point(136, 22)
+      Me.cmbNoCaso.Location = New System.Drawing.Point(198, 25)
       Me.cmbNoCaso.Name = "cmbNoCaso"
       Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso.TabIndex = 1
+      Me.cmbNoCaso.TabIndex = 0
       '
       'lblNombreAnalisis
       '
@@ -433,7 +437,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreAnalisis.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.lblNombreAnalisis.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreAnalisis.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNombreAnalisis.Location = New System.Drawing.Point(7, 96)
+      Me.lblNombreAnalisis.Location = New System.Drawing.Point(69, 99)
       Me.lblNombreAnalisis.Name = "lblNombreAnalisis"
       Me.lblNombreAnalisis.Size = New System.Drawing.Size(126, 16)
       Me.lblNombreAnalisis.TabIndex = 6
@@ -445,7 +449,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.lblNombreCliente.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreCliente.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNombreCliente.Location = New System.Drawing.Point(7, 60)
+      Me.lblNombreCliente.Location = New System.Drawing.Point(69, 63)
       Me.lblNombreCliente.Name = "lblNombreCliente"
       Me.lblNombreCliente.Size = New System.Drawing.Size(125, 16)
       Me.lblNombreCliente.TabIndex = 2

@@ -66,6 +66,7 @@ Partial Class frmSalidaDatos
       Me.txtMediaGeometrica.ReadOnly = True
       Me.txtMediaGeometrica.Size = New System.Drawing.Size(112, 21)
       Me.txtMediaGeometrica.TabIndex = 2
+      Me.txtMediaGeometrica.TabStop = False
       '
       'lblMediaGeometrica
       '
@@ -87,6 +88,7 @@ Partial Class frmSalidaDatos
       Me.txtTotalDatosCalculados.ReadOnly = True
       Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(114, 21)
       Me.txtTotalDatosCalculados.TabIndex = 11
+      Me.txtTotalDatosCalculados.TabStop = False
       '
       'lblTotalDatosCalculados
       '
@@ -119,6 +121,7 @@ Partial Class frmSalidaDatos
       Me.txtMediaAritmetica2.ReadOnly = True
       Me.txtMediaAritmetica2.Size = New System.Drawing.Size(113, 21)
       Me.txtMediaAritmetica2.TabIndex = 13
+      Me.txtMediaAritmetica2.TabStop = False
       '
       'lbDesviacionEstandarDNA
       '
@@ -151,6 +154,7 @@ Partial Class frmSalidaDatos
       Me.txtDesvEstandar2.ReadOnly = True
       Me.txtDesvEstandar2.Size = New System.Drawing.Size(115, 21)
       Me.txtDesvEstandar2.TabIndex = 20
+      Me.txtDesvEstandar2.TabStop = False
       '
       'txtVarianza2
       '
@@ -161,6 +165,7 @@ Partial Class frmSalidaDatos
       Me.txtVarianza2.ReadOnly = True
       Me.txtVarianza2.Size = New System.Drawing.Size(114, 21)
       Me.txtVarianza2.TabIndex = 19
+      Me.txtVarianza2.TabStop = False
       '
       'lblCoefVariacionDNA
       '
@@ -182,13 +187,14 @@ Partial Class frmSalidaDatos
       Me.txtCoefVariacion2.ReadOnly = True
       Me.txtCoefVariacion2.Size = New System.Drawing.Size(115, 21)
       Me.txtCoefVariacion2.TabIndex = 16
+      Me.txtCoefVariacion2.TabStop = False
       '
       'btnGuardaResultados
       '
       Me.btnGuardaResultados.Location = New System.Drawing.Point(361, 527)
       Me.btnGuardaResultados.Name = "btnGuardaResultados"
       Me.btnGuardaResultados.Size = New System.Drawing.Size(121, 23)
-      Me.btnGuardaResultados.TabIndex = 36
+      Me.btnGuardaResultados.TabIndex = 0
       Me.btnGuardaResultados.Text = "Guardar Resultados"
       Me.btnGuardaResultados.UseVisualStyleBackColor = True
       '
@@ -260,6 +266,7 @@ Partial Class frmSalidaDatos
       Me.txtCalculoTitulos1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
       Me.txtCalculoTitulos1.Size = New System.Drawing.Size(138, 145)
       Me.txtCalculoTitulos1.TabIndex = 49
+      Me.txtCalculoTitulos1.TabStop = False
       '
       'lblObservaciones
       '
@@ -309,7 +316,7 @@ Partial Class frmSalidaDatos
       Me.btnCancelar.Location = New System.Drawing.Point(488, 527)
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
-      Me.btnCancelar.TabIndex = 55
+      Me.btnCancelar.TabIndex = 1
       Me.btnCancelar.Text = "Cancelar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '

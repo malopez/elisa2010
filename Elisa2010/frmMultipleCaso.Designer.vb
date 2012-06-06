@@ -24,10 +24,10 @@ Partial Class frmMultipleCaso
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMultipleCaso))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.btnAceptarEnfermedad = New System.Windows.Forms.Button()
       Me.lblIdAnalisis = New System.Windows.Forms.Label()
@@ -232,7 +232,7 @@ Partial Class frmMultipleCaso
       Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(205, 80)
       Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
       Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(92, 23)
-      Me.btnAceptarEnfermedad.TabIndex = 97
+      Me.btnAceptarEnfermedad.TabIndex = 2
       Me.btnAceptarEnfermedad.Text = "Aceptar"
       Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
       '
@@ -289,7 +289,7 @@ Partial Class frmMultipleCaso
       Me.cmbNombreEnfermedad.Location = New System.Drawing.Point(10, 23)
       Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
       Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(287, 21)
-      Me.cmbNombreEnfermedad.TabIndex = 37
+      Me.cmbNombreEnfermedad.TabIndex = 0
       '
       'lblNoCasos
       '
@@ -307,7 +307,7 @@ Partial Class frmMultipleCaso
       Me.txtNoDeCasos.MaxLength = 1
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoDeCasos.TabIndex = 35
+      Me.txtNoDeCasos.TabIndex = 1
       '
       'grbControlesPositivos
       '
@@ -336,7 +336,7 @@ Partial Class frmMultipleCaso
       Me.txtCP1Letra1.MaxLength = 1
       Me.txtCP1Letra1.Name = "txtCP1Letra1"
       Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Letra1.TabIndex = 6
+      Me.txtCP1Letra1.TabIndex = 5
       '
       'txtCP1Valor1
       '
@@ -344,7 +344,7 @@ Partial Class frmMultipleCaso
       Me.txtCP1Valor1.MaxLength = 2
       Me.txtCP1Valor1.Name = "txtCP1Valor1"
       Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Valor1.TabIndex = 7
+      Me.txtCP1Valor1.TabIndex = 6
       '
       'txtCP2Letra2
       '
@@ -352,7 +352,7 @@ Partial Class frmMultipleCaso
       Me.txtCP2Letra2.MaxLength = 1
       Me.txtCP2Letra2.Name = "txtCP2Letra2"
       Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP2Letra2.TabIndex = 8
+      Me.txtCP2Letra2.TabIndex = 7
       '
       'lblCPNo3
       '
@@ -370,7 +370,7 @@ Partial Class frmMultipleCaso
       Me.txtCP2Valor2.MaxLength = 2
       Me.txtCP2Valor2.Name = "txtCP2Valor2"
       Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCP2Valor2.TabIndex = 9
+      Me.txtCP2Valor2.TabIndex = 8
       '
       'lblCPNo2
       '
@@ -388,7 +388,7 @@ Partial Class frmMultipleCaso
       Me.txtCP3Letra3.MaxLength = 1
       Me.txtCP3Letra3.Name = "txtCP3Letra3"
       Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Letra3.TabIndex = 10
+      Me.txtCP3Letra3.TabIndex = 9
       '
       'lblCPNo1
       '
@@ -406,7 +406,7 @@ Partial Class frmMultipleCaso
       Me.txtCP3Valor3.MaxLength = 2
       Me.txtCP3Valor3.Name = "txtCP3Valor3"
       Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Valor3.TabIndex = 11
+      Me.txtCP3Valor3.TabIndex = 10
       '
       'grbControlesNegativos
       '
@@ -435,7 +435,7 @@ Partial Class frmMultipleCaso
       Me.txtCN2Letra2.MaxLength = 1
       Me.txtCN2Letra2.Name = "txtCN2Letra2"
       Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCN2Letra2.TabIndex = 14
+      Me.txtCN2Letra2.TabIndex = 13
       '
       'txtCN1Letra1
       '
@@ -443,7 +443,7 @@ Partial Class frmMultipleCaso
       Me.txtCN1Letra1.MaxLength = 1
       Me.txtCN1Letra1.Name = "txtCN1Letra1"
       Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Letra1.TabIndex = 12
+      Me.txtCN1Letra1.TabIndex = 11
       '
       'lblCNNo3
       '
@@ -461,7 +461,7 @@ Partial Class frmMultipleCaso
       Me.txtCN1Valor1.MaxLength = 2
       Me.txtCN1Valor1.Name = "txtCN1Valor1"
       Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Valor1.TabIndex = 13
+      Me.txtCN1Valor1.TabIndex = 12
       '
       'lblCNNo2
       '
@@ -479,7 +479,7 @@ Partial Class frmMultipleCaso
       Me.txtCN2Valor2.MaxLength = 2
       Me.txtCN2Valor2.Name = "txtCN2Valor2"
       Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN2Valor2.TabIndex = 15
+      Me.txtCN2Valor2.TabIndex = 14
       '
       'lblCNNo1
       '
@@ -497,7 +497,7 @@ Partial Class frmMultipleCaso
       Me.txtCN3Letra3.MaxLength = 1
       Me.txtCN3Letra3.Name = "txtCN3Letra3"
       Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Letra3.TabIndex = 16
+      Me.txtCN3Letra3.TabIndex = 15
       '
       'txtCN3Valor3
       '
@@ -505,7 +505,7 @@ Partial Class frmMultipleCaso
       Me.txtCN3Valor3.MaxLength = 2
       Me.txtCN3Valor3.Name = "txtCN3Valor3"
       Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Valor3.TabIndex = 17
+      Me.txtCN3Valor3.TabIndex = 16
       '
       'dtpFechaElaboracion
       '
@@ -514,6 +514,7 @@ Partial Class frmMultipleCaso
       Me.dtpFechaElaboracion.Name = "dtpFechaElaboracion"
       Me.dtpFechaElaboracion.Size = New System.Drawing.Size(105, 20)
       Me.dtpFechaElaboracion.TabIndex = 32
+      Me.dtpFechaElaboracion.TabStop = False
       Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
       'Panel2
@@ -541,7 +542,7 @@ Partial Class frmMultipleCaso
       Me.tbcDatosDelCaso.Name = "tbcDatosDelCaso"
       Me.tbcDatosDelCaso.SelectedIndex = 0
       Me.tbcDatosDelCaso.Size = New System.Drawing.Size(613, 227)
-      Me.tbcDatosDelCaso.TabIndex = 17
+      Me.tbcDatosDelCaso.TabIndex = 18
       '
       'tbcCaso1
       '
@@ -600,7 +601,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C1.Name = "txtDesdeLetra1C1"
       Me.txtDesdeLetra1C1.ReadOnly = True
       Me.txtDesdeLetra1C1.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C1.TabIndex = 81
+      Me.txtDesdeLetra1C1.TabIndex = 21
       '
       'txtDesdeValor1C1
       '
@@ -612,7 +613,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C1.Name = "txtDesdeValor1C1"
       Me.txtDesdeValor1C1.ReadOnly = True
       Me.txtDesdeValor1C1.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C1.TabIndex = 82
+      Me.txtDesdeValor1C1.TabIndex = 22
       '
       'txtHastaLetra2C1
       '
@@ -624,7 +625,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C1.Name = "txtHastaLetra2C1"
       Me.txtHastaLetra2C1.ReadOnly = True
       Me.txtHastaLetra2C1.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C1.TabIndex = 83
+      Me.txtHastaLetra2C1.TabIndex = 23
       '
       'txtHastaValor2C1
       '
@@ -636,7 +637,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C1.Name = "txtHastaValor2C1"
       Me.txtHastaValor2C1.ReadOnly = True
       Me.txtHastaValor2C1.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C1.TabIndex = 84
+      Me.txtHastaValor2C1.TabIndex = 24
       '
       'txtNombreClienteC1
       '
@@ -645,6 +646,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC1.ReadOnly = True
       Me.txtNombreClienteC1.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC1.TabIndex = 78
+      Me.txtNombreClienteC1.TabStop = False
       '
       'txtAnalisisSolicitadoC1
       '
@@ -653,6 +655,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC1.ReadOnly = True
       Me.txtAnalisisSolicitadoC1.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC1.TabIndex = 79
+      Me.txtAnalisisSolicitadoC1.TabStop = False
       '
       'Label33
       '
@@ -674,7 +677,7 @@ Partial Class frmMultipleCaso
       Me.btnBuscaCaso1.Location = New System.Drawing.Point(329, 18)
       Me.btnBuscaCaso1.Name = "btnBuscaCaso1"
       Me.btnBuscaCaso1.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso1.TabIndex = 74
+      Me.btnBuscaCaso1.TabIndex = 20
       Me.btnBuscaCaso1.UseVisualStyleBackColor = True
       '
       'cmbNoCaso1
@@ -683,7 +686,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso1.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso1.Name = "cmbNoCaso1"
       Me.cmbNoCaso1.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso1.TabIndex = 76
+      Me.cmbNoCaso1.TabIndex = 19
       '
       'Label34
       '
@@ -765,7 +768,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C2.MaxLength = 1
       Me.txtDesdeLetra1C2.Name = "txtDesdeLetra1C2"
       Me.txtDesdeLetra1C2.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C2.TabIndex = 87
+      Me.txtDesdeLetra1C2.TabIndex = 27
       '
       'txtDesdeValor1C2
       '
@@ -776,7 +779,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C2.MaxLength = 2
       Me.txtDesdeValor1C2.Name = "txtDesdeValor1C2"
       Me.txtDesdeValor1C2.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C2.TabIndex = 88
+      Me.txtDesdeValor1C2.TabIndex = 28
       '
       'txtHastaLetra2C2
       '
@@ -787,7 +790,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C2.MaxLength = 1
       Me.txtHastaLetra2C2.Name = "txtHastaLetra2C2"
       Me.txtHastaLetra2C2.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C2.TabIndex = 89
+      Me.txtHastaLetra2C2.TabIndex = 29
       '
       'txtHastaValor2C2
       '
@@ -798,7 +801,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C2.MaxLength = 2
       Me.txtHastaValor2C2.Name = "txtHastaValor2C2"
       Me.txtHastaValor2C2.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C2.TabIndex = 90
+      Me.txtHastaValor2C2.TabIndex = 30
       '
       'txtNombreClienteC2
       '
@@ -807,6 +810,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC2.ReadOnly = True
       Me.txtNombreClienteC2.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC2.TabIndex = 78
+      Me.txtNombreClienteC2.TabStop = False
       '
       'txtAnalisisSolicitadoC2
       '
@@ -815,6 +819,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC2.ReadOnly = True
       Me.txtAnalisisSolicitadoC2.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC2.TabIndex = 79
+      Me.txtAnalisisSolicitadoC2.TabStop = False
       '
       'Label3
       '
@@ -836,7 +841,7 @@ Partial Class frmMultipleCaso
       Me.btnBuscaCaso2.Location = New System.Drawing.Point(329, 18)
       Me.btnBuscaCaso2.Name = "btnBuscaCaso2"
       Me.btnBuscaCaso2.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso2.TabIndex = 74
+      Me.btnBuscaCaso2.TabIndex = 26
       Me.btnBuscaCaso2.UseVisualStyleBackColor = True
       '
       'cmbNoCaso2
@@ -845,7 +850,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso2.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso2.Name = "cmbNoCaso2"
       Me.cmbNoCaso2.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso2.TabIndex = 76
+      Me.cmbNoCaso2.TabIndex = 25
       '
       'Label4
       '
@@ -927,7 +932,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C3.MaxLength = 1
       Me.txtDesdeLetra1C3.Name = "txtDesdeLetra1C3"
       Me.txtDesdeLetra1C3.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C3.TabIndex = 93
+      Me.txtDesdeLetra1C3.TabIndex = 32
       '
       'txtDesdeValor1C3
       '
@@ -938,7 +943,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C3.MaxLength = 2
       Me.txtDesdeValor1C3.Name = "txtDesdeValor1C3"
       Me.txtDesdeValor1C3.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C3.TabIndex = 94
+      Me.txtDesdeValor1C3.TabIndex = 33
       '
       'txtHastaLetra2C3
       '
@@ -949,7 +954,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C3.MaxLength = 1
       Me.txtHastaLetra2C3.Name = "txtHastaLetra2C3"
       Me.txtHastaLetra2C3.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C3.TabIndex = 95
+      Me.txtHastaLetra2C3.TabIndex = 34
       '
       'txtHastaValor2C3
       '
@@ -960,7 +965,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C3.MaxLength = 2
       Me.txtHastaValor2C3.Name = "txtHastaValor2C3"
       Me.txtHastaValor2C3.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C3.TabIndex = 96
+      Me.txtHastaValor2C3.TabIndex = 35
       '
       'txtNombreClienteC3
       '
@@ -969,6 +974,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC3.ReadOnly = True
       Me.txtNombreClienteC3.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC3.TabIndex = 78
+      Me.txtNombreClienteC3.TabStop = False
       '
       'txtAnalisisSolicitadoC3
       '
@@ -977,6 +983,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC3.ReadOnly = True
       Me.txtAnalisisSolicitadoC3.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC3.TabIndex = 79
+      Me.txtAnalisisSolicitadoC3.TabStop = False
       '
       'Label8
       '
@@ -1007,7 +1014,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso3.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso3.Name = "cmbNoCaso3"
       Me.cmbNoCaso3.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso3.TabIndex = 76
+      Me.cmbNoCaso3.TabIndex = 31
       '
       'Label9
       '
@@ -1088,7 +1095,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C4.MaxLength = 1
       Me.txtDesdeLetra1C4.Name = "txtDesdeLetra1C4"
       Me.txtDesdeLetra1C4.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C4.TabIndex = 99
+      Me.txtDesdeLetra1C4.TabIndex = 38
       '
       'txtDesdeValor1C4
       '
@@ -1098,7 +1105,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C4.MaxLength = 2
       Me.txtDesdeValor1C4.Name = "txtDesdeValor1C4"
       Me.txtDesdeValor1C4.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C4.TabIndex = 100
+      Me.txtDesdeValor1C4.TabIndex = 39
       '
       'txtHastaLetra2C4
       '
@@ -1108,7 +1115,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C4.MaxLength = 1
       Me.txtHastaLetra2C4.Name = "txtHastaLetra2C4"
       Me.txtHastaLetra2C4.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C4.TabIndex = 101
+      Me.txtHastaLetra2C4.TabIndex = 40
       '
       'txtHastaValor2C4
       '
@@ -1118,7 +1125,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C4.MaxLength = 2
       Me.txtHastaValor2C4.Name = "txtHastaValor2C4"
       Me.txtHastaValor2C4.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C4.TabIndex = 102
+      Me.txtHastaValor2C4.TabIndex = 41
       '
       'txtNombreClienteC4
       '
@@ -1135,6 +1142,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC4.ReadOnly = True
       Me.txtAnalisisSolicitadoC4.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC4.TabIndex = 79
+      Me.txtAnalisisSolicitadoC4.TabStop = False
       '
       'Label13
       '
@@ -1156,7 +1164,7 @@ Partial Class frmMultipleCaso
       Me.btnBuscaCaso4.Location = New System.Drawing.Point(329, 18)
       Me.btnBuscaCaso4.Name = "btnBuscaCaso4"
       Me.btnBuscaCaso4.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso4.TabIndex = 74
+      Me.btnBuscaCaso4.TabIndex = 37
       Me.btnBuscaCaso4.UseVisualStyleBackColor = True
       '
       'cmbNoCaso4
@@ -1165,7 +1173,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso4.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso4.Name = "cmbNoCaso4"
       Me.cmbNoCaso4.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso4.TabIndex = 76
+      Me.cmbNoCaso4.TabIndex = 36
       '
       'Label14
       '
@@ -1248,7 +1256,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C5.MaxLength = 1
       Me.txtDesdeLetra1C5.Name = "txtDesdeLetra1C5"
       Me.txtDesdeLetra1C5.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C5.TabIndex = 105
+      Me.txtDesdeLetra1C5.TabIndex = 44
       '
       'txtDesdeValor1C5
       '
@@ -1259,7 +1267,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C5.MaxLength = 2
       Me.txtDesdeValor1C5.Name = "txtDesdeValor1C5"
       Me.txtDesdeValor1C5.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C5.TabIndex = 106
+      Me.txtDesdeValor1C5.TabIndex = 45
       '
       'txtHastaLetra2C5
       '
@@ -1270,7 +1278,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C5.MaxLength = 1
       Me.txtHastaLetra2C5.Name = "txtHastaLetra2C5"
       Me.txtHastaLetra2C5.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C5.TabIndex = 107
+      Me.txtHastaLetra2C5.TabIndex = 46
       '
       'txtHastaValor2C5
       '
@@ -1281,7 +1289,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C5.MaxLength = 2
       Me.txtHastaValor2C5.Name = "txtHastaValor2C5"
       Me.txtHastaValor2C5.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C5.TabIndex = 108
+      Me.txtHastaValor2C5.TabIndex = 47
       '
       'txtNombreClienteC5
       '
@@ -1290,6 +1298,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC5.ReadOnly = True
       Me.txtNombreClienteC5.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC5.TabIndex = 78
+      Me.txtNombreClienteC5.TabStop = False
       '
       'txtAnalisisSolicitadoC5
       '
@@ -1298,6 +1307,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC5.ReadOnly = True
       Me.txtAnalisisSolicitadoC5.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC5.TabIndex = 79
+      Me.txtAnalisisSolicitadoC5.TabStop = False
       '
       'Label18
       '
@@ -1319,7 +1329,7 @@ Partial Class frmMultipleCaso
       Me.btnBuscaCaso5.Location = New System.Drawing.Point(329, 18)
       Me.btnBuscaCaso5.Name = "btnBuscaCaso5"
       Me.btnBuscaCaso5.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso5.TabIndex = 74
+      Me.btnBuscaCaso5.TabIndex = 43
       Me.btnBuscaCaso5.UseVisualStyleBackColor = True
       '
       'cmbNoCaso5
@@ -1328,7 +1338,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso5.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso5.Name = "cmbNoCaso5"
       Me.cmbNoCaso5.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso5.TabIndex = 76
+      Me.cmbNoCaso5.TabIndex = 42
       '
       'Label21
       '
@@ -1410,7 +1420,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeLetra1C6.MaxLength = 1
       Me.txtDesdeLetra1C6.Name = "txtDesdeLetra1C6"
       Me.txtDesdeLetra1C6.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1C6.TabIndex = 105
+      Me.txtDesdeLetra1C6.TabIndex = 50
       '
       'txtDesdeValor1C6
       '
@@ -1421,7 +1431,7 @@ Partial Class frmMultipleCaso
       Me.txtDesdeValor1C6.MaxLength = 2
       Me.txtDesdeValor1C6.Name = "txtDesdeValor1C6"
       Me.txtDesdeValor1C6.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1C6.TabIndex = 106
+      Me.txtDesdeValor1C6.TabIndex = 51
       '
       'txtHastaLetra2C6
       '
@@ -1432,7 +1442,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaLetra2C6.MaxLength = 1
       Me.txtHastaLetra2C6.Name = "txtHastaLetra2C6"
       Me.txtHastaLetra2C6.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2C6.TabIndex = 107
+      Me.txtHastaLetra2C6.TabIndex = 52
       '
       'txtHastaValor2C6
       '
@@ -1443,7 +1453,7 @@ Partial Class frmMultipleCaso
       Me.txtHastaValor2C6.MaxLength = 2
       Me.txtHastaValor2C6.Name = "txtHastaValor2C6"
       Me.txtHastaValor2C6.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2C6.TabIndex = 108
+      Me.txtHastaValor2C6.TabIndex = 53
       '
       'txtNombreClienteC6
       '
@@ -1452,6 +1462,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC6.ReadOnly = True
       Me.txtNombreClienteC6.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC6.TabIndex = 78
+      Me.txtNombreClienteC6.TabStop = False
       '
       'txtAnalisisSolicitadoC6
       '
@@ -1460,6 +1471,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC6.ReadOnly = True
       Me.txtAnalisisSolicitadoC6.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC6.TabIndex = 79
+      Me.txtAnalisisSolicitadoC6.TabStop = False
       '
       'Label25
       '
@@ -1481,7 +1493,7 @@ Partial Class frmMultipleCaso
       Me.btnBuscaCaso6.Location = New System.Drawing.Point(329, 18)
       Me.btnBuscaCaso6.Name = "btnBuscaCaso6"
       Me.btnBuscaCaso6.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso6.TabIndex = 74
+      Me.btnBuscaCaso6.TabIndex = 49
       Me.btnBuscaCaso6.UseVisualStyleBackColor = True
       '
       'cmbNoCaso6
@@ -1490,7 +1502,7 @@ Partial Class frmMultipleCaso
       Me.cmbNoCaso6.Location = New System.Drawing.Point(141, 19)
       Me.cmbNoCaso6.Name = "cmbNoCaso6"
       Me.cmbNoCaso6.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso6.TabIndex = 76
+      Me.cmbNoCaso6.TabIndex = 48
       '
       'Label26
       '
@@ -1614,6 +1626,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC7.ReadOnly = True
       Me.txtNombreClienteC7.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC7.TabIndex = 92
+      Me.txtNombreClienteC7.TabStop = False
       '
       'txtAnalisisSolicitadoC7
       '
@@ -1622,6 +1635,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC7.ReadOnly = True
       Me.txtAnalisisSolicitadoC7.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC7.TabIndex = 93
+      Me.txtAnalisisSolicitadoC7.TabStop = False
       '
       'Label30
       '
@@ -1776,6 +1790,7 @@ Partial Class frmMultipleCaso
       Me.txtNombreClienteC8.ReadOnly = True
       Me.txtNombreClienteC8.Size = New System.Drawing.Size(449, 20)
       Me.txtNombreClienteC8.TabIndex = 92
+      Me.txtNombreClienteC8.TabStop = False
       '
       'txtAnalisisSolicitadoC8
       '
@@ -1784,6 +1799,7 @@ Partial Class frmMultipleCaso
       Me.txtAnalisisSolicitadoC8.ReadOnly = True
       Me.txtAnalisisSolicitadoC8.Size = New System.Drawing.Size(449, 20)
       Me.txtAnalisisSolicitadoC8.TabIndex = 93
+      Me.txtAnalisisSolicitadoC8.TabStop = False
       '
       'Label38
       '
@@ -1847,7 +1863,7 @@ Partial Class frmMultipleCaso
       Me.btnObtenerResultados.Location = New System.Drawing.Point(724, 501)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(116, 23)
-      Me.btnObtenerResultados.TabIndex = 87
+      Me.btnObtenerResultados.TabIndex = 57
       Me.btnObtenerResultados.Text = "Obtener Resultados"
       Me.btnObtenerResultados.UseVisualStyleBackColor = True
       '
@@ -1857,7 +1873,7 @@ Partial Class frmMultipleCaso
       Me.btnAceptarControles.Location = New System.Drawing.Point(314, 289)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarControles.TabIndex = 19
+      Me.btnAceptarControles.TabIndex = 17
       Me.btnAceptarControles.Text = "Aceptar Controles"
       Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
@@ -1867,7 +1883,7 @@ Partial Class frmMultipleCaso
       Me.Button8.Location = New System.Drawing.Point(846, 501)
       Me.Button8.Name = "Button8"
       Me.Button8.Size = New System.Drawing.Size(105, 23)
-      Me.Button8.TabIndex = 20
+      Me.Button8.TabIndex = 58
       Me.Button8.Text = "Cancelar"
       Me.Button8.UseVisualStyleBackColor = True
       '
@@ -1877,7 +1893,7 @@ Partial Class frmMultipleCaso
       Me.btnDefinirControlesPN.Location = New System.Drawing.Point(203, 289)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
-      Me.btnDefinirControlesPN.TabIndex = 21
+      Me.btnDefinirControlesPN.TabIndex = 4
       Me.btnDefinirControlesPN.Text = "Definir Controles"
       Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
       '
@@ -1919,7 +1935,7 @@ Partial Class frmMultipleCaso
       Me.btnFormateaDatos.Location = New System.Drawing.Point(724, 408)
       Me.btnFormateaDatos.Name = "btnFormateaDatos"
       Me.btnFormateaDatos.Size = New System.Drawing.Size(136, 23)
-      Me.btnFormateaDatos.TabIndex = 93
+      Me.btnFormateaDatos.TabIndex = 55
       Me.btnFormateaDatos.Text = "Formatear Datos"
       Me.btnFormateaDatos.UseVisualStyleBackColor = True
       '
@@ -1931,6 +1947,7 @@ Partial Class frmMultipleCaso
       Me.cmbComboPorts.Name = "cmbComboPorts"
       Me.cmbComboPorts.Size = New System.Drawing.Size(136, 21)
       Me.cmbComboPorts.TabIndex = 91
+      Me.cmbComboPorts.TabStop = False
       '
       'btnLeerDatosPlaca
       '
@@ -1938,7 +1955,7 @@ Partial Class frmMultipleCaso
       Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(724, 371)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(136, 23)
-      Me.btnLeerDatosPlaca.TabIndex = 90
+      Me.btnLeerDatosPlaca.TabIndex = 54
       Me.btnLeerDatosPlaca.Text = "Obtener Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
@@ -1951,6 +1968,7 @@ Partial Class frmMultipleCaso
       Me.txtDatosRecibidos.ReadOnly = True
       Me.txtDatosRecibidos.Size = New System.Drawing.Size(138, 21)
       Me.txtDatosRecibidos.TabIndex = 92
+      Me.txtDatosRecibidos.TabStop = False
       Me.txtDatosRecibidos.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
       Me.txtDatosRecibidos.Visible = False
       '
@@ -1961,7 +1979,7 @@ Partial Class frmMultipleCaso
       Me.btnGuardaDatos.Location = New System.Drawing.Point(724, 444)
       Me.btnGuardaDatos.Name = "btnGuardaDatos"
       Me.btnGuardaDatos.Size = New System.Drawing.Size(136, 23)
-      Me.btnGuardaDatos.TabIndex = 95
+      Me.btnGuardaDatos.TabIndex = 56
       Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatos.UseVisualStyleBackColor = True
       '
@@ -1982,7 +2000,7 @@ Partial Class frmMultipleCaso
       Me.ckbControlesDefault.Location = New System.Drawing.Point(83, 293)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
       Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 97
+      Me.ckbControlesDefault.TabIndex = 3
       Me.ckbControlesDefault.Text = "Valores por default"
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
@@ -1995,32 +2013,32 @@ Partial Class frmMultipleCaso
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(14, 328)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 98

@@ -137,6 +137,7 @@ Public Class frmRegistraNuevoAnalisis
       'Me.TblregistroanalisisTableAdapter.Fill(Me.BvtselisaDataSet.tblregistroanalisis)
       GetSerialPortNames()
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
+      Me.cmbNoCaso.Focus()
    End Sub
 
    Private Sub txtCP1Letra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP1Letra1.TextChanged
