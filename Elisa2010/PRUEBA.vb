@@ -56,8 +56,7 @@
          Dim observaciones As String = lblObservaciones.Text
          Dim fechaElaboracion As String = CStr(dtpFechaElaboracion.Value)
          Try
-            calculaValoresEnRango(placaLector, titulosObtenidos, nombre, nombreCliente, observaciones, titulox, tituloy, desdeArchivo, _
-                                  numcaso, fechaElaboracion, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
+            calculaValoresEnRango(placaLector, desdeArchivo, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
                                   desdex, hastax, desdey, hastay, promCP, promCN, difCPS)
@@ -130,7 +129,7 @@
             frmSalidaDatos.Show()
             mostrarResultadosEnPantalla(frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
-                                        frmSalidaDatos.txtCalculoTitulos1, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
                                         nombre, nombreCliente, numcaso, observaciones, fechaElaboracion, titulosObtenidos, _
@@ -150,4 +149,7 @@
       Me.Close()
    End Sub
 
+   Private Sub frmAbrirDesdeArchivo_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class

@@ -22,10 +22,10 @@ Partial Class frmAbrirArchivoExistente
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
-      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAbrirArchivoExistente))
       Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
@@ -33,6 +33,12 @@ Partial Class frmAbrirArchivoExistente
       Me.lblMensajeAAE = New System.Windows.Forms.Label()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.Label19 = New System.Windows.Forms.Label()
+      Me.Label20 = New System.Windows.Forms.Label()
+      Me.txtDesdeLetra1 = New System.Windows.Forms.TextBox()
+      Me.txtDesdeValor1 = New System.Windows.Forms.TextBox()
+      Me.txtHastaLetra2 = New System.Windows.Forms.TextBox()
+      Me.txtHastaValor2 = New System.Windows.Forms.TextBox()
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.grbCNDesdeArchivo = New System.Windows.Forms.GroupBox()
@@ -124,6 +130,12 @@ Partial Class frmAbrirArchivoExistente
       '
       Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.Label19)
+      Me.Panel1.Controls.Add(Me.Label20)
+      Me.Panel1.Controls.Add(Me.txtDesdeLetra1)
+      Me.Panel1.Controls.Add(Me.txtDesdeValor1)
+      Me.Panel1.Controls.Add(Me.txtHastaLetra2)
+      Me.Panel1.Controls.Add(Me.txtHastaValor2)
       Me.Panel1.Controls.Add(Me.dgvPlacaLeida)
       Me.Panel1.Controls.Add(Me.lblLogTit2)
       Me.Panel1.Controls.Add(Me.grbCNDesdeArchivo)
@@ -135,38 +147,106 @@ Partial Class frmAbrirArchivoExistente
       Me.Panel1.Size = New System.Drawing.Size(718, 323)
       Me.Panel1.TabIndex = 8
       '
+      'Label19
+      '
+      Me.Label19.AutoSize = True
+      Me.Label19.BackColor = System.Drawing.Color.Transparent
+      Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label19.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label19.Location = New System.Drawing.Point(526, 274)
+      Me.Label19.Name = "Label19"
+      Me.Label19.Size = New System.Drawing.Size(43, 16)
+      Me.Label19.TabIndex = 92
+      Me.Label19.Text = "Hasta:"
+      '
+      'Label20
+      '
+      Me.Label20.AutoSize = True
+      Me.Label20.BackColor = System.Drawing.Color.Transparent
+      Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label20.Location = New System.Drawing.Point(526, 242)
+      Me.Label20.Name = "Label20"
+      Me.Label20.Size = New System.Drawing.Size(48, 16)
+      Me.Label20.TabIndex = 91
+      Me.Label20.Text = "Desde:"
+      '
+      'txtDesdeLetra1
+      '
+      Me.txtDesdeLetra1.BackColor = System.Drawing.SystemColors.Window
+      Me.txtDesdeLetra1.Enabled = False
+      Me.txtDesdeLetra1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeLetra1.Location = New System.Drawing.Point(580, 241)
+      Me.txtDesdeLetra1.MaxLength = 1
+      Me.txtDesdeLetra1.Name = "txtDesdeLetra1"
+      Me.txtDesdeLetra1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeLetra1.TabIndex = 87
+      '
+      'txtDesdeValor1
+      '
+      Me.txtDesdeValor1.BackColor = System.Drawing.SystemColors.Window
+      Me.txtDesdeValor1.Enabled = False
+      Me.txtDesdeValor1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeValor1.Location = New System.Drawing.Point(612, 241)
+      Me.txtDesdeValor1.MaxLength = 2
+      Me.txtDesdeValor1.Name = "txtDesdeValor1"
+      Me.txtDesdeValor1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeValor1.TabIndex = 88
+      '
+      'txtHastaLetra2
+      '
+      Me.txtHastaLetra2.BackColor = System.Drawing.SystemColors.Window
+      Me.txtHastaLetra2.Enabled = False
+      Me.txtHastaLetra2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaLetra2.Location = New System.Drawing.Point(580, 273)
+      Me.txtHastaLetra2.MaxLength = 1
+      Me.txtHastaLetra2.Name = "txtHastaLetra2"
+      Me.txtHastaLetra2.Size = New System.Drawing.Size(25, 20)
+      Me.txtHastaLetra2.TabIndex = 89
+      '
+      'txtHastaValor2
+      '
+      Me.txtHastaValor2.BackColor = System.Drawing.SystemColors.Window
+      Me.txtHastaValor2.Enabled = False
+      Me.txtHastaValor2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaValor2.Location = New System.Drawing.Point(613, 273)
+      Me.txtHastaValor2.MaxLength = 2
+      Me.txtHastaValor2.Name = "txtHastaValor2"
+      Me.txtHastaValor2.Size = New System.Drawing.Size(24, 20)
+      Me.txtHastaValor2.TabIndex = 90
+      '
       'dgvPlacaLeida
       '
       Me.dgvPlacaLeida.AllowUserToAddRows = False
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(8, 6)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 80
@@ -175,7 +255,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogTit2
       '
       Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(556, 295)
+      Me.lblLogTit2.Location = New System.Drawing.Point(4, 260)
       Me.lblLogTit2.Name = "lblLogTit2"
       Me.lblLogTit2.Size = New System.Drawing.Size(53, 13)
       Me.lblLogTit2.TabIndex = 9
@@ -193,7 +273,7 @@ Partial Class frmAbrirArchivoExistente
       Me.grbCNDesdeArchivo.Enabled = False
       Me.grbCNDesdeArchivo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbCNDesdeArchivo.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbCNDesdeArchivo.Location = New System.Drawing.Point(358, 216)
+      Me.grbCNDesdeArchivo.Location = New System.Drawing.Point(311, 216)
       Me.grbCNDesdeArchivo.Name = "grbCNDesdeArchivo"
       Me.grbCNDesdeArchivo.Size = New System.Drawing.Size(162, 99)
       Me.grbCNDesdeArchivo.TabIndex = 6
@@ -251,7 +331,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogTit1
       '
       Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(556, 278)
+      Me.lblLogTit1.Location = New System.Drawing.Point(4, 243)
       Me.lblLogTit1.Name = "lblLogTit1"
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 8
@@ -269,7 +349,7 @@ Partial Class frmAbrirArchivoExistente
       Me.grbCPDesdeArchivo.Enabled = False
       Me.grbCPDesdeArchivo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbCPDesdeArchivo.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbCPDesdeArchivo.Location = New System.Drawing.Point(170, 216)
+      Me.grbCPDesdeArchivo.Location = New System.Drawing.Point(100, 216)
       Me.grbCPDesdeArchivo.Name = "grbCPDesdeArchivo"
       Me.grbCPDesdeArchivo.Size = New System.Drawing.Size(162, 99)
       Me.grbCPDesdeArchivo.TabIndex = 3
@@ -327,7 +407,7 @@ Partial Class frmAbrirArchivoExistente
       'lblLogSPS
       '
       Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(556, 262)
+      Me.lblLogSPS.Location = New System.Drawing.Point(4, 227)
       Me.lblLogSPS.Name = "lblLogSPS"
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 7
@@ -535,4 +615,10 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents Label19 As System.Windows.Forms.Label
+   Friend WithEvents Label20 As System.Windows.Forms.Label
+   Friend WithEvents txtDesdeLetra1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtDesdeValor1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtHastaLetra2 As System.Windows.Forms.TextBox
+   Friend WithEvents txtHastaValor2 As System.Windows.Forms.TextBox
 End Class

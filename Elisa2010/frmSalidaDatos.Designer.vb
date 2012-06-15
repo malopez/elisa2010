@@ -39,7 +39,7 @@ Partial Class frmSalidaDatos
       Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
       Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.lblELISA = New System.Windows.Forms.Label()
-      Me.txtCalculoTitulos1 = New System.Windows.Forms.TextBox()
+      Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
       Me.Label2 = New System.Windows.Forms.Label()
@@ -227,18 +227,18 @@ Partial Class frmSalidaDatos
       Me.lblELISA.TabIndex = 48
       Me.lblELISA.Text = "ELISA: "
       '
-      'txtCalculoTitulos1
+      'txtTitulosObtenidos
       '
-      Me.txtCalculoTitulos1.BackColor = System.Drawing.Color.White
-      Me.txtCalculoTitulos1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.txtCalculoTitulos1.Location = New System.Drawing.Point(25, 11)
-      Me.txtCalculoTitulos1.Multiline = True
-      Me.txtCalculoTitulos1.Name = "txtCalculoTitulos1"
-      Me.txtCalculoTitulos1.ReadOnly = True
-      Me.txtCalculoTitulos1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-      Me.txtCalculoTitulos1.Size = New System.Drawing.Size(138, 145)
-      Me.txtCalculoTitulos1.TabIndex = 49
-      Me.txtCalculoTitulos1.TabStop = False
+      Me.txtTitulosObtenidos.BackColor = System.Drawing.Color.White
+      Me.txtTitulosObtenidos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.txtTitulosObtenidos.Location = New System.Drawing.Point(55, 11)
+      Me.txtTitulosObtenidos.Multiline = True
+      Me.txtTitulosObtenidos.Name = "txtTitulosObtenidos"
+      Me.txtTitulosObtenidos.ReadOnly = True
+      Me.txtTitulosObtenidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+      Me.txtTitulosObtenidos.Size = New System.Drawing.Size(108, 145)
+      Me.txtTitulosObtenidos.TabIndex = 49
+      Me.txtTitulosObtenidos.TabStop = False
       '
       'lblObservaciones
       '
@@ -366,7 +366,7 @@ Partial Class frmSalidaDatos
       '
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
-      Me.Panel3.Controls.Add(Me.txtCalculoTitulos1)
+      Me.Panel3.Controls.Add(Me.txtTitulosObtenidos)
       Me.Panel3.Controls.Add(Me.lblCoefVariacionDNA)
       Me.Panel3.Controls.Add(Me.txtTotalDatosCalculados)
       Me.Panel3.Controls.Add(Me.lblTotalDatosCalculados)
@@ -425,7 +425,7 @@ Partial Class frmSalidaDatos
    Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
    Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents lblELISA As System.Windows.Forms.Label
-   Friend WithEvents txtCalculoTitulos1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label

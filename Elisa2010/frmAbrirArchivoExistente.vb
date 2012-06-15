@@ -7,16 +7,17 @@ Public Class frmAbrirArchivoExistente
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       organizaEnTabla(Me.dgvPlacaLeida, placaLector)
+      botonesEstatus(True)
    End Sub
 
    Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
       Dim desdeArchivo As Integer = 1
       Dim cp1, cp2, cp3 As Decimal
       Dim cn1, cn2, cn3 As Decimal
-      Dim desdex As Integer = 0
-      Dim hastax As Integer = 3
-      Dim desdey As Integer = 0
-      Dim hastay As Integer = 11
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra2)
+      Dim desdey As Integer = CInt(txtDesdeValor1.Text)
+      Dim hastay As Integer = CInt(txtHastaValor2.Text)
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Decimal = 0
       Dim totalcalculaL As Decimal = 0
@@ -34,6 +35,8 @@ Public Class frmAbrirArchivoExistente
       Dim promCP As Decimal = 0
       Dim promCN As Decimal = 0
       Dim difCPS As Decimal = 0
+      Dim fecha = DateTime.Now
+
       Try
          cp1 = CDec(Me.txtCPDAValor1.Text)
          cp2 = CDec(Me.txtCPDAValor2.Text)
@@ -41,6 +44,7 @@ Public Class frmAbrirArchivoExistente
          cn1 = CDec(Me.txtCNDAValor1.Text)
          cn2 = CDec(Me.txtCNDAValor2.Text)
          cn3 = CDec(Me.txtCNDAValor3.Text)
+         botonesEstatus(False)
          Me.btnObtenResultadosDA.Enabled = False
          'Obtener el nombre del análisis para colocar la cabecera de la gráfica
          Dim cadena As String
@@ -56,28 +60,30 @@ Public Class frmAbrirArchivoExistente
          Dim nombre As String = tabla(1)
          Dim nombreCliente As String = txtNombreCliente.Text
          Dim observaciones As String = lblObservaciones.Text
-         Dim fechaElaboracion As String = CStr(dtpFechaElaboracion.Value)
          Try
-            calculaValoresEnRango(placaLector, titulosObtenidos, nombre, nombreCliente, observaciones, titulox, tituloy, desdeArchivo, _
-                                  numcaso, fechaElaboracion, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
+            calculaValoresEnRango(placaLector, desdeArchivo,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
                                   desdex, hastax, desdey, hastay, promCP, promCN, difCPS)
          Catch ex As Exception
             MessageBox.Show("ERROR AL CALCULAR VALORES")
          End Try
+
          cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
 
          ReDim calculaL(cuentaNoDatos - 1)
-        
+
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
-
          Catch ex As Exception
             MessageBox.Show("ERROR AL CALCULAR SUMATORIA DE MEDIA GEOMETRICA")
          End Try
 
-
+         Try
+            titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
+         Catch ex As Exception
+            MessageBox.Show("ERROR AL FORMATEAR LOS TITULOS EN CADENA DE TITULOS OBTENIDOS")
+         End Try
          Try
             calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
          Catch ex As Exception
@@ -109,7 +115,7 @@ Public Class frmAbrirArchivoExistente
             MessageBox.Show("ERROR AL CALCULAR COEF VAR")
          End Try
          Try
-            cargaResultadosBD(numcaso, placaoriginal, titulosObtenidos, fechaElaboracion, promCP, promCN, difCPS, _
+            cargaResultadosBD(numcaso, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                               Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                               Convert.ToDouble(desvEst), Convert.ToDouble(coefVar))
          Catch
@@ -135,10 +141,10 @@ Public Class frmAbrirArchivoExistente
             frmSalidaDatos.Show()
             mostrarResultadosEnPantalla(frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
-                                        frmSalidaDatos.txtCalculoTitulos1, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
-                                        nombre, nombreCliente, numcaso, observaciones, fechaElaboracion, titulosObtenidos, _
+                                        nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                         mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
             MessageBox.Show("ERROR AL MOSTRAR RESULTADOS EN PANTALLA.")
@@ -215,7 +221,8 @@ Public Class frmAbrirArchivoExistente
             End While
             oDataReader.Close()
             lblMensajeAAE.Text = ""
-            btnLeerArchivoExistente.Enabled = True
+            Me.btnLeerArchivoExistente.Enabled = True
+            txtDesdeLetra1.Focus()
          Else
             mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso.")
          End If
@@ -229,7 +236,33 @@ Public Class frmAbrirArchivoExistente
       End Try
    End Sub
 
+   Private Sub botonesEstatus(ByVal estatus As Boolean)
+      txtDesdeLetra1.Enabled = estatus
+      txtDesdeValor1.Enabled = estatus
+      txtHastaLetra2.Enabled = estatus
+      txtHastaValor2.Enabled = estatus
+   End Sub
+
+
    Private Sub frmAbrirArchivoExistente_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       Me.cmbNoCaso.Focus()
+   End Sub
+
+   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1.TextChanged
+      'Valor positivo uno, letra y numero
+      controlesValidosLetra(txtDesdeLetra1, " Desde Pozo x", "A", "H")
+   End Sub
+
+   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1.TextChanged
+      controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 0, 11)
+   End Sub
+
+   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2.TextChanged
+      'Valor positivo uno, letra y numero
+      controlesValidosLetra(txtHastaLetra2, " Hasta Pozo x ", "A", "H")
+   End Sub
+
+   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2.TextChanged
+      controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 0, 11)
    End Sub
 End Class

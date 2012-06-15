@@ -190,6 +190,14 @@ Partial Class frmMultipleCaso
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.Panel5 = New System.Windows.Forms.Panel()
+      Me.lblObservacionesC1 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC2 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC3 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC4 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC5 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC6 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC7 = New System.Windows.Forms.Label()
+      Me.lblObservacionesC8 = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
@@ -547,6 +555,7 @@ Partial Class frmMultipleCaso
       'tbcCaso1
       '
       Me.tbcCaso1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso1.Controls.Add(Me.lblObservacionesC1)
       Me.tbcCaso1.Controls.Add(Me.Label19)
       Me.tbcCaso1.Controls.Add(Me.Label20)
       Me.tbcCaso1.Controls.Add(Me.txtDesdeLetra1C1)
@@ -715,6 +724,7 @@ Partial Class frmMultipleCaso
       'tbcCaso2
       '
       Me.tbcCaso2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso2.Controls.Add(Me.lblObservacionesC2)
       Me.tbcCaso2.Controls.Add(Me.Label1)
       Me.tbcCaso2.Controls.Add(Me.Label2)
       Me.tbcCaso2.Controls.Add(Me.txtDesdeLetra1C2)
@@ -879,6 +889,7 @@ Partial Class frmMultipleCaso
       'tbcCaso3
       '
       Me.tbcCaso3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso3.Controls.Add(Me.lblObservacionesC3)
       Me.tbcCaso3.Controls.Add(Me.Label6)
       Me.tbcCaso3.Controls.Add(Me.Label7)
       Me.tbcCaso3.Controls.Add(Me.txtDesdeLetra1C3)
@@ -1043,6 +1054,7 @@ Partial Class frmMultipleCaso
       'tbcCaso4
       '
       Me.tbcCaso4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso4.Controls.Add(Me.lblObservacionesC4)
       Me.tbcCaso4.Controls.Add(Me.Label11)
       Me.tbcCaso4.Controls.Add(Me.Label12)
       Me.tbcCaso4.Controls.Add(Me.txtDesdeLetra1C4)
@@ -1202,6 +1214,7 @@ Partial Class frmMultipleCaso
       'tbcCaso5
       '
       Me.tbcCaso5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso5.Controls.Add(Me.lblObservacionesC5)
       Me.tbcCaso5.Controls.Add(Me.Label16)
       Me.tbcCaso5.Controls.Add(Me.Label17)
       Me.tbcCaso5.Controls.Add(Me.txtDesdeLetra1C5)
@@ -1367,6 +1380,7 @@ Partial Class frmMultipleCaso
       'tbcCaso6
       '
       Me.tbcCaso6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso6.Controls.Add(Me.lblObservacionesC6)
       Me.tbcCaso6.Controls.Add(Me.Label23)
       Me.tbcCaso6.Controls.Add(Me.Label24)
       Me.tbcCaso6.Controls.Add(Me.txtDesdeLetra1C6)
@@ -1531,6 +1545,7 @@ Partial Class frmMultipleCaso
       'tbcCaso7
       '
       Me.tbcCaso7.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso7.Controls.Add(Me.lblObservacionesC7)
       Me.tbcCaso7.Controls.Add(Me.Label28)
       Me.tbcCaso7.Controls.Add(Me.Label29)
       Me.tbcCaso7.Controls.Add(Me.txtDesdeLetra1C7)
@@ -1695,6 +1710,7 @@ Partial Class frmMultipleCaso
       'tbcCaso8
       '
       Me.tbcCaso8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.tbcCaso8.Controls.Add(Me.lblObservacionesC8)
       Me.tbcCaso8.Controls.Add(Me.Label36)
       Me.tbcCaso8.Controls.Add(Me.Label37)
       Me.tbcCaso8.Controls.Add(Me.txtDesdeLetra1C8)
@@ -2052,6 +2068,78 @@ Partial Class frmMultipleCaso
       Me.Panel5.Size = New System.Drawing.Size(709, 214)
       Me.Panel5.TabIndex = 99
       '
+      'lblObservacionesC1
+      '
+      Me.lblObservacionesC1.AutoSize = True
+      Me.lblObservacionesC1.Location = New System.Drawing.Point(283, 138)
+      Me.lblObservacionesC1.Name = "lblObservacionesC1"
+      Me.lblObservacionesC1.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC1.TabIndex = 88
+      Me.lblObservacionesC1.Text = "Label41"
+      '
+      'lblObservacionesC2
+      '
+      Me.lblObservacionesC2.AutoSize = True
+      Me.lblObservacionesC2.Location = New System.Drawing.Point(278, 133)
+      Me.lblObservacionesC2.Name = "lblObservacionesC2"
+      Me.lblObservacionesC2.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC2.TabIndex = 93
+      Me.lblObservacionesC2.Text = "Label41"
+      '
+      'lblObservacionesC3
+      '
+      Me.lblObservacionesC3.AutoSize = True
+      Me.lblObservacionesC3.Location = New System.Drawing.Point(278, 133)
+      Me.lblObservacionesC3.Name = "lblObservacionesC3"
+      Me.lblObservacionesC3.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC3.TabIndex = 99
+      Me.lblObservacionesC3.Text = "Label41"
+      '
+      'lblObservacionesC4
+      '
+      Me.lblObservacionesC4.AutoSize = True
+      Me.lblObservacionesC4.Location = New System.Drawing.Point(278, 129)
+      Me.lblObservacionesC4.Name = "lblObservacionesC4"
+      Me.lblObservacionesC4.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC4.TabIndex = 105
+      Me.lblObservacionesC4.Text = "Label41"
+      '
+      'lblObservacionesC5
+      '
+      Me.lblObservacionesC5.AutoSize = True
+      Me.lblObservacionesC5.Location = New System.Drawing.Point(287, 129)
+      Me.lblObservacionesC5.Name = "lblObservacionesC5"
+      Me.lblObservacionesC5.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC5.TabIndex = 111
+      Me.lblObservacionesC5.Text = "Label41"
+      '
+      'lblObservacionesC6
+      '
+      Me.lblObservacionesC6.AutoSize = True
+      Me.lblObservacionesC6.Location = New System.Drawing.Point(291, 129)
+      Me.lblObservacionesC6.Name = "lblObservacionesC6"
+      Me.lblObservacionesC6.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC6.TabIndex = 111
+      Me.lblObservacionesC6.Text = "Label41"
+      '
+      'lblObservacionesC7
+      '
+      Me.lblObservacionesC7.AutoSize = True
+      Me.lblObservacionesC7.Location = New System.Drawing.Point(278, 135)
+      Me.lblObservacionesC7.Name = "lblObservacionesC7"
+      Me.lblObservacionesC7.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC7.TabIndex = 111
+      Me.lblObservacionesC7.Text = "Label41"
+      '
+      'lblObservacionesC8
+      '
+      Me.lblObservacionesC8.AutoSize = True
+      Me.lblObservacionesC8.Location = New System.Drawing.Point(296, 136)
+      Me.lblObservacionesC8.Name = "lblObservacionesC8"
+      Me.lblObservacionesC8.Size = New System.Drawing.Size(45, 13)
+      Me.lblObservacionesC8.TabIndex = 117
+      Me.lblObservacionesC8.Text = "Label41"
+      '
       'frmMultipleCaso
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2272,4 +2360,12 @@ Partial Class frmMultipleCaso
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+   Friend WithEvents lblObservacionesC1 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC2 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC3 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC4 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC5 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC6 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC7 As System.Windows.Forms.Label
+   Friend WithEvents lblObservacionesC8 As System.Windows.Forms.Label
 End Class

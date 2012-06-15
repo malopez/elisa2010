@@ -138,6 +138,14 @@ Public Class frmMultipleCaso
          controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
          controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
          controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+         'Rellena el fondo del datagridview de color verde para los controles positivos
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
+         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), Val(txtCP3Valor3.Text + 1))
+         'Rellena el fondo del datagridview de color rojo para los controles negativos
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
+         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), Val(txtCN3Valor3.Text) + 1)
          btnAceptarControles.Enabled = False
          btnDefinirControlesPN.Enabled = False
          ckbControlesDefault.Enabled = False
@@ -515,7 +523,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -524,6 +532,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC1.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC1.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC1.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -561,7 +570,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -570,6 +579,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC2.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC2.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -606,7 +616,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -615,6 +625,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC3.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC3.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC3.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -651,7 +662,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -660,6 +671,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC4.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC4.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC4.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -696,7 +708,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -705,6 +717,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC5.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC5.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC5.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -742,7 +755,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -751,6 +764,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC6.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC6.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC6.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -787,7 +801,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -796,6 +810,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC7.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC7.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -832,7 +847,7 @@ Public Class frmMultipleCaso
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -841,6 +856,7 @@ Public Class frmMultipleCaso
             While oDataReader.Read()
                txtNombreClienteC8.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitadoC8.Text = oDataReader("AnalisisSolicitados").ToString()
+               lblObservacionesC8.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
             lblMensajeCaso.Text = ""
@@ -1116,4 +1132,172 @@ Public Class frmMultipleCaso
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
    End Sub
 
+
+   Private Sub botonesEstatus(ByVal estatus As Boolean)
+      txtDesdeLetra1C1.Enabled = estatus
+      txtDesdeValor1C1.Enabled = estatus
+      txtHastaLetra2C1.Enabled = estatus
+      txtHastaValor2C1.Enabled = estatus
+   End Sub
+
+   Private Sub btnObtenerResultados_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
+      Dim cpx1, cpx2, cpx3, cnx1, cnx2, cnx3 As Integer
+      Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
+      btnAceptarControles.Enabled = False
+      btnDefinirControlesPN.Enabled = False
+      Try
+         cpx1 = siValorEsLetra(txtCP1Letra1)
+         cpy1 = Val(txtCP1Valor1.Text)
+         cpx2 = siValorEsLetra(txtCP2Letra2)
+         cpy2 = Val(txtCP2Valor2.Text)
+         cpx3 = siValorEsLetra(txtCP3Letra3)
+         cpy3 = Val(txtCP3Valor3.Text)
+         cnx1 = siValorEsLetra(txtCN1Letra1)
+         cny1 = Val(txtCN1Valor1.Text)
+         cnx2 = siValorEsLetra(txtCN2Letra2)
+         cny2 = Val(txtCN2Valor2.Text)
+         cnx3 = siValorEsLetra(txtCN3Letra3)
+         cny3 = Val(txtCN3Valor3.Text)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeCaso, "Los datos no son válidos, cambie los controles e intente nuevamente.")
+         btnObtenerResultados.Enabled = False
+         btnDefinirControlesPN.Enabled = True
+      End Try
+      Dim desdeArchivo As Integer = 0
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1C1)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra2C1)
+      Dim desdey As Integer = CInt(txtDesdeValor1C1.Text)
+      Dim hastay As Integer = CInt(txtHastaValor2C1.Text)
+      Dim calculaL() As Decimal
+      Dim cuentaNoDatos As Decimal = 0
+      Dim totalcalculaL As Decimal = 0
+      Dim rangoTotal As Integer = 0
+      Dim rangoDatos(14) As Integer
+      Dim placaoriginal As String = ""
+      Dim mediaGeometrica As Decimal
+      Dim mediaAritmetica As Decimal = 0
+      Dim varianza As Decimal = 0
+      Dim desvEst As Decimal = 0
+      Dim coefVar As Decimal = 0
+      Dim titulosObtenidos As String = ""
+      Dim titulox As String = "Grupo de títulos"
+      Dim tituloy As String = "%"
+      Dim promCP As Decimal = 0
+      Dim promCN As Decimal = 0
+      Dim difCPS As Decimal = 0
+      Dim fecha = DateTime.Now
+
+      Try
+         
+         botonesEstatus(False)
+         Me.btnObtenerResultados.Enabled = False
+         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+         Dim cadena As String
+         Dim tabla() As String
+         cadena = txtAnalisisSolicitadoC1.Text
+         tabla = Split(cadena, "/")
+         'Obtiene el numero de caso para ese análisis
+         Dim cadena1 As String
+         Dim tabla1() As String
+         cadena1 = cmbNoCaso.Text
+         tabla1 = Split(cadena1, " | ")
+         Dim numcaso As String = tabla1(0)
+         Dim nombre As String = tabla(1)
+         Dim nombreCliente As String = txtNombreCliente.Text
+
+         Try
+            calculaValoresEnRango(placaLector, desdeArchivo, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
+                                  Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
+                                  Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0, _
+                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS)
+         Catch ex As Exception
+            MessageBox.Show("ERROR AL CALCULAR VALORES")
+         End Try
+
+         cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
+
+         ReDim calculaL(cuentaNoDatos - 1)
+
+         Try
+            mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
+         Catch ex As Exception
+            MessageBox.Show("ERROR AL CALCULAR SUMATORIA DE MEDIA GEOMETRICA")
+         End Try
+
+         Try
+            titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
+         Catch ex As Exception
+            MessageBox.Show("ERROR AL FORMATEAR LOS TITULOS EN CADENA DE TITULOS OBTENIDOS")
+         End Try
+         Try
+            calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
+         Catch ex As Exception
+            MessageBox.Show("ERROR AL CALCULAR MARCA DE CLASE")
+         End Try
+         Try
+            mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR MEDIA GEOMETRICA")
+         End Try
+         Try
+            mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR MEDIA ARITMETICA")
+         End Try
+         Try
+            varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR VARIANZA")
+         End Try
+         Try
+            desvEst = calculaDesvEst(varianza)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR DESVIACION ESTANDAR")
+         End Try
+         Try
+            coefVar = calculaCoefVar(desvEst, mediaAritmetica)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR COEF VAR")
+         End Try
+         Try
+            cargaResultadosBD(numcaso, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar))
+         Catch
+            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+         End Try
+         Try
+            'CARGAR LA TABLA DE FREC REL
+            calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
+         Catch
+            MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA.")
+         End Try
+         Try
+            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos)
+         Catch
+            MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA A LA BD.")
+         End Try
+         Try
+            creaChartFrecRel(nombre, titulox, tituloy, numcaso)
+         Catch
+            MessageBox.Show("ERROR CREAR GRAFICA EN PANTALLA.")
+         End Try
+         Try
+            frmSalidaDatos.Show()
+            mostrarResultadosEnPantalla(frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
+                                        nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                        mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+         Catch
+            MessageBox.Show("ERROR AL MOSTRAR RESULTADOS EN PANTALLA.")
+         End Try
+      Catch ex As Exception
+         mensajeException(Me.lblMensajeCaso, ex)
+         Me.btnObtenerResultados.Enabled = False
+      End Try
+
+   End Sub
 End Class

@@ -9,7 +9,7 @@
       Dim sumatoriaMG As Decimal = 0
       'Calcula el valor de la matriz para llenar la columna L
       For i = desdex To hastax
-         If (desdex = hastax) Then
+         If (i = hastax) Then
             renglones = hastay
          End If
          For j = desdey To renglones
@@ -38,7 +38,6 @@
 
    Public Sub calculaMarcaDeClase(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
       Dim i As Integer = 0
-      Dim j As Integer = 0
       Dim rangoUno As Integer = 0
       Dim rangoDos As Integer = 0
       Dim rangoTres As Integer = 0
@@ -57,55 +56,39 @@
       Dim contador As Integer = 0
       Dim renglones As Integer = 11
 
-      Dim hasta As Integer = UBound(calculaL)
 
       For i = 0 To UBound(calculaL)
          Select Case calculaL(i)
             Case Is < 1
                rangoUno += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 1: < 1 " & rangoUno)
             Case 1 To 350
                rangoDos += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 2: 1 To 350 " & rangoDos)
             Case 351 To 1500
                rangoTres += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 3: 351 To 1500 " & rangoTres)
             Case 1501 To 2500
                rangoCuatro += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 4: 1501 To 2500" & rangoCuatro)
             Case 2501 To 3500
                rangoCinco += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 5: 2501 To 3500 " & rangoCinco)
             Case 3501 To 4500
                rangoSeis += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 6: 3501 To 4500 " & rangoSeis)
             Case 4501 To 5500
                rangoSiete += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 7: 4501 To 5500 " & rangoSiete)
             Case 5501 To 6500
                rangoOcho += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 8: 5501 To 6500 " & rangoOcho)
             Case 6501 To 7500
                rangoNueve += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 9: 6501 To 7500 " & rangoNueve)
             Case 7501 To 8500
                rangoDiez += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 10: 7501 To 8500 " & rangoDiez)
             Case 8501 To 9500
                rangoOnce += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 11: 8501 To 9500 " & rangoOnce)
             Case 9501 To 10500
                rangoDoce += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 12: 9501 To 10500 " & rangoDoce)
             Case 10501 To 11500
                rangoTrece += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 13: 10501 To 11500 " & rangoDoce)
             Case 11501 To 12500
                rangoCatorce += 1
-               ' MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 14: 11501 To 12500 " & rangoDoce)
             Case Is > 12501
                rangoQuince += 1
-               'MessageBox.Show("Valor calculaL : " & calculaL(i) & " RANGO 15: > 12501 " & rangoDoce)
          End Select
       Next
 
@@ -171,10 +154,7 @@
       End Try
    End Sub
 
-   Public Function calculoDeTitulo(ByVal logaritmoTitulos(,) As Decimal, ByRef calculoDeTitulos(,) As Decimal) As String
-
-      Dim n As Integer = 0
-      Dim presenta1 As String = "Sueros  Títulos" & vbCrLf & " " & vbCrLf
+   Public Sub calculoDeTitulo(ByVal logaritmoTitulos(,) As Decimal, ByRef calculoDeTitulos(,) As Decimal)
       'Calcula el titulo mendiante la exponenciacion 10 ^ A1..H1, en la hoja de excel corresponde a la columna K, y que tambien 
       'se utilizan en la columna AE para tomar los titulos de los sueros en resultados finales
       Try
@@ -185,19 +165,25 @@
                Else
                   calculoDeTitulos(i, j) = 0
                End If
-               'resultadoTitulos += calculoDeTitulos(i, j) & vbTab
-               n += 1
-               If (n <= 96) Then
-                  presenta1 += n & "       " & reduceDecimal(calculoDeTitulos(i, j)) & vbCrLf
-               End If
             Next
          Next
 
       Catch ex As Exception
          MessageBox.Show("ERROR CALCULA TITULOS: " & ex.Message & " " & ex.GetType.ToString)
       End Try
-      Return (presenta1)
+   End Sub
+
+   Public Function titulosObtenidosEnCalculaL(ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As String
+      Dim n As Integer = 0
+      'Dim presenta As String = "Sueros  Títulos" & vbCrLf & " " & vbCrLf
+      Dim presenta As String = ""
+      For n = 0 To cuentaNoDatos - 1
+         'presenta += (n + 1) & "       " & reduceDecimal(calculaL(n)) & vbCrLf
+         presenta += reduceDecimal(calculaL(n)) & vbCrLf
+      Next
+      Return (presenta)
    End Function
+
 
 
    'calcula la varianza para datos no agrupados
@@ -256,7 +242,7 @@
    'Presenta datos para formatear la salida de los datos
    Public Sub mostrarResultadosEnPantalla(ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
                                      ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
-                                     ByRef txtCalculoTitulos1 As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
+                                     ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
                                      ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
                                      ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
                                      ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, _
@@ -269,7 +255,7 @@
       txtNoCaso.Text = numcaso.ToString()
       lblObservaciones.Text = observaciones.ToString()
       txtFechaElaboracion.Text = fechaElaboracion.ToString()
-      txtCalculoTitulos1.Text = presenta1.ToString()
+      txtTitulosObtenidos.Text = presenta1.ToString()
       txtMediaAritmetica2.Text = mediaAritmetica.ToString()
       txtMediaGeometrica.Text = mediaGeometrica.ToString()
       txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
@@ -284,9 +270,7 @@
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
    'seleccionada. El parametro nombre es el nombre del análisis/Enfermedad que se ha evaluado
-   Public Sub calculaValoresEnRango(ByRef placaLector(,) As Decimal, ByRef titulosObtenidos As String, ByVal nombre As String, ByVal nombreCliente As String, ByVal observaciones As String, _
-                             ByVal titulox As String, ByVal tituloy As String, ByRef desdeArchivo As Integer, _
-                             ByRef numcaso As String, ByVal fechaElaboracion As String, _
+   Public Sub calculaValoresEnRango(ByRef placaLector(,) As Decimal, ByRef desdeArchivo As Integer, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
@@ -301,7 +285,7 @@
       Dim j As Integer = 0
       Dim k As Integer = 0
 
-      Dim resultadoTitulos As String = ""
+
 
       Dim placaOriginal As String = ""
 
@@ -316,9 +300,6 @@
 
       'Matriz para calculo de Logaritmo de Titulos
       Dim logaritmoTitulos(7, 11) As Decimal
-
-
-
 
       Dim temp As Decimal = 0
       Dim totalcalculaL As Decimal = 0
@@ -345,7 +326,7 @@
       calculaSPSs(placaOriginal, placaLector, calculaSPS, promCN, difCPS)
       calculaLogaritmoSPS(logaritmoSPS, calculaSPS, logsps)
       calculaLogaritmoTitulos(logaritmoSPS, logaritmoTitulos, logtit1, logtit2)
-      titulosObtenidos = calculoDeTitulo(logaritmoTitulos, calculoDeTitulos)
+      calculoDeTitulo(logaritmoTitulos, calculoDeTitulos)
    End Sub
 
 End Module

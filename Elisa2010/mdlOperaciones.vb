@@ -62,11 +62,6 @@ Module mdlOperaciones
       Next
    End Sub
 
-   Public Sub obtenAnemia()
-
-
-
-   End Sub
 
    Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
       Dim i As Integer
@@ -158,7 +153,7 @@ Module mdlOperaciones
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
    Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
-                                    ByVal observaciones As String, ByVal nombrelibro As String, ByVal calculoDeTitulos(,) As Decimal,
+                                    ByVal observaciones As String, ByVal nombrelibro As String, ByVal titulosObtenidos As String,
                                     ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
                                     ByRef cuentaNoDatos As Double, ByRef desviacionEstandarDatosNoAgrupados As Double, _
                                     ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
@@ -196,39 +191,41 @@ Module mdlOperaciones
       'copia los valores de los títulos resultantes
       excelApp.Range("A15").Value2 = "Sueros"
       excelApp.Range("B15").Value2 = "Títulos"
-      
-      For i = 0 To 7
-         For j = temp To 11
-            excelApp.Range(sueros & l).Value2 = k
-            excelApp.Range(titulos & l).Value2 = Math.Round(calculoDeTitulos(i, j))
-            k += 1
-            l += 1
-            If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
-               l = 15
-               If (k = 21) Then
-                  sueros = "C"
-                  titulos = "D"
-               End If
-               If (k = 41) Then
-                  sueros = "E"
-                  titulos = "F"
-               End If
-               If (k = 61) Then
-                  sueros = "G"
-                  titulos = "H"
-               End If
-               If (k = 81) Then
-                  sueros = "I"
-                  titulos = "J"
-               End If
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-               l = 16
+      Dim cadena1 As String
+      Dim tabla1() As String
+      cadena1 = titulosObtenidos
+      tabla1 = Split(cadena1, vbCrLf)
+
+      For i = 0 To cuentaNoDatos - 1
+         excelApp.Range(sueros & l).Value2 = k
+         excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
+         k += 1
+         l += 1
+         If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
+            l = 15
+            If (k = 21) Then
+               sueros = "C"
+               titulos = "D"
             End If
-            If (i = 0) Then
-               temp = 0
+            If (k = 41) Then
+               sueros = "E"
+               titulos = "F"
             End If
-         Next
+            If (k = 61) Then
+               sueros = "G"
+               titulos = "H"
+            End If
+            If (k = 81) Then
+               sueros = "I"
+               titulos = "J"
+            End If
+            excelApp.Range(sueros & l).Value2 = "Sueros"
+            excelApp.Range(titulos & l).Value2 = "Títulos"
+            l = 16
+         End If
+         If (i = 0) Then
+            temp = 0
+         End If
       Next
       Try
          'Inserta la gráfica en el archivo Excel
@@ -989,7 +986,7 @@ Module mdlOperaciones
       frmSalidaDatos.txtNoCaso.Text = numcaso
       frmSalidaDatos.lblObservaciones.Text = observaciones
       frmSalidaDatos.txtFechaElaboracion.Text = fechaElaboracion
-      frmSalidaDatos.txtCalculoTitulos1.Text = presenta1
+      frmSalidaDatos.txtTitulosObtenidos.Text = presenta1
 
       frmSalidaDatos.txtMediaAritmetica2.Text = CStr(Convert.ToDouble(mediaAritmetica))
       frmSalidaDatos.txtMediaGeometrica.Text = CStr(Convert.ToDouble(mediaGeometrica))
