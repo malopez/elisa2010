@@ -62,8 +62,13 @@ Module mdlOperaciones
       Next
    End Sub
 
+   Public Sub obtenAnemia()
 
-   Private Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
+
+
+   End Sub
+
+   Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
       Dim i As Integer
       'Quita el indicador de fila del datagridview
       placa.RowHeadersVisible = False
@@ -258,7 +263,10 @@ Module mdlOperaciones
    'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
    'de una placa leida previamente
 
-   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal)
+   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal, ByRef txtCPDAValor1 As TextBox, _
+                               ByRef txtCPDAValor2 As TextBox, ByRef txtCPDAValor3 As TextBox, _
+                               ByRef txtCNDAValor1 As TextBox, ByRef txtCNDAValor2 As TextBox, _
+                               ByRef txtCNDAValor3 As TextBox)
       'Define variables para archivo de excel
       Dim excelApp As New Excel.Application
       'Dim libroExcel As Excel.Workbook
@@ -294,7 +302,6 @@ Module mdlOperaciones
                   temporal = hojaExcel.Range(columna & (j + 1)).Value2
                   If (temporal <> "") Then
                      placaLector(i, j) = CDec(temporal)
-
                   Else
                      placaLector(i, j) = 0
                   End If
@@ -302,22 +309,20 @@ Module mdlOperaciones
                Next
                resultado &= vbCrLf
             Next
-            'Escribe en el datagridview los datos obtenidos desde el archivo
-            organizaEnTabla(frmAbrirArchivoExistente.dgvPlacaLeida, placaLector)
-
+            
          Catch ex As Exception
             mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
             frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
             frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
          End Try
          mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "Nombre del archivo abierto: " & nombreArchivo)
-         frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
-         frmAbrirArchivoExistente.txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
-         frmAbrirArchivoExistente.txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
-         frmAbrirArchivoExistente.txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
-         frmAbrirArchivoExistente.txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
-         frmAbrirArchivoExistente.txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
-         frmAbrirArchivoExistente.txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
+         'frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
+         txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
+         txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
+         txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
+         txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
+         txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
+         txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
          excelApp.ActiveWorkbook.Close()
          'Libera la aplicacion Excel
          releaseObject(excelApp)
@@ -356,9 +361,9 @@ Module mdlOperaciones
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Private Sub cargaResultadosBD(ByRef numcaso As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
+   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
                                  ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
-                                 ByVal desviacionEstandarDatosNoAgrupados As Double, ByVal coeficienteDeVariacionDatosNoAgrupados As Double)
+                                 ByVal desvEst As Double, ByVal coefVar As Double)
       Dim resultado As Integer
       Dim comando As New MySqlCommand
       Dim cadenafecha As String
@@ -377,7 +382,7 @@ Module mdlOperaciones
          comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
                                 & "('" & numcaso & "', STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
                                 & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
-                                & desviacionEstandarDatosNoAgrupados & "," & coeficienteDeVariacionDatosNoAgrupados & ");"
+                                & desvEst & "," & coefVar & ");"
          'MessageBox.Show("valor de la consulta:" & comando.CommandText)
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
@@ -393,7 +398,7 @@ Module mdlOperaciones
       End Try
    End Sub
 
-   Private Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String)
+   Public Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String, ByVal rangoDatos() As Integer)
 
       Dim i As Integer
       Dim resultado As Integer
@@ -412,7 +417,7 @@ Module mdlOperaciones
          For i = 0 To 14
             comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
             resultado = comando.ExecuteNonQuery()
-            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor) values (" & i + 1 & "," & reduceDecimal(frecuenciaRelativa(i)) & ");"
+            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i + 1 & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
             resultado = comando.ExecuteNonQuery()
          Next
          oConexion.Close()
@@ -434,12 +439,22 @@ Module mdlOperaciones
    Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
+
+         Dim aConsulta As String = ""
+         Dim oComando As New MySqlCommand
+         Dim oDataReader As MySqlDataReader
+         oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         oConexion.Open()
-         Dim sqlfrecrel As String = "SELECT * FROM tblfrecrelativa;"
+         Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa;"
+         oComando.Connection = oConexion
+         oComando.CommandText = sqlfrecrel
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
          Dim ds As New DataSet()
          da.Fill(ds, "tblfrecrelativa")
+         oComando.CommandText = sqlfrecrel
+         oConexion.Open()
+         oDataReader = oComando.ExecuteReader()
+         
          'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
          Dim ChartArea1 As ChartArea = New ChartArea()
          Dim Legend1 As Legend = New Legend()
@@ -453,38 +468,58 @@ Module mdlOperaciones
          Chart1.ChartAreas.Add(ChartArea1)
          Chart1.Titles.Add(nombre)
 
-         'Coloca los nombres de las etiquetas del gráfico para X y Y
-         Chart1.ChartAreas("ChartArea1").AxisX.Title = titulox
-         Chart1.ChartAreas("ChartArea1").AxisY.Title = tituloy
-
          'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
 
          'Elimina las lineas secundarias del gráfico
-         Chart1.ChartAreas("ChartArea1").AxisX.MajorGrid.Enabled = False
-         Chart1.ChartAreas("ChartArea1").AxisY.MajorGrid.Enabled = False
+         With Chart1.ChartAreas("ChartArea1")
+            .AxisX.MajorGrid.Enabled = False
+            .AxisY.MajorGrid.Enabled = False
+         End With
 
          'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
          'Legend1.Name = "Legend1"
          'Chart1.Legends.Add(Legend1)
          'Series1.Legend = "Legend1"
-         Chart1.Name = "Chart1"
-         Series1.ChartArea = "ChartArea1"
-         Series1.Name = "Series1"
-         Series1.ChartType = SeriesChartType.Column
-         Chart1.Series.Add(Series1)
-         'coloca el valor de la serie sobre la barra para que indique el valor de la frecuencia relativa
-         Chart1.Series("Series1").IsValueShownAsLabel = True
-         'Ubicacion del grafico
-         Chart1.Location = New System.Drawing.Point(38, 110)
 
-         Chart1.Size = New System.Drawing.Size(500, 240)
-         Chart1.TabIndex = 21
-         Chart1.Anchor = AnchorStyles.Right
-         Chart1.Anchor = AnchorStyles.Top
-         'Asigna los valores de las series para miembros que se trazan en X y Y
-         Chart1.Series("Series1").XValueMember = "rango"
-         Chart1.Series("Series1").YValueMembers = "valor"
-         Chart1.DataSource = ds.Tables("tblfrecrelativa").Select("rango>0 and rango <=15")
+         'Ubicacion del grafico, tamaño, numero de indice dentro de la forma, su anclaje y agrega el numero de serie
+         With Chart1
+            .Name = "Chart1"
+            .Location = New System.Drawing.Point(38, 110)
+            .Size = New System.Drawing.Size(500, 240)
+            .TabIndex = 21
+            .Anchor = AnchorStyles.Right
+            .Anchor = AnchorStyles.Top
+            .Series.Add(Series1)
+         End With
+
+         'Dar nombre a la serie, definir el tipo de serie, en este caso tipo columna
+         With Series1
+            .ChartArea = "ChartArea1"
+            .Name = "Series1"
+            .ChartType = SeriesChartType.Column
+         End With
+
+         'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
+         'data reader los valores de rango, valor y etiqueta
+         With Chart1.Series(0)
+            .IsValueShownAsLabel = True
+            .XValueMember = "rango"
+            .YValueMembers = "valor"
+            .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
+         End With
+
+         'Indica los valores de inicio de los ejes, ambos en 0,0, el intervalo de valores para x =15 y y=100, el valor de intervalo en 20
+         'E indica los nombres de los títulos para x y y
+         With Chart1.ChartAreas(0)
+            .AxisX.Minimum = 0
+            .AxisX.Maximum = 15
+            .AxisY.Minimum = 0
+            .AxisY.Maximum = 100
+            .AxisY.Interval = 20
+            .AxisX.Title = titulox
+            .AxisY.Title = tituloy
+         End With
+
          'Cerrar la conexion a la base de datos 
          oConexion.Close()
          oConexion.Dispose()
@@ -496,423 +531,19 @@ Module mdlOperaciones
             mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
          End Try
       Catch ex As Exception
-         MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
-      End Try
-   End Sub
-
-   '######################################################################
-   '# MENSAJES DEFAULT PARA ATRAPAR EXCEPCIONES, Y EN COLOR ROJO Y VERDE #
-   '######################################################################
-
-   Public Sub mensajeException(ByRef etiqueta As Label, ByRef ex As Exception)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
-   End Sub
-
-   Public Sub mensajeExceptionSQL(ByRef etiqueta As Label, ByRef ex As MySqlException)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
-   End Sub
-
-   Public Sub mensajeVerde(ByRef etiqueta As Label, ByRef mensaje As String)
-      etiqueta.ForeColor = System.Drawing.Color.Green
-      etiqueta.Text = mensaje
-   End Sub
-
-   Public Sub mensajeRojo(ByRef etiqueta As Label, ByRef mensaje As String)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = mensaje
-   End Sub
-
-   '##################################################
-   '# SECCION VALIDACION DE FORMATOS                 #
-   '##################################################
-   'Utilizada para validación de datos, seleccionando solamente 10 posiciones contando de izquierda a derecha
-   Public Function reduceDecimal(ByVal numero As Decimal) As Decimal
-      Dim v As Decimal
-      v = CDec(Microsoft.VisualBasic.Left(CStr(numero), 10))
-      Return v
-   End Function
-
-   'Verifica que no sea blanco o de largo mayor a 1 lo escrito en el textbox
-   Public Function siNoEsBlanco(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
-      If textBox.Text = "" Or textBox.Text.Length > 1 Then
-         MessageBox.Show(nombre & "El control debe tener un valor distinto a blanco.")
-         textBox.Select()
-         Return False
-      Else
-         Return True
-      End If
-   End Function
-
-   Public Function siEsLargoUno(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
-      If textBox.Text.Length > 1 Then
-         MessageBox.Show(nombre & "El control debe tener una letra solamente.")
-         textBox.Select()
-         Return False
-      Else
-         Return True
-      End If
-   End Function
-
-   Public Function siNoEsBlancoMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
-      If textBox.Text = "" Or (textBox.Text.Length >= 3) Then
-         MessageBox.Show(nombre & "El control debe tener un valor numérico.")
-         textBox.Select()
-         Return False
-      Else
-         Return True
-      End If
-   End Function
-
-   Public Function siEsEntero(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
-      Try
-         Convert.ToInt32(textBox.Text)
-         Return True
-      Catch ex As Exception
-         MessageBox.Show(nombre & "El valor debe ser un valor numérico.")
-         textBox.Select()
-         textBox.SelectAll()
-         Return False
-      End Try
-   End Function
-
-   Public Function siEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As Integer, ByVal max As Integer) As Boolean
-      Dim numero As Integer = CInt(textbox.Text)
-      If numero < min OrElse numero > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser valor numérico entre " & min & " y " & max)
-         textbox.Select()
-         textbox.SelectAll()
-         Return False
-      Else
-         Return True
-      End If
-   End Function
-
-   Public Function siLetraEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As String, ByVal max As String) As Boolean
-      Dim letra As String = textbox.Text.ToUpper
-      If letra < min OrElse letra > max Then
-         MessageBox.Show(" El valor " & nombre & "debe ser una letra entre A y H.")
-         textbox.Select()
-         textbox.SelectAll()
-         Return False
-      Else
-         Return True
-      End If
-   End Function
-
-   Public Function siValorEsLetra(ByVal textbox As TextBox) As Integer
-      Dim letra As String = textbox.Text.ToUpper
-      Dim retorno As Integer
-      Select Case letra
-         Case "A"
-            retorno = 0
-         Case "B"
-            retorno = 1
-         Case "C"
-            retorno = 2
-         Case "D"
-            retorno = 3
-         Case "E"
-            retorno = 4
-         Case "F"
-            retorno = 5
-         Case "G"
-            retorno = 6
-         Case "H"
-            retorno = 7
-         Case Else
-            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, " El valor debe ser una letra entre A y H. ")
-            textbox.Select()
-            textbox.SelectAll()
-      End Select
-      Return CInt(retorno)
-   End Function
-
-
-
-   'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
-   Public Function obtenLetra(ByVal i As Integer) As String
-      Dim letra As String = ""
-      Select Case i
-         Case 0
-            letra = "A"
-         Case 1
-            letra = "B"
-         Case 2
-            letra = "C"
-         Case 3
-            letra = "D"
-         Case 4
-            letra = "E"
-         Case 5
-            letra = "F"
-         Case 6
-            letra = "G"
-         Case 7
-            letra = "H"
-      End Select
-      Return letra
-   End Function
-
-   Public Function controlesValidosLetra(ByVal textbox As TextBox, ByVal nombre As String, _
-                                         ByVal min1 As String, ByVal max1 As String) As Boolean
-      Return _
-         siNoEsBlanco(textbox, nombre) AndAlso
-         siEsLargoUno(textbox, nombre) AndAlso
-         siLetraEstaEnRango(textbox, nombre, min1, max1)
-   End Function
-
-   Public Function controlesValidosNumero(ByVal textbox As TextBox, ByVal nombre As String, _
-                                      ByVal min As Integer, ByVal max As Integer) As Boolean
-      Return _
-         siNoEsBlancoMenorRango(textbox, nombre) AndAlso
-         siEsEntero(textbox, nombre) AndAlso
-         siEstaEnRango(textbox, nombre, min, max)
-   End Function
-
-   '#####################################
-   '# SECCION CONTROLES DEL PUERTO SERIE#
-   '#####################################
-   'Obtiene de la BD los datos del lector que se utilizarán para el puerto serie
-   Public Sub datosLector(ByRef nomLector As String, ByRef bpsLector As Integer, ByRef paridadLector As Integer, _
-                          ByRef bitsLector As Integer, ByRef stopBitsLector As Integer)
-      Try
-         Dim oConexion As MySqlConnection
-         Dim aConsulta As String = ""
-         Dim oComando As New MySqlCommand
-         Dim oDataReader As MySqlDataReader
-         oConexion = New MySqlConnection
-         oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT * FROM tbllector WHERE lectorDefault=1;"
-         oComando.Connection = oConexion
-         oComando.CommandText = aConsulta
-         oConexion.Open()
-         oDataReader = oComando.ExecuteReader()
-         If oDataReader.HasRows Then
-            While oDataReader.Read()
-               nomLector = oDataReader("nomLector")
-               bpsLector = oDataReader("bpsLector")
-               paridadLector = oDataReader("paridadLector")
-               bitsLector = oDataReader("bitsLector")
-               stopBitsLector = oDataReader("stopBitsLector")
-            End While
-            oDataReader.Close()
-            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = ""
-         Else
-            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "Mensaje: No se ha encontrado un lector default.")
-         End If
-         oConexion.Close()
-      Catch ex As MySqlException
-         mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-      Catch ex As DataException
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-      Catch ex As Exception
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-      End Try
-
-   End Sub
-
-   'configura el puerto serial
-   Public Sub Setup_Puerto_Serie()
-      Dim nomLector As String = ""
-      Dim bpsLector As Integer
-      Dim paridadLector As Integer
-      Dim bitsLector As Integer
-      Dim stopBitsLector As Integer
-      Try
-         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
-         With frmRegistraNuevoAnalisis.SerialPort1
-            'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
-            If .IsOpen Then
-               .Close()
-            End If
-            .PortName = frmRegistraNuevoAnalisis.cmbComboPorts.Text
-            .BaudRate = bpsLector
-            .DataBits = bitsLector
-            .StopBits = stopBitsLector
-            .Parity = paridadLector
-            .DtrEnable = False
-            .Handshake = IO.Ports.Handshake.None
-            .ReadBufferSize = 2048
-            .WriteBufferSize = 1024
-            '.ReceivedBytesThreshold = 1
-            .WriteTimeout = 500
-            .Encoding = System.Text.Encoding.Default
-            .Open() ' ABRE EL PUERTO SERIE
-         End With
-      Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: Al abrir el puerto serial con los datos configurados.")
-      End Try
-   End Sub
-
-   'configura el puerto serial utilizando parametros para el despliegue
-   Public Sub Setup_Puerto_SerieParametros(ByVal puerto As System.IO.Ports.SerialPort, ByRef comboPuerto As System.Windows.Forms.ComboBox, _
-                                           ByRef etiqueta As System.Windows.Forms.Label)
-      Dim nomLector As String = ""
-      Dim bpsLector As Integer
-      Dim paridadLector As Integer
-      Dim bitsLector As Integer
-      Dim stopBitsLector As Integer
-      Try
-         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
-         With puerto
-            'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
-            If .IsOpen Then
-               .Close()
-            End If
-            .PortName = comboPuerto.Text
-            .BaudRate = bpsLector
-            .DataBits = bitsLector
-            .StopBits = stopBitsLector
-            .Parity = paridadLector
-            .DtrEnable = False
-            .Handshake = IO.Ports.Handshake.None
-            .ReadBufferSize = 2048
-            .WriteBufferSize = 1024
-            '.ReceivedBytesThreshold = 1
-            .WriteTimeout = 500
-            .Encoding = System.Text.Encoding.Default
-            .Open() ' ABRE EL PUERTO SERIE
-         End With
-      Catch ex As Exception
-         mensajeRojo(etiqueta, "ERROR: Al abrir el puerto serial con los datos configurados.")
+         mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+         ' MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
       End Try
    End Sub
 
 
-   'Obtiene los puertos seriales disponibles
-   Public Sub GetSerialPortNames()
-      ' muestra COM ports disponibles.
-      Dim l As Integer
-      Dim ncom As String
-      Try
-         frmRegistraNuevoAnalisis.cmbComboPorts.Items.Clear()
-         For Each sp As String In My.Computer.Ports.SerialPortNames
-            l = sp.Length
-            If ((sp(l - 1) >= "0") And (sp(l - 1) <= "9")) Then
-               frmRegistraNuevoAnalisis.cmbComboPorts.Items.Add(sp)
-            Else
-               ncom = sp.Substring(0, l - 1)
-               frmRegistraNuevoAnalisis.cmbComboPorts.Items.Add(ncom)
-            End If
-         Next
-         If frmRegistraNuevoAnalisis.cmbComboPorts.Items.Count >= 1 Then
-            frmRegistraNuevoAnalisis.cmbComboPorts.Text = CStr(frmRegistraNuevoAnalisis.cmbComboPorts.Items(0))
-         Else
-            frmRegistraNuevoAnalisis.cmbComboPorts.Text = ""
-         End If
-      Catch ex As Exception
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-      End Try
-   End Sub
-
-   'Obtiene los puertos seriales disponibles utilizando parametros para colocar el valor en la Forma indicada
-   Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As System.Windows.Forms.Label)
-      ' muestra COM ports disponibles.
-      Dim l As Integer
-      Dim ncom As String
-      Try
-         comboPuerto.Items.Clear()
-         For Each sp As String In My.Computer.Ports.SerialPortNames
-            l = sp.Length
-            If ((sp(l - 1) >= "0") And (sp(l - 1) <= "9")) Then
-               comboPuerto.Items.Add(sp)
-            Else
-               ncom = sp.Substring(0, l - 1)
-               comboPuerto.Items.Add(ncom)
-            End If
-         Next
-         If comboPuerto.Items.Count >= 1 Then
-            comboPuerto.Text = CStr(comboPuerto.Items(0))
-         Else
-            comboPuerto.Text = ""
-         End If
-      Catch ex As Exception
-         mensajeException(etiqueta, ex)
-      End Try
-   End Sub
-
-   '##########################################################
-   '# SECCION GUARDAR ARCHIVO Y CONTENIDO DE LOS DATOS LEIDOS#
-   '##########################################################
-   'Sirve para guardar los datos en archivo formateados separados por tabs cada valor
-   Public Function guardaDatos(ByRef resultado As String) As String
-      Dim myStream As Stream
-      Dim sfdGuardarPlaca As New SaveFileDialog()
-      Dim nombreArchivo As String = ""
-      sfdGuardarPlaca.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
-      sfdGuardarPlaca.FilterIndex = 2
-      sfdGuardarPlaca.RestoreDirectory = True
-      Try
-         'Abre el dialogo para guardar archivo
-         If sfdGuardarPlaca.ShowDialog() = DialogResult.OK Then
-            myStream = sfdGuardarPlaca.OpenFile()
-            If (myStream IsNot Nothing) Then
-               myStream.Close()
-               Try
-                  'Solicita el nombre del archivo y su lugar de ubicación donde se guardará
-                  Dim objFile As New System.IO.StreamWriter(sfdGuardarPlaca.OpenFile())
-                  'En nombre archivo se asigna el valor del nombre seleccionado
-                  nombreArchivo = sfdGuardarPlaca.FileName
-                  'Se llama el formateo de datos y se guarda el resultado en el archivo
-                  objFile.Write(resultado)
-                  'Se cierra el archivo con los datos ya guardados
-                  objFile.Close()
-                  'Ahora se lee la placa desde el archivo con los datos guardados
-                  'leePlacaDesdeArchivo(nombreArchivo)
-               Catch ex As Exception
-                  Beep()
-                  MessageBox.Show("Errores guardar los datos de la placa en el archivo.")
-               End Try
-            End If
-         End If
-      Catch ex As Exception
-         Beep()
-         MessageBox.Show("Errores al guardar el archivo solicitado.")
-      End Try
-
-      Return nombreArchivo
-   End Function
-
-   Public Sub leePlacaDesdeArchivo(ByRef nombreArchivo As String)
-      Dim resultado As String = ""
-      Try
-         Dim leeLineaArchivo As New Microsoft.VisualBasic.FileIO.TextFieldParser(nombreArchivo)
-         leeLineaArchivo.TextFieldType = FileIO.FieldType.Delimited
-         leeLineaArchivo.SetDelimiters(vbTab)
-         Dim renglonActual As String()
-         Dim i As Integer = 0
-         Dim j As Integer = 0
-         While Not leeLineaArchivo.EndOfData
-            Try
-               renglonActual = leeLineaArchivo.ReadFields()
-               Dim currentField As String
-               For Each currentField In renglonActual
-                  If currentField <> vbCrLf And currentField <> "" Then
-                     placaLector(i, j) = CDec(currentField)
-                  Else
-                     MsgBox("Encontre retorno de carro.")
-                  End If
-                  j += 1
-               Next
-            Catch ex As Microsoft.VisualBasic.FileIO.MalformedLineException
-               MsgBox("Línea malformada" & ex.Message & "no es válida y será saltada.")
-            End Try
-            i += 1
-            j = 0
-         End While
-      Catch ex As Exception
-         MsgBox("El archivo que desea abrir " & nombreArchivo & " no existe." & ex.Message)
-      End Try
-   End Sub
 
    '#####################################
    '# SECCION ORGANIZACION DE DATOS     #
    '#####################################
    'Esta funcion recibe el arreglo donde se guardaran los datos de la placa y retorna el valor de los datos organizados
    'por columna en una cadena llamada "resultado"
-   Public Function formateaDatos(ByVal placaLector(,) As Decimal) As String
+   Public Sub formateaDatos(ByVal placaLector(,) As Decimal, ByRef dgvPlacaLeida As DataGridView)
       Dim limInferior As Integer = 0 'utilizado para marcar 0,12,24,36,48,60,72 y 84
       Dim limSuperior As Integer = 0 'utilizado para marcar 11,23,35,47,59,71,83,95
       'para controlar los ciclos for
@@ -970,39 +601,66 @@ Module mdlOperaciones
       Next
       'Presenta en pantalla los valores obtenidos desde el lector ya formateados
       frmRegistraNuevoAnalisis.txtDatosRecibidos.Text = resultado
-      organizaEnTabla(frmRegistraNuevoAnalisis.dgvPlacaLeida, placaLector)
-      Return (resultado)
-   End Function
-
+      organizaEnTabla(dgvPlacaLeida, placaLector)
+      'Return (resultado)
+   End Sub
 
    'Funcion que calcula el valor de los promedios positivos
    Public Function calculaPromedioPositivos(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
                                            , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer) As Decimal
       Dim promedioPositivos As Decimal
-      promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
-      Return promedioPositivos
+      Try
+         promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
+      Catch ex As Exception
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos.")
+      End Try
+      Return (promedioPositivos)
    End Function
 
    'Funcion que calcula el valor de los promedios negativos
    Public Function calculaPromedioNegativos(ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer _
                                            , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer) As Decimal
       Dim promedioNegativos As Decimal
-      promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
-      Return promedioNegativos
+      Try
+         promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
+      Catch ex As Exception
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos.")
+      End Try
+      Return (promedioNegativos)
    End Function
 
    'Funcion que calcula el valor de los promedios positivos leidos desde archivo
    Public Function calculaPromedioPositivosDA(ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal) As Decimal
       Dim promedioPositivos As Decimal
-      promedioPositivos = reduceDecimal(((cp1 + cp2 + cp3) / 3))
-      Return promedioPositivos
+      Try
+         promedioPositivos = reduceDecimal(((cp1 + cp2 + cp3) / 3))
+      Catch ex As Exception
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos desde archivi.")
+      End Try
+      Return (promedioPositivos)
    End Function
 
    'Funcion que calcula el valor de los promedios negativos leidos desde archivo
    Public Function calculaPromedioNegativosDA(ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal) As Decimal
       Dim promedioNegativos As Decimal
-      promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
-      Return promedioNegativos
+      Try
+         promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
+
+      Catch ex As Exception
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos.")
+      End Try
+      Return (promedioNegativos)
+   End Function
+
+   'Calcula la diferencia de controles positivos y negativos
+   Public Function calculaDiferenciaSPS(ByVal promCP As Decimal, ByVal promCN As Decimal) As Decimal
+      Dim difCPS As Decimal
+      Try
+         difCPS = reduceDecimal(CDec(promCP - promCN))
+      Catch
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el valor del la diferencia de controles.")
+      End Try
+      Return (difCPS)
    End Function
 
    'Funcion que calcula los resultados del analisis, recibe el nombre del analisis,el titulo de eje x-y, desdeArchivo =1 indica lectura desde archivo
@@ -1282,7 +940,7 @@ Module mdlOperaciones
       '-----------------------------------------
 
       'Calculo la sumatoria de la frecuencia de clase fi
-      rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
+      rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + +rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
 
       'Asigno al arreglo los datos que son frecuencia de clase
       rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
@@ -1321,16 +979,16 @@ Module mdlOperaciones
                         Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                         Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
       'CARGAR LA TABLA DE FREC REL
-      cargaFrecRelBD(frecuenciaRelativa, numcaso)
+      cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos)
       creaChartFrecRel(nombre, titulox, tituloy, numcaso)
 
       'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos
 
-      frmSalidaDatos.lblNombreEnfermedad.Text = nombre
-      frmSalidaDatos.lblNombreCliente.Text = nombreCliente
-      frmSalidaDatos.lblNoCaso.Text = numcaso
+      frmSalidaDatos.txtNombreEnfermedad.Text = nombre
+      frmSalidaDatos.txtNombreCliente.Text = nombreCliente
+      frmSalidaDatos.txtNoCaso.Text = numcaso
       frmSalidaDatos.lblObservaciones.Text = observaciones
-      frmSalidaDatos.lblFechaElaboracion.Text = fechaElaboracion
+      frmSalidaDatos.txtFechaElaboracion.Text = fechaElaboracion
       frmSalidaDatos.txtCalculoTitulos1.Text = presenta1
 
       frmSalidaDatos.txtMediaAritmetica2.Text = CStr(Convert.ToDouble(mediaAritmetica))

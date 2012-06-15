@@ -142,6 +142,9 @@
     <Compile Include="frmSalidaDatos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="mdlPuertoSerie.vb" />
+    <Compile Include="mdlValidaDatos.vb" />
+    <Compile Include="mdlVariosCasos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -161,6 +164,12 @@
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAcercaDe.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRUEBA.Designer.vb">
+      <DependentUpon>PRUEBA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PRUEBA.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -194,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PRUEBA.resx">
+      <DependentUpon>PRUEBA.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

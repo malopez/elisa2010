@@ -185,7 +185,7 @@ Partial Class frmMultipleCaso
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
-      Me.Label41 = New System.Windows.Forms.Label()
+      Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
@@ -1983,15 +1983,15 @@ Partial Class frmMultipleCaso
       Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatos.UseVisualStyleBackColor = True
       '
-      'Label41
+      'lblNombreLector
       '
-      Me.Label41.AutoSize = True
-      Me.Label41.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Label41.Location = New System.Drawing.Point(726, 294)
-      Me.Label41.Name = "Label41"
-      Me.Label41.Size = New System.Drawing.Size(97, 13)
-      Me.Label41.TabIndex = 96
-      Me.Label41.Text = "Nombre del Lector:"
+      Me.lblNombreLector.AutoSize = True
+      Me.lblNombreLector.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblNombreLector.Location = New System.Drawing.Point(721, 297)
+      Me.lblNombreLector.Name = "lblNombreLector"
+      Me.lblNombreLector.Size = New System.Drawing.Size(97, 13)
+      Me.lblNombreLector.TabIndex = 96
+      Me.lblNombreLector.Text = "Nombre del Lector:"
       '
       'ckbControlesDefault
       '
@@ -2060,7 +2060,7 @@ Partial Class frmMultipleCaso
       Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.txtDatosRecibidos)
       Me.Controls.Add(Me.ckbControlesDefault)
-      Me.Controls.Add(Me.Label41)
+      Me.Controls.Add(Me.lblNombreLector)
       Me.Controls.Add(Me.btnGuardaDatos)
       Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.cmbComboPorts)
@@ -2223,7 +2223,7 @@ Partial Class frmMultipleCaso
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
-   Friend WithEvents Label41 As System.Windows.Forms.Label
+   Friend WithEvents lblNombreLector As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents txtDesdeLetra1C2 As System.Windows.Forms.TextBox

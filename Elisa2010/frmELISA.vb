@@ -103,4 +103,8 @@
       frmMultipleCaso.MdiParent = Me
       frmMultipleCaso.Show()
    End Sub
+
+   Private Sub PRUEBAToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PRUEBAToolStripMenuItem.Click
+      frmAbrirDesdeArchivo.Show()
+   End Sub
 End Class

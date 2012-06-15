@@ -345,8 +345,7 @@ Public Class frmRegistraNuevoAnalisis
       'mensajeException(Me.lblMensajeCaso, ex)
       ' End Try
       Try
-         Dim nombreArchivo As String
-         nombreArchivo = formateaDatos(placaLector)
+         formateaDatos(placaLector, Me.dgvPlacaLeida)
          btnDefinirControlesPN.Enabled = True
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, "Se ha presentado un error al formatear datos.")

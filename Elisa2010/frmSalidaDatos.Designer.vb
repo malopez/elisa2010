@@ -37,20 +37,21 @@ Partial Class frmSalidaDatos
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
       Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
-      Me.lblNombreEnfermedad = New System.Windows.Forms.Label()
       Me.lblSalidaDatos = New System.Windows.Forms.Label()
-      Me.lblNoCaso = New System.Windows.Forms.Label()
-      Me.lblNombreCliente = New System.Windows.Forms.Label()
       Me.lblELISA = New System.Windows.Forms.Label()
       Me.txtCalculoTitulos1 = New System.Windows.Forms.TextBox()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
       Me.Label2 = New System.Windows.Forms.Label()
-      Me.lblFechaElaboracion = New System.Windows.Forms.Label()
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.Label3 = New System.Windows.Forms.Label()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
+      Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
+      Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
+      Me.txtNombreCliente = New System.Windows.Forms.TextBox()
+      Me.txtNoCaso = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
@@ -71,11 +72,11 @@ Partial Class frmSalidaDatos
       'lblMediaGeometrica
       '
       Me.lblMediaGeometrica.AutoSize = True
-      Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaGeometrica.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblMediaGeometrica.Location = New System.Drawing.Point(362, 370)
       Me.lblMediaGeometrica.Name = "lblMediaGeometrica"
-      Me.lblMediaGeometrica.Size = New System.Drawing.Size(112, 16)
+      Me.lblMediaGeometrica.Size = New System.Drawing.Size(107, 15)
       Me.lblMediaGeometrica.TabIndex = 5
       Me.lblMediaGeometrica.Text = "Media Geometrica"
       '
@@ -93,22 +94,22 @@ Partial Class frmSalidaDatos
       'lblTotalDatosCalculados
       '
       Me.lblTotalDatosCalculados.AutoSize = True
-      Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(361, 63)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
-      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(86, 16)
+      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(82, 15)
       Me.lblTotalDatosCalculados.TabIndex = 12
       Me.lblTotalDatosCalculados.Text = "Total de Datos"
       '
       'lblMediaPromedio
       '
       Me.lblMediaPromedio.AutoSize = True
-      Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaPromedio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblMediaPromedio.Location = New System.Drawing.Point(217, 370)
       Me.lblMediaPromedio.Name = "lblMediaPromedio"
-      Me.lblMediaPromedio.Size = New System.Drawing.Size(101, 16)
+      Me.lblMediaPromedio.Size = New System.Drawing.Size(98, 15)
       Me.lblMediaPromedio.TabIndex = 14
       Me.lblMediaPromedio.Text = "Media Aritmética"
       '
@@ -126,22 +127,22 @@ Partial Class frmSalidaDatos
       'lbDesviacionEstandarDNA
       '
       Me.lbDesviacionEstandarDNA.AutoSize = True
-      Me.lbDesviacionEstandarDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lbDesviacionEstandarDNA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lbDesviacionEstandarDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lbDesviacionEstandarDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lbDesviacionEstandarDNA.Location = New System.Drawing.Point(208, 467)
       Me.lbDesviacionEstandarDNA.Name = "lbDesviacionEstandarDNA"
-      Me.lbDesviacionEstandarDNA.Size = New System.Drawing.Size(119, 16)
+      Me.lbDesviacionEstandarDNA.Size = New System.Drawing.Size(116, 15)
       Me.lbDesviacionEstandarDNA.TabIndex = 22
       Me.lbDesviacionEstandarDNA.Text = "Desviacion Estandar"
       '
       'lblVarianzaDNA
       '
       Me.lblVarianzaDNA.AutoSize = True
-      Me.lblVarianzaDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblVarianzaDNA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblVarianzaDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblVarianzaDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblVarianzaDNA.Location = New System.Drawing.Point(389, 467)
       Me.lblVarianzaDNA.Name = "lblVarianzaDNA"
-      Me.lblVarianzaDNA.Size = New System.Drawing.Size(56, 16)
+      Me.lblVarianzaDNA.Size = New System.Drawing.Size(55, 15)
       Me.lblVarianzaDNA.TabIndex = 21
       Me.lblVarianzaDNA.Text = "Varianza"
       '
@@ -170,11 +171,11 @@ Partial Class frmSalidaDatos
       'lblCoefVariacionDNA
       '
       Me.lblCoefVariacionDNA.AutoSize = True
-      Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblCoefVariacionDNA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblCoefVariacionDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(202, 63)
       Me.lblCoefVariacionDNA.Name = "lblCoefVariacionDNA"
-      Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(109, 16)
+      Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(108, 15)
       Me.lblCoefVariacionDNA.TabIndex = 18
       Me.lblCoefVariacionDNA.Text = "Coef. de Variacion"
       '
@@ -205,16 +206,6 @@ Partial Class frmSalidaDatos
       Me.HScrollBar1.Size = New System.Drawing.Size(999, 11)
       Me.HScrollBar1.TabIndex = 42
       '
-      'lblNombreEnfermedad
-      '
-      Me.lblNombreEnfermedad.AutoSize = True
-      Me.lblNombreEnfermedad.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNombreEnfermedad.Location = New System.Drawing.Point(245, 62)
-      Me.lblNombreEnfermedad.Name = "lblNombreEnfermedad"
-      Me.lblNombreEnfermedad.Size = New System.Drawing.Size(79, 17)
-      Me.lblNombreEnfermedad.TabIndex = 43
-      Me.lblNombreEnfermedad.Text = "ENFEMEDAD"
-      '
       'lblSalidaDatos
       '
       Me.lblSalidaDatos.AutoSize = True
@@ -225,39 +216,20 @@ Partial Class frmSalidaDatos
       Me.lblSalidaDatos.TabIndex = 45
       Me.lblSalidaDatos.Text = "Mensaje:"
       '
-      'lblNoCaso
-      '
-      Me.lblNoCaso.AutoSize = True
-      Me.lblNoCaso.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNoCaso.Location = New System.Drawing.Point(89, 14)
-      Me.lblNoCaso.Name = "lblNoCaso"
-      Me.lblNoCaso.Size = New System.Drawing.Size(63, 17)
-      Me.lblNoCaso.TabIndex = 46
-      Me.lblNoCaso.Text = "No CASO"
-      '
-      'lblNombreCliente
-      '
-      Me.lblNombreCliente.AutoSize = True
-      Me.lblNombreCliente.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNombreCliente.Location = New System.Drawing.Point(89, 37)
-      Me.lblNombreCliente.Name = "lblNombreCliente"
-      Me.lblNombreCliente.Size = New System.Drawing.Size(126, 17)
-      Me.lblNombreCliente.TabIndex = 47
-      Me.lblNombreCliente.Text = "Nombre del  cliente"
-      '
       'lblELISA
       '
       Me.lblELISA.AutoSize = True
       Me.lblELISA.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblELISA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblELISA.Location = New System.Drawing.Point(22, 62)
+      Me.lblELISA.Location = New System.Drawing.Point(22, 68)
       Me.lblELISA.Name = "lblELISA"
-      Me.lblELISA.Size = New System.Drawing.Size(219, 16)
+      Me.lblELISA.Size = New System.Drawing.Size(44, 16)
       Me.lblELISA.TabIndex = 48
-      Me.lblELISA.Text = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+      Me.lblELISA.Text = "ELISA: "
       '
       'txtCalculoTitulos1
       '
+      Me.txtCalculoTitulos1.BackColor = System.Drawing.Color.White
       Me.txtCalculoTitulos1.ForeColor = System.Drawing.Color.MidnightBlue
       Me.txtCalculoTitulos1.Location = New System.Drawing.Point(25, 11)
       Me.txtCalculoTitulos1.Multiline = True
@@ -272,7 +244,7 @@ Partial Class frmSalidaDatos
       '
       Me.lblObservaciones.AutoSize = True
       Me.lblObservaciones.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblObservaciones.Location = New System.Drawing.Point(346, 62)
+      Me.lblObservaciones.Location = New System.Drawing.Point(440, 70)
       Me.lblObservaciones.Name = "lblObservaciones"
       Me.lblObservaciones.Size = New System.Drawing.Size(101, 17)
       Me.lblObservaciones.TabIndex = 51
@@ -295,21 +267,11 @@ Partial Class frmSalidaDatos
       Me.Label2.AutoSize = True
       Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.Label2.Location = New System.Drawing.Point(22, 37)
+      Me.Label2.Location = New System.Drawing.Point(22, 41)
       Me.Label2.Name = "Label2"
       Me.Label2.Size = New System.Drawing.Size(52, 16)
       Me.Label2.TabIndex = 53
       Me.Label2.Text = "Cliente:"
-      '
-      'lblFechaElaboracion
-      '
-      Me.lblFechaElaboracion.AutoSize = True
-      Me.lblFechaElaboracion.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblFechaElaboracion.Location = New System.Drawing.Point(478, 14)
-      Me.lblFechaElaboracion.Name = "lblFechaElaboracion"
-      Me.lblFechaElaboracion.Size = New System.Drawing.Size(74, 17)
-      Me.lblFechaElaboracion.TabIndex = 54
-      Me.lblFechaElaboracion.Text = "04/05/2012"
       '
       'btnCancelar
       '
@@ -325,7 +287,7 @@ Partial Class frmSalidaDatos
       Me.Label3.AutoSize = True
       Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.Label3.Location = New System.Drawing.Point(359, 14)
+      Me.Label3.Location = New System.Drawing.Point(334, 14)
       Me.Label3.Name = "Label3"
       Me.Label3.Size = New System.Drawing.Size(113, 16)
       Me.Label3.TabIndex = 56
@@ -344,19 +306,61 @@ Partial Class frmSalidaDatos
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
+      Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
+      Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
+      Me.Panel2.Controls.Add(Me.txtNombreCliente)
+      Me.Panel2.Controls.Add(Me.txtNoCaso)
       Me.Panel2.Controls.Add(Me.Label3)
       Me.Panel2.Controls.Add(Me.Label2)
       Me.Panel2.Controls.Add(Me.lblELISA)
-      Me.Panel2.Controls.Add(Me.lblFechaElaboracion)
       Me.Panel2.Controls.Add(Me.Label1)
       Me.Panel2.Controls.Add(Me.lblObservaciones)
-      Me.Panel2.Controls.Add(Me.lblNombreCliente)
-      Me.Panel2.Controls.Add(Me.lblNoCaso)
-      Me.Panel2.Controls.Add(Me.lblNombreEnfermedad)
       Me.Panel2.Location = New System.Drawing.Point(9, 10)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 58
+      '
+      'txtInmunoEnsayo
+      '
+      Me.txtInmunoEnsayo.Location = New System.Drawing.Point(92, 67)
+      Me.txtInmunoEnsayo.Name = "txtInmunoEnsayo"
+      Me.txtInmunoEnsayo.ReadOnly = True
+      Me.txtInmunoEnsayo.Size = New System.Drawing.Size(167, 20)
+      Me.txtInmunoEnsayo.TabIndex = 61
+      Me.txtInmunoEnsayo.Text = "INMUNOENSAYO ENZIMATICO"
+      '
+      'txtFechaElaboracion
+      '
+      Me.txtFechaElaboracion.Location = New System.Drawing.Point(448, 13)
+      Me.txtFechaElaboracion.Name = "txtFechaElaboracion"
+      Me.txtFechaElaboracion.ReadOnly = True
+      Me.txtFechaElaboracion.Size = New System.Drawing.Size(93, 20)
+      Me.txtFechaElaboracion.TabIndex = 60
+      '
+      'txtNombreEnfermedad
+      '
+      Me.txtNombreEnfermedad.Location = New System.Drawing.Point(264, 67)
+      Me.txtNombreEnfermedad.Name = "txtNombreEnfermedad"
+      Me.txtNombreEnfermedad.ReadOnly = True
+      Me.txtNombreEnfermedad.Size = New System.Drawing.Size(157, 20)
+      Me.txtNombreEnfermedad.TabIndex = 59
+      '
+      'txtNombreCliente
+      '
+      Me.txtNombreCliente.Location = New System.Drawing.Point(92, 41)
+      Me.txtNombreCliente.Name = "txtNombreCliente"
+      Me.txtNombreCliente.ReadOnly = True
+      Me.txtNombreCliente.Size = New System.Drawing.Size(449, 20)
+      Me.txtNombreCliente.TabIndex = 58
+      '
+      'txtNoCaso
+      '
+      Me.txtNoCaso.Location = New System.Drawing.Point(92, 13)
+      Me.txtNoCaso.Name = "txtNoCaso"
+      Me.txtNoCaso.ReadOnly = True
+      Me.txtNoCaso.Size = New System.Drawing.Size(138, 20)
+      Me.txtNoCaso.TabIndex = 57
       '
       'Panel3
       '
@@ -419,19 +423,20 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtCoefVariacion2 As System.Windows.Forms.TextBox
    Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
    Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
-   Friend WithEvents lblNombreEnfermedad As System.Windows.Forms.Label
    Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
-   Friend WithEvents lblNoCaso As System.Windows.Forms.Label
-   Friend WithEvents lblNombreCliente As System.Windows.Forms.Label
    Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents txtCalculoTitulos1 As System.Windows.Forms.TextBox
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label
-   Friend WithEvents lblFechaElaboracion As System.Windows.Forms.Label
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents Label3 As System.Windows.Forms.Label
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+   Friend WithEvents txtFechaElaboracion As System.Windows.Forms.TextBox
+   Friend WithEvents txtNombreEnfermedad As System.Windows.Forms.TextBox
+   Friend WithEvents txtNombreCliente As System.Windows.Forms.TextBox
+   Friend WithEvents txtNoCaso As System.Windows.Forms.TextBox
+   Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
 End Class

@@ -1070,7 +1070,7 @@ Public Class frmMultipleCaso
       Try
          If Me.btnLeerDatosPlaca.Text = "Leer Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
-            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeCaso)
+            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeCaso, Me.lblNombreLector)
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
@@ -1093,8 +1093,7 @@ Public Class frmMultipleCaso
          mensajeRojo(Me.lblMensajeCaso, " Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
-         Dim nombreArchivo As String
-         nombreArchivo = formateaDatos(placaLector)
+         formateaDatos(placaLector, Me.dgvPlacaLeida)
          btnDefinirControlesPN.Enabled = True
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, " Se ha presentado un error al formatear datos.")

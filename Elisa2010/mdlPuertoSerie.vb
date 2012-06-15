@@ -1,0 +1,166 @@
+﻿Imports System.IO
+Imports MySql.Data.MySqlClient
+
+Module mdlPuertoSerie
+   '#####################################
+   '# SECCION CONTROLES DEL PUERTO SERIE#
+   '#####################################
+   'Obtiene de la BD los datos del lector que se utilizarán para el puerto serie
+   Public Sub datosLector(ByRef nomLector As String, ByRef bpsLector As Integer, ByRef paridadLector As Integer, _
+                          ByRef bitsLector As Integer, ByRef stopBitsLector As Integer)
+      Try
+         Dim oConexion As MySqlConnection
+         Dim aConsulta As String = ""
+         Dim oComando As New MySqlCommand
+         Dim oDataReader As MySqlDataReader
+         oConexion = New MySqlConnection
+         oConexion.ConnectionString = cadenaConexion
+         aConsulta = "SELECT * FROM tbllector WHERE lectorDefault=1;"
+         oComando.Connection = oConexion
+         oComando.CommandText = aConsulta
+         oConexion.Open()
+         oDataReader = oComando.ExecuteReader()
+         If oDataReader.HasRows Then
+            While oDataReader.Read()
+               nomLector = oDataReader("nomLector")
+               bpsLector = oDataReader("bpsLector")
+               paridadLector = oDataReader("paridadLector")
+               bitsLector = oDataReader("bitsLector")
+               stopBitsLector = oDataReader("stopBitsLector")
+            End While
+            oDataReader.Close()
+            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = ""
+         Else
+            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "Mensaje: No se ha encontrado un lector default.")
+         End If
+         oConexion.Close()
+      Catch ex As MySqlException
+         mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+      Catch ex As DataException
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+      Catch ex As Exception
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+      End Try
+
+   End Sub
+   'configura el puerto serial
+   Public Sub Setup_Puerto_Serie()
+      Dim nomLector As String = ""
+      Dim bpsLector As Integer
+      Dim paridadLector As Integer
+      Dim bitsLector As Integer
+      Dim stopBitsLector As Integer
+      Try
+         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
+         With frmRegistraNuevoAnalisis.SerialPort1
+            'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
+            If .IsOpen Then
+               .Close()
+            End If
+            .PortName = frmRegistraNuevoAnalisis.cmbComboPorts.Text
+            .BaudRate = bpsLector
+            .DataBits = bitsLector
+            .StopBits = stopBitsLector
+            .Parity = paridadLector
+            .DtrEnable = False
+            .Handshake = IO.Ports.Handshake.None
+            .ReadBufferSize = 2048
+            .WriteBufferSize = 1024
+            '.ReceivedBytesThreshold = 1
+            .WriteTimeout = 500
+            .Encoding = System.Text.Encoding.Default
+            .Open() ' ABRE EL PUERTO SERIE
+         End With
+      Catch ex As Exception
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: Al abrir el puerto serial con los datos configurados.")
+      End Try
+   End Sub
+
+   'configura el puerto serial utilizando parametros para el despliegue
+   Public Sub Setup_Puerto_SerieParametros(ByVal puerto As System.IO.Ports.SerialPort, ByRef comboPuerto As System.Windows.Forms.ComboBox, _
+                                           ByRef etiqueta As System.Windows.Forms.Label, ByRef nombreLector As System.Windows.Forms.Label)
+      Dim nomLector As String = ""
+      Dim bpsLector As Integer
+      Dim paridadLector As Integer
+      Dim bitsLector As Integer
+      Dim stopBitsLector As Integer
+      Try
+         datosLector(nomLector, bpsLector, paridadLector, bitsLector, stopBitsLector)
+         nombreLector.Text = nomLector
+         With puerto
+            'Valida si el puerto se encuentra abierto, lo cierra antes de comenzar a capturar datos
+            If .IsOpen Then
+               .Close()
+            End If
+            .PortName = comboPuerto.Text
+            .BaudRate = bpsLector
+            .DataBits = bitsLector
+            .StopBits = stopBitsLector
+            .Parity = paridadLector
+            .DtrEnable = False
+            .Handshake = IO.Ports.Handshake.None
+            .ReadBufferSize = 2048
+            .WriteBufferSize = 1024
+            '.ReceivedBytesThreshold = 1
+            .WriteTimeout = 500
+            .Encoding = System.Text.Encoding.Default
+            .Open() ' ABRE EL PUERTO SERIE
+         End With
+      Catch ex As Exception
+         mensajeRojo(etiqueta, "ERROR: Al abrir el puerto serial con los datos configurados.")
+      End Try
+   End Sub
+
+
+   'Obtiene los puertos seriales disponibles
+   Public Sub GetSerialPortNames()
+      ' muestra COM ports disponibles.
+      Dim l As Integer
+      Dim ncom As String
+      Try
+         frmRegistraNuevoAnalisis.cmbComboPorts.Items.Clear()
+         For Each sp As String In My.Computer.Ports.SerialPortNames
+            l = sp.Length
+            If ((sp(l - 1) >= "0") And (sp(l - 1) <= "9")) Then
+               frmRegistraNuevoAnalisis.cmbComboPorts.Items.Add(sp)
+            Else
+               ncom = sp.Substring(0, l - 1)
+               frmRegistraNuevoAnalisis.cmbComboPorts.Items.Add(ncom)
+            End If
+         Next
+         If frmRegistraNuevoAnalisis.cmbComboPorts.Items.Count >= 1 Then
+            frmRegistraNuevoAnalisis.cmbComboPorts.Text = CStr(frmRegistraNuevoAnalisis.cmbComboPorts.Items(0))
+         Else
+            frmRegistraNuevoAnalisis.cmbComboPorts.Text = ""
+         End If
+      Catch ex As Exception
+         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+      End Try
+   End Sub
+
+   'Obtiene los puertos seriales disponibles utilizando parametros para colocar el valor en la Forma indicada
+   Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As System.Windows.Forms.Label)
+      ' muestra COM ports disponibles.
+      Dim l As Integer
+      Dim ncom As String
+      Try
+         comboPuerto.Items.Clear()
+         For Each sp As String In My.Computer.Ports.SerialPortNames
+            l = sp.Length
+            If ((sp(l - 1) >= "0") And (sp(l - 1) <= "9")) Then
+               comboPuerto.Items.Add(sp)
+            Else
+               ncom = sp.Substring(0, l - 1)
+               comboPuerto.Items.Add(ncom)
+            End If
+         Next
+         If comboPuerto.Items.Count >= 1 Then
+            comboPuerto.Text = CStr(comboPuerto.Items(0))
+         Else
+            comboPuerto.Text = ""
+         End If
+      Catch ex As Exception
+         mensajeException(etiqueta, ex)
+      End Try
+   End Sub
+End Module
