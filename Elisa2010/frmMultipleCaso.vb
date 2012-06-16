@@ -15,7 +15,6 @@ Public Class frmMultipleCaso
       Catch ex As Exception
          mensajeException(lblMensajeCaso, ex)
       End Try
-
    End Sub
 
    Private Sub habilitaTabsCorrectos(ByRef noCasos As String)
@@ -123,39 +122,76 @@ Public Class frmMultipleCaso
       End Select
    End Sub
 
+   Private Sub coloreaControles(ByVal nocp As Integer)
+      Select Case nocp
+         Case 2
+            'Rellena el fondo del datagridview de color verde para los controles positivos
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
+            'Rellena el fondo del datagridview de color rojo para los controles negativos
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
+         Case 3
+            'Rellena el fondo del datagridview de color verde para los controles positivos
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), Val(txtCP3Valor3.Text + 1))
+            'Rellena el fondo del datagridview de color rojo para los controles negativos
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), Val(txtCN3Valor3.Text) + 1)
+      End Select
+   End Sub
+
    Private Sub btnAceptarControles_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarControles.Click
       grbControlesNegativos.Enabled = False
       grbControlesPositivos.Enabled = False
       btnDefinirControlesPN.Enabled = False
-      If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
-         controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
-         controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
-         controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
-         controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 0, 11) AndAlso _
-         controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
-         controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
-         controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
-         controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
-         controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
-         controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
-         'Rellena el fondo del datagridview de color verde para los controles positivos
-         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
-         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
-         coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), Val(txtCP3Valor3.Text + 1))
-         'Rellena el fondo del datagridview de color rojo para los controles negativos
-         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
-         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
-         coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), Val(txtCN3Valor3.Text) + 1)
-         btnAceptarControles.Enabled = False
-         btnDefinirControlesPN.Enabled = False
-         ckbControlesDefault.Enabled = False
-         tbcDatosDelCaso.Enabled = True
-         habilitaTabsCorrectos(txtNoDeCasos.Text)
-      Else
-         mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
-         btnDefinirControlesPN.Enabled = True
-         btnAceptarControles.Enabled = True
-      End If
+      Dim nocp As Integer = Val(txtNoControles.Text)
+      Select Case nocp
+         Case 2
+            MessageBox.Show("ENTRE AL CASE 2")
+            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
+              controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
+              controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
+              controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
+              controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
+              controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
+              controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) Then
+               btnAceptarControles.Enabled = False
+               btnDefinirControlesPN.Enabled = False
+               ckbControlesDefault.Enabled = False
+               tbcDatosDelCaso.Enabled = True
+               habilitaTabsCorrectos(txtNoDeCasos.Text)
+            Else
+               mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
+               btnDefinirControlesPN.Enabled = True
+               btnAceptarControles.Enabled = True
+            End If
+         Case 3
+            MessageBox.Show("ENTRE AL CASE 3")
+            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
+               controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
+               controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
+               controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
+               controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 0, 11) AndAlso _
+               controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
+               controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
+               controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
+               controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
+               controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
+               controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+               btnAceptarControles.Enabled = False
+               btnDefinirControlesPN.Enabled = False
+               ckbControlesDefault.Enabled = False
+               tbcDatosDelCaso.Enabled = True
+               habilitaTabsCorrectos(txtNoDeCasos.Text)
+            Else
+               mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
+               btnDefinirControlesPN.Enabled = True
+               btnAceptarControles.Enabled = True
+            End If
+      End Select
    End Sub
 
    Private Sub cmbNombreEnfermedad_Click(sender As Object, e As System.EventArgs) Handles cmbNombreEnfermedad.Click
@@ -473,10 +509,63 @@ Public Class frmMultipleCaso
       End Try
    End Sub
 
+   Private Sub defineValoresPN(ByVal nocp As Integer)
+      Select Case nocp
+         Case 2
+            'Hace visible las etiquetas para dos controles positivos y negativos
+            lblCPNo1.Visible = True
+            lblCPNo2.Visible = True
+            lblCPNo3.Visible = False
+            lblCNNo1.Visible = True
+            lblCNNo2.Visible = True
+            lblCNNo3.Visible = False
+            'Hace visible controles positivos para dos controles
+            txtCP1Letra1.Visible = True
+            txtCP1Valor1.Visible = True
+            txtCP2Letra2.Visible = True
+            txtCP2Valor2.Visible = True
+            txtCP3Letra3.Visible = False
+            txtCP3Valor3.Visible = False
+            'Hace visible controles negativos para dos controles
+            txtCN1Letra1.Visible = True
+            txtCN1Valor1.Visible = True
+            txtCN2Letra2.Visible = True
+            txtCN2Valor2.Visible = True
+            txtCN3Letra3.Visible = False
+            txtCN3Valor3.Visible = False
+         Case 3
+            'Hace visible las etiquetas para dos controles positivos y negativos
+            lblCPNo1.Visible = True
+            lblCPNo2.Visible = True
+            lblCPNo3.Visible = True
+            lblCNNo1.Visible = True
+            lblCNNo2.Visible = True
+            lblCNNo3.Visible = True
+            'Hace visible controles positivos para dos controles
+            txtCP1Letra1.Visible = True
+            txtCP1Valor1.Visible = True
+            txtCP2Letra2.Visible = True
+            txtCP2Valor2.Visible = True
+            txtCP3Letra3.Visible = True
+            txtCP3Valor3.Visible = True
+            'Hace visible controles negativos para dos controles
+            txtCN1Letra1.Visible = True
+            txtCN1Valor1.Visible = True
+            txtCN2Letra2.Visible = True
+            txtCN2Valor2.Visible = True
+            txtCN3Letra3.Visible = True
+            txtCN3Valor3.Visible = True
+      End Select
+   End Sub
+
+
+
    Private Sub btnAceptarEnfermedad_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarEnfermedad.Click
+      Dim nocp As Integer = Val(txtNoControles.Text)
       Try
          cmbNombreEnfermedad.Enabled = False
          txtNoDeCasos.Enabled = False
+         defineValoresPN(nocp)
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
          Dim oDataReader As MySqlDataReader
@@ -1009,11 +1098,11 @@ Public Class frmMultipleCaso
    ' PARA VALIDAR EL CASO No. 1 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C1.TextChanged
       'Valor positivo uno, letra y numero
-      controlesValidosLetra(txtDesdeLetra1C1, "1er. caso", "A", "H") 
+      controlesValidosLetra(txtDesdeLetra1C1, "1er. caso", "A", "H")
    End Sub
 
    Private Sub txtDesdeValor1C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C1.TextChanged
-      controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 0, 11) 
+      controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 0, 11)
    End Sub
 
    Private Sub txtHastaLetra2C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C1.TextChanged
@@ -1032,16 +1121,16 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C2.TextChanged
-      controlesValidosNumero(txtDesdeValor1C2, " Número primer control negativo ", 0, 11) 
+      controlesValidosNumero(txtDesdeValor1C2, " Número primer control negativo ", 0, 11)
    End Sub
 
    Private Sub txtHastaLetra2C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C2.TextChanged
       'Valor positivo uno, letra y numero
-      controlesValidosLetra(txtHastaLetra2C2, " Letra primer control positivo ", "A", "H") 
+      controlesValidosLetra(txtHastaLetra2C2, " Letra primer control positivo ", "A", "H")
    End Sub
 
    Private Sub txtHastaValor2C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C2.TextChanged
-      controlesValidosNumero(txtHastaValor2C2, " Número primer control negativo ", 0, 11) 
+      controlesValidosNumero(txtHastaValor2C2, " Número primer control negativo ", 0, 11)
    End Sub
 
    ' PARA VALIDAR EL CASO No. 3 EL CUADRITO DE TEXTO DESDE-HASTA
@@ -1051,31 +1140,31 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C3.TextChanged
-      controlesValidosNumero(txtDesdeValor1C3, " Número primer control negativo ", 0, 11) 
+      controlesValidosNumero(txtDesdeValor1C3, " Número primer control negativo ", 0, 11)
    End Sub
 
    Private Sub txtHastaLetra2C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C3.TextChanged
       'Valor positivo uno, letra y numero
-      controlesValidosLetra(txtHastaLetra2C3, " Letra primer control positivo ", "A", "H") 
+      controlesValidosLetra(txtHastaLetra2C3, " Letra primer control positivo ", "A", "H")
    End Sub
 
    Private Sub txtHastaValor2C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C3.TextChanged
-      controlesValidosNumero(txtHastaValor2C3, " Número primer control negativo ", 0, 11) 
+      controlesValidosNumero(txtHastaValor2C3, " Número primer control negativo ", 0, 11)
    End Sub
 
    ' PARA VALIDAR EL CASO No.4 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C4.TextChanged
       'Valor positivo uno, letra y numero
-     controlesValidosLetra(txtDesdeLetra1C4, " Letra primer control positivo ", "A", "H")
+      controlesValidosLetra(txtDesdeLetra1C4, " Letra primer control positivo ", "A", "H")
    End Sub
 
    Private Sub txtDesdeValor1C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C4.TextChanged
-      controlesValidosNumero(txtDesdeValor1C4, " Número primer control negativo ", 0, 11) 
+      controlesValidosNumero(txtDesdeValor1C4, " Número primer control negativo ", 0, 11)
    End Sub
 
    Private Sub txtHastaLetra2C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C4.TextChanged
       'Valor positivo uno, letra y numero
-      controlesValidosLetra(txtHastaLetra2C4, " Letra primer control positivo ", "A", "H") 
+      controlesValidosLetra(txtHastaLetra2C4, " Letra primer control positivo ", "A", "H")
    End Sub
 
    Private Sub txtHastaValor2C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C4.TextChanged
@@ -1101,6 +1190,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub btnFormateaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnFormateaDatos.Click
+      Dim nocp As Integer = Val(txtNoControles.Text)
       btnLeerDatosPlaca.Enabled = False
       btnFormateaDatos.Enabled = False
       Try
@@ -1114,6 +1204,7 @@ Public Class frmMultipleCaso
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, " Se ha presentado un error al formatear datos.")
       End Try
+      coloreaControles(nocp)
    End Sub
 
    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
@@ -1145,6 +1236,7 @@ Public Class frmMultipleCaso
       Dim cpy1, cpy2, cpy3, cny1, cny2, cny3 As Integer
       btnAceptarControles.Enabled = False
       btnDefinirControlesPN.Enabled = False
+      Dim nocp As Integer = Val(txtNoControles.Text)
       Try
          cpx1 = siValorEsLetra(txtCP1Letra1)
          cpy1 = Val(txtCP1Valor1.Text)
@@ -1188,7 +1280,6 @@ Public Class frmMultipleCaso
       Dim fecha = DateTime.Now
 
       Try
-         
          botonesEstatus(False)
          Me.btnObtenerResultados.Enabled = False
          'Obtener el nombre del análisis para colocar la cabecera de la gráfica
@@ -1199,14 +1290,14 @@ Public Class frmMultipleCaso
          'Obtiene el numero de caso para ese análisis
          Dim cadena1 As String
          Dim tabla1() As String
-         cadena1 = cmbNoCaso.Text
+         cadena1 = cmbNoCaso1.Text
          tabla1 = Split(cadena1, " | ")
          Dim numcaso As String = tabla1(0)
          Dim nombre As String = tabla(1)
-         Dim nombreCliente As String = txtNombreCliente.Text
+         Dim nombreCliente As String = txtNombreClienteC1.Text
 
          Try
-            calculaValoresEnRango(placaLector, desdeArchivo, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
+            calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0, _
                                   desdex, hastax, desdey, hastay, promCP, promCN, difCPS)
@@ -1289,7 +1380,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
-                                        nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                        nombre, nombreCliente, numcaso, lblObservacionesC1.Text, fecha.ToShortDateString(), titulosObtenidos, _
                                         mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
             MessageBox.Show("ERROR AL MOSTRAR RESULTADOS EN PANTALLA.")
@@ -1300,4 +1391,13 @@ Public Class frmMultipleCaso
       End Try
 
    End Sub
+
+   Private Sub txtNoControles_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtNoControles.TextChanged
+      Try
+         controlesValidosNumero(txtNoControles, " En número de controles + y - ", 2, 3)
+      Catch ex As Exception
+         mensajeException(lblMensajeCaso, ex)
+      End Try
+   End Sub
+
 End Class

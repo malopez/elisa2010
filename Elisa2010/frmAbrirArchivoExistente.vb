@@ -36,7 +36,7 @@ Public Class frmAbrirArchivoExistente
       Dim promCN As Decimal = 0
       Dim difCPS As Decimal = 0
       Dim fecha = DateTime.Now
-
+      Dim nocp As Integer = 3
       Try
          cp1 = CDec(Me.txtCPDAValor1.Text)
          cp2 = CDec(Me.txtCPDAValor2.Text)
@@ -61,7 +61,7 @@ Public Class frmAbrirArchivoExistente
          Dim nombreCliente As String = txtNombreCliente.Text
          Dim observaciones As String = lblObservaciones.Text
          Try
-            calculaValoresEnRango(placaLector, desdeArchivo,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
+            calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
                                   desdex, hastax, desdey, hastay, promCP, promCN, difCPS)

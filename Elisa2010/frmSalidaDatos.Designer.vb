@@ -98,9 +98,9 @@ Partial Class frmSalidaDatos
       Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
       Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(361, 63)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
-      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(82, 15)
+      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(88, 15)
       Me.lblTotalDatosCalculados.TabIndex = 12
-      Me.lblTotalDatosCalculados.Text = "Total de Datos"
+      Me.lblTotalDatosCalculados.Text = "Total de Sueros"
       '
       'lblMediaPromedio
       '

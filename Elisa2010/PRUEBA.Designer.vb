@@ -56,6 +56,8 @@ Partial Class frmAbrirDesdeArchivo
       Me.lblMensajeAAE = New System.Windows.Forms.Label()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
+      Me.lblNoControles = New System.Windows.Forms.Label()
+      Me.txtNoControles = New System.Windows.Forms.TextBox()
       Me.grbCNDesdeArchivo.SuspendLayout()
       Me.grbCPDesdeArchivo.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -382,11 +384,32 @@ Partial Class frmAbrirDesdeArchivo
       Me.dgvPlacaLeida.TabIndex = 81
       Me.dgvPlacaLeida.TabStop = False
       '
+      'lblNoControles
+      '
+      Me.lblNoControles.AutoSize = True
+      Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblNoControles.Location = New System.Drawing.Point(462, 349)
+      Me.lblNoControles.Name = "lblNoControles"
+      Me.lblNoControles.Size = New System.Drawing.Size(100, 15)
+      Me.lblNoControles.TabIndex = 83
+      Me.lblNoControles.Text = "No. de Controles "
+      '
+      'txtNoControles
+      '
+      Me.txtNoControles.Location = New System.Drawing.Point(430, 345)
+      Me.txtNoControles.MaxLength = 1
+      Me.txtNoControles.Name = "txtNoControles"
+      Me.txtNoControles.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControles.TabIndex = 82
+      '
       'frmAbrirDesdeArchivo
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(733, 462)
+      Me.Controls.Add(Me.lblNoControles)
+      Me.Controls.Add(Me.txtNoControles)
       Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.btnObtenResultadosDA)
       Me.Controls.Add(Me.lblMensajeAAE)
@@ -446,4 +469,6 @@ Partial Class frmAbrirDesdeArchivo
    Friend WithEvents lblMensajeAAE As System.Windows.Forms.Label
    Friend WithEvents btnObtenResultadosDA As System.Windows.Forms.Button
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents lblNoControles As System.Windows.Forms.Label
+   Friend WithEvents txtNoControles As System.Windows.Forms.TextBox
 End Class

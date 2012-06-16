@@ -8,6 +8,7 @@
    End Sub
 
    Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
+      Dim nocp As Integer = Val(txtNoControles.Text)
       Dim desdeArchivo As Integer = 1
       Dim cp1, cp2, cp3 As Decimal
       Dim cn1, cn2, cn3 As Decimal
@@ -56,7 +57,7 @@
          Dim observaciones As String = lblObservaciones.Text
          Dim fechaElaboracion As String = CStr(dtpFechaElaboracion.Value)
          Try
-            calculaValoresEnRango(placaLector, desdeArchivo, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
+            calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
                                   desdex, hastax, desdey, hastay, promCP, promCN, difCPS)

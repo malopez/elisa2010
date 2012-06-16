@@ -54,9 +54,6 @@
       Dim rangoCatorce As Integer = 0
       Dim rangoQuince As Integer = 0
       Dim contador As Integer = 0
-      Dim renglones As Integer = 11
-
-
       For i = 0 To UBound(calculaL)
          Select Case calculaL(i)
             Case Is < 1
@@ -177,8 +174,7 @@
       Dim n As Integer = 0
       'Dim presenta As String = "Sueros  Títulos" & vbCrLf & " " & vbCrLf
       Dim presenta As String = ""
-      For n = 0 To cuentaNoDatos - 1
-         'presenta += (n + 1) & "       " & reduceDecimal(calculaL(n)) & vbCrLf
+      For n = 0 To cuentaNoDatos - 2
          presenta += reduceDecimal(calculaL(n)) & vbCrLf
       Next
       Return (presenta)
@@ -270,7 +266,7 @@
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
    'seleccionada. El parametro nombre es el nombre del análisis/Enfermedad que se ha evaluado
-   Public Sub calculaValoresEnRango(ByRef placaLector(,) As Decimal, ByRef desdeArchivo As Integer, _
+   Public Sub calculaValoresEnRango(ByRef placaLector(,) As Decimal, ByRef desdeArchivo As Integer, ByVal nocp As Integer, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                              ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
@@ -312,16 +308,15 @@
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
-         promCP = calculaPromedioPositivos(cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
+         promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
-         promCN = calculaPromedioNegativos(cnx1, cnx2, cnx3, cny1, cny2, cny3)
+         promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3)
       Else
          'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
          promCP = calculaPromedioPositivosDA(cp1, cp2, cp3)
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
          promCN = calculaPromedioNegativosDA(cn1, cn2, cn3)
       End If
-
       difCPS = calculaDiferenciaSPS(promCP, promCN)
       calculaSPSs(placaOriginal, placaLector, calculaSPS, promCN, difCPS)
       calculaLogaritmoSPS(logaritmoSPS, calculaSPS, logsps)

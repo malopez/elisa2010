@@ -602,24 +602,38 @@ Module mdlOperaciones
       'Return (resultado)
    End Sub
 
-   'Funcion que calcula el valor de los promedios positivos
-   Public Function calculaPromedioPositivos(ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
+   'Funcion que calcula el valor de los promedios positivos.Cuando solo se colocan dos promedios positivos, se obtiene el promedio de 
+   'ellos y se suma a los dos originales, sacando asi un tercer valor que también se promedia con los dos originales
+   'En caso de que sean tres valores positivos, se promedian normalmente
+   Public Function calculaPromedioPositivos(ByVal nocp As Integer, ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
                                            , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer) As Decimal
       Dim promedioPositivos As Decimal
       Try
-         promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
+         If (nocp = 3) Then
+            promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
+         ElseIf (nocp = 2) Then
+            promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / nocp))
+            promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + promedioPositivos) / 3))
+         End If
       Catch ex As Exception
          mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos.")
       End Try
       Return (promedioPositivos)
    End Function
 
-   'Funcion que calcula el valor de los promedios negativos
-   Public Function calculaPromedioNegativos(ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer _
+   'Funcion que calcula el valor de los promedios negativos. Cuando solo se colocan dos promedios negativos, se obtiene el promedio de 
+   'ellos y se suma a los dos originales, sacando asi un tercer valor que también se promedia con los dos originales
+   'En caso de que sean tres valores negativos, se promedian normalmente
+   Public Function calculaPromedioNegativos(ByVal nocp As Integer, ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer _
                                            , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer) As Decimal
       Dim promedioNegativos As Decimal
       Try
-         promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
+         If (nocp = 3) Then
+            promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
+         ElseIf (nocp = 2) Then
+            promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / nocp))
+            promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + promedioNegativos) / 3))
+         End If
       Catch ex As Exception
          mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos.")
       End Try
@@ -632,7 +646,7 @@ Module mdlOperaciones
       Try
          promedioPositivos = reduceDecimal(((cp1 + cp2 + cp3) / 3))
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos desde archivi.")
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos desde archivo.")
       End Try
       Return (promedioPositivos)
    End Function
@@ -644,7 +658,7 @@ Module mdlOperaciones
          promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
 
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos.")
+         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos desde archivo.")
       End Try
       Return (promedioNegativos)
    End Function
@@ -759,7 +773,7 @@ Module mdlOperaciones
       Dim desviacionEstandarDatosNoAgrupados As Decimal = 0
       Dim coeficienteDeVariacionDatosNoAgrupados As Decimal = 0
       Dim calculaVarianzaDatosNoAgrupados As Decimal = 0
-
+      Dim nocp As Integer = 3
       numDeColumnas = placaLector.GetLength(0)
       numDeRegistros = placaLector.GetLength(1)
 
@@ -767,13 +781,13 @@ Module mdlOperaciones
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
          Try
-            promCP = calculaPromedioPositivos(cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
+            promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
          End Try
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
          Try
-            promCN = calculaPromedioNegativos(cnx1, cnx2, cnx3, cny1, cny2, cny3)
+            promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
          End Try
