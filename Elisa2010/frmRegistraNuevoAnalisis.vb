@@ -361,14 +361,19 @@ Public Class frmRegistraNuevoAnalisis
 
 
    Private Sub btnGuardarDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarDatosExcel.Click
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra2)
+      Dim desdey As Integer = CInt(txtDesdeValor1.Text)
+      Dim hastay As Integer = CInt(txtHastaValor2.Text)
       Dim cadena As String
       Dim tabla() As String
       cadena = cmbNoCaso.Text
       tabla = Split(cadena, " | ")
+      Dim nocp As Integer = 3
       btnGuardarDatosExcel.Enabled = False
-      guardaDatosExcel(placaLector, tabla(0), siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
+      guardaDatosExcel(placaLector, nocp, tabla(0), siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
                        siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
-                       Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text))
+                       Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text), desdex, desdey, hastax, hastay)
    End Sub
 
 

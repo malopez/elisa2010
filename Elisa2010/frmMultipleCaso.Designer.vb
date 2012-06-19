@@ -24,10 +24,10 @@ Partial Class frmMultipleCaso
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMultipleCaso))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.lblNoControles = New System.Windows.Forms.Label()
       Me.txtNoControles = New System.Windows.Forms.TextBox()
@@ -198,8 +198,9 @@ Partial Class frmMultipleCaso
       Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.Panel5 = New System.Windows.Forms.Panel()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
+      Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.Panel1.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
@@ -215,6 +216,7 @@ Partial Class frmMultipleCaso
       Me.tbcCaso8.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
+      Me.Panel5.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
@@ -2000,7 +2002,7 @@ Partial Class frmMultipleCaso
       'btnAceptarControles
       '
       Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarControles.Location = New System.Drawing.Point(314, 289)
+      Me.btnAceptarControles.Location = New System.Drawing.Point(243, 289)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
       Me.btnAceptarControles.TabIndex = 17
@@ -2020,7 +2022,7 @@ Partial Class frmMultipleCaso
       'btnDefinirControlesPN
       '
       Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(203, 289)
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(132, 289)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
       Me.btnDefinirControlesPN.TabIndex = 4
@@ -2062,6 +2064,7 @@ Partial Class frmMultipleCaso
       'btnFormateaDatos
       '
       Me.btnFormateaDatos.Enabled = False
+      Me.btnFormateaDatos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnFormateaDatos.Location = New System.Drawing.Point(724, 408)
       Me.btnFormateaDatos.Name = "btnFormateaDatos"
       Me.btnFormateaDatos.Size = New System.Drawing.Size(136, 23)
@@ -2082,6 +2085,7 @@ Partial Class frmMultipleCaso
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.Enabled = False
+      Me.btnLeerDatosPlaca.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(724, 371)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(136, 23)
@@ -2092,7 +2096,7 @@ Partial Class frmMultipleCaso
       'txtDatosRecibidos
       '
       Me.txtDatosRecibidos.BackColor = System.Drawing.Color.White
-      Me.txtDatosRecibidos.Location = New System.Drawing.Point(425, 291)
+      Me.txtDatosRecibidos.Location = New System.Drawing.Point(378, 291)
       Me.txtDatosRecibidos.Multiline = True
       Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
       Me.txtDatosRecibidos.ReadOnly = True
@@ -2116,10 +2120,11 @@ Partial Class frmMultipleCaso
       'lblNombreLector
       '
       Me.lblNombreLector.AutoSize = True
-      Me.lblNombreLector.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.lblNombreLector.Location = New System.Drawing.Point(721, 297)
+      Me.lblNombreLector.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreLector.ForeColor = System.Drawing.Color.Maroon
+      Me.lblNombreLector.Location = New System.Drawing.Point(721, 292)
       Me.lblNombreLector.Name = "lblNombreLector"
-      Me.lblNombreLector.Size = New System.Drawing.Size(97, 13)
+      Me.lblNombreLector.Size = New System.Drawing.Size(120, 16)
       Me.lblNombreLector.TabIndex = 96
       Me.lblNombreLector.Text = "Nombre del Lector:"
       '
@@ -2127,7 +2132,7 @@ Partial Class frmMultipleCaso
       '
       Me.ckbControlesDefault.AutoSize = True
       Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
-      Me.ckbControlesDefault.Location = New System.Drawing.Point(83, 293)
+      Me.ckbControlesDefault.Location = New System.Drawing.Point(12, 293)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
       Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
       Me.ckbControlesDefault.TabIndex = 3
@@ -2136,6 +2141,18 @@ Partial Class frmMultipleCaso
       '
       'SerialPort1
       '
+      Me.SerialPort1.PortName = "COM3"
+      '
+      'Panel5
+      '
+      Me.Panel5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+      Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel5.Controls.Add(Me.dgvPlacaLeida)
+      Me.Panel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.Panel5.Location = New System.Drawing.Point(9, 321)
+      Me.Panel5.Name = "Panel5"
+      Me.Panel5.Size = New System.Drawing.Size(709, 214)
+      Me.Panel5.TabIndex = 99
       '
       'dgvPlacaLeida
       '
@@ -2143,51 +2160,54 @@ Partial Class frmMultipleCaso
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
-      Me.dgvPlacaLeida.Location = New System.Drawing.Point(14, 328)
+      Me.dgvPlacaLeida.Location = New System.Drawing.Point(3, 5)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
-      Me.dgvPlacaLeida.TabIndex = 98
+      Me.dgvPlacaLeida.TabIndex = 101
+      Me.dgvPlacaLeida.TabStop = False
       '
-      'Panel5
+      'btnCapturaTerminada
       '
-      Me.Panel5.BackColor = System.Drawing.Color.Lavender
-      Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel5.Location = New System.Drawing.Point(9, 321)
-      Me.Panel5.Name = "Panel5"
-      Me.Panel5.Size = New System.Drawing.Size(709, 214)
-      Me.Panel5.TabIndex = 99
+      Me.btnCapturaTerminada.Enabled = False
+      Me.btnCapturaTerminada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnCapturaTerminada.Location = New System.Drawing.Point(607, 289)
+      Me.btnCapturaTerminada.Name = "btnCapturaTerminada"
+      Me.btnCapturaTerminada.Size = New System.Drawing.Size(105, 23)
+      Me.btnCapturaTerminada.TabIndex = 100
+      Me.btnCapturaTerminada.Text = "Captura Terminada"
+      Me.btnCapturaTerminada.UseVisualStyleBackColor = True
       '
       'frmMultipleCaso
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(956, 576)
-      Me.Controls.Add(Me.dgvPlacaLeida)
+      Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.txtDatosRecibidos)
       Me.Controls.Add(Me.ckbControlesDefault)
       Me.Controls.Add(Me.lblNombreLector)
@@ -2235,6 +2255,7 @@ Partial Class frmMultipleCaso
       Me.Panel3.ResumeLayout(False)
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
+      Me.Panel5.ResumeLayout(False)
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
@@ -2400,7 +2421,6 @@ Partial Class frmMultipleCaso
    Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
-   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Panel5 As System.Windows.Forms.Panel
    Friend WithEvents lblObservacionesC1 As System.Windows.Forms.Label
    Friend WithEvents lblObservacionesC2 As System.Windows.Forms.Label
@@ -2412,4 +2432,6 @@ Partial Class frmMultipleCaso
    Friend WithEvents lblObservacionesC8 As System.Windows.Forms.Label
    Friend WithEvents lblNoControles As System.Windows.Forms.Label
    Friend WithEvents txtNoControles As System.Windows.Forms.TextBox
+   Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
 End Class

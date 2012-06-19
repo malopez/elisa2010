@@ -51,11 +51,11 @@ Module mdlOperaciones
          For j = 0 To 11
             'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es nuérico, entonces coloca un 0.
             temporal = (Val(a(k)) / 1000)
-            If (temporal > 1) Then
-               placaLector(i, j) = 0
-            Else
-               placaLector(i, j) = temporal
-            End If
+            ' If (temporal > 1) Then
+            'placaLector(i, j) = 0
+            'Else
+            placaLector(i, j) = temporal
+            'End If
             'MessageBox.Show("Valor de placaLector en " & i & " , " & j & ": " & placaLector(i, j) & "Valor de a(k): " & a(k) & "max val:" & UBound(a))
             k += 1
          Next
@@ -100,12 +100,13 @@ Module mdlOperaciones
    End Sub
 
   
-   'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal numCaso As String, _
+   'Procedimiento que sirve para generar el archivo de excel con la placa original
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal numCaso As String, _
                                ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                                ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
-                               ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer)
+                               ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
+                               ByVal desdex As Integer, ByVal desdey As Integer, ByVal hastax As Integer, ByVal hastay As Integer)
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
@@ -125,23 +126,60 @@ Module mdlOperaciones
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
-
+      MessageBox.Show("ENTRE AL GUARDA DATOS EN EXCEL")
       excelApp.Range("A14").Value2 = "Controles Positivos"
-      excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
-      excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
-      excelApp.Range("A17").Value2 = placaLector(cpx3, cpy3)
-      'Para que el fondo de la celda sea color Verde=4
-      excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-      excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-      excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
+      excelApp.Range("A14").Interior.ColorIndex = 4
       excelApp.Range("B14").Value2 = "Controles Negativos"
-      excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
-      excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
-      excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
-      'Hacer el fondo de la celda color Rojo=3
-      excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
-      excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
-      excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
+      excelApp.Range("B14").Interior.ColorIndex = 3
+      If (nocp = 3) Then
+         'Copia los valores positivos.
+         excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
+         excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
+         excelApp.Range("A17").Value2 = placaLector(cpx3, cpy3)
+         'Copia los valores negativos.
+         excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
+         excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
+         excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
+         'Para que el fondo de la celda sea color Verde=4
+         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
+         'Hacer el fondo de la celda color Rojo=3
+         excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
+         excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
+         excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
+      ElseIf (nocp = 2) Then
+         'Copia los valores positivos.
+         excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
+         excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
+         Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
+         excelApp.Range("A17").Value2 = promp
+         'Copia valores negativos
+         excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
+         excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
+         Dim promn As Decimal = (placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / 2
+         excelApp.Range("B17").Value2 = promn
+         'Para que el fondo de la celda sea color Verde=4
+         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+         'Hacer el fondo de la celda color Rojo=3
+         excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
+         excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
+      End If
+
+
+      'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
+      Dim renglones As Integer = 11
+      For i = desdex To hastax
+         If (i = hastax) Then
+            renglones = hastay
+         End If
+         For j = desdey To renglones
+            excelApp.Range(obtenLetra(i) & (j + 1)).Interior.ColorIndex = 6
+         Next
+         desdey = 0
+      Next
+
       'Salva el archivo de placa original leida con el nombre del caso
       Dim nombreArchivo As String = rutaPlacas & numCaso & ".xlsx"
       excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
@@ -155,7 +193,7 @@ Module mdlOperaciones
    Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
                                     ByVal observaciones As String, ByVal nombrelibro As String, ByVal titulosObtenidos As String,
                                     ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
-                                    ByRef cuentaNoDatos As Double, ByRef desviacionEstandarDatosNoAgrupados As Double, _
+                                    ByRef cuentaNoDatos As Integer, ByRef desviacionEstandarDatosNoAgrupados As Double, _
                                     ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
 
       'PAra formatear la salida de datos en excel de resultados
@@ -358,9 +396,10 @@ Module mdlOperaciones
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
+   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal idAnalisis As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
                                  ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
-                                 ByVal desvEst As Double, ByVal coefVar As Double)
+                                 ByVal desvEst As Double, ByVal coefVar As Double, ByVal valorFR As String, ByVal cantidadFR As String, _
+                                 ByRef etiqueta As Label)
       Dim resultado As Integer
       Dim comando As New MySqlCommand
       Dim cadenafecha As String
@@ -376,26 +415,24 @@ Module mdlOperaciones
          oConexion.Open()
          'Asigna la cadena de conexion
          comando.Connection = oConexion
-         comando.CommandText = "INSERT INTO tblplacaleida (caso,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar) VALUES " _
-                                & "('" & numcaso & "', STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
+         comando.CommandText = "INSERT INTO tblplacaleida (caso,id_analysis,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar,valorFR,cantidadFR) VALUES " _
+                                & "('" & numcaso & "','" & idAnalisis & "'," & "STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
                                 & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
-                                & desvEst & "," & coefVar & ");"
+                                & desvEst & "," & coefVar & ",'" & valorFR & "','" & cantidadFR & "');"
          'MessageBox.Show("valor de la consulta:" & comando.CommandText)
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
       Catch ex As MySqlException
-         'mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeExceptionSQL(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiqueta, ex)
       Catch ex As DataException
-         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeException(etiqueta, ex)
       Catch ex As Exception
-         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeException(etiqueta, ex)
       End Try
    End Sub
 
-   Public Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String, ByVal rangoDatos() As Integer)
+   Public Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String, ByVal rangoDatos() As Integer, _
+                             ByRef etiqueta As Label)
 
       Dim i As Integer
       Dim resultado As Integer
@@ -411,22 +448,20 @@ Module mdlOperaciones
          comando.CommandText = "truncate table tblfrecrelativa;"
          resultado = comando.ExecuteNonQuery()
          'Guardar los datos de la frecuencia relativa en la BD
+
          For i = 0 To 14
-            comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
-            resultado = comando.ExecuteNonQuery()
+            'comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
+            'resultado = comando.ExecuteNonQuery()
             comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i + 1 & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
             resultado = comando.ExecuteNonQuery()
          Next
          oConexion.Close()
       Catch ex As MySqlException
-         'mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeExceptionSQL(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiqueta, ex)
       Catch ex As DataException
-         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeException(etiqueta, ex)
       Catch ex As Exception
-         'mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
+         mensajeException(etiqueta, ex)
       End Try
    End Sub
 
@@ -598,7 +633,7 @@ Module mdlOperaciones
       Next
       'Presenta en pantalla los valores obtenidos desde el lector ya formateados
       frmRegistraNuevoAnalisis.txtDatosRecibidos.Text = resultado
-      organizaEnTabla(dgvPlacaLeida, placaLector)
+      'organizaEnTabla(dgvPlacaLeida, placaLector)
       'Return (resultado)
    End Sub
 
@@ -776,7 +811,9 @@ Module mdlOperaciones
       Dim nocp As Integer = 3
       numDeColumnas = placaLector.GetLength(0)
       numDeRegistros = placaLector.GetLength(1)
-
+      Dim valorFR As String = ""
+      Dim cantidadFR As String = ""
+      Dim idAnalisis As String = "TEMPORAL"
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
@@ -986,11 +1023,12 @@ Module mdlOperaciones
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
       'Carga los datos para la frecuencia relativa y crea la gráfica
-      cargaResultadosBD(numcaso, placaoriginal, resultadoTitulos, fechaElaboracion, promCP, promCN, difCPS, _
+      cargaResultadosBD(numcaso, idAnalisis, placaoriginal, resultadoTitulos, fechaElaboracion, promCP, promCN, difCPS, _
                         Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                        Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados))
+                        Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados), _
+                        valorFR, cantidadFR, frmSalidaDatos.lblObservaciones)
       'CARGAR LA TABLA DE FREC REL
-      cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos)
+      cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmSalidaDatos.lblObservaciones)
       creaChartFrecRel(nombre, titulox, tituloy, numcaso)
 
       'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos

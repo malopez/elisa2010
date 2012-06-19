@@ -164,22 +164,41 @@
                End If
             Next
          Next
-
       Catch ex As Exception
          MessageBox.Show("ERROR CALCULA TITULOS: " & ex.Message & " " & ex.GetType.ToString)
       End Try
    End Sub
 
    Public Function titulosObtenidosEnCalculaL(ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As String
-      Dim n As Integer = 0
+      Dim i As Integer = 0
+      Dim j As Integer = cuentaNoDatos - 1
       'Dim presenta As String = "Sueros  Títulos" & vbCrLf & " " & vbCrLf
       Dim presenta As String = ""
-      For n = 0 To cuentaNoDatos - 2
-         presenta += reduceDecimal(calculaL(n)) & vbCrLf
+      For i = 0 To j
+         If (i <> j) Then
+            presenta += CStr(reduceDecimal(calculaL(i))) & vbCrLf
+         Else
+            presenta += CStr(reduceDecimal(calculaL(i)))
+         End If
       Next
       Return (presenta)
    End Function
 
+   Public Function obtenPlacaLeida(ByVal placaLector(,) As Decimal) As String
+      Dim placaoriginal As String = ""
+      Dim i As Integer
+      Dim j As Integer
+      For i = 0 To 7
+         For j = 0 To 11
+            If (i <= 7) And (j < 11) Then
+               placaoriginal += placaLector(i, j).ToString & vbCrLf
+            ElseIf (i = 7) And (j = 11) Then
+               placaoriginal += placaLector(i, j).ToString
+            End If
+         Next
+      Next
+      Return (placaoriginal)
+   End Function
 
 
    'calcula la varianza para datos no agrupados
@@ -234,6 +253,32 @@
          frecuenciaRelativa(i) = CDec((rangoDatos(i) / rangoTotal) * 100)
       Next
    End Sub
+
+   Public Function obtenValorFR(ByVal frecuenciaRelativa() As Decimal) As String
+      Dim i As Integer = 0
+      Dim valores As String = ""
+      For i = 0 To 14
+         If (i < 14) Then
+            valores += CStr(reduceDecimal(frecuenciaRelativa(i))) & vbCrLf
+         Else
+            valores += CStr(reduceDecimal(frecuenciaRelativa(i)))
+         End If
+      Next
+      Return (valores)
+   End Function
+
+   Public Function obtenCantidadFR(ByVal rangoDatos() As Integer) As String
+      Dim i As Integer = 0
+      Dim cantidad As String = ""
+      For i = 0 To 14
+         If (i < 14) Then
+            cantidad += rangoDatos(i).ToString() & vbCrLf
+         Else
+            cantidad += rangoDatos(i).ToString()
+         End If
+      Next
+      Return (cantidad)
+   End Function
 
    'Presenta datos para formatear la salida de los datos
    Public Sub mostrarResultadosEnPantalla(ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _

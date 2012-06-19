@@ -57,9 +57,12 @@ Public Class frmAbrirArchivoExistente
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
          Dim numcaso As String = tabla1(0)
+         Dim idAnalisis As String = tabla1(1)
          Dim nombre As String = tabla(1)
          Dim nombreCliente As String = txtNombreCliente.Text
          Dim observaciones As String = lblObservaciones.Text
+         Dim valorFR As String = ""
+         Dim cantidadFR As String = ""
          Try
             calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
@@ -115,20 +118,35 @@ Public Class frmAbrirArchivoExistente
             MessageBox.Show("ERROR AL CALCULAR COEF VAR")
          End Try
          Try
-            cargaResultadosBD(numcaso, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
-                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar))
+            placaoriginal = obtenPlacaLeida(placaLector)
          Catch
-            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE LA PLACA ORIGINAL.")
          End Try
          Try
-            'CARGAR LA TABLA DE FREC REL
+
             calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
          Catch
             MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA.")
          End Try
          Try
-            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos)
+            valorFR = obtenValorFR(frecuenciaRelativa)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE VALOR FREC REL.")
+         End Try
+         Try
+            cantidadFR = obtenCantidadFR(rangoDatos)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE CANTIDAD DE FREC REL.")
+         End Try
+         Try
+            cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
+         Catch
+            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+         End Try
+         Try
+            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
          Catch
             MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA A LA BD.")
          End Try

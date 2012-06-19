@@ -61,6 +61,12 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.Label19 = New System.Windows.Forms.Label()
+      Me.Label20 = New System.Windows.Forms.Label()
+      Me.txtDesdeLetra1 = New System.Windows.Forms.TextBox()
+      Me.txtDesdeValor1 = New System.Windows.Forms.TextBox()
+      Me.txtHastaLetra2 = New System.Windows.Forms.TextBox()
+      Me.txtHastaValor2 = New System.Windows.Forms.TextBox()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
       Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
@@ -408,6 +414,12 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.AutoSize = True
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.Label19)
+      Me.Panel2.Controls.Add(Me.Label20)
+      Me.Panel2.Controls.Add(Me.txtDesdeLetra1)
+      Me.Panel2.Controls.Add(Me.txtDesdeValor1)
+      Me.Panel2.Controls.Add(Me.txtHastaLetra2)
+      Me.Panel2.Controls.Add(Me.txtHastaValor2)
       Me.Panel2.Controls.Add(Me.lblLogTit2)
       Me.Panel2.Controls.Add(Me.ckbControlesDefault)
       Me.Panel2.Controls.Add(Me.lblLogTit1)
@@ -418,8 +430,76 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Panel2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Panel2.Location = New System.Drawing.Point(4, 186)
       Me.Panel2.Name = "Panel2"
-      Me.Panel2.Size = New System.Drawing.Size(698, 125)
+      Me.Panel2.Size = New System.Drawing.Size(698, 128)
       Me.Panel2.TabIndex = 75
+      '
+      'Label19
+      '
+      Me.Label19.AutoSize = True
+      Me.Label19.BackColor = System.Drawing.Color.Transparent
+      Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label19.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label19.Location = New System.Drawing.Point(535, 102)
+      Me.Label19.Name = "Label19"
+      Me.Label19.Size = New System.Drawing.Size(43, 16)
+      Me.Label19.TabIndex = 98
+      Me.Label19.Text = "Hasta:"
+      '
+      'Label20
+      '
+      Me.Label20.AutoSize = True
+      Me.Label20.BackColor = System.Drawing.Color.Transparent
+      Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label20.Location = New System.Drawing.Point(535, 70)
+      Me.Label20.Name = "Label20"
+      Me.Label20.Size = New System.Drawing.Size(48, 16)
+      Me.Label20.TabIndex = 97
+      Me.Label20.Text = "Desde:"
+      '
+      'txtDesdeLetra1
+      '
+      Me.txtDesdeLetra1.BackColor = System.Drawing.SystemColors.Window
+      Me.txtDesdeLetra1.Enabled = False
+      Me.txtDesdeLetra1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeLetra1.Location = New System.Drawing.Point(589, 69)
+      Me.txtDesdeLetra1.MaxLength = 1
+      Me.txtDesdeLetra1.Name = "txtDesdeLetra1"
+      Me.txtDesdeLetra1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeLetra1.TabIndex = 93
+      '
+      'txtDesdeValor1
+      '
+      Me.txtDesdeValor1.BackColor = System.Drawing.SystemColors.Window
+      Me.txtDesdeValor1.Enabled = False
+      Me.txtDesdeValor1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeValor1.Location = New System.Drawing.Point(621, 69)
+      Me.txtDesdeValor1.MaxLength = 2
+      Me.txtDesdeValor1.Name = "txtDesdeValor1"
+      Me.txtDesdeValor1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeValor1.TabIndex = 94
+      '
+      'txtHastaLetra2
+      '
+      Me.txtHastaLetra2.BackColor = System.Drawing.SystemColors.Window
+      Me.txtHastaLetra2.Enabled = False
+      Me.txtHastaLetra2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaLetra2.Location = New System.Drawing.Point(589, 101)
+      Me.txtHastaLetra2.MaxLength = 1
+      Me.txtHastaLetra2.Name = "txtHastaLetra2"
+      Me.txtHastaLetra2.Size = New System.Drawing.Size(25, 20)
+      Me.txtHastaLetra2.TabIndex = 95
+      '
+      'txtHastaValor2
+      '
+      Me.txtHastaValor2.BackColor = System.Drawing.SystemColors.Window
+      Me.txtHastaValor2.Enabled = False
+      Me.txtHastaValor2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaValor2.Location = New System.Drawing.Point(622, 101)
+      Me.txtHastaValor2.MaxLength = 2
+      Me.txtHastaValor2.Name = "txtHastaValor2"
+      Me.txtHastaValor2.Size = New System.Drawing.Size(24, 20)
+      Me.txtHastaValor2.TabIndex = 96
       '
       'ckbControlesDefault
       '
@@ -697,4 +777,10 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents Label19 As System.Windows.Forms.Label
+   Friend WithEvents Label20 As System.Windows.Forms.Label
+   Friend WithEvents txtDesdeLetra1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtDesdeValor1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtHastaLetra2 As System.Windows.Forms.TextBox
+   Friend WithEvents txtHastaValor2 As System.Windows.Forms.TextBox
 End Class

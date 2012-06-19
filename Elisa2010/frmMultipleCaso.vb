@@ -122,24 +122,42 @@ Public Class frmMultipleCaso
       End Select
    End Sub
 
-   Private Sub coloreaControles(ByVal nocp As Integer)
+   Private Sub coloreaCasos(ByRef dvgPlacaLeida As DataGridView, ByVal nomcolor As Color, ByVal txtDesdeLetra As TextBox, _
+                            ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox)
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
+      Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
+      Dim renglones As Integer = 11
+      For i = desdex To hastax
+         If (i = hastax) Then
+            renglones = hastay
+         End If
+         For j = desdey To renglones
+            coloreaTabla(dgvPlacaLeida, nomcolor, i, j + 1)
+         Next
+         desdey = 0
+      Next
+   End Sub
+
+   Private Sub coloreaControlesPN(ByVal nocp As Integer)
       Select Case nocp
          Case 2
             'Rellena el fondo del datagridview de color verde para los controles positivos
-            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
-            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), CInt(txtCP1Valor1.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), CInt(txtCP2Valor2.Text))
             'Rellena el fondo del datagridview de color rojo para los controles negativos
-            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
-            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), CInt(txtCN1Valor1.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), CInt(txtCN2Valor2.Text))
          Case 3
             'Rellena el fondo del datagridview de color verde para los controles positivos
-            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), Val(txtCP1Valor1.Text + 1))
-            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), Val(txtCP2Valor2.Text + 1))
-            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), Val(txtCP3Valor3.Text + 1))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP1Letra1)), CInt(txtCP1Valor1.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP2Letra2)), CInt(txtCP2Valor2.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Green, Val(siValorEsLetra(txtCP3Letra3)), CInt(txtCP3Valor3.Text))
             'Rellena el fondo del datagridview de color rojo para los controles negativos
-            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), Val(txtCN1Valor1.Text) + 1)
-            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), Val(txtCN2Valor2.Text) + 1)
-            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), Val(txtCN3Valor3.Text) + 1)
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN1Letra1)), CInt(txtCN1Valor1.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), CInt(txtCN2Valor2.Text))
+            coloreaTabla(Me.dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), CInt(txtCN3Valor3.Text))
       End Select
    End Sub
 
@@ -150,42 +168,43 @@ Public Class frmMultipleCaso
       Dim nocp As Integer = Val(txtNoControles.Text)
       Select Case nocp
          Case 2
-            MessageBox.Show("ENTRE AL CASE 2")
-            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
+            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
-              controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
+              controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
-              controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
+              controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
-              controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) Then
+              controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
                btnAceptarControles.Enabled = False
                btnDefinirControlesPN.Enabled = False
                ckbControlesDefault.Enabled = False
                tbcDatosDelCaso.Enabled = True
                habilitaTabsCorrectos(txtNoDeCasos.Text)
+               btnCapturaTerminada.Enabled = True
             Else
                mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
                btnDefinirControlesPN.Enabled = True
                btnAceptarControles.Enabled = True
+
             End If
          Case 3
-            MessageBox.Show("ENTRE AL CASE 3")
-            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) AndAlso _
+            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
-               controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) AndAlso _
+               controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
-               controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 0, 11) AndAlso _
+               controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
-               controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) AndAlso _
+               controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
-               controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) AndAlso
+               controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso
                controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
-               controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+               controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
                btnAceptarControles.Enabled = False
                btnDefinirControlesPN.Enabled = False
                ckbControlesDefault.Enabled = False
                tbcDatosDelCaso.Enabled = True
                habilitaTabsCorrectos(txtNoDeCasos.Text)
+               btnCapturaTerminada.Enabled = True
             Else
                mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
                btnDefinirControlesPN.Enabled = True
@@ -565,7 +584,9 @@ Public Class frmMultipleCaso
       Try
          cmbNombreEnfermedad.Enabled = False
          txtNoDeCasos.Enabled = False
+         txtNoControles.Enabled = False
          defineValoresPN(nocp)
+         btnAceptarEnfermedad.Enabled = False
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
          Dim oDataReader As MySqlDataReader
@@ -996,7 +1017,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCP1Valor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP1Valor1.TextChanged
-      If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 0, 11) Then
+      If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) Then
          txtCP2Letra2.Enabled = True
       End If
    End Sub
@@ -1009,7 +1030,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCP2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP2Valor2.TextChanged
-      If controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 0, 11) Then
+      If controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) Then
          txtCP3Letra3.Enabled = True
       End If
    End Sub
@@ -1022,7 +1043,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCP3Valor3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP3Valor3.TextChanged
-      If controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 0, 11) Then
+      If controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 1, 12) Then
          grbControlesNegativos.Enabled = True
          txtCN1Letra1.Enabled = True
          txtCN1Valor1.Enabled = False
@@ -1041,7 +1062,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCN1Valor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN1Valor1.TextChanged
-      If controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 0, 11) Then
+      If controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) Then
          txtCN2Letra2.Enabled = True
       End If
    End Sub
@@ -1054,7 +1075,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCN2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN2Valor2.TextChanged
-      If controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 0, 11) Then
+      If controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
          txtCN3Letra3.Enabled = True
       End If
    End Sub
@@ -1067,32 +1088,46 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtCN3Valor3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN3Valor3.TextChanged
-      If controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 0, 11) Then
+      If controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
          btnDefinirControlesPN.Enabled = True
       End If
    End Sub
 
-   Private Sub defineValoresDefault()
-      txtCP1Letra1.Text = "A"
-      txtCP2Letra2.Text = "A"
-      txtCP3Letra3.Text = "H"
-      txtCP1Valor1.Text = "0"
-      txtCP2Valor2.Text = "2"
-      txtCP3Valor3.Text = "10"
-      txtCN1Letra1.Text = "A"
-      txtCN2Letra2.Text = "H"
-      txtCN3Letra3.Text = "H"
-      txtCN1Valor1.Text = "1"
-      txtCN2Valor2.Text = "9"
-      txtCN3Valor3.Text = "11"
+   Private Sub defineValoresDefault(ByVal nocp As Integer)
+      If (nocp = 3) Then
+         txtCP1Letra1.Text = "A"
+         txtCP1Valor1.Text = "1"
+         txtCP2Letra2.Text = "A"
+         txtCP2Valor2.Text = "3"
+         txtCP3Letra3.Text = "H"
+         txtCP3Valor3.Text = "11"
+         txtCN1Letra1.Text = "A"
+         txtCN1Valor1.Text = "2"
+         txtCN2Letra2.Text = "H"
+         txtCN2Valor2.Text = "10"
+         txtCN3Letra3.Text = "H"
+         txtCN3Valor3.Text = "12"
+      ElseIf (nocp = 2) Then
+         txtCP1Letra1.Text = "A"
+         txtCP1Valor1.Text = "1"
+         txtCP2Letra2.Text = "A"
+         txtCP2Valor2.Text = "3"
+         txtCN1Letra1.Text = "A"
+         txtCN1Valor1.Text = "2"
+         txtCN2Letra2.Text = "H"
+         txtCN2Valor2.Text = "10"
+        
+      End If
    End Sub
 
    Private Sub ckbControlesDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbControlesDefault.CheckedChanged
-      defineValoresDefault()
+      Dim nocp As Integer = Val(txtNoControles.Text)
+      defineValoresDefault(nocp)
       ckbControlesDefault.Enabled = False
       grbControlesPositivos.Enabled = False
       grbControlesNegativos.Enabled = False
       btnAceptarControles.Enabled = True
+      ckbControlesDefault.Enabled = False
    End Sub
 
    ' PARA VALIDAR EL CASO No. 1 EL CUADRITO DE TEXTO DESDE-HASTA
@@ -1102,7 +1137,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C1.TextChanged
-      controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 0, 11)
+      controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 1, 12)
    End Sub
 
    Private Sub txtHastaLetra2C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C1.TextChanged
@@ -1111,7 +1146,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtHastaValor2C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C1.TextChanged
-      controlesValidosNumero(txtHastaValor2C1, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtHastaValor2C1, " Número primer control negativo ", 1, 12)
    End Sub
 
    ' PARA VALIDAR EL CASO No. 2 EL CUADRITO DE TEXTO DESDE-HASTA
@@ -1121,7 +1156,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C2.TextChanged
-      controlesValidosNumero(txtDesdeValor1C2, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtDesdeValor1C2, " Número primer control negativo ", 1, 12)
    End Sub
 
    Private Sub txtHastaLetra2C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C2.TextChanged
@@ -1130,7 +1165,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtHastaValor2C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C2.TextChanged
-      controlesValidosNumero(txtHastaValor2C2, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtHastaValor2C2, " Número primer control negativo ", 1, 12)
    End Sub
 
    ' PARA VALIDAR EL CASO No. 3 EL CUADRITO DE TEXTO DESDE-HASTA
@@ -1140,7 +1175,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C3.TextChanged
-      controlesValidosNumero(txtDesdeValor1C3, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtDesdeValor1C3, " Número primer control negativo ", 1, 12)
    End Sub
 
    Private Sub txtHastaLetra2C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C3.TextChanged
@@ -1149,7 +1184,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtHastaValor2C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C3.TextChanged
-      controlesValidosNumero(txtHastaValor2C3, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtHastaValor2C3, " Número primer control negativo ", 1, 12)
    End Sub
 
    ' PARA VALIDAR EL CASO No.4 EL CUADRITO DE TEXTO DESDE-HASTA
@@ -1159,7 +1194,7 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtDesdeValor1C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1C4.TextChanged
-      controlesValidosNumero(txtDesdeValor1C4, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtDesdeValor1C4, " Número primer control negativo ", 1, 12)
    End Sub
 
    Private Sub txtHastaLetra2C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2C4.TextChanged
@@ -1168,12 +1203,12 @@ Public Class frmMultipleCaso
    End Sub
 
    Private Sub txtHastaValor2C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2C4.TextChanged
-      controlesValidosNumero(txtHastaValor2C4, " Número primer control negativo ", 0, 11)
+      controlesValidosNumero(txtHastaValor2C4, " Número primer control negativo ", 1, 12)
    End Sub
 
    Private Sub btnLeerDatosPlaca_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerDatosPlaca.Click
       Try
-         If Me.btnLeerDatosPlaca.Text = "Leer Datos" Then
+         If Me.btnLeerDatosPlaca.Text = "Obtener Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
             Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeCaso, Me.lblNombreLector)
          Else
@@ -1193,6 +1228,7 @@ Public Class frmMultipleCaso
       Dim nocp As Integer = Val(txtNoControles.Text)
       btnLeerDatosPlaca.Enabled = False
       btnFormateaDatos.Enabled = False
+      Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       Try
          convierteCadena(msn)
       Catch ex As Exception
@@ -1200,11 +1236,13 @@ Public Class frmMultipleCaso
       End Try
       Try
          formateaDatos(placaLector, Me.dgvPlacaLeida)
-         btnDefinirControlesPN.Enabled = True
+         organizaEnTabla(Me.dgvPlacaLeida, placaLector)
+         btnGuardaDatos.Enabled = True
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, " Se ha presentado un error al formatear datos.")
       End Try
-      coloreaControles(nocp)
+      coloreaControlesPN(nocp)
+      coloreaTablaCasos(noCasos)
    End Sub
 
    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
@@ -1258,8 +1296,8 @@ Public Class frmMultipleCaso
       Dim desdeArchivo As Integer = 0
       Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1C1)
       Dim hastax As Integer = siValorEsLetra(txtHastaLetra2C1)
-      Dim desdey As Integer = CInt(txtDesdeValor1C1.Text)
-      Dim hastay As Integer = CInt(txtHastaValor2C1.Text)
+      Dim desdey As Integer = CInt(txtDesdeValor1C1.Text) - 1
+      Dim hastay As Integer = CInt(txtHastaValor2C1.Text) - 1
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Decimal = 0
       Dim totalcalculaL As Decimal = 0
@@ -1278,7 +1316,8 @@ Public Class frmMultipleCaso
       Dim promCN As Decimal = 0
       Dim difCPS As Decimal = 0
       Dim fecha = DateTime.Now
-
+      Dim valorFR As String = ""
+      Dim cantidadFR As String = ""
       Try
          botonesEstatus(False)
          Me.btnObtenerResultados.Enabled = False
@@ -1293,6 +1332,7 @@ Public Class frmMultipleCaso
          cadena1 = cmbNoCaso1.Text
          tabla1 = Split(cadena1, " | ")
          Dim numcaso As String = tabla1(0)
+         Dim idAnalisis As String = tabla1(1)
          Dim nombre As String = tabla(1)
          Dim nombreCliente As String = txtNombreClienteC1.Text
 
@@ -1351,20 +1391,35 @@ Public Class frmMultipleCaso
             MessageBox.Show("ERROR AL CALCULAR COEF VAR")
          End Try
          Try
-            cargaResultadosBD(numcaso, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
-                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar))
+            placaoriginal = obtenPlacaLeida(placaLector)
          Catch
-            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE LA PLACA ORIGINAL.")
          End Try
          Try
-            'CARGAR LA TABLA DE FREC REL
+
             calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
          Catch
             MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA.")
          End Try
          Try
-            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos)
+            valorFR = obtenValorFR(frecuenciaRelativa)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE VALOR FREC REL.")
+         End Try
+         Try
+            cantidadFR = obtenCantidadFR(rangoDatos)
+         Catch
+            MessageBox.Show("ERROR AL CALCULAR EL STRING DE CANTIDAD DE FREC REL.")
+         End Try
+         Try
+            cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
+         Catch
+            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+         End Try
+         Try
+            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeCaso)
          Catch
             MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA A LA BD.")
          End Try
@@ -1400,4 +1455,286 @@ Public Class frmMultipleCaso
       End Try
    End Sub
 
+   Private Sub guardaCaso11()
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = cmbNoCaso1.Text
+      tabla = Split(cadena, " | ")
+      Dim nocp As Integer = CInt(txtNoControles.Text)
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1C1)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra2C1)
+      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor1C1.Text) - 1
+      Dim hastay As Integer = Convert.ToInt32(txtHastaValor2C1.Text) - 1
+      guardaDatosExcel(placaLector, nocp, tabla(0), siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
+                       siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
+                       Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text), desdex, desdey, hastax, hastay)
+   End Sub
+
+   Private Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal noControles As TextBox, ByVal txtDesdeLetra As TextBox, _
+                           ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
+                           ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
+                           ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+                           ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
+                           ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox)
+      Dim cadena As String
+      Dim tabla() As String
+      Dim numCaso As String = ""
+      cadena = cmbCaso.Text
+      tabla = Split(cadena, " | ")
+      numCaso = tabla(0)
+      Dim nocp As Integer = CInt(noControles.Text)
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
+      Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
+      Dim cpx1 As Integer = siValorEsLetra(Me.txtCP1Letra1)
+      Dim cpx2 As Integer = siValorEsLetra(Me.txtCP2Letra2)
+      Dim cpy1 As Integer = CInt(Me.txtCP1Valor1.Text) - 1
+      Dim cpy2 As Integer = CInt(Me.txtCP2Valor2.Text) - 1
+      Dim cnx1 As Integer = siValorEsLetra(Me.txtCN1Letra1)
+      Dim cnx2 As Integer = siValorEsLetra(Me.txtCN2Letra2)
+      Dim cny1 As Integer = CInt(Me.txtCN1Valor1.Text) - 1
+      Dim cny2 As Integer = CInt(Me.txtCN2Valor2.Text) - 1
+
+      'Asigna valor default a la definición de cp para x y y.
+
+      Dim cpx3 As Integer = 0
+      Dim cnx3 As Integer = 0
+      Dim cpy3 As Integer = 0
+      Dim cny3 As Integer = 0
+      'Verifica si  son tres controles positivos
+      If (nocp = 3) Then
+         cpx3 = siValorEsLetra(Me.txtCP3Letra3)
+         cnx3 = siValorEsLetra(Me.txtCN3Letra3)
+         cpy3 = CInt(Me.txtCP3Valor3.Text) - 1
+         cny3 = CInt(Me.txtCN3Valor3.Text) - 1
+      End If
+
+      guardaDatosExcel(placaLector, nocp, numCaso, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+                       cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+      
+   End Sub
+
+   Private Sub coloreaTablaCasos(ByVal noCasos As Integer)
+      Select Case noCasos
+         Case 1
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+         Case 2
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+         Case 3
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+         Case 4
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Linen, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
+         Case 5
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Linen, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Khaki, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
+         Case 6
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Linen, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Khaki, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Beige, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
+         Case 7
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Linen, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Khaki, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Beige, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
+            coloreaCasos(Me.dgvPlacaLeida, Color.PowderBlue, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)
+         Case 8
+            coloreaCasos(Me.dgvPlacaLeida, Color.Gold, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
+            coloreaCasos(Me.dgvPlacaLeida, Color.MistyRose, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.SandyBrown, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Linen, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Khaki, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Beige, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
+            coloreaCasos(Me.dgvPlacaLeida, Color.PowderBlue, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)
+            coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8)
+      End Select
+   End Sub
+
+
+   Private Sub btnGuardaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatos.Click
+      Dim nocp As Integer = CInt(txtNoDeCasos.Text)
+      btnGuardaDatos.Enabled = False
+      Select Case nocp
+         Case 1
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+         Case 2
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+         Case 3
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+         Case 4
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+                       txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+         Case 5
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+                       txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+                       txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+         Case 6
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+                       txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+                       txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+                       txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+         Case 7
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+                       txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+                       txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+                       txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+                       txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+
+         Case 8
+            guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+                        txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                        txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                        txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+                       txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+                       txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+                       txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+                       txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+                       txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+            guardaCaso(cmbNoCaso8, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
+                      txtHastaValor2C8, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
+                      txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
+                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3)
+      End Select
+      btnObtenerResultados.Enabled = True
+   End Sub
+
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+      tbcDatosDelCaso.Enabled = False
+      btnCapturaTerminada.Enabled = False
+      btnLeerDatosPlaca.Enabled = True
+
+   End Sub
 End Class
