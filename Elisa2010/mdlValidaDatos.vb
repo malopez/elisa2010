@@ -103,7 +103,7 @@ Module mdlValidaDatos
          Case "H"
             retorno = 7
          Case Else
-            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, " El valor debe ser una letra entre A y H. ")
+            MessageBox.Show(" El valor debe ser una letra entre A y H, siValorEsLetra.")
             textbox.Select()
             textbox.SelectAll()
       End Select
@@ -132,6 +132,8 @@ Module mdlValidaDatos
             letra = "G"
          Case 7
             letra = "H"
+         Case Else
+            MessageBox.Show("El valor debe ser un número válido entre 1 y 8, obtenLetra.")
       End Select
       Return letra
    End Function

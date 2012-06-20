@@ -210,7 +210,7 @@ Partial Class frmSalidaDatos
       '
       Me.lblSalidaDatos.AutoSize = True
       Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(11, 7)
+      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 8)
       Me.lblSalidaDatos.Name = "lblSalidaDatos"
       Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
       Me.lblSalidaDatos.TabIndex = 45
@@ -398,7 +398,7 @@ Partial Class frmSalidaDatos
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmSalidaDatos"
-      Me.Text = "Resultado del Análisis"
+      Me.Text = "Resultado del Análisis Caso No. 1"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)

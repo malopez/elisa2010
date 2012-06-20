@@ -48,7 +48,6 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
       Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-      Me.PRUEBAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
@@ -64,7 +63,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.MultipleCasoPorPlacaToolStripMenuItem, Me.tsmSalir, Me.PRUEBAToolStripMenuItem})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.MultipleCasoPorPlacaToolStripMenuItem, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
@@ -236,12 +235,6 @@ Partial Class frmElisaBiovetsa
       Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
       Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
       '
-      'PRUEBAToolStripMenuItem
-      '
-      Me.PRUEBAToolStripMenuItem.Name = "PRUEBAToolStripMenuItem"
-      Me.PRUEBAToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.PRUEBAToolStripMenuItem.Text = "PRUEBA"
-      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -294,6 +287,5 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents MultipleCasoPorPlacaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents PRUEBAToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -5,9 +5,19 @@ Imports MySql.Data.MySqlClient
 Public Class frmAbrirArchivoExistente
 
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
-      abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
-      organizaEnTabla(Me.dgvPlacaLeida, placaLector)
+      Try
+         abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+      End Try
+      Try
+         organizaEnTabla(Me.dgvPlacaLeida, placaLector)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
+      End Try
       botonesEstatus(True)
+      btnCapturaTerminada.Enabled = True
+      btnObtenResultadosDA.Enabled = False
    End Sub
 
    Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
@@ -16,8 +26,8 @@ Public Class frmAbrirArchivoExistente
       Dim cn1, cn2, cn3 As Decimal
       Dim desdex As Integer = siValorEsLetra(txtDesdeLetra1)
       Dim hastax As Integer = siValorEsLetra(txtHastaLetra2)
-      Dim desdey As Integer = CInt(txtDesdeValor1.Text)
-      Dim hastay As Integer = CInt(txtHastaValor2.Text)
+      Dim desdey As Integer = CInt(txtDesdeValor1.Text) - 1
+      Dim hastay As Integer = CInt(txtHastaValor2.Text) - 1
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Decimal = 0
       Dim totalcalculaL As Decimal = 0
@@ -44,8 +54,8 @@ Public Class frmAbrirArchivoExistente
          cn1 = CDec(Me.txtCNDAValor1.Text)
          cn2 = CDec(Me.txtCNDAValor2.Text)
          cn3 = CDec(Me.txtCNDAValor3.Text)
-         botonesEstatus(False)
-         Me.btnObtenResultadosDA.Enabled = False
+         btnCapturaTerminada.Enabled = False
+         btnObtenResultadosDA.Enabled = False
          'Obtener el nombre del análisis para colocar la cabecera de la gráfica
          Dim cadena As String
          Dim tabla() As String
@@ -63,13 +73,14 @@ Public Class frmAbrirArchivoExistente
          Dim observaciones As String = lblObservaciones.Text
          Dim valorFR As String = ""
          Dim cantidadFR As String = ""
+
          Try
             calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS)
+                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeAAE)
          Catch ex As Exception
-            MessageBox.Show("ERROR AL CALCULAR VALORES")
+            mensajeRojo(Me.lblMensajeAAE, "Error: Al calculor los valores, calculaValoresEnRango.")
          End Try
 
          cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
@@ -79,81 +90,80 @@ Public Class frmAbrirArchivoExistente
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
          Catch ex As Exception
-            MessageBox.Show("ERROR AL CALCULAR SUMATORIA DE MEDIA GEOMETRICA")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la sumatoria de la media geométrica.")
          End Try
 
          Try
             titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
          Catch ex As Exception
-            MessageBox.Show("ERROR AL FORMATEAR LOS TITULOS EN CADENA DE TITULOS OBTENIDOS")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
          End Try
          Try
             calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
          Catch ex As Exception
-            MessageBox.Show("ERROR AL CALCULAR MARCA DE CLASE")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
          End Try
          Try
             mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR MEDIA GEOMETRICA")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
          Try
             mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR MEDIA ARITMETICA")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
          End Try
          Try
             varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR VARIANZA")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: AL calcular la varianza, calculaVarianza.")
          End Try
          Try
             desvEst = calculaDesvEst(varianza)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR DESVIACION ESTANDAR")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
          End Try
          Try
             coefVar = calculaCoefVar(desvEst, mediaAritmetica)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR COEF VAR")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
          End Try
          Try
             placaoriginal = obtenPlacaLeida(placaLector)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR EL STRING DE LA PLACA ORIGINAL.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
          End Try
          Try
-
             calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
          Catch
-            MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
          End Try
          Try
             valorFR = obtenValorFR(frecuenciaRelativa)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR EL STRING DE VALOR FREC REL.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
          End Try
          Try
             cantidadFR = obtenCantidadFR(rangoDatos)
          Catch
-            MessageBox.Show("ERROR AL CALCULAR EL STRING DE CANTIDAD DE FREC REL.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
          End Try
          Try
             cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                               Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                               Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
          Catch
-            MessageBox.Show("ERROR AL CARGAR RESULTADOS A LA BD.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
          End Try
          Try
             cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
          Catch
-            MessageBox.Show("ERROR AL CARGAR FRECUENCIA RELATIVA A LA BD.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
          End Try
          Try
-            creaChartFrecRel(nombre, titulox, tituloy, numcaso)
+            creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, nombre, titulox, tituloy, numcaso)
          Catch
-            MessageBox.Show("ERROR CREAR GRAFICA EN PANTALLA.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          End Try
          Try
             frmSalidaDatos.Show()
@@ -165,7 +175,7 @@ Public Class frmAbrirArchivoExistente
                                         nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                         mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
-            MessageBox.Show("ERROR AL MOSTRAR RESULTADOS EN PANTALLA.")
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
          End Try
       Catch ex As Exception
          mensajeException(Me.lblMensajeAAE, ex)
@@ -204,7 +214,7 @@ Public Class frmAbrirArchivoExistente
       Catch ex As DataException
          mensajeException(lblMensajeAAE, ex)
       Catch ex As Exception
-         mensajeRojo(lblMensajeAAE, "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -242,7 +252,7 @@ Public Class frmAbrirArchivoExistente
             Me.btnLeerArchivoExistente.Enabled = True
             txtDesdeLetra1.Focus()
          Else
-            mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso.")
+            mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
@@ -256,6 +266,7 @@ Public Class frmAbrirArchivoExistente
 
    Private Sub botonesEstatus(ByVal estatus As Boolean)
       txtDesdeLetra1.Enabled = estatus
+      txtDesdeLetra1.Focus()
       txtDesdeValor1.Enabled = estatus
       txtHastaLetra2.Enabled = estatus
       txtHastaValor2.Enabled = estatus
@@ -272,7 +283,7 @@ Public Class frmAbrirArchivoExistente
    End Sub
 
    Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1.TextChanged
-      controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 0, 11)
+      controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 1, 12)
    End Sub
 
    Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2.TextChanged
@@ -281,6 +292,13 @@ Public Class frmAbrirArchivoExistente
    End Sub
 
    Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2.TextChanged
-      controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 0, 11)
+      controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 1, 12)
+   End Sub
+
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+      botonesEstatus(False)
+      coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
+      btnCapturaTerminada.Enabled = False
+      btnObtenResultadosDA.Enabled = True
    End Sub
 End Class

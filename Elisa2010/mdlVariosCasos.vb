@@ -320,7 +320,8 @@
                              ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal, _
                              ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal, _
                              ByVal desdex As Integer, ByVal hastax As Integer, ByVal desdey As Integer, _
-                             ByVal hastay As Integer, ByRef promCP As Decimal, ByRef promCN As Decimal, ByRef difCPS As Decimal)
+                             ByVal hastay As Integer, ByRef promCP As Decimal, ByRef promCN As Decimal, ByRef difCPS As Decimal,
+                             ByRef etiqueta As Label)
       'Para controlar el ciclo for
       Dim i As Integer = 0
       Dim j As Integer = 0
@@ -353,16 +354,16 @@
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
-         promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
+         promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, etiqueta)
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
-         promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3)
+         promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3, etiqueta)
       Else
          'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
-         promCP = calculaPromedioPositivosDA(cp1, cp2, cp3)
+         promCP = calculaPromedioPositivosDA(cp1, cp2, cp3, etiqueta)
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
-         promCN = calculaPromedioNegativosDA(cn1, cn2, cn3)
+         promCN = calculaPromedioNegativosDA(cn1, cn2, cn3, etiqueta)
       End If
-      difCPS = calculaDiferenciaSPS(promCP, promCN)
+      difCPS = calculaDiferenciaSPS(promCP, promCN, etiqueta)
       calculaSPSs(placaOriginal, placaLector, calculaSPS, promCN, difCPS)
       calculaLogaritmoSPS(logaritmoSPS, calculaSPS, logsps)
       calculaLogaritmoTitulos(logaritmoSPS, logaritmoTitulos, logtit1, logtit2)

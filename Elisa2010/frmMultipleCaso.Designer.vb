@@ -24,10 +24,10 @@ Partial Class frmMultipleCaso
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMultipleCaso))
-      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.lblNoControles = New System.Windows.Forms.Label()
       Me.txtNoControles = New System.Windows.Forms.TextBox()
@@ -185,7 +185,7 @@ Partial Class frmMultipleCaso
       Me.Label40 = New System.Windows.Forms.Label()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
       Me.btnAceptarControles = New System.Windows.Forms.Button()
-      Me.Button8 = New System.Windows.Forms.Button()
+      Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.Panel4 = New System.Windows.Forms.Panel()
@@ -2009,15 +2009,15 @@ Partial Class frmMultipleCaso
       Me.btnAceptarControles.Text = "Aceptar Controles"
       Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
-      'Button8
+      'btnCancelar
       '
-      Me.Button8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Button8.Location = New System.Drawing.Point(846, 501)
-      Me.Button8.Name = "Button8"
-      Me.Button8.Size = New System.Drawing.Size(105, 23)
-      Me.Button8.TabIndex = 58
-      Me.Button8.Text = "Cancelar"
-      Me.Button8.UseVisualStyleBackColor = True
+      Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnCancelar.Location = New System.Drawing.Point(846, 501)
+      Me.btnCancelar.Name = "btnCancelar"
+      Me.btnCancelar.Size = New System.Drawing.Size(105, 23)
+      Me.btnCancelar.TabIndex = 58
+      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'btnDefinirControlesPN
       '
@@ -2160,32 +2160,32 @@ Partial Class frmMultipleCaso
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(3, 5)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 101
@@ -2219,7 +2219,7 @@ Partial Class frmMultipleCaso
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnDefinirControlesPN)
-      Me.Controls.Add(Me.Button8)
+      Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.dtpFechaElaboracion)
@@ -2287,7 +2287,7 @@ Partial Class frmMultipleCaso
    Friend WithEvents txtCN3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents btnAceptarControles As System.Windows.Forms.Button
-   Friend WithEvents Button8 As System.Windows.Forms.Button
+   Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents lblNombreEnfermedad As System.Windows.Forms.Label
    Friend WithEvents cmbNombreEnfermedad As System.Windows.Forms.ComboBox
    Friend WithEvents tbcDatosDelCaso As System.Windows.Forms.TabControl

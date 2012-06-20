@@ -128,6 +128,19 @@
     <Compile Include="frmRegistraNuevoAnalisis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSalidaCaso2.Designer.vb">
+      <DependentUpon>frmSalidaCaso2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaCaso3.Designer.vb">
+      <DependentUpon>frmSalidaCaso3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdlEstilos.vb" />
     <Compile Include="mdlOperaciones.vb" />
     <Compile Include="frmELISA.vb">
       <SubType>Form</SubType>
@@ -166,12 +179,6 @@
     <Compile Include="frmAcercaDe.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PRUEBA.Designer.vb">
-      <DependentUpon>PRUEBA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="PRUEBA.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAbrirArchivoExistente.resx">
@@ -189,6 +196,12 @@
     <EmbeddedResource Include="frmOperacionesAnalisis.resx">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso2.resx">
+      <DependentUpon>frmSalidaCaso2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso3.resx">
+      <DependentUpon>frmSalidaCaso3.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaDatos.resx">
       <DependentUpon>frmSalidaDatos.vb</DependentUpon>
     </EmbeddedResource>
@@ -203,9 +216,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAcercaDe.resx">
       <DependentUpon>frmAcercaDe.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PRUEBA.resx">
-      <DependentUpon>PRUEBA.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

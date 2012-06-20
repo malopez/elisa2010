@@ -69,6 +69,7 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
+      Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.Panel1.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.grbCNDesdeArchivo.SuspendLayout()
@@ -85,7 +86,7 @@ Partial Class frmAbrirArchivoExistente
       'btnLeerArchivoExistente
       '
       Me.btnLeerArchivoExistente.Enabled = False
-      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(369, 495)
+      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(258, 495)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
       Me.btnLeerArchivoExistente.TabIndex = 2
@@ -545,12 +546,24 @@ Partial Class frmAbrirArchivoExistente
       Me.lblObservaciones.Text = "Label7"
       Me.lblObservaciones.Visible = False
       '
+      'btnCapturaTerminada
+      '
+      Me.btnCapturaTerminada.Enabled = False
+      Me.btnCapturaTerminada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnCapturaTerminada.Location = New System.Drawing.Point(377, 495)
+      Me.btnCapturaTerminada.Name = "btnCapturaTerminada"
+      Me.btnCapturaTerminada.Size = New System.Drawing.Size(105, 23)
+      Me.btnCapturaTerminada.TabIndex = 101
+      Me.btnCapturaTerminada.Text = "Captura Terminada"
+      Me.btnCapturaTerminada.UseVisualStyleBackColor = True
+      '
       'frmAbrirArchivoExistente
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.BackColor = System.Drawing.SystemColors.Control
       Me.ClientSize = New System.Drawing.Size(729, 558)
+      Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel3)
@@ -621,4 +634,5 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents txtDesdeValor1 As System.Windows.Forms.TextBox
    Friend WithEvents txtHastaLetra2 As System.Windows.Forms.TextBox
    Friend WithEvents txtHastaValor2 As System.Windows.Forms.TextBox
+   Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
 End Class

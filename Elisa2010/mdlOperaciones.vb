@@ -95,11 +95,7 @@ Module mdlOperaciones
       Next
    End Sub
 
-   Public Sub coloreaTabla(ByRef placa As DataGridView, ByVal color As System.Drawing.Color, ByVal col As Integer, ByVal reng As Integer)
-      placa.Rows(col).Cells(reng).Style.BackColor = color
-   End Sub
 
-  
    'Procedimiento que sirve para generar el archivo de excel con la placa original
    Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal numCaso As String, _
                                ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
@@ -115,10 +111,8 @@ Module mdlOperaciones
       'Mostrar Excel en pantalla y crea el workbook
       'excelApp.Visible = True
       libroExcel = excelApp.Workbooks.Add()
-
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = "PlacaLeida"
-
       'Agregar datos a la hoja de Excel de la frecuencia relativa
       For i = 0 To 7
          For j = 0 To 11
@@ -126,7 +120,6 @@ Module mdlOperaciones
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
-      MessageBox.Show("ENTRE AL GUARDA DATOS EN EXCEL")
       excelApp.Range("A14").Value2 = "Controles Positivos"
       excelApp.Range("A14").Interior.ColorIndex = 4
       excelApp.Range("B14").Value2 = "Controles Negativos"
@@ -166,8 +159,6 @@ Module mdlOperaciones
          excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
          excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
       End If
-
-
       'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
       Dim renglones As Integer = 11
       For i = desdex To hastax
@@ -179,7 +170,6 @@ Module mdlOperaciones
          Next
          desdey = 0
       Next
-
       'Salva el archivo de placa original leida con el nombre del caso
       Dim nombreArchivo As String = rutaPlacas & numCaso & ".xlsx"
       excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
@@ -468,7 +458,7 @@ Module mdlOperaciones
    '#################################################
    '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
    '#################################################
-   Public Sub creaChartFrecRel(ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String)
+   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
 
@@ -477,7 +467,7 @@ Module mdlOperaciones
          Dim oDataReader As MySqlDataReader
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa;"
+         Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa order by rango asc"
          oComando.Connection = oConexion
          oComando.CommandText = sqlfrecrel
          Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
@@ -486,14 +476,15 @@ Module mdlOperaciones
          oComando.CommandText = sqlfrecrel
          oConexion.Open()
          oDataReader = oComando.ExecuteReader()
-         
+
          'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
          Dim ChartArea1 As ChartArea = New ChartArea()
          Dim Legend1 As Legend = New Legend()
          Dim Series1 As Series = New Series()
          Dim Chart1 = New Chart()
 
-         frmSalidaDatos.Controls.Add(Chart1)
+         'frmSalidaDatos.Controls.Add(Chart1)
+         control.Controls.Add(Chart1)
 
          'Define la nueva colección, asigna el nombre del gráfico.
          ChartArea1.Name = "ChartArea1"
@@ -517,7 +508,7 @@ Module mdlOperaciones
          With Chart1
             .Name = "Chart1"
             .Location = New System.Drawing.Point(38, 110)
-            .Size = New System.Drawing.Size(500, 240)
+            .Size = New System.Drawing.Size(525, 245)
             .TabIndex = 21
             .Anchor = AnchorStyles.Right
             .Anchor = AnchorStyles.Top
@@ -544,7 +535,7 @@ Module mdlOperaciones
          'E indica los nombres de los títulos para x y y
          With Chart1.ChartAreas(0)
             .AxisX.Minimum = 0
-            .AxisX.Maximum = 15
+            .AxisX.Maximum = 16
             .AxisY.Minimum = 0
             .AxisY.Maximum = 100
             .AxisY.Interval = 20
@@ -560,10 +551,10 @@ Module mdlOperaciones
             Dim nombreArchivo = rutaImagen & numCaso & ".jpeg"
             Chart1.SaveImage(nombreArchivo, System.Drawing.Imaging.ImageFormat.Jpeg)
          Catch ex As Exception
-            mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+            mensajeException(etiqueta, ex)
          End Try
       Catch ex As Exception
-         mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+         mensajeException(etiqueta, ex)
          ' MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
       End Try
    End Sub
@@ -641,7 +632,7 @@ Module mdlOperaciones
    'ellos y se suma a los dos originales, sacando asi un tercer valor que también se promedia con los dos originales
    'En caso de que sean tres valores positivos, se promedian normalmente
    Public Function calculaPromedioPositivos(ByVal nocp As Integer, ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer _
-                                           , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer) As Decimal
+                                           , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, ByRef etiqueta As Label) As Decimal
       Dim promedioPositivos As Decimal
       Try
          If (nocp = 3) Then
@@ -651,7 +642,7 @@ Module mdlOperaciones
             promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + promedioPositivos) / 3))
          End If
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos.")
+         mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles positivos.")
       End Try
       Return (promedioPositivos)
    End Function
@@ -660,7 +651,7 @@ Module mdlOperaciones
    'ellos y se suma a los dos originales, sacando asi un tercer valor que también se promedia con los dos originales
    'En caso de que sean tres valores negativos, se promedian normalmente
    Public Function calculaPromedioNegativos(ByVal nocp As Integer, ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer _
-                                           , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer) As Decimal
+                                           , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, ByRef etiqueta As Label) As Decimal
       Dim promedioNegativos As Decimal
       Try
          If (nocp = 3) Then
@@ -670,41 +661,41 @@ Module mdlOperaciones
             promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + promedioNegativos) / 3))
          End If
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos.")
+         mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles negativos.")
       End Try
       Return (promedioNegativos)
    End Function
 
    'Funcion que calcula el valor de los promedios positivos leidos desde archivo
-   Public Function calculaPromedioPositivosDA(ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal) As Decimal
+   Public Function calculaPromedioPositivosDA(ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal, ByRef etiqueta As Label) As Decimal
       Dim promedioPositivos As Decimal
       Try
          promedioPositivos = reduceDecimal(((cp1 + cp2 + cp3) / 3))
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles positivos desde archivo.")
+         mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles positivos desde archivo.")
       End Try
       Return (promedioPositivos)
    End Function
 
    'Funcion que calcula el valor de los promedios negativos leidos desde archivo
-   Public Function calculaPromedioNegativosDA(ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal) As Decimal
+   Public Function calculaPromedioNegativosDA(ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal, ByRef etiqueta As Label) As Decimal
       Dim promedioNegativos As Decimal
       Try
          promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
 
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el promedio de controles negativos desde archivo.")
+         mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles negativos desde archivo.")
       End Try
       Return (promedioNegativos)
    End Function
 
    'Calcula la diferencia de controles positivos y negativos
-   Public Function calculaDiferenciaSPS(ByVal promCP As Decimal, ByVal promCN As Decimal) As Decimal
+   Public Function calculaDiferenciaSPS(ByVal promCP As Decimal, ByVal promCN As Decimal, ByRef etiqueta As Label) As Decimal
       Dim difCPS As Decimal
       Try
          difCPS = reduceDecimal(CDec(promCP - promCN))
       Catch
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: al calcular el valor del la diferencia de controles.")
+         mensajeRojo(etiqueta, "ERROR: al calcular el valor del la diferencia de controles.")
       End Try
       Return (difCPS)
    End Function
@@ -818,26 +809,26 @@ Module mdlOperaciones
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
          Try
-            promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3)
+            promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, frmRegistraNuevoAnalisis.lblMensajeCaso)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
          End Try
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
          Try
-            promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3)
+            promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3, frmRegistraNuevoAnalisis.lblMensajeCaso)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
          End Try
       Else
          'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
          Try
-            promCP = calculaPromedioPositivosDA(cp1, cp2, cp3)
+            promCP = calculaPromedioPositivosDA(cp1, cp2, cp3, frmRegistraNuevoAnalisis.lblMensajeCaso)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio positivo, verifique los valores de control.")
          End Try
          'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
          Try
-            promCN = calculaPromedioNegativosDA(cn1, cn2, cn3)
+            promCN = calculaPromedioNegativosDA(cn1, cn2, cn3, frmRegistraNuevoAnalisis.lblMensajeCaso)
          Catch ex As Exception
             MessageBox.Show("Se ha encontrado error al calcular el promedio negativo, verifique los valores de control.")
          End Try
@@ -1029,7 +1020,7 @@ Module mdlOperaciones
                         valorFR, cantidadFR, frmSalidaDatos.lblObservaciones)
       'CARGAR LA TABLA DE FREC REL
       cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmSalidaDatos.lblObservaciones)
-      creaChartFrecRel(nombre, titulox, tituloy, numcaso)
+      creaChartFrecRel(frmSalidaDatos.lblSalidaDatos, frmSalidaDatos, nombre, titulox, tituloy, numcaso)
 
       'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos
 
