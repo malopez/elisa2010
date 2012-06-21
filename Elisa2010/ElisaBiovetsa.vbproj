@@ -140,6 +140,36 @@
     <Compile Include="frmSalidaCaso3.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSalidaCaso4.Designer.vb">
+      <DependentUpon>frmSalidaCaso4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaCaso5.Designer.vb">
+      <DependentUpon>frmSalidaCaso5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaCaso6.Designer.vb">
+      <DependentUpon>frmSalidaCaso6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaCaso7.Designer.vb">
+      <DependentUpon>frmSalidaCaso7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSalidaCaso8.Designer.vb">
+      <DependentUpon>frmSalidaCaso8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSalidaCaso8.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="mdlEstilos.vb" />
     <Compile Include="mdlOperaciones.vb" />
     <Compile Include="frmELISA.vb">
@@ -201,6 +231,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaCaso3.resx">
       <DependentUpon>frmSalidaCaso3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso4.resx">
+      <DependentUpon>frmSalidaCaso4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso5.resx">
+      <DependentUpon>frmSalidaCaso5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso6.resx">
+      <DependentUpon>frmSalidaCaso6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso7.resx">
+      <DependentUpon>frmSalidaCaso7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalidaCaso8.resx">
+      <DependentUpon>frmSalidaCaso8.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaDatos.resx">
       <DependentUpon>frmSalidaDatos.vb</DependentUpon>

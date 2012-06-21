@@ -99,9 +99,17 @@
       Me.Close()
    End Sub
 
-   Private Sub MultipleCasoPorPlacaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles MultipleCasoPorPlacaToolStripMenuItem.Click
+   Private Sub tsmMultipleCasoPorPlaca_Click(sender As System.Object, e As System.EventArgs) Handles tsmMultipleCasoPorPlaca.Click
       frmMultipleCaso.MdiParent = Me
       frmMultipleCaso.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
    End Sub
 
 

@@ -28,7 +28,7 @@ Partial Class frmElisaBiovetsa
       Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmAbrirArchivoExistente = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
-      Me.MultipleCasoPorPlacaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmMultipleCasoPorPlaca = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfigurarLector = New System.Windows.Forms.ToolStripMenuItem()
@@ -63,7 +63,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.MultipleCasoPorPlacaToolStripMenuItem, Me.tsmSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmMultipleCasoPorPlaca, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
@@ -89,11 +89,11 @@ Partial Class frmElisaBiovetsa
       Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(213, 22)
       Me.tsmOperacionesAnalisis.Text = "&Operaciones sobre análisis"
       '
-      'MultipleCasoPorPlacaToolStripMenuItem
+      'tsmMultipleCasoPorPlaca
       '
-      Me.MultipleCasoPorPlacaToolStripMenuItem.Name = "MultipleCasoPorPlacaToolStripMenuItem"
-      Me.MultipleCasoPorPlacaToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.MultipleCasoPorPlacaToolStripMenuItem.Text = "Multiple Caso por placa"
+      Me.tsmMultipleCasoPorPlaca.Name = "tsmMultipleCasoPorPlaca"
+      Me.tsmMultipleCasoPorPlaca.Size = New System.Drawing.Size(213, 22)
+      Me.tsmMultipleCasoPorPlaca.Text = "Multiple Caso por placa"
       '
       'tsmSalir
       '
@@ -286,6 +286,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents MultipleCasoPorPlacaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmMultipleCasoPorPlaca As System.Windows.Forms.ToolStripMenuItem
 
 End Class

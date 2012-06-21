@@ -1,5 +1,4 @@
-﻿Public Class frmSalidaCaso3
-
+﻿Public Class frmSalidaCaso5
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       guardaResultadosExcel(Me.txtNoCaso.Text, txtFechaElaboracion.Text, Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _

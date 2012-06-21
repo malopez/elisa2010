@@ -323,6 +323,7 @@ Partial Class frmSalidaDatos
       '
       'txtInmunoEnsayo
       '
+      Me.txtInmunoEnsayo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.txtInmunoEnsayo.Location = New System.Drawing.Point(92, 67)
       Me.txtInmunoEnsayo.Name = "txtInmunoEnsayo"
       Me.txtInmunoEnsayo.ReadOnly = True
@@ -332,6 +333,7 @@ Partial Class frmSalidaDatos
       '
       'txtFechaElaboracion
       '
+      Me.txtFechaElaboracion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.txtFechaElaboracion.Location = New System.Drawing.Point(448, 13)
       Me.txtFechaElaboracion.Name = "txtFechaElaboracion"
       Me.txtFechaElaboracion.ReadOnly = True
@@ -340,6 +342,7 @@ Partial Class frmSalidaDatos
       '
       'txtNombreEnfermedad
       '
+      Me.txtNombreEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.txtNombreEnfermedad.Location = New System.Drawing.Point(264, 67)
       Me.txtNombreEnfermedad.Name = "txtNombreEnfermedad"
       Me.txtNombreEnfermedad.ReadOnly = True
@@ -348,6 +351,7 @@ Partial Class frmSalidaDatos
       '
       'txtNombreCliente
       '
+      Me.txtNombreCliente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.txtNombreCliente.Location = New System.Drawing.Point(92, 41)
       Me.txtNombreCliente.Name = "txtNombreCliente"
       Me.txtNombreCliente.ReadOnly = True
@@ -356,6 +360,7 @@ Partial Class frmSalidaDatos
       '
       'txtNoCaso
       '
+      Me.txtNoCaso.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.txtNoCaso.Location = New System.Drawing.Point(92, 13)
       Me.txtNoCaso.Name = "txtNoCaso"
       Me.txtNoCaso.ReadOnly = True

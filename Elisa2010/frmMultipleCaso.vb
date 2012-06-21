@@ -1549,12 +1549,13 @@ Public Class frmMultipleCaso
             frmSalidaDatos.Show()
             obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
-                                     promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
+                                     promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
+         
          Case 3
             obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
@@ -1566,21 +1567,145 @@ Public Class frmMultipleCaso
             frmSalidaDatos.Show()
             obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
-                                     promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
+                                     promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
             obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
-                                    lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
-                                    promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                       frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
-                                       frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
-                                       frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
-                                      frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
+                                     lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
+                                     promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
+                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
+                                        frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
+                                       frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
+         Case 4
+            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+                                     lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
+                                     promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
+            frmSalidaDatos.Show()
+            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+                                     lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
+                                     promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
+                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
+                                        frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
+                                       frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
+            frmSalidaCaso2.Show()
+            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+                                     lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
+                                     promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
+                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
+                                        frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
+                                       frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
+            frmSalidaCaso3.Show()
+            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
+                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
+                                        frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
+                                       frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
+            frmSalidaCaso4.Show()
+         Case 5
+            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+                                     lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
+                                     promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
+            frmSalidaDatos.Show()
+            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+                                     lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
+                                     promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
+                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
+                                        frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
+                                       frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
+            frmSalidaCaso2.Show()
+            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+                                     lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
+                                     promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
+                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
+                                        frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
+                                       frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
+            frmSalidaCaso3.Show()
+            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
+                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
+                                        frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
+                                       frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
+            frmSalidaCaso4.Show()
+            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+                                    lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
+                                    promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
+                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                       frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
+                                       frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
+                                      frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
+            frmSalidaCaso5.Show()
+         Case 6
+            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+                                     lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
+                                     promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
+            frmSalidaDatos.Show()
+            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+                                     lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
+                                     promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
+                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
+                                        frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
+                                       frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
+            frmSalidaCaso2.Show()
+            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+                                     lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
+                                     promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
+                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
+                                        frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
+                                       frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
+            frmSalidaCaso3.Show()
+            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
+                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
+                                        frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
+                                       frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
+            frmSalidaCaso4.Show()
+            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+                                    lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
+                                    promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
+                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                       frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
+                                       frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
+                                      frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
+            frmSalidaCaso5.Show()
+            obtenResultadosPorCaso("CASO 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+                                    lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
+                                    promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
+                                       frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
+                                       frmSalidaCaso6.txtTitulosObtenidos, frmSalidaCaso6.txtMediaAritmetica2, _
+                                       frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
+                                      frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
+            frmSalidaCaso6.Show()
       End Select
+
    End Sub
 
    Private Sub txtNoControles_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtNoControles.TextChanged

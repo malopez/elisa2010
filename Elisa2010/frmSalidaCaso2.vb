@@ -1,9 +1,4 @@
-﻿Imports System.IO
-Imports System.Windows.Forms.DataVisualization.Charting
-Imports MySql.Data.MySqlClient
-Imports Excel = Microsoft.Office.Interop.Excel
-
-Public Class frmSalidaCaso2
+﻿Public Class frmSalidaCaso2
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       guardaResultadosExcel(Me.txtNoCaso.Text, txtFechaElaboracion.Text, Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
@@ -19,5 +14,4 @@ Public Class frmSalidaCaso2
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
-
 End Class

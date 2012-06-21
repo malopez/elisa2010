@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmSalidaCaso2
+Partial Class frmSalidaCaso5
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,20 +23,21 @@ Partial Class frmSalidaCaso2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
       Me.lbDesviacionEstandarDNA = New System.Windows.Forms.Label()
-      Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
+      Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
       Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
-      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.Panel1 = New System.Windows.Forms.Panel()
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtNoCaso = New System.Windows.Forms.TextBox()
-      Me.lblELISA = New System.Windows.Forms.Label()
-      Me.btnCancelar = New System.Windows.Forms.Button()
+      Me.Label3 = New System.Windows.Forms.Label()
       Me.Label2 = New System.Windows.Forms.Label()
+      Me.lblELISA = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
+      Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.lblSalidaDatos = New System.Windows.Forms.Label()
+      Me.Label1 = New System.Windows.Forms.Label()
+      Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
-      Me.txtTotalDatosCalculados = New System.Windows.Forms.TextBox()
       Me.lblVarianzaDNA = New System.Windows.Forms.Label()
       Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
@@ -44,16 +45,15 @@ Partial Class frmSalidaCaso2
       Me.txtMediaAritmetica2 = New System.Windows.Forms.TextBox()
       Me.lblMediaGeometrica = New System.Windows.Forms.Label()
       Me.txtMediaGeometrica = New System.Windows.Forms.TextBox()
-      Me.Panel3 = New System.Windows.Forms.Panel()
       Me.lblCoefVariacionDNA = New System.Windows.Forms.Label()
-      Me.lblTotalDatosCalculados = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
-      Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
-      Me.Label3 = New System.Windows.Forms.Label()
-      Me.Label1 = New System.Windows.Forms.Label()
+      Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
+      Me.txtTotalDatosCalculados = New System.Windows.Forms.TextBox()
+      Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.lblTotalDatosCalculados = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
-      Me.Panel3.SuspendLayout()
       Me.Panel2.SuspendLayout()
+      Me.Panel3.SuspendLayout()
       Me.SuspendLayout()
       '
       'lbDesviacionEstandarDNA
@@ -67,14 +67,15 @@ Partial Class frmSalidaCaso2
       Me.lbDesviacionEstandarDNA.TabIndex = 69
       Me.lbDesviacionEstandarDNA.Text = "Desviacion Estandar"
       '
-      'txtFechaElaboracion
+      'txtInmunoEnsayo
       '
-      Me.txtFechaElaboracion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtFechaElaboracion.Location = New System.Drawing.Point(448, 13)
-      Me.txtFechaElaboracion.Name = "txtFechaElaboracion"
-      Me.txtFechaElaboracion.ReadOnly = True
-      Me.txtFechaElaboracion.Size = New System.Drawing.Size(93, 20)
-      Me.txtFechaElaboracion.TabIndex = 60
+      Me.txtInmunoEnsayo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtInmunoEnsayo.Location = New System.Drawing.Point(92, 67)
+      Me.txtInmunoEnsayo.Name = "txtInmunoEnsayo"
+      Me.txtInmunoEnsayo.ReadOnly = True
+      Me.txtInmunoEnsayo.Size = New System.Drawing.Size(167, 20)
+      Me.txtInmunoEnsayo.TabIndex = 61
+      Me.txtInmunoEnsayo.Text = "INMUNOENSAYO ENZIMATICO"
       '
       'txtNombreEnfermedad
       '
@@ -84,17 +85,6 @@ Partial Class frmSalidaCaso2
       Me.txtNombreEnfermedad.ReadOnly = True
       Me.txtNombreEnfermedad.Size = New System.Drawing.Size(157, 20)
       Me.txtNombreEnfermedad.TabIndex = 59
-      '
-      'lblSalidaDatos
-      '
-      Me.lblSalidaDatos.AutoSize = True
-      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 8)
-      Me.lblSalidaDatos.Name = "lblSalidaDatos"
-      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
-      Me.lblSalidaDatos.TabIndex = 45
-      Me.lblSalidaDatos.Text = "Mensaje:"
       '
       'txtCoefVariacion2
       '
@@ -110,7 +100,7 @@ Partial Class frmSalidaCaso2
       'txtTitulosObtenidos
       '
       Me.txtTitulosObtenidos.BackColor = System.Drawing.Color.White
-      Me.txtTitulosObtenidos.ForeColor = System.Drawing.Color.DarkBlue
+      Me.txtTitulosObtenidos.ForeColor = System.Drawing.Color.MidnightBlue
       Me.txtTitulosObtenidos.Location = New System.Drawing.Point(55, 11)
       Me.txtTitulosObtenidos.Multiline = True
       Me.txtTitulosObtenidos.Name = "txtTitulosObtenidos"
@@ -119,16 +109,6 @@ Partial Class frmSalidaCaso2
       Me.txtTitulosObtenidos.Size = New System.Drawing.Size(108, 145)
       Me.txtTitulosObtenidos.TabIndex = 49
       Me.txtTitulosObtenidos.TabStop = False
-      '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(8, 555)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(569, 33)
-      Me.Panel1.TabIndex = 70
       '
       'txtNombreCliente
       '
@@ -148,27 +128,16 @@ Partial Class frmSalidaCaso2
       Me.txtNoCaso.Size = New System.Drawing.Size(138, 20)
       Me.txtNoCaso.TabIndex = 57
       '
-      'lblELISA
+      'Label3
       '
-      Me.lblELISA.AutoSize = True
-      Me.lblELISA.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblELISA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblELISA.Location = New System.Drawing.Point(22, 68)
-      Me.lblELISA.Name = "lblELISA"
-      Me.lblELISA.Size = New System.Drawing.Size(44, 16)
-      Me.lblELISA.TabIndex = 48
-      Me.lblELISA.Text = "ELISA: "
-      '
-      'btnCancelar
-      '
-      Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnCancelar.Location = New System.Drawing.Point(486, 524)
-      Me.btnCancelar.Name = "btnCancelar"
-      Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
-      Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Cancelar"
-      Me.btnCancelar.UseVisualStyleBackColor = True
+      Me.Label3.AutoSize = True
+      Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.Label3.Location = New System.Drawing.Point(334, 14)
+      Me.Label3.Name = "Label3"
+      Me.Label3.Size = New System.Drawing.Size(113, 16)
+      Me.Label3.TabIndex = 56
+      Me.Label3.Text = "Fecha de Análisis:"
       '
       'Label2
       '
@@ -181,6 +150,17 @@ Partial Class frmSalidaCaso2
       Me.Label2.TabIndex = 53
       Me.Label2.Text = "Cliente:"
       '
+      'lblELISA
+      '
+      Me.lblELISA.AutoSize = True
+      Me.lblELISA.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblELISA.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblELISA.Location = New System.Drawing.Point(22, 68)
+      Me.lblELISA.Name = "lblELISA"
+      Me.lblELISA.Size = New System.Drawing.Size(44, 16)
+      Me.lblELISA.TabIndex = 48
+      Me.lblELISA.Text = "ELISA: "
+      '
       'lblObservaciones
       '
       Me.lblObservaciones.AutoSize = True
@@ -192,6 +172,48 @@ Partial Class frmSalidaCaso2
       Me.lblObservaciones.Text = "Observaciones:"
       Me.lblObservaciones.Visible = False
       '
+      'Panel1
+      '
+      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
+      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
+      Me.Panel1.Location = New System.Drawing.Point(8, 555)
+      Me.Panel1.Name = "Panel1"
+      Me.Panel1.Size = New System.Drawing.Size(569, 33)
+      Me.Panel1.TabIndex = 70
+      '
+      'lblSalidaDatos
+      '
+      Me.lblSalidaDatos.AutoSize = True
+      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
+      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 8)
+      Me.lblSalidaDatos.Name = "lblSalidaDatos"
+      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
+      Me.lblSalidaDatos.TabIndex = 45
+      Me.lblSalidaDatos.Text = "Mensaje:"
+      '
+      'Label1
+      '
+      Me.Label1.AutoSize = True
+      Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.Label1.Location = New System.Drawing.Point(22, 14)
+      Me.Label1.Name = "Label1"
+      Me.Label1.Size = New System.Drawing.Size(61, 16)
+      Me.Label1.TabIndex = 52
+      Me.Label1.Text = "No.Caso:"
+      '
+      'btnCancelar
+      '
+      Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+      Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnCancelar.Location = New System.Drawing.Point(486, 524)
+      Me.btnCancelar.Name = "btnCancelar"
+      Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
+      Me.btnCancelar.TabIndex = 61
+      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.UseVisualStyleBackColor = True
+      '
       'btnGuardaResultados
       '
       Me.btnGuardaResultados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -201,17 +223,6 @@ Partial Class frmSalidaCaso2
       Me.btnGuardaResultados.TabIndex = 60
       Me.btnGuardaResultados.Text = "Guardar Resultados"
       Me.btnGuardaResultados.UseVisualStyleBackColor = True
-      '
-      'txtTotalDatosCalculados
-      '
-      Me.txtTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(347, 82)
-      Me.txtTotalDatosCalculados.Name = "txtTotalDatosCalculados"
-      Me.txtTotalDatosCalculados.ReadOnly = True
-      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(114, 21)
-      Me.txtTotalDatosCalculados.TabIndex = 11
-      Me.txtTotalDatosCalculados.TabStop = False
       '
       'lblVarianzaDNA
       '
@@ -290,19 +301,6 @@ Partial Class frmSalidaCaso2
       Me.txtMediaGeometrica.TabIndex = 62
       Me.txtMediaGeometrica.TabStop = False
       '
-      'Panel3
-      '
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
-      Me.Panel3.Controls.Add(Me.txtTitulosObtenidos)
-      Me.Panel3.Controls.Add(Me.lblCoefVariacionDNA)
-      Me.Panel3.Controls.Add(Me.txtTotalDatosCalculados)
-      Me.Panel3.Controls.Add(Me.lblTotalDatosCalculados)
-      Me.Panel3.Location = New System.Drawing.Point(7, 352)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(568, 166)
-      Me.Panel3.TabIndex = 72
-      '
       'lblCoefVariacionDNA
       '
       Me.lblCoefVariacionDNA.AutoSize = True
@@ -313,17 +311,6 @@ Partial Class frmSalidaCaso2
       Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(108, 15)
       Me.lblCoefVariacionDNA.TabIndex = 18
       Me.lblCoefVariacionDNA.Text = "Coef. de Variacion"
-      '
-      'lblTotalDatosCalculados
-      '
-      Me.lblTotalDatosCalculados.AutoSize = True
-      Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(361, 63)
-      Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
-      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(88, 15)
-      Me.lblTotalDatosCalculados.TabIndex = 12
-      Me.lblTotalDatosCalculados.Text = "Total de Sueros"
       '
       'Panel2
       '
@@ -343,39 +330,51 @@ Partial Class frmSalidaCaso2
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 71
       '
-      'txtInmunoEnsayo
+      'txtFechaElaboracion
       '
-      Me.txtInmunoEnsayo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtInmunoEnsayo.Location = New System.Drawing.Point(92, 67)
-      Me.txtInmunoEnsayo.Name = "txtInmunoEnsayo"
-      Me.txtInmunoEnsayo.ReadOnly = True
-      Me.txtInmunoEnsayo.Size = New System.Drawing.Size(167, 20)
-      Me.txtInmunoEnsayo.TabIndex = 61
-      Me.txtInmunoEnsayo.Text = "INMUNOENSAYO ENZIMATICO"
+      Me.txtFechaElaboracion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtFechaElaboracion.Location = New System.Drawing.Point(448, 13)
+      Me.txtFechaElaboracion.Name = "txtFechaElaboracion"
+      Me.txtFechaElaboracion.ReadOnly = True
+      Me.txtFechaElaboracion.Size = New System.Drawing.Size(93, 20)
+      Me.txtFechaElaboracion.TabIndex = 60
       '
-      'Label3
+      'txtTotalDatosCalculados
       '
-      Me.Label3.AutoSize = True
-      Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.Label3.Location = New System.Drawing.Point(334, 14)
-      Me.Label3.Name = "Label3"
-      Me.Label3.Size = New System.Drawing.Size(113, 16)
-      Me.Label3.TabIndex = 56
-      Me.Label3.Text = "Fecha de Análisis:"
+      Me.txtTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkBlue
+      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(347, 82)
+      Me.txtTotalDatosCalculados.Name = "txtTotalDatosCalculados"
+      Me.txtTotalDatosCalculados.ReadOnly = True
+      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(114, 21)
+      Me.txtTotalDatosCalculados.TabIndex = 11
+      Me.txtTotalDatosCalculados.TabStop = False
       '
-      'Label1
+      'Panel3
       '
-      Me.Label1.AutoSize = True
-      Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.Label1.Location = New System.Drawing.Point(22, 14)
-      Me.Label1.Name = "Label1"
-      Me.Label1.Size = New System.Drawing.Size(61, 16)
-      Me.Label1.TabIndex = 52
-      Me.Label1.Text = "No.Caso:"
+      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
+      Me.Panel3.Controls.Add(Me.txtTitulosObtenidos)
+      Me.Panel3.Controls.Add(Me.lblCoefVariacionDNA)
+      Me.Panel3.Controls.Add(Me.txtTotalDatosCalculados)
+      Me.Panel3.Controls.Add(Me.lblTotalDatosCalculados)
+      Me.Panel3.Location = New System.Drawing.Point(7, 352)
+      Me.Panel3.Name = "Panel3"
+      Me.Panel3.Size = New System.Drawing.Size(568, 166)
+      Me.Panel3.TabIndex = 72
       '
-      'frmSalidaCaso2
+      'lblTotalDatosCalculados
+      '
+      Me.lblTotalDatosCalculados.AutoSize = True
+      Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(361, 63)
+      Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
+      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(88, 15)
+      Me.lblTotalDatosCalculados.TabIndex = 12
+      Me.lblTotalDatosCalculados.Text = "Total de Sueros"
+      '
+      'frmSalidaCaso5
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -391,36 +390,37 @@ Partial Class frmSalidaCaso2
       Me.Controls.Add(Me.txtMediaAritmetica2)
       Me.Controls.Add(Me.lblMediaGeometrica)
       Me.Controls.Add(Me.txtMediaGeometrica)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel2)
+      Me.Controls.Add(Me.Panel3)
       Me.MaximizeBox = False
-      Me.Name = "frmSalidaCaso2"
-      Me.Text = "Resultados del análisis Caso No. 2"
+      Me.Name = "frmSalidaCaso5"
+      Me.Text = "Resultados del análisis Caso No. 5"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
-      Me.Panel3.ResumeLayout(False)
-      Me.Panel3.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
+      Me.Panel3.ResumeLayout(False)
+      Me.Panel3.PerformLayout()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
    End Sub
    Friend WithEvents lbDesviacionEstandarDNA As System.Windows.Forms.Label
-   Friend WithEvents txtFechaElaboracion As System.Windows.Forms.TextBox
+   Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
    Friend WithEvents txtNombreEnfermedad As System.Windows.Forms.TextBox
-   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents txtCoefVariacion2 As System.Windows.Forms.TextBox
    Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents txtNombreCliente As System.Windows.Forms.TextBox
    Friend WithEvents txtNoCaso As System.Windows.Forms.TextBox
-   Friend WithEvents lblELISA As System.Windows.Forms.Label
-   Friend WithEvents btnCancelar As System.Windows.Forms.Button
+   Friend WithEvents Label3 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label
+   Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
+   Friend WithEvents Panel1 As System.Windows.Forms.Panel
+   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
+   Friend WithEvents Label1 As System.Windows.Forms.Label
+   Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
-   Friend WithEvents txtTotalDatosCalculados As System.Windows.Forms.TextBox
    Friend WithEvents lblVarianzaDNA As System.Windows.Forms.Label
    Friend WithEvents txtDesvEstandar2 As System.Windows.Forms.TextBox
    Friend WithEvents txtVarianza2 As System.Windows.Forms.TextBox
@@ -428,11 +428,10 @@ Partial Class frmSalidaCaso2
    Friend WithEvents txtMediaAritmetica2 As System.Windows.Forms.TextBox
    Friend WithEvents lblMediaGeometrica As System.Windows.Forms.Label
    Friend WithEvents txtMediaGeometrica As System.Windows.Forms.TextBox
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents lblCoefVariacionDNA As System.Windows.Forms.Label
-   Friend WithEvents lblTotalDatosCalculados As System.Windows.Forms.Label
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-   Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
-   Friend WithEvents Label3 As System.Windows.Forms.Label
-   Friend WithEvents Label1 As System.Windows.Forms.Label
+   Friend WithEvents txtFechaElaboracion As System.Windows.Forms.TextBox
+   Friend WithEvents txtTotalDatosCalculados As System.Windows.Forms.TextBox
+   Friend WithEvents Panel3 As System.Windows.Forms.Panel
+   Friend WithEvents lblTotalDatosCalculados As System.Windows.Forms.Label
 End Class

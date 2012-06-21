@@ -266,17 +266,18 @@ Module mdlOperaciones
          mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
       End Try
       'coloca los valores de la estadística
-      excelApp.Range("A37").Value2 = "Media"
+      excelApp.Range("A37").Value2 = "No. Sueros"
+      excelApp.Range("B37").Value2 = "Media"
+      excelApp.Range("C37").Value2 = "Med. Geom."
+      excelApp.Range("D37").Value2 = "Desv. Est."
+      excelApp.Range("E37").Value2 = "Coef.Var."
+      excelApp.Range("A38").Value2 = cuentaNoDatos
+      excelApp.Range("B38").Value2 = mediaAritmetica
+      excelApp.Range("C38").Value2 = mediaGeometrica
+      excelApp.Range("D38").Value2 = desviacionEstandarDatosNoAgrupados
+      excelApp.Range("E38").Value2 = coeficienteDeVariacionDatosNoAgrupados
+
       excelApp.Range("A41").Value2 = "* Numeración arbitraria"
-      excelApp.Range("B37").Value2 = "Med. Geom."
-      excelApp.Range("C37").Value2 = "Desv. Est."
-      excelApp.Range("D37").Value2 = "Coef.Var."
-
-      excelApp.Range("A38").Value2 = mediaAritmetica
-      excelApp.Range("B38").Value2 = mediaGeometrica
-      excelApp.Range("C38").Value2 = desviacionEstandarDatosNoAgrupados
-      excelApp.Range("D38").Value2 = coeficienteDeVariacionDatosNoAgrupados
-
       excelApp.ActiveWorkbook.Close()
       excelApp.Quit()
       releaseObject(excelApp)
