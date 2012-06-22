@@ -298,7 +298,7 @@ Partial Class frmSalidaDatos
       Me.Panel1.BackColor = System.Drawing.SystemColors.Window
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(10, 558)
+      Me.Panel1.Location = New System.Drawing.Point(10, 556)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(569, 33)
       Me.Panel1.TabIndex = 57

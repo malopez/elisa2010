@@ -2001,6 +2001,7 @@ Partial Class frmMultipleCaso
       '
       'btnAceptarControles
       '
+      Me.btnAceptarControles.Enabled = False
       Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnAceptarControles.Location = New System.Drawing.Point(243, 289)
       Me.btnAceptarControles.Name = "btnAceptarControles"
@@ -2021,6 +2022,7 @@ Partial Class frmMultipleCaso
       '
       'btnDefinirControlesPN
       '
+      Me.btnDefinirControlesPN.Enabled = False
       Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnDefinirControlesPN.Location = New System.Drawing.Point(132, 289)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
@@ -2131,6 +2133,7 @@ Partial Class frmMultipleCaso
       'ckbControlesDefault
       '
       Me.ckbControlesDefault.AutoSize = True
+      Me.ckbControlesDefault.Enabled = False
       Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
       Me.ckbControlesDefault.Location = New System.Drawing.Point(12, 293)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
