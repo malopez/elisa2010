@@ -620,6 +620,26 @@ Public Class frmMultipleCaso
       End If
    End Sub
 
+
+   Private Sub habilitaBotonesDesdeHasta(ByVal estatus As Boolean, ByVal lectura As Boolean,
+                                         ByVal txtDesdeLetra As TextBox, ByRef txtHastaLetra As TextBox, _
+                                         ByVal txtDesdeValor As TextBox, ByRef txtHastaValor As TextBox)
+      txtDesdeLetra.Enabled = estatus
+      txtDesdeLetra.Focus()
+      txtDesdeValor.Enabled = estatus
+      txtHastaLetra.Enabled = estatus
+      txtHastaVAlor.Enabled = estatus
+      txtDesdeLetra.BackColor = Color.White
+      txtDesdeValor.BackColor = Color.White
+      txtHastaLetra.BackColor = Color.White
+      txtHastaValor.BackColor = Color.White
+      txtDesdeLetra.ReadOnly = lectura
+      txtDesdeValor.ReadOnly = lectura
+      txtHastaLetra.ReadOnly = lectura
+      txtHastaValor.ReadOnly = lectura
+   End Sub
+
+
    Private Sub btnBuscaCaso1_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaCaso1.Click
       Try
          Dim oConexion As MySqlConnection
@@ -645,18 +665,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C1.Enabled = True
-         txtDesdeValor1C1.Enabled = True
-         txtHastaLetra2C1.Enabled = True
-         txtHastaValor2C1.Enabled = True
-         txtDesdeLetra1C1.BackColor = Color.White
-         txtDesdeValor1C1.BackColor = Color.White
-         txtHastaLetra2C1.BackColor = Color.White
-         txtHastaValor2C1.BackColor = Color.White
-         txtDesdeLetra1C1.ReadOnly = False
-         txtDesdeValor1C1.ReadOnly = False
-         txtHastaLetra2C1.ReadOnly = False
-         txtHastaValor2C1.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -692,18 +701,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C2.Enabled = True
-         txtDesdeValor1C2.Enabled = True
-         txtHastaLetra2C2.Enabled = True
-         txtHastaValor2C2.Enabled = True
-         txtDesdeLetra1C2.BackColor = Color.White
-         txtDesdeValor1C2.BackColor = Color.White
-         txtHastaLetra2C2.BackColor = Color.White
-         txtHastaValor2C2.BackColor = Color.White
-         txtDesdeLetra1C2.ReadOnly = False
-         txtDesdeValor1C2.ReadOnly = False
-         txtHastaLetra2C2.ReadOnly = False
-         txtHastaValor2C2.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -738,18 +736,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C3.Enabled = True
-         txtDesdeValor1C3.Enabled = True
-         txtHastaLetra2C3.Enabled = True
-         txtHastaValor2C3.Enabled = True
-         txtDesdeLetra1C3.BackColor = Color.White
-         txtDesdeValor1C3.BackColor = Color.White
-         txtHastaLetra2C3.BackColor = Color.White
-         txtHastaValor2C3.BackColor = Color.White
-         txtDesdeLetra1C3.ReadOnly = False
-         txtDesdeValor1C3.ReadOnly = False
-         txtHastaLetra2C3.ReadOnly = False
-         txtHastaValor2C3.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -784,18 +771,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C4.Enabled = True
-         txtDesdeValor1C4.Enabled = True
-         txtHastaLetra2C4.Enabled = True
-         txtHastaValor2C4.Enabled = True
-         txtDesdeLetra1C4.BackColor = Color.White
-         txtDesdeValor1C4.BackColor = Color.White
-         txtHastaLetra2C4.BackColor = Color.White
-         txtHastaValor2C4.BackColor = Color.White
-         txtDesdeLetra1C4.ReadOnly = False
-         txtDesdeValor1C4.ReadOnly = False
-         txtHastaLetra2C4.ReadOnly = False
-         txtHastaValor2C4.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -830,18 +806,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C5.Enabled = True
-         txtDesdeValor1C5.Enabled = True
-         txtHastaLetra2C5.Enabled = True
-         txtHastaValor2C5.Enabled = True
-         txtDesdeLetra1C5.BackColor = Color.White
-         txtDesdeValor1C5.BackColor = Color.White
-         txtHastaLetra2C5.BackColor = Color.White
-         txtHastaValor2C5.BackColor = Color.White
-         txtDesdeLetra1C5.ReadOnly = False
-         txtDesdeValor1C5.ReadOnly = False
-         txtHastaLetra2C5.ReadOnly = False
-         txtHastaValor2C5.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -877,18 +842,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C6.Enabled = True
-         txtDesdeValor1C6.Enabled = True
-         txtHastaLetra2C6.Enabled = True
-         txtHastaValor2C6.Enabled = True
-         txtDesdeLetra1C6.BackColor = Color.White
-         txtDesdeValor1C6.BackColor = Color.White
-         txtHastaLetra2C6.BackColor = Color.White
-         txtHastaValor2C6.BackColor = Color.White
-         txtDesdeLetra1C6.ReadOnly = False
-         txtDesdeValor1C6.ReadOnly = False
-         txtHastaLetra2C6.ReadOnly = False
-         txtHastaValor2C6.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -923,18 +877,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C7.Enabled = True
-         txtDesdeValor1C7.Enabled = True
-         txtHastaLetra2C7.Enabled = True
-         txtHastaValor2C7.Enabled = True
-         txtDesdeLetra1C7.BackColor = Color.White
-         txtDesdeValor1C7.BackColor = Color.White
-         txtHastaLetra2C7.BackColor = Color.White
-         txtHastaValor2C7.BackColor = Color.White
-         txtDesdeLetra1C7.ReadOnly = False
-         txtDesdeValor1C7.ReadOnly = False
-         txtHastaLetra2C7.ReadOnly = False
-         txtHastaValor2C7.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -969,18 +912,7 @@ Public Class frmMultipleCaso
             mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
-         txtDesdeLetra1C8.Enabled = True
-         txtDesdeValor1C8.Enabled = True
-         txtHastaLetra2C8.Enabled = True
-         txtHastaValor2C8.Enabled = True
-         txtDesdeLetra1C8.BackColor = Color.White
-         txtDesdeValor1C8.BackColor = Color.White
-         txtHastaLetra2C8.BackColor = Color.White
-         txtHastaValor2C8.BackColor = Color.White
-         txtDesdeLetra1C8.ReadOnly = False
-         txtDesdeValor1C8.ReadOnly = False
-         txtHastaLetra2C8.ReadOnly = False
-         txtHastaValor2C8.ReadOnly = False
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8)
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -1954,10 +1886,10 @@ Public Class frmMultipleCaso
 
 
    Private Sub btnGuardaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatos.Click
-      Dim nocp As Integer = CInt(txtNoDeCasos.Text)
+      Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       btnGuardaDatos.Enabled = False
       Try
-         Select Case nocp
+         Select Case noCasos
             Case 1
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                              txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
@@ -2123,11 +2055,100 @@ Public Class frmMultipleCaso
 
    End Sub
 
-   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
-      tbcDatosDelCaso.Enabled = False
-      btnCapturaTerminada.Enabled = False
-      btnLeerDatosPlaca.Enabled = True
+   Private Function desdeHastaPorCaso(ByVal mensaje As String, ByRef tbcDatosDelCaso As TabControl, ByRef tbcCaso As TabPage, _
+                                 ByRef txtDesdeLetra As TextBox, ByRef txtHastaLetra As TextBox, _
+                                 ByRef txtDesdeValor As TextBox, ByRef txtHastaValor As TextBox) As Boolean
+      Dim valido As Boolean = True
+      If Not (desdeHastaValidos(mensaje, txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)) Then
+         valido = False
+         tbcDatosDelCaso.Enabled = True
+         tbcCaso.Enabled = True
+         habilitaBotonesDesdeHasta(True, False, txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
+      End If
+      Return valido
+   End Function
 
+
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+      Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
+      Select Case noCasos
+         Case 1
+            If (desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 2
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) _
+                And (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 3
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 4
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 5
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 6
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 7
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
+                (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+         Case 8
+            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
+                (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)) And _
+                (desdeHastaPorCaso("CASO 8", tbcDatosDelCaso, tbcCaso8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8))) Then
+               tbcDatosDelCaso.Enabled = False
+               btnCapturaTerminada.Enabled = False
+               btnLeerDatosPlaca.Enabled = True
+            End If
+      End Select
    End Sub
 
 End Class

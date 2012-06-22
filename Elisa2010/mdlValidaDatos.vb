@@ -154,6 +154,28 @@ Module mdlValidaDatos
          siEstaEnRango(textbox, nombre, min, max)
    End Function
 
+   Public Function desdeHastaValidos(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, _
+                                     ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox) As Boolean
+      Dim valido As Boolean
+      Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim valor2 As Integer = siValorEsLetra(txtHastaLetra)
+      Dim valor3 As Integer = CInt(txtDesdeValor.Text)
+      Dim valor4 As Integer = CInt(txtHastaValor.Text)
+      If (valor1 <= valor2) And (valor3 <= valor4) Then
+         valido = True
+      Else
+         valido = False
+         MessageBox.Show("Los valores introducidos para el rango de datos " & mensaje & " no son válidos, trate nuevamente.")
+      End If
+      Return valido
+   End Function
+
+
+   'Public Function entreCasosDesdeHastaValidos((ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, _
+   '                                ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox) As Boolean)
+   'End Function
+
+
 
    '######################################################################
    '# MENSAJES DEFAULT PARA ATRAPAR EXCEPCIONES, Y EN COLOR ROJO Y VERDE #

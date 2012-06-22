@@ -298,7 +298,14 @@ Public Class frmAbrirArchivoExistente
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       botonesEstatus(False)
       coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-      btnCapturaTerminada.Enabled = False
-      btnObtenResultadosDA.Enabled = True
+      If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+         btnCapturaTerminada.Enabled = False
+         btnObtenResultadosDA.Enabled = True
+      Else
+         btnCapturaTerminada.Enabled = True
+         btnObtenResultadosDA.Enabled = False
+         botonesEstatus(True)
+      End If
+
    End Sub
 End Class
