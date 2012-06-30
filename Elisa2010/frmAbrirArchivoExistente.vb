@@ -296,16 +296,22 @@ Public Class frmAbrirArchivoExistente
    End Sub
 
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
-      botonesEstatus(False)
-      coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-      If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
-         btnCapturaTerminada.Enabled = False
-         btnObtenResultadosDA.Enabled = True
-      Else
+      Try
+         botonesEstatus(False)
+         coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
+         If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+            btnCapturaTerminada.Enabled = False
+            btnObtenResultadosDA.Enabled = True
+         Else
+            btnCapturaTerminada.Enabled = True
+            btnObtenResultadosDA.Enabled = False
+            botonesEstatus(True)
+         End If
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
          btnCapturaTerminada.Enabled = True
          btnObtenResultadosDA.Enabled = False
          botonesEstatus(True)
-      End If
-
+      End Try
    End Sub
 End Class

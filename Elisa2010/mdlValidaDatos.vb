@@ -171,10 +171,22 @@ Module mdlValidaDatos
    End Function
 
 
-   'Public Function entreCasosDesdeHastaValidos((ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, _
-   '                                ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox) As Boolean)
-   'End Function
+   Public Function validarRangoEntreValores(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
+                                            ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
+      Dim valido As Boolean
+      Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim valor2 As Integer = siValorEsLetra(txtHastaLetra)
+      Dim valor3 As Integer = CInt(txtDesdeValor.Text)
+      Dim valor4 As Integer = CInt(txtHastaValor.Text)
 
+      If (valor1 <= valor2) And (valor3 < valor4) Then
+         valido = True
+      Else
+         valido = False
+      End If
+      MessageBox.Show("Evaluando " & mensaje & ", con resultado:" & valido)
+      Return valido
+   End Function
 
 
    '######################################################################

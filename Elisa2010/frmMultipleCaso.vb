@@ -143,6 +143,16 @@ Public Class frmMultipleCaso
       End Select
    End Sub
 
+   'Tabla de validación de los controles positivos y negativos.
+   'cp1	cp2	cp3	cn1	cn2	cn3
+   'cp1		<	<	<	<	<
+   'cp2	>		<	>	<	<
+   'cp3	>	>		>	>	<
+   'cn1	>	<	<		<	<
+   'cn2	>	>	<	>		<
+   'cn3	>	>	>	>	>	
+
+
    Private Sub btnAceptarControles_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarControles.Click
       grbControlesNegativos.Enabled = False
       grbControlesPositivos.Enabled = False
@@ -150,27 +160,40 @@ Public Class frmMultipleCaso
       Dim nocp As Integer = Val(txtNoControles.Text)
       Select Case nocp
          Case 2
-            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
+            '1. Valida que esten en rango de letras y numeros A-H y 1-12.
+            '2. Verifica que se cumpla la tabla de validaciones mencionada en los comentarios anteriores indicados arriba.
+            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "Z") AndAlso _
+              controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
               controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
               controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
               controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
-               btnAceptarControles.Enabled = False
-               btnDefinirControlesPN.Enabled = False
-               ckbControlesDefault.Enabled = False
-               tbcDatosDelCaso.Enabled = True
-               habilitaTabsCorrectos(txtNoDeCasos.Text)
-               btnCapturaTerminada.Enabled = True
-            Else
-               mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
-               btnDefinirControlesPN.Enabled = True
-               btnAceptarControles.Enabled = True
 
+               If validarRangoEntreValores("CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                  validarRangoEntreValores("CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                  validarRangoEntreValores("CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  Not validarRangoEntreValores("CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                  validarRangoEntreValores("CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  validarRangoEntreValores("CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  btnAceptarControles.Enabled = False
+                  btnDefinirControlesPN.Enabled = False
+                  ckbControlesDefault.Enabled = False
+                  tbcDatosDelCaso.Enabled = True
+                  habilitaTabsCorrectos(txtNoDeCasos.Text)
+                  btnCapturaTerminada.Enabled = True
+               Else
+                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  btnDefinirControlesPN.Enabled = True
+                  btnAceptarControles.Enabled = True
+               End If
             End If
          Case 3
-            If controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
+            '1. Valida que esten en rango de letras y numeros A-H y 1-12.
+            '2. Verifica que se cumpla la tabla de validaciones mencionada en los comentarios anteriores indicados arriba.
+            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "Z") AndAlso _
+               controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
                controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
@@ -181,17 +204,34 @@ Public Class frmMultipleCaso
                controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso
                controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
-               btnAceptarControles.Enabled = False
-               btnDefinirControlesPN.Enabled = False
-               ckbControlesDefault.Enabled = False
-               tbcDatosDelCaso.Enabled = True
-               habilitaTabsCorrectos(txtNoDeCasos.Text)
-               btnCapturaTerminada.Enabled = True
-            Else
-               mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
-               btnDefinirControlesPN.Enabled = True
-               btnAceptarControles.Enabled = True
-            End If
+               'Valida los rangos
+               If validarRangoEntreValores("CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                  validarRangoEntreValores("CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                  validarRangoEntreValores("CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                  validarRangoEntreValores("CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  validarRangoEntreValores("CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                  validarRangoEntreValores("CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                  Not validarRangoEntreValores("CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                  validarRangoEntreValores("CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  validarRangoEntreValores("CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                  Not validarRangoEntreValores("CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                  Not validarRangoEntreValores("CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  validarRangoEntreValores("CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                  validarRangoEntreValores("CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                  validarRangoEntreValores("CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                  validarRangoEntreValores("CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  btnAceptarControles.Enabled = False
+                  btnDefinirControlesPN.Enabled = False
+                  ckbControlesDefault.Enabled = False
+                  tbcDatosDelCaso.Enabled = True
+                  habilitaTabsCorrectos(txtNoDeCasos.Text)
+                  btnCapturaTerminada.Enabled = True
+               Else
+                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  btnDefinirControlesPN.Enabled = True
+                  btnAceptarControles.Enabled = True
+               End If
+               End If
       End Select
    End Sub
 
@@ -1313,7 +1353,7 @@ Public Class frmMultipleCaso
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
       Dim numcaso As String = cmbNoCaso.Text
-      MessageBox.Show("Numero de caso que voy a trabajar: " & numcaso)
+      'MessageBox.Show("Numero de caso que voy a trabajar: " & numcaso)
       Dim nombre As String = tabla(1)
       Dim nombreCliente As String = txtNombreCliente.Text
       Dim observaciones As String = lblObservaciones.Text
@@ -1384,7 +1424,7 @@ Public Class frmMultipleCaso
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
       End Try
       Try
-         MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
+         'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
          cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                            Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
@@ -2050,7 +2090,7 @@ Public Class frmMultipleCaso
          End Select
          btnObtenerResultados.Enabled = True
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "Error: Al guardar los datos de los casos en excel.")
+         mensajeRojo(Me.lblMensajeCaso, "Error: Al guardar los datos de los casos en excel, btnGuardaDatos_Click.")
       End Try
 
    End Sub
@@ -2071,84 +2111,93 @@ Public Class frmMultipleCaso
 
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
-      Select Case noCasos
-         Case 1
-            If (desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 2
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) _
-                And (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 3
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 4
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
-                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 5
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
-                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
-                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 6
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
-                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
-                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
-                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 7
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
-                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
-                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
-                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
-                (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-         Case 8
-            If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
-                (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
-                (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
-                (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
-                (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
-                (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
-                (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)) And _
-                (desdeHastaPorCaso("CASO 8", tbcDatosDelCaso, tbcCaso8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8))) Then
-               tbcDatosDelCaso.Enabled = False
-               btnCapturaTerminada.Enabled = False
-               btnLeerDatosPlaca.Enabled = True
-            End If
-      End Select
+      Try
+         Select Case noCasos
+            Case 1
+               If (desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 2
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) _
+                   And (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 3
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 4
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                   (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 5
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                   (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                   (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 6
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                   (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                   (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                   (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 7
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                   (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                   (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                   (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
+                   (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+            Case 8
+               If ((desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)) And _
+                   (desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)) And _
+                   (desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)) And _
+                   (desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)) And _
+                   (desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)) And _
+                   (desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)) And _
+                   (desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)) And _
+                   (desdeHastaPorCaso("CASO 8", tbcDatosDelCaso, tbcCaso8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8))) Then
+                  tbcDatosDelCaso.Enabled = False
+                  btnCapturaTerminada.Enabled = False
+                  btnLeerDatosPlaca.Enabled = True
+               End If
+         End Select
+         mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+      Catch
+         mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
+         tbcDatosDelCaso.Enabled = True
+         btnCapturaTerminada.Enabled = True
+         btnLeerDatosPlaca.Enabled = False
+      End Try
+
    End Sub
 
 End Class
