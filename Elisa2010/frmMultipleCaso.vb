@@ -1096,7 +1096,7 @@ Public Class frmMultipleCaso
       ckbControlesDefault.Enabled = False
    End Sub
 
-   ' PARA VALIDAR EL CASO No. 1 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No. 1 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C1.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C1, "1er. caso", "A", "H")
@@ -1115,7 +1115,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C1, " 1er. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No. 2 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No. 2 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C2.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C2, " 2o. caso ", "A", "H")
@@ -1134,7 +1134,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C2, " 2o. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No. 3 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No. 3 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C3.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C3, " 3er. caso ", "A", "H")
@@ -1153,7 +1153,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C3, " 3er. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No.4 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No.4 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C4_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C4.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C4, " 4o. caso ", "A", "H")
@@ -1172,7 +1172,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C4, " 4o. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No.5 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No.5 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C5_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C5.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C5, " 5o. caso ", "A", "H")
@@ -1191,7 +1191,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C5, " 5o. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No.6 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No.6 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C6_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C6.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C6, " 6o. caso ", "A", "H")
@@ -1210,7 +1210,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C6, " 6o. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No.7 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No.7 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C7_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C7.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C7, " 7o. caso ", "A", "H")
@@ -1229,7 +1229,7 @@ Public Class frmMultipleCaso
       controlesValidosNumero(txtHastaValor2C7, " 7o. caso ", 1, 12)
    End Sub
 
-   ' PARA VALIDAR EL CASO No.8 EL CUADRITO DE TEXTO DESDE-HASTA
+   ' PARA VALIDAR EL Caso No.8 EL CUADRITO DE TEXTO DESDE-HASTA
    Private Sub txtDesdeLetra1C8_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1C8.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1C8, " 8o. caso ", "A", "H")
@@ -1467,7 +1467,7 @@ Public Class frmMultipleCaso
       Dim cn1 As Decimal = 0
       Dim cn2 As Decimal = 0
       Dim cn3 As Decimal = 0
-      
+
       Dim desdex As Integer = 0
       Dim hastax As Integer = 0
       Dim desdey As Integer = 0
@@ -1518,7 +1518,7 @@ Public Class frmMultipleCaso
       End Try
       Select Case noCasos
          Case 1
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1527,7 +1527,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
          Case 2
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1535,7 +1535,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1543,9 +1543,9 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-         
+
          Case 3
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1553,7 +1553,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1561,7 +1561,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1570,7 +1570,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
          Case 4
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1578,7 +1578,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1586,7 +1586,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1594,7 +1594,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1603,7 +1603,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
          Case 5
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1611,7 +1611,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1619,7 +1619,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1627,7 +1627,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1635,7 +1635,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                        frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1644,7 +1644,7 @@ Public Class frmMultipleCaso
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
          Case 6
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1652,7 +1652,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1660,7 +1660,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1668,7 +1668,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1676,7 +1676,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                        frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1684,7 +1684,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("CASO 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1693,7 +1693,7 @@ Public Class frmMultipleCaso
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
          Case 7
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1701,7 +1701,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1709,7 +1709,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1717,7 +1717,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1725,7 +1725,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                        frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1733,7 +1733,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("CASO 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1741,7 +1741,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("CASO 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                        frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1750,7 +1750,7 @@ Public Class frmMultipleCaso
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
          Case 8
-            obtenResultadosPorCaso("CASO 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1758,7 +1758,7 @@ Public Class frmMultipleCaso
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("CASO 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1766,7 +1766,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("CASO 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1774,7 +1774,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("CASO 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1782,7 +1782,7 @@ Public Class frmMultipleCaso
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("CASO 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                        frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1790,7 +1790,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("CASO 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1798,7 +1798,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("CASO 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                        frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1806,7 +1806,7 @@ Public Class frmMultipleCaso
                                        frmSalidaCaso7.txtMediaGeometrica, frmSalidaCaso7.txtTotalDatosCalculados, _
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
-            obtenResultadosPorCaso("CASO 8", frmSalidaCaso8, frmSalidaCaso8.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
+            obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmSalidaCaso8.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
                                     lblObservacionesC8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8, _
                                     promCP, promCN, difCPS, frmSalidaCaso8.txtNombreEnfermedad, frmSalidaCaso8.txtNombreCliente, frmSalidaCaso8.txtNoCaso, _
                                        frmSalidaCaso8.lblObservaciones, frmSalidaCaso8.txtFechaElaboracion, _
@@ -1934,159 +1934,159 @@ Public Class frmMultipleCaso
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                              txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                              txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                             txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                             txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
             Case 2
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
             Case 3
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
 
             Case 4
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
                guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
 
             Case 5
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
                guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
                guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
             Case 6
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
                guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
                guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
                guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
             Case 7
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
                guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
                guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
                guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
                guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 7")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
 
             Case 8
                guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
                guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
                guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
                guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
                guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
                guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
                guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 7")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
                guardaCaso(cmbNoCaso8, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
                          txtHastaValor2C8, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                          txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                         txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "CASO 8")
+                         txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 8")
          End Select
          btnObtenerResultados.Enabled = True
       Catch
@@ -2110,310 +2110,409 @@ Public Class frmMultipleCaso
 
 
    Private Function validaDesdeContra2CPyCN(ByVal mensaje As String, ByVal txtLetra As TextBox, ByVal txtValor As TextBox) As Boolean
-      Return validarRangoEntreCasosyCPN(mensaje & "Desde - CP No. 1", txtCP1Letra1, txtCP1Valor1, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Desde - CP No. 2", txtCP2Letra2, txtCP2Valor2, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Desde - CN No. 1", txtCN1Letra1, txtCN1Valor1, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Desde - CN No. 2", txtCN2Letra2, txtCN2Valor2, txtLetra, txtValor)
+      Return validarValorDistinto(mensaje & "Desde - CP No. 1", txtCP1Letra1, txtCP1Valor1, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Desde - CP No. 2", txtCP2Letra2, txtCP2Valor2, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Desde - CN No. 1", txtCN1Letra1, txtCN1Valor1, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Desde - CN No. 2", txtCN2Letra2, txtCN2Valor2, txtLetra, txtValor)
    End Function
 
    Private Function validaHastaContra2CPyCN(ByVal mensaje As String, ByVal txtLetra As TextBox, ByVal txtValor As TextBox) As Boolean
-      Return validarRangoEntreCasosyCPN(mensaje & "Hasta - CP No. 1", txtCP1Letra1, txtCP1Valor1, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Hasta - CP No. 2", txtCP2Letra2, txtCP2Valor2, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Hasta - CN No. 1", txtCN1Letra1, txtCN1Valor1, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Hasta - CN No. 2", txtCN2Letra2, txtCN2Valor2, txtLetra, txtValor)
+      Return validarValorDistinto(mensaje & "Hasta - CP No. 1", txtCP1Letra1, txtCP1Valor1, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Hasta - CP No. 2", txtCP2Letra2, txtCP2Valor2, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Hasta - CN No. 1", txtCN1Letra1, txtCN1Valor1, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Hasta - CN No. 2", txtCN2Letra2, txtCN2Valor2, txtLetra, txtValor)
    End Function
 
    Private Function validaDesdeContra3CPyCN(ByVal mensaje As String, ByVal txtLetra As TextBox, ByVal txtValor As TextBox) As Boolean
-      Return validarRangoEntreCasosyCPN(mensaje & "Desde - CP No. 3", txtCP3Letra3, txtCP3Valor3, txtLetra, txtValor)
-      validarRangoEntreCasosyCPN(mensaje & "Desde - CN No. 3", txtCN3Letra3, txtCN3Valor3, txtLetra, txtValor)
+      Return validarValorDistinto(mensaje & "Desde - CP No. 3", txtCP3Letra3, txtCP3Valor3, txtLetra, txtValor)
+      validarValorDistinto(mensaje & "Desde - CN No. 3", txtCN3Letra3, txtCN3Valor3, txtLetra, txtValor)
    End Function
 
    Private Function validaHastaContra3CPyCN(ByVal mensaje As String, ByVal txtLetra As TextBox, ByVal txtValor As TextBox) As Boolean
-      Return validarRangoEntreCasosyCPN(mensaje & "Hasta - CP No. 3", txtCP3Letra3, txtCP3Valor3, txtLetra, txtValor) AndAlso _
-             validarRangoEntreCasosyCPN(mensaje & "Hasta - CN No. 3", txtCN3Letra3, txtCN3Valor3, txtLetra, txtValor)
+      Return validarValorDistinto(mensaje & "Hasta - CP No. 3", txtCP3Letra3, txtCP3Valor3, txtLetra, txtValor) AndAlso _
+             validarValorDistinto(mensaje & "Hasta - CN No. 3", txtCN3Letra3, txtCN3Valor3, txtLetra, txtValor)
    End Function
 
-   'Valida todas las entradas en el siguiente orden:
-   '1. Revisa que  desde de cada caso no sean iguales que los controles positivos.
-   '2. Revisa que  desde de cada caso no sean iguales que los controles negativos.
-   '3. Revisa que  hasta de cada caso no sean iguales que los controles positivos.
-   '4. Revisa que  hasta de cada caso no sean iguales que los controles negativos.
+   '###MODIFICAR PARA TERMINAR LA VALIDACION DE RANGOS EN CASOS....!!!! 04/JUN/2012
+   Private Function revisaRangosDeCasosYCPN(ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, ByVal txtHastaLetra2C As TextBox, ByVal txtHastaValor2 As TextBox) As Boolean
+      Return distintoRangoCPyN("CP 1", "Caso 1", txtCP1Letra1, txtCP1Valor1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CP 2", "Caso 1", txtCP2Letra2, txtCP2Valor2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CN 1", "Caso 1", txtCN1Letra1, txtCN1Valor1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CN 2", "Caso 1", txtCN2Letra2, txtCN2Valor2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+   End Function
+
+      'Valida todas las entradas en el siguiente orden:
+      '1. Revisa que  desde de cada caso no sean iguales que los controles positivos.
+      '2. Revisa que  desde de cada caso no sean iguales que los controles negativos.
+      '3. Revisa que  hasta de cada caso no sean iguales que los controles positivos.
+      '4. Revisa que  hasta de cada caso no sean iguales que los controles negativos.
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       Dim nocp As Integer = CInt(txtNoControles.Text)
       Try
          Select Case noCasos
             Case 1
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) Then
+               'If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+               '  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+               If distintoRangoCPyN("CP 1", "Caso 1", txtCP1Letra1, txtCP1Valor1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CP 2", "Caso 1", txtCP2Letra2, txtCP2Valor2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CN 1", "Caso 1", txtCN1Letra1, txtCN1Valor1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  distintoRangoCPyN("CN 2", "Caso 1", txtCN2Letra2, txtCN2Valor2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf (validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1)) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          distintoRangoCPyN("CP 3", "Caso 1", txtCP3Letra3, txtCP3Valor3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          distintoRangoCPyN("CN 3", "Caso 1", txtCN3Letra3, txtCN3Valor3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 2
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 2 ", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf (validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2)) Then
+                  ElseIf (validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2)) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 3
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                                validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                                desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 4
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                                validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                                desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                                validaHastaContra2CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                                desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                  validaHastaContra2CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  desdeHastaPorCaso("Caso 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 4", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 4", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 3 y Caso 4", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                          validaHastaContra3CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                          validaHastaContra3CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 5
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                                validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                                desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                                validaHastaContra2CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                                desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                                validaHastaContra2CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                                desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                  validaHastaContra2CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  desdeHastaPorCaso("Caso 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                  validaHastaContra2CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  desdeHastaPorCaso("Caso 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 4", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 1 y Caso 5", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 4", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 2 y Caso 5", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 3 y Caso 4", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 3 y Caso 5", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 4 y Caso 5", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                          validaHastaContra3CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                          validaHastaContra3CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                          validaHastaContra3CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                          validaHastaContra3CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 6
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                                validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                                desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                                validaHastaContra2CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                                desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                                validaHastaContra2CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                                desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
-                                validaDesdeContra2CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                                validaHastaContra2CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                                desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)  Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                  validaHastaContra2CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  desdeHastaPorCaso("Caso 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                  validaHastaContra2CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  desdeHastaPorCaso("Caso 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                  validaHastaContra2CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  desdeHastaPorCaso("Caso 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 4", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 1 y Caso 5", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 1 y Caso 6", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 4", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 2 y Caso 5", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 2 y Caso 6", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 3 y Caso 4", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 3 y Caso 5", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 3 y Caso 6", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 4 y Caso 5", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 4 y Caso 6", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 5 y Caso 6", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                          validaHastaContra3CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                          validaHastaContra3CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                          validaHastaContra3CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                          validaHastaContra3CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                          validaHastaContra3CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                          validaHastaContra3CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 7
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                                 desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                                 desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                                 desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                                 desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                                 desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                                 desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6) AndAlso _
-                                 validaDesdeContra2CPyCN("CASO 7", txtDesdeLetra1C7, txtDesdeValor1C7) AndAlso _
-                                 validaHastaContra2CPyCN("CASO 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
-                                 desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                  validaHastaContra2CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  desdeHastaPorCaso("Caso 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                  validaHastaContra2CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  desdeHastaPorCaso("Caso 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                  validaHastaContra2CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  desdeHastaPorCaso("Caso 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 7", txtDesdeLetra1C7, txtDesdeValor1C7) AndAlso _
+                  validaHastaContra2CPyCN("Caso 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  desdeHastaPorCaso("Caso 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 4", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 1 y Caso 5", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 1 y Caso 6", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 1 y Caso 7", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 4", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 2 y Caso 5", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 2 y Caso 6", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 2 y Caso 7", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 3 y Caso 4", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 3 y Caso 5", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 3 y Caso 6", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 3 y Caso 7", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 4 y Caso 5", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 4 y Caso 6", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 4 y Caso 7", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 5 y Caso 6", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 5 y Caso 7", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 6 y Caso 7", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                          validaHastaContra3CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                          validaHastaContra3CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                          validaHastaContra3CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 7", txtDesdeLetra1C6, txtDesdeValor1C7) AndAlso _
-                          validaHastaContra3CPyCN("CASO 7", txtHastaLetra2C7, txtHastaValor2C7) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                          validaHastaContra3CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                          validaHastaContra3CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                          validaHastaContra3CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 7", txtDesdeLetra1C6, txtDesdeValor1C7) AndAlso _
+                          validaHastaContra3CPyCN("Caso 7", txtHastaLetra2C7, txtHastaValor2C7) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                   End If
                End If
             Case 8
-               If validaDesdeContra2CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                  validaHastaContra2CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  desdeHastaPorCaso("CASO 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                  validaHastaContra2CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  desdeHastaPorCaso("CASO 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                  validaHastaContra2CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  desdeHastaPorCaso("CASO 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                  validaHastaContra2CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                  desdeHastaPorCaso("CASO 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                  validaHastaContra2CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                  desdeHastaPorCaso("CASO 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                  validaHastaContra2CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                  desdeHastaPorCaso("CASO 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 7", txtDesdeLetra1C7, txtDesdeValor1C7) AndAlso _
-                  validaHastaContra2CPyCN("CASO 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
-                  desdeHastaPorCaso("CASO 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7) AndAlso _
-                  validaDesdeContra2CPyCN("CASO 8", txtDesdeLetra1C8, txtDesdeValor1C8) AndAlso _
-                  validaHastaContra2CPyCN("CASO 8", txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
-                  desdeHastaPorCaso("CASO 8", tbcDatosDelCaso, tbcCaso8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8) Then
+               If validaDesdeContra2CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                  validaHastaContra2CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                  desdeHastaPorCaso("Caso 1", tbcDatosDelCaso, tbcCaso1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                  validaHastaContra2CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  desdeHastaPorCaso("Caso 2", tbcDatosDelCaso, tbcCaso2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                  validaHastaContra2CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  desdeHastaPorCaso("Caso 3", tbcDatosDelCaso, tbcCaso3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                  validaHastaContra2CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  desdeHastaPorCaso("Caso 4", tbcDatosDelCaso, tbcCaso4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                  validaHastaContra2CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  desdeHastaPorCaso("Caso 5", tbcDatosDelCaso, tbcCaso5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                  validaHastaContra2CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  desdeHastaPorCaso("Caso 6", tbcDatosDelCaso, tbcCaso6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 7", txtDesdeLetra1C7, txtDesdeValor1C7) AndAlso _
+                  validaHastaContra2CPyCN("Caso 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  desdeHastaPorCaso("Caso 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7) AndAlso _
+                  validaDesdeContra2CPyCN("Caso 8", txtDesdeLetra1C8, txtDesdeValor1C8) AndAlso _
+                  validaHastaContra2CPyCN("Caso 8", txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  desdeHastaPorCaso("Caso 8", tbcDatosDelCaso, tbcCaso8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8) AndAlso _
+                  desdeHastaPorCaso("Caso 7", tbcDatosDelCaso, tbcCaso7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 1 y Caso 2", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                  distintoRango("Caso 1 y Caso 3", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 1 y Caso 4", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 1 y Caso 5", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 1 y Caso 6", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 1 y Caso 7", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 1 y Caso 8", txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 2 y Caso 3", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                  distintoRango("Caso 2 y Caso 4", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 2 y Caso 5", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 2 y Caso 6", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 2 y Caso 7", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 2 y Caso 8", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 3 y Caso 4", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                  distintoRango("Caso 3 y Caso 5", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 3 y Caso 6", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 3 y Caso 7", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 3 y Caso 8", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 4 y Caso 5", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                  distintoRango("Caso 4 y Caso 6", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 4 y Caso 7", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 4 y Caso 8", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 5 y Caso 6", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                  distintoRango("Caso 5 y Caso 7", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 5 y Caso 8", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 6 y Caso 7", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                  distintoRango("Caso 6 y Caso 8", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C7, txtHastaValor2C8) AndAlso _
+                  distintoRango("Caso 7 y Caso 8", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C7, txtHastaValor2C8) Then
                   'Cuando sean 2 controles positivos, avanza
                   If (nocp = 2) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True
                      'Si son 3 controles verifica que no sean iguales con el tercer control positivo
-                  ElseIf validaDesdeContra3CPyCN("CASO 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
-                          validaHastaContra3CPyCN("CASO 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
-                          validaHastaContra3CPyCN("CASO 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
-                          validaHastaContra3CPyCN("CASO 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
-                          validaHastaContra3CPyCN("CASO 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
-                          validaHastaContra3CPyCN("CASO 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
-                          validaHastaContra3CPyCN("CASO 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 7", txtDesdeLetra1C6, txtDesdeValor1C7) AndAlso _
-                          validaHastaContra3CPyCN("CASO 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
-                          validaDesdeContra3CPyCN("CASO 8", txtDesdeLetra1C8, txtDesdeValor1C8) AndAlso _
-                          validaHastaContra3CPyCN("CASO 8", txtHastaLetra2C8, txtHastaValor2C8) Then
+                  ElseIf validaDesdeContra3CPyCN("Caso 1", txtDesdeLetra1C1, txtDesdeValor1C1) AndAlso _
+                          validaHastaContra3CPyCN("Caso 1", txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 2", txtDesdeLetra1C2, txtDesdeValor1C2) AndAlso _
+                          validaHastaContra3CPyCN("Caso 2", txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 3", txtDesdeLetra1C3, txtDesdeValor1C3) AndAlso _
+                          validaHastaContra3CPyCN("Caso 3", txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 4", txtDesdeLetra1C4, txtDesdeValor1C4) AndAlso _
+                          validaHastaContra3CPyCN("Caso 4", txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 5", txtDesdeLetra1C5, txtDesdeValor1C5) AndAlso _
+                          validaHastaContra3CPyCN("Caso 5", txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 6", txtDesdeLetra1C6, txtDesdeValor1C6) AndAlso _
+                          validaHastaContra3CPyCN("Caso 6", txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 7", txtDesdeLetra1C6, txtDesdeValor1C7) AndAlso _
+                          validaHastaContra3CPyCN("Caso 7", txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                          validaDesdeContra3CPyCN("Caso 8", txtDesdeLetra1C8, txtDesdeValor1C8) AndAlso _
+                          validaHastaContra3CPyCN("Caso 8", txtHastaLetra2C8, txtHastaValor2C8) Then
                      tbcDatosDelCaso.Enabled = False
                      btnCapturaTerminada.Enabled = False
                      btnLeerDatosPlaca.Enabled = True

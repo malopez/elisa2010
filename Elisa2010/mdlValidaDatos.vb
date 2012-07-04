@@ -70,6 +70,83 @@ Module mdlValidaDatos
       End If
    End Function
 
+   Public Function distintoRango(ByVal mensaje As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
+                              ByVal txtHastaLetra1 As TextBox, ByVal txtHastaValor1 As TextBox, _
+                              ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
+                              ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
+      Dim distintoDesde As Boolean
+      Dim distintoHasta As Boolean
+
+      Dim temporal As String = CStr(regresaValor(txtDesdeLetra1)) & txtDesdeValor1.Text.PadLeft(2, "0")
+      Dim desde As Integer = CInt(temporal)
+
+      temporal = CStr(regresaValor(txtHastaLetra1)) & txtHastaValor1.Text.PadLeft(2, "0")
+      Dim hasta As Integer = CInt(temporal)
+
+      temporal = CStr(regresaValor(txtDesdeLetraRango1)) & txtDesdeValorRango1.Text.PadLeft(2, "0")
+      Dim rango1 As Integer = CInt(temporal)
+
+      temporal = CStr(regresaValor(txtHastaLetraRango2)) & txtHastaValorRango2.Text.PadLeft(2, "0")
+      Dim rango2 As Integer = CInt(temporal)
+
+      ' MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
+
+      Select Case desde
+         Case rango1 To rango2
+
+            distintoDesde = False
+         Case Else
+            distintoDesde = True
+      End Select
+
+      Select Case hasta
+         Case rango1 To rango2
+            distintoHasta = False
+         Case Else
+            distintoHasta = True
+      End Select
+
+      If (distintoDesde And distintoHasta) Then
+         MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
+         Return True
+      Else
+         Return False
+      End If
+   End Function
+
+
+   Public Function distintoRangoCPyN(ByVal controlPN As String, ByVal caso As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
+                                     ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
+                                     ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
+      Dim igualDesde As Boolean
+
+      Dim temporal As String = CStr(regresaValor(txtDesdeLetra1)) & txtDesdeValor1.Text.PadLeft(2, "0")
+      Dim desde As Integer = CInt(temporal)
+
+      temporal = CStr(regresaValor(txtDesdeLetraRango1)) & txtDesdeValorRango1.Text.PadLeft(2, "0")
+      Dim rango1 As Integer = CInt(temporal)
+
+      temporal = CStr(regresaValor(txtHastaLetraRango2)) & txtHastaValorRango2.Text.PadLeft(2, "0")
+      Dim rango2 As Integer = CInt(temporal)
+
+      ' MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
+
+      Select Case desde
+         Case rango1 To rango2
+            igualDesde = True
+         Case Else
+            igualDesde = False
+      End Select
+
+      If igualDesde Then
+         MessageBox.Show("ERROR: El " & controlPN & ", se encuentra en el rango de valores del " & caso & ".")
+         Return False
+      Else
+         Return True
+      End If
+   End Function
+
+
    Public Function siLetraEstaEnRango(ByVal textbox As TextBox, ByVal nombre As String, ByVal min As String, ByVal max As String) As Boolean
       Dim letra As String = textbox.Text.ToUpper
       If letra < min OrElse letra > max Then
@@ -110,7 +187,29 @@ Module mdlValidaDatos
       Return CInt(retorno)
    End Function
 
-
+   Public Function regresaValor(ByVal textbox As TextBox) As Integer
+      Dim letra As String = textbox.Text.ToUpper
+      Dim retorno As Integer
+      Select Case letra
+         Case "A"
+            retorno = 1
+         Case "B"
+            retorno = 2
+         Case "C"
+            retorno = 3
+         Case "D"
+            retorno = 4
+         Case "E"
+            retorno = 5
+         Case "F"
+            retorno = 6
+         Case "G"
+            retorno = 7
+         Case "H"
+            retorno = 8
+      End Select
+      Return CInt(retorno)
+   End Function
 
    'Se utiliza para regresar la letra que corresponde a una columna de excel donde se guardaran los datos de la placa original
    Public Function obtenLetra(ByVal i As Integer) As String
@@ -176,7 +275,29 @@ Module mdlValidaDatos
       End If
       Return valido
    End Function
-
+   'Se utilizará para hacer la compraración entre los casos, con hasta como el valor inicial p.ejm caso 8: a9 caso 1: a4FALTA MODIFICARLE....
+   Public Function desdeHastaValidos2(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
+                                      ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
+      Dim valido As Boolean = False
+      Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim valor2 As Integer = siValorEsLetra(txtHastaLetra)
+      Dim valor3 As Integer = CInt(txtDesdeValor.Text)
+      Dim valor4 As Integer = CInt(txtHastaValor.Text)
+      If (valor1 <= valor2) Then
+         If (valor1 = valor2) Then
+            If (valor3 <= valor4) Then
+               valido = True
+            Else
+               MessageBox.Show("Los valores introducidos para el rango de datos " & mensaje & " no son válidos, trate nuevamente.")
+            End If
+         Else
+            valido = True
+         End If
+      Else
+         MessageBox.Show("Los valores introducidos para el rango de datos " & mensaje & " no son válidos, trate nuevamente.")
+      End If
+      Return valido
+   End Function
 
    Public Function validarRangoEntreValores(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
@@ -213,7 +334,7 @@ Module mdlValidaDatos
    End Function
 
    'valida que los controles positivos y negativos no sean los mismos valores que desdex-desdey hastax-hastay  de los casos.
-   Public Function validarRangoEntreCasosyCPN(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
+   Public Function validarValorDistinto(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
       Dim valido As Boolean
       'Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
