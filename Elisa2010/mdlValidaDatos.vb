@@ -70,12 +70,12 @@ Module mdlValidaDatos
       End If
    End Function
 
-   Public Function distintoRango(ByVal mensaje As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
+   Public Function validaSiDosCasosEstanEnDistintoRango(ByVal mensaje As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
                               ByVal txtHastaLetra1 As TextBox, ByVal txtHastaValor1 As TextBox, _
                               ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
                               ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
-      Dim distintoDesde As Boolean
-      Dim distintoHasta As Boolean
+      Dim mismoDesde As Boolean
+      Dim mismoHasta As Boolean
 
       Dim temporal As String = CStr(regresaValor(txtDesdeLetra1)) & txtDesdeValor1.Text.PadLeft(2, "0")
       Dim desde As Integer = CInt(temporal)
@@ -89,33 +89,34 @@ Module mdlValidaDatos
       temporal = CStr(regresaValor(txtHastaLetraRango2)) & txtHastaValorRango2.Text.PadLeft(2, "0")
       Dim rango2 As Integer = CInt(temporal)
 
-      ' MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
+      'MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
 
       Select Case desde
          Case rango1 To rango2
-
-            distintoDesde = False
+            mismoDesde = True
+            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
-            distintoDesde = True
+            mismoDesde = False
       End Select
 
       Select Case hasta
          Case rango1 To rango2
-            distintoHasta = False
+            mismoHasta = True
+            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
-            distintoHasta = True
+            mismoHasta = False
       End Select
-
-      If (distintoDesde And distintoHasta) Then
+      'MessageBox.Show("Valor de mismoDesde:" & mismoDesde & ", valor de mismoHasta:" & mismoHasta)
+      If (mismoDesde Or mismoHasta) Then
          MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
-         Return True
-      Else
          Return False
+      Else
+         Return True
       End If
    End Function
 
 
-   Public Function distintoRangoCPyN(ByVal controlPN As String, ByVal caso As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
+   Public Function validaSiControlPNEstaEnRangoDeCaso(ByVal controlPN As String, ByVal caso As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
                                      ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
                                      ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
       Dim igualDesde As Boolean
@@ -275,31 +276,18 @@ Module mdlValidaDatos
       End If
       Return valido
    End Function
-   'Se utilizará para hacer la compraración entre los casos, con hasta como el valor inicial p.ejm caso 8: a9 caso 1: a4FALTA MODIFICARLE....
-   Public Function desdeHastaValidos2(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
-                                      ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
-      Dim valido As Boolean = False
-      Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
-      Dim valor2 As Integer = siValorEsLetra(txtHastaLetra)
-      Dim valor3 As Integer = CInt(txtDesdeValor.Text)
-      Dim valor4 As Integer = CInt(txtHastaValor.Text)
-      If (valor1 <= valor2) Then
-         If (valor1 = valor2) Then
-            If (valor3 <= valor4) Then
-               valido = True
-            Else
-               MessageBox.Show("Los valores introducidos para el rango de datos " & mensaje & " no son válidos, trate nuevamente.")
-            End If
-         Else
-            valido = True
-         End If
-      Else
-         MessageBox.Show("Los valores introducidos para el rango de datos " & mensaje & " no son válidos, trate nuevamente.")
-      End If
-      Return valido
-   End Function
+   'Permite comprobar los valores de los controles positivos y negativos en base a la siguiente tabla
+   'Utilizando  comprobarValoresCPN y comprobarValoresCPN2
+   'Tabla de validación de los controles positivos y negativos.
+   'cp1	cp2	cp3	cn1	cn2	cn3
+   'cp1	-	<	<	<	<	<
+   'cp2	>	-	<	>	<	<
+   'cp3	>	>	-	>	>	<
+   'cn1	>	<	<	-	<	<
+   'cn2	>	>	<	>	-	<
+   'cn3	>	>	>	>	>	-
 
-   Public Function validarRangoEntreValores(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
+   Public Function comprobarValoresCPN(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
       Dim valido As Boolean
       Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
@@ -316,7 +304,7 @@ Module mdlValidaDatos
       Return valido
    End Function
 
-   Public Function validarRangoEntreValores2(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
+   Public Function comprobarValoresCPN2(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
       Dim valido As Boolean
       Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
@@ -329,7 +317,6 @@ Module mdlValidaDatos
       Else
          valido = False
       End If
-      'MessageBox.Show("Evaluando " & mensaje & ", con resultado:" & valido)
       Return valido
    End Function
 
@@ -337,13 +324,8 @@ Module mdlValidaDatos
    Public Function validarValorDistinto(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
       Dim valido As Boolean
-      'Dim valor1 As Integer = siValorEsLetra(txtDesdeLetra)
-      'Dim valor2 As Integer = siValorEsLetra(txtHastaLetra)
-      'Dim valor3 As Integer = CInt(txtDesdeValor.Text)
-      'Dim valor4 As Integer = CInt(txtHastaValor.Text)
       Dim valor1 As String = txtDesdeLetra.Text & txtDesdeValor.Text
       Dim valor2 As String = txtHastaLetra.Text & txtHastaValor.Text
-      ' If (valor1 <= valor2) And (valor3 <> valor4) Then
       If (valor1.ToUpper = valor2.ToUpper) Then
          MessageBox.Show("El valor entre " & mensaje & " no puede ser igual.")
          valido = False
