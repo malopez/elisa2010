@@ -99,9 +99,9 @@
       Me.Close()
    End Sub
 
-   Private Sub tsmMultipleCasoPorPlaca_Click(sender As System.Object, e As System.EventArgs) Handles tsmMultipleCasoPorPlaca.Click
-      frmMultipleCaso.MdiParent = Me
-      frmMultipleCaso.Show()
+   Private Sub tsmBronquitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisAviar.Click
+      frmBronquitisAviar.MdiParent = Me
+      frmBronquitisAviar.Show()
       frmSalidaDatos.MdiParent = Me
       frmSalidaCaso2.MdiParent = Me
       frmSalidaCaso3.MdiParent = Me
@@ -113,4 +113,83 @@
    End Sub
 
 
+   Private Sub tsmLaringotraqueitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmLaringotraqueitisAviar.Click
+      frmLaringotraqueitisAviar.MdiParent = Me
+      frmLaringotraqueitisAviar.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   Private Sub tsmEnfermedadDeNewcastle_Click(sender As System.Object, e As System.EventArgs) Handles tsmEnfermedadDeNewcastle.Click
+      frmEnfermedadNewcastle.MdiParent = Me
+      frmEnfermedadNewcastle.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   Private Sub tsmReovirus_Click(sender As System.Object, e As System.EventArgs) Handles tsmReovirus.Click
+      frmReovirusAviar.MdiParent = Me
+      frmReovirusAviar.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   Private Sub tsmEncefalomielitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmEncefalomielitisAviar.Click
+      frmEncefalomielitisAviar.MdiParent = Me
+      frmEncefalomielitisAviar.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   Private Sub tsmGumboro_Click(sender As System.Object, e As System.EventArgs) Handles tsmGumboro.Click
+      frmGumboroAviar.MdiParent = Me
+      frmGumboroAviar.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   Private Sub tsmAnemiaInfecciosa_Click(sender As System.Object, e As System.EventArgs) Handles tsmAnemiaInfecciosa.Click
+      frmAnemiaAviar.MdiParent = Me
+      frmAnemiaAviar.Show()
+      frmSalidaDatos.MdiParent = Me
+      frmSalidaCaso2.MdiParent = Me
+      frmSalidaCaso3.MdiParent = Me
+      frmSalidaCaso4.MdiParent = Me
+      frmSalidaCaso5.MdiParent = Me
+      frmSalidaCaso6.MdiParent = Me
+      frmSalidaCaso7.MdiParent = Me
+      frmSalidaCaso8.MdiParent = Me
+   End Sub
+
+   
 End Class

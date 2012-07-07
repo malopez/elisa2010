@@ -35,7 +35,6 @@ C:\Users\alopez\Projects\dotNet\Elisa_cambios\Elisa2010\obj\x86\Debug\GenerateRe
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmAbrirArchivoExistente.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmOperacionesAnalisis.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmConfiguraLector.resources
-C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmMultipleCaso.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso2.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso3.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso4.resources
@@ -43,3 +42,10 @@ C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmS
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso6.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso7.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso8.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmLaringotraqueitisAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmBronquitisAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEnfermedadNewcastle.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmReovirusAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEncefalomielitisAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmGumboroAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmAnemiaAviar.resources

@@ -104,16 +104,46 @@
     <Compile Include="frmAbrirArchivoExistente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAnemiaAviar.Designer.vb">
+      <DependentUpon>frmAnemiaAviar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAnemiaAviar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmConfiguraLector.Designer.vb">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguraLector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMultipleCaso.Designer.vb">
-      <DependentUpon>frmMultipleCaso.vb</DependentUpon>
+    <Compile Include="frmEncefalomielitisAviar.Designer.vb">
+      <DependentUpon>frmEncefalomielitisAviar.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMultipleCaso.vb">
+    <Compile Include="frmEncefalomielitisAviar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnfermedadNewcastle.Designer.vb">
+      <DependentUpon>frmEnfermedadNewcastle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnfermedadNewcastle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGumboroAviar.Designer.vb">
+      <DependentUpon>frmGumboroAviar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGumboroAviar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLaringotraqueitisAviar.Designer.vb">
+      <DependentUpon>frmLaringotraqueitisAviar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLaringotraqueitisAviar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBronquitisAviar.Designer.vb">
+      <DependentUpon>frmBronquitisAviar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBronquitisAviar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
@@ -126,6 +156,12 @@
       <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>
     </Compile>
     <Compile Include="frmRegistraNuevoAnalisis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReovirusAviar.Designer.vb">
+      <DependentUpon>frmReovirusAviar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReovirusAviar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSalidaCaso2.Designer.vb">
@@ -214,17 +250,35 @@
     <EmbeddedResource Include="frmAbrirArchivoExistente.resx">
       <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAnemiaAviar.resx">
+      <DependentUpon>frmAnemiaAviar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguraLector.resx">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMultipleCaso.resx">
-      <DependentUpon>frmMultipleCaso.vb</DependentUpon>
+    <EmbeddedResource Include="frmEncefalomielitisAviar.resx">
+      <DependentUpon>frmEncefalomielitisAviar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnfermedadNewcastle.resx">
+      <DependentUpon>frmEnfermedadNewcastle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGumboroAviar.resx">
+      <DependentUpon>frmGumboroAviar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLaringotraqueitisAviar.resx">
+      <DependentUpon>frmLaringotraqueitisAviar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBronquitisAviar.resx">
+      <DependentUpon>frmBronquitisAviar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOperacionesAnalisis.resx">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReovirusAviar.resx">
+      <DependentUpon>frmReovirusAviar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaCaso2.resx">
       <DependentUpon>frmSalidaCaso2.vb</DependentUpon>

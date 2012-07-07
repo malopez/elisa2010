@@ -20,6 +20,8 @@ Module mdlValidaDatos
       If textBox.Text = "" Or textBox.Text.Length > 1 Then
          MessageBox.Show(nombre & "El control debe tener un valor distinto a blanco.")
          textBox.Select()
+         textBox.SelectAll()
+         textBox.Focus()
          Return False
       Else
          Return True
@@ -30,21 +32,48 @@ Module mdlValidaDatos
       If textBox.Text.Length > 1 Then
          MessageBox.Show(nombre & "El control debe tener una letra solamente.")
          textBox.Select()
+         textBox.SelectAll()
+         textBox.Focus()
          Return False
       Else
          Return True
       End If
    End Function
 
-   Public Function siNoEsBlancoMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
-      If textBox.Text = "" Or (textBox.Text.Length >= 3) Then
-         MessageBox.Show(nombre & "El control debe tener un valor numérico.")
+   Public Function siValorNoEsBlanco(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
+      If textBox.Text = "" And textBox.Text.Length > 1 Then
+         MessageBox.Show(nombre & ". El control debe tener un valor numérico.")
          textBox.Select()
+         textBox.SelectAll()
+         textBox.Focus()
          Return False
       Else
          Return True
       End If
    End Function
+
+   Public Function siComboNoEsBlanco(ByVal combo As ComboBox, ByVal nombre As String) As Boolean
+      If combo.Text = "" Then
+         MessageBox.Show(nombre & ". El No. de Caso debe tener un valor.")
+         combo.Select()
+         combo.SelectAll()
+         combo.Focus()
+         Return False
+      Else
+         Return True
+      End If
+   End Function
+
+   'Public Function siMenorRango(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
+   '   If (textBox.Text.Length >= 3) Then
+   '      MessageBox.Show(nombre & "El control debe tener un valor numérico.")
+   '      textBox.Focus()
+   '      Return False
+   '   Else
+   '      Return True
+   '   End If
+   'End Function
+
 
    Public Function siEsEntero(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       Try
@@ -249,8 +278,8 @@ Module mdlValidaDatos
    Public Function controlesValidosNumero(ByVal textbox As TextBox, ByVal nombre As String, _
                                       ByVal min As Integer, ByVal max As Integer) As Boolean
       Return _
-         siNoEsBlancoMenorRango(textbox, nombre) AndAlso
-         siEsEntero(textbox, nombre) AndAlso
+         siValorNoEsBlanco(textbox, nombre) AndAlso _
+         siEsEntero(textbox, nombre) AndAlso _
          siEstaEnRango(textbox, nombre, min, max)
    End Function
 
