@@ -1,4 +1,47 @@
 ﻿Module mdlVariosCasos
+
+   Public Function mediaGenerico(ByVal calculaL() As Decimal, ByVal nodatos As Integer) As Decimal
+      Dim media As Decimal = 0
+      Dim i As Integer
+      For i = 0 To nodatos - 1
+         media += calculaL(i)
+      Next
+      media = media / nodatos
+      Return media
+   End Function
+
+
+   Public Function desviacionEstandarGenerico(ByRef calculaL() As Decimal, ByVal cuentaNoDatos As Integer, _
+                                     ByVal desdex As Integer, ByVal desdey As Integer, _
+                                     ByVal hastax As Integer, ByVal hastay As Integer) As Decimal
+      Dim i, j As Integer
+      Dim contador As Integer = 0
+      Dim renglones As Integer = 11
+      Dim desvest As Decimal = 0
+      Dim sumatoriaMG As Decimal = 0
+      Dim media As Decimal
+      Dim varianza As Decimal = 0
+      Dim totalCalculaL As Decimal = 0
+      'Pasa los datos de la placa a calculaL en base a desde-hasta
+      For i = desdex To hastax
+         If (i = hastax) Then
+            renglones = hastay
+         End If
+         For j = desdey To renglones
+            calculaL(contador) = CDec(placaLector(i, j))
+            totalCalculaL += CDec(calculaL(contador))
+            'Calcula el logaritmo  base 10 del la columna L, que se utilizara para la calcular ma media geometrica
+            contador += 1
+         Next
+         desdey = 0
+      Next
+
+      media = calculaMediaAritmetica(totalCalculaL, cuentaNoDatos)
+      varianza = calculaVarianza(media, calculaL, cuentaNoDatos)
+      desvest = calculaDesvEst(varianza)
+      Return desvest
+   End Function
+
    Public Function calculaSumatoriaMediaGeometrica(ByVal calculoDeTitulos(,) As Decimal, ByRef calculaL() As Decimal, _
                                      ByVal desdex As Integer, ByVal desdey As Integer, _
                                      ByVal hastax As Integer, ByVal hastay As Integer, ByRef totalcalculaL As Decimal) As Decimal

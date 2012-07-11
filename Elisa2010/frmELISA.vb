@@ -18,11 +18,11 @@
       frmSalidaDatos.MdiParent = Me
    End Sub
 
-   Private Sub tsmAbrirArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles tsmAbrirArchivoExistente.Click
-      frmAbrirArchivoExistente.MdiParent = Me
-      frmAbrirArchivoExistente.Show()
-      frmSalidaDatos.MdiParent = Me
-   End Sub
+   'Private Sub tsmAbrirArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles tsmAbrirArchivoExistente.Click
+   '   frmAbrirArchivoExistente.MdiParent = Me
+   '   frmAbrirArchivoExistente.Show()
+   '   frmSalidaDatos.MdiParent = Me
+   'End Sub
 
    Private Sub tsmOperacionesAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles tsmOperacionesAnalisis.Click
       frmOperacionesAnalisis.MdiParent = Me
@@ -78,9 +78,9 @@
    End Sub
 
    'Coloca el timer clock indicando la hora en la ventana principal
-   Private Sub tmrClock_Tick(sender As System.Object, e As System.EventArgs)
-      lblClock.Text = CStr(TimeOfDay)
-   End Sub
+   'Private Sub tmrClock_Tick(sender As System.Object, e As System.EventArgs)
+   '   lblClock.Text = CStr(TimeOfDay)
+   'End Sub
 
    '###################################
    '##    Menu de iconitos          ###
@@ -127,8 +127,8 @@
    End Sub
 
    Private Sub tsmEnfermedadDeNewcastle_Click(sender As System.Object, e As System.EventArgs) Handles tsmEnfermedadDeNewcastle.Click
-      frmEnfermedadNewcastle.MdiParent = Me
-      frmEnfermedadNewcastle.Show()
+      frmNewcastle.MdiParent = Me
+      frmNewcastle.Show()
       frmSalidaDatos.MdiParent = Me
       frmSalidaCaso2.MdiParent = Me
       frmSalidaCaso3.MdiParent = Me
@@ -179,8 +179,8 @@
    End Sub
 
    Private Sub tsmAnemiaInfecciosa_Click(sender As System.Object, e As System.EventArgs) Handles tsmAnemiaInfecciosa.Click
-      frmAnemiaAviar.MdiParent = Me
-      frmAnemiaAviar.Show()
+      frmPasteurellaHaemAviar.MdiParent = Me
+      frmPasteurellaHaemAviar.Show()
       frmSalidaDatos.MdiParent = Me
       frmSalidaCaso2.MdiParent = Me
       frmSalidaCaso3.MdiParent = Me
@@ -192,4 +192,45 @@
    End Sub
 
    
+   Private Sub tsmPasteurellaHaemolytica_Click(sender As System.Object, e As System.EventArgs) Handles tsmPasteurellaHaemolytica.Click
+      frmPasteuHaemDA.MdiParent = Me
+      frmPasteuHaemDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmBronquitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisDA.Click
+      frmBronquitisInfDA.MdiParent = Me
+      frmBronquitisInfDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmLaringotraqueitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmLaringotraqueitisDA.Click
+      frmLaringotraqueitisDA.MdiParent = Me
+      frmLaringotraqueitisDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmNewcastleDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmNewcastleDA.Click
+      frmNewcastleDA.MdiParent = Me
+      frmNewcastleDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmReovirusDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmReovirusDA.Click
+      frmReovirusDA.MdiParent = Me
+      frmReovirusDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmGumboroDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmGumboroDA.Click
+      frmGumboroDA.MdiParent = Me
+      frmGumboroDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
+
+   Private Sub tsmEncefalomielitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmEncefalomielitisDA.Click
+      frmEncefalomielitisDA.MdiParent = Me
+      frmEncefalomielitisDA.Show()
+      frmSalidaDatos.MdiParent = Me
+   End Sub
 End Class

@@ -44,8 +44,15 @@ C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmS
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmSalidaCaso8.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmLaringotraqueitisAviar.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmBronquitisAviar.resources
-C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEnfermedadNewcastle.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmReovirusAviar.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEncefalomielitisAviar.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmGumboroAviar.resources
-C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmAnemiaAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmPasteurellaHaemAviar.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmBronquitisInfDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmLaringotraqueitisDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmNewcastleDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmPasteuHaemDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmReovirusDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmGumboroDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEncefalomielitisDA.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmNewcastle.resources

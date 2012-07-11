@@ -298,6 +298,7 @@ Public Class frmAbrirArchivoExistente
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       Try
          botonesEstatus(False)
+         btnLeerArchivoExistente.Enabled = False
          coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
          If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
             btnCapturaTerminada.Enabled = False
@@ -313,5 +314,25 @@ Public Class frmAbrirArchivoExistente
          btnObtenResultadosDA.Enabled = False
          botonesEstatus(True)
       End Try
+   End Sub
+
+ 
+   Private Sub Panel3_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel3.Paint
+
+   End Sub
+   Private Sub lblMensajeAAE_Click(sender As System.Object, e As System.EventArgs) Handles lblMensajeAAE.Click
+
+   End Sub
+   Private Sub lblObservaciones_Click(sender As System.Object, e As System.EventArgs) Handles lblObservaciones.Click
+
+   End Sub
+   Private Sub pnlRegistraNuevoAnalisis_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlRegistraNuevoAnalisis.Paint
+
+   End Sub
+   Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
+
+   End Sub
+   Private Sub txtPlacaDesdeArchivo_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtPlacaDesdeArchivo.TextChanged
+
    End Sub
 End Class

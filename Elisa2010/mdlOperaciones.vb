@@ -5,7 +5,7 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
 
 Module mdlOperaciones
-   Public Const cadenaConexion = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   Public Const cadenaConexion = "server=192.168.1.2;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
    '################################

@@ -22,6 +22,7 @@ Partial Class frmSalidaCaso8
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaCaso8))
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
       Me.txtTotalDatosCalculados = New System.Windows.Forms.TextBox()
@@ -392,6 +393,7 @@ Partial Class frmSalidaCaso8
       Me.Controls.Add(Me.txtMediaGeometrica)
       Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel3)
+      Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmSalidaCaso8"
       Me.Text = "Resultados del análisis Caso No. 8"
