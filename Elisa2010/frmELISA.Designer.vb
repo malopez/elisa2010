@@ -35,8 +35,12 @@ Partial Class frmElisaBiovetsa
       Me.tsmReovirus = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmAbrirArchivoExistente = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmBronquitisDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmNewcastleDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmGumboroDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmLaringotraqueitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmPasteurellaHaemolytica = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,25 +51,18 @@ Partial Class frmElisaBiovetsa
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
       Me.tsbAbrirExcel = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbConfigurarLector = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-      Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-      Me.tsmNewcastleDA = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmGumboroDA = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmEncefalomielitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
       '
       'mnuMainMenu
       '
+      Me.mnuMainMenu.BackColor = System.Drawing.Color.LightSteelBlue
+      Me.mnuMainMenu.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.mnuMainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuMainAnalisis, Me.mnuOpciones, Me.mnuImprimir, Me.mnuAcercaDe, Me.mnuSalir})
       Me.mnuMainMenu.Location = New System.Drawing.Point(0, 0)
       Me.mnuMainMenu.Name = "mnuMainMenu"
@@ -95,6 +92,7 @@ Partial Class frmElisaBiovetsa
       Me.tsmAnemiaInfecciosa.Name = "tsmAnemiaInfecciosa"
       Me.tsmAnemiaInfecciosa.Size = New System.Drawing.Size(211, 22)
       Me.tsmAnemiaInfecciosa.Text = "Anemia Infecciosa"
+      Me.tsmAnemiaInfecciosa.Visible = False
       '
       'tsmBronquitisAviar
       '
@@ -145,6 +143,24 @@ Partial Class frmElisaBiovetsa
       Me.tsmBronquitisDA.Size = New System.Drawing.Size(211, 22)
       Me.tsmBronquitisDA.Text = "Bronquitis Infecciosa"
       '
+      'tsmEncefalomielitisDA
+      '
+      Me.tsmEncefalomielitisDA.Name = "tsmEncefalomielitisDA"
+      Me.tsmEncefalomielitisDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmEncefalomielitisDA.Text = "Encefalomielitis Aviar"
+      '
+      'tsmNewcastleDA
+      '
+      Me.tsmNewcastleDA.Name = "tsmNewcastleDA"
+      Me.tsmNewcastleDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmNewcastleDA.Text = "Enfermedad de Newcastle"
+      '
+      'tsmGumboroDA
+      '
+      Me.tsmGumboroDA.Name = "tsmGumboroDA"
+      Me.tsmGumboroDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmGumboroDA.Text = "Gumboro"
+      '
       'tsmLaringotraqueitisDA
       '
       Me.tsmLaringotraqueitisDA.Name = "tsmLaringotraqueitisDA"
@@ -156,6 +172,13 @@ Partial Class frmElisaBiovetsa
       Me.tsmPasteurellaHaemolytica.Name = "tsmPasteurellaHaemolytica"
       Me.tsmPasteurellaHaemolytica.Size = New System.Drawing.Size(211, 22)
       Me.tsmPasteurellaHaemolytica.Text = "Pasteurella Haemolytica"
+      Me.tsmPasteurellaHaemolytica.Visible = False
+      '
+      'tsmReovirusDA
+      '
+      Me.tsmReovirusDA.Name = "tsmReovirusDA"
+      Me.tsmReovirusDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmReovirusDA.Text = "Reovirus"
       '
       'tsmOperacionesAnalisis
       '
@@ -216,7 +239,8 @@ Partial Class frmElisaBiovetsa
       '
       'ToolStrip1
       '
-      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAbrirExcel, Me.ToolStripSeparator1, Me.tsbConfigurarLector, Me.ToolStripSeparator2, Me.tsbReporte, Me.ToolStripSeparator3, Me.tsbImprimir, Me.ToolStripSeparator4, Me.tsbSalir, Me.ToolStripSeparator5})
+      Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ControlLight
+      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAbrirExcel, Me.tsbConfigurarLector, Me.tsbReporte, Me.tsbImprimir, Me.tsbSalir})
       Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
       Me.ToolStrip1.Name = "ToolStrip1"
       Me.ToolStrip1.Size = New System.Drawing.Size(1008, 25)
@@ -232,11 +256,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbAbrirExcel.Size = New System.Drawing.Size(23, 22)
       Me.tsbAbrirExcel.ToolTipText = "Abrir datos desde excel"
       '
-      'ToolStripSeparator1
-      '
-      Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-      Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-      '
       'tsbConfigurarLector
       '
       Me.tsbConfigurarLector.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -245,11 +264,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbConfigurarLector.Name = "tsbConfigurarLector"
       Me.tsbConfigurarLector.Size = New System.Drawing.Size(23, 22)
       '
-      'ToolStripSeparator2
-      '
-      Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-      Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-      '
       'tsbReporte
       '
       Me.tsbReporte.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -257,11 +271,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte.ImageTransparentColor = System.Drawing.Color.Magenta
       Me.tsbReporte.Name = "tsbReporte"
       Me.tsbReporte.Size = New System.Drawing.Size(23, 22)
-      '
-      'ToolStripSeparator3
-      '
-      Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-      Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
       '
       'tsbImprimir
       '
@@ -272,11 +281,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbImprimir.Size = New System.Drawing.Size(23, 22)
       Me.tsbImprimir.Text = "ToolStripButton1"
       '
-      'ToolStripSeparator4
-      '
-      Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-      Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-      '
       'tsbSalir
       '
       Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -286,41 +290,11 @@ Partial Class frmElisaBiovetsa
       Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
       Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
-      'ToolStripSeparator5
-      '
-      Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-      Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
-      '
-      'tsmNewcastleDA
-      '
-      Me.tsmNewcastleDA.Name = "tsmNewcastleDA"
-      Me.tsmNewcastleDA.Size = New System.Drawing.Size(211, 22)
-      Me.tsmNewcastleDA.Text = "Enfermedad de Newcastle"
-      '
-      'tsmReovirusDA
-      '
-      Me.tsmReovirusDA.Name = "tsmReovirusDA"
-      Me.tsmReovirusDA.Size = New System.Drawing.Size(211, 22)
-      Me.tsmReovirusDA.Text = "Reovirus"
-      '
-      'tsmGumboroDA
-      '
-      Me.tsmGumboroDA.Name = "tsmGumboroDA"
-      Me.tsmGumboroDA.Size = New System.Drawing.Size(211, 22)
-      Me.tsmGumboroDA.Text = "Gumboro"
-      '
-      'tsmEncefalomielitisDA
-      '
-      Me.tsmEncefalomielitisDA.Name = "tsmEncefalomielitisDA"
-      Me.tsmEncefalomielitisDA.Size = New System.Drawing.Size(211, 22)
-      Me.tsmEncefalomielitisDA.Text = "Encefalomielitis Aviar"
-      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.BackColor = System.Drawing.SystemColors.Window
-      Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+      Me.BackColor = System.Drawing.Color.White
       Me.ClientSize = New System.Drawing.Size(1008, 329)
       Me.Controls.Add(Me.ToolStrip1)
       Me.Controls.Add(Me.mnuMainMenu)
@@ -331,8 +305,10 @@ Partial Class frmElisaBiovetsa
       Me.MainMenuStrip = Me.mnuMainMenu
       Me.Name = "frmElisaBiovetsa"
       Me.RightToLeft = System.Windows.Forms.RightToLeft.No
-      Me.Text = "ELISA BIOVETSA"
-      Me.TransparencyKey = System.Drawing.SystemColors.ControlLightLight
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.Text = "ELISA Aves BioVetSA"
+      Me.TransparencyKey = System.Drawing.Color.White
+      Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
       Me.mnuMainMenu.ResumeLayout(False)
       Me.mnuMainMenu.PerformLayout()
       Me.ToolStrip1.ResumeLayout(False)
@@ -355,15 +331,10 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmAbrirArchivoExistente As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
    Friend WithEvents tsbAbrirExcel As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents tsbConfigurarLector As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbReporte As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
-   Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-   Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
    Friend WithEvents tsmAnemiaInfecciosa As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmBronquitisAviar As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmEncefalomielitisAviar As System.Windows.Forms.ToolStripMenuItem

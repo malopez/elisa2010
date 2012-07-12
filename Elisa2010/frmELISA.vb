@@ -3,9 +3,33 @@
    Const c_mnuConfirmarSalir As Boolean = False
    Private m_blnConfirmarSalir As Boolean
 
+   Private Sub frmElisaBiovetsa_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+      frmInicioPrograma.Close()
+   End Sub
+
    Private Sub frmElisaBiovetsa_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+      Dim ctl As Control
+      Dim ctlMDI As MdiClient
+
       m_blnConfirmarSalir = c_mnuConfirmarSalir
       tsmConfirmarSalir.Checked = m_blnConfirmarSalir
+
+
+      ' Loop through all of the form's controls looking
+      ' for the control of type MdiClient.
+      For Each ctl In Me.Controls
+         Try
+            ' Attempt to cast the control to type MdiClient.
+            ctlMDI = CType(ctl, MdiClient)
+
+            ' Set the BackColor of the MdiClient control.
+            ctlMDI.BackColor = Me.BackColor
+
+         Catch exc As InvalidCastException
+            ' Catch and ignore the error if casting failed.
+         End Try
+      Next
+
    End Sub
 
 

@@ -56,3 +56,8 @@ C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmR
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmGumboroDA.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmEncefalomielitisDA.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmNewcastle.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.exe.manifest
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\bin\Debug\Elisa2010.application
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.exe.manifest
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.application
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmInicioPrograma.resources

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<configuration>
+    <configSections>
+    </configSections>
+    <connectionStrings>
+        <add name="Elisa2010.My.MySettings.inventarioConnectionString"
+            connectionString="server=192.168.1.14;User Id=inventario;password=password;Persist Security Info=True;database=inventario"
+            providerName="MySql.Data.MySqlClient" />
+        <add name="Elisa2010.My.MySettings.bvtselisaConnectionString"
+            connectionString="server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
+            providerName="MySql.Data.MySqlClient" />
+        <add name="Elisa2010.My.MySettings.elisasandboxConnectionString"
+            connectionString="server=biovetsa.dyndns.org;User Id=bvtselisa;Persist Security Info=True;database=elisasandbox"
+            providerName="MySql.Data.MySqlClient" />
+        <add name="Elisa2010.My.MySettings.elisasandboxConnectionString1"
+            connectionString="server=biobuntu;User Id=bvtselisa;Persist Security Info=True;database=elisasandbox"
+            providerName="MySql.Data.MySqlClient" />
+        <add name="Elisa2010.My.MySettings.elisasandboxConnectionString2"
+            connectionString="server=192.168.1.2;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+            providerName="MySql.Data.MySqlClient" />
+    </connectionStrings>
+    <startup>
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+    </startup>
+</configuration>
