@@ -48,6 +48,7 @@ Partial Class frmSalidaCaso5
       Me.txtMediaGeometrica = New System.Windows.Forms.TextBox()
       Me.lblCoefVariacionDNA = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
       Me.txtTotalDatosCalculados = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
@@ -212,7 +213,7 @@ Partial Class frmSalidaCaso5
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
       Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.Text = "Finalizar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'btnGuardaResultados
@@ -316,6 +317,7 @@ Partial Class frmSalidaCaso5
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
       Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
       Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
@@ -330,6 +332,16 @@ Partial Class frmSalidaCaso5
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 71
+      '
+      'lblAnalisis
+      '
+      Me.lblAnalisis.AutoSize = True
+      Me.lblAnalisis.Location = New System.Drawing.Point(236, 17)
+      Me.lblAnalisis.Name = "lblAnalisis"
+      Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
+      Me.lblAnalisis.TabIndex = 73
+      Me.lblAnalisis.Text = "Label4"
+      Me.lblAnalisis.Visible = False
       '
       'txtFechaElaboracion
       '
@@ -436,4 +448,5 @@ Partial Class frmSalidaCaso5
    Friend WithEvents txtTotalDatosCalculados As System.Windows.Forms.TextBox
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents lblTotalDatosCalculados As System.Windows.Forms.Label
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
 End Class

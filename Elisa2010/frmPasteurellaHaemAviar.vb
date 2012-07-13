@@ -1453,6 +1453,7 @@ Public Class frmPasteurellaHaemAviar
       tabla = Split(cadena, " | ")
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
       Dim numcaso As String = cmbNoCaso.Text
       'MessageBox.Show("Numero de caso que voy a trabajar: " & numcaso)
       Dim nombre As String = tabla(1)
@@ -1538,21 +1539,21 @@ Public Class frmPasteurellaHaemAviar
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso)
+         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
-      Try
-         mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, _
-                                     lblObservacionesSD, txtFechaElaboracionSD, _
-                                     txtTitulosObtenidosSD, txtMediaAritmetica2SD, _
-                                     txtMediaGeometricaSD, txtTotalDatosCalculadosSD, _
-                                     txtCoefVariacion2SD, txtDesvEstandar2SD, txtVarianza2SD, _
-                                     nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
-                                     mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
-      End Try
+      'Try
+      '   mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, lblAnalisisSD, _
+      '                              lblObservacionesSD, txtFechaElaboracionSD, _
+      '                              txtTitulosObtenidosSD, txtMediaAritmetica2SD, _
+      '                              txtMediaGeometricaSD, txtTotalDatosCalculadosSD, _
+      '                              txtCoefVariacion2SD, txtDesvEstandar2SD, txtVarianza2SD, _
+      '                              nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+      '                              mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+      'Catch
+      '   mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+      'End Try
 
    End Sub
 
@@ -1927,13 +1928,13 @@ Public Class frmPasteurellaHaemAviar
       End Try
    End Sub
 
-   Private Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal noControles As TextBox, ByVal txtDesdeLetra As TextBox, _
-                           ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
-                           ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
-                           ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
-                           ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
-                           ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
-                           ByVal mensaje As String)
+   Private Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControles As TextBox, ByVal txtDesdeLetra As TextBox, _
+                            ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
+                            ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
+                            ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+                            ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
+                            ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
+                            ByVal mensaje As String)
       Dim cadena As String
       Dim tabla() As String
       Dim numCaso As String = ""
@@ -1968,7 +1969,7 @@ Public Class frmPasteurellaHaemAviar
          cny3 = CInt(Me.txtCN3Valor3.Text) - 1
       End If
       Try
-         guardaDatosExcel(placaLector, nocp, numCaso, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+         guardaDatosExcel(placaLector, nocp, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
                           cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
          mensajeVerde(Me.lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
@@ -2029,162 +2030,170 @@ Public Class frmPasteurellaHaemAviar
    Private Sub btnGuardaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatos.Click
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       btnGuardaDatos.Enabled = False
+      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = cmbNombreEnfermedad.Text
+      tabla = Split(cadena, " | ")
+      'Obtiene el numero de caso para ese análisis
+      Dim idAnalisis As String = tabla(0)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
       Try
          Select Case noCasos
             Case 1
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                              txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                              txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                              txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
             Case 2
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
             Case 3
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
 
             Case 4
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
 
             Case 5
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
             Case 6
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
             Case 7
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
-               guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+               guardaCaso(cmbNoCaso7, analisis, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
 
             Case 8
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
-               guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+               guardaCaso(cmbNoCaso7, analisis, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
-               guardaCaso(cmbNoCaso8, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
+               guardaCaso(cmbNoCaso8, analisis, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
                          txtHastaValor2C8, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                          txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 8")

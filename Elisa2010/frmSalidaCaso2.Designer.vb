@@ -22,6 +22,7 @@ Partial Class frmSalidaCaso2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaCaso2))
       Me.lbDesviacionEstandarDNA = New System.Windows.Forms.Label()
       Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
       Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
@@ -48,6 +49,7 @@ Partial Class frmSalidaCaso2
       Me.lblCoefVariacionDNA = New System.Windows.Forms.Label()
       Me.lblTotalDatosCalculados = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
       Me.Label3 = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
@@ -167,7 +169,7 @@ Partial Class frmSalidaCaso2
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
       Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.Text = "Finalizar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'Label2
@@ -328,6 +330,7 @@ Partial Class frmSalidaCaso2
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
       Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
       Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
@@ -342,6 +345,16 @@ Partial Class frmSalidaCaso2
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 71
+      '
+      'lblAnalisis
+      '
+      Me.lblAnalisis.AutoSize = True
+      Me.lblAnalisis.Location = New System.Drawing.Point(236, 17)
+      Me.lblAnalisis.Name = "lblAnalisis"
+      Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
+      Me.lblAnalisis.TabIndex = 63
+      Me.lblAnalisis.Text = "Label4"
+      Me.lblAnalisis.Visible = False
       '
       'txtInmunoEnsayo
       '
@@ -393,6 +406,7 @@ Partial Class frmSalidaCaso2
       Me.Controls.Add(Me.txtMediaGeometrica)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel2)
+      Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmSalidaCaso2"
       Me.Text = "Resultados del análisis Caso No. 2"
@@ -435,4 +449,5 @@ Partial Class frmSalidaCaso2
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
    Friend WithEvents Label3 As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
 End Class

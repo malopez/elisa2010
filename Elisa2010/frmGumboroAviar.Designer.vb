@@ -24,10 +24,10 @@ Partial Class frmGumboroAviar
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmGumboroAviar))
-      Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
@@ -664,6 +664,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC1.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC1.TabIndex = 88
       Me.lblObservacionesC1.Text = "Label41"
+      Me.lblObservacionesC1.Visible = False
       '
       'Label19
       '
@@ -842,6 +843,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC2.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC2.TabIndex = 93
       Me.lblObservacionesC2.Text = "Label41"
+      Me.lblObservacionesC2.Visible = False
       '
       'Label1
       '
@@ -1016,6 +1018,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC3.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC3.TabIndex = 99
       Me.lblObservacionesC3.Text = "Label41"
+      Me.lblObservacionesC3.Visible = False
       '
       'Label6
       '
@@ -1190,6 +1193,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC4.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC4.TabIndex = 105
       Me.lblObservacionesC4.Text = "Label41"
+      Me.lblObservacionesC4.Visible = False
       '
       'Label11
       '
@@ -1360,6 +1364,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC5.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC5.TabIndex = 111
       Me.lblObservacionesC5.Text = "Label41"
+      Me.lblObservacionesC5.Visible = False
       '
       'Label16
       '
@@ -1534,6 +1539,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC6.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC6.TabIndex = 111
       Me.lblObservacionesC6.Text = "Label41"
+      Me.lblObservacionesC6.Visible = False
       '
       'Label23
       '
@@ -1708,6 +1714,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC7.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC7.TabIndex = 111
       Me.lblObservacionesC7.Text = "Label41"
+      Me.lblObservacionesC7.Visible = False
       '
       'Label28
       '
@@ -1882,6 +1889,7 @@ Partial Class frmGumboroAviar
       Me.lblObservacionesC8.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC8.TabIndex = 117
       Me.lblObservacionesC8.Text = "Label41"
+      Me.lblObservacionesC8.Visible = False
       '
       'Label36
       '
@@ -2091,6 +2099,7 @@ Partial Class frmGumboroAviar
       Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
       Me.lblIdAnalisis.TabIndex = 42
       Me.lblIdAnalisis.Text = "id_analisis"
+      Me.lblIdAnalisis.Visible = False
       '
       'lblLogTit2
       '
@@ -2100,6 +2109,7 @@ Partial Class frmGumboroAviar
       Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
       Me.lblLogTit2.TabIndex = 41
       Me.lblLogTit2.Text = "logTit2:"
+      Me.lblLogTit2.Visible = False
       '
       'lblLogTit1
       '
@@ -2109,6 +2119,7 @@ Partial Class frmGumboroAviar
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 40
       Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
       '
       'lblLogSPS
       '
@@ -2118,6 +2129,7 @@ Partial Class frmGumboroAviar
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 39
       Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
       '
       'lblNombreEnfermedad
       '
@@ -2175,32 +2187,32 @@ Partial Class frmGumboroAviar
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle10.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(3, 5)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle11.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
-      DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle12
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 101
@@ -2232,7 +2244,7 @@ Partial Class frmGumboroAviar
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmGumboroAviar"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Análisis de Gumboro"
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()

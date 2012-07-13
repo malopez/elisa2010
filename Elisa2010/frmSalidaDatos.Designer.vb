@@ -47,6 +47,7 @@ Partial Class frmSalidaDatos
       Me.Label3 = New System.Windows.Forms.Label()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
       Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
       Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
@@ -279,7 +280,7 @@ Partial Class frmSalidaDatos
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
       Me.btnCancelar.TabIndex = 1
-      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.Text = "Finalizar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'Label3
@@ -306,6 +307,7 @@ Partial Class frmSalidaDatos
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
       Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
       Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
@@ -320,6 +322,16 @@ Partial Class frmSalidaDatos
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 58
+      '
+      'lblAnalisis
+      '
+      Me.lblAnalisis.AutoSize = True
+      Me.lblAnalisis.Location = New System.Drawing.Point(237, 16)
+      Me.lblAnalisis.Name = "lblAnalisis"
+      Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
+      Me.lblAnalisis.TabIndex = 62
+      Me.lblAnalisis.Text = "Label4"
+      Me.lblAnalisis.Visible = False
       '
       'txtInmunoEnsayo
       '
@@ -444,4 +456,5 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtNombreCliente As System.Windows.Forms.TextBox
    Friend WithEvents txtNoCaso As System.Windows.Forms.TextBox
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
 End Class

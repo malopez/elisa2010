@@ -1,33 +1,34 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmNewcastleDA
-    Inherits System.Windows.Forms.Form
+Partial Class frmBronquitisDA
+   Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
+   'Form overrides dispose to clean up the component list.
+   <System.Diagnostics.DebuggerNonUserCode()> _
+   Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+      Try
+         If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+         End If
+      Finally
+         MyBase.Dispose(disposing)
+      End Try
+   End Sub
 
-    'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+   'Required by the Windows Form Designer
+   Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
-      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmNewcastleDA))
+   'NOTE: The following procedure is required by the Windows Form Designer
+   'It can be modified using the Windows Form Designer.  
+   'Do not modify it using the code editor.
+   <System.Diagnostics.DebuggerStepThrough()> _
+   Private Sub InitializeComponent()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBronquitisDA))
       Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
+      Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
       Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
@@ -37,21 +38,20 @@ Partial Class frmNewcastleDA
       Me.cmbNoCaso = New System.Windows.Forms.ComboBox()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
-      Me.Panel3 = New System.Windows.Forms.Panel()
       Me.lblMensajeAAE = New System.Windows.Forms.Label()
+      Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.btnCancelarDA = New System.Windows.Forms.Button()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
-      Me.lblObservaciones = New System.Windows.Forms.Label()
-      Me.btnCancelarDA = New System.Windows.Forms.Button()
       Me.txtPlacaDesdeArchivo = New System.Windows.Forms.TextBox()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.Label19 = New System.Windows.Forms.Label()
       Me.Label20 = New System.Windows.Forms.Label()
       Me.txtDesdeLetra1 = New System.Windows.Forms.TextBox()
       Me.txtDesdeValor1 = New System.Windows.Forms.TextBox()
       Me.txtHastaLetra2 = New System.Windows.Forms.TextBox()
       Me.txtHastaValor2 = New System.Windows.Forms.TextBox()
-      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.grbCNDesdeArchivo = New System.Windows.Forms.GroupBox()
       Me.Label4 = New System.Windows.Forms.Label()
@@ -88,6 +88,16 @@ Partial Class frmNewcastleDA
       Me.btnCapturaTerminada.Text = "Captura Terminada"
       Me.btnCapturaTerminada.UseVisualStyleBackColor = True
       '
+      'lblObservaciones
+      '
+      Me.lblObservaciones.AutoSize = True
+      Me.lblObservaciones.Location = New System.Drawing.Point(11, 520)
+      Me.lblObservaciones.Name = "lblObservaciones"
+      Me.lblObservaciones.Size = New System.Drawing.Size(39, 13)
+      Me.lblObservaciones.TabIndex = 109
+      Me.lblObservaciones.Text = "Label7"
+      Me.lblObservaciones.Visible = False
+      '
       'pnlRegistraNuevoAnalisis
       '
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
@@ -103,7 +113,7 @@ Partial Class frmNewcastleDA
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(6, 6)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(718, 142)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(716, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 108
       '
       'dtpFechaElaboracion
@@ -151,7 +161,7 @@ Partial Class frmNewcastleDA
       Me.btnBuscaCaso.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.btnBuscaCaso.ForeColor = System.Drawing.Color.SteelBlue
       Me.btnBuscaCaso.Image = CType(resources.GetObject("btnBuscaCaso.Image"), System.Drawing.Image)
-      Me.btnBuscaCaso.Location = New System.Drawing.Point(386, 24)
+      Me.btnBuscaCaso.Location = New System.Drawing.Point(425, 24)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
       Me.btnBuscaCaso.TabIndex = 1
@@ -162,7 +172,7 @@ Partial Class frmNewcastleDA
       Me.cmbNoCaso.FormattingEnabled = True
       Me.cmbNoCaso.Location = New System.Drawing.Point(198, 25)
       Me.cmbNoCaso.Name = "cmbNoCaso"
-      Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
+      Me.cmbNoCaso.Size = New System.Drawing.Size(221, 21)
       Me.cmbNoCaso.TabIndex = 0
       '
       'lblNombreAnalisis
@@ -189,6 +199,17 @@ Partial Class frmNewcastleDA
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
       '
+      'lblMensajeAAE
+      '
+      Me.lblMensajeAAE.AutoSize = True
+      Me.lblMensajeAAE.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
+      Me.lblMensajeAAE.Location = New System.Drawing.Point(5, 5)
+      Me.lblMensajeAAE.Name = "lblMensajeAAE"
+      Me.lblMensajeAAE.Size = New System.Drawing.Size(56, 15)
+      Me.lblMensajeAAE.TabIndex = 2
+      Me.lblMensajeAAE.Text = "Mensaje:"
+      '
       'Panel3
       '
       Me.Panel3.BackColor = System.Drawing.SystemColors.Window
@@ -199,20 +220,22 @@ Partial Class frmNewcastleDA
       Me.Panel3.Size = New System.Drawing.Size(718, 30)
       Me.Panel3.TabIndex = 107
       '
-      'lblMensajeAAE
+      'btnCancelarDA
       '
-      Me.lblMensajeAAE.AutoSize = True
-      Me.lblMensajeAAE.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
-      Me.lblMensajeAAE.Location = New System.Drawing.Point(4, 5)
-      Me.lblMensajeAAE.Name = "lblMensajeAAE"
-      Me.lblMensajeAAE.Size = New System.Drawing.Size(56, 15)
-      Me.lblMensajeAAE.TabIndex = 2
-      Me.lblMensajeAAE.Text = "Mensaje:"
+      Me.btnCancelarDA.DialogResult = System.Windows.Forms.DialogResult.Cancel
+      Me.btnCancelarDA.FlatStyle = System.Windows.Forms.FlatStyle.System
+      Me.btnCancelarDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnCancelarDA.Location = New System.Drawing.Point(609, 512)
+      Me.btnCancelarDA.Name = "btnCancelarDA"
+      Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
+      Me.btnCancelarDA.TabIndex = 105
+      Me.btnCancelarDA.Text = "Cancelar"
+      Me.btnCancelarDA.UseVisualStyleBackColor = True
       '
       'btnLeerArchivoExistente
       '
       Me.btnLeerArchivoExistente.Enabled = False
+      Me.btnLeerArchivoExistente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(604, 154)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
@@ -223,6 +246,7 @@ Partial Class frmNewcastleDA
       'btnObtenResultadosDA
       '
       Me.btnObtenResultadosDA.Enabled = False
+      Me.btnObtenResultadosDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnObtenResultadosDA.Location = New System.Drawing.Point(490, 512)
       Me.btnObtenResultadosDA.Name = "btnObtenResultadosDA"
       Me.btnObtenResultadosDA.Size = New System.Drawing.Size(113, 23)
@@ -230,36 +254,15 @@ Partial Class frmNewcastleDA
       Me.btnObtenResultadosDA.Text = "Obtener Resultados"
       Me.btnObtenResultadosDA.UseVisualStyleBackColor = True
       '
-      'lblObservaciones
-      '
-      Me.lblObservaciones.AutoSize = True
-      Me.lblObservaciones.Location = New System.Drawing.Point(3, 525)
-      Me.lblObservaciones.Name = "lblObservaciones"
-      Me.lblObservaciones.Size = New System.Drawing.Size(39, 13)
-      Me.lblObservaciones.TabIndex = 109
-      Me.lblObservaciones.Text = "Label7"
-      Me.lblObservaciones.Visible = False
-      '
-      'btnCancelarDA
-      '
-      Me.btnCancelarDA.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnCancelarDA.FlatStyle = System.Windows.Forms.FlatStyle.System
-      Me.btnCancelarDA.Location = New System.Drawing.Point(609, 512)
-      Me.btnCancelarDA.Name = "btnCancelarDA"
-      Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
-      Me.btnCancelarDA.TabIndex = 105
-      Me.btnCancelarDA.Text = "Cancelar"
-      Me.btnCancelarDA.UseVisualStyleBackColor = True
-      '
       'txtPlacaDesdeArchivo
       '
       Me.txtPlacaDesdeArchivo.BackColor = System.Drawing.Color.White
       Me.txtPlacaDesdeArchivo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(12, 161)
+      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(12, 154)
       Me.txtPlacaDesdeArchivo.Multiline = True
       Me.txtPlacaDesdeArchivo.Name = "txtPlacaDesdeArchivo"
       Me.txtPlacaDesdeArchivo.ReadOnly = True
-      Me.txtPlacaDesdeArchivo.Size = New System.Drawing.Size(79, 16)
+      Me.txtPlacaDesdeArchivo.Size = New System.Drawing.Size(79, 27)
       Me.txtPlacaDesdeArchivo.TabIndex = 102
       Me.txtPlacaDesdeArchivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       Me.txtPlacaDesdeArchivo.Visible = False
@@ -268,90 +271,23 @@ Partial Class frmNewcastleDA
       '
       Me.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.dgvPlacaLeida)
       Me.Panel1.Controls.Add(Me.Label19)
       Me.Panel1.Controls.Add(Me.Label20)
       Me.Panel1.Controls.Add(Me.txtDesdeLetra1)
       Me.Panel1.Controls.Add(Me.txtDesdeValor1)
       Me.Panel1.Controls.Add(Me.txtHastaLetra2)
       Me.Panel1.Controls.Add(Me.txtHastaValor2)
-      Me.Panel1.Controls.Add(Me.dgvPlacaLeida)
       Me.Panel1.Controls.Add(Me.lblLogTit2)
       Me.Panel1.Controls.Add(Me.grbCNDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogTit1)
       Me.Panel1.Controls.Add(Me.grbCPDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogSPS)
+      Me.Panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Panel1.Location = New System.Drawing.Point(6, 183)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(718, 323)
       Me.Panel1.TabIndex = 106
-      '
-      'Label19
-      '
-      Me.Label19.AutoSize = True
-      Me.Label19.BackColor = System.Drawing.Color.Transparent
-      Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label19.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label19.Location = New System.Drawing.Point(526, 274)
-      Me.Label19.Name = "Label19"
-      Me.Label19.Size = New System.Drawing.Size(43, 16)
-      Me.Label19.TabIndex = 92
-      Me.Label19.Text = "Hasta:"
-      '
-      'Label20
-      '
-      Me.Label20.AutoSize = True
-      Me.Label20.BackColor = System.Drawing.Color.Transparent
-      Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label20.Location = New System.Drawing.Point(526, 242)
-      Me.Label20.Name = "Label20"
-      Me.Label20.Size = New System.Drawing.Size(48, 16)
-      Me.Label20.TabIndex = 91
-      Me.Label20.Text = "Desde:"
-      '
-      'txtDesdeLetra1
-      '
-      Me.txtDesdeLetra1.BackColor = System.Drawing.SystemColors.Window
-      Me.txtDesdeLetra1.Enabled = False
-      Me.txtDesdeLetra1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtDesdeLetra1.Location = New System.Drawing.Point(580, 241)
-      Me.txtDesdeLetra1.MaxLength = 1
-      Me.txtDesdeLetra1.Name = "txtDesdeLetra1"
-      Me.txtDesdeLetra1.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra1.TabIndex = 87
-      '
-      'txtDesdeValor1
-      '
-      Me.txtDesdeValor1.BackColor = System.Drawing.SystemColors.Window
-      Me.txtDesdeValor1.Enabled = False
-      Me.txtDesdeValor1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtDesdeValor1.Location = New System.Drawing.Point(612, 241)
-      Me.txtDesdeValor1.MaxLength = 2
-      Me.txtDesdeValor1.Name = "txtDesdeValor1"
-      Me.txtDesdeValor1.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor1.TabIndex = 88
-      '
-      'txtHastaLetra2
-      '
-      Me.txtHastaLetra2.BackColor = System.Drawing.SystemColors.Window
-      Me.txtHastaLetra2.Enabled = False
-      Me.txtHastaLetra2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtHastaLetra2.Location = New System.Drawing.Point(580, 273)
-      Me.txtHastaLetra2.MaxLength = 1
-      Me.txtHastaLetra2.Name = "txtHastaLetra2"
-      Me.txtHastaLetra2.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra2.TabIndex = 89
-      '
-      'txtHastaValor2
-      '
-      Me.txtHastaValor2.BackColor = System.Drawing.SystemColors.Window
-      Me.txtHastaValor2.Enabled = False
-      Me.txtHastaValor2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtHastaValor2.Location = New System.Drawing.Point(613, 273)
-      Me.txtHastaValor2.MaxLength = 2
-      Me.txtHastaValor2.Name = "txtHastaValor2"
-      Me.txtHastaValor2.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor2.TabIndex = 90
       '
       'dgvPlacaLeida
       '
@@ -387,8 +323,76 @@ Partial Class frmNewcastleDA
       Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
-      Me.dgvPlacaLeida.TabIndex = 80
+      Me.dgvPlacaLeida.TabIndex = 93
       Me.dgvPlacaLeida.TabStop = False
+      '
+      'Label19
+      '
+      Me.Label19.AutoSize = True
+      Me.Label19.BackColor = System.Drawing.Color.Transparent
+      Me.Label19.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label19.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label19.Location = New System.Drawing.Point(526, 274)
+      Me.Label19.Name = "Label19"
+      Me.Label19.Size = New System.Drawing.Size(43, 16)
+      Me.Label19.TabIndex = 92
+      Me.Label19.Text = "Hasta:"
+      '
+      'Label20
+      '
+      Me.Label20.AutoSize = True
+      Me.Label20.BackColor = System.Drawing.Color.Transparent
+      Me.Label20.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label20.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label20.Location = New System.Drawing.Point(526, 242)
+      Me.Label20.Name = "Label20"
+      Me.Label20.Size = New System.Drawing.Size(48, 16)
+      Me.Label20.TabIndex = 91
+      Me.Label20.Text = "Desde:"
+      '
+      'txtDesdeLetra1
+      '
+      Me.txtDesdeLetra1.BackColor = System.Drawing.Color.White
+      Me.txtDesdeLetra1.Enabled = False
+      Me.txtDesdeLetra1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeLetra1.Location = New System.Drawing.Point(580, 241)
+      Me.txtDesdeLetra1.MaxLength = 1
+      Me.txtDesdeLetra1.Name = "txtDesdeLetra1"
+      Me.txtDesdeLetra1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeLetra1.TabIndex = 87
+      '
+      'txtDesdeValor1
+      '
+      Me.txtDesdeValor1.BackColor = System.Drawing.Color.White
+      Me.txtDesdeValor1.Enabled = False
+      Me.txtDesdeValor1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtDesdeValor1.Location = New System.Drawing.Point(612, 241)
+      Me.txtDesdeValor1.MaxLength = 2
+      Me.txtDesdeValor1.Name = "txtDesdeValor1"
+      Me.txtDesdeValor1.Size = New System.Drawing.Size(25, 20)
+      Me.txtDesdeValor1.TabIndex = 88
+      '
+      'txtHastaLetra2
+      '
+      Me.txtHastaLetra2.BackColor = System.Drawing.Color.White
+      Me.txtHastaLetra2.Enabled = False
+      Me.txtHastaLetra2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaLetra2.Location = New System.Drawing.Point(580, 273)
+      Me.txtHastaLetra2.MaxLength = 1
+      Me.txtHastaLetra2.Name = "txtHastaLetra2"
+      Me.txtHastaLetra2.Size = New System.Drawing.Size(25, 20)
+      Me.txtHastaLetra2.TabIndex = 89
+      '
+      'txtHastaValor2
+      '
+      Me.txtHastaValor2.BackColor = System.Drawing.Color.White
+      Me.txtHastaValor2.Enabled = False
+      Me.txtHastaValor2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtHastaValor2.Location = New System.Drawing.Point(613, 273)
+      Me.txtHastaValor2.MaxLength = 2
+      Me.txtHastaValor2.Name = "txtHastaValor2"
+      Me.txtHastaValor2.Size = New System.Drawing.Size(24, 20)
+      Me.txtHastaValor2.TabIndex = 90
       '
       'lblLogTit2
       '
@@ -552,25 +556,25 @@ Partial Class frmNewcastleDA
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
       '
-      'frmNewcastleDA
+      'frmBronquitisDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(729, 578)
       Me.Controls.Add(Me.btnCapturaTerminada)
+      Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel3)
+      Me.Controls.Add(Me.btnCancelarDA)
       Me.Controls.Add(Me.btnLeerArchivoExistente)
       Me.Controls.Add(Me.btnObtenResultadosDA)
-      Me.Controls.Add(Me.lblObservaciones)
-      Me.Controls.Add(Me.btnCancelarDA)
       Me.Controls.Add(Me.txtPlacaDesdeArchivo)
       Me.Controls.Add(Me.Panel1)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
-      Me.Name = "frmNewcastleDA"
+      Me.Name = "frmBronquitisDA"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-      Me.Text = "Análisis de Enfermedad de Newcastle desde archivo"
+      Me.Text = "Abrir archivo de Bronquitis Infecciosa"
       Me.pnlRegistraNuevoAnalisis.ResumeLayout(False)
       Me.pnlRegistraNuevoAnalisis.PerformLayout()
       Me.Panel3.ResumeLayout(False)
@@ -587,6 +591,7 @@ Partial Class frmNewcastleDA
 
    End Sub
    Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
+   Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents pnlRegistraNuevoAnalisis As System.Windows.Forms.Panel
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents txtNombreCliente As System.Windows.Forms.TextBox
@@ -596,12 +601,11 @@ Partial Class frmNewcastleDA
    Friend WithEvents cmbNoCaso As System.Windows.Forms.ComboBox
    Friend WithEvents lblNombreAnalisis As System.Windows.Forms.Label
    Friend WithEvents lblNombreCliente As System.Windows.Forms.Label
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents lblMensajeAAE As System.Windows.Forms.Label
+   Friend WithEvents Panel3 As System.Windows.Forms.Panel
+   Friend WithEvents btnCancelarDA As System.Windows.Forms.Button
    Friend WithEvents btnLeerArchivoExistente As System.Windows.Forms.Button
    Friend WithEvents btnObtenResultadosDA As System.Windows.Forms.Button
-   Friend WithEvents lblObservaciones As System.Windows.Forms.Label
-   Friend WithEvents btnCancelarDA As System.Windows.Forms.Button
    Friend WithEvents txtPlacaDesdeArchivo As System.Windows.Forms.TextBox
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents Label19 As System.Windows.Forms.Label
@@ -610,7 +614,6 @@ Partial Class frmNewcastleDA
    Friend WithEvents txtDesdeValor1 As System.Windows.Forms.TextBox
    Friend WithEvents txtHastaLetra2 As System.Windows.Forms.TextBox
    Friend WithEvents txtHastaValor2 As System.Windows.Forms.TextBox
-   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents grbCNDesdeArchivo As System.Windows.Forms.GroupBox
    Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -628,4 +631,5 @@ Partial Class frmNewcastleDA
    Friend WithEvents txtCPDAValor2 As System.Windows.Forms.TextBox
    Friend WithEvents txtCPDAValor1 As System.Windows.Forms.TextBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
 End Class

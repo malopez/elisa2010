@@ -711,7 +711,7 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmRegistraNuevoAnalisis"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Registra nuevo análisis"
       Me.grbControlesPositivos.ResumeLayout(False)
       Me.grbControlesPositivos.PerformLayout()

@@ -101,7 +101,7 @@ Partial Class frmAcercaDe
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmAcercaDe"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Acerca De"
       CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)

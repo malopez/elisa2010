@@ -81,7 +81,7 @@ Partial Class frmEncefalomielitisDA
       '
       Me.btnCapturaTerminada.Enabled = False
       Me.btnCapturaTerminada.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnCapturaTerminada.Location = New System.Drawing.Point(379, 493)
+      Me.btnCapturaTerminada.Location = New System.Drawing.Point(379, 512)
       Me.btnCapturaTerminada.Name = "btnCapturaTerminada"
       Me.btnCapturaTerminada.Size = New System.Drawing.Size(105, 23)
       Me.btnCapturaTerminada.TabIndex = 110
@@ -91,7 +91,7 @@ Partial Class frmEncefalomielitisDA
       'lblObservaciones
       '
       Me.lblObservaciones.AutoSize = True
-      Me.lblObservaciones.Location = New System.Drawing.Point(5, 498)
+      Me.lblObservaciones.Location = New System.Drawing.Point(3, 517)
       Me.lblObservaciones.Name = "lblObservaciones"
       Me.lblObservaciones.Size = New System.Drawing.Size(39, 13)
       Me.lblObservaciones.TabIndex = 109
@@ -113,7 +113,7 @@ Partial Class frmEncefalomielitisDA
       Me.pnlRegistraNuevoAnalisis.Controls.Add(Me.lblNombreCliente)
       Me.pnlRegistraNuevoAnalisis.Location = New System.Drawing.Point(6, 6)
       Me.pnlRegistraNuevoAnalisis.Name = "pnlRegistraNuevoAnalisis"
-      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(716, 142)
+      Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(718, 142)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 108
       '
       'dtpFechaElaboracion
@@ -215,9 +215,9 @@ Partial Class frmEncefalomielitisDA
       Me.Panel3.BackColor = System.Drawing.SystemColors.Window
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel3.Controls.Add(Me.lblMensajeAAE)
-      Me.Panel3.Location = New System.Drawing.Point(6, 522)
+      Me.Panel3.Location = New System.Drawing.Point(6, 541)
       Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(716, 30)
+      Me.Panel3.Size = New System.Drawing.Size(718, 30)
       Me.Panel3.TabIndex = 107
       '
       'btnCancelarDA
@@ -225,7 +225,7 @@ Partial Class frmEncefalomielitisDA
       Me.btnCancelarDA.DialogResult = System.Windows.Forms.DialogResult.Cancel
       Me.btnCancelarDA.FlatStyle = System.Windows.Forms.FlatStyle.System
       Me.btnCancelarDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnCancelarDA.Location = New System.Drawing.Point(609, 493)
+      Me.btnCancelarDA.Location = New System.Drawing.Point(609, 512)
       Me.btnCancelarDA.Name = "btnCancelarDA"
       Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
       Me.btnCancelarDA.TabIndex = 105
@@ -236,7 +236,7 @@ Partial Class frmEncefalomielitisDA
       '
       Me.btnLeerArchivoExistente.Enabled = False
       Me.btnLeerArchivoExistente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(260, 493)
+      Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(604, 154)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
       Me.btnLeerArchivoExistente.TabIndex = 103
@@ -247,7 +247,7 @@ Partial Class frmEncefalomielitisDA
       '
       Me.btnObtenResultadosDA.Enabled = False
       Me.btnObtenResultadosDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnObtenResultadosDA.Location = New System.Drawing.Point(490, 493)
+      Me.btnObtenResultadosDA.Location = New System.Drawing.Point(490, 512)
       Me.btnObtenResultadosDA.Name = "btnObtenResultadosDA"
       Me.btnObtenResultadosDA.Size = New System.Drawing.Size(113, 23)
       Me.btnObtenResultadosDA.TabIndex = 104
@@ -258,7 +258,7 @@ Partial Class frmEncefalomielitisDA
       '
       Me.txtPlacaDesdeArchivo.BackColor = System.Drawing.Color.White
       Me.txtPlacaDesdeArchivo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(14, 144)
+      Me.txtPlacaDesdeArchivo.Location = New System.Drawing.Point(15, 156)
       Me.txtPlacaDesdeArchivo.Multiline = True
       Me.txtPlacaDesdeArchivo.Name = "txtPlacaDesdeArchivo"
       Me.txtPlacaDesdeArchivo.ReadOnly = True
@@ -284,7 +284,7 @@ Partial Class frmEncefalomielitisDA
       Me.Panel1.Controls.Add(Me.grbCPDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogSPS)
       Me.Panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Panel1.Location = New System.Drawing.Point(6, 164)
+      Me.Panel1.Location = New System.Drawing.Point(6, 183)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(718, 323)
       Me.Panel1.TabIndex = 106
@@ -560,7 +560,7 @@ Partial Class frmEncefalomielitisDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(729, 558)
+      Me.ClientSize = New System.Drawing.Size(729, 578)
       Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
@@ -573,7 +573,7 @@ Partial Class frmEncefalomielitisDA
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmEncefalomielitisDA"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Análisis de Encefalomielitis Aviar desde archivo"
       Me.pnlRegistraNuevoAnalisis.ResumeLayout(False)
       Me.pnlRegistraNuevoAnalisis.PerformLayout()

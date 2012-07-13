@@ -626,7 +626,7 @@ Partial Class frmConfiguraLector
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmConfiguraLector"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Configura Lector"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()

@@ -223,8 +223,8 @@
    End Sub
 
    Private Sub tsmBronquitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisDA.Click
-      frmBronquitisInfDA.MdiParent = Me
-      frmBronquitisInfDA.Show()
+      frmBronquitisDA.MdiParent = Me
+      frmBronquitisDA.Show()
       frmSalidaDatos.MdiParent = Me
    End Sub
 

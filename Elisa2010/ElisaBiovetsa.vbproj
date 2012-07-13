@@ -138,10 +138,10 @@
     <Compile Include="frmAbrirArchivoExistente.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBronquitisInfDA.Designer.vb">
-      <DependentUpon>frmBronquitisInfDA.vb</DependentUpon>
+    <Compile Include="frmBronquitisDA.Designer.vb">
+      <DependentUpon>frmBronquitisDA.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBronquitisInfDA.vb">
+    <Compile Include="frmBronquitisDA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmEncefalomielitisDA.Designer.vb">
@@ -332,8 +332,8 @@
     <EmbeddedResource Include="frmAbrirArchivoExistente.resx">
       <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBronquitisInfDA.resx">
-      <DependentUpon>frmBronquitisInfDA.vb</DependentUpon>
+    <EmbeddedResource Include="frmBronquitisDA.resx">
+      <DependentUpon>frmBronquitisDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEncefalomielitisDA.resx">
       <DependentUpon>frmEncefalomielitisDA.vb</DependentUpon>

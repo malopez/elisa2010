@@ -1,7 +1,7 @@
 ﻿Public Class frmSalidaCaso4
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
-      guardaResultadosExcel(Me.txtNoCaso.Text, txtFechaElaboracion.Text, Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
+      guardaResultadosExcel(Me.txtNoCaso.Text, Me.lblAnalisis.Text, txtFechaElaboracion.Text, Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
                            txtTitulosObtenidos.Text, _
                            Convert.ToDouble(txtMediaAritmetica2.Text), _
                            Convert.ToDouble(txtMediaGeometrica.Text), _
@@ -13,5 +13,9 @@
 
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
+   End Sub
+
+   Private Sub frmSalidaCaso4_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
    End Sub
 End Class

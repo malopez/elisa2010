@@ -715,7 +715,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso2.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -750,7 +750,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso3.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -785,7 +785,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso4.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -820,7 +820,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso5.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -856,7 +856,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso6.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -891,7 +891,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso7.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -926,7 +926,7 @@ Public Class frmBronquitisAviar
          Dim oComando As New MySqlCommand
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso1.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados,o.Observaciones as OBS FROM ordenes o,analisis a WHERE o.caso='" & cmbNoCaso8.Text & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & lblIdAnalisis.Text & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -1417,7 +1417,7 @@ Public Class frmBronquitisAviar
                                       ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, _
                                       ByVal txtHastaValor As TextBox, ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
                                       ByRef txtNombreEnfermedadSD As TextBox, ByRef txtNombreClienteSD As TextBox, ByRef txtNoCasoSD As TextBox, _
-                                      ByRef lblObservacionesSD As Label, ByRef txtFechaElaboracionSD As TextBox, _
+                                      ByRef lblAnalisisSD As Label, ByRef lblObservacionesSD As Label, ByRef txtFechaElaboracionSD As TextBox, _
                                       ByRef txtTitulosObtenidosSD As TextBox, ByRef txtMediaAritmetica2SD As TextBox, _
                                       ByRef txtMediaGeometricaSD As TextBox, ByRef txtTotalDatosCalculadosSD As TextBox, _
                                       ByRef txtCoefVariacion2SD As TextBox, ByRef txtDesvEstandar2SD As TextBox, ByRef txtVarianza2SD As TextBox)
@@ -1453,6 +1453,7 @@ Public Class frmBronquitisAviar
       tabla = Split(cadena, " | ")
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
       Dim numcaso As String = cmbNoCaso.Text
       'MessageBox.Show("Numero de caso que voy a trabajar: " & numcaso)
       Dim nombre As String = tabla(1)
@@ -1538,17 +1539,17 @@ Public Class frmBronquitisAviar
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso)
+         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
       Try
-         mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, _
+         mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, lblAnalisisSD, _
                                      lblObservacionesSD, txtFechaElaboracionSD, _
                                      txtTitulosObtenidosSD, txtMediaAritmetica2SD, _
                                      txtMediaGeometricaSD, txtTotalDatosCalculadosSD, _
                                      txtCoefVariacion2SD, txtDesvEstandar2SD, txtVarianza2SD, _
-                                     nombre, nombreCliente, numcaso, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                     nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                      mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
@@ -1622,7 +1623,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1631,7 +1632,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                       frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1639,7 +1640,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1649,7 +1650,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1657,7 +1658,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1665,7 +1666,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
@@ -1674,7 +1675,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1682,7 +1683,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                        frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1690,15 +1691,15 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                        frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
             obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
-                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
-                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
                                         frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
@@ -1707,7 +1708,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1715,7 +1716,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1723,15 +1724,15 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
             obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
-                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
-                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
                                         frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
@@ -1739,7 +1740,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
-                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                        frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
                                        frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
@@ -1748,7 +1749,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1756,7 +1757,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1764,15 +1765,15 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
             obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
-                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
-                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
                                         frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
@@ -1780,7 +1781,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
-                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                        frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
                                        frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
@@ -1788,7 +1789,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
-                                       frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
+                                       frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
                                        frmSalidaCaso6.txtTitulosObtenidos, frmSalidaCaso6.txtMediaAritmetica2, _
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
@@ -1797,7 +1798,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1805,7 +1806,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1813,15 +1814,15 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
             obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
-                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
-                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
                                         frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
@@ -1829,7 +1830,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
-                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                        frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
                                        frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
@@ -1837,7 +1838,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
-                                       frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
+                                       frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
                                        frmSalidaCaso6.txtTitulosObtenidos, frmSalidaCaso6.txtMediaAritmetica2, _
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
@@ -1845,7 +1846,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
-                                       frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
+                                      frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
                                        frmSalidaCaso7.txtTitulosObtenidos, frmSalidaCaso7.txtMediaAritmetica2, _
                                        frmSalidaCaso7.txtMediaGeometrica, frmSalidaCaso7.txtTotalDatosCalculados, _
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
@@ -1854,7 +1855,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
@@ -1862,7 +1863,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
-                                        frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
+                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
                                         frmSalidaCaso2.txtTitulosObtenidos, frmSalidaCaso2.txtMediaAritmetica2, _
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
@@ -1870,15 +1871,15 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
-                                        frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
+                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
                                         frmSalidaCaso3.txtTitulosObtenidos, frmSalidaCaso3.txtMediaAritmetica2, _
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
             obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
-                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C3, txtHastaValor2C4, _
+                                     lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
-                                        frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
+                                        frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
                                         frmSalidaCaso4.txtTitulosObtenidos, frmSalidaCaso4.txtMediaAritmetica2, _
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
@@ -1886,7 +1887,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
-                                       frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
+                                        frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
                                        frmSalidaCaso5.txtTitulosObtenidos, frmSalidaCaso5.txtMediaAritmetica2, _
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
@@ -1894,7 +1895,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
-                                       frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
+                                       frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
                                        frmSalidaCaso6.txtTitulosObtenidos, frmSalidaCaso6.txtMediaAritmetica2, _
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
@@ -1902,7 +1903,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
-                                       frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
+                                      frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
                                        frmSalidaCaso7.txtTitulosObtenidos, frmSalidaCaso7.txtMediaAritmetica2, _
                                        frmSalidaCaso7.txtMediaGeometrica, frmSalidaCaso7.txtTotalDatosCalculados, _
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
@@ -1910,7 +1911,7 @@ Public Class frmBronquitisAviar
             obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmSalidaCaso8.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
                                     lblObservacionesC8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8, _
                                     promCP, promCN, difCPS, frmSalidaCaso8.txtNombreEnfermedad, frmSalidaCaso8.txtNombreCliente, frmSalidaCaso8.txtNoCaso, _
-                                       frmSalidaCaso8.lblObservaciones, frmSalidaCaso8.txtFechaElaboracion, _
+                                      frmSalidaCaso8.lblAnalisis, frmSalidaCaso8.lblObservaciones, frmSalidaCaso8.txtFechaElaboracion, _
                                        frmSalidaCaso8.txtTitulosObtenidos, frmSalidaCaso8.txtMediaAritmetica2, _
                                        frmSalidaCaso8.txtMediaGeometrica, frmSalidaCaso8.txtTotalDatosCalculados, _
                                       frmSalidaCaso8.txtCoefVariacion2, frmSalidaCaso8.txtDesvEstandar2, frmSalidaCaso8.txtVarianza2)
@@ -1927,7 +1928,7 @@ Public Class frmBronquitisAviar
       End Try
    End Sub
 
-   Private Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal noControles As TextBox, ByVal txtDesdeLetra As TextBox, _
+   Private Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControles As TextBox, ByVal txtDesdeLetra As TextBox, _
                            ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
                            ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
                            ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
@@ -1968,7 +1969,7 @@ Public Class frmBronquitisAviar
          cny3 = CInt(Me.txtCN3Valor3.Text) - 1
       End If
       Try
-         guardaDatosExcel(placaLector, nocp, numCaso, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+         guardaDatosExcel(placaLector, nocp, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
                           cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
          mensajeVerde(Me.lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
@@ -2029,162 +2030,170 @@ Public Class frmBronquitisAviar
    Private Sub btnGuardaDatos_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatos.Click
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       btnGuardaDatos.Enabled = False
+      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = cmbNombreEnfermedad.Text
+      tabla = Split(cadena, " | ")
+      'Obtiene el numero de caso para ese análisis
+      Dim idAnalisis As String = tabla(0)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
       Try
          Select Case noCasos
             Case 1
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                              txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                              txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                              txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
             Case 2
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
             Case 3
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
 
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
 
             Case 4
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
 
             Case 5
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
             Case 6
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
             Case 7
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
-               guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+               guardaCaso(cmbNoCaso7, analisis, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
 
             Case 8
-               guardaCaso(cmbNoCaso1, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
+               guardaCaso(cmbNoCaso1, analisis, txtNoControles, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                                       txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 1")
-               guardaCaso(cmbNoCaso2, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
+               guardaCaso(cmbNoCaso2, analisis, txtNoControles, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 2")
-               guardaCaso(cmbNoCaso3, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
+               guardaCaso(cmbNoCaso3, analisis, txtNoControles, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 3")
-               guardaCaso(cmbNoCaso4, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
+               guardaCaso(cmbNoCaso4, analisis, txtNoControles, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 4")
-               guardaCaso(cmbNoCaso5, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
+               guardaCaso(cmbNoCaso5, analisis, txtNoControles, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 5")
-               guardaCaso(cmbNoCaso6, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
+               guardaCaso(cmbNoCaso6, analisis, txtNoControles, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 6")
-               guardaCaso(cmbNoCaso7, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
+               guardaCaso(cmbNoCaso7, analisis, txtNoControles, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                           txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 7")
-               guardaCaso(cmbNoCaso8, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
+               guardaCaso(cmbNoCaso8, analisis, txtNoControles, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
                          txtHastaValor2C8, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                          txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, "Caso 8")

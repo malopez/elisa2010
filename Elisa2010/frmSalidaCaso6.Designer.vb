@@ -24,6 +24,7 @@ Partial Class frmSalidaCaso6
     Private Sub InitializeComponent()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaCaso6))
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
       Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
       Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
@@ -60,6 +61,7 @@ Partial Class frmSalidaCaso6
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
       Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
       Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
@@ -74,6 +76,16 @@ Partial Class frmSalidaCaso6
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 59
+      '
+      'lblAnalisis
+      '
+      Me.lblAnalisis.AutoSize = True
+      Me.lblAnalisis.Location = New System.Drawing.Point(236, 16)
+      Me.lblAnalisis.Name = "lblAnalisis"
+      Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
+      Me.lblAnalisis.TabIndex = 63
+      Me.lblAnalisis.Text = "Label4"
+      Me.lblAnalisis.Visible = False
       '
       'txtInmunoEnsayo
       '
@@ -184,7 +196,7 @@ Partial Class frmSalidaCaso6
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
       Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.Text = "Finalizar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'btnGuardaResultados
@@ -436,4 +448,5 @@ Partial Class frmSalidaCaso6
    Friend WithEvents lblCoefVariacionDNA As System.Windows.Forms.Label
    Friend WithEvents txtTotalDatosCalculados As System.Windows.Forms.TextBox
    Friend WithEvents lblTotalDatosCalculados As System.Windows.Forms.Label
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
 End Class

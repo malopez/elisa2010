@@ -20,8 +20,9 @@ Module mdlOperaciones
    'Matriz para calculo de Logaritmo de Titulos
    Public calculoDeTitulos(7, 11) As Decimal
    'Ruta donde se guardaran los archivos
-   Public rutaImagen As String = "C:\ELISA2012\IMAGENES\"
-   Public rutaPlacas As String = "C:\ELISA2012\PLACAS ORIGINALES\"
+   Public rutaImagen As String = "C:\ELISA2012\Imagenes\"
+   Public rutaPlacas As String = "C:\ELISA2012\Placas Originales\"
+   Public rutaResutados As String = "C:\ELISA2012\Resultados\"
 
    'Procedimiento utilizado para convertir la cadena de entrada desde el puerto en un arreglo, quitando los blancos
    'Los <Enter>, <retorno de carro>, <Tabs>, <Nuevas líneas> y el <_Quick> que coloca el lector al final de lo que lee
@@ -97,8 +98,8 @@ Module mdlOperaciones
 
 
    'Procedimiento que sirve para generar el archivo de excel con la placa original
-   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal numCaso As String, _
-                               ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal numCaso As String, ByVal analisis As String, _
+                                ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                                ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                                ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
@@ -171,7 +172,7 @@ Module mdlOperaciones
          desdey = 0
       Next
       'Salva el archivo de placa original leida con el nombre del caso
-      Dim nombreArchivo As String = rutaPlacas & numCaso & ".xlsx"
+      Dim nombreArchivo As String = rutaPlacas & numCaso & "-" & analisis & ".xlsx"
       excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
       'Cierra el libro activo de Excel
       excelApp.ActiveWorkbook.Close()
@@ -180,7 +181,7 @@ Module mdlOperaciones
    End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
+   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
                                     ByVal observaciones As String, ByVal nombrelibro As String, ByVal titulosObtenidos As String,
                                     ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
                                     ByRef cuentaNoDatos As Integer, ByRef desviacionEstandarDatosNoAgrupados As Double, _
@@ -258,7 +259,7 @@ Module mdlOperaciones
       Try
          'Inserta la gráfica en el archivo Excel
          Dim strCelda As String = "E15"
-         Dim nombreArchivo = rutaImagen & numCaso & ".jpeg"
+         Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
          excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
          'excelApp.Worksheets(1).Cells(5, 18).select()
          'excelApp.ActiveSheet.Pictures.Insert(cadena2).select()
@@ -278,6 +279,9 @@ Module mdlOperaciones
       excelApp.Range("E38").Value2 = coeficienteDeVariacionDatosNoAgrupados
 
       excelApp.Range("A41").Value2 = "* Numeración arbitraria"
+      'Salva el archivo de placa original leida con el nombre del caso
+      Dim nombreArchivoResultado As String = rutaResutados & numCaso & "-" & analisis & ".xlsx"
+      excelApp.ActiveWorkbook.SaveAs(nombreArchivoResultado)
       excelApp.ActiveWorkbook.Close()
       excelApp.Quit()
       releaseObject(excelApp)
@@ -335,7 +339,7 @@ Module mdlOperaciones
                Next
                resultado &= vbCrLf
             Next
-            
+
          Catch ex As Exception
             mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
             frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
@@ -459,7 +463,8 @@ Module mdlOperaciones
    '#################################################
    '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
    '#################################################
-   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String)
+   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, nombre As String, ByVal titulox As String, _
+                               ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
 
@@ -549,7 +554,7 @@ Module mdlOperaciones
          oConexion.Dispose()
          'Salvar la imagen a disco, con el número de caso identificándole, con formato jpeg
          Try
-            Dim nombreArchivo = rutaImagen & numCaso & ".jpeg"
+            Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
             Chart1.SaveImage(nombreArchivo, System.Drawing.Imaging.ImageFormat.Jpeg)
          Catch ex As Exception
             mensajeException(etiqueta, ex)
@@ -1021,7 +1026,7 @@ Module mdlOperaciones
                         valorFR, cantidadFR, frmSalidaDatos.lblObservaciones)
       'CARGAR LA TABLA DE FREC REL
       cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmSalidaDatos.lblObservaciones)
-      creaChartFrecRel(frmSalidaDatos.lblSalidaDatos, frmSalidaDatos, nombre, titulox, tituloy, numcaso)
+      creaChartFrecRel(frmSalidaDatos.lblSalidaDatos, frmSalidaDatos, nombre, titulox, tituloy, numcaso, idAnalisis)
 
       'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos
 

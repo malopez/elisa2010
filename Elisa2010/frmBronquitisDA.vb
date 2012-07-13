@@ -2,8 +2,7 @@
 Imports System.Data.SqlClient
 Imports MySql.Data.MySqlClient
 
-Public Class frmAbrirArchivoExistente
-
+Public Class frmBronquitisDA
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       Try
          abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
@@ -16,6 +15,7 @@ Public Class frmAbrirArchivoExistente
          mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try
       botonesEstatus(True)
+      btnLeerArchivoExistente.Enabled = False
       btnCapturaTerminada.Enabled = True
       btnObtenResultadosDA.Enabled = False
    End Sub
@@ -169,7 +169,7 @@ Public Class frmAbrirArchivoExistente
          Try
             frmSalidaDatos.Show()
             mostrarResultadosEnPantalla(frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                        frmSalidaDatos.lblanalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
@@ -198,7 +198,7 @@ Public Class frmAbrirArchivoExistente
          Dim oConexion As MySqlConnection
          oConexion = New MySqlConnection
          oConexion.ConnectionString = cadenaConexion
-         Dim oDataAdapter = New MySqlDataAdapter("SELECT  o.caso,a.id_analysis as IDAN FROM ordenes o,analisis a WHERE o.id_area=3 and o.id_status=1 and o.AnalisisSolicitados=a.id_analysis and  a.analysis_desc like '%INMUNOENSAYO%' order by o.caso,a.id_analysis asc", oConexion)
+         Dim oDataAdapter = New MySqlDataAdapter("SELECT  o.caso,a.id_analysis as IDAN FROM ordenes o,analisis a WHERE o.id_area=3 and o.id_status=1 and o.AnalisisSolicitados=a.id_analysis and  a.analysis_desc like '%INMUNOENSAYO%BRONQUITIS%' order by o.caso,a.id_analysis asc", oConexion)
          Dim oDataSet As New DataSet()
          oConexion.Open()
          oDataAdapter.Fill(oDataSet, "ordenes")
@@ -274,7 +274,7 @@ Public Class frmAbrirArchivoExistente
    End Sub
 
 
-   Private Sub frmAbrirArchivoExistente_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+   Private Sub frmAbrirBronquitisInfDA_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
       Me.cmbNoCaso.Focus()
    End Sub
 
@@ -317,23 +317,4 @@ Public Class frmAbrirArchivoExistente
       End Try
    End Sub
 
- 
-   Private Sub Panel3_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel3.Paint
-
-   End Sub
-   Private Sub lblMensajeAAE_Click(sender As System.Object, e As System.EventArgs) Handles lblMensajeAAE.Click
-
-   End Sub
-   Private Sub lblObservaciones_Click(sender As System.Object, e As System.EventArgs) Handles lblObservaciones.Click
-
-   End Sub
-   Private Sub pnlRegistraNuevoAnalisis_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlRegistraNuevoAnalisis.Paint
-
-   End Sub
-   Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
-
-   End Sub
-   Private Sub txtPlacaDesdeArchivo_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtPlacaDesdeArchivo.TextChanged
-
-   End Sub
 End Class

@@ -282,7 +282,7 @@ Partial Class frmOperacionesAnalisis
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmOperacionesAnalisis"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Operaciones sobre análisis"
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()

@@ -42,6 +42,7 @@ Partial Class frmSalidaCaso8
       Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
       Me.txtFechaElaboracion = New System.Windows.Forms.TextBox()
       Me.txtNombreEnfermedad = New System.Windows.Forms.TextBox()
@@ -111,7 +112,7 @@ Partial Class frmSalidaCaso8
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
       Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Cancelar"
+      Me.btnCancelar.Text = "Finalizar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
       'btnGuardaResultados
@@ -259,6 +260,7 @@ Partial Class frmSalidaCaso8
       'Panel2
       '
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
       Me.Panel2.Controls.Add(Me.txtFechaElaboracion)
       Me.Panel2.Controls.Add(Me.txtNombreEnfermedad)
@@ -273,6 +275,16 @@ Partial Class frmSalidaCaso8
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 72
+      '
+      'lblAnalisis
+      '
+      Me.lblAnalisis.AutoSize = True
+      Me.lblAnalisis.Location = New System.Drawing.Point(236, 17)
+      Me.lblAnalisis.Name = "lblAnalisis"
+      Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
+      Me.lblAnalisis.TabIndex = 63
+      Me.lblAnalisis.Text = "Label4"
+      Me.lblAnalisis.Visible = False
       '
       'txtInmunoEnsayo
       '
@@ -436,4 +448,5 @@ Partial Class frmSalidaCaso8
    Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
 End Class

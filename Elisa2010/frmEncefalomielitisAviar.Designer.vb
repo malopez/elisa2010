@@ -664,6 +664,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC1.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC1.TabIndex = 88
       Me.lblObservacionesC1.Text = "Label41"
+      Me.lblObservacionesC1.Visible = False
       '
       'Label19
       '
@@ -842,6 +843,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC2.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC2.TabIndex = 93
       Me.lblObservacionesC2.Text = "Label41"
+      Me.lblObservacionesC2.Visible = False
       '
       'Label1
       '
@@ -1016,6 +1018,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC3.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC3.TabIndex = 99
       Me.lblObservacionesC3.Text = "Label41"
+      Me.lblObservacionesC3.Visible = False
       '
       'Label6
       '
@@ -1190,6 +1193,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC4.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC4.TabIndex = 105
       Me.lblObservacionesC4.Text = "Label41"
+      Me.lblObservacionesC4.Visible = False
       '
       'Label11
       '
@@ -1360,6 +1364,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC5.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC5.TabIndex = 111
       Me.lblObservacionesC5.Text = "Label41"
+      Me.lblObservacionesC5.Visible = False
       '
       'Label16
       '
@@ -1534,6 +1539,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC6.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC6.TabIndex = 111
       Me.lblObservacionesC6.Text = "Label41"
+      Me.lblObservacionesC6.Visible = False
       '
       'Label23
       '
@@ -1708,6 +1714,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC7.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC7.TabIndex = 111
       Me.lblObservacionesC7.Text = "Label41"
+      Me.lblObservacionesC7.Visible = False
       '
       'Label28
       '
@@ -1882,6 +1889,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblObservacionesC8.Size = New System.Drawing.Size(45, 13)
       Me.lblObservacionesC8.TabIndex = 117
       Me.lblObservacionesC8.Text = "Label41"
+      Me.lblObservacionesC8.Visible = False
       '
       'Label36
       '
@@ -2091,6 +2099,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
       Me.lblIdAnalisis.TabIndex = 42
       Me.lblIdAnalisis.Text = "id_analisis"
+      Me.lblIdAnalisis.Visible = False
       '
       'lblLogTit2
       '
@@ -2100,6 +2109,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
       Me.lblLogTit2.TabIndex = 41
       Me.lblLogTit2.Text = "logTit2:"
+      Me.lblLogTit2.Visible = False
       '
       'lblLogTit1
       '
@@ -2109,6 +2119,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
       Me.lblLogTit1.TabIndex = 40
       Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
       '
       'lblLogSPS
       '
@@ -2118,6 +2129,7 @@ Partial Class frmEncefalomielitisAviar
       Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
       Me.lblLogSPS.TabIndex = 39
       Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
       '
       'lblNombreEnfermedad
       '
@@ -2232,7 +2244,7 @@ Partial Class frmEncefalomielitisAviar
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmEncefalomielitisAviar"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Análisis de Encefalomielitis Aviar"
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
