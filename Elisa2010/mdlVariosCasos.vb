@@ -79,6 +79,130 @@
    End Function
 
 
+   Public Sub calculaMarcaDeClaseBI(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
+      Dim i As Integer = 0
+      Dim rangoUno As Integer = 0
+      Dim rangoDos As Integer = 0
+      Dim rangoTres As Integer = 0
+      Dim rangoCuatro As Integer = 0
+      Dim rangoCinco As Integer = 0
+      Dim rangoSeis As Integer = 0
+      Dim rangoSiete As Integer = 0
+      Dim rangoOcho As Integer = 0
+      Dim rangoNueve As Integer = 0
+      Dim rangoDiez As Integer = 0
+      Dim rangoOnce As Integer = 0
+      Dim rangoDoce As Integer = 0
+      Dim rangoTrece As Integer = 0
+      Dim rangoCatorce As Integer = 0
+      Dim rangoQuince As Integer = 0
+      Dim rangoDSeis As Integer = 0
+      Dim contador As Integer = 0
+      For i = 0 To UBound(calculaL)
+         Select Case calculaL(i)
+            Case Is < 1
+               rangoUno += 1
+            Case 1 To 350
+               rangoDos += 1
+            Case 351 To 3000
+               rangoTres += 1
+            Case 3001 To 5000
+               rangoCuatro += 1
+            Case 5001 To 7000
+               rangoCinco += 1
+            Case 7001 To 9000
+               rangoSeis += 1
+            Case 9001 To 11000
+               rangoSiete += 1
+            Case 11001 To 13000
+               rangoOcho += 1
+            Case 13001 To 15000
+               rangoNueve += 1
+            Case 15001 To 17000
+               rangoDiez += 1
+            Case 17001 To 19000
+               rangoOnce += 1
+            Case 19001 To 21000
+               rangoDoce += 1
+            Case 21001 To 23000
+               rangoTrece += 1
+            Case 23001 To 25000
+               rangoCatorce += 1
+            Case Is > 25000
+               rangoQuince += 1
+         End Select
+      Next
+
+      'Calculo la sumatoria de la frecuencia de clase fi
+      rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
+      'Asigno al arreglo los datos que son frecuencia de clase
+      rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
+
+   End Sub
+
+
+   Public Sub calculaMarcaDeClaseEA(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
+      Dim i As Integer = 0
+      Dim rangoUno As Integer = 0
+      Dim rangoDos As Integer = 0
+      Dim rangoTres As Integer = 0
+      Dim rangoCuatro As Integer = 0
+      Dim rangoCinco As Integer = 0
+      Dim rangoSeis As Integer = 0
+      Dim rangoSiete As Integer = 0
+      Dim rangoOcho As Integer = 0
+      Dim rangoNueve As Integer = 0
+      Dim rangoDiez As Integer = 0
+      Dim rangoOnce As Integer = 0
+      Dim rangoDoce As Integer = 0
+      Dim rangoTrece As Integer = 0
+      Dim rangoCatorce As Integer = 0
+      Dim rangoQuince As Integer = 0
+      Dim rangoDSeis As Integer = 0
+      Dim contador As Integer = 0
+      For i = 0 To UBound(calculaL)
+         Select Case calculaL(i)
+            Case Is < 350
+               rangoUno += 1
+            Case 351 To 1500
+               rangoDos += 1
+            Case 1501 To 2500
+               rangoTres += 1
+            Case 2501 To 3500
+               rangoCuatro += 1
+            Case 3501 To 4500
+               rangoCinco += 1
+            Case 4501 To 5500
+               rangoSeis += 1
+            Case 5501 To 6500
+               rangoSiete += 1
+            Case 6501 To 7500
+               rangoOcho += 1
+            Case 7501 To 8500
+               rangoNueve += 1
+            Case 8501 To 9500
+               rangoDiez += 1
+            Case 9501 To 10500
+               rangoOnce += 1
+            Case 15001 To 11500
+               rangoDoce += 1
+            Case 11501 To 12500
+               rangoTrece += 1
+            Case 12501 To 13500
+               rangoCatorce += 1
+            Case Is > 13500
+               rangoQuince += 1
+         End Select
+      Next
+
+      'Calculo la sumatoria de la frecuencia de clase fi
+      rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
+      'Asigno al arreglo los datos que son frecuencia de clase
+      rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
+
+   End Sub
+
+
    Public Sub calculaMarcaDeClase(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
       Dim i As Integer = 0
       Dim rangoUno As Integer = 0
@@ -136,7 +260,67 @@
       rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
       'Asigno al arreglo los datos que son frecuencia de clase
       rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
-      
+
+   End Sub
+
+   Public Sub calculaMarcaDeClaseNC(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
+      Dim i As Integer = 0
+      Dim rangoUno As Integer = 0
+      Dim rangoDos As Integer = 0
+      Dim rangoTres As Integer = 0
+      Dim rangoCuatro As Integer = 0
+      Dim rangoCinco As Integer = 0
+      Dim rangoSeis As Integer = 0
+      Dim rangoSiete As Integer = 0
+      Dim rangoOcho As Integer = 0
+      Dim rangoNueve As Integer = 0
+      Dim rangoDiez As Integer = 0
+      Dim rangoOnce As Integer = 0
+      Dim rangoDoce As Integer = 0
+      Dim rangoTrece As Integer = 0
+      Dim rangoCatorce As Integer = 0
+      Dim rangoQuince As Integer = 0
+      Dim contador As Integer = 0
+      For i = 0 To UBound(calculaL)
+         Select Case calculaL(i)
+            Case Is < 1
+               rangoUno += 1
+            Case 1 To 350
+               rangoDos += 1
+            Case 351 To 750
+               rangoTres += 1
+            Case 751 To 1500
+               rangoCuatro += 1
+            Case 1501 To 2000
+               rangoCinco += 1
+            Case 2001 To 2500
+               rangoSeis += 1
+            Case 2501 To 3000
+               rangoSiete += 1
+            Case 3001 To 3500
+               rangoOcho += 1
+            Case 3501 To 4000
+               rangoNueve += 1
+            Case 4001 To 4500
+               rangoDiez += 1
+            Case 4501 To 5000
+               rangoOnce += 1
+            Case 5001 To 5500
+               rangoDoce += 1
+            Case 5501 To 6000
+               rangoTrece += 1
+            Case 6001 To 6500
+               rangoCatorce += 1
+            Case Is > 6501
+               rangoQuince += 1
+         End Select
+      Next
+
+      'Calculo la sumatoria de la frecuencia de clase fi
+      rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
+      'Asigno al arreglo los datos que son frecuencia de clase
+      rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
+
    End Sub
 
 

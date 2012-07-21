@@ -6,7 +6,9 @@ Public Class frmPasteuHaemDA
 
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       Try
-         abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+         'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+                          Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
@@ -256,7 +258,11 @@ Public Class frmPasteuHaemDA
          botonesEstatus(False)
          btnLeerArchivoExistente.Enabled = False
          coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-         If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+         If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
+              controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
+              controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
+              controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
+             desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
             btnCapturaTerminada.Enabled = False
             btnObtenResultadosDA.Enabled = True
          Else

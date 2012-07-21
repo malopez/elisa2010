@@ -69,6 +69,7 @@ Partial Class frmPasteuHaemDA
       Me.txtCPDAValor2 = New System.Windows.Forms.TextBox()
       Me.txtCPDAValor1 = New System.Windows.Forms.TextBox()
       Me.lblLogSPS = New System.Windows.Forms.Label()
+      Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -556,6 +557,12 @@ Partial Class frmPasteuHaemDA
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
       '
+      'ofdSelArchivo
+      '
+      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xlsx|*.XLS|*.XLSX"
+      Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
+      Me.ofdSelArchivo.Title = "Abrir archivo de datos"
+      '
       'frmPasteuHaemDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -632,4 +639,5 @@ Partial Class frmPasteuHaemDA
    Friend WithEvents txtCPDAValor2 As System.Windows.Forms.TextBox
    Friend WithEvents txtCPDAValor1 As System.Windows.Forms.TextBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
+   Friend WithEvents ofdSelArchivo As System.Windows.Forms.OpenFileDialog
 End Class

@@ -1477,7 +1477,7 @@ Public Class frmEncefalomielitisAviar
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
-         calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
+         calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
       End Try

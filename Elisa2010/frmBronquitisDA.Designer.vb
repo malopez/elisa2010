@@ -23,10 +23,10 @@ Partial Class frmBronquitisDA
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBronquitisDA))
-      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
@@ -69,6 +69,7 @@ Partial Class frmBronquitisDA
       Me.txtCPDAValor2 = New System.Windows.Forms.TextBox()
       Me.txtCPDAValor1 = New System.Windows.Forms.TextBox()
       Me.lblLogSPS = New System.Windows.Forms.Label()
+      Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -295,32 +296,32 @@ Partial Class frmBronquitisDA
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle14.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle14.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(8, 6)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle15.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle15.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
+      DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle16
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 93
@@ -556,6 +557,12 @@ Partial Class frmBronquitisDA
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
       '
+      'ofdSelArchivo
+      '
+      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xlsx|*.XLS|*.XLSX"
+      Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
+      Me.ofdSelArchivo.Title = "Abrir archivo de datos"
+      '
       'frmBronquitisDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -632,4 +639,5 @@ Partial Class frmBronquitisDA
    Friend WithEvents txtCPDAValor1 As System.Windows.Forms.TextBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents ofdSelArchivo As System.Windows.Forms.OpenFileDialog
 End Class

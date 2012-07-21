@@ -168,6 +168,12 @@
     <Compile Include="frmLaringotraqueitisDA.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLecturaDePlaca.Designer.vb">
+      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLecturaDePlaca.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmNewcastleDA.Designer.vb">
       <DependentUpon>frmNewcastleDA.vb</DependentUpon>
     </Compile>
@@ -346,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaringotraqueitisDA.resx">
       <DependentUpon>frmLaringotraqueitisDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLecturaDePlaca.resx">
+      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewcastleDA.resx">
       <DependentUpon>frmNewcastleDA.vb</DependentUpon>

@@ -55,6 +55,7 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+      Me.tsmLeerYGuardar = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
@@ -217,10 +218,11 @@ Partial Class frmElisaBiovetsa
       '
       'mnuImprimir
       '
+      Me.mnuImprimir.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmLeerYGuardar})
       Me.mnuImprimir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuImprimir.Name = "mnuImprimir"
-      Me.mnuImprimir.Size = New System.Drawing.Size(65, 20)
-      Me.mnuImprimir.Text = "&Imprimir"
+      Me.mnuImprimir.Size = New System.Drawing.Size(47, 20)
+      Me.mnuImprimir.Text = "&Placa"
       '
       'mnuAcercaDe
       '
@@ -290,6 +292,12 @@ Partial Class frmElisaBiovetsa
       Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
       Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
+      'tsmLeerYGuardar
+      '
+      Me.tsmLeerYGuardar.Name = "tsmLeerYGuardar"
+      Me.tsmLeerYGuardar.Size = New System.Drawing.Size(152, 22)
+      Me.tsmLeerYGuardar.Text = "Leer y Guardar"
+      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -349,5 +357,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmReovirusDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmGumboroDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmEncefalomielitisDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmLeerYGuardar As System.Windows.Forms.ToolStripMenuItem
 
 End Class

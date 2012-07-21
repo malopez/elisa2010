@@ -69,6 +69,7 @@ Partial Class frmNewcastleDA
       Me.txtCPDAValor2 = New System.Windows.Forms.TextBox()
       Me.txtCPDAValor1 = New System.Windows.Forms.TextBox()
       Me.lblLogSPS = New System.Windows.Forms.Label()
+      Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -213,6 +214,7 @@ Partial Class frmNewcastleDA
       'btnLeerArchivoExistente
       '
       Me.btnLeerArchivoExistente.Enabled = False
+      Me.btnLeerArchivoExistente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnLeerArchivoExistente.Location = New System.Drawing.Point(604, 154)
       Me.btnLeerArchivoExistente.Name = "btnLeerArchivoExistente"
       Me.btnLeerArchivoExistente.Size = New System.Drawing.Size(113, 23)
@@ -223,6 +225,7 @@ Partial Class frmNewcastleDA
       'btnObtenResultadosDA
       '
       Me.btnObtenResultadosDA.Enabled = False
+      Me.btnObtenResultadosDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnObtenResultadosDA.Location = New System.Drawing.Point(490, 512)
       Me.btnObtenResultadosDA.Name = "btnObtenResultadosDA"
       Me.btnObtenResultadosDA.Size = New System.Drawing.Size(113, 23)
@@ -244,6 +247,7 @@ Partial Class frmNewcastleDA
       '
       Me.btnCancelarDA.DialogResult = System.Windows.Forms.DialogResult.Cancel
       Me.btnCancelarDA.FlatStyle = System.Windows.Forms.FlatStyle.System
+      Me.btnCancelarDA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnCancelarDA.Location = New System.Drawing.Point(609, 512)
       Me.btnCancelarDA.Name = "btnCancelarDA"
       Me.btnCancelarDA.Size = New System.Drawing.Size(113, 23)
@@ -280,6 +284,7 @@ Partial Class frmNewcastleDA
       Me.Panel1.Controls.Add(Me.lblLogTit1)
       Me.Panel1.Controls.Add(Me.grbCPDesdeArchivo)
       Me.Panel1.Controls.Add(Me.lblLogSPS)
+      Me.Panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Panel1.Location = New System.Drawing.Point(6, 183)
       Me.Panel1.Name = "Panel1"
       Me.Panel1.Size = New System.Drawing.Size(718, 323)
@@ -552,6 +557,12 @@ Partial Class frmNewcastleDA
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
       '
+      'ofdSelArchivo
+      '
+      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xlsx|*.XLS|*.XLSX"
+      Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
+      Me.ofdSelArchivo.Title = "Abrir archivo de datos"
+      '
       'frmNewcastleDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -628,4 +639,5 @@ Partial Class frmNewcastleDA
    Friend WithEvents txtCPDAValor2 As System.Windows.Forms.TextBox
    Friend WithEvents txtCPDAValor1 As System.Windows.Forms.TextBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
+   Friend WithEvents ofdSelArchivo As System.Windows.Forms.OpenFileDialog
 End Class

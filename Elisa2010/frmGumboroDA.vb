@@ -5,7 +5,9 @@ Imports MySql.Data.MySqlClient
 Public Class frmGumboroDA
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       Try
-         abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+         'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+                          Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
@@ -235,7 +237,7 @@ Public Class frmGumboroDA
 
          oConexion.ConnectionString = cadenaConexion
 
-         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.Observaciones as OBS, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
+         aConsulta = "SELECT o.NombreCliente as NombreCliente,a.analysis_desc as AnalisisSolicitados, o.descripcion as OBS, logSPS,logTit1,logTit2 FROM ordenes o,analisis a WHERE o.caso='" & tabla(0) & "'" & " and o.AnalisisSolicitados=a.id_analysis and o.AnalisisSolicitados='" & tabla(1) & "' ;"
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          oConexion.Open()
@@ -302,7 +304,11 @@ Public Class frmGumboroDA
          botonesEstatus(False)
          btnLeerArchivoExistente.Enabled = False
          coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-         If desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+         If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
+              controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
+              controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
+              controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
+             desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
             btnCapturaTerminada.Enabled = False
             btnObtenResultadosDA.Enabled = True
          Else

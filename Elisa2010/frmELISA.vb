@@ -257,4 +257,9 @@
       frmEncefalomielitisDA.Show()
       frmSalidaDatos.MdiParent = Me
    End Sub
+
+   Private Sub tsmLeerYGuardar_Click(sender As System.Object, e As System.EventArgs) Handles tsmLeerYGuardar.Click
+      frmLecturaDePlaca.MdiParent = Me
+      frmLecturaDePlaca.Show()
+   End Sub
 End Class

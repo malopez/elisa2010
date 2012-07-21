@@ -22,6 +22,7 @@ Partial Class frmSalidaDatos
    'Do not modify it using the code editor.
    <System.Diagnostics.DebuggerStepThrough()> _
    Private Sub InitializeComponent()
+      Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaDatos))
       Me.txtMediaGeometrica = New System.Windows.Forms.TextBox()
       Me.lblMediaGeometrica = New System.Windows.Forms.Label()
@@ -54,9 +55,13 @@ Partial Class frmSalidaDatos
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtNoCaso = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.ElisasandboxDataSet = New Elisa2010.elisasandboxDataSet()
+      Me.ElisasandboxDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
+      CType(Me.ElisasandboxDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+      CType(Me.ElisasandboxDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
       'txtMediaGeometrica
@@ -392,6 +397,16 @@ Partial Class frmSalidaDatos
       Me.Panel3.Size = New System.Drawing.Size(568, 166)
       Me.Panel3.TabIndex = 59
       '
+      'ElisasandboxDataSet
+      '
+      Me.ElisasandboxDataSet.DataSetName = "elisasandboxDataSet"
+      Me.ElisasandboxDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+      '
+      'ElisasandboxDataSetBindingSource
+      '
+      Me.ElisasandboxDataSetBindingSource.DataSource = Me.ElisasandboxDataSet
+      Me.ElisasandboxDataSetBindingSource.Position = 0
+      '
       'frmSalidaDatos
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -422,6 +437,8 @@ Partial Class frmSalidaDatos
       Me.Panel2.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
+      CType(Me.ElisasandboxDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+      CType(Me.ElisasandboxDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -457,4 +474,6 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtNoCaso As System.Windows.Forms.TextBox
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
    Friend WithEvents lblAnalisis As System.Windows.Forms.Label
+   Friend WithEvents ElisasandboxDataSet As Elisa2010.elisasandboxDataSet
+   Friend WithEvents ElisasandboxDataSetBindingSource As System.Windows.Forms.BindingSource
 End Class

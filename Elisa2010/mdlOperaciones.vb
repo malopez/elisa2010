@@ -109,6 +109,16 @@ Module mdlOperaciones
       'Sirve para controlar el ciclo for
       Dim i As Integer = 0
       Dim j As Integer = 0
+      Dim nombreArchivo As String
+      Dim numcolor As Integer
+      'Salva el archivo de placa original leida con el nombre del caso
+      If numCaso = "" And analisis = "" Then
+         nombreArchivo = rutaPlacas & "ELISA_" & Format(DateTime.Now, "yyyyMMdd_hhmm") & ".xlsx"
+         numcolor = 2 'Para no colocar color al fondo de la placa.
+      Else
+         nombreArchivo = rutaPlacas & numCaso & "-" & analisis & ".xlsx"
+         numcolor = 6 'Coloca el color amarillo al caso
+      End If
       'Mostrar Excel en pantalla y crea el workbook
       'excelApp.Visible = True
       libroExcel = excelApp.Workbooks.Add()
@@ -160,25 +170,28 @@ Module mdlOperaciones
          excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
          excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
       End If
-      'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
-      Dim renglones As Integer = 11
-      For i = desdex To hastax
-         If (i = hastax) Then
-            renglones = hastay
-         End If
-         For j = desdey To renglones
-            excelApp.Range(obtenLetra(i) & (j + 1)).Interior.ColorIndex = 6
+      If numcolor = 6 Then
+         'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
+         Dim renglones As Integer = 11
+         For i = desdex To hastax
+            If (i = hastax) Then
+               renglones = hastay
+            End If
+            For j = desdey To renglones
+               excelApp.Range(obtenLetra(i) & (j + 1)).Interior.ColorIndex = numcolor
+            Next
+            desdey = 0
          Next
-         desdey = 0
-      Next
-      'Salva el archivo de placa original leida con el nombre del caso
-      Dim nombreArchivo As String = rutaPlacas & numCaso & "-" & analisis & ".xlsx"
+      End If
       excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
       'Cierra el libro activo de Excel
       excelApp.ActiveWorkbook.Close()
       excelApp.Quit()
       releaseObject(excelApp)
    End Sub
+
+
+
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
    Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
@@ -192,12 +205,23 @@ Module mdlOperaciones
       Dim sueros As String = "A"
       Dim titulos As String = "B"
       Dim temp As Integer = 1
-      Dim l As Integer = 16
+      Dim l As Integer = 14
+      Dim mensajeEspecial As String = "Mensaje especial"
+      Dim enfermedadAbreviada As String = "LT"
+
 
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
       Dim i As Integer = 0
+
+      
+
+
+
+
+
+
       'Mostrar Excel en pantalla y crea el workbook
       excelApp.Visible = True
       libroExcel = excelApp.Workbooks.Add()
@@ -206,20 +230,49 @@ Module mdlOperaciones
       excelApp.ActiveSheet.Name = nombrelibro
 
       'Colocar las cabeceras para los rangos de datos
-      excelApp.Range("A5").Value2 = "Cliente:  " & nombreCliente
-      excelApp.Range("G5").Value2 = "No. Caso: "
-      excelApp.Range("H5").Value2 = numCaso
-      excelApp.Range("A6").Value2 = observaciones
-      excelApp.Range("A8").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
-      excelApp.Range("A10").Value2 = nombreEnfermedad
-      excelApp.Range("E4").Value2 = "Resultados de Serología"
-      excelApp.Range("E10").Value2 = "Fecha del análisis:  " & fechaElaboracion
+      With excelApp
+         .Range("A2").Font.Bold = True
+         .Range("H2").Font.Bold = True
+         .Range("B2:G2").MergeCells = True
+         .Range("A3:I3").MergeCells = True
+         .Range("A1:I11").Font.Name = "Century Gothic"
+         .Range("A1:I11").Font.Size = 10
+         .Range("A12").Font.Name = "Arial"
+         .Range("A12").Font.Size = 8
+         .Range("B12").Font.Name = "Arial"
+         .Range("B12").Font.Size = 9
+         .Range("B46").Font.Name = "Century Gothic"
+         .Range("B46").Font.Size = 10
+         'Coloca los valores de los campos
+         .Range("F1").Value2 = "Resultados de Serología"
+         .Range("A2").Value2 = "Cliente:  "
+         .Range("B2").Value2 = nombreCliente
+         .Range("H2").Value2 = "No. Caso: "
+         .Range("I2").Value2 = numCaso
+         .Range("A3").Value2 = LCase(observaciones)
+
+
+         'Colocar los bordes externos a las celdas para el reporte.
+
+         .Range("A2:G2").Borders.LineStyle = Excel.XlBorderWeight.xlThin
+
+         .Range("H2:I2").Borders.LineStyle = Excel.XlBorderWeight.xlThin
+         .Range("A2:I3").Borders.LineStyle = Excel.XlBorderWeight.xlThin
+      End With
+
+
+      excelApp.Range("A5").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+      excelApp.Range("A7").Value2 = nombreEnfermedad
+
+      excelApp.Range("F7").Value2 = "Fecha del análisis:  " & Format("dd MMM yyyy", CDate(fechaElaboracion))
+      excelApp.Range("A12").Value2 = mensajeEspecial
+      excelApp.Range("B12").Value2 = enfermedadAbreviada
 
       'excelApp.ActiveSheet.PrintOut()
 
       'copia los valores de los títulos resultantes
-      excelApp.Range("A15").Value2 = "Sueros"
-      excelApp.Range("B15").Value2 = "Títulos"
+      excelApp.Range("A13").Value2 = "Sueros"
+      excelApp.Range("B13").Value2 = "Títulos"
       Dim cadena1 As String
       Dim tabla1() As String
       cadena1 = titulosObtenidos
@@ -266,19 +319,76 @@ Module mdlOperaciones
       Catch ex As Exception
          mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
       End Try
+
+      'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
+      Dim nomenf As Excel.Shape
+      With excelApp.Range("G15:H15")
+         nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
+             Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
+             Left:=.Left, Top:=.Top, _
+             Width:=80, Height:=20)
+      End With
+      'Quita el borde del cuadro de texto
+      nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+
+
+      With nomenf.DrawingObject
+         .Characters.Text = excelApp.Range("B12").Value2
+         With .Font
+            .Name = "Arial"
+            .FontStyle = "Bold"
+            .Size = 9
+            .Strikethrough = False
+            .Superscript = False
+            .Subscript = False
+            .OutlineFont = False
+            .Shadow = False
+         End With
+      End With
+
+
+      'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO SOBRE LA GRAFICA IMAGEN
+      Dim tbox As Excel.Shape
+      With excelApp.Range("F17:H17")
+         tbox = excelApp.ActiveSheet.Shapes.AddTextbox( _
+             Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
+             Left:=.Left, Top:=.Top, _
+             Width:=80, Height:=20)
+      End With
+
+      'Quita el borde del cuadro de texto
+      tbox.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+
+      With (tbox.DrawingObject)
+         .Characters.Text = excelApp.Range("A12").Value2
+         With .Font
+            .Name = "Arial"
+            .FontStyle = "Regular"
+            .Size = 8
+            .Strikethrough = False
+            .Superscript = False
+            .Subscript = False
+            .OutlineFont = False
+            .Shadow = False
+         End With
+
+      End With
+
+
       'coloca los valores de la estadística
       excelApp.Range("A37").Value2 = "No. Sueros"
-      excelApp.Range("B37").Value2 = "Media"
+      excelApp.Range("B37").Value2 = "Media Arit."
       excelApp.Range("C37").Value2 = "Med. Geom."
-      excelApp.Range("D37").Value2 = "Desv. Est."
-      excelApp.Range("E37").Value2 = "Coef.Var."
+      ' excelApp.Range("D37").Value2 = "Desv. Est."
+      excelApp.Range("D37").Value2 = "Coef.Var."
       excelApp.Range("A38").Value2 = cuentaNoDatos
       excelApp.Range("B38").Value2 = mediaAritmetica
       excelApp.Range("C38").Value2 = mediaGeometrica
-      excelApp.Range("D38").Value2 = desviacionEstandarDatosNoAgrupados
-      excelApp.Range("E38").Value2 = coeficienteDeVariacionDatosNoAgrupados
+      'excelApp.Range("D38").Value2 = desviacionEstandarDatosNoAgrupados
+      excelApp.Range("D38").Value2 = coeficienteDeVariacionDatosNoAgrupados
 
-      excelApp.Range("A41").Value2 = "* Numeración arbitraria"
+      excelApp.Range("A43").Value2 = "* Numeración arbitraria"
+      excelApp.Range("B46").Value2 = Format("dd-MMM-yyyy", CDate(fechaElaboracion))
       'Salva el archivo de placa original leida con el nombre del caso
       Dim nombreArchivoResultado As String = rutaResutados & numCaso & "-" & analisis & ".xlsx"
       excelApp.ActiveWorkbook.SaveAs(nombreArchivoResultado)
@@ -293,12 +403,15 @@ Module mdlOperaciones
    'Se utiliza abrir un archivo existente de excel donde se encuentran grabados datos 
    'de una placa leida previamente
 
-   Public Sub abreArchivoExcel(ByVal placaLector(,) As Decimal, ByRef txtCPDAValor1 As TextBox, _
-                               ByRef txtCPDAValor2 As TextBox, ByRef txtCPDAValor3 As TextBox, _
-                               ByRef txtCNDAValor1 As TextBox, ByRef txtCNDAValor2 As TextBox, _
-                               ByRef txtCNDAValor3 As TextBox)
+   Public Sub abreArchivoExcel(ByRef control As Control, ByRef dialogo As System.Windows.Forms.OpenFileDialog, _
+                               ByRef etiqueta As Label, ByRef boton1 As System.Windows.Forms.Button, _
+                               ByRef boton2 As System.Windows.Forms.Button, ByVal placaLector(,) As Decimal, _
+                               ByRef txtCPDAValor1 As TextBox, ByRef txtCPDAValor2 As TextBox, _
+                               ByRef txtCPDAValor3 As TextBox, ByRef txtCNDAValor1 As TextBox,
+                               ByRef txtCNDAValor2 As TextBox, ByRef txtCNDAValor3 As TextBox)
       'Define variables para archivo de excel
       Dim excelApp As New Excel.Application
+
       'Dim libroExcel As Excel.Workbook
       Dim hojaExcel As Excel.Worksheet
       'Variables para nombre del archivo
@@ -311,62 +424,64 @@ Module mdlOperaciones
       Dim columna As String = ""
       Dim resultado As String = ""
       Dim temporal As String = ""
-      Try
-         frmAbrirArchivoExistente.ofdSelArchivo.Title = "Seleccione el archivo con datos de placa"
-         ' Show the open file dialog box.
-         If frmAbrirArchivoExistente.ofdSelArchivo.ShowDialog = DialogResult.OK Then
-            ' Load the picture into the picture box.
-            frmAbrirArchivoExistente.ofdSelArchivo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            ' Show the name of the file in the statusbar.
-         End If
-         rutaArchivo = frmAbrirArchivoExistente.ofdSelArchivo.FileName
-         nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
+      'Try
+      dialogo.Title = "Seleccione el archivo con datos de placa"
+      ' Show the open file dialog box.
+      If dialogo.ShowDialog = DialogResult.OK Then
+         ' Load the picture into the picture box.
+         dialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+         'dialogo.InitialDirectory = Environment.GetFolderPath(rutaPlacas)
+         ' Show the name of the file in the statusbar.
+      End If
+      rutaArchivo = dialogo.FileName
+      nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
 
-         excelApp.Workbooks.Open(rutaArchivo)
-         hojaExcel = excelApp.Worksheets(1)
-         'excelApp.Visible = True
-         Try
-            For i = 0 To 7
-               columna = obtenLetra(i)
-               For j = 0 To 11
-                  temporal = hojaExcel.Range(columna & (j + 1)).Value2
-                  If (temporal <> "") Then
-                     placaLector(i, j) = CDec(temporal)
-                  Else
-                     placaLector(i, j) = 0
-                  End If
-                  resultado &= CStr(placaLector(i, j)) & vbTab
-               Next
-               resultado &= vbCrLf
-            Next
+      excelApp.Workbooks.Open(rutaArchivo)
+      hojaExcel = excelApp.Worksheets(1)
+      'excelApp.Visible = True
+      'Try
+      For i = 0 To 7
+         columna = obtenLetra(i)
+         For j = 0 To 11
+            temporal = Replace(hojaExcel.Range(columna & (j + 1)).Value2, "\", "")
+            If (temporal <> "") Then
+               placaLector(i, j) = CDec(temporal)
+            Else
+               placaLector(i, j) = 0
+            End If
+            resultado &= CStr(placaLector(i, j)) & vbTab
+         Next
+         resultado &= vbCrLf
+      Next
 
-         Catch ex As Exception
-            mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
-            frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
-            frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
-         End Try
-         mensajeVerde(frmAbrirArchivoExistente.lblMensajeAAE, "Nombre del archivo abierto: " & nombreArchivo)
-         'frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
-         txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
-         txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
-         txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
-         txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
-         txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
-         txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
-         excelApp.ActiveWorkbook.Close()
-         'Libera la aplicacion Excel
-         releaseObject(excelApp)
-         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = False
-         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = True
-      Catch ex As FormatException
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
-         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
-         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
-      Catch ex As Exception
-         mensajeException(frmAbrirArchivoExistente.lblMensajeAAE, ex)
-         frmAbrirArchivoExistente.btnLeerArchivoExistente.Enabled = True
-         frmAbrirArchivoExistente.btnObtenResultadosDA.Enabled = False
-      End Try
+      'Catch ex As Exception
+      '   mensajeVerde(etiqueta, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
+      '   boton1.Enabled = True
+      '   boton2.Enabled = False
+      'End Try
+      'mensajeVerde(etiqueta, "Nombre del archivo abierto: " & nombreArchivo)
+      mensajeVerde(etiqueta, "Nombre del archivo abierto: " & rutaPlacas)
+      'frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
+      txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
+      txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
+      txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
+      txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
+      txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
+      txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
+      excelApp.ActiveWorkbook.Close()
+      'Libera la aplicacion Excel
+      releaseObject(excelApp)
+      boton1.Enabled = False
+      boton2.Enabled = True
+      'Catch ex As FormatException
+      '   mensajeException(etiqueta, ex)
+      '   boton1.Enabled = True
+      '   boton2.Enabled = False
+      'Catch ex As Exception
+      '   mensajeException(etiqueta, ex)
+      '   boton1.Enabled = True
+      '   boton2.Enabled = False
+      'End Try
 
    End Sub
 
@@ -447,7 +562,7 @@ Module mdlOperaciones
          For i = 0 To 14
             'comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
             'resultado = comando.ExecuteNonQuery()
-            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i + 1 & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
+            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
             resultado = comando.ExecuteNonQuery()
          Next
          oConexion.Close()
@@ -495,7 +610,7 @@ Module mdlOperaciones
          'Define la nueva colección, asigna el nombre del gráfico.
          ChartArea1.Name = "ChartArea1"
          Chart1.ChartAreas.Add(ChartArea1)
-         Chart1.Titles.Add(nombre)
+         'Chart1.Titles.Add(nombre)
 
          'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
 
@@ -526,6 +641,8 @@ Module mdlOperaciones
             .ChartArea = "ChartArea1"
             .Name = "Series1"
             .ChartType = SeriesChartType.Column
+            .Color = Color.Red
+            .CustomProperties = "labelStyle:= Top , Font.Size:= 7"
          End With
 
          'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
@@ -534,14 +651,17 @@ Module mdlOperaciones
             .IsValueShownAsLabel = True
             .XValueMember = "rango"
             .YValueMembers = "valor"
+            .CustomProperties = "labelStyle := Top , Font.Size := 7"
             .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
          End With
+         
+
 
          'Indica los valores de inicio de los ejes, ambos en 0,0, el intervalo de valores para x =15 y y=100, el valor de intervalo en 20
          'E indica los nombres de los títulos para x y y
          With Chart1.ChartAreas(0)
-            .AxisX.Minimum = 0
-            .AxisX.Maximum = 16
+            '.AxisX.Minimum = 0
+            .AxisX.Maximum = 15
             .AxisY.Minimum = 0
             .AxisY.Maximum = 100
             .AxisY.Interval = 20

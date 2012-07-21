@@ -27,4 +27,8 @@
          End If
       End If
    End Sub
+
+   Private Sub frmInicioPrograma_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class
