@@ -132,6 +132,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="elisasandboxDataSet.vb">
+      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAbrirArchivoExistente.Designer.vb">
       <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
     </Compile>

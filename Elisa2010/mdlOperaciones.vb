@@ -209,18 +209,10 @@ Module mdlOperaciones
       Dim mensajeEspecial As String = "Mensaje especial"
       Dim enfermedadAbreviada As String = "LT"
 
-
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
       Dim i As Integer = 0
-
-      
-
-
-
-
-
 
       'Mostrar Excel en pantalla y crea el workbook
       excelApp.Visible = True
@@ -229,7 +221,18 @@ Module mdlOperaciones
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = nombrelibro
 
-      'Colocar las cabeceras para los rangos de datos
+      'Predefinir márgenes para la hoja de excel, los valores se deben colocar en pulgadas, por lo que se divide el cms entre 2.54
+      With excelApp.ActiveSheet.PageSetup
+         .LeftMargin = .Application.InchesToPoints(0.27559055118110237)
+         .RightMargin = .Application.InchesToPoints(0.27559055118110237)
+         .TopMargin = .Application.InchesToPoints(1.1023622047244095)
+         .BottomMargin = .Application.InchesToPoints(0.62992125984251968)
+         '.HeaderMargin = .Application.InchesToPoints(0.196850393700787)
+         '.FooterMargin = .Application.InchesToPoints(0.196850393700787)
+      End With
+
+
+      'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
       With excelApp
          .Range("A2").Font.Bold = True
          .Range("H2").Font.Bold = True
@@ -241,8 +244,14 @@ Module mdlOperaciones
          .Range("A12").Font.Size = 8
          .Range("B12").Font.Name = "Arial"
          .Range("B12").Font.Size = 9
-         .Range("B46").Font.Name = "Century Gothic"
-         .Range("B46").Font.Size = 10
+         .Range("A13:D35").Font.Name = "Arial"
+         .Range("A13:D35").Font.Size = 9
+         .Range("A34:D35").Font.Name = "Arial"
+         .Range("A34:D35").Font.Size = 9
+         .Range("A39").Font.Name = "Arial"
+         .Range("A39").Font.Size = 9
+         .Range("B43").Font.Name = "Century Gothic"
+         .Range("B43").Font.Size = 10
          'Coloca los valores de los campos
          .Range("F1").Value2 = "Resultados de Serología"
          .Range("A2").Value2 = "Cliente:  "
@@ -251,28 +260,26 @@ Module mdlOperaciones
          .Range("I2").Value2 = numCaso
          .Range("A3").Value2 = LCase(observaciones)
 
-
          'Colocar los bordes externos a las celdas para el reporte.
+         .Range("A2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+         .Range("H2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+      End With
+      'Colocar los datos relacionados a la fecha y el análisis realizado.
+      With excelApp
+         .Range("A5").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+         .Range("A7").Value2 = nombreEnfermedad
+         .Range("F7").Value2 = "Fecha del análisis:  " & Format(CDate(fechaElaboracion), "dd MMM yyyy")
+         .Range("A12").Value2 = mensajeEspecial
+         .Range("B12").Value2 = enfermedadAbreviada
 
-         .Range("A2:G2").Borders.LineStyle = Excel.XlBorderWeight.xlThin
+         'Esta funcion se utiliza para mandar a impresión el reporte, no usada en ésta versión.
+         'excelApp.ActiveSheet.PrintOut()
 
-         .Range("H2:I2").Borders.LineStyle = Excel.XlBorderWeight.xlThin
-         .Range("A2:I3").Borders.LineStyle = Excel.XlBorderWeight.xlThin
+         'copia los valores de los títulos resultantes
+         .Range("A13").Value2 = "Sueros*"
+         .Range("B13").Value2 = "Títulos"
       End With
 
-
-      excelApp.Range("A5").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
-      excelApp.Range("A7").Value2 = nombreEnfermedad
-
-      excelApp.Range("F7").Value2 = "Fecha del análisis:  " & Format("dd MMM yyyy", CDate(fechaElaboracion))
-      excelApp.Range("A12").Value2 = mensajeEspecial
-      excelApp.Range("B12").Value2 = enfermedadAbreviada
-
-      'excelApp.ActiveSheet.PrintOut()
-
-      'copia los valores de los títulos resultantes
-      excelApp.Range("A13").Value2 = "Sueros"
-      excelApp.Range("B13").Value2 = "Títulos"
       Dim cadena1 As String
       Dim tabla1() As String
       cadena1 = titulosObtenidos
@@ -284,7 +291,7 @@ Module mdlOperaciones
          k += 1
          l += 1
          If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
-            l = 15
+            l = 13
             If (k = 21) Then
                sueros = "C"
                titulos = "D"
@@ -303,19 +310,18 @@ Module mdlOperaciones
             End If
             excelApp.Range(sueros & l).Value2 = "Sueros"
             excelApp.Range(titulos & l).Value2 = "Títulos"
-            l = 16
+            l = 14
          End If
          If (i = 0) Then
             temp = 0
          End If
       Next
       Try
-         'Inserta la gráfica en el archivo Excel
+         'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
          Dim strCelda As String = "E15"
          Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
          excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
-         'excelApp.Worksheets(1).Cells(5, 18).select()
-         'excelApp.ActiveSheet.Pictures.Insert(cadena2).select()
+
       Catch ex As Exception
          mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
       End Try
@@ -328,12 +334,13 @@ Module mdlOperaciones
              Left:=.Left, Top:=.Top, _
              Width:=80, Height:=20)
       End With
-      'Quita el borde del cuadro de texto
+      'Quita el borde del cuadro de texto.
       nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
 
-
       With nomenf.DrawingObject
-         .Characters.Text = excelApp.Range("B12").Value2
+         '.Characters.Text = excelApp.Range("B12").Value2
+         'Coloca el nombre del cuadrito, si cambia B12, cambia el titulo escrito dentro de él.
+         .Formula = "=$B12"
          With .Font
             .Name = "Arial"
             .FontStyle = "Bold"
@@ -359,8 +366,11 @@ Module mdlOperaciones
       'Quita el borde del cuadro de texto
       tbox.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
 
-      With (tbox.DrawingObject)
-         .Characters.Text = excelApp.Range("A12").Value2
+      With tbox.DrawingObject
+         '.Characters.Text = excelApp.Range("A12").Value2
+         'Coloca el nombre del cuadrito, si cambia A12, cambia el titulo escrito dentro de él.
+         .Formula = "=$A12"
+
          With .Font
             .Name = "Arial"
             .FontStyle = "Regular"
@@ -371,29 +381,28 @@ Module mdlOperaciones
             .OutlineFont = False
             .Shadow = False
          End With
-
       End With
 
-
-      'coloca los valores de la estadística
-      excelApp.Range("A37").Value2 = "No. Sueros"
-      excelApp.Range("B37").Value2 = "Media Arit."
-      excelApp.Range("C37").Value2 = "Med. Geom."
-      ' excelApp.Range("D37").Value2 = "Desv. Est."
-      excelApp.Range("D37").Value2 = "Coef.Var."
-      excelApp.Range("A38").Value2 = cuentaNoDatos
-      excelApp.Range("B38").Value2 = mediaAritmetica
-      excelApp.Range("C38").Value2 = mediaGeometrica
-      'excelApp.Range("D38").Value2 = desviacionEstandarDatosNoAgrupados
-      excelApp.Range("D38").Value2 = coeficienteDeVariacionDatosNoAgrupados
-
-      excelApp.Range("A43").Value2 = "* Numeración arbitraria"
-      excelApp.Range("B46").Value2 = Format("dd-MMM-yyyy", CDate(fechaElaboracion))
+      'coloca los valores de la estadística al finalizar el valor de los sueros.
+      With excelApp
+         .Range("A34").Value2 = "No. Sueros"
+         .Range("B34").Value2 = "Media Arit."
+         .Range("C34").Value2 = "Med. Geom."
+         .Range("D34").Value2 = "Coef.Var."
+         .Range("A35").Value2 = cuentaNoDatos
+         .Range("B35").Value2 = mediaAritmetica
+         .Range("C35").Value2 = mediaGeometrica
+         .Range("D35").Value2 = coeficienteDeVariacionDatosNoAgrupados
+         .Range("A39").Value2 = "* Numeración arbitraria"
+         .Range("B43").Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
+      End With
       'Salva el archivo de placa original leida con el nombre del caso
       Dim nombreArchivoResultado As String = rutaResutados & numCaso & "-" & analisis & ".xlsx"
-      excelApp.ActiveWorkbook.SaveAs(nombreArchivoResultado)
-      excelApp.ActiveWorkbook.Close()
-      excelApp.Quit()
+      With excelApp
+         .ActiveWorkbook.SaveAs(nombreArchivoResultado)
+         .ActiveWorkbook.Close()
+         .Quit()
+      End With
       releaseObject(excelApp)
    End Sub
 
@@ -634,6 +643,7 @@ Module mdlOperaciones
             .Anchor = AnchorStyles.Right
             .Anchor = AnchorStyles.Top
             .Series.Add(Series1)
+
          End With
 
          'Dar nombre a la serie, definir el tipo de serie, en este caso tipo columna
@@ -645,23 +655,12 @@ Module mdlOperaciones
             .CustomProperties = "labelStyle:= Top , Font.Size:= 7"
          End With
 
-         'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
-         'data reader los valores de rango, valor y etiqueta
-         With Chart1.Series(0)
-            .IsValueShownAsLabel = True
-            .XValueMember = "rango"
-            .YValueMembers = "valor"
-            .CustomProperties = "labelStyle := Top , Font.Size := 7"
-            .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
-         End With
-         
-
-
          'Indica los valores de inicio de los ejes, ambos en 0,0, el intervalo de valores para x =15 y y=100, el valor de intervalo en 20
          'E indica los nombres de los títulos para x y y
          With Chart1.ChartAreas(0)
-            '.AxisX.Minimum = 0
-            .AxisX.Maximum = 15
+            '.AxisX.LabelStyle.Interval = 1
+            '.AxisX.LabelAutoFitMaxFontSize = 8
+            .AxisX.IntervalAutoMode = DataVisualization.Charting.IntervalAutoMode.VariableCount
             .AxisY.Minimum = 0
             .AxisY.Maximum = 100
             .AxisY.Interval = 20
@@ -669,7 +668,31 @@ Module mdlOperaciones
             .AxisY.Title = tituloy
          End With
 
+
+         'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
+         'data reader los valores de rango, valor y etiqueta
+         With Chart1.Series(0)
+            .IsValueShownAsLabel = True
+            '.XValueMember = "rango"
+            '.YValueMembers = "valor"
+            .CustomProperties = "labelStyle := Top , Font.Size := 7"
+            ' .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
+         End With
+
+
+         'Cargar la tabla columna por columna
+         Dim j As Int16 = 0
+         If oDataReader.HasRows Then
+            While oDataReader.HasRows
+               Chart1.Series(0).Points.AddXY(j, oDataReader("valor"))
+               Chart1.Series(0).Points.Item(j).AxisLabel = oDataReader("cantidad")
+               j += 1
+            End While
+         End If
+
+
          'Cerrar la conexion a la base de datos 
+         oDataReader.Close()
          oConexion.Close()
          oConexion.Dispose()
          'Salvar la imagen a disco, con el número de caso identificándole, con formato jpeg
