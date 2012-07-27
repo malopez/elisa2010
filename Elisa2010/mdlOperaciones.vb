@@ -390,9 +390,9 @@ Module mdlOperaciones
          .Range("C34").Value2 = "Med. Geom."
          .Range("D34").Value2 = "Coef.Var."
          .Range("A35").Value2 = cuentaNoDatos
-         .Range("B35").Value2 = mediaAritmetica
-         .Range("C35").Value2 = mediaGeometrica
-         .Range("D35").Value2 = coeficienteDeVariacionDatosNoAgrupados
+         .Range("B35").Value2 = Math.Round(mediaAritmetica)
+         .Range("C35").Value2 = Math.Round(mediaGeometrica)
+         .Range("D35").Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
          .Range("A39").Value2 = "* Numeración arbitraria"
          .Range("B43").Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
       End With
@@ -585,9 +585,154 @@ Module mdlOperaciones
    End Sub
 
    '#################################################
-   '#CREA GRAFICA DE BARRAS EN LA PANTALLA          #
+   '#CREA GRAFICA DE BARRAS                         #
    '#################################################
-   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, nombre As String, ByVal titulox As String, _
+
+   Public Sub creaImagenGrafica(ByVal oDataReader As MySqlDataReader, ByVal nombre As String, ByVal titulox As String, _
+                               ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
+
+
+      Dim excelApp As New Excel.Application
+      Dim libroExcel As Excel.Workbook
+      Dim chartFrecRel As Excel.Chart
+      Dim graficaFR As Excel.ChartObject
+      Dim rangoGrafica As Excel.Range
+      Dim etiquetasDeX As Excel.Range
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+
+      'Mostrar Excel en pantalla
+      excelApp.Visible = True
+      'Crear el workbook
+      libroExcel = excelApp.Workbooks.Add()
+      'Darle nombre la primer hoja activa del libro de trabajo
+      excelApp.ActiveSheet.Name = "Temporal"
+
+
+      
+
+
+
+      'Coloca los valores para etiquetas del eje x
+      For i = 1 To 15
+         excelApp.Range("A" & i).Value2 = i - 1
+      Next
+
+      'Definir el rango de donde se toman las etiquetas del eje x
+      etiquetasDeX = excelApp.Range("A1:A15")
+
+      'Asignar ubicacion a la grafica y crear su objeto
+      graficaFR = excelApp.ActiveSheet.ChartObjects.Add(200, 50, 300, 200)
+      chartFrecRel = graficaFR.Chart
+
+      'Establecer rango que utilizara la grafica con los valores de la frecuencia relativa
+      rangoGrafica = excelApp.Range("B1:B15")
+
+      'Asignarle los valores para la creación de la grafica y definicion que de barras
+      chartFrecRel.SetSourceData(Source:=rangoGrafica)
+      chartFrecRel.ChartType = Excel.XlChartType.xlColumnClustered
+
+
+      'Le coloca en color rojo las barras de la gráfica, las etiquetas de cada barra de la gráfica con su valor respectivo
+      'El tamaño de la etiqueta es de Arial 8 y deshabilitar la leyenda
+      With chartFrecRel
+         .HasTitle = False
+         .SeriesCollection(1).Interior.Color = Color.Red
+         'Coloca la etiqueta de la serie
+         'Con este ciclo se colocan las etiquetas arriba de la barra
+         For i = 1 To 15
+            .SeriesCollection(1).Points(i).HasDatalabel = True
+            .SeriesCollection(1).Points(i).DataLabel.Font.Size = 8
+            .SeriesCollection(1).Points(i).DataLabel.Text = excelApp.Range("C" & i).Value2
+         Next
+         'Deshabilita el cuadro de leyenda de la serie, se recomienda no tenerlo habilitado para que no aparezca
+         'el cuadrito a la derecha de la grafica
+         With .Legend
+            .IncludeInLayout = True
+            .Delete()
+         End With
+      End With
+
+      'Cambia la escala de la gráfica por menor 20 y mayor valor 100
+      With excelApp.Worksheets("Temporal").ChartObjects(1).Chart.Axes(Excel.XlAxisType.xlValue)
+         .MinimumScale = 0
+         .MajorUnit = 20
+         .MaximumScale = 100
+      End With
+
+
+      'Cambiar el nombre del eje x
+      Dim ejex As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlValue, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
+      With ejex
+         .HasTitle = True
+         .AxisTitle.Orientation = Excel.XlOrientation.xlHorizontal
+         .AxisTitle.Text = titulox
+         .AxisTitle.Font.Bold = True
+         .AxisTitle.Font.FontStyle = "Arial"
+         .AxisTitle.Font.Size = 9
+         .HasMajorGridlines = False
+         .CategoryNames = excelApp.Range("A1:A15")
+      End With
+      'Cambiar el nombre del eje y
+      Dim ejey As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlCategory, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
+      With ejey
+         .HasTitle = True
+         .AxisTitle.Text = tituloy
+         .AxisTitle.Font.Bold = True
+         .AxisTitle.Font.FontStyle = "Arial"
+         .AxisTitle.Font.Size = 9
+      End With
+
+      'Guarda la grafica como archivo y cierra el excel sin salvar la informacion, ya que solamente 
+      'requerimos de la imagen guardada en disco
+      excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:="C:\ELISA2012\excel_chart_export.bmp", FilterName:="BMP")
+      'Cierra el libro activo de Excel y Sale sin salvar la hoja de excel actual
+      excelApp.ActiveWorkbook.Close(SaveChanges:=False)
+      'Libera la aplicacion Excel y libera el objeto de la memoria
+      excelApp.Quit()
+      releaseObject(excelApp)
+
+   End Sub
+
+   Public Sub traeDatosFrecRelativa(ByRef rango() As Integer, ByRef cantidad() As Integer)
+      Dim oConexion As MySqlConnection = New MySqlConnection()
+      Dim aConsulta As String = ""
+      Dim oComando As New MySqlCommand
+      Dim oDataReader As MySqlDataReader
+      oConexion = New MySqlConnection
+      oConexion.ConnectionString = cadenaConexion
+      Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa order by rango asc"
+      oComando.Connection = oConexion
+      oComando.CommandText = sqlfrecrel
+      Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
+      Dim ds As New DataSet()
+      da.Fill(ds, "tblfrecrelativa")
+      oComando.CommandText = sqlfrecrel
+      oConexion.Open()
+      oDataReader = oComando.ExecuteReader()
+
+      ''Cargar la tabla columna por columna, eso se hizo para probar la forma de cargar punto por punto
+      'Dim j As Int16 = 0
+      'If oDataReader.HasRows Then
+      '   While oDataReader.HasRows
+      '      Chart1.Series(0).Points.AddXY(j, oDataReader("valor"))
+      '      Chart1.Series(0).Points.Item(j).AxisLabel = oDataReader("cantidad")
+      '      j += 1
+      '   End While
+      'End If
+
+      oDataReader.Close()
+      oConexion.Close()
+      oConexion.Dispose()
+
+
+   End Sub
+
+
+
+
+
+   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal nombre As String, ByVal titulox As String, _
                                ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
       Dim oConexion As MySqlConnection = New MySqlConnection()
       Try
@@ -607,7 +752,8 @@ Module mdlOperaciones
          oConexion.Open()
          oDataReader = oComando.ExecuteReader()
 
-         'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico
+         'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico 
+         'que se presentan a pantalla
          Dim ChartArea1 As ChartArea = New ChartArea()
          Dim Legend1 As Legend = New Legend()
          Dim Series1 As Series = New Series()
@@ -643,7 +789,6 @@ Module mdlOperaciones
             .Anchor = AnchorStyles.Right
             .Anchor = AnchorStyles.Top
             .Series.Add(Series1)
-
          End With
 
          'Dar nombre a la serie, definir el tipo de serie, en este caso tipo columna
@@ -660,7 +805,7 @@ Module mdlOperaciones
          With Chart1.ChartAreas(0)
             '.AxisX.LabelStyle.Interval = 1
             '.AxisX.LabelAutoFitMaxFontSize = 8
-            .AxisX.IntervalAutoMode = DataVisualization.Charting.IntervalAutoMode.VariableCount
+            '.AxisX.IntervalAutoMode = DataVisualization.Charting.IntervalAutoMode.VariableCount
             .AxisY.Minimum = 0
             .AxisY.Maximum = 100
             .AxisY.Interval = 20
@@ -673,22 +818,14 @@ Module mdlOperaciones
          'data reader los valores de rango, valor y etiqueta
          With Chart1.Series(0)
             .IsValueShownAsLabel = True
-            '.XValueMember = "rango"
-            '.YValueMembers = "valor"
+            .XValueMember = "rango"
+            .YValueMembers = "valor"
             .CustomProperties = "labelStyle := Top , Font.Size := 7"
-            ' .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
+            .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
          End With
 
 
-         'Cargar la tabla columna por columna
-         Dim j As Int16 = 0
-         If oDataReader.HasRows Then
-            While oDataReader.HasRows
-               Chart1.Series(0).Points.AddXY(j, oDataReader("valor"))
-               Chart1.Series(0).Points.Item(j).AxisLabel = oDataReader("cantidad")
-               j += 1
-            End While
-         End If
+
 
 
          'Cerrar la conexion a la base de datos 
@@ -707,6 +844,24 @@ Module mdlOperaciones
          ' MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
       End Try
    End Sub
+
+   'Crear en excel la grafica de la frecuencia relativa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
