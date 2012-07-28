@@ -215,7 +215,7 @@ Module mdlOperaciones
       Dim i As Integer = 0
 
       'Mostrar Excel en pantalla y crea el workbook
-      excelApp.Visible = True
+      excelApp.Visible = False
       libroExcel = excelApp.Workbooks.Add()
 
       'Darle nombre la primer hoja activa del libro de trabajo
@@ -319,7 +319,7 @@ Module mdlOperaciones
       Try
          'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
          Dim strCelda As String = "E15"
-         Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
+         Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".bmp"
          excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
 
       Catch ex As Exception
@@ -588,10 +588,9 @@ Module mdlOperaciones
    '#CREA GRAFICA DE BARRAS                         #
    '#################################################
 
-   Public Sub creaImagenGrafica(ByVal oDataReader As MySqlDataReader, ByVal nombre As String, ByVal titulox As String, _
-                               ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
 
-
+   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
+                               ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       Dim chartFrecRel As Excel.Chart
@@ -602,20 +601,20 @@ Module mdlOperaciones
       Dim j As Integer = 0
 
       'Mostrar Excel en pantalla
-      excelApp.Visible = True
+      excelApp.Visible = False
       'Crear el workbook
       libroExcel = excelApp.Workbooks.Add()
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = "Temporal"
 
 
-      
+      'Coloca los valores para etiquetas del eje x, valores de la frecuencia relativa y los valores de las 
+      'etiquetas para la gráfca.
 
-
-
-      'Coloca los valores para etiquetas del eje x
-      For i = 1 To 15
-         excelApp.Range("A" & i).Value2 = i - 1
+      For i = 0 To 14
+         excelApp.Range("A" & (i + 1)).Value2 = i
+         excelApp.Range("B" & (i + 1)).Value2 = frecuenciaRelativa(i)
+         excelApp.Range("C" & (i + 1)).Value2 = rangoDatos(i)
       Next
 
       'Definir el rango de donde se toman las etiquetas del eje x
@@ -639,7 +638,7 @@ Module mdlOperaciones
          .HasTitle = False
          .SeriesCollection(1).Interior.Color = Color.Red
          'Coloca la etiqueta de la serie
-         'Con este ciclo se colocan las etiquetas arriba de la barra
+         'Con este ciclo se colocan las etiquetas arriba de cada barra
          For i = 1 To 15
             .SeriesCollection(1).Points(i).HasDatalabel = True
             .SeriesCollection(1).Points(i).DataLabel.Font.Size = 8
@@ -666,7 +665,7 @@ Module mdlOperaciones
       With ejex
          .HasTitle = True
          .AxisTitle.Orientation = Excel.XlOrientation.xlHorizontal
-         .AxisTitle.Text = titulox
+         .AxisTitle.Text = tituloy
          .AxisTitle.Font.Bold = True
          .AxisTitle.Font.FontStyle = "Arial"
          .AxisTitle.Font.Size = 9
@@ -677,7 +676,7 @@ Module mdlOperaciones
       Dim ejey As Excel.Axis = CType(chartFrecRel.Axes(Excel.XlAxisType.xlCategory, Excel.XlAxisGroup.xlPrimary), Excel.Axis)
       With ejey
          .HasTitle = True
-         .AxisTitle.Text = tituloy
+         .AxisTitle.Text = titulox
          .AxisTitle.Font.Bold = True
          .AxisTitle.Font.FontStyle = "Arial"
          .AxisTitle.Font.Size = 9
@@ -685,7 +684,8 @@ Module mdlOperaciones
 
       'Guarda la grafica como archivo y cierra el excel sin salvar la informacion, ya que solamente 
       'requerimos de la imagen guardada en disco
-      excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:="C:\ELISA2012\excel_chart_export.bmp", FilterName:="BMP")
+      Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".bmp"
+      excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:=nombreArchivo, FilterName:="BMP")
       'Cierra el libro activo de Excel y Sale sin salvar la hoja de excel actual
       excelApp.ActiveWorkbook.Close(SaveChanges:=False)
       'Libera la aplicacion Excel y libera el objeto de la memoria
@@ -694,176 +694,122 @@ Module mdlOperaciones
 
    End Sub
 
-   Public Sub traeDatosFrecRelativa(ByRef rango() As Integer, ByRef cantidad() As Integer)
-      Dim oConexion As MySqlConnection = New MySqlConnection()
-      Dim aConsulta As String = ""
-      Dim oComando As New MySqlCommand
-      Dim oDataReader As MySqlDataReader
-      oConexion = New MySqlConnection
-      oConexion.ConnectionString = cadenaConexion
-      Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa order by rango asc"
-      oComando.Connection = oConexion
-      oComando.CommandText = sqlfrecrel
-      Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
-      Dim ds As New DataSet()
-      da.Fill(ds, "tblfrecrelativa")
-      oComando.CommandText = sqlfrecrel
-      oConexion.Open()
-      oDataReader = oComando.ExecuteReader()
-
-      ''Cargar la tabla columna por columna, eso se hizo para probar la forma de cargar punto por punto
-      'Dim j As Int16 = 0
-      'If oDataReader.HasRows Then
-      '   While oDataReader.HasRows
-      '      Chart1.Series(0).Points.AddXY(j, oDataReader("valor"))
-      '      Chart1.Series(0).Points.Item(j).AxisLabel = oDataReader("cantidad")
-      '      j += 1
-      '   End While
-      'End If
-
-      oDataReader.Close()
-      oConexion.Close()
-      oConexion.Dispose()
-
-
-   End Sub
 
 
 
 
+   'Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal nombre As String, ByVal titulox As String, _
+   '                            ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
+   '   Dim oConexion As MySqlConnection = New MySqlConnection()
+   '   Try
 
-   Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal nombre As String, ByVal titulox As String, _
-                               ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
-      Dim oConexion As MySqlConnection = New MySqlConnection()
-      Try
+   '      Dim aConsulta As String = ""
+   '      Dim oComando As New MySqlCommand
+   '      Dim oDataReader As MySqlDataReader
+   '      oConexion = New MySqlConnection
+   '      oConexion.ConnectionString = cadenaConexion
+   '      Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa order by rango asc"
+   '      oComando.Connection = oConexion
+   '      oComando.CommandText = sqlfrecrel
+   '      Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
+   '      Dim ds As New DataSet()
+   '      da.Fill(ds, "tblfrecrelativa")
+   '      oComando.CommandText = sqlfrecrel
+   '      oConexion.Open()
+   '      oDataReader = oComando.ExecuteReader()
 
-         Dim aConsulta As String = ""
-         Dim oComando As New MySqlCommand
-         Dim oDataReader As MySqlDataReader
-         oConexion = New MySqlConnection
-         oConexion.ConnectionString = cadenaConexion
-         Dim sqlfrecrel As String = "SELECT rango, valor, cantidad FROM tblfrecrelativa order by rango asc"
-         oComando.Connection = oConexion
-         oComando.CommandText = sqlfrecrel
-         Dim da As New MySqlDataAdapter(sqlfrecrel, oConexion)
-         Dim ds As New DataSet()
-         da.Fill(ds, "tblfrecrelativa")
-         oComando.CommandText = sqlfrecrel
-         oConexion.Open()
-         oDataReader = oComando.ExecuteReader()
+   '      'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico 
+   '      'que se presentan a pantalla
+   '      Dim ChartArea1 As ChartArea = New ChartArea()
+   '      Dim Legend1 As Legend = New Legend()
+   '      Dim Series1 As Series = New Series()
+   '      Dim Chart1 = New Chart()
 
-         'Inicializa la informacion relacionada con la grafica para la serie, leyenda, el area del gráfico y el gráfico 
-         'que se presentan a pantalla
-         Dim ChartArea1 As ChartArea = New ChartArea()
-         Dim Legend1 As Legend = New Legend()
-         Dim Series1 As Series = New Series()
-         Dim Chart1 = New Chart()
+   '      'frmSalidaDatos.Controls.Add(Chart1)
+   '      control.Controls.Add(Chart1)
 
-         'frmSalidaDatos.Controls.Add(Chart1)
-         control.Controls.Add(Chart1)
+   '      'Define la nueva colección, asigna el nombre del gráfico.
+   '      ChartArea1.Name = "ChartArea1"
+   '      Chart1.ChartAreas.Add(ChartArea1)
+   '      'Chart1.Titles.Add(nombre)
 
-         'Define la nueva colección, asigna el nombre del gráfico.
-         ChartArea1.Name = "ChartArea1"
-         Chart1.ChartAreas.Add(ChartArea1)
-         'Chart1.Titles.Add(nombre)
+   '      'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
 
-         'Chart1.ChartAreas("ChartArea1").Area3DStyle.Enable3D = True
+   '      'Elimina las lineas secundarias del gráfico
+   '      With Chart1.ChartAreas("ChartArea1")
+   '         .AxisX.MajorGrid.Enabled = False
+   '         .AxisY.MajorGrid.Enabled = False
+   '      End With
 
-         'Elimina las lineas secundarias del gráfico
-         With Chart1.ChartAreas("ChartArea1")
-            .AxisX.MajorGrid.Enabled = False
-            .AxisY.MajorGrid.Enabled = False
-         End With
+   '      'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
+   '      'Legend1.Name = "Legend1"
+   '      'Chart1.Legends.Add(Legend1)
+   '      'Series1.Legend = "Legend1"
 
-         'Descomentar lo relacionado a Legend si se desea que aparezca el cuadrito con el titulo de Series (No recomendado)
-         'Legend1.Name = "Legend1"
-         'Chart1.Legends.Add(Legend1)
-         'Series1.Legend = "Legend1"
+   '      'Ubicacion del grafico, tamaño, numero de indice dentro de la forma, su anclaje y agrega el numero de serie
+   '      With Chart1
+   '         .Name = "Chart1"
+   '         .Location = New System.Drawing.Point(38, 110)
+   '         .Size = New System.Drawing.Size(525, 245)
+   '         .TabIndex = 21
+   '         .Anchor = AnchorStyles.Right
+   '         .Anchor = AnchorStyles.Top
+   '         .Series.Add(Series1)
+   '      End With
 
-         'Ubicacion del grafico, tamaño, numero de indice dentro de la forma, su anclaje y agrega el numero de serie
-         With Chart1
-            .Name = "Chart1"
-            .Location = New System.Drawing.Point(38, 110)
-            .Size = New System.Drawing.Size(525, 245)
-            .TabIndex = 21
-            .Anchor = AnchorStyles.Right
-            .Anchor = AnchorStyles.Top
-            .Series.Add(Series1)
-         End With
+   '      'Dar nombre a la serie, definir el tipo de serie, en este caso tipo columna
+   '      With Series1
+   '         .ChartArea = "ChartArea1"
+   '         .Name = "Series1"
+   '         .ChartType = SeriesChartType.Column
+   '         .Color = Color.Red
+   '         .CustomProperties = "labelStyle:= Top , Font.Size:= 7"
+   '      End With
 
-         'Dar nombre a la serie, definir el tipo de serie, en este caso tipo columna
-         With Series1
-            .ChartArea = "ChartArea1"
-            .Name = "Series1"
-            .ChartType = SeriesChartType.Column
-            .Color = Color.Red
-            .CustomProperties = "labelStyle:= Top , Font.Size:= 7"
-         End With
-
-         'Indica los valores de inicio de los ejes, ambos en 0,0, el intervalo de valores para x =15 y y=100, el valor de intervalo en 20
-         'E indica los nombres de los títulos para x y y
-         With Chart1.ChartAreas(0)
-            '.AxisX.LabelStyle.Interval = 1
-            '.AxisX.LabelAutoFitMaxFontSize = 8
-            '.AxisX.IntervalAutoMode = DataVisualization.Charting.IntervalAutoMode.VariableCount
-            .AxisY.Minimum = 0
-            .AxisY.Maximum = 100
-            .AxisY.Interval = 20
-            .AxisX.Title = titulox
-            .AxisY.Title = tituloy
-         End With
+   '      'Indica los valores de inicio de los ejes, ambos en 0,0, el intervalo de valores para x =15 y y=100, el valor de intervalo en 20
+   '      'E indica los nombres de los títulos para x y y
+   '      With Chart1.ChartAreas(0)
+   '         '.AxisX.LabelStyle.Interval = 1
+   '         '.AxisX.LabelAutoFitMaxFontSize = 8
+   '         '.AxisX.IntervalAutoMode = DataVisualization.Charting.IntervalAutoMode.VariableCount
+   '         .AxisY.Minimum = 0
+   '         .AxisY.Maximum = 100
+   '         .AxisY.Interval = 20
+   '         .AxisX.Title = titulox
+   '         .AxisY.Title = tituloy
+   '      End With
 
 
-         'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
-         'data reader los valores de rango, valor y etiqueta
-         With Chart1.Series(0)
-            .IsValueShownAsLabel = True
-            .XValueMember = "rango"
-            .YValueMembers = "valor"
-            .CustomProperties = "labelStyle := Top , Font.Size := 7"
-            .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
-         End With
+   '      'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
+   '      'data reader los valores de rango, valor y etiqueta
+   '      With Chart1.Series(0)
+   '         .IsValueShownAsLabel = True
+   '         .XValueMember = "rango"
+   '         .YValueMembers = "valor"
+   '         .CustomProperties = "labelStyle := Top , Font.Size := 7"
+   '         .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
+   '      End With
 
 
 
 
 
-         'Cerrar la conexion a la base de datos 
-         oDataReader.Close()
-         oConexion.Close()
-         oConexion.Dispose()
-         'Salvar la imagen a disco, con el número de caso identificándole, con formato jpeg
-         Try
-            Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
-            Chart1.SaveImage(nombreArchivo, System.Drawing.Imaging.ImageFormat.Jpeg)
-         Catch ex As Exception
-            mensajeException(etiqueta, ex)
-         End Try
-      Catch ex As Exception
-         mensajeException(etiqueta, ex)
-         ' MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
-      End Try
-   End Sub
-
-   'Crear en excel la grafica de la frecuencia relativa
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   '      'Cerrar la conexion a la base de datos 
+   '      oDataReader.Close()
+   '      oConexion.Close()
+   '      oConexion.Dispose()
+   '      'Salvar la imagen a disco, con el número de caso identificándole, con formato jpeg
+   '      Try
+   '         Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".jpeg"
+   '         Chart1.SaveImage(nombreArchivo, System.Drawing.Imaging.ImageFormat.Jpeg)
+   '      Catch ex As Exception
+   '         mensajeException(etiqueta, ex)
+   '      End Try
+   '   Catch ex As Exception
+   '      mensajeException(etiqueta, ex)
+   '      ' MessageBox.Show("Error al intentar la conexion a al BD al momento de crear la grafica.")
+   '   End Try
+   'End Sub
 
    '#####################################
    '# SECCION ORGANIZACION DE DATOS     #
@@ -1324,7 +1270,7 @@ Module mdlOperaciones
                         valorFR, cantidadFR, frmSalidaDatos.lblObservaciones)
       'CARGAR LA TABLA DE FREC REL
       cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmSalidaDatos.lblObservaciones)
-      creaChartFrecRel(frmSalidaDatos.lblSalidaDatos, frmSalidaDatos, nombre, titulox, tituloy, numcaso, idAnalisis)
+      'creaChartFrecRel(frmSalidaDatos.lblSalidaDatos, frmSalidaDatos, nombre, titulox, tituloy, numcaso, idAnalisis)
 
       'Presenta datos MODIFICADO EL 03-MAYO-2012 para formatear la salida de los datos
 

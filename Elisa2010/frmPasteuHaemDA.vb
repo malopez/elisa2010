@@ -4,7 +4,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmPasteuHaemDA
 
-   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
+   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs)
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
          abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
@@ -23,7 +23,7 @@ Public Class frmPasteuHaemDA
       btnObtenResultadosDA.Enabled = False
    End Sub
 
-   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
+   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs)
       Dim desdeArchivo As Integer = 1
       Dim cp1, cp2, cp3 As Decimal
       Dim cn1, cn2, cn3 As Decimal
@@ -142,11 +142,11 @@ Public Class frmPasteuHaemDA
 
    End Sub
 
-   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelarDA.Click
+   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs)
       Me.Close()
    End Sub
 
-   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs) Handles cmbNoCaso.Click
+   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs)
       Try
          cmbNoCaso.Items.Clear()
          txtNombreCliente.Text = ""
@@ -175,7 +175,7 @@ Public Class frmPasteuHaemDA
       End Try
    End Sub
 
-   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaCaso.Click
+   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs)
       Try
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
@@ -235,25 +235,25 @@ Public Class frmPasteuHaemDA
       Me.cmbNoCaso.Focus()
    End Sub
 
-   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1.TextChanged
+   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs)
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1, " Desde Pozo x", "A", "H")
    End Sub
 
-   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1.TextChanged
+   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs)
       controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 1, 12)
    End Sub
 
-   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2.TextChanged
+   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs)
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtHastaLetra2, " Hasta Pozo x ", "A", "H")
    End Sub
 
-   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2.TextChanged
+   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs)
       controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 1, 12)
    End Sub
 
-   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs)
       Try
          botonesEstatus(False)
          btnLeerArchivoExistente.Enabled = False

@@ -4,7 +4,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmAbrirArchivoExistente
 
-   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
+   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs)
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
          abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
@@ -22,7 +22,7 @@ Public Class frmAbrirArchivoExistente
       btnObtenResultadosDA.Enabled = False
    End Sub
 
-   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
+   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs)
       Dim desdeArchivo As Integer = 1
       Dim cp1, cp2, cp3 As Decimal
       Dim cn1, cn2, cn3 As Decimal
@@ -163,18 +163,20 @@ Public Class frmAbrirArchivoExistente
          Catch
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
          End Try
-         Try
-            creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, nombre, titulox, tituloy, numcaso, analisis)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
-         End Try
+         'Try
+         '   creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, nombre, titulox, tituloy, numcaso, analisis)
+         'Catch
+         '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+         'End Try
          Try
             frmSalidaDatos.Show()
-            mostrarResultadosEnPantalla(frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+            mostrarResultadosEnPantalla(frmSalidaDatos.lblNombreSobreGrafica, frmSalidaDatos.lblMensajeSobreGrafica, _
+                                        frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
+                                        Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
                                         nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                         mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
@@ -188,11 +190,11 @@ Public Class frmAbrirArchivoExistente
 
    End Sub
 
-   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelarDA.Click
+   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs)
       Me.Close()
    End Sub
 
-   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs) Handles cmbNoCaso.Click
+   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs)
       Try
          cmbNoCaso.Items.Clear()
          txtNombreCliente.Text = ""
@@ -221,7 +223,7 @@ Public Class frmAbrirArchivoExistente
       End Try
    End Sub
 
-   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaCaso.Click
+   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs)
       Try
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
@@ -280,25 +282,25 @@ Public Class frmAbrirArchivoExistente
       Me.cmbNoCaso.Focus()
    End Sub
 
-   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1.TextChanged
+   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs)
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1, " Desde Pozo x", "A", "H")
    End Sub
 
-   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1.TextChanged
+   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs)
       controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 1, 12)
    End Sub
 
-   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2.TextChanged
+   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs)
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtHastaLetra2, " Hasta Pozo x ", "A", "H")
    End Sub
 
-   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2.TextChanged
+   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs)
       controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 1, 12)
    End Sub
 
-   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs)
       Try
          botonesEstatus(False)
          btnLeerArchivoExistente.Enabled = False
@@ -320,22 +322,22 @@ Public Class frmAbrirArchivoExistente
    End Sub
 
  
-   Private Sub Panel3_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel3.Paint
+   Private Sub Panel3_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
 
    End Sub
-   Private Sub lblMensajeAAE_Click(sender As System.Object, e As System.EventArgs) Handles lblMensajeAAE.Click
+   Private Sub lblMensajeAAE_Click(sender As System.Object, e As System.EventArgs)
 
    End Sub
-   Private Sub lblObservaciones_Click(sender As System.Object, e As System.EventArgs) Handles lblObservaciones.Click
+   Private Sub lblObservaciones_Click(sender As System.Object, e As System.EventArgs)
 
    End Sub
-   Private Sub pnlRegistraNuevoAnalisis_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlRegistraNuevoAnalisis.Paint
+   Private Sub pnlRegistraNuevoAnalisis_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
 
    End Sub
-   Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel1.Paint
+   Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
 
    End Sub
-   Private Sub txtPlacaDesdeArchivo_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtPlacaDesdeArchivo.TextChanged
+   Private Sub txtPlacaDesdeArchivo_TextChanged(sender As System.Object, e As System.EventArgs)
 
    End Sub
 End Class

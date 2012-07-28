@@ -19,4 +19,8 @@ Public Class frmSalidaDatos
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
+
+   Private Sub frmSalidaDatos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class

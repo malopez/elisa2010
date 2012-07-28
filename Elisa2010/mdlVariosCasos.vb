@@ -508,20 +508,25 @@
    End Function
 
    'Presenta datos para formatear la salida de los datos
-   Public Sub mostrarResultadosEnPantalla(ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
+   Public Sub mostrarResultadosEnPantalla(ByRef lblNombreSobreGrafica As Label, ByRef lblMensajeSobreGrafica As Label, _
+                                     ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
                                      ByRef lblAnalisis As Label, ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
                                      ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
                                      ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
                                      ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
+                                     ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
                                      ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal analisis As String, _
                                      ByVal observaciones As String, ByVal fechaElaboracion As String, _
                                      ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
                                      ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
                                      ByVal coefVar As Decimal, ByVal desvEst As Decimal, ByVal varianza As Decimal)
+      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
+      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
       txtNombreEnfermedad.Text = nombre.ToString()
       txtNombreCliente.Text = nombreCliente.ToString()
       txtNoCaso.Text = numcaso.ToString()
       lblAnalisis.Text = analisis.ToString()
+      frmSalidaDatos.imagenGrafica.Image = Image.FromFile("C:\ELISA2012\Imagenes\110609-2455-E01ELBI.bmp")
       lblObservaciones.Text = observaciones.ToString()
       txtFechaElaboracion.Text = fechaElaboracion.ToString()
       txtTitulosObtenidos.Text = presenta1.ToString()

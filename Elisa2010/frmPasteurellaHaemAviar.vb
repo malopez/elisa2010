@@ -1539,7 +1539,7 @@ Public Class frmPasteurellaHaemAviar
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
+         'creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try

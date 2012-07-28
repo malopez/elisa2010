@@ -1540,21 +1540,21 @@ Public Class frmNewcastle
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
+         'creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
-      Try
-         mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, lblAnalisisSD, _
-                                     lblObservacionesSD, txtFechaElaboracionSD, _
-                                     txtTitulosObtenidosSD, txtMediaAritmetica2SD, _
-                                     txtMediaGeometricaSD, txtTotalDatosCalculadosSD, _
-                                     txtCoefVariacion2SD, txtDesvEstandar2SD, txtVarianza2SD, _
-                                     nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
-                                     mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
-      End Try
+      'Try
+      '   mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, lblAnalisisSD, _
+      '                               lblObservacionesSD, txtFechaElaboracionSD, _
+      '                               txtTitulosObtenidosSD, txtMediaAritmetica2SD, _
+      '                               txtMediaGeometricaSD, txtTotalDatosCalculadosSD, _
+      '                               txtCoefVariacion2SD, txtDesvEstandar2SD, txtVarianza2SD, _
+      '                               nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+      '                               mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+      'Catch
+      '   mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+      'End Try
 
    End Sub
 
