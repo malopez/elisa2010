@@ -49,14 +49,14 @@ Partial Class frmSalidaDatos
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtNoCaso = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
+      Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.Panel4 = New System.Windows.Forms.Panel()
+      Me.lblMensajeSobreGrafica = New System.Windows.Forms.Label()
+      Me.lblNombreSobreGrafica = New System.Windows.Forms.Label()
+      Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.Label4 = New System.Windows.Forms.Label()
-      Me.lblNombreSobreGrafica = New System.Windows.Forms.Label()
-      Me.lblMensajeSobreGrafica = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -66,21 +66,23 @@ Partial Class frmSalidaDatos
       '
       'txtMediaGeometrica
       '
+      Me.txtMediaGeometrica.BackColor = System.Drawing.Color.White
       Me.txtMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtMediaGeometrica.ForeColor = System.Drawing.Color.DarkGoldenrod
-      Me.txtMediaGeometrica.Location = New System.Drawing.Point(270, 23)
+      Me.txtMediaGeometrica.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtMediaGeometrica.Location = New System.Drawing.Point(312, 23)
       Me.txtMediaGeometrica.Name = "txtMediaGeometrica"
       Me.txtMediaGeometrica.ReadOnly = True
-      Me.txtMediaGeometrica.Size = New System.Drawing.Size(112, 21)
+      Me.txtMediaGeometrica.Size = New System.Drawing.Size(58, 21)
       Me.txtMediaGeometrica.TabIndex = 2
       Me.txtMediaGeometrica.TabStop = False
+      Me.txtMediaGeometrica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'lblMediaGeometrica
       '
       Me.lblMediaGeometrica.AutoSize = True
       Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblMediaGeometrica.Location = New System.Drawing.Point(272, 4)
+      Me.lblMediaGeometrica.Location = New System.Drawing.Point(293, 4)
       Me.lblMediaGeometrica.Name = "lblMediaGeometrica"
       Me.lblMediaGeometrica.Size = New System.Drawing.Size(107, 15)
       Me.lblMediaGeometrica.TabIndex = 5
@@ -88,21 +90,23 @@ Partial Class frmSalidaDatos
       '
       'txtTotalDatosCalculados
       '
+      Me.txtTotalDatosCalculados.BackColor = System.Drawing.Color.White
       Me.txtTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkGoldenrod
-      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(54, 23)
+      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(63, 23)
       Me.txtTotalDatosCalculados.Name = "txtTotalDatosCalculados"
       Me.txtTotalDatosCalculados.ReadOnly = True
       Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(58, 21)
       Me.txtTotalDatosCalculados.TabIndex = 11
       Me.txtTotalDatosCalculados.TabStop = False
+      Me.txtTotalDatosCalculados.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'lblTotalDatosCalculados
       '
       Me.lblTotalDatosCalculados.AutoSize = True
       Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(41, 5)
+      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(50, 5)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
       Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(82, 15)
       Me.lblTotalDatosCalculados.TabIndex = 12
@@ -113,7 +117,7 @@ Partial Class frmSalidaDatos
       Me.lblMediaPromedio.AutoSize = True
       Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblMediaPromedio.Location = New System.Drawing.Point(142, 4)
+      Me.lblMediaPromedio.Location = New System.Drawing.Point(162, 4)
       Me.lblMediaPromedio.Name = "lblMediaPromedio"
       Me.lblMediaPromedio.Size = New System.Drawing.Size(98, 15)
       Me.lblMediaPromedio.TabIndex = 14
@@ -121,21 +125,23 @@ Partial Class frmSalidaDatos
       '
       'txtMediaAritmetica2
       '
+      Me.txtMediaAritmetica2.BackColor = System.Drawing.Color.White
       Me.txtMediaAritmetica2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtMediaAritmetica2.ForeColor = System.Drawing.Color.DarkGoldenrod
-      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(135, 23)
+      Me.txtMediaAritmetica2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(177, 23)
       Me.txtMediaAritmetica2.Name = "txtMediaAritmetica2"
       Me.txtMediaAritmetica2.ReadOnly = True
-      Me.txtMediaAritmetica2.Size = New System.Drawing.Size(113, 21)
+      Me.txtMediaAritmetica2.Size = New System.Drawing.Size(58, 21)
       Me.txtMediaAritmetica2.TabIndex = 13
       Me.txtMediaAritmetica2.TabStop = False
+      Me.txtMediaAritmetica2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'lblCoefVariacionDNA
       '
       Me.lblCoefVariacionDNA.AutoSize = True
       Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblCoefVariacionDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(424, 4)
+      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(435, 4)
       Me.lblCoefVariacionDNA.Name = "lblCoefVariacionDNA"
       Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(63, 15)
       Me.lblCoefVariacionDNA.TabIndex = 18
@@ -143,14 +149,16 @@ Partial Class frmSalidaDatos
       '
       'txtCoefVariacion2
       '
+      Me.txtCoefVariacion2.BackColor = System.Drawing.Color.White
       Me.txtCoefVariacion2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtCoefVariacion2.ForeColor = System.Drawing.Color.DarkGoldenrod
-      Me.txtCoefVariacion2.Location = New System.Drawing.Point(399, 23)
+      Me.txtCoefVariacion2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtCoefVariacion2.Location = New System.Drawing.Point(438, 23)
       Me.txtCoefVariacion2.Name = "txtCoefVariacion2"
       Me.txtCoefVariacion2.ReadOnly = True
-      Me.txtCoefVariacion2.Size = New System.Drawing.Size(115, 21)
+      Me.txtCoefVariacion2.Size = New System.Drawing.Size(58, 21)
       Me.txtCoefVariacion2.TabIndex = 16
       Me.txtCoefVariacion2.TabStop = False
+      Me.txtCoefVariacion2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'btnGuardaResultados
       '
@@ -347,18 +355,6 @@ Partial Class frmSalidaDatos
       Me.Panel3.Size = New System.Drawing.Size(569, 55)
       Me.Panel3.TabIndex = 59
       '
-      'txtDesvEstandar2
-      '
-      Me.txtDesvEstandar2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtDesvEstandar2.ForeColor = System.Drawing.Color.DarkGoldenrod
-      Me.txtDesvEstandar2.Location = New System.Drawing.Point(523, 23)
-      Me.txtDesvEstandar2.Name = "txtDesvEstandar2"
-      Me.txtDesvEstandar2.ReadOnly = True
-      Me.txtDesvEstandar2.Size = New System.Drawing.Size(34, 21)
-      Me.txtDesvEstandar2.TabIndex = 50
-      Me.txtDesvEstandar2.TabStop = False
-      Me.txtDesvEstandar2.Visible = False
-      '
       'txtVarianza2
       '
       Me.txtVarianza2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -370,6 +366,18 @@ Partial Class frmSalidaDatos
       Me.txtVarianza2.TabIndex = 51
       Me.txtVarianza2.TabStop = False
       Me.txtVarianza2.Visible = False
+      '
+      'txtDesvEstandar2
+      '
+      Me.txtDesvEstandar2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtDesvEstandar2.ForeColor = System.Drawing.Color.DarkGoldenrod
+      Me.txtDesvEstandar2.Location = New System.Drawing.Point(523, 23)
+      Me.txtDesvEstandar2.Name = "txtDesvEstandar2"
+      Me.txtDesvEstandar2.ReadOnly = True
+      Me.txtDesvEstandar2.Size = New System.Drawing.Size(34, 21)
+      Me.txtDesvEstandar2.TabIndex = 50
+      Me.txtDesvEstandar2.TabStop = False
+      Me.txtDesvEstandar2.Visible = False
       '
       'Panel4
       '
@@ -384,6 +392,42 @@ Partial Class frmSalidaDatos
       Me.Panel4.Name = "Panel4"
       Me.Panel4.Size = New System.Drawing.Size(569, 303)
       Me.Panel4.TabIndex = 62
+      '
+      'lblMensajeSobreGrafica
+      '
+      Me.lblMensajeSobreGrafica.AutoSize = True
+      Me.lblMensajeSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.lblMensajeSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMensajeSobreGrafica.ForeColor = System.Drawing.Color.Black
+      Me.lblMensajeSobreGrafica.Location = New System.Drawing.Point(293, 278)
+      Me.lblMensajeSobreGrafica.Name = "lblMensajeSobreGrafica"
+      Me.lblMensajeSobreGrafica.Size = New System.Drawing.Size(43, 16)
+      Me.lblMensajeSobreGrafica.TabIndex = 65
+      Me.lblMensajeSobreGrafica.Text = "Texto:"
+      '
+      'lblNombreSobreGrafica
+      '
+      Me.lblNombreSobreGrafica.AutoSize = True
+      Me.lblNombreSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.lblNombreSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreSobreGrafica.ForeColor = System.Drawing.Color.Black
+      Me.lblNombreSobreGrafica.Location = New System.Drawing.Point(9, 278)
+      Me.lblNombreSobreGrafica.Name = "lblNombreSobreGrafica"
+      Me.lblNombreSobreGrafica.Size = New System.Drawing.Size(82, 16)
+      Me.lblNombreSobreGrafica.TabIndex = 64
+      Me.lblNombreSobreGrafica.Text = "Enfermedad:"
+      '
+      'Label4
+      '
+      Me.Label4.AutoSize = True
+      Me.Label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label4.ForeColor = System.Drawing.Color.DarkSlateGray
+      Me.Label4.Location = New System.Drawing.Point(430, 17)
+      Me.Label4.Name = "Label4"
+      Me.Label4.Size = New System.Drawing.Size(122, 16)
+      Me.Label4.TabIndex = 63
+      Me.Label4.Text = "TITULOS OBTENIDOS"
       '
       'imagenGrafica
       '
@@ -407,48 +451,12 @@ Partial Class frmSalidaDatos
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
       '
-      'Label4
-      '
-      Me.Label4.AutoSize = True
-      Me.Label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label4.ForeColor = System.Drawing.Color.DarkSlateGray
-      Me.Label4.Location = New System.Drawing.Point(430, 17)
-      Me.Label4.Name = "Label4"
-      Me.Label4.Size = New System.Drawing.Size(122, 16)
-      Me.Label4.TabIndex = 63
-      Me.Label4.Text = "TITULOS OBTENIDOS"
-      '
-      'lblNombreSobreGrafica
-      '
-      Me.lblNombreSobreGrafica.AutoSize = True
-      Me.lblNombreSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.lblNombreSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNombreSobreGrafica.ForeColor = System.Drawing.Color.Black
-      Me.lblNombreSobreGrafica.Location = New System.Drawing.Point(9, 278)
-      Me.lblNombreSobreGrafica.Name = "lblNombreSobreGrafica"
-      Me.lblNombreSobreGrafica.Size = New System.Drawing.Size(85, 16)
-      Me.lblNombreSobreGrafica.TabIndex = 64
-      Me.lblNombreSobreGrafica.Text = "Enfermedad: "
-      '
-      'lblMensajeSobreGrafica
-      '
-      Me.lblMensajeSobreGrafica.AutoSize = True
-      Me.lblMensajeSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.lblMensajeSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeSobreGrafica.ForeColor = System.Drawing.Color.Black
-      Me.lblMensajeSobreGrafica.Location = New System.Drawing.Point(237, 278)
-      Me.lblMensajeSobreGrafica.Name = "lblMensajeSobreGrafica"
-      Me.lblMensajeSobreGrafica.Size = New System.Drawing.Size(43, 16)
-      Me.lblMensajeSobreGrafica.TabIndex = 65
-      Me.lblMensajeSobreGrafica.Text = "Texto:"
-      '
       'frmSalidaDatos
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.BackColor = System.Drawing.Color.LightYellow
-      Me.ClientSize = New System.Drawing.Size(586, 554)
+      Me.BackColor = System.Drawing.SystemColors.Control
+      Me.ClientSize = New System.Drawing.Size(586, 547)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.HScrollBar1)
       Me.Controls.Add(Me.btnGuardaResultados)

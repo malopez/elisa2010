@@ -76,7 +76,7 @@ Public Class frmAbrirArchivoExistente
          Dim observaciones As String = lblObservaciones.Text
          Dim valorFR As String = ""
          Dim cantidadFR As String = ""
-
+         Dim nombreArchivoImagen As String = ""
          Try
             calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
@@ -164,7 +164,8 @@ Public Class frmAbrirArchivoExistente
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
          End Try
          'Try
-         '   creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, nombre, titulox, tituloy, numcaso, analisis)
+         nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+                            nombre, titulox, tituloy, numcaso, analisis)
          'Catch
          '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          'End Try
@@ -176,6 +177,7 @@ Public Class frmAbrirArchivoExistente
                                         frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
+                                        nombreArchivoImagen, _
                                         Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
                                         nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                         mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)

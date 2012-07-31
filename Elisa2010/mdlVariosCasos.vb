@@ -481,6 +481,7 @@
       Next
    End Sub
 
+   'Obtiene el valor de la recuencia relativa
    Public Function obtenValorFR(ByVal frecuenciaRelativa() As Decimal) As String
       Dim i As Integer = 0
       Dim valores As String = ""
@@ -494,6 +495,7 @@
       Return (valores)
    End Function
 
+   'Obtiene la cantidad de los titulos que se repiten dentro de un rango
    Public Function obtenCantidadFR(ByVal rangoDatos() As Integer) As String
       Dim i As Integer = 0
       Dim cantidad As String = ""
@@ -514,26 +516,27 @@
                                      ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
                                      ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
                                      ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
+                                     ByVal nombreArchivo As String, _
                                      ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
                                      ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal analisis As String, _
                                      ByVal observaciones As String, ByVal fechaElaboracion As String, _
                                      ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
                                      ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
                                      ByVal coefVar As Decimal, ByVal desvEst As Decimal, ByVal varianza As Decimal)
-      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
-      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
+      lblNombreSobreGrafica.Text = "Enfermedad Analizada: " & nombreSobreGrafica.ToString()
+      lblMensajeSobreGrafica.Text = "Texto: " & mensajeSobreGrafica.ToString()
       txtNombreEnfermedad.Text = nombre.ToString()
       txtNombreCliente.Text = nombreCliente.ToString()
       txtNoCaso.Text = numcaso.ToString()
       lblAnalisis.Text = analisis.ToString()
-      frmSalidaDatos.imagenGrafica.Image = Image.FromFile("C:\ELISA2012\Imagenes\110609-2455-E01ELBI.bmp")
+      frmSalidaDatos.imagenGrafica.Image = Image.FromFile(nombreArchivo)
       lblObservaciones.Text = observaciones.ToString()
       txtFechaElaboracion.Text = fechaElaboracion.ToString()
       txtTitulosObtenidos.Text = presenta1.ToString()
-      txtMediaAritmetica2.Text = mediaAritmetica.ToString()
-      txtMediaGeometrica.Text = mediaGeometrica.ToString()
+      txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
+      txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
       txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
-      txtCoefVariacion2.Text = coefVar.ToString()
+      txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
       txtDesvEstandar2.Text = desvEst.ToString()
       txtVarianza2.Text = varianza.ToString()
    End Sub
@@ -559,31 +562,17 @@
       Dim i As Integer = 0
       Dim j As Integer = 0
       Dim k As Integer = 0
-
-
-
       Dim placaOriginal As String = ""
-
       'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
       Dim cuentaNoDatos As Integer = 0
-
       'Matriz para calculo de SPS
       Dim calculaSPS(7, 11) As Decimal
-
       'Matriz para calculo de Logaritmo de SPS
       Dim logaritmoSPS(7, 11) As Decimal
-
       'Matriz para calculo de Logaritmo de Titulos
       Dim logaritmoTitulos(7, 11) As Decimal
-
+      'Para los valores del calculo estadistico
       Dim temp As Decimal = 0
-      Dim totalcalculaL As Decimal = 0
-      Dim mediaAritmetica As Decimal = 0
-      Dim varianza As Decimal = 0
-      Dim desvEst As Decimal = 0
-      Dim coefVar As Decimal = 0
-      Dim mediaGeometrica As Decimal = 0
-
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función

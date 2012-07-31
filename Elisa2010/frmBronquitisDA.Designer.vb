@@ -30,8 +30,8 @@ Partial Class frmBronquitisDA
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
-      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
+      Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.txtAnalisisSolicitado = New System.Windows.Forms.TextBox()
       Me.lblNoCaso = New System.Windows.Forms.Label()
       Me.btnBuscaCaso = New System.Windows.Forms.Button()
@@ -73,8 +73,8 @@ Partial Class frmBronquitisDA
       Me.Label7 = New System.Windows.Forms.Label()
       Me.Label8 = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
-      Me.txtNombreSobreGrafica = New System.Windows.Forms.TextBox()
       Me.txtMensajeSobreGrafica = New System.Windows.Forms.TextBox()
+      Me.txtNombreSobreGrafica = New System.Windows.Forms.TextBox()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel1.SuspendLayout()
@@ -123,6 +123,15 @@ Partial Class frmBronquitisDA
       Me.pnlRegistraNuevoAnalisis.Size = New System.Drawing.Size(574, 107)
       Me.pnlRegistraNuevoAnalisis.TabIndex = 108
       '
+      'txtNombreCliente
+      '
+      Me.txtNombreCliente.Location = New System.Drawing.Point(147, 75)
+      Me.txtNombreCliente.Name = "txtNombreCliente"
+      Me.txtNombreCliente.ReadOnly = True
+      Me.txtNombreCliente.Size = New System.Drawing.Size(411, 20)
+      Me.txtNombreCliente.TabIndex = 2
+      Me.txtNombreCliente.TabStop = False
+      '
       'dtpFechaElaboracion
       '
       Me.dtpFechaElaboracion.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
@@ -132,15 +141,6 @@ Partial Class frmBronquitisDA
       Me.dtpFechaElaboracion.TabIndex = 7
       Me.dtpFechaElaboracion.TabStop = False
       Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
-      '
-      'txtNombreCliente
-      '
-      Me.txtNombreCliente.Location = New System.Drawing.Point(147, 75)
-      Me.txtNombreCliente.Name = "txtNombreCliente"
-      Me.txtNombreCliente.ReadOnly = True
-      Me.txtNombreCliente.Size = New System.Drawing.Size(411, 20)
-      Me.txtNombreCliente.TabIndex = 2
-      Me.txtNombreCliente.TabStop = False
       '
       'txtAnalisisSolicitado
       '
@@ -565,7 +565,7 @@ Partial Class frmBronquitisDA
       '
       'ofdSelArchivo
       '
-      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xlsx|*.XLS|*.XLSX"
+      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xls"
       Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
       Me.ofdSelArchivo.Title = "Abrir archivo de datos"
       '
@@ -606,19 +606,19 @@ Partial Class frmBronquitisDA
       Me.Panel2.Size = New System.Drawing.Size(288, 107)
       Me.Panel2.TabIndex = 111
       '
-      'txtNombreSobreGrafica
-      '
-      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(157, 15)
-      Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
-      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(110, 20)
-      Me.txtNombreSobreGrafica.TabIndex = 9
-      '
       'txtMensajeSobreGrafica
       '
       Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(17, 56)
       Me.txtMensajeSobreGrafica.Name = "txtMensajeSobreGrafica"
       Me.txtMensajeSobreGrafica.Size = New System.Drawing.Size(250, 20)
       Me.txtMensajeSobreGrafica.TabIndex = 10
+      '
+      'txtNombreSobreGrafica
+      '
+      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(157, 15)
+      Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
+      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(110, 20)
+      Me.txtNombreSobreGrafica.TabIndex = 9
       '
       'frmBronquitisDA
       '

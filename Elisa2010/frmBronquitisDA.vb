@@ -48,146 +48,146 @@ Public Class frmBronquitisDA
       Dim difCPS As Decimal = 0
       Dim fecha = DateTime.Now
       Dim nocp As Integer = 3
+      'Try
+      cp1 = CDec(Me.txtCPDAValor1.Text)
+      cp2 = CDec(Me.txtCPDAValor2.Text)
+      cp3 = CDec(Me.txtCPDAValor3.Text)
+      cn1 = CDec(Me.txtCNDAValor1.Text)
+      cn2 = CDec(Me.txtCNDAValor2.Text)
+      cn3 = CDec(Me.txtCNDAValor3.Text)
+      btnCapturaTerminada.Enabled = False
+      btnObtenResultadosDA.Enabled = False
+      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = txtAnalisisSolicitado.Text
+      tabla = Split(cadena, "/")
+      'Obtiene el numero de caso para ese análisis
+      Dim cadena1 As String
+      Dim tabla1() As String
+      cadena1 = cmbNoCaso.Text
+      tabla1 = Split(cadena1, " | ")
+      Dim numcaso As String = tabla1(0)
+      Dim idAnalisis As String = tabla1(1)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
+      Dim nombre As String = tabla(1)
+      Dim nombreCliente As String = txtNombreCliente.Text
+      Dim observaciones As String = lblObservaciones.Text
+      Dim valorFR As String = ""
+      Dim cantidadFR As String = ""
+      Dim nombreArchivoImagen As String = ""
       Try
-         cp1 = CDec(Me.txtCPDAValor1.Text)
-         cp2 = CDec(Me.txtCPDAValor2.Text)
-         cp3 = CDec(Me.txtCPDAValor3.Text)
-         cn1 = CDec(Me.txtCNDAValor1.Text)
-         cn2 = CDec(Me.txtCNDAValor2.Text)
-         cn3 = CDec(Me.txtCNDAValor3.Text)
-         btnCapturaTerminada.Enabled = False
-         btnObtenResultadosDA.Enabled = False
-         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
-         Dim cadena As String
-         Dim tabla() As String
-         cadena = txtAnalisisSolicitado.Text
-         tabla = Split(cadena, "/")
-         'Obtiene el numero de caso para ese análisis
-         Dim cadena1 As String
-         Dim tabla1() As String
-         cadena1 = cmbNoCaso.Text
-         tabla1 = Split(cadena1, " | ")
-         Dim numcaso As String = tabla1(0)
-         Dim idAnalisis As String = tabla1(1)
-         Dim analisis As String = Replace(idAnalisis, "/", "")
-         Dim nombre As String = tabla(1)
-         Dim nombreCliente As String = txtNombreCliente.Text
-         Dim observaciones As String = lblObservaciones.Text
-         Dim valorFR As String = ""
-         Dim cantidadFR As String = ""
-
-         Try
-            calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
-                                  Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
-                                  Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeAAE)
-         Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "Error: Al calculor los valores, calculaValoresEnRango.")
-         End Try
-
-         cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
-
-         ReDim calculaL(cuentaNoDatos - 1)
-
-         Try
-            mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
-         Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la sumatoria de la media geométrica.")
-         End Try
-
-         Try
-            titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
-         Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
-         End Try
-         Try
-            calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
-         Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
-         End Try
-         Try
-            mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
-         End Try
-         Try
-            mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
-         End Try
-         Try
-            varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: AL calcular la varianza, calculaVarianza.")
-         End Try
-         Try
-            desvEst = calculaDesvEst(varianza)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
-         End Try
-         Try
-            coefVar = calculaCoefVar(desvEst, mediaAritmetica)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
-         End Try
-         Try
-            placaoriginal = obtenPlacaLeida(placaLector)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
-         End Try
-         Try
-            calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
-         End Try
-         Try
-            valorFR = obtenValorFR(frecuenciaRelativa)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
-         End Try
-         Try
-            cantidadFR = obtenCantidadFR(rangoDatos)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
-         End Try
-         Try
-            cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
-                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
-         End Try
-         Try
-            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
-         End Try
-         'Try
-         'creaChartFrecRel( nombre, titulox, tituloy, numcaso, analisis)
-         creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                            nombre, titulox, tituloy, numcaso, analisis)
-         'Catch
-         '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
-         'End Try
-         Try
-            frmSalidaDatos.Show()
-            mostrarResultadosEnPantalla(frmSalidaDatos.lblNombreSobreGrafica, frmSalidaDatos.lblMensajeSobreGrafica, _
-                                        frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
-                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
-                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
-                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
-                                        Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
-                                        nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
-                                        mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
-         Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
-         End Try
+         calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
+                               Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
+                               Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
+                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeAAE)
       Catch ex As Exception
-         mensajeException(Me.lblMensajeAAE, ex)
-         Me.btnLeerArchivoExistente.Enabled = True
-         Me.btnObtenResultadosDA.Enabled = False
+         mensajeRojo(Me.lblMensajeAAE, "Error: Al calculor los valores, calculaValoresEnRango.")
       End Try
+
+      cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
+
+      ReDim calculaL(cuentaNoDatos - 1)
+
+      Try
+         mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la sumatoria de la media geométrica.")
+      End Try
+
+      Try
+         titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+      End Try
+      Try
+         calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+      End Try
+      Try
+         mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+      End Try
+      Try
+         mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+      End Try
+      Try
+         varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: AL calcular la varianza, calculaVarianza.")
+      End Try
+      Try
+         desvEst = calculaDesvEst(varianza)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+      End Try
+      Try
+         coefVar = calculaCoefVar(desvEst, mediaAritmetica)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+      End Try
+      Try
+         placaoriginal = obtenPlacaLeida(placaLector)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+      End Try
+      Try
+         calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+      End Try
+      Try
+         valorFR = obtenValorFR(frecuenciaRelativa)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+      End Try
+      Try
+         cantidadFR = obtenCantidadFR(rangoDatos)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+      End Try
+      Try
+         cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+                           Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                           Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+      End Try
+      Try
+         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+      End Try
+      'Try
+      nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+                         nombre, titulox, tituloy, numcaso, analisis)
+      'Catch
+      '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+      'End Try
+      Try
+         frmSalidaDatos.Show()
+         mostrarResultadosEnPantalla(frmSalidaDatos.lblNombreSobreGrafica, frmSalidaDatos.lblMensajeSobreGrafica, _
+                                     frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                     frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                     frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                     frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                     frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
+                                     nombreArchivoImagen, _
+                                     Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
+                                     nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                     mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+      End Try
+      'Catch ex As Exception
+      '   mensajeException(Me.lblMensajeAAE, ex)
+      '   Me.btnLeerArchivoExistente.Enabled = True
+      '   Me.btnObtenResultadosDA.Enabled = False
+      'End Try
 
    End Sub
 

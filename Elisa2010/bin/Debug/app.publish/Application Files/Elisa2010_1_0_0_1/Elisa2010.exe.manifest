@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity name="Elisa2010.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="Elisa2010.exe" version="1.0.0.1" publicKeyToken="631a805253a6b2a8" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="Going-up-two-bars.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -173,14 +173,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elisa2010.exe" size="3118592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elisa2010.exe" size="3117568">
       <assemblyIdentity name="Elisa2010" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>/6SVLwDbPp4Jj45uF1dzoqI/VDQ=</dsig:DigestValue>
+        <dsig:DigestValue>x65QHFBKm6YXduq2wXR9QAHmfko=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -202,4 +202,4 @@
       <dsig:DigestValue>RhpKPnFipg6nG78M5FdC4b3gL9Q=</dsig:DigestValue>
     </hash>
   </file>
-</asmv1:assembly>
+<publisherIdentity name="CN=alopez-win7\alopez" issuerKeyHash="421899fbdda559c24763d81008ba3c41e3c9425d" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>NsJH+HFI74Qp4Fwhd93eyNivvA8=</DigestValue></Reference></SignedInfo><SignatureValue>bgN/PhYj6g5DD32ZggOoNQ3O1pRmhhjMHjk2idUZzML3QeuMO7LPL8oUe0jIPGXITzyIvNL9bitlvbTi7rgcGw1ReOJS5JY1Q/xCMtR1S48dV6i0phXHJpOmBMJ8XB6EOAKKTXPpgnlpUFAvu9MttV1GMepBNGpjGAA/8go2tEY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>u1dyNaGSD17jIDI+mA0Vu7e8q8cWEY7AlZ6iACY0lgO0WjJJmfh771hltfGxGTXYDXF3E++pWIGmbdVFHayrozBl2gdBusY6ljfuXuk2EOoERxF1FisgpNpND2JhYhOlZ+drlM1e+kQTLRDdXWf8s2AuHzo/BmSDPe39xyoaJe8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="0fbcafd8c8dedd77215ce02984ef4871f847c236" Description="" Url=""><as:assemblyIdentity name="Elisa2010.exe" version="1.0.0.1" publicKeyToken="631a805253a6b2a8" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=alopez-win7\alopez</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>mGSGn2LGCpTQh9tE22+ET/582wA=</DigestValue></Reference></SignedInfo><SignatureValue>uJYSJ6XFavPRim3AbaLpHmSc4t3Hpy+NpiU5e4MjvocfnpCa2afTi0sQYNTgAIY6V8MZU6muyZK+GxiGRtS035NKqhyNfKPALux7sly+tGMjk9/XjcCvPz8qR40TurDLnR7jw32JCxUwJKTK8MROzrz6LeB8/yHFraFVQ+xTbjE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>u1dyNaGSD17jIDI+mA0Vu7e8q8cWEY7AlZ6iACY0lgO0WjJJmfh771hltfGxGTXYDXF3E++pWIGmbdVFHayrozBl2gdBusY6ljfuXuk2EOoERxF1FisgpNpND2JhYhOlZ+drlM1e+kQTLRDdXWf8s2AuHzo/BmSDPe39xyoaJe8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQUIrwjQ0zVZlA7XKfPABuPjANBgkqhkiG9w0BAQUFADAvMS0wKwYDVQQDHiQAYQBsAG8AcABlAHoALQB3AGkAbgA3AFwAYQBsAG8AcABlAHowHhcNMTIwNzExMTg0MDU1WhcNMTMwNzEyMDA0MDU1WjAvMS0wKwYDVQQDHiQAYQBsAG8AcABlAHoALQB3AGkAbgA3AFwAYQBsAG8AcABlAHowgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALtXcjWhkg9e4yAyPpgNFbu3vKvHFhGOwJWeogAmNJYDtFoySZn4e+9YZbXxsRk12A1xdxPvqViBpm3VRR2sq6MwZdoHQbrGOpY37l7pNhDqBEcRdRYrIKTaTQ9iYWITpWfna5TNXvpEEy0Q3V1n/LNgLh86PwZkgz3t/ccqGiXvAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAGPqzlOmTQ205nB16zWxtLuN20faU1FLcO41ivclwJUjIEUPO3kZxXaUUT2vDQLfhcvtqIPQX0wGx4xrBj4QNe9q70Uof1mg0c5SeHJp9sPLvFKxqVHJ63aWTaZLmgdzdiyS4CI3Jx9B9n64/N68nsP0XAq0b+0SsS0sg7JA6HDA=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
