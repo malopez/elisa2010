@@ -72,7 +72,7 @@
 
    Private Sub btnLeerDatosPlaca_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerDatosPlaca.Click
       Try
-         Dim nocp As Integer = Val(txtNoControles.Text)
+         Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
          If Me.btnLeerDatosPlaca.Text = "Obtener Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
             Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeLecturaPlaca, Me.lblNombreLector)
@@ -84,8 +84,8 @@
                formatearDatos()
                coloreaControlesPN(nocp)
                Me.btnLeerDatosPlaca.Enabled = False
-               txtNoControles.Enabled = True
-               txtNoControles.Focus()
+               txtNoControlesPositivos.Enabled = True
+               txtNoControlesPositivos.Focus()
                btnAceptarCPN.Enabled = True
             End If
          End If
@@ -116,9 +116,9 @@
       End Select
    End Sub
 
-   Private Sub txtNoControles_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtNoControles.TextChanged
+   Private Sub txtNoControles_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtNoControlesPositivos.TextChanged
       Try
-         controlesValidosNumero(txtNoControles, " En número de controles + y - ", 2, 3)
+         controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
          mensajeException(Me.lblMensajeLecturaPlaca, ex)
       End Try
@@ -151,7 +151,7 @@
    End Sub
 
    Private Sub formatearDatos()
-      Dim nocp As Integer = Val(txtNoControles.Text)
+      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       btnLeerDatosPlaca.Enabled = False
       Try
          convierteCadena(msn)
@@ -169,7 +169,7 @@
    End Sub
 
    Private Sub ckbControlesDefault_CheckedChanged(sender As System.Object, e As System.EventArgs)
-      Dim nocp As Integer = Val(txtNoControles.Text)
+      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       defineValoresDefault(nocp)
       ckbControlesDefault.Enabled = False
       grbControlesPositivos.Enabled = False
@@ -182,7 +182,7 @@
       Try
          btnDefinirControlesPN.Enabled = False
          btnAceptarControles.Enabled = False
-         Dim nocp As Integer = CInt(txtNoControles.Text)
+         Dim nocp As Integer = CInt(txtNoControlesPositivos.Text)
          Dim cpx1 As Integer = siValorEsLetra(Me.txtCP1Letra1)
          Dim cpx2 As Integer = siValorEsLetra(Me.txtCP2Letra2)
          Dim cpy1 As Integer = CInt(Me.txtCP1Valor1.Text) - 1
@@ -227,7 +227,7 @@
       grbControlesNegativos.Enabled = False
       grbControlesPositivos.Enabled = False
       btnDefinirControlesPN.Enabled = False
-      Dim nocp As Integer = Val(txtNoControles.Text)
+      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       Select Case nocp
          Case 2
             '1. Valida que esten en rango de letras y numeros A-H y 1-12.
@@ -252,7 +252,7 @@
                   btnDefinirControlesPN.Enabled = False
                   ckbControlesDefault.Enabled = False
                   btnGuardaDatos.Enabled = True
-                 
+
                Else
                   mensajeRojo(Me.lblMensajeLecturaPlaca, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
 
@@ -305,7 +305,7 @@
    End Sub
 
    Private Sub btnDefinirControlesPN_Click(sender As System.Object, e As System.EventArgs) Handles btnDefinirControlesPN.Click
-      Dim nocp As Integer = Val(txtNoControles.Text)
+      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       grbControlesPositivos.Enabled = True
       grbControlesNegativos.Enabled = True
 
@@ -316,18 +316,18 @@
       End If
    End Sub
 
-   Private Sub txtNoControles_TextChanged_1(sender As System.Object, e As System.EventArgs) Handles txtNoControles.TextChanged
+   Private Sub txtNoControles_TextChanged_1(sender As System.Object, e As System.EventArgs) Handles txtNoControlesPositivos.TextChanged
       Try
-         controlesValidosNumero(txtNoControles, " En número de controles + y - ", 2, 3)
+         controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
          mensajeException(Me.lblMensajeLecturaPlaca, ex)
       End Try
    End Sub
 
    Private Sub btnAceptarCPN_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarCPN.Click
-      If controlesValidosNumero(txtNoControles, " En número de controles + y - ", 2, 3) Then
-         Dim nocp As Integer = Val(txtNoControles.Text)
-         txtNoControles.Enabled = False
+      If controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3) Then
+         Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
+         txtNoControlesPositivos.Enabled = False
          btnAceptarCPN.Enabled = False
          ckbControlesDefault.Enabled = True
          btnAceptarControles.Enabled = True
@@ -335,7 +335,7 @@
          defineValoresPN(nocp)
       Else
          MessageBox.Show("ERROR: Los valores que ha introducido para no. de controles + y - no son válidos, trate nuevamente.")
-         txtNoControles.Enabled = True
+         txtNoControlesPositivos.Enabled = True
          btnAceptarCPN.Enabled = True
 
       End If
@@ -343,7 +343,7 @@
    End Sub
 
    Private Sub ckbControlesDefault_CheckedChanged_1(sender As System.Object, e As System.EventArgs) Handles ckbControlesDefault.CheckedChanged
-      Dim nocp As Integer = Val(txtNoControles.Text)
+      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       defineValoresDefault(nocp)
       ckbControlesDefault.Enabled = False
       grbControlesPositivos.Enabled = False

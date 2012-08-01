@@ -23,6 +23,10 @@ Partial Class frmSalidaCaso6
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaCaso6))
+      Me.btnCancelar = New System.Windows.Forms.Button()
+      Me.btnGuardaResultados = New System.Windows.Forms.Button()
+      Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
@@ -35,31 +39,71 @@ Partial Class frmSalidaCaso6
       Me.lblELISA = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
-      Me.btnCancelar = New System.Windows.Forms.Button()
-      Me.btnGuardaResultados = New System.Windows.Forms.Button()
-      Me.lbDesviacionEstandarDNA = New System.Windows.Forms.Label()
-      Me.lblVarianzaDNA = New System.Windows.Forms.Label()
-      Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
-      Me.txtVarianza2 = New System.Windows.Forms.TextBox()
-      Me.lblMediaPromedio = New System.Windows.Forms.Label()
-      Me.txtMediaAritmetica2 = New System.Windows.Forms.TextBox()
-      Me.lblMediaGeometrica = New System.Windows.Forms.Label()
-      Me.txtMediaGeometrica = New System.Windows.Forms.TextBox()
-      Me.Panel1 = New System.Windows.Forms.Panel()
-      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.txtVarianza2 = New System.Windows.Forms.TextBox()
+      Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
-      Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
       Me.lblCoefVariacionDNA = New System.Windows.Forms.Label()
       Me.txtTotalDatosCalculados = New System.Windows.Forms.TextBox()
+      Me.lblMediaGeometrica = New System.Windows.Forms.Label()
+      Me.txtMediaGeometrica = New System.Windows.Forms.TextBox()
+      Me.lblMediaPromedio = New System.Windows.Forms.Label()
+      Me.txtMediaAritmetica2 = New System.Windows.Forms.TextBox()
       Me.lblTotalDatosCalculados = New System.Windows.Forms.Label()
-      Me.Panel2.SuspendLayout()
+      Me.Panel4 = New System.Windows.Forms.Panel()
+      Me.lblMensajeSobreGrafica = New System.Windows.Forms.Label()
+      Me.lblNombreSobreGrafica = New System.Windows.Forms.Label()
+      Me.Label4 = New System.Windows.Forms.Label()
+      Me.imagenGrafica = New System.Windows.Forms.PictureBox()
+      Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
       Me.Panel1.SuspendLayout()
+      Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
+      Me.Panel4.SuspendLayout()
+      CType(Me.imagenGrafica, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
+      '
+      'btnCancelar
+      '
+      Me.btnCancelar.Location = New System.Drawing.Point(486, 479)
+      Me.btnCancelar.Name = "btnCancelar"
+      Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
+      Me.btnCancelar.TabIndex = 64
+      Me.btnCancelar.Text = "Finalizar"
+      Me.btnCancelar.UseVisualStyleBackColor = True
+      '
+      'btnGuardaResultados
+      '
+      Me.btnGuardaResultados.Location = New System.Drawing.Point(360, 479)
+      Me.btnGuardaResultados.Name = "btnGuardaResultados"
+      Me.btnGuardaResultados.Size = New System.Drawing.Size(121, 23)
+      Me.btnGuardaResultados.TabIndex = 63
+      Me.btnGuardaResultados.Text = "Guardar Resultados"
+      Me.btnGuardaResultados.UseVisualStyleBackColor = True
+      '
+      'Panel1
+      '
+      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
+      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
+      Me.Panel1.Location = New System.Drawing.Point(9, 508)
+      Me.Panel1.Name = "Panel1"
+      Me.Panel1.Size = New System.Drawing.Size(569, 32)
+      Me.Panel1.TabIndex = 65
+      '
+      'lblSalidaDatos
+      '
+      Me.lblSalidaDatos.AutoSize = True
+      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
+      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 7)
+      Me.lblSalidaDatos.Name = "lblSalidaDatos"
+      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
+      Me.lblSalidaDatos.TabIndex = 45
+      Me.lblSalidaDatos.Text = "Mensaje:"
       '
       'Panel2
       '
+      Me.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
@@ -72,18 +116,18 @@ Partial Class frmSalidaCaso6
       Me.Panel2.Controls.Add(Me.lblELISA)
       Me.Panel2.Controls.Add(Me.Label1)
       Me.Panel2.Controls.Add(Me.lblObservaciones)
-      Me.Panel2.Location = New System.Drawing.Point(8, 5)
+      Me.Panel2.Location = New System.Drawing.Point(9, 6)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
-      Me.Panel2.TabIndex = 59
+      Me.Panel2.TabIndex = 66
       '
       'lblAnalisis
       '
       Me.lblAnalisis.AutoSize = True
-      Me.lblAnalisis.Location = New System.Drawing.Point(236, 16)
+      Me.lblAnalisis.Location = New System.Drawing.Point(237, 16)
       Me.lblAnalisis.Name = "lblAnalisis"
       Me.lblAnalisis.Size = New System.Drawing.Size(39, 13)
-      Me.lblAnalisis.TabIndex = 63
+      Me.lblAnalisis.TabIndex = 62
       Me.lblAnalisis.Text = "Label4"
       Me.lblAnalisis.Visible = False
       '
@@ -188,238 +232,250 @@ Partial Class frmSalidaCaso6
       Me.lblObservaciones.Text = "Observaciones:"
       Me.lblObservaciones.Visible = False
       '
-      'btnCancelar
+      'Panel3
       '
-      Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-      Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnCancelar.Location = New System.Drawing.Point(485, 526)
-      Me.btnCancelar.Name = "btnCancelar"
-      Me.btnCancelar.Size = New System.Drawing.Size(91, 23)
-      Me.btnCancelar.TabIndex = 61
-      Me.btnCancelar.Text = "Finalizar"
-      Me.btnCancelar.UseVisualStyleBackColor = True
-      '
-      'btnGuardaResultados
-      '
-      Me.btnGuardaResultados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnGuardaResultados.Location = New System.Drawing.Point(358, 526)
-      Me.btnGuardaResultados.Name = "btnGuardaResultados"
-      Me.btnGuardaResultados.Size = New System.Drawing.Size(121, 23)
-      Me.btnGuardaResultados.TabIndex = 60
-      Me.btnGuardaResultados.Text = "Guardar Resultados"
-      Me.btnGuardaResultados.UseVisualStyleBackColor = True
-      '
-      'lbDesviacionEstandarDNA
-      '
-      Me.lbDesviacionEstandarDNA.AutoSize = True
-      Me.lbDesviacionEstandarDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lbDesviacionEstandarDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lbDesviacionEstandarDNA.Location = New System.Drawing.Point(205, 466)
-      Me.lbDesviacionEstandarDNA.Name = "lbDesviacionEstandarDNA"
-      Me.lbDesviacionEstandarDNA.Size = New System.Drawing.Size(116, 15)
-      Me.lbDesviacionEstandarDNA.TabIndex = 69
-      Me.lbDesviacionEstandarDNA.Text = "Desviacion Estandar"
-      '
-      'lblVarianzaDNA
-      '
-      Me.lblVarianzaDNA.AutoSize = True
-      Me.lblVarianzaDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblVarianzaDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblVarianzaDNA.Location = New System.Drawing.Point(386, 466)
-      Me.lblVarianzaDNA.Name = "lblVarianzaDNA"
-      Me.lblVarianzaDNA.Size = New System.Drawing.Size(55, 15)
-      Me.lblVarianzaDNA.TabIndex = 68
-      Me.lblVarianzaDNA.Text = "Varianza"
-      '
-      'txtDesvEstandar2
-      '
-      Me.txtDesvEstandar2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtDesvEstandar2.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtDesvEstandar2.Location = New System.Drawing.Point(206, 485)
-      Me.txtDesvEstandar2.Name = "txtDesvEstandar2"
-      Me.txtDesvEstandar2.ReadOnly = True
-      Me.txtDesvEstandar2.Size = New System.Drawing.Size(115, 21)
-      Me.txtDesvEstandar2.TabIndex = 67
-      Me.txtDesvEstandar2.TabStop = False
+      Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.txtVarianza2)
+      Me.Panel3.Controls.Add(Me.txtDesvEstandar2)
+      Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
+      Me.Panel3.Controls.Add(Me.lblCoefVariacionDNA)
+      Me.Panel3.Controls.Add(Me.txtTotalDatosCalculados)
+      Me.Panel3.Controls.Add(Me.lblMediaGeometrica)
+      Me.Panel3.Controls.Add(Me.txtMediaGeometrica)
+      Me.Panel3.Controls.Add(Me.lblMediaPromedio)
+      Me.Panel3.Controls.Add(Me.txtMediaAritmetica2)
+      Me.Panel3.Controls.Add(Me.lblTotalDatosCalculados)
+      Me.Panel3.Location = New System.Drawing.Point(9, 109)
+      Me.Panel3.Name = "Panel3"
+      Me.Panel3.Size = New System.Drawing.Size(569, 55)
+      Me.Panel3.TabIndex = 67
       '
       'txtVarianza2
       '
       Me.txtVarianza2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtVarianza2.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtVarianza2.Location = New System.Drawing.Point(357, 485)
+      Me.txtVarianza2.ForeColor = System.Drawing.Color.DarkGoldenrod
+      Me.txtVarianza2.Location = New System.Drawing.Point(8, 23)
       Me.txtVarianza2.Name = "txtVarianza2"
       Me.txtVarianza2.ReadOnly = True
-      Me.txtVarianza2.Size = New System.Drawing.Size(114, 21)
-      Me.txtVarianza2.TabIndex = 66
+      Me.txtVarianza2.Size = New System.Drawing.Size(34, 21)
+      Me.txtVarianza2.TabIndex = 51
       Me.txtVarianza2.TabStop = False
+      Me.txtVarianza2.Visible = False
       '
-      'lblMediaPromedio
+      'txtDesvEstandar2
       '
-      Me.lblMediaPromedio.AutoSize = True
-      Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblMediaPromedio.Location = New System.Drawing.Point(214, 369)
-      Me.lblMediaPromedio.Name = "lblMediaPromedio"
-      Me.lblMediaPromedio.Size = New System.Drawing.Size(98, 15)
-      Me.lblMediaPromedio.TabIndex = 65
-      Me.lblMediaPromedio.Text = "Media Aritmética"
-      '
-      'txtMediaAritmetica2
-      '
-      Me.txtMediaAritmetica2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtMediaAritmetica2.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(207, 388)
-      Me.txtMediaAritmetica2.Name = "txtMediaAritmetica2"
-      Me.txtMediaAritmetica2.ReadOnly = True
-      Me.txtMediaAritmetica2.Size = New System.Drawing.Size(113, 21)
-      Me.txtMediaAritmetica2.TabIndex = 64
-      Me.txtMediaAritmetica2.TabStop = False
-      '
-      'lblMediaGeometrica
-      '
-      Me.lblMediaGeometrica.AutoSize = True
-      Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblMediaGeometrica.Location = New System.Drawing.Point(359, 369)
-      Me.lblMediaGeometrica.Name = "lblMediaGeometrica"
-      Me.lblMediaGeometrica.Size = New System.Drawing.Size(107, 15)
-      Me.lblMediaGeometrica.TabIndex = 63
-      Me.lblMediaGeometrica.Text = "Media Geometrica"
-      '
-      'txtMediaGeometrica
-      '
-      Me.txtMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtMediaGeometrica.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtMediaGeometrica.Location = New System.Drawing.Point(357, 388)
-      Me.txtMediaGeometrica.Name = "txtMediaGeometrica"
-      Me.txtMediaGeometrica.ReadOnly = True
-      Me.txtMediaGeometrica.Size = New System.Drawing.Size(112, 21)
-      Me.txtMediaGeometrica.TabIndex = 62
-      Me.txtMediaGeometrica.TabStop = False
-      '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(7, 557)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(569, 33)
-      Me.Panel1.TabIndex = 70
-      '
-      'lblSalidaDatos
-      '
-      Me.lblSalidaDatos.AutoSize = True
-      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 8)
-      Me.lblSalidaDatos.Name = "lblSalidaDatos"
-      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
-      Me.lblSalidaDatos.TabIndex = 45
-      Me.lblSalidaDatos.Text = "Mensaje:"
-      '
-      'Panel3
-      '
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
-      Me.Panel3.Controls.Add(Me.txtTitulosObtenidos)
-      Me.Panel3.Controls.Add(Me.lblCoefVariacionDNA)
-      Me.Panel3.Controls.Add(Me.txtTotalDatosCalculados)
-      Me.Panel3.Controls.Add(Me.lblTotalDatosCalculados)
-      Me.Panel3.Location = New System.Drawing.Point(6, 354)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(568, 166)
-      Me.Panel3.TabIndex = 71
+      Me.txtDesvEstandar2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtDesvEstandar2.ForeColor = System.Drawing.Color.DarkGoldenrod
+      Me.txtDesvEstandar2.Location = New System.Drawing.Point(523, 23)
+      Me.txtDesvEstandar2.Name = "txtDesvEstandar2"
+      Me.txtDesvEstandar2.ReadOnly = True
+      Me.txtDesvEstandar2.Size = New System.Drawing.Size(34, 21)
+      Me.txtDesvEstandar2.TabIndex = 50
+      Me.txtDesvEstandar2.TabStop = False
+      Me.txtDesvEstandar2.Visible = False
       '
       'txtCoefVariacion2
       '
+      Me.txtCoefVariacion2.BackColor = System.Drawing.Color.White
       Me.txtCoefVariacion2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtCoefVariacion2.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtCoefVariacion2.Location = New System.Drawing.Point(198, 82)
+      Me.txtCoefVariacion2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtCoefVariacion2.Location = New System.Drawing.Point(438, 23)
       Me.txtCoefVariacion2.Name = "txtCoefVariacion2"
       Me.txtCoefVariacion2.ReadOnly = True
-      Me.txtCoefVariacion2.Size = New System.Drawing.Size(115, 21)
+      Me.txtCoefVariacion2.Size = New System.Drawing.Size(58, 21)
       Me.txtCoefVariacion2.TabIndex = 16
       Me.txtCoefVariacion2.TabStop = False
-      '
-      'txtTitulosObtenidos
-      '
-      Me.txtTitulosObtenidos.BackColor = System.Drawing.Color.White
-      Me.txtTitulosObtenidos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.txtTitulosObtenidos.Location = New System.Drawing.Point(55, 11)
-      Me.txtTitulosObtenidos.Multiline = True
-      Me.txtTitulosObtenidos.Name = "txtTitulosObtenidos"
-      Me.txtTitulosObtenidos.ReadOnly = True
-      Me.txtTitulosObtenidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-      Me.txtTitulosObtenidos.Size = New System.Drawing.Size(108, 145)
-      Me.txtTitulosObtenidos.TabIndex = 49
-      Me.txtTitulosObtenidos.TabStop = False
+      Me.txtCoefVariacion2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'lblCoefVariacionDNA
       '
       Me.lblCoefVariacionDNA.AutoSize = True
       Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblCoefVariacionDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(202, 63)
+      Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(435, 4)
       Me.lblCoefVariacionDNA.Name = "lblCoefVariacionDNA"
-      Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(108, 15)
+      Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(63, 15)
       Me.lblCoefVariacionDNA.TabIndex = 18
-      Me.lblCoefVariacionDNA.Text = "Coef. de Variacion"
+      Me.lblCoefVariacionDNA.Text = "Coef.  Var."
       '
       'txtTotalDatosCalculados
       '
+      Me.txtTotalDatosCalculados.BackColor = System.Drawing.Color.White
       Me.txtTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkBlue
-      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(347, 82)
+      Me.txtTotalDatosCalculados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtTotalDatosCalculados.Location = New System.Drawing.Point(63, 23)
       Me.txtTotalDatosCalculados.Name = "txtTotalDatosCalculados"
       Me.txtTotalDatosCalculados.ReadOnly = True
-      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(114, 21)
+      Me.txtTotalDatosCalculados.Size = New System.Drawing.Size(58, 21)
       Me.txtTotalDatosCalculados.TabIndex = 11
       Me.txtTotalDatosCalculados.TabStop = False
+      Me.txtTotalDatosCalculados.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+      '
+      'lblMediaGeometrica
+      '
+      Me.lblMediaGeometrica.AutoSize = True
+      Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblMediaGeometrica.Location = New System.Drawing.Point(293, 4)
+      Me.lblMediaGeometrica.Name = "lblMediaGeometrica"
+      Me.lblMediaGeometrica.Size = New System.Drawing.Size(107, 15)
+      Me.lblMediaGeometrica.TabIndex = 5
+      Me.lblMediaGeometrica.Text = "Media Geometrica"
+      '
+      'txtMediaGeometrica
+      '
+      Me.txtMediaGeometrica.BackColor = System.Drawing.Color.White
+      Me.txtMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtMediaGeometrica.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtMediaGeometrica.Location = New System.Drawing.Point(312, 23)
+      Me.txtMediaGeometrica.Name = "txtMediaGeometrica"
+      Me.txtMediaGeometrica.ReadOnly = True
+      Me.txtMediaGeometrica.Size = New System.Drawing.Size(58, 21)
+      Me.txtMediaGeometrica.TabIndex = 2
+      Me.txtMediaGeometrica.TabStop = False
+      Me.txtMediaGeometrica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+      '
+      'lblMediaPromedio
+      '
+      Me.lblMediaPromedio.AutoSize = True
+      Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblMediaPromedio.Location = New System.Drawing.Point(162, 4)
+      Me.lblMediaPromedio.Name = "lblMediaPromedio"
+      Me.lblMediaPromedio.Size = New System.Drawing.Size(98, 15)
+      Me.lblMediaPromedio.TabIndex = 14
+      Me.lblMediaPromedio.Text = "Media Aritmética"
+      '
+      'txtMediaAritmetica2
+      '
+      Me.txtMediaAritmetica2.BackColor = System.Drawing.Color.White
+      Me.txtMediaAritmetica2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtMediaAritmetica2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtMediaAritmetica2.Location = New System.Drawing.Point(177, 23)
+      Me.txtMediaAritmetica2.Name = "txtMediaAritmetica2"
+      Me.txtMediaAritmetica2.ReadOnly = True
+      Me.txtMediaAritmetica2.Size = New System.Drawing.Size(58, 21)
+      Me.txtMediaAritmetica2.TabIndex = 13
+      Me.txtMediaAritmetica2.TabStop = False
+      Me.txtMediaAritmetica2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       '
       'lblTotalDatosCalculados
       '
       Me.lblTotalDatosCalculados.AutoSize = True
       Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
-      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(361, 63)
+      Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(50, 5)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
-      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(88, 15)
+      Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(82, 15)
       Me.lblTotalDatosCalculados.TabIndex = 12
-      Me.lblTotalDatosCalculados.Text = "Total de Sueros"
+      Me.lblTotalDatosCalculados.Text = "No. de Sueros"
+      '
+      'Panel4
+      '
+      Me.Panel4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel4.Controls.Add(Me.lblMensajeSobreGrafica)
+      Me.Panel4.Controls.Add(Me.lblNombreSobreGrafica)
+      Me.Panel4.Controls.Add(Me.Label4)
+      Me.Panel4.Controls.Add(Me.imagenGrafica)
+      Me.Panel4.Controls.Add(Me.txtTitulosObtenidos)
+      Me.Panel4.Location = New System.Drawing.Point(9, 170)
+      Me.Panel4.Name = "Panel4"
+      Me.Panel4.Size = New System.Drawing.Size(569, 303)
+      Me.Panel4.TabIndex = 68
+      '
+      'lblMensajeSobreGrafica
+      '
+      Me.lblMensajeSobreGrafica.AutoSize = True
+      Me.lblMensajeSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.lblMensajeSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblMensajeSobreGrafica.ForeColor = System.Drawing.Color.Black
+      Me.lblMensajeSobreGrafica.Location = New System.Drawing.Point(293, 278)
+      Me.lblMensajeSobreGrafica.Name = "lblMensajeSobreGrafica"
+      Me.lblMensajeSobreGrafica.Size = New System.Drawing.Size(43, 16)
+      Me.lblMensajeSobreGrafica.TabIndex = 65
+      Me.lblMensajeSobreGrafica.Text = "Texto:"
+      '
+      'lblNombreSobreGrafica
+      '
+      Me.lblNombreSobreGrafica.AutoSize = True
+      Me.lblNombreSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.lblNombreSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreSobreGrafica.ForeColor = System.Drawing.Color.Black
+      Me.lblNombreSobreGrafica.Location = New System.Drawing.Point(9, 278)
+      Me.lblNombreSobreGrafica.Name = "lblNombreSobreGrafica"
+      Me.lblNombreSobreGrafica.Size = New System.Drawing.Size(82, 16)
+      Me.lblNombreSobreGrafica.TabIndex = 64
+      Me.lblNombreSobreGrafica.Text = "Enfermedad:"
+      '
+      'Label4
+      '
+      Me.Label4.AutoSize = True
+      Me.Label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label4.ForeColor = System.Drawing.Color.DarkSlateGray
+      Me.Label4.Location = New System.Drawing.Point(430, 17)
+      Me.Label4.Name = "Label4"
+      Me.Label4.Size = New System.Drawing.Size(122, 16)
+      Me.Label4.TabIndex = 63
+      Me.Label4.Text = "TITULOS OBTENIDOS"
+      '
+      'imagenGrafica
+      '
+      Me.imagenGrafica.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.imagenGrafica.Location = New System.Drawing.Point(8, 4)
+      Me.imagenGrafica.Name = "imagenGrafica"
+      Me.imagenGrafica.Size = New System.Drawing.Size(401, 267)
+      Me.imagenGrafica.TabIndex = 62
+      Me.imagenGrafica.TabStop = False
+      '
+      'txtTitulosObtenidos
+      '
+      Me.txtTitulosObtenidos.BackColor = System.Drawing.Color.White
+      Me.txtTitulosObtenidos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.txtTitulosObtenidos.Location = New System.Drawing.Point(440, 35)
+      Me.txtTitulosObtenidos.Multiline = True
+      Me.txtTitulosObtenidos.Name = "txtTitulosObtenidos"
+      Me.txtTitulosObtenidos.ReadOnly = True
+      Me.txtTitulosObtenidos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+      Me.txtTitulosObtenidos.Size = New System.Drawing.Size(105, 227)
+      Me.txtTitulosObtenidos.TabIndex = 61
+      Me.txtTitulosObtenidos.TabStop = False
       '
       'frmSalidaCaso6
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(584, 595)
+      Me.ClientSize = New System.Drawing.Size(586, 547)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaResultados)
-      Me.Controls.Add(Me.lbDesviacionEstandarDNA)
-      Me.Controls.Add(Me.lblVarianzaDNA)
-      Me.Controls.Add(Me.txtDesvEstandar2)
-      Me.Controls.Add(Me.txtVarianza2)
-      Me.Controls.Add(Me.lblMediaPromedio)
-      Me.Controls.Add(Me.txtMediaAritmetica2)
-      Me.Controls.Add(Me.lblMediaGeometrica)
-      Me.Controls.Add(Me.txtMediaGeometrica)
       Me.Controls.Add(Me.Panel1)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel2)
+      Me.Controls.Add(Me.Panel3)
+      Me.Controls.Add(Me.Panel4)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmSalidaCaso6"
       Me.Text = "Resultados del análisis Caso No. 6"
-      Me.Panel2.ResumeLayout(False)
-      Me.Panel2.PerformLayout()
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
+      Me.Panel2.ResumeLayout(False)
+      Me.Panel2.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
+      Me.Panel4.ResumeLayout(False)
+      Me.Panel4.PerformLayout()
+      CType(Me.imagenGrafica, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
-      Me.PerformLayout()
 
    End Sub
+   Friend WithEvents btnCancelar As System.Windows.Forms.Button
+   Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
+   Friend WithEvents Panel1 As System.Windows.Forms.Panel
+   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox
    Friend WithEvents txtFechaElaboracion As System.Windows.Forms.TextBox
    Friend WithEvents txtNombreEnfermedad As System.Windows.Forms.TextBox
@@ -430,23 +486,21 @@ Partial Class frmSalidaCaso6
    Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
-   Friend WithEvents btnCancelar As System.Windows.Forms.Button
-   Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
-   Friend WithEvents lbDesviacionEstandarDNA As System.Windows.Forms.Label
-   Friend WithEvents lblVarianzaDNA As System.Windows.Forms.Label
-   Friend WithEvents txtDesvEstandar2 As System.Windows.Forms.TextBox
-   Friend WithEvents txtVarianza2 As System.Windows.Forms.TextBox
-   Friend WithEvents lblMediaPromedio As System.Windows.Forms.Label
-   Friend WithEvents txtMediaAritmetica2 As System.Windows.Forms.TextBox
-   Friend WithEvents lblMediaGeometrica As System.Windows.Forms.Label
-   Friend WithEvents txtMediaGeometrica As System.Windows.Forms.TextBox
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
-   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+   Friend WithEvents txtVarianza2 As System.Windows.Forms.TextBox
+   Friend WithEvents txtDesvEstandar2 As System.Windows.Forms.TextBox
    Friend WithEvents txtCoefVariacion2 As System.Windows.Forms.TextBox
-   Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
    Friend WithEvents lblCoefVariacionDNA As System.Windows.Forms.Label
    Friend WithEvents txtTotalDatosCalculados As System.Windows.Forms.TextBox
+   Friend WithEvents lblMediaGeometrica As System.Windows.Forms.Label
+   Friend WithEvents txtMediaGeometrica As System.Windows.Forms.TextBox
+   Friend WithEvents lblMediaPromedio As System.Windows.Forms.Label
+   Friend WithEvents txtMediaAritmetica2 As System.Windows.Forms.TextBox
    Friend WithEvents lblTotalDatosCalculados As System.Windows.Forms.Label
-   Friend WithEvents lblAnalisis As System.Windows.Forms.Label
+   Friend WithEvents Panel4 As System.Windows.Forms.Panel
+   Friend WithEvents lblMensajeSobreGrafica As System.Windows.Forms.Label
+   Friend WithEvents lblNombreSobreGrafica As System.Windows.Forms.Label
+   Friend WithEvents Label4 As System.Windows.Forms.Label
+   Friend WithEvents imagenGrafica As System.Windows.Forms.PictureBox
+   Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
 End Class

@@ -57,6 +57,8 @@ Partial Class frmSalidaDatos
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
+      Me.Label5 = New System.Windows.Forms.Label()
+      Me.Label6 = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -383,6 +385,8 @@ Partial Class frmSalidaDatos
       '
       Me.Panel4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel4.Controls.Add(Me.Label6)
+      Me.Panel4.Controls.Add(Me.Label5)
       Me.Panel4.Controls.Add(Me.lblMensajeSobreGrafica)
       Me.Panel4.Controls.Add(Me.lblNombreSobreGrafica)
       Me.Panel4.Controls.Add(Me.Label4)
@@ -399,11 +403,10 @@ Partial Class frmSalidaDatos
       Me.lblMensajeSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.lblMensajeSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblMensajeSobreGrafica.ForeColor = System.Drawing.Color.Black
-      Me.lblMensajeSobreGrafica.Location = New System.Drawing.Point(293, 278)
+      Me.lblMensajeSobreGrafica.Location = New System.Drawing.Point(366, 278)
       Me.lblMensajeSobreGrafica.Name = "lblMensajeSobreGrafica"
-      Me.lblMensajeSobreGrafica.Size = New System.Drawing.Size(43, 16)
+      Me.lblMensajeSobreGrafica.Size = New System.Drawing.Size(0, 16)
       Me.lblMensajeSobreGrafica.TabIndex = 65
-      Me.lblMensajeSobreGrafica.Text = "Texto:"
       '
       'lblNombreSobreGrafica
       '
@@ -411,11 +414,10 @@ Partial Class frmSalidaDatos
       Me.lblNombreSobreGrafica.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.lblNombreSobreGrafica.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNombreSobreGrafica.ForeColor = System.Drawing.Color.Black
-      Me.lblNombreSobreGrafica.Location = New System.Drawing.Point(9, 278)
+      Me.lblNombreSobreGrafica.Location = New System.Drawing.Point(89, 278)
       Me.lblNombreSobreGrafica.Name = "lblNombreSobreGrafica"
-      Me.lblNombreSobreGrafica.Size = New System.Drawing.Size(82, 16)
+      Me.lblNombreSobreGrafica.Size = New System.Drawing.Size(0, 16)
       Me.lblNombreSobreGrafica.TabIndex = 64
-      Me.lblNombreSobreGrafica.Text = "Enfermedad:"
       '
       'Label4
       '
@@ -450,6 +452,30 @@ Partial Class frmSalidaDatos
       Me.txtTitulosObtenidos.Size = New System.Drawing.Size(105, 227)
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
+      '
+      'Label5
+      '
+      Me.Label5.AutoSize = True
+      Me.Label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label5.ForeColor = System.Drawing.Color.Black
+      Me.Label5.Location = New System.Drawing.Point(317, 278)
+      Me.Label5.Name = "Label5"
+      Me.Label5.Size = New System.Drawing.Size(43, 16)
+      Me.Label5.TabIndex = 66
+      Me.Label5.Text = "Texto:"
+      '
+      'Label6
+      '
+      Me.Label6.AutoSize = True
+      Me.Label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label6.ForeColor = System.Drawing.Color.Black
+      Me.Label6.Location = New System.Drawing.Point(5, 278)
+      Me.Label6.Name = "Label6"
+      Me.Label6.Size = New System.Drawing.Size(82, 16)
+      Me.Label6.TabIndex = 67
+      Me.Label6.Text = "Enfermedad:"
       '
       'frmSalidaDatos
       '
@@ -515,4 +541,6 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
    Friend WithEvents lblMensajeSobreGrafica As System.Windows.Forms.Label
    Friend WithEvents lblNombreSobreGrafica As System.Windows.Forms.Label
+   Friend WithEvents Label6 As System.Windows.Forms.Label
+   Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class

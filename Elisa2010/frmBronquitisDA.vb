@@ -4,12 +4,12 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmBronquitisDA
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
-      'Try
-      abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
-                       Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
-      'Catch ex As Exception
-      '   mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
-      'End Try
+      Try
+         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+                          Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+      Catch ex As Exception
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+      End Try
       Try
          organizaEnTabla(Me.dgvPlacaLeida, placaLector)
       Catch ex As Exception
@@ -162,12 +162,12 @@ Public Class frmBronquitisDA
       Catch
          mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
-      'Try
-      nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                         nombre, titulox, tituloy, numcaso, analisis)
-      'Catch
-      '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
-      'End Try
+      Try
+         nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+                            nombre, titulox, tituloy, numcaso, analisis)
+      Catch
+         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+      End Try
       Try
          frmSalidaDatos.Show()
          mostrarResultadosEnPantalla(frmSalidaDatos.lblNombreSobreGrafica, frmSalidaDatos.lblMensajeSobreGrafica, _
@@ -302,28 +302,34 @@ Public Class frmBronquitisDA
    End Sub
 
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
-      Try
-         botonesEstatus(False)
-         btnLeerArchivoExistente.Enabled = False
-         coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-         If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
-             controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
-             controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
-             controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
-            desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
-            btnCapturaTerminada.Enabled = False
-            btnObtenResultadosDA.Enabled = True
-         Else
+      If (MessageBox.Show("¿Es correcta la captura de datos?", "Confirme los datos ingresados", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) = _
+            Windows.Forms.DialogResult.Yes) Then
+         Try
+            botonesEstatus(False)
+            btnLeerArchivoExistente.Enabled = False
+            coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
+            If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
+                controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
+                controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
+                controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
+               desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+               btnCapturaTerminada.Enabled = False
+               btnObtenResultadosDA.Enabled = True
+            Else
+               btnCapturaTerminada.Enabled = True
+               btnObtenResultadosDA.Enabled = False
+               botonesEstatus(True)
+            End If
+         Catch
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
             btnCapturaTerminada.Enabled = True
             btnObtenResultadosDA.Enabled = False
             botonesEstatus(True)
-         End If
-      Catch
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
-         btnCapturaTerminada.Enabled = True
-         btnObtenResultadosDA.Enabled = False
-         botonesEstatus(True)
-      End Try
+         End Try
+      Else
+         mensajeRojo(Me.lblMensajeAAE, "Escriba los valores válidos.")
+      End If
    End Sub
 
 End Class

@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports MySql.Data.MySqlClient
 
 Public Class frmGumboroDA
-   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs)
+   Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
          abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
@@ -23,7 +23,7 @@ Public Class frmGumboroDA
       btnObtenResultadosDA.Enabled = False
    End Sub
 
-   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs)
+   Private Sub btnObtenResultadosDA_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenResultadosDA.Click
       Dim desdeArchivo As Integer = 1
       Dim cp1, cp2, cp3 As Decimal
       Dim cn1, cn2, cn3 As Decimal
@@ -193,11 +193,11 @@ Public Class frmGumboroDA
 
    End Sub
 
-   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs)
+   Private Sub btnCancelarDA_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelarDA.Click
       Me.Close()
    End Sub
 
-   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs)
+   Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs) Handles cmbNoCaso.Click
       Try
          cmbNoCaso.Items.Clear()
          txtNombreCliente.Text = ""
@@ -226,7 +226,7 @@ Public Class frmGumboroDA
       End Try
    End Sub
 
-   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs)
+   Private Sub btnBuscaCaso_Click(sender As System.Object, e As System.EventArgs) Handles btnBuscaCaso.Click
       Try
          Dim oConexion As MySqlConnection
          Dim aConsulta As String = ""
@@ -285,47 +285,53 @@ Public Class frmGumboroDA
       Me.cmbNoCaso.Focus()
    End Sub
 
-   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs)
+   Private Sub txtDesdeLetra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeLetra1.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtDesdeLetra1, " Desde Pozo x", "A", "H")
    End Sub
 
-   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs)
+   Private Sub txtDesdeValor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtDesdeValor1.TextChanged
       controlesValidosNumero(txtDesdeValor1, " Desde Pozo y", 1, 12)
    End Sub
 
-   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs)
+   Private Sub txtHastaLetra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaLetra2.TextChanged
       'Valor positivo uno, letra y numero
       controlesValidosLetra(txtHastaLetra2, " Hasta Pozo x ", "A", "H")
    End Sub
 
-   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs)
+   Private Sub txtHastaValor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtHastaValor2.TextChanged
       controlesValidosNumero(txtHastaValor2, " Hasta Pozo y ", 1, 12)
    End Sub
 
-   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs)
-      Try
-         botonesEstatus(False)
-         btnLeerArchivoExistente.Enabled = False
-         coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
-         If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
-              controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
-              controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
-              controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
-             desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
-            btnCapturaTerminada.Enabled = False
-            btnObtenResultadosDA.Enabled = True
-         Else
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+      If (MessageBox.Show("¿Es correcta la captura de datos?", "Confirme los datos ingresados", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) = _
+            Windows.Forms.DialogResult.Yes) Then
+         Try
+            botonesEstatus(False)
+            btnLeerArchivoExistente.Enabled = False
+            coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
+            If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
+                 controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
+                 controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
+                 controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
+                desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
+               btnCapturaTerminada.Enabled = False
+               btnObtenResultadosDA.Enabled = True
+            Else
+               btnCapturaTerminada.Enabled = True
+               btnObtenResultadosDA.Enabled = False
+               botonesEstatus(True)
+            End If
+         Catch
+            mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
             btnCapturaTerminada.Enabled = True
             btnObtenResultadosDA.Enabled = False
             botonesEstatus(True)
-         End If
-      Catch
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
-         btnCapturaTerminada.Enabled = True
-         btnObtenResultadosDA.Enabled = False
-         botonesEstatus(True)
-      End Try
+         End Try
+      Else
+         mensajeRojo(Me.lblMensajeAAE, "Escriba los valores válidos.")
+      End If
    End Sub
 
 End Class

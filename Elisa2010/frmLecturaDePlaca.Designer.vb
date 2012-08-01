@@ -66,10 +66,12 @@ Partial Class frmLecturaDePlaca
       Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.btnAceptarCPN = New System.Windows.Forms.Button()
+      Me.txtNoControlesPositivos = New System.Windows.Forms.TextBox()
+      Me.lblNoControlesPositivos = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
-      Me.txtNoControles = New System.Windows.Forms.TextBox()
-      Me.lblNoControles = New System.Windows.Forms.Label()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
+      Me.tNoControlesNegativos = New System.Windows.Forms.TextBox()
+      Me.lbltNoControlesNegativos = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel5.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -488,24 +490,46 @@ Partial Class frmLecturaDePlaca
       '
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.tNoControlesNegativos)
+      Me.Panel2.Controls.Add(Me.lbltNoControlesNegativos)
       Me.Panel2.Controls.Add(Me.btnAceptarCPN)
-      Me.Panel2.Controls.Add(Me.txtNoControles)
-      Me.Panel2.Controls.Add(Me.lblNoControles)
+      Me.Panel2.Controls.Add(Me.txtNoControlesPositivos)
+      Me.Panel2.Controls.Add(Me.lblNoControlesPositivos)
       Me.Panel2.Location = New System.Drawing.Point(6, 285)
       Me.Panel2.Name = "Panel2"
-      Me.Panel2.Size = New System.Drawing.Size(252, 77)
+      Me.Panel2.Size = New System.Drawing.Size(252, 93)
       Me.Panel2.TabIndex = 132
       '
       'btnAceptarCPN
       '
       Me.btnAceptarCPN.Enabled = False
       Me.btnAceptarCPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarCPN.Location = New System.Drawing.Point(110, 47)
+      Me.btnAceptarCPN.Location = New System.Drawing.Point(110, 63)
       Me.btnAceptarCPN.Name = "btnAceptarCPN"
       Me.btnAceptarCPN.Size = New System.Drawing.Size(135, 23)
       Me.btnAceptarCPN.TabIndex = 135
       Me.btnAceptarCPN.Text = "Aceptar"
       Me.btnAceptarCPN.UseVisualStyleBackColor = True
+      '
+      'txtNoControlesPositivos
+      '
+      Me.txtNoControlesPositivos.Enabled = False
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(3, 8)
+      Me.txtNoControlesPositivos.MaxLength = 1
+      Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
+      Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControlesPositivos.TabIndex = 130
+      '
+      'lblNoControlesPositivos
+      '
+      Me.lblNoControlesPositivos.AutoSize = True
+      Me.lblNoControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNoControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblNoControlesPositivos.Location = New System.Drawing.Point(35, 12)
+      Me.lblNoControlesPositivos.Name = "lblNoControlesPositivos"
+      Me.lblNoControlesPositivos.Size = New System.Drawing.Size(146, 15)
+      Me.lblNoControlesPositivos.TabIndex = 131
+      Me.lblNoControlesPositivos.Text = "No. de Controles Positivos"
       '
       'ckbControlesDefault
       '
@@ -519,26 +543,6 @@ Partial Class frmLecturaDePlaca
       Me.ckbControlesDefault.Text = "Valores por default"
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
-      'txtNoControles
-      '
-      Me.txtNoControles.Enabled = False
-      Me.txtNoControles.Location = New System.Drawing.Point(3, 4)
-      Me.txtNoControles.MaxLength = 1
-      Me.txtNoControles.Name = "txtNoControles"
-      Me.txtNoControles.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControles.TabIndex = 130
-      '
-      'lblNoControles
-      '
-      Me.lblNoControles.AutoSize = True
-      Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoControles.Location = New System.Drawing.Point(35, 8)
-      Me.lblNoControles.Name = "lblNoControles"
-      Me.lblNoControles.Size = New System.Drawing.Size(210, 15)
-      Me.lblNoControles.TabIndex = 131
-      Me.lblNoControles.Text = "No. de Controles positivos y negativos"
-      '
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -548,6 +552,26 @@ Partial Class frmLecturaDePlaca
       Me.btnLeerDatosPlaca.TabIndex = 134
       Me.btnLeerDatosPlaca.Text = "Obtener Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
+      '
+      'tNoControlesNegativos
+      '
+      Me.tNoControlesNegativos.Enabled = False
+      Me.tNoControlesNegativos.Location = New System.Drawing.Point(3, 34)
+      Me.tNoControlesNegativos.MaxLength = 1
+      Me.tNoControlesNegativos.Name = "tNoControlesNegativos"
+      Me.tNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
+      Me.tNoControlesNegativos.TabIndex = 136
+      '
+      'lbltNoControlesNegativos
+      '
+      Me.lbltNoControlesNegativos.AutoSize = True
+      Me.lbltNoControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lbltNoControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lbltNoControlesNegativos.Location = New System.Drawing.Point(35, 38)
+      Me.lbltNoControlesNegativos.Name = "lbltNoControlesNegativos"
+      Me.lbltNoControlesNegativos.Size = New System.Drawing.Size(154, 15)
+      Me.lbltNoControlesNegativos.TabIndex = 137
+      Me.lbltNoControlesNegativos.Text = "No. de Controles Negativos"
       '
       'frmLecturaDePlaca
       '
@@ -624,10 +648,12 @@ Partial Class frmLecturaDePlaca
    Friend WithEvents txtCP3Letra3 As System.Windows.Forms.TextBox
    Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
    Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
-   Friend WithEvents txtNoControles As System.Windows.Forms.TextBox
-   Friend WithEvents lblNoControles As System.Windows.Forms.Label
+   Friend WithEvents txtNoControlesPositivos As System.Windows.Forms.TextBox
+   Friend WithEvents lblNoControlesPositivos As System.Windows.Forms.Label
    Friend WithEvents lblMensajeLecturaPlaca As System.Windows.Forms.Label
    Friend WithEvents btnAceptarCPN As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
+   Friend WithEvents tNoControlesNegativos As System.Windows.Forms.TextBox
+   Friend WithEvents lbltNoControlesNegativos As System.Windows.Forms.Label
 End Class

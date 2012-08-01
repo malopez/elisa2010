@@ -86,7 +86,7 @@ Partial Class frmNewcastleDA
       '
       'ofdSelArchivo
       '
-      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xlsx|*.XLS|*.XLSX"
+      Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xls"
       Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
       Me.ofdSelArchivo.Title = "Abrir archivo de datos"
       '

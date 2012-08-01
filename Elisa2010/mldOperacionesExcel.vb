@@ -40,19 +40,19 @@ Module mldOperacionesExcel
             excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
          Next
       Next
-      excelApp.Range("A14").Value2 = "Controles Positivos"
-      excelApp.Range("A14").Interior.ColorIndex = 4
-      excelApp.Range("B14").Value2 = "Controles Negativos"
-      excelApp.Range("B14").Interior.ColorIndex = 3
+      excelApp.Range("B15").Value2 = "Controles Positivos"
+      excelApp.Range("B15").Interior.ColorIndex = 4
+      excelApp.Range("C15").Value2 = "Controles Negativos"
+      excelApp.Range("C15").Interior.ColorIndex = 3
       If (nocp = 3) Then
          'Copia los valores positivos.
-         excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
-         excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
-         excelApp.Range("A17").Value2 = placaLector(cpx3, cpy3)
+         excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+         excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
+         excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
          'Copia los valores negativos.
-         excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
-         excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
-         excelApp.Range("B17").Value2 = placaLector(cnx3, cny3)
+         excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
+         excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
+         excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
          'Para que el fondo de la celda sea color Verde=4
          excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
          excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
@@ -63,15 +63,15 @@ Module mldOperacionesExcel
          excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
       ElseIf (nocp = 2) Then
          'Copia los valores positivos.
-         excelApp.Range("A15").Value2 = placaLector(cpx1, cpy1)
-         excelApp.Range("A16").Value2 = placaLector(cpx2, cpy2)
+         excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+         excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
          Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
-         excelApp.Range("A17").Value2 = promp
+         excelApp.Range("B18").Value2 = promp
          'Copia valores negativos
-         excelApp.Range("B15").Value2 = placaLector(cnx1, cny1)
-         excelApp.Range("B16").Value2 = placaLector(cnx2, cny2)
+         excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
+         excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
          Dim promn As Decimal = (placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / 2
-         excelApp.Range("B17").Value2 = promn
+         excelApp.Range("C18").Value2 = promn
          'Para que el fondo de la celda sea color Verde=4
          excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
          excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
@@ -241,14 +241,15 @@ Module mldOperacionesExcel
 
       'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
       Dim nomenf As Excel.Shape
-      With excelApp.Range("G15:H15")
+      With excelApp.Range("G16:H16")
          nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
              Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
              Left:=.Left, Top:=.Top, _
              Width:=80, Height:=20)
       End With
-      'Quita el borde del cuadro de texto.
+      'Quita el borde del cuadro de texto y lo trae al frente de la gráfica.
       nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+      nomenf.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
 
       With nomenf.DrawingObject
          '.Characters.Text = excelApp.Range("B12").Value2
@@ -276,14 +277,16 @@ Module mldOperacionesExcel
              Width:=80, Height:=20)
       End With
 
-      'Quita el borde del cuadro de texto
+      'Quita el borde del cuadro de texto y lo trae al frente del la grafica.
       tbox.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+      tbox.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
+
 
       With tbox.DrawingObject
          '.Characters.Text = excelApp.Range("A12").Value2
          'Coloca el nombre del cuadrito, si cambia A12, cambia el titulo escrito dentro de él.
          .Formula = "=$A12"
-
+         
          With .Font
             .Name = "Arial"
             .FontStyle = "Regular"
@@ -346,68 +349,68 @@ Module mldOperacionesExcel
       Dim columna As String = ""
       Dim resultado As String = ""
       Dim temporal As String = ""
-      'Try
-      dialogo.Title = "Seleccione el archivo con datos de placa"
-      ' Show the open file dialog box.
-      If dialogo.ShowDialog = DialogResult.OK Then
-         ' Load the picture into the picture box.
-         dialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-         'dialogo.InitialDirectory = Environment.GetFolderPath(rutaPlacas)
-         ' Show the name of the file in the statusbar.
-      End If
-      rutaArchivo = dialogo.FileName
-      nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
+      Try
+         dialogo.Title = "Seleccione el archivo con datos de placa"
+         ' Show the open file dialog box.
+         If dialogo.ShowDialog = DialogResult.OK Then
+            ' Load the picture into the picture box.
+            dialogo.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            'dialogo.InitialDirectory = Environment.GetFolderPath(rutaPlacas)
+            ' Show the name of the file in the statusbar.
+         End If
+         rutaArchivo = dialogo.FileName
+         nombreArchivo = Mid(rutaArchivo, InStrRev(rutaArchivo, "\"))
 
-      excelApp.Workbooks.Open(rutaArchivo)
-      hojaExcel = excelApp.Worksheets(1)
-      excelApp.Visible = False
-      'Try
-      For i = 0 To 7
-         columna = obtenLetra(i)
-         For j = 0 To 11
-            temporal = Replace(hojaExcel.Range(columna & (j + 1)).Value2, "\", "")
-            If (temporal <> "") Then
-               placaLector(i, j) = CDec(temporal)
-            Else
-               placaLector(i, j) = 0
-            End If
-            resultado &= CStr(placaLector(i, j)) & vbTab
-         Next
-         resultado &= vbCrLf
-      Next
+         excelApp.Workbooks.Open(rutaArchivo)
+         hojaExcel = excelApp.Worksheets(1)
+         excelApp.Visible = False
+         Try
+            For i = 0 To 7
+               columna = obtenLetra(i)
+               For j = 0 To 11
+                  temporal = Replace(hojaExcel.Range(columna & (j + 1)).Value2, "\", "")
+                  If (temporal <> "") Then
+                     placaLector(i, j) = CDec(temporal)
+                  Else
+                     placaLector(i, j) = 0
+                  End If
+                  resultado &= CStr(placaLector(i, j)) & vbTab
+               Next
+               resultado &= vbCrLf
+            Next
 
-      'Catch ex As Exception
-      '   mensajeVerde(etiqueta, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
-      '   boton1.Enabled = True
-      '   boton2.Enabled = False
-      'End Try
-      'mensajeVerde(etiqueta, "Nombre del archivo abierto: " & nombreArchivo)
-      mensajeVerde(etiqueta, "Nombre del archivo abierto: " & rutaPlacas)
-      'frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
-      txtCPDAValor1.Text = hojaExcel.Range("A15").Value2
-      txtCPDAValor2.Text = hojaExcel.Range("A16").Value2
-      txtCPDAValor3.Text = hojaExcel.Range("A17").Value2
-      txtCNDAValor1.Text = hojaExcel.Range("B15").Value2
-      txtCNDAValor2.Text = hojaExcel.Range("B16").Value2
-      txtCNDAValor3.Text = hojaExcel.Range("B17").Value2
+         Catch ex As Exception
+            mensajeVerde(etiqueta, "ERROR:" & ex.Message & " " & ex.GetType.ToString)
+            boton1.Enabled = True
+            boton2.Enabled = False
+         End Try
+         mensajeVerde(etiqueta, "Nombre del archivo abierto: " & nombreArchivo)
+         mensajeVerde(etiqueta, "Nombre del archivo abierto: " & rutaPlacas)
+         'frmAbrirArchivoExistente.txtPlacaDesdeArchivo.Text = resultado
+         txtCPDAValor1.Text = hojaExcel.Range("B16").Value2
+         txtCPDAValor2.Text = hojaExcel.Range("B17").Value2
+         txtCPDAValor3.Text = hojaExcel.Range("B18").Value2
+         txtCNDAValor1.Text = hojaExcel.Range("C16").Value2
+         txtCNDAValor2.Text = hojaExcel.Range("C17").Value2
+         txtCNDAValor3.Text = hojaExcel.Range("C18").Value2
 
-      'Esta instruccion es para Excel 2010, no borrar.
-      'excelApp.ActiveWorkbook.Close()
-      excelApp.ActiveWorkbook.Close(False)
+         'Esta instruccion es para Excel 2010, no borrar.
+         'excelApp.ActiveWorkbook.Close()
+         excelApp.ActiveWorkbook.Close(False)
 
-      'Libera la aplicacion Excel
-      releaseObject(excelApp)
-      boton1.Enabled = False
-      boton2.Enabled = True
-      'Catch ex As FormatException
-      '   mensajeException(etiqueta, ex)
-      '   boton1.Enabled = True
-      '   boton2.Enabled = False
-      'Catch ex As Exception
-      '   mensajeException(etiqueta, ex)
-      '   boton1.Enabled = True
-      '   boton2.Enabled = False
-      'End Try
+         'Libera la aplicacion Excel
+         releaseObject(excelApp)
+         boton1.Enabled = False
+         boton2.Enabled = True
+      Catch ex As FormatException
+         mensajeException(etiqueta, ex)
+         boton1.Enabled = True
+         boton2.Enabled = False
+      Catch ex As Exception
+         mensajeException(etiqueta, ex)
+         boton1.Enabled = True
+         boton2.Enabled = False
+      End Try
 
    End Sub
 
@@ -416,7 +419,6 @@ Module mldOperacionesExcel
    '#CREA GRAFICA DE BARRAS UTILIZANDO EXCEL        #
    '#################################################
    'utiliza excel para crear la grafica de barras y la guarda  como imagen.
-
    Public Function creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
                                ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String) As String
       Dim excelApp As New Excel.Application
@@ -429,7 +431,7 @@ Module mldOperacionesExcel
       Dim j As Integer = 0
 
       'Mostrar Excel en pantalla
-      excelApp.Visible = True
+      excelApp.Visible = False
       'Crear el workbook
       libroExcel = excelApp.Workbooks.Add()
       'Darle nombre la primer hoja activa del libro de trabajo
@@ -525,13 +527,11 @@ Module mldOperacionesExcel
       'requerimos de la imagen guardada en disco
       Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".gif"
 
-
-
-      'Esta instruccion es para excel 2010.
+      'Esta instruccion es para excel 2010 NO BORRAR.
       'excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:=nombreArchivo, FilterName:="BMP")
       excelApp.ActiveSheet.ChartObjects(1).chart.Export(nombreArchivo, "gif", False)
 
-      'Cierra el libro activo de Excel y Sale sin salvar la hoja de excel actual usando Excel 2010
+      'Cierra el libro activo de Excel y Sale sin salvar la hoja de excel actual usando Excel 2010.
       'excelApp.ActiveWorkbook.Close(SaveChanges:=False)
       excelApp.ActiveWorkbook.Close(False)
 

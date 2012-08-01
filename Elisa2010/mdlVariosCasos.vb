@@ -523,8 +523,8 @@
                                      ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
                                      ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
                                      ByVal coefVar As Decimal, ByVal desvEst As Decimal, ByVal varianza As Decimal)
-      lblNombreSobreGrafica.Text = "Enfermedad Analizada: " & nombreSobreGrafica.ToString()
-      lblMensajeSobreGrafica.Text = "Texto: " & mensajeSobreGrafica.ToString()
+      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
+      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
       txtNombreEnfermedad.Text = nombre.ToString()
       txtNombreCliente.Text = nombreCliente.ToString()
       txtNoCaso.Text = numcaso.ToString()
