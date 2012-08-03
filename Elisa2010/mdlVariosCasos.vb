@@ -592,4 +592,56 @@
       calculoDeTitulo(logaritmoTitulos, calculoDeTitulos)
    End Sub
 
+   'Permite guardar los casos
+   Public Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
+                         ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
+                          ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
+                          ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
+                          ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+                          ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
+                          ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
+                          ByVal lblMensajeCaso As Label, ByVal mensaje As String)
+      Dim cadena As String
+      Dim tabla() As String
+      Dim numCaso As String = ""
+      cadena = cmbCaso.Text
+      tabla = Split(cadena, " | ")
+      numCaso = tabla(0)
+      Dim nocp As Integer = CInt(noControlesPositivos.Text)
+      Dim nocn As Integer = CInt(noControlesNegativos.Text)
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
+      Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
+      Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
+      Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
+      Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
+      Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
+      Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
+      Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
+      Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
+      Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
+
+      'Asigna valor default a la definición de cp para x y y.
+
+      Dim cpx3 As Integer = 0
+      Dim cnx3 As Integer = 0
+      Dim cpy3 As Integer = 0
+      Dim cny3 As Integer = 0
+      'Verifica si  son tres controles positivos
+      If (nocp = 3) Then
+         cpx3 = siValorEsLetra(txtCP3Letra3)
+         cnx3 = siValorEsLetra(txtCN3Letra3)
+         cpy3 = CInt(txtCP3Valor3.Text) - 1
+         cny3 = CInt(txtCN3Valor3.Text) - 1
+      End If
+      Try
+         guardaDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+         mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+      Catch ex As Exception
+         mensajeRojo(lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+      End Try
+   End Sub
+
 End Module

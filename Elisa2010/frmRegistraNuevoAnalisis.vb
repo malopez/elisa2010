@@ -372,9 +372,9 @@ Public Class frmRegistraNuevoAnalisis
       Dim analisis As String = Replace(tabla(1), "/", "")
       Dim nocp As Integer = 3
       btnGuardarDatosExcel.Enabled = False
-      guardaDatosExcel(placaLector, nocp, tabla(0), analisis, siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
-                       siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
-                       Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text), desdex, desdey, hastax, hastay)
+      'guardaDatosExcel(placaLector, nocp, tabla(0), analisis, siValorEsLetra(Me.txtCP1Letra1), siValorEsLetra(Me.txtCP2Letra2), siValorEsLetra(Me.txtCP3Letra3), siValorEsLetra(Me.txtCN1Letra1), _
+      '                 siValorEsLetra(Me.txtCN2Letra2), siValorEsLetra(Me.txtCN3Letra3), Val(Me.txtCP1Valor1.Text), Val(Me.txtCP2Valor2.Text), Val(Me.txtCP3Valor3.Text), _
+      '                 Val(Me.txtCN1Valor1.Text), Val(Me.txtCN2Valor2.Text), Val(Me.txtCN3Valor3.Text), desdex, desdey, hastax, hastay)
    End Sub
 
 

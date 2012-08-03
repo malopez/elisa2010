@@ -7,7 +7,8 @@ Imports System.Runtime.InteropServices
 Module mldOperacionesExcel
 
    'Procedimiento que sirve para generar el archivo de excel con la placa original
-   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal numCaso As String, ByVal analisis As String, _
+   Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal nocn As Integer, _
+                               ByVal numCaso As String, ByVal analisis As String, _
                                 ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                                ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
@@ -33,7 +34,7 @@ Module mldOperacionesExcel
       libroExcel = excelApp.Workbooks.Add()
       'Darle nombre la primer hoja activa del libro de trabajo
       excelApp.ActiveSheet.Name = "PlacaLeida"
-      'Agregar datos a la hoja de Excel de la frecuencia relativa
+      'Agregar datos a la hoja de Excel de la placa leida orignal desde el lector
       For i = 0 To 7
          For j = 0 To 11
             'MessageBox.Show("valor de placa lector " & placaLector(i, j))
@@ -44,41 +45,65 @@ Module mldOperacionesExcel
       excelApp.Range("B15").Interior.ColorIndex = 4
       excelApp.Range("C15").Value2 = "Controles Negativos"
       excelApp.Range("C15").Interior.ColorIndex = 3
-      If (nocp = 3) Then
-         'Copia los valores positivos.
-         excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-         excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-         excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
-         'Copia los valores negativos.
-         excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
-         excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
-         excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
-         'Para que el fondo de la celda sea color Verde=4
-         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-         excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
-         'Hacer el fondo de la celda color Rojo=3
-         excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
-         excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
-         excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
-      ElseIf (nocp = 2) Then
+
+      'Analiza el numero de controles positivos
+      If (nocp = 2) Then
          'Copia los valores positivos.
          excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
          excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
          Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
          excelApp.Range("B18").Value2 = promp
+         'Para que el fondo de la celda sea color Verde=4
+         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+      ElseIf (nocp = 3) Then
+         'Copia los valores positivos.
+         excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+         excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
+         excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
+         'Para que el fondo de la celda sea color Verde=4
+         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+         excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
+      End If
+
+      'Analiza si el numero de controles negativos es dos o tres
+      If (nocn = 2) Then
+         'Copia los valores positivos.
+         'excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+         'excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
+         'Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
+         'excelApp.Range("B18").Value2 = promp
          'Copia valores negativos
          excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
          excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
          Dim promn As Decimal = (placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / 2
          excelApp.Range("C18").Value2 = promn
          'Para que el fondo de la celda sea color Verde=4
-         excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-         excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+         'excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         'excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
          'Hacer el fondo de la celda color Rojo=3
          excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
          excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
+      ElseIf (nocn = 3) Then
+         'Copia los valores positivos.
+         'excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
+         'excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
+         'excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
+         'Copia los valores negativos.
+         excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
+         excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
+         excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
+         'Para que el fondo de la celda sea color Verde=4
+         'excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
+         'excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
+         'excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
+         'Hacer el fondo de la celda color Rojo=3
+         excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
+         excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
+         excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
       End If
+
       If numcolor = 6 Then
          'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
          Dim renglones As Integer = 11

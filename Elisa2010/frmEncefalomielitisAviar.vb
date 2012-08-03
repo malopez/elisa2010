@@ -1969,13 +1969,13 @@ Public Class frmEncefalomielitisAviar
          cpy3 = CInt(Me.txtCP3Valor3.Text) - 1
          cny3 = CInt(Me.txtCN3Valor3.Text) - 1
       End If
-      Try
-         guardaDatosExcel(placaLector, nocp, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
-         mensajeVerde(Me.lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
-      Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
-      End Try
+      'Try
+      '   guardaDatosExcel(placaLector, nocp, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+      '                    cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+      '   mensajeVerde(Me.lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+      'Catch ex As Exception
+      '   mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+      'End Try
    End Sub
 
    Private Sub coloreaTablaCasos(ByVal noCasos As Integer)

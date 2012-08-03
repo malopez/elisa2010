@@ -31,7 +31,6 @@ Partial Class frmGumboroAviar
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
-      Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
       Me.Panel4 = New System.Windows.Forms.Panel()
@@ -39,31 +38,8 @@ Partial Class frmGumboroAviar
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-      Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
-      Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
-      Me.txtCN1Letra1 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo3 = New System.Windows.Forms.Label()
-      Me.txtCN1Valor1 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo2 = New System.Windows.Forms.Label()
-      Me.txtCN2Valor2 = New System.Windows.Forms.TextBox()
-      Me.lblCNNo1 = New System.Windows.Forms.Label()
-      Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
-      Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
-      Me.grbControlesPositivos = New System.Windows.Forms.GroupBox()
-      Me.txtCP1Letra1 = New System.Windows.Forms.TextBox()
-      Me.txtCP1Valor1 = New System.Windows.Forms.TextBox()
-      Me.txtCP2Letra2 = New System.Windows.Forms.TextBox()
-      Me.lblCPNo3 = New System.Windows.Forms.Label()
-      Me.txtCP2Valor2 = New System.Windows.Forms.TextBox()
-      Me.lblCPNo2 = New System.Windows.Forms.Label()
-      Me.txtCP3Letra3 = New System.Windows.Forms.TextBox()
-      Me.lblCPNo1 = New System.Windows.Forms.Label()
-      Me.txtCP3Valor3 = New System.Windows.Forms.TextBox()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
-      Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
       Me.btnCancelar = New System.Windows.Forms.Button()
-      Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.tbcDatosDelCaso = New System.Windows.Forms.TabControl()
       Me.tbcCaso1 = New System.Windows.Forms.TabPage()
@@ -187,11 +163,38 @@ Partial Class frmGumboroAviar
       Me.Label39 = New System.Windows.Forms.Label()
       Me.Label40 = New System.Windows.Forms.Label()
       Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
+      Me.Panel5 = New System.Windows.Forms.Panel()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.Panel1 = New System.Windows.Forms.Panel()
+      Me.Label41 = New System.Windows.Forms.Label()
+      Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
+      Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
+      Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
+      Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
+      Me.txtCN1Letra1 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo3 = New System.Windows.Forms.Label()
+      Me.txtCN1Valor1 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo2 = New System.Windows.Forms.Label()
+      Me.txtCN2Valor2 = New System.Windows.Forms.TextBox()
+      Me.lblCNNo1 = New System.Windows.Forms.Label()
+      Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
+      Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
+      Me.grbControlesPositivos = New System.Windows.Forms.GroupBox()
+      Me.txtCP1Letra1 = New System.Windows.Forms.TextBox()
+      Me.txtCP1Valor1 = New System.Windows.Forms.TextBox()
+      Me.txtCP2Letra2 = New System.Windows.Forms.TextBox()
+      Me.lblCPNo3 = New System.Windows.Forms.Label()
+      Me.txtCP2Valor2 = New System.Windows.Forms.TextBox()
+      Me.lblCPNo2 = New System.Windows.Forms.Label()
+      Me.txtCP3Letra3 = New System.Windows.Forms.TextBox()
+      Me.lblCPNo1 = New System.Windows.Forms.Label()
+      Me.txtCP3Valor3 = New System.Windows.Forms.TextBox()
       Me.lblNoControles = New System.Windows.Forms.Label()
-      Me.txtNoControles = New System.Windows.Forms.TextBox()
+      Me.txtNoControlesPositivos = New System.Windows.Forms.TextBox()
       Me.btnAceptarEnfermedad = New System.Windows.Forms.Button()
       Me.lblIdAnalisis = New System.Windows.Forms.Label()
+      Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
+      Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.lblLogSPS = New System.Windows.Forms.Label()
@@ -199,12 +202,9 @@ Partial Class frmGumboroAviar
       Me.cmbNombreEnfermedad = New System.Windows.Forms.ComboBox()
       Me.lblNoCasos = New System.Windows.Forms.Label()
       Me.txtNoDeCasos = New System.Windows.Forms.TextBox()
-      Me.Panel5 = New System.Windows.Forms.Panel()
-      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
+      Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+      Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
       Me.Panel4.SuspendLayout()
-      Me.Panel3.SuspendLayout()
-      Me.grbControlesNegativos.SuspendLayout()
-      Me.grbControlesPositivos.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.tbcDatosDelCaso.SuspendLayout()
       Me.tbcCaso1.SuspendLayout()
@@ -215,9 +215,11 @@ Partial Class frmGumboroAviar
       Me.tbcCaso6.SuspendLayout()
       Me.tbcCaso7.SuspendLayout()
       Me.tbcCaso8.SuspendLayout()
-      Me.Panel1.SuspendLayout()
       Me.Panel5.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
+      Me.Panel1.SuspendLayout()
+      Me.grbControlesNegativos.SuspendLayout()
+      Me.grbControlesPositivos.SuspendLayout()
       Me.SuspendLayout()
       '
       'btnCapturaTerminada
@@ -254,18 +256,6 @@ Partial Class frmGumboroAviar
       Me.txtDatosRecibidos.TabStop = False
       Me.txtDatosRecibidos.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
       Me.txtDatosRecibidos.Visible = False
-      '
-      'ckbControlesDefault
-      '
-      Me.ckbControlesDefault.AutoSize = True
-      Me.ckbControlesDefault.Enabled = False
-      Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
-      Me.ckbControlesDefault.Location = New System.Drawing.Point(11, 293)
-      Me.ckbControlesDefault.Name = "ckbControlesDefault"
-      Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 102
-      Me.ckbControlesDefault.Text = "Valores por default"
-      Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
       'lblNombreLector
       '
@@ -335,233 +325,6 @@ Partial Class frmGumboroAviar
       '
       Me.SerialPort1.PortName = "COM3"
       '
-      'Panel3
-      '
-      Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.grbControlesNegativos)
-      Me.Panel3.Controls.Add(Me.grbControlesPositivos)
-      Me.Panel3.Location = New System.Drawing.Point(7, 158)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(310, 120)
-      Me.Panel3.TabIndex = 107
-      '
-      'grbControlesNegativos
-      '
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN2Letra2)
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN1Letra1)
-      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo3)
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN1Valor1)
-      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo2)
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN2Valor2)
-      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo1)
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN3Letra3)
-      Me.grbControlesNegativos.Controls.Add(Me.txtCN3Valor3)
-      Me.grbControlesNegativos.Enabled = False
-      Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesNegativos.Location = New System.Drawing.Point(158, 3)
-      Me.grbControlesNegativos.Name = "grbControlesNegativos"
-      Me.grbControlesNegativos.Size = New System.Drawing.Size(140, 110)
-      Me.grbControlesNegativos.TabIndex = 33
-      Me.grbControlesNegativos.TabStop = False
-      Me.grbControlesNegativos.Text = "Controles Negativos"
-      '
-      'txtCN2Letra2
-      '
-      Me.txtCN2Letra2.Location = New System.Drawing.Point(46, 50)
-      Me.txtCN2Letra2.MaxLength = 1
-      Me.txtCN2Letra2.Name = "txtCN2Letra2"
-      Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCN2Letra2.TabIndex = 13
-      Me.txtCN2Letra2.Visible = False
-      '
-      'txtCN1Letra1
-      '
-      Me.txtCN1Letra1.Location = New System.Drawing.Point(46, 25)
-      Me.txtCN1Letra1.MaxLength = 1
-      Me.txtCN1Letra1.Name = "txtCN1Letra1"
-      Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Letra1.TabIndex = 11
-      Me.txtCN1Letra1.Visible = False
-      '
-      'lblCNNo3
-      '
-      Me.lblCNNo3.AutoSize = True
-      Me.lblCNNo3.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo3.Location = New System.Drawing.Point(6, 80)
-      Me.lblCNNo3.Name = "lblCNNo3"
-      Me.lblCNNo3.Size = New System.Drawing.Size(38, 16)
-      Me.lblCNNo3.TabIndex = 27
-      Me.lblCNNo3.Text = "No. 3"
-      Me.lblCNNo3.Visible = False
-      '
-      'txtCN1Valor1
-      '
-      Me.txtCN1Valor1.Location = New System.Drawing.Point(79, 25)
-      Me.txtCN1Valor1.MaxLength = 2
-      Me.txtCN1Valor1.Name = "txtCN1Valor1"
-      Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Valor1.TabIndex = 12
-      Me.txtCN1Valor1.Visible = False
-      '
-      'lblCNNo2
-      '
-      Me.lblCNNo2.AutoSize = True
-      Me.lblCNNo2.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo2.Location = New System.Drawing.Point(6, 54)
-      Me.lblCNNo2.Name = "lblCNNo2"
-      Me.lblCNNo2.Size = New System.Drawing.Size(38, 16)
-      Me.lblCNNo2.TabIndex = 26
-      Me.lblCNNo2.Text = "No. 2"
-      Me.lblCNNo2.Visible = False
-      '
-      'txtCN2Valor2
-      '
-      Me.txtCN2Valor2.Location = New System.Drawing.Point(79, 50)
-      Me.txtCN2Valor2.MaxLength = 2
-      Me.txtCN2Valor2.Name = "txtCN2Valor2"
-      Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN2Valor2.TabIndex = 14
-      Me.txtCN2Valor2.Visible = False
-      '
-      'lblCNNo1
-      '
-      Me.lblCNNo1.AutoSize = True
-      Me.lblCNNo1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCNNo1.Location = New System.Drawing.Point(6, 28)
-      Me.lblCNNo1.Name = "lblCNNo1"
-      Me.lblCNNo1.Size = New System.Drawing.Size(38, 16)
-      Me.lblCNNo1.TabIndex = 25
-      Me.lblCNNo1.Text = "No. 1"
-      Me.lblCNNo1.Visible = False
-      '
-      'txtCN3Letra3
-      '
-      Me.txtCN3Letra3.Location = New System.Drawing.Point(46, 76)
-      Me.txtCN3Letra3.MaxLength = 1
-      Me.txtCN3Letra3.Name = "txtCN3Letra3"
-      Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Letra3.TabIndex = 15
-      Me.txtCN3Letra3.Visible = False
-      '
-      'txtCN3Valor3
-      '
-      Me.txtCN3Valor3.Location = New System.Drawing.Point(79, 76)
-      Me.txtCN3Valor3.MaxLength = 2
-      Me.txtCN3Valor3.Name = "txtCN3Valor3"
-      Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Valor3.TabIndex = 16
-      Me.txtCN3Valor3.Visible = False
-      '
-      'grbControlesPositivos
-      '
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP1Letra1)
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP1Valor1)
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP2Letra2)
-      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo3)
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP2Valor2)
-      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo2)
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP3Letra3)
-      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo1)
-      Me.grbControlesPositivos.Controls.Add(Me.txtCP3Valor3)
-      Me.grbControlesPositivos.Enabled = False
-      Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.grbControlesPositivos.Location = New System.Drawing.Point(11, 3)
-      Me.grbControlesPositivos.Name = "grbControlesPositivos"
-      Me.grbControlesPositivos.Size = New System.Drawing.Size(140, 110)
-      Me.grbControlesPositivos.TabIndex = 34
-      Me.grbControlesPositivos.TabStop = False
-      Me.grbControlesPositivos.Text = "Controles Positivos"
-      '
-      'txtCP1Letra1
-      '
-      Me.txtCP1Letra1.Location = New System.Drawing.Point(46, 25)
-      Me.txtCP1Letra1.MaxLength = 1
-      Me.txtCP1Letra1.Name = "txtCP1Letra1"
-      Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Letra1.TabIndex = 5
-      Me.txtCP1Letra1.Visible = False
-      '
-      'txtCP1Valor1
-      '
-      Me.txtCP1Valor1.Location = New System.Drawing.Point(78, 25)
-      Me.txtCP1Valor1.MaxLength = 2
-      Me.txtCP1Valor1.Name = "txtCP1Valor1"
-      Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Valor1.TabIndex = 6
-      Me.txtCP1Valor1.Visible = False
-      '
-      'txtCP2Letra2
-      '
-      Me.txtCP2Letra2.Location = New System.Drawing.Point(46, 50)
-      Me.txtCP2Letra2.MaxLength = 1
-      Me.txtCP2Letra2.Name = "txtCP2Letra2"
-      Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP2Letra2.TabIndex = 7
-      Me.txtCP2Letra2.Visible = False
-      '
-      'lblCPNo3
-      '
-      Me.lblCPNo3.AutoSize = True
-      Me.lblCPNo3.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCPNo3.Location = New System.Drawing.Point(5, 77)
-      Me.lblCPNo3.Name = "lblCPNo3"
-      Me.lblCPNo3.Size = New System.Drawing.Size(38, 16)
-      Me.lblCPNo3.TabIndex = 24
-      Me.lblCPNo3.Text = "No. 3"
-      Me.lblCPNo3.Visible = False
-      '
-      'txtCP2Valor2
-      '
-      Me.txtCP2Valor2.Location = New System.Drawing.Point(79, 50)
-      Me.txtCP2Valor2.MaxLength = 2
-      Me.txtCP2Valor2.Name = "txtCP2Valor2"
-      Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCP2Valor2.TabIndex = 8
-      Me.txtCP2Valor2.Visible = False
-      '
-      'lblCPNo2
-      '
-      Me.lblCPNo2.AutoSize = True
-      Me.lblCPNo2.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCPNo2.Location = New System.Drawing.Point(4, 54)
-      Me.lblCPNo2.Name = "lblCPNo2"
-      Me.lblCPNo2.Size = New System.Drawing.Size(38, 16)
-      Me.lblCPNo2.TabIndex = 23
-      Me.lblCPNo2.Text = "No. 2"
-      Me.lblCPNo2.Visible = False
-      '
-      'txtCP3Letra3
-      '
-      Me.txtCP3Letra3.Location = New System.Drawing.Point(46, 77)
-      Me.txtCP3Letra3.MaxLength = 1
-      Me.txtCP3Letra3.Name = "txtCP3Letra3"
-      Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Letra3.TabIndex = 9
-      Me.txtCP3Letra3.Visible = False
-      '
-      'lblCPNo1
-      '
-      Me.lblCPNo1.AutoSize = True
-      Me.lblCPNo1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblCPNo1.Location = New System.Drawing.Point(5, 28)
-      Me.lblCPNo1.Name = "lblCPNo1"
-      Me.lblCPNo1.Size = New System.Drawing.Size(38, 16)
-      Me.lblCPNo1.TabIndex = 22
-      Me.lblCPNo1.Text = "No. 1"
-      Me.lblCPNo1.Visible = False
-      '
-      'txtCP3Valor3
-      '
-      Me.txtCP3Valor3.Location = New System.Drawing.Point(78, 77)
-      Me.txtCP3Valor3.MaxLength = 2
-      Me.txtCP3Valor3.Name = "txtCP3Valor3"
-      Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Valor3.TabIndex = 10
-      Me.txtCP3Valor3.Visible = False
-      '
       'btnLeerDatosPlaca
       '
       Me.btnLeerDatosPlaca.Enabled = False
@@ -573,17 +336,6 @@ Partial Class frmGumboroAviar
       Me.btnLeerDatosPlaca.Text = "Obtener Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
-      'btnDefinirControlesPN
-      '
-      Me.btnDefinirControlesPN.Enabled = False
-      Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(131, 289)
-      Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
-      Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
-      Me.btnDefinirControlesPN.TabIndex = 103
-      Me.btnDefinirControlesPN.Text = "Definir Controles"
-      Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
-      '
       'btnCancelar
       '
       Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -593,17 +345,6 @@ Partial Class frmGumboroAviar
       Me.btnCancelar.TabIndex = 112
       Me.btnCancelar.Text = "Cancelar"
       Me.btnCancelar.UseVisualStyleBackColor = True
-      '
-      'btnAceptarControles
-      '
-      Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarControles.Location = New System.Drawing.Point(242, 289)
-      Me.btnAceptarControles.Name = "btnAceptarControles"
-      Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarControles.TabIndex = 104
-      Me.btnAceptarControles.Text = "Aceptar Controles"
-      Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
       'Panel2
       '
@@ -2042,134 +1783,6 @@ Partial Class frmGumboroAviar
       Me.dtpFechaElaboracion.TabStop = False
       Me.dtpFechaElaboracion.Value = New Date(2012, 5, 4, 0, 0, 0, 0)
       '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblNoControles)
-      Me.Panel1.Controls.Add(Me.txtNoControles)
-      Me.Panel1.Controls.Add(Me.btnAceptarEnfermedad)
-      Me.Panel1.Controls.Add(Me.lblIdAnalisis)
-      Me.Panel1.Controls.Add(Me.lblLogTit2)
-      Me.Panel1.Controls.Add(Me.lblLogTit1)
-      Me.Panel1.Controls.Add(Me.lblLogSPS)
-      Me.Panel1.Controls.Add(Me.lblNombreEnfermedad)
-      Me.Panel1.Controls.Add(Me.cmbNombreEnfermedad)
-      Me.Panel1.Controls.Add(Me.lblNoCasos)
-      Me.Panel1.Controls.Add(Me.txtNoDeCasos)
-      Me.Panel1.Location = New System.Drawing.Point(6, 32)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(309, 112)
-      Me.Panel1.TabIndex = 101
-      '
-      'lblNoControles
-      '
-      Me.lblNoControles.AutoSize = True
-      Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoControles.Location = New System.Drawing.Point(43, 80)
-      Me.lblNoControles.Name = "lblNoControles"
-      Me.lblNoControles.Size = New System.Drawing.Size(100, 15)
-      Me.lblNoControles.TabIndex = 44
-      Me.lblNoControles.Text = "No. de Controles "
-      '
-      'txtNoControles
-      '
-      Me.txtNoControles.Location = New System.Drawing.Point(11, 76)
-      Me.txtNoControles.MaxLength = 1
-      Me.txtNoControles.Name = "txtNoControles"
-      Me.txtNoControles.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControles.TabIndex = 43
-      '
-      'btnAceptarEnfermedad
-      '
-      Me.btnAceptarEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(205, 80)
-      Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
-      Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(92, 23)
-      Me.btnAceptarEnfermedad.TabIndex = 2
-      Me.btnAceptarEnfermedad.Text = "Aceptar"
-      Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
-      '
-      'lblIdAnalisis
-      '
-      Me.lblIdAnalisis.AutoSize = True
-      Me.lblIdAnalisis.Location = New System.Drawing.Point(189, 49)
-      Me.lblIdAnalisis.Name = "lblIdAnalisis"
-      Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
-      Me.lblIdAnalisis.TabIndex = 42
-      Me.lblIdAnalisis.Text = "id_analisis"
-      Me.lblIdAnalisis.Visible = False
-      '
-      'lblLogTit2
-      '
-      Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(257, 64)
-      Me.lblLogTit2.Name = "lblLogTit2"
-      Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
-      Me.lblLogTit2.TabIndex = 41
-      Me.lblLogTit2.Text = "logTit2:"
-      Me.lblLogTit2.Visible = False
-      '
-      'lblLogTit1
-      '
-      Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(256, 49)
-      Me.lblLogTit1.Name = "lblLogTit1"
-      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
-      Me.lblLogTit1.TabIndex = 40
-      Me.lblLogTit1.Text = "logTit1: "
-      Me.lblLogTit1.Visible = False
-      '
-      'lblLogSPS
-      '
-      Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(191, 64)
-      Me.lblLogSPS.Name = "lblLogSPS"
-      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
-      Me.lblLogSPS.TabIndex = 39
-      Me.lblLogSPS.Text = "logsSPS: "
-      Me.lblLogSPS.Visible = False
-      '
-      'lblNombreEnfermedad
-      '
-      Me.lblNombreEnfermedad.AutoSize = True
-      Me.lblNombreEnfermedad.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNombreEnfermedad.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNombreEnfermedad.Location = New System.Drawing.Point(61, 4)
-      Me.lblNombreEnfermedad.Name = "lblNombreEnfermedad"
-      Me.lblNombreEnfermedad.Size = New System.Drawing.Size(163, 16)
-      Me.lblNombreEnfermedad.TabIndex = 38
-      Me.lblNombreEnfermedad.Text = "Nombre de la Enfermedad"
-      '
-      'cmbNombreEnfermedad
-      '
-      Me.cmbNombreEnfermedad.FormattingEnabled = True
-      Me.cmbNombreEnfermedad.Location = New System.Drawing.Point(10, 23)
-      Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
-      Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(287, 21)
-      Me.cmbNombreEnfermedad.TabIndex = 0
-      Me.cmbNombreEnfermedad.Text = "E03/ELIBF | GUMBORO"
-      '
-      'lblNoCasos
-      '
-      Me.lblNoCasos.AutoSize = True
-      Me.lblNoCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNoCasos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCasos.Location = New System.Drawing.Point(43, 56)
-      Me.lblNoCasos.Name = "lblNoCasos"
-      Me.lblNoCasos.Size = New System.Drawing.Size(141, 15)
-      Me.lblNoCasos.TabIndex = 36
-      Me.lblNoCasos.Text = "No. de casos en la placa"
-      '
-      'txtNoDeCasos
-      '
-      Me.txtNoDeCasos.Location = New System.Drawing.Point(11, 50)
-      Me.txtNoDeCasos.MaxLength = 1
-      Me.txtNoDeCasos.Name = "txtNoDeCasos"
-      Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoDeCasos.TabIndex = 1
-      '
       'Panel5
       '
       Me.Panel5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -2218,28 +1831,447 @@ Partial Class frmGumboroAviar
       Me.dgvPlacaLeida.TabIndex = 101
       Me.dgvPlacaLeida.TabStop = False
       '
+      'Panel1
+      '
+      Me.Panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel1.Controls.Add(Me.Label41)
+      Me.Panel1.Controls.Add(Me.txtNoControlesNegativos)
+      Me.Panel1.Controls.Add(Me.ckbControlesDefault)
+      Me.Panel1.Controls.Add(Me.grbControlesNegativos)
+      Me.Panel1.Controls.Add(Me.grbControlesPositivos)
+      Me.Panel1.Controls.Add(Me.lblNoControles)
+      Me.Panel1.Controls.Add(Me.txtNoControlesPositivos)
+      Me.Panel1.Controls.Add(Me.btnAceptarEnfermedad)
+      Me.Panel1.Controls.Add(Me.lblIdAnalisis)
+      Me.Panel1.Controls.Add(Me.btnDefinirControlesPN)
+      Me.Panel1.Controls.Add(Me.btnAceptarControles)
+      Me.Panel1.Controls.Add(Me.lblLogTit2)
+      Me.Panel1.Controls.Add(Me.lblLogTit1)
+      Me.Panel1.Controls.Add(Me.lblLogSPS)
+      Me.Panel1.Controls.Add(Me.lblNombreEnfermedad)
+      Me.Panel1.Controls.Add(Me.cmbNombreEnfermedad)
+      Me.Panel1.Controls.Add(Me.lblNoCasos)
+      Me.Panel1.Controls.Add(Me.txtNoDeCasos)
+      Me.Panel1.Controls.Add(Me.ShapeContainer1)
+      Me.Panel1.Location = New System.Drawing.Point(6, 6)
+      Me.Panel1.Name = "Panel1"
+      Me.Panel1.Size = New System.Drawing.Size(311, 309)
+      Me.Panel1.TabIndex = 119
+      '
+      'Label41
+      '
+      Me.Label41.AutoSize = True
+      Me.Label41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label41.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label41.Location = New System.Drawing.Point(189, 91)
+      Me.Label41.Name = "Label41"
+      Me.Label41.Size = New System.Drawing.Size(100, 15)
+      Me.Label41.TabIndex = 52
+      Me.Label41.Text = "No. de Negativos"
+      '
+      'txtNoControlesNegativos
+      '
+      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(157, 89)
+      Me.txtNoControlesNegativos.MaxLength = 1
+      Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
+      Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControlesNegativos.TabIndex = 51
+      '
+      'ckbControlesDefault
+      '
+      Me.ckbControlesDefault.AutoSize = True
+      Me.ckbControlesDefault.Enabled = False
+      Me.ckbControlesDefault.ForeColor = System.Drawing.Color.DarkGreen
+      Me.ckbControlesDefault.Location = New System.Drawing.Point(12, 142)
+      Me.ckbControlesDefault.Name = "ckbControlesDefault"
+      Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
+      Me.ckbControlesDefault.TabIndex = 3
+      Me.ckbControlesDefault.Text = "Valores por default"
+      Me.ckbControlesDefault.UseVisualStyleBackColor = True
+      '
+      'grbControlesNegativos
+      '
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN2Letra2)
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN1Letra1)
+      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo3)
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN1Valor1)
+      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo2)
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN2Valor2)
+      Me.grbControlesNegativos.Controls.Add(Me.lblCNNo1)
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN3Letra3)
+      Me.grbControlesNegativos.Controls.Add(Me.txtCN3Valor3)
+      Me.grbControlesNegativos.Enabled = False
+      Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.grbControlesNegativos.Location = New System.Drawing.Point(160, 165)
+      Me.grbControlesNegativos.Name = "grbControlesNegativos"
+      Me.grbControlesNegativos.Size = New System.Drawing.Size(140, 110)
+      Me.grbControlesNegativos.TabIndex = 47
+      Me.grbControlesNegativos.TabStop = False
+      Me.grbControlesNegativos.Text = "Controles Negativos"
+      '
+      'txtCN2Letra2
+      '
+      Me.txtCN2Letra2.Location = New System.Drawing.Point(46, 50)
+      Me.txtCN2Letra2.MaxLength = 1
+      Me.txtCN2Letra2.Name = "txtCN2Letra2"
+      Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
+      Me.txtCN2Letra2.TabIndex = 13
+      Me.txtCN2Letra2.Visible = False
+      '
+      'txtCN1Letra1
+      '
+      Me.txtCN1Letra1.Location = New System.Drawing.Point(46, 25)
+      Me.txtCN1Letra1.MaxLength = 1
+      Me.txtCN1Letra1.Name = "txtCN1Letra1"
+      Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN1Letra1.TabIndex = 11
+      Me.txtCN1Letra1.Visible = False
+      '
+      'lblCNNo3
+      '
+      Me.lblCNNo3.AutoSize = True
+      Me.lblCNNo3.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo3.Location = New System.Drawing.Point(6, 80)
+      Me.lblCNNo3.Name = "lblCNNo3"
+      Me.lblCNNo3.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo3.TabIndex = 27
+      Me.lblCNNo3.Text = "No. 3"
+      Me.lblCNNo3.Visible = False
+      '
+      'txtCN1Valor1
+      '
+      Me.txtCN1Valor1.Location = New System.Drawing.Point(79, 25)
+      Me.txtCN1Valor1.MaxLength = 2
+      Me.txtCN1Valor1.Name = "txtCN1Valor1"
+      Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN1Valor1.TabIndex = 12
+      Me.txtCN1Valor1.Visible = False
+      '
+      'lblCNNo2
+      '
+      Me.lblCNNo2.AutoSize = True
+      Me.lblCNNo2.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo2.Location = New System.Drawing.Point(6, 54)
+      Me.lblCNNo2.Name = "lblCNNo2"
+      Me.lblCNNo2.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo2.TabIndex = 26
+      Me.lblCNNo2.Text = "No. 2"
+      Me.lblCNNo2.Visible = False
+      '
+      'txtCN2Valor2
+      '
+      Me.txtCN2Valor2.Location = New System.Drawing.Point(79, 50)
+      Me.txtCN2Valor2.MaxLength = 2
+      Me.txtCN2Valor2.Name = "txtCN2Valor2"
+      Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN2Valor2.TabIndex = 14
+      Me.txtCN2Valor2.Visible = False
+      '
+      'lblCNNo1
+      '
+      Me.lblCNNo1.AutoSize = True
+      Me.lblCNNo1.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCNNo1.Location = New System.Drawing.Point(6, 28)
+      Me.lblCNNo1.Name = "lblCNNo1"
+      Me.lblCNNo1.Size = New System.Drawing.Size(38, 16)
+      Me.lblCNNo1.TabIndex = 25
+      Me.lblCNNo1.Text = "No. 1"
+      Me.lblCNNo1.Visible = False
+      '
+      'txtCN3Letra3
+      '
+      Me.txtCN3Letra3.Location = New System.Drawing.Point(46, 76)
+      Me.txtCN3Letra3.MaxLength = 1
+      Me.txtCN3Letra3.Name = "txtCN3Letra3"
+      Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN3Letra3.TabIndex = 15
+      Me.txtCN3Letra3.Visible = False
+      '
+      'txtCN3Valor3
+      '
+      Me.txtCN3Valor3.Location = New System.Drawing.Point(79, 76)
+      Me.txtCN3Valor3.MaxLength = 2
+      Me.txtCN3Valor3.Name = "txtCN3Valor3"
+      Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCN3Valor3.TabIndex = 16
+      Me.txtCN3Valor3.Visible = False
+      '
+      'grbControlesPositivos
+      '
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP1Letra1)
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP1Valor1)
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP2Letra2)
+      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo3)
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP2Valor2)
+      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo2)
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP3Letra3)
+      Me.grbControlesPositivos.Controls.Add(Me.lblCPNo1)
+      Me.grbControlesPositivos.Controls.Add(Me.txtCP3Valor3)
+      Me.grbControlesPositivos.Enabled = False
+      Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.grbControlesPositivos.Location = New System.Drawing.Point(13, 165)
+      Me.grbControlesPositivos.Name = "grbControlesPositivos"
+      Me.grbControlesPositivos.Size = New System.Drawing.Size(140, 110)
+      Me.grbControlesPositivos.TabIndex = 48
+      Me.grbControlesPositivos.TabStop = False
+      Me.grbControlesPositivos.Text = "Controles Positivos"
+      '
+      'txtCP1Letra1
+      '
+      Me.txtCP1Letra1.Location = New System.Drawing.Point(46, 25)
+      Me.txtCP1Letra1.MaxLength = 1
+      Me.txtCP1Letra1.Name = "txtCP1Letra1"
+      Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP1Letra1.TabIndex = 5
+      Me.txtCP1Letra1.Visible = False
+      '
+      'txtCP1Valor1
+      '
+      Me.txtCP1Valor1.Location = New System.Drawing.Point(78, 25)
+      Me.txtCP1Valor1.MaxLength = 2
+      Me.txtCP1Valor1.Name = "txtCP1Valor1"
+      Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP1Valor1.TabIndex = 6
+      Me.txtCP1Valor1.Visible = False
+      '
+      'txtCP2Letra2
+      '
+      Me.txtCP2Letra2.Location = New System.Drawing.Point(46, 50)
+      Me.txtCP2Letra2.MaxLength = 1
+      Me.txtCP2Letra2.Name = "txtCP2Letra2"
+      Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP2Letra2.TabIndex = 7
+      Me.txtCP2Letra2.Visible = False
+      '
+      'lblCPNo3
+      '
+      Me.lblCPNo3.AutoSize = True
+      Me.lblCPNo3.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCPNo3.Location = New System.Drawing.Point(5, 77)
+      Me.lblCPNo3.Name = "lblCPNo3"
+      Me.lblCPNo3.Size = New System.Drawing.Size(38, 16)
+      Me.lblCPNo3.TabIndex = 24
+      Me.lblCPNo3.Text = "No. 3"
+      Me.lblCPNo3.Visible = False
+      '
+      'txtCP2Valor2
+      '
+      Me.txtCP2Valor2.Location = New System.Drawing.Point(79, 50)
+      Me.txtCP2Valor2.MaxLength = 2
+      Me.txtCP2Valor2.Name = "txtCP2Valor2"
+      Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
+      Me.txtCP2Valor2.TabIndex = 8
+      Me.txtCP2Valor2.Visible = False
+      '
+      'lblCPNo2
+      '
+      Me.lblCPNo2.AutoSize = True
+      Me.lblCPNo2.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCPNo2.Location = New System.Drawing.Point(4, 54)
+      Me.lblCPNo2.Name = "lblCPNo2"
+      Me.lblCPNo2.Size = New System.Drawing.Size(38, 16)
+      Me.lblCPNo2.TabIndex = 23
+      Me.lblCPNo2.Text = "No. 2"
+      Me.lblCPNo2.Visible = False
+      '
+      'txtCP3Letra3
+      '
+      Me.txtCP3Letra3.Location = New System.Drawing.Point(46, 77)
+      Me.txtCP3Letra3.MaxLength = 1
+      Me.txtCP3Letra3.Name = "txtCP3Letra3"
+      Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP3Letra3.TabIndex = 9
+      Me.txtCP3Letra3.Visible = False
+      '
+      'lblCPNo1
+      '
+      Me.lblCPNo1.AutoSize = True
+      Me.lblCPNo1.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblCPNo1.Location = New System.Drawing.Point(5, 28)
+      Me.lblCPNo1.Name = "lblCPNo1"
+      Me.lblCPNo1.Size = New System.Drawing.Size(38, 16)
+      Me.lblCPNo1.TabIndex = 22
+      Me.lblCPNo1.Text = "No. 1"
+      Me.lblCPNo1.Visible = False
+      '
+      'txtCP3Valor3
+      '
+      Me.txtCP3Valor3.Location = New System.Drawing.Point(78, 77)
+      Me.txtCP3Valor3.MaxLength = 2
+      Me.txtCP3Valor3.Name = "txtCP3Valor3"
+      Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
+      Me.txtCP3Valor3.TabIndex = 10
+      Me.txtCP3Valor3.Visible = False
+      '
+      'lblNoControles
+      '
+      Me.lblNoControles.AutoSize = True
+      Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblNoControles.Location = New System.Drawing.Point(43, 91)
+      Me.lblNoControles.Name = "lblNoControles"
+      Me.lblNoControles.Size = New System.Drawing.Size(92, 15)
+      Me.lblNoControles.TabIndex = 50
+      Me.lblNoControles.Text = "No. de Positivos"
+      '
+      'txtNoControlesPositivos
+      '
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(11, 89)
+      Me.txtNoControlesPositivos.MaxLength = 1
+      Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
+      Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControlesPositivos.TabIndex = 49
+      '
+      'btnAceptarEnfermedad
+      '
+      Me.btnAceptarEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(209, 114)
+      Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
+      Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(92, 23)
+      Me.btnAceptarEnfermedad.TabIndex = 2
+      Me.btnAceptarEnfermedad.Text = "Aceptar"
+      Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
+      '
+      'lblIdAnalisis
+      '
+      Me.lblIdAnalisis.AutoSize = True
+      Me.lblIdAnalisis.Location = New System.Drawing.Point(189, 49)
+      Me.lblIdAnalisis.Name = "lblIdAnalisis"
+      Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
+      Me.lblIdAnalisis.TabIndex = 42
+      Me.lblIdAnalisis.Text = "id_analisis"
+      Me.lblIdAnalisis.Visible = False
+      '
+      'btnDefinirControlesPN
+      '
+      Me.btnDefinirControlesPN.Enabled = False
+      Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(88, 279)
+      Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
+      Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
+      Me.btnDefinirControlesPN.TabIndex = 4
+      Me.btnDefinirControlesPN.Text = "Definir Controles"
+      Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
+      '
+      'btnAceptarControles
+      '
+      Me.btnAceptarControles.Enabled = False
+      Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptarControles.Location = New System.Drawing.Point(199, 279)
+      Me.btnAceptarControles.Name = "btnAceptarControles"
+      Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
+      Me.btnAceptarControles.TabIndex = 17
+      Me.btnAceptarControles.Text = "Aceptar Controles"
+      Me.btnAceptarControles.UseVisualStyleBackColor = True
+      '
+      'lblLogTit2
+      '
+      Me.lblLogTit2.AutoSize = True
+      Me.lblLogTit2.Location = New System.Drawing.Point(257, 64)
+      Me.lblLogTit2.Name = "lblLogTit2"
+      Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
+      Me.lblLogTit2.TabIndex = 41
+      Me.lblLogTit2.Text = "logTit2:"
+      Me.lblLogTit2.Visible = False
+      '
+      'lblLogTit1
+      '
+      Me.lblLogTit1.AutoSize = True
+      Me.lblLogTit1.Location = New System.Drawing.Point(256, 49)
+      Me.lblLogTit1.Name = "lblLogTit1"
+      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
+      Me.lblLogTit1.TabIndex = 40
+      Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
+      '
+      'lblLogSPS
+      '
+      Me.lblLogSPS.AutoSize = True
+      Me.lblLogSPS.Location = New System.Drawing.Point(191, 64)
+      Me.lblLogSPS.Name = "lblLogSPS"
+      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogSPS.TabIndex = 39
+      Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
+      '
+      'lblNombreEnfermedad
+      '
+      Me.lblNombreEnfermedad.AutoSize = True
+      Me.lblNombreEnfermedad.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreEnfermedad.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblNombreEnfermedad.Location = New System.Drawing.Point(61, 4)
+      Me.lblNombreEnfermedad.Name = "lblNombreEnfermedad"
+      Me.lblNombreEnfermedad.Size = New System.Drawing.Size(163, 16)
+      Me.lblNombreEnfermedad.TabIndex = 38
+      Me.lblNombreEnfermedad.Text = "Nombre de la Enfermedad"
+      '
+      'cmbNombreEnfermedad
+      '
+      Me.cmbNombreEnfermedad.FormattingEnabled = True
+      Me.cmbNombreEnfermedad.Location = New System.Drawing.Point(10, 24)
+      Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
+      Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(287, 21)
+      Me.cmbNombreEnfermedad.TabIndex = 0
+      Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
+      '
+      'lblNoCasos
+      '
+      Me.lblNoCasos.AutoSize = True
+      Me.lblNoCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNoCasos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lblNoCasos.Location = New System.Drawing.Point(43, 58)
+      Me.lblNoCasos.Name = "lblNoCasos"
+      Me.lblNoCasos.Size = New System.Drawing.Size(141, 15)
+      Me.lblNoCasos.TabIndex = 36
+      Me.lblNoCasos.Text = "No. de casos en la placa"
+      '
+      'txtNoDeCasos
+      '
+      Me.txtNoDeCasos.Location = New System.Drawing.Point(12, 56)
+      Me.txtNoDeCasos.MaxLength = 1
+      Me.txtNoDeCasos.Name = "txtNoDeCasos"
+      Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoDeCasos.TabIndex = 1
+      '
+      'ShapeContainer1
+      '
+      Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+      Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+      Me.ShapeContainer1.Name = "ShapeContainer1"
+      Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
+      Me.ShapeContainer1.Size = New System.Drawing.Size(307, 305)
+      Me.ShapeContainer1.TabIndex = 53
+      Me.ShapeContainer1.TabStop = False
+      '
+      'LineShape1
+      '
+      Me.LineShape1.Name = "LineShape1"
+      Me.LineShape1.X1 = 9
+      Me.LineShape1.X2 = 200
+      Me.LineShape1.Y1 = 134
+      Me.LineShape1.Y2 = 134
+      '
       'frmGumboroAviar
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(956, 576)
+      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.txtDatosRecibidos)
-      Me.Controls.Add(Me.ckbControlesDefault)
       Me.Controls.Add(Me.lblNombreLector)
       Me.Controls.Add(Me.btnGuardaDatos)
       Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnFormateaDatos)
       Me.Controls.Add(Me.btnObtenerResultados)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
-      Me.Controls.Add(Me.btnDefinirControlesPN)
       Me.Controls.Add(Me.btnCancelar)
-      Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.dtpFechaElaboracion)
-      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel5)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
@@ -2248,11 +2280,6 @@ Partial Class frmGumboroAviar
       Me.Text = "Análisis de Gumboro"
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
-      Me.Panel3.ResumeLayout(False)
-      Me.grbControlesNegativos.ResumeLayout(False)
-      Me.grbControlesNegativos.PerformLayout()
-      Me.grbControlesPositivos.ResumeLayout(False)
-      Me.grbControlesPositivos.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.tbcDatosDelCaso.ResumeLayout(False)
       Me.tbcCaso1.ResumeLayout(False)
@@ -2271,10 +2298,14 @@ Partial Class frmGumboroAviar
       Me.tbcCaso7.PerformLayout()
       Me.tbcCaso8.ResumeLayout(False)
       Me.tbcCaso8.PerformLayout()
-      Me.Panel1.ResumeLayout(False)
-      Me.Panel1.PerformLayout()
       Me.Panel5.ResumeLayout(False)
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
+      Me.Panel1.ResumeLayout(False)
+      Me.Panel1.PerformLayout()
+      Me.grbControlesNegativos.ResumeLayout(False)
+      Me.grbControlesNegativos.PerformLayout()
+      Me.grbControlesPositivos.ResumeLayout(False)
+      Me.grbControlesPositivos.PerformLayout()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -2282,7 +2313,6 @@ Partial Class frmGumboroAviar
    Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
    Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
-   Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents lblNombreLector As System.Windows.Forms.Label
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
    Friend WithEvents Panel4 As System.Windows.Forms.Panel
@@ -2290,31 +2320,8 @@ Partial Class frmGumboroAviar
    Friend WithEvents btnFormateaDatos As System.Windows.Forms.Button
    Friend WithEvents btnObtenerResultados As System.Windows.Forms.Button
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
-   Friend WithEvents grbControlesNegativos As System.Windows.Forms.GroupBox
-   Friend WithEvents txtCN2Letra2 As System.Windows.Forms.TextBox
-   Friend WithEvents txtCN1Letra1 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCNNo3 As System.Windows.Forms.Label
-   Friend WithEvents txtCN1Valor1 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCNNo2 As System.Windows.Forms.Label
-   Friend WithEvents txtCN2Valor2 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCNNo1 As System.Windows.Forms.Label
-   Friend WithEvents txtCN3Letra3 As System.Windows.Forms.TextBox
-   Friend WithEvents txtCN3Valor3 As System.Windows.Forms.TextBox
-   Friend WithEvents grbControlesPositivos As System.Windows.Forms.GroupBox
-   Friend WithEvents txtCP1Letra1 As System.Windows.Forms.TextBox
-   Friend WithEvents txtCP1Valor1 As System.Windows.Forms.TextBox
-   Friend WithEvents txtCP2Letra2 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCPNo3 As System.Windows.Forms.Label
-   Friend WithEvents txtCP2Valor2 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCPNo2 As System.Windows.Forms.Label
-   Friend WithEvents txtCP3Letra3 As System.Windows.Forms.TextBox
-   Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
-   Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
-   Friend WithEvents btnDefinirControlesPN As System.Windows.Forms.Button
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
-   Friend WithEvents btnAceptarControles As System.Windows.Forms.Button
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents tbcDatosDelCaso As System.Windows.Forms.TabControl
    Friend WithEvents tbcCaso1 As System.Windows.Forms.TabPage
@@ -2438,11 +2445,38 @@ Partial Class frmGumboroAviar
    Friend WithEvents Label39 As System.Windows.Forms.Label
    Friend WithEvents Label40 As System.Windows.Forms.Label
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
+   Friend WithEvents Panel5 As System.Windows.Forms.Panel
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+   Friend WithEvents Label41 As System.Windows.Forms.Label
+   Friend WithEvents txtNoControlesNegativos As System.Windows.Forms.TextBox
+   Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
+   Friend WithEvents grbControlesNegativos As System.Windows.Forms.GroupBox
+   Friend WithEvents txtCN2Letra2 As System.Windows.Forms.TextBox
+   Friend WithEvents txtCN1Letra1 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCNNo3 As System.Windows.Forms.Label
+   Friend WithEvents txtCN1Valor1 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCNNo2 As System.Windows.Forms.Label
+   Friend WithEvents txtCN2Valor2 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCNNo1 As System.Windows.Forms.Label
+   Friend WithEvents txtCN3Letra3 As System.Windows.Forms.TextBox
+   Friend WithEvents txtCN3Valor3 As System.Windows.Forms.TextBox
+   Friend WithEvents grbControlesPositivos As System.Windows.Forms.GroupBox
+   Friend WithEvents txtCP1Letra1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtCP1Valor1 As System.Windows.Forms.TextBox
+   Friend WithEvents txtCP2Letra2 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCPNo3 As System.Windows.Forms.Label
+   Friend WithEvents txtCP2Valor2 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCPNo2 As System.Windows.Forms.Label
+   Friend WithEvents txtCP3Letra3 As System.Windows.Forms.TextBox
+   Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
+   Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents lblNoControles As System.Windows.Forms.Label
-   Friend WithEvents txtNoControles As System.Windows.Forms.TextBox
+   Friend WithEvents txtNoControlesPositivos As System.Windows.Forms.TextBox
    Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
    Friend WithEvents lblIdAnalisis As System.Windows.Forms.Label
+   Friend WithEvents btnDefinirControlesPN As System.Windows.Forms.Button
+   Friend WithEvents btnAceptarControles As System.Windows.Forms.Button
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
@@ -2450,6 +2484,6 @@ Partial Class frmGumboroAviar
    Friend WithEvents cmbNombreEnfermedad As System.Windows.Forms.ComboBox
    Friend WithEvents lblNoCasos As System.Windows.Forms.Label
    Friend WithEvents txtNoDeCasos As System.Windows.Forms.TextBox
-   Friend WithEvents Panel5 As System.Windows.Forms.Panel
-   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+   Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
 End Class

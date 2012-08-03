@@ -317,7 +317,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mdlPuertoSerie.vb" />
-    <Compile Include="mdlValidaDatos.vb" />
+    <Compile Include="mdlDefineValidaDatos.vb" />
     <Compile Include="mdlVariosCasos.vb" />
     <Compile Include="mldOperacionesExcel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

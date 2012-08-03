@@ -28,4 +28,7 @@ Public Class frmSalidaDatos
       Me.Close()
    End Sub
 
+   Private Sub frmSalidaDatos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class

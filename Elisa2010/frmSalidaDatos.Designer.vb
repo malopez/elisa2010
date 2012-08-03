@@ -52,13 +52,13 @@ Partial Class frmSalidaDatos
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
       Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.Panel4 = New System.Windows.Forms.Panel()
+      Me.Label6 = New System.Windows.Forms.Label()
+      Me.Label5 = New System.Windows.Forms.Label()
       Me.lblMensajeSobreGrafica = New System.Windows.Forms.Label()
       Me.lblNombreSobreGrafica = New System.Windows.Forms.Label()
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.Label5 = New System.Windows.Forms.Label()
-      Me.Label6 = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -397,6 +397,30 @@ Partial Class frmSalidaDatos
       Me.Panel4.Size = New System.Drawing.Size(569, 303)
       Me.Panel4.TabIndex = 62
       '
+      'Label6
+      '
+      Me.Label6.AutoSize = True
+      Me.Label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label6.ForeColor = System.Drawing.Color.Black
+      Me.Label6.Location = New System.Drawing.Point(5, 278)
+      Me.Label6.Name = "Label6"
+      Me.Label6.Size = New System.Drawing.Size(82, 16)
+      Me.Label6.TabIndex = 67
+      Me.Label6.Text = "Enfermedad:"
+      '
+      'Label5
+      '
+      Me.Label5.AutoSize = True
+      Me.Label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label5.ForeColor = System.Drawing.Color.Black
+      Me.Label5.Location = New System.Drawing.Point(317, 278)
+      Me.Label5.Name = "Label5"
+      Me.Label5.Size = New System.Drawing.Size(43, 16)
+      Me.Label5.TabIndex = 66
+      Me.Label5.Text = "Texto:"
+      '
       'lblMensajeSobreGrafica
       '
       Me.lblMensajeSobreGrafica.AutoSize = True
@@ -452,30 +476,6 @@ Partial Class frmSalidaDatos
       Me.txtTitulosObtenidos.Size = New System.Drawing.Size(105, 227)
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
-      '
-      'Label5
-      '
-      Me.Label5.AutoSize = True
-      Me.Label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Label5.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label5.ForeColor = System.Drawing.Color.Black
-      Me.Label5.Location = New System.Drawing.Point(317, 278)
-      Me.Label5.Name = "Label5"
-      Me.Label5.Size = New System.Drawing.Size(43, 16)
-      Me.Label5.TabIndex = 66
-      Me.Label5.Text = "Texto:"
-      '
-      'Label6
-      '
-      Me.Label6.AutoSize = True
-      Me.Label6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Label6.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label6.ForeColor = System.Drawing.Color.Black
-      Me.Label6.Location = New System.Drawing.Point(5, 278)
-      Me.Label6.Name = "Label6"
-      Me.Label6.Size = New System.Drawing.Size(82, 16)
-      Me.Label6.TabIndex = 67
-      Me.Label6.Text = "Enfermedad:"
       '
       'frmSalidaDatos
       '

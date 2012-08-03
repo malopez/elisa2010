@@ -65,13 +65,13 @@ Partial Class frmLecturaDePlaca
       Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
       Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
+      Me.lbltNoControlesNegativos = New System.Windows.Forms.Label()
       Me.btnAceptarCPN = New System.Windows.Forms.Button()
       Me.txtNoControlesPositivos = New System.Windows.Forms.TextBox()
       Me.lblNoControlesPositivos = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
-      Me.tNoControlesNegativos = New System.Windows.Forms.TextBox()
-      Me.lbltNoControlesNegativos = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel5.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -259,7 +259,6 @@ Partial Class frmLecturaDePlaca
       Me.grbControlesNegativos.Controls.Add(Me.lblCNNo1)
       Me.grbControlesNegativos.Controls.Add(Me.txtCN3Letra3)
       Me.grbControlesNegativos.Controls.Add(Me.txtCN3Valor3)
-      Me.grbControlesNegativos.Enabled = False
       Me.grbControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
       Me.grbControlesNegativos.Location = New System.Drawing.Point(157, 3)
@@ -367,7 +366,6 @@ Partial Class frmLecturaDePlaca
       Me.grbControlesPositivos.Controls.Add(Me.txtCP3Letra3)
       Me.grbControlesPositivos.Controls.Add(Me.lblCPNo1)
       Me.grbControlesPositivos.Controls.Add(Me.txtCP3Valor3)
-      Me.grbControlesPositivos.Enabled = False
       Me.grbControlesPositivos.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.grbControlesPositivos.ForeColor = System.Drawing.Color.MidnightBlue
       Me.grbControlesPositivos.Location = New System.Drawing.Point(10, 3)
@@ -490,19 +488,37 @@ Partial Class frmLecturaDePlaca
       '
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel2.Controls.Add(Me.tNoControlesNegativos)
-      Me.Panel2.Controls.Add(Me.lbltNoControlesNegativos)
-      Me.Panel2.Controls.Add(Me.btnAceptarCPN)
+      Me.Panel2.Controls.Add(Me.txtNoControlesNegativos)
       Me.Panel2.Controls.Add(Me.txtNoControlesPositivos)
+      Me.Panel2.Controls.Add(Me.lbltNoControlesNegativos)
       Me.Panel2.Controls.Add(Me.lblNoControlesPositivos)
+      Me.Panel2.Controls.Add(Me.btnAceptarCPN)
       Me.Panel2.Location = New System.Drawing.Point(6, 285)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(252, 93)
       Me.Panel2.TabIndex = 132
       '
+      'txtNoControlesNegativos
+      '
+      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(3, 34)
+      Me.txtNoControlesNegativos.MaxLength = 1
+      Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
+      Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControlesNegativos.TabIndex = 136
+      '
+      'lbltNoControlesNegativos
+      '
+      Me.lbltNoControlesNegativos.AutoSize = True
+      Me.lbltNoControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lbltNoControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.lbltNoControlesNegativos.Location = New System.Drawing.Point(35, 38)
+      Me.lbltNoControlesNegativos.Name = "lbltNoControlesNegativos"
+      Me.lbltNoControlesNegativos.Size = New System.Drawing.Size(154, 15)
+      Me.lbltNoControlesNegativos.TabIndex = 137
+      Me.lbltNoControlesNegativos.Text = "No. de Controles Negativos"
+      '
       'btnAceptarCPN
       '
-      Me.btnAceptarCPN.Enabled = False
       Me.btnAceptarCPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnAceptarCPN.Location = New System.Drawing.Point(110, 63)
       Me.btnAceptarCPN.Name = "btnAceptarCPN"
@@ -513,7 +529,6 @@ Partial Class frmLecturaDePlaca
       '
       'txtNoControlesPositivos
       '
-      Me.txtNoControlesPositivos.Enabled = False
       Me.txtNoControlesPositivos.Location = New System.Drawing.Point(3, 8)
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
@@ -553,26 +568,6 @@ Partial Class frmLecturaDePlaca
       Me.btnLeerDatosPlaca.Text = "Obtener Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
-      'tNoControlesNegativos
-      '
-      Me.tNoControlesNegativos.Enabled = False
-      Me.tNoControlesNegativos.Location = New System.Drawing.Point(3, 34)
-      Me.tNoControlesNegativos.MaxLength = 1
-      Me.tNoControlesNegativos.Name = "tNoControlesNegativos"
-      Me.tNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
-      Me.tNoControlesNegativos.TabIndex = 136
-      '
-      'lbltNoControlesNegativos
-      '
-      Me.lbltNoControlesNegativos.AutoSize = True
-      Me.lbltNoControlesNegativos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lbltNoControlesNegativos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lbltNoControlesNegativos.Location = New System.Drawing.Point(35, 38)
-      Me.lbltNoControlesNegativos.Name = "lbltNoControlesNegativos"
-      Me.lbltNoControlesNegativos.Size = New System.Drawing.Size(154, 15)
-      Me.lbltNoControlesNegativos.TabIndex = 137
-      Me.lbltNoControlesNegativos.Text = "No. de Controles Negativos"
-      '
       'frmLecturaDePlaca
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -585,13 +580,13 @@ Partial Class frmLecturaDePlaca
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnDefinirControlesPN)
       Me.Controls.Add(Me.btnAceptarControles)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaDatos)
       Me.Controls.Add(Me.Panel5)
-      Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel1)
+      Me.Controls.Add(Me.Panel2)
+      Me.Controls.Add(Me.Panel3)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmLecturaDePlaca"
       Me.Text = "Leer placa desde lector default"
@@ -654,6 +649,6 @@ Partial Class frmLecturaDePlaca
    Friend WithEvents btnAceptarCPN As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
-   Friend WithEvents tNoControlesNegativos As System.Windows.Forms.TextBox
+   Friend WithEvents txtNoControlesNegativos As System.Windows.Forms.TextBox
    Friend WithEvents lbltNoControlesNegativos As System.Windows.Forms.Label
 End Class
