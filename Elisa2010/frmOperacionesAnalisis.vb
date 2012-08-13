@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 Imports MySql.Data.MySqlClient
+Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Runtime.InteropServices
 
 Public Class frmOperacionesAnalisis
    Dim iposicFilaActual As Integer = 0

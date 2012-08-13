@@ -262,4 +262,9 @@
       frmLecturaDePlaca.MdiParent = Me
       frmLecturaDePlaca.Show()
    End Sub
+
+   Private Sub tsmCapturaConSubcasos_Click(sender As System.Object, e As System.EventArgs) Handles tsmCapturaConSubcasos.Click
+      frmCapturaCySC.MdiParent = Me
+      frmCapturaCySC.Show()
+   End Sub
 End Class

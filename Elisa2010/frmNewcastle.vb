@@ -2238,6 +2238,8 @@ Public Class frmNewcastle
       Return ok
    End Function
 
+ 
+
    Private Sub aceptaValoresEnCasos()
       tbcDatosDelCaso.Enabled = False
       btnCapturaTerminada.Enabled = False

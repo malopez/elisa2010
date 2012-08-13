@@ -43,10 +43,12 @@ Partial Class frmElisaBiovetsa
       Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmCapturaConSubcasos = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfigurarLector = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuImprimir = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmLeerYGuardar = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuAcercaDe = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -55,7 +57,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
-      Me.tsmLeerYGuardar = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
       Me.SuspendLayout()
@@ -73,7 +74,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmCapturaConSubcasos, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
@@ -194,6 +195,12 @@ Partial Class frmElisaBiovetsa
       Me.tsmSalir.Text = "&Salir"
       Me.tsmSalir.ToolTipText = "Abandone la aplicación"
       '
+      'tsmCapturaConSubcasos
+      '
+      Me.tsmCapturaConSubcasos.Name = "tsmCapturaConSubcasos"
+      Me.tsmCapturaConSubcasos.Size = New System.Drawing.Size(213, 22)
+      Me.tsmCapturaConSubcasos.Text = "Captura con subcasos"
+      '
       'mnuOpciones
       '
       Me.mnuOpciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConfigurarLector, Me.tsmConfirmarSalir})
@@ -223,6 +230,12 @@ Partial Class frmElisaBiovetsa
       Me.mnuImprimir.Name = "mnuImprimir"
       Me.mnuImprimir.Size = New System.Drawing.Size(47, 20)
       Me.mnuImprimir.Text = "&Placa"
+      '
+      'tsmLeerYGuardar
+      '
+      Me.tsmLeerYGuardar.Name = "tsmLeerYGuardar"
+      Me.tsmLeerYGuardar.Size = New System.Drawing.Size(150, 22)
+      Me.tsmLeerYGuardar.Text = "Leer y Guardar"
       '
       'mnuAcercaDe
       '
@@ -292,12 +305,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
       Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
-      'tsmLeerYGuardar
-      '
-      Me.tsmLeerYGuardar.Name = "tsmLeerYGuardar"
-      Me.tsmLeerYGuardar.Size = New System.Drawing.Size(152, 22)
-      Me.tsmLeerYGuardar.Text = "Leer y Guardar"
-      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -358,5 +365,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmGumboroDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmEncefalomielitisDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmLeerYGuardar As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmCapturaConSubcasos As System.Windows.Forms.ToolStripMenuItem
 
 End Class

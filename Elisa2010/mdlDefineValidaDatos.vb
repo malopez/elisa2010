@@ -5,6 +5,23 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
 
 Module mdlDefineValidaDatos
+
+
+   Public Structure listaCasos
+      Dim noCaso As String
+      Dim subCaso As Integer
+      Dim cliente As String
+      Dim analisis As String
+      Dim texto As String
+      Dim obs As String
+      Dim desdeLetra As Integer
+      Dim desdeValor As Integer
+      Dim hastaLetra As Integer
+      Dim hastaValor As Integer
+   End Structure
+
+
+
    '##################################################
    '# SECCION VALIDACION DE FORMATOS                 #
    '##################################################
@@ -152,13 +169,112 @@ Module mdlDefineValidaDatos
       Return valido
    End Function
 
+   '####AGREGADOS EL 10-AGO-2012
+   'Estas funcion se utilizan para el caso de 1 caso con n subcasos.
+   Public Function validaTodosLosCPParaUnCaso(ByVal caso As String, ByVal nocp As Integer, _
+                                               ByVal txtCP1Letra1 As TextBox, ByVal txtCP1Valor1 As TextBox, _
+                                               ByVal txtCP2Letra2 As TextBox, ByVal txtCP2Valor2 As TextBox, _
+                                               ByVal txtCP3Letra3 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+                                               ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
+                                               ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
+      Dim ok As Boolean
+      If (nocp = 2) Then
+         ok = validaSiControlPNEstaEnRangoDeCaso("CP 1", caso, txtCP1Letra1, txtCP1Valor1, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CP 2", caso, txtCP2Letra2, txtCP2Valor2, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor)
+      ElseIf (nocp = 3) Then
+         ok = validaSiControlPNEstaEnRangoDeCaso("CP 1", caso, txtCP1Letra1, txtCP1Valor1, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CP 2", caso, txtCP2Letra2, txtCP2Valor2, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CP 3", caso, txtCP3Letra3, txtCP3Valor3, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor)
+      End If
+      Return ok
+   End Function
+   'Estas funcion se utilizan para el caso de 1 caso con n subcasos.
+   Public Function validaTodosLosCNParaUnCaso(ByVal caso As String, ByVal nocp As Integer, _
+                                               ByVal txtCN1Letra1 As TextBox, ByVal txtCN1Valor1 As TextBox, _
+                                               ByVal txtCN2Letra2 As TextBox, ByVal txtCN2Valor2 As TextBox, _
+                                               ByVal txtCN3Letra3 As TextBox, ByVal txtCN3Valor3 As TextBox, _
+                                               ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
+                                               ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
+      Dim ok As Boolean
+      If (nocp = 2) Then
+         ok = validaSiControlPNEstaEnRangoDeCaso("CN 1", caso, txtCN1Letra1, txtCN1Valor1, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CN 2", caso, txtCN2Letra2, txtCN2Valor2, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor)
+      ElseIf (nocp = 3) Then
+         ok = validaSiControlPNEstaEnRangoDeCaso("CN 1", caso, txtCN1Letra1, txtCN1Valor1, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CN 2", caso, txtCN2Letra2, txtCN2Valor2, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor) AndAlso _
+              validaSiControlPNEstaEnRangoDeCaso("CN 3", caso, txtCN3Letra3, txtCN3Valor3, txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor)
+      End If
+      Return ok
+   End Function
 
-   Public Function validaSiControlPNEstaEnRangoDeCaso(ByVal controlPN As String, ByVal caso As String, ByVal txtDesdeLetra1 As TextBox, ByVal txtDesdeValor1 As TextBox, _
-                                     ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
-                                     ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
+   'Valida dos casos en distinto rango tomando valores desde un textbox y un arreglo, 
+   'se inserta primero el nuevo valor del textbox vs. el ya existente en el arreglo
+   Public Function validaSiDosCasosEstanEnDistintoRangoArreglo( _
+                              ByVal mensaje As String, _
+                              ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
+                              ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox, _
+                              ByVal letraRango1 As Integer, ByVal valorRango1 As Integer, _
+                              ByVal letraRango2 As Integer, ByVal valorRango2 As Integer) As Boolean
+      Dim mismoDesde As Boolean
+      Dim mismoHasta As Boolean
+
+      Dim valorDesde As String = CStr(valorRango1)
+      Dim valorHasta As String = CStr(valorRango2)
+      Dim td As Integer = siValorEsLetra(txtDesdeLetra)
+
+      Dim temporal As String = td & txtDesdeValor.Text.PadLeft(2, "0")
+      Dim desde As Integer = CInt(temporal)
+
+      Dim th As Integer = siValorEsLetra(txtHastaLetra)
+      temporal = th & txtHastaValor.Text.PadLeft(2, "0")
+      Dim hasta As Integer = CInt(temporal)
+
+      temporal = CStr(letraRango1) & valorDesde.PadLeft(2, "0")
+      Dim rango1 As Integer = CInt(temporal)
+
+      temporal = CStr(letraRango2) & valorHasta.PadLeft(2, "0")
+      Dim rango2 As Integer = CInt(temporal)
+
+      'MessageBox.Show("Valores desde: " & desde & vbCrLf & " hasta: " & hasta & vbCrLf _
+      '                & " letraRango1: " & letraRango1 & vbCrLf & " letraRango2: " & letraRango2 & vbCrLf _
+      '                & " rango1: " & rango1 & vbCrLf & " rango2 :" & rango2)
+
+      Select Case desde
+         Case rango1 To rango2
+            mismoDesde = True
+            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
+         Case Else
+            mismoDesde = False
+      End Select
+
+      Select Case hasta
+         Case rango1 To rango2
+            mismoHasta = True
+            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
+         Case Else
+            mismoHasta = False
+      End Select
+      'MessageBox.Show("Valor de mismoDesde:" & mismoDesde & ", valor de mismoHasta:" & mismoHasta)
+      If (mismoDesde Or mismoHasta) Then
+         'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
+         Return False
+      Else
+         Return True
+      End If
+   End Function
+
+
+   '10-AGO-2012 #######
+
+
+
+   Public Function validaSiControlPNEstaEnRangoDeCaso(ByVal mensaje As String, ByVal caso As String, _
+                                                      ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
+                                                      ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
+                                                      ByVal txtHastaLetraRango2 As TextBox, ByVal txtHastaValorRango2 As TextBox) As Boolean
       Dim igualDesde As Boolean
 
-      Dim temporal As String = CStr(regresaValor(txtDesdeLetra1)) & txtDesdeValor1.Text.PadLeft(2, "0")
+      Dim temporal As String = CStr(regresaValor(txtDesdeLetra)) & txtDesdeValor.Text.PadLeft(2, "0")
       Dim desde As Integer = CInt(temporal)
 
       temporal = CStr(regresaValor(txtDesdeLetraRango1)) & txtDesdeValorRango1.Text.PadLeft(2, "0")
@@ -177,7 +293,7 @@ Module mdlDefineValidaDatos
       End Select
 
       If igualDesde Then
-         MessageBox.Show("ERROR: El " & controlPN & ", se encuentra en el rango de valores del " & caso & ".")
+         MessageBox.Show("ERROR: El " & mensaje & ", se encuentra en el rango de valores del " & caso & ".")
          Return False
       Else
          Return True
@@ -224,6 +340,7 @@ Module mdlDefineValidaDatos
       End Select
       Return CInt(retorno)
    End Function
+
 
    Public Function regresaValor(ByVal textbox As TextBox) As Integer
       Dim letra As String = textbox.Text.ToUpper
@@ -274,6 +391,7 @@ Module mdlDefineValidaDatos
       End Select
       Return letra
    End Function
+
 
    Public Function controlesValidosLetra(ByVal textbox As TextBox, ByVal nombre As String, _
                                          ByVal min1 As String, ByVal max1 As String) As Boolean
@@ -498,5 +616,22 @@ Module mdlDefineValidaDatos
          txtCN3Valor3.Text = "12"
       End If
    End Sub
+
+   Public Function revisaQueCasosNoSeanIguales(ByVal combo As ComboBox,ByVal totalCasos() As listaCasos) As Boolean
+      Dim i As Integer = 0
+      Dim largo As Integer = UBound(totalCasos) - 1
+      Dim b As Boolean = True
+      For i = 0 To largo
+         If (combo.Text = totalCasos(i).noCaso) Then
+            MessageBox.Show("ERROR: Este No. de Caso es igual que el análisis No." & (i + 1) & ", Verifique y corrija.")
+            b = False
+            Exit For
+         Else
+            b = True
+         End If
+      Next
+      Return b
+   End Function
+
 
 End Module

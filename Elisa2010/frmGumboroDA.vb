@@ -12,7 +12,7 @@ Public Class frmGumboroDA
          mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
       Try
-         organizaEnTabla(Me.dgvPlacaLeida, placaLector)
+         organizaEnTablaDA(Me.dgvPlacaLeida, placaLector)
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try

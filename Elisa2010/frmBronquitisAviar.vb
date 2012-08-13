@@ -148,6 +148,10 @@ Public Class frmBronquitisAviar
                      queSeanDistintos(Me.lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
                      queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
+                     'Colocados aqui el 6-Ago-2012
+                     coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
+                     coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
+
                      mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
@@ -194,6 +198,11 @@ Public Class frmBronquitisAviar
                      queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
                      queSeanDistintos(Me.lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
                      queSeanDistintos(Me.lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+
+                     'Colocados aqui el 6-Ago-2012
+                     coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
+                     coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
+
 
                      mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
                      btnAceptarControles.Enabled = False
@@ -245,6 +254,11 @@ Public Class frmBronquitisAviar
                      queSeanDistintos(Me.lblMensajeCaso, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
                      queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
+
+                     'Colocados aqui el 6-Ago-2012
+                     coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
+                     coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
+
                      mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
@@ -295,6 +309,11 @@ Public Class frmBronquitisAviar
                    queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
                    queSeanDistintos(Me.lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
                    queSeanDistintos(Me.lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+
+
+                     'Colocados aqui el 6-Ago-2012
+                     coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
+                     coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
 
                      mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
                      btnAceptarControles.Enabled = False
@@ -657,6 +676,7 @@ Public Class frmBronquitisAviar
                                    Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
             defineBotonesNegativos(nocn, Me.lblCNNo1, Me.lblCNNo2, Me.lblCNNo3, Me.txtCN1Letra1, Me.txtCN1Valor1, _
                                    Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
+            dibujaTablaEnPantalla(Me.dgvPlacaLeida) 'AGREGADO AQUI EL 6-Ago-2012
             btnAceptarEnfermedad.Enabled = False
             Dim oConexion As MySqlConnection
             Dim aConsulta As String = ""
@@ -1104,7 +1124,7 @@ Public Class frmBronquitisAviar
       End If
    End Sub
 
-   Private Sub ckbControlesDefault_CheckedChanged(sender As System.Object, e As System.EventArgs)
+   Private Sub ckbControlesDefault_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles ckbControlesDefault.CheckedChanged
       Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
       Dim nocn As Integer = Val(txtNoControlesNegativos.Text)
       defineValoresDefaultPositivos(nocp, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
@@ -1398,9 +1418,9 @@ Public Class frmBronquitisAviar
    End Sub
 
    Private Sub presentaDatosEnPantallaFormateados()
-      Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
-      Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
-      Dim nocn As Integer = Val(txtNoControlesNegativos.Text)
+      'Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
+      'Dim nocp As Integer = Val(txtNoControlesPositivos.Text)
+      'Dim nocn As Integer = Val(txtNoControlesNegativos.Text)
       btnLeerDatosPlaca.Enabled = False
       Try
          convierteCadena(msn)
@@ -1411,9 +1431,12 @@ Public Class frmBronquitisAviar
          formateaDatos(placaLector, Me.dgvPlacaLeida)
          organizaEnTabla(Me.dgvPlacaLeida, placaLector)
          btnGuardaDatos.Enabled = True
-         coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1,Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
-         coloreaControlesPositivos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
-         coloreaTablaCasos(noCasos)
+
+         'comentado el 6-Ago-2012
+         'coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1,Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
+         'coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
+         'coloreaTablaCasos(noCasos)
+
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Se ha presentado un error al formatear datos.")
       End Try
@@ -2254,264 +2277,271 @@ Public Class frmBronquitisAviar
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       Dim nocp As Integer = CInt(txtNoControlesPositivos.Text)
-      Try
-         mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
-         Select Case noCasos
-            Case 1
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) Then
+      If (MessageBox.Show("¿Es correcta la captura de datos?", "Confirme los datos ingresados", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) = _
+            Windows.Forms.DialogResult.Yes) Then
+         Try
+            'colocado aqui el e-Ago-2012
+            coloreaTablaCasos(noCasos)
+            mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+            Select Case noCasos
+               Case 1
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 2
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) Then
+                  End If
+               Case 2
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 3
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) Then
+                  End If
+               Case 3
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 4
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) Then
+                  End If
+               Case 4
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 5
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
-                  validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                  verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) Then
+                  End If
+               Case 5
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
+                     validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                     verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 6
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) Then
+                  End If
+               Case 6
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 7
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 7", cmbNoCaso1, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 1", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 7", cmbNoCaso2, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 2", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 7", cmbNoCaso3, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 3", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 7", cmbNoCaso4, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 4", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 7", cmbNoCaso5, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 5", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 6 y Caso 7", cmbNoCaso6, cmbNoCaso7) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 6", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 7", tbcCaso7, cmbNoCaso7, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) Then
+                  End If
+               Case 7
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 7", cmbNoCaso1, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 1", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 7", cmbNoCaso2, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 2", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 7", cmbNoCaso3, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 3", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 7", cmbNoCaso4, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 4", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 7", cmbNoCaso5, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 5", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 6 y Caso 7", cmbNoCaso6, cmbNoCaso7) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 6", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 7", tbcCaso7, cmbNoCaso7, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-            Case 8
-               If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 7", cmbNoCaso1, cmbNoCaso7) AndAlso _
-                  comparaNoDeCasoElegido("Caso 1 y Caso 8", cmbNoCaso1, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 1", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 1", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 7", cmbNoCaso2, cmbNoCaso7) AndAlso _
-                  comparaNoDeCasoElegido("Caso 2 y Caso 8", cmbNoCaso2, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 2", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 2", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 7", cmbNoCaso3, cmbNoCaso7) AndAlso _
-                 comparaNoDeCasoElegido("Caso 3 y Caso 8", cmbNoCaso3, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 3", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 3", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 7", cmbNoCaso4, cmbNoCaso7) AndAlso _
-                 comparaNoDeCasoElegido("Caso 4 y Caso 8", cmbNoCaso4, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 4", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 4", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 7", cmbNoCaso5, cmbNoCaso7) AndAlso _
-                 comparaNoDeCasoElegido("Caso 5 y Caso 8", cmbNoCaso5, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 5", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 5", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                 comparaNoDeCasoElegido("Caso 6 y Caso 7", cmbNoCaso6, cmbNoCaso7) AndAlso _
-                 comparaNoDeCasoElegido("Caso 6 y Caso 8", cmbNoCaso6, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 6", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 6", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 7", tbcCaso7, cmbNoCaso7, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
-                 comparaNoDeCasoElegido("Caso 7 y Caso 8", cmbNoCaso7, cmbNoCaso8) AndAlso _
-                 validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 7", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
-                 verificaEstanTodosLosValores(nocp, "Caso 8", tbcCaso8, cmbNoCaso7, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) Then
+                  End If
+               Case 8
+                  If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 2", cmbNoCaso1, cmbNoCaso2) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 3", cmbNoCaso1, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 4", cmbNoCaso1, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 5", cmbNoCaso1, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 6", cmbNoCaso1, cmbNoCaso6) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 7", cmbNoCaso1, cmbNoCaso7) AndAlso _
+                     comparaNoDeCasoElegido("Caso 1 y Caso 8", cmbNoCaso1, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 2 y Caso 1", txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 1", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 1", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 1", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 1", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 1", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 1", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 2", tbcCaso2, cmbNoCaso2, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    comparaNoDeCasoElegido("Caso 2 y Caso 3", cmbNoCaso2, cmbNoCaso3) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 4", cmbNoCaso2, cmbNoCaso4) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 5", cmbNoCaso2, cmbNoCaso5) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 6", cmbNoCaso2, cmbNoCaso6) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 7", cmbNoCaso2, cmbNoCaso7) AndAlso _
+                     comparaNoDeCasoElegido("Caso 2 y Caso 8", cmbNoCaso2, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 3 y Caso 2", txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 2", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 2", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 2", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 2", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 2", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C2, txtDesdeValor1C2, txtHastaLetra2C2, txtHastaValor2C2) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 3", tbcCaso3, cmbNoCaso3, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 4", cmbNoCaso3, cmbNoCaso4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 5", cmbNoCaso3, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 6", cmbNoCaso3, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 7", cmbNoCaso3, cmbNoCaso7) AndAlso _
+                    comparaNoDeCasoElegido("Caso 3 y Caso 8", cmbNoCaso3, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 4 y Caso 3", txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 3", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 3", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 3", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 3", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C3, txtDesdeValor1C3, txtHastaLetra2C3, txtHastaValor2C3) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 4", tbcCaso4, cmbNoCaso4, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 5", cmbNoCaso4, cmbNoCaso5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 6", cmbNoCaso4, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 7", cmbNoCaso4, cmbNoCaso7) AndAlso _
+                    comparaNoDeCasoElegido("Caso 4 y Caso 8", cmbNoCaso4, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 4", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 4", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 4", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 5", tbcCaso5, cmbNoCaso5, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 6", cmbNoCaso5, cmbNoCaso6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 7", cmbNoCaso5, cmbNoCaso7) AndAlso _
+                    comparaNoDeCasoElegido("Caso 5 y Caso 8", cmbNoCaso5, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 5 y Caso 4", txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5, txtDesdeLetra1C4, txtDesdeValor1C4, txtHastaLetra2C4, txtHastaValor2C4) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 6 y Caso 5", txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 5", txtDesdeLetra1C7, txtDesdeValor1C6, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 5", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C5, txtDesdeValor1C5, txtHastaLetra2C5, txtHastaValor2C5) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 6", tbcCaso6, cmbNoCaso6, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                    comparaNoDeCasoElegido("Caso 6 y Caso 7", cmbNoCaso6, cmbNoCaso7) AndAlso _
+                    comparaNoDeCasoElegido("Caso 6 y Caso 8", cmbNoCaso6, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 7 y Caso 6", txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 6", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C6, txtDesdeValor1C6, txtHastaLetra2C6, txtHastaValor2C6) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 7", tbcCaso7, cmbNoCaso7, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                    comparaNoDeCasoElegido("Caso 7 y Caso 8", cmbNoCaso7, cmbNoCaso8) AndAlso _
+                    validaSiDosCasosEstanEnDistintoRango("Caso 8 y Caso 7", txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8, txtDesdeLetra1C7, txtDesdeValor1C7, txtHastaLetra2C7, txtHastaValor2C7) AndAlso _
+                    verificaEstanTodosLosValores(nocp, "Caso 8", tbcCaso8, cmbNoCaso7, txtDesdeLetra1C8, txtDesdeValor1C8, txtHastaLetra2C8, txtHastaValor2C8) Then
 
-                  aceptaValoresEnCasos()
+                     aceptaValoresEnCasos()
 
-               End If
-         End Select
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
-         tbcDatosDelCaso.Enabled = True
-         btnCapturaTerminada.Enabled = True
-         btnLeerDatosPlaca.Enabled = False
-      End Try
-
+                  End If
+            End Select
+         Catch
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
+            tbcDatosDelCaso.Enabled = True
+            btnCapturaTerminada.Enabled = True
+            btnLeerDatosPlaca.Enabled = False
+         End Try
+      Else
+         mensajeRojo(Me.lblMensajeCaso, "MENSAJE: Trate nuevamente y escriba los valores válidos.")
+      End If
    End Sub
 
 End Class

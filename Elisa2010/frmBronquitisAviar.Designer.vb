@@ -24,10 +24,10 @@ Partial Class frmBronquitisAviar
    Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBronquitisAviar))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Label41 = New System.Windows.Forms.Label()
       Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
       Me.lblNoControles = New System.Windows.Forms.Label()
@@ -165,10 +165,7 @@ Partial Class frmBronquitisAviar
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
-      Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-      Me.Panel5 = New System.Windows.Forms.Panel()
-      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
@@ -204,6 +201,8 @@ Partial Class frmBronquitisAviar
       Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.cmbNombreEnfermedad = New System.Windows.Forms.ComboBox()
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
+      Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.Panel2.SuspendLayout()
       Me.tbcDatosDelCaso.SuspendLayout()
       Me.tbcCaso1.SuspendLayout()
@@ -215,13 +214,12 @@ Partial Class frmBronquitisAviar
       Me.tbcCaso7.SuspendLayout()
       Me.tbcCaso8.SuspendLayout()
       Me.Panel4.SuspendLayout()
-      Me.Panel5.SuspendLayout()
-      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.Panel3.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
       Me.Panel6.SuspendLayout()
       Me.Panel1.SuspendLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
       'Label41
@@ -1822,69 +1820,9 @@ Partial Class frmBronquitisAviar
       Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatos.UseVisualStyleBackColor = True
       '
-      'lblNombreLector
-      '
-      Me.lblNombreLector.AutoSize = True
-      Me.lblNombreLector.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblNombreLector.ForeColor = System.Drawing.Color.Maroon
-      Me.lblNombreLector.Location = New System.Drawing.Point(8, 5)
-      Me.lblNombreLector.Name = "lblNombreLector"
-      Me.lblNombreLector.Size = New System.Drawing.Size(253, 16)
-      Me.lblNombreLector.TabIndex = 96
-      Me.lblNombreLector.Text = "Nombre del Lector utilizado como default:"
-      '
       'SerialPort1
       '
       Me.SerialPort1.PortName = "COM3"
-      '
-      'Panel5
-      '
-      Me.Panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-      Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel5.Controls.Add(Me.dgvPlacaLeida)
-      Me.Panel5.Controls.Add(Me.lblNombreLector)
-      Me.Panel5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.Panel5.Location = New System.Drawing.Point(8, 306)
-      Me.Panel5.Name = "Panel5"
-      Me.Panel5.Size = New System.Drawing.Size(956, 233)
-      Me.Panel5.TabIndex = 99
-      '
-      'dgvPlacaLeida
-      '
-      Me.dgvPlacaLeida.AllowUserToAddRows = False
-      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
-      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
-      Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
-      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
-      Me.dgvPlacaLeida.Location = New System.Drawing.Point(140, 25)
-      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
-      Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
-      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
-      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
-      Me.dgvPlacaLeida.TabIndex = 101
-      Me.dgvPlacaLeida.TabStop = False
       '
       'btnCapturaTerminada
       '
@@ -2272,11 +2210,61 @@ Partial Class frmBronquitisAviar
       Me.cmbNombreEnfermedad.TabIndex = 103
       Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
       '
+      'dgvPlacaLeida
+      '
+      Me.dgvPlacaLeida.AllowUserToAddRows = False
+      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
+      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
+      Me.dgvPlacaLeida.AllowUserToResizeRows = False
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
+      Me.dgvPlacaLeida.Location = New System.Drawing.Point(180, 340)
+      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
+      Me.dgvPlacaLeida.ReadOnly = True
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
+      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
+      Me.dgvPlacaLeida.TabIndex = 103
+      Me.dgvPlacaLeida.TabStop = False
+      '
+      'lblNombreLector
+      '
+      Me.lblNombreLector.AutoSize = True
+      Me.lblNombreLector.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreLector.ForeColor = System.Drawing.Color.Maroon
+      Me.lblNombreLector.Location = New System.Drawing.Point(48, 320)
+      Me.lblNombreLector.Name = "lblNombreLector"
+      Me.lblNombreLector.Size = New System.Drawing.Size(253, 16)
+      Me.lblNombreLector.TabIndex = 102
+      Me.lblNombreLector.Text = "Nombre del Lector utilizado como default:"
+      '
       'frmBronquitisAviar
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(970, 609)
+      Me.Controls.Add(Me.dgvPlacaLeida)
+      Me.Controls.Add(Me.lblNombreLector)
       Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.btnAceptarEnfermedad)
       Me.Controls.Add(Me.Panel6)
@@ -2292,7 +2280,6 @@ Partial Class frmBronquitisAviar
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.Panel2)
-      Me.Controls.Add(Me.Panel5)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmBronquitisAviar"
@@ -2318,9 +2305,6 @@ Partial Class frmBronquitisAviar
       Me.tbcCaso8.PerformLayout()
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
-      Me.Panel5.ResumeLayout(False)
-      Me.Panel5.PerformLayout()
-      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
@@ -2331,6 +2315,7 @@ Partial Class frmBronquitisAviar
       Me.Panel6.PerformLayout()
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -2417,7 +2402,6 @@ Partial Class frmBronquitisAviar
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
-   Friend WithEvents lblNombreLector As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents txtDesdeLetra1C2 As System.Windows.Forms.TextBox
@@ -2462,7 +2446,6 @@ Partial Class frmBronquitisAviar
    Friend WithEvents txtHastaValor2C8 As System.Windows.Forms.TextBox
    Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
-   Friend WithEvents Panel5 As System.Windows.Forms.Panel
    Friend WithEvents lblObservacionesC1 As System.Windows.Forms.Label
    Friend WithEvents lblObservacionesC2 As System.Windows.Forms.Label
    Friend WithEvents lblObservacionesC3 As System.Windows.Forms.Label
@@ -2472,7 +2455,6 @@ Partial Class frmBronquitisAviar
    Friend WithEvents lblObservacionesC7 As System.Windows.Forms.Label
    Friend WithEvents lblObservacionesC8 As System.Windows.Forms.Label
    Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
-   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Label41 As System.Windows.Forms.Label
    Friend WithEvents txtNoControlesNegativos As System.Windows.Forms.TextBox
    Friend WithEvents lblNoControles As System.Windows.Forms.Label
@@ -2511,4 +2493,6 @@ Partial Class frmBronquitisAviar
    Friend WithEvents lblLogTit1 As System.Windows.Forms.Label
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents cmbNombreEnfermedad As System.Windows.Forms.ComboBox
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
+   Friend WithEvents lblNombreLector As System.Windows.Forms.Label
 End Class

@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 'TODAS LAS EXTENSIONES SE CAMBIARON DE XLSX A XLS PARA QUE FUNCIONE EL PROGRAMA CON LA VERSION 2003 DE EXCEL.
 'SE CONSERVA EL CÓDIGO PARA EJECUTARLO CON EXCEL 2010 COMENTADO ARRIBA DE DONDE SE UTILIZA LA INSTRUCCION PARA 2003.
 Module mdlOperaciones
-   Public Const cadenaConexion = "server=192.168.1.2;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   Public Const cadenaConexion = "server=192.168.1.1;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
    '################################
@@ -67,8 +67,70 @@ Module mdlOperaciones
       Next
    End Sub
 
+   Public Sub dibujaTablaEnPantalla(ByRef placa As DataGridView)
+      Dim i As Integer
+      'Quita el indicador de fila del datagridview
+      placa.RowHeadersVisible = False
+      placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+      placa.Columns.Add("pozo0", "")
+      placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
+      placa.Columns(0).AutoSizeMode = False
+
+      For i = 1 To 12
+         placa.Columns.Add("pozo" & i, i)
+         With placa.Columns(i)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+         End With
+      Next
+      placa.Rows.Add(8)
+      'dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      For i = 0 To 7
+         placa.Rows(i).Cells(0).Value = obtenLetra(i)
+         placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
+         placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
+      Next
+
+   End Sub
+
 
    Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
+      Dim i As Integer
+      ''Quita el indicador de fila del datagridview
+      'placa.RowHeadersVisible = False
+      'placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      'placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+      'placa.Columns.Add("pozo0", "")
+      'placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
+      'placa.Columns(0).AutoSizeMode = False
+
+      'For i = 1 To 12
+      '   placa.Columns.Add("pozo" & i, i)
+      '   With placa.Columns(i)
+      '      .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+      '      .SortMode = DataGridViewColumnSortMode.NotSortable
+      '   End With
+      'Next
+      'placa.Rows.Add(8)
+      ''dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      'For i = 0 To 7
+      '   placa.Rows(i).Cells(0).Value = obtenLetra(i)
+      '   placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
+      '   placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
+      'Next
+
+      For i = 0 To 7
+         For j = 0 To 11
+            placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
+         Next
+      Next
+   End Sub
+
+
+
+
+   Public Sub organizaEnTablaDA(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
       Dim i As Integer
       'Quita el indicador de fila del datagridview
       placa.RowHeadersVisible = False

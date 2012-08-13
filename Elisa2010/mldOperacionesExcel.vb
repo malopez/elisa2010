@@ -14,6 +14,7 @@ Module mldOperacionesExcel
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                                ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
                                ByVal desdex As Integer, ByVal desdey As Integer, ByVal hastax As Integer, ByVal hastay As Integer)
+
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
@@ -266,7 +267,7 @@ Module mldOperacionesExcel
 
       'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
       Dim nomenf As Excel.Shape
-      With excelApp.Range("G16:H16")
+      With excelApp.Range("F17:G17")
          nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
              Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
              Left:=.Left, Top:=.Top, _
@@ -295,7 +296,7 @@ Module mldOperacionesExcel
 
       'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO SOBRE LA GRAFICA IMAGEN
       Dim tbox As Excel.Shape
-      With excelApp.Range("F17:H17")
+      With excelApp.Range("G17:H17")
          tbox = excelApp.ActiveSheet.Shapes.AddTextbox( _
              Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
              Left:=.Left, Top:=.Top, _
