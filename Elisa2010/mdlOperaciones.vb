@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 'TODAS LAS EXTENSIONES SE CAMBIARON DE XLSX A XLS PARA QUE FUNCIONE EL PROGRAMA CON LA VERSION 2003 DE EXCEL.
 'SE CONSERVA EL CÓDIGO PARA EJECUTARLO CON EXCEL 2010 COMENTADO ARRIBA DE DONDE SE UTILIZA LA INSTRUCCION PARA 2003.
 Module mdlOperaciones
-   Public Const cadenaConexion = "server=192.168.1.1;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
+   Public Const cadenaConexion = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
    '################################

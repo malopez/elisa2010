@@ -8,11 +8,10 @@ Public Class frmCapturaCySC
 
    Dim totalCasos() As listaCasos
    Dim posCasoActual As Integer = 0
-   Dim numeroSubcasos As Integer = 0
    Dim numero As Integer = 0
    Dim bandera As Boolean = True
-  
-
+   Dim largo As Integer = 0
+   Dim arreglo As String = ""
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
@@ -54,7 +53,7 @@ Public Class frmCapturaCySC
 
    Private Sub txtNoSubcasos_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtNoSubcasos.TextChanged
       Try
-         controlesValidosNumero(txtNoSubcasos, "En número de subcasos, ", 1, 94)
+         controlesValidosNumero(txtNoSubcasos, "En número de subcasos, ", 2, 94)
       Catch ex As Exception
          mensajeException(lblMensajeCaso, ex)
       End Try
@@ -124,13 +123,8 @@ Public Class frmCapturaCySC
                End While
                oDataReader.Close()
                lblMensajeCaso.Text = ""
-               'btnInserta.Enabled = True
-               txtNoSubcasos.Text = "1"
-               'limpiaInformacionCaso()
-               'statusDeCasoMostrados(True)
-               'txtMensajeSobreGrafica.Enabled = True
-               'txtMensajeSobreGrafica.ReadOnly = False
-               'estatusDesdeHasta(False)
+               txtNoSubcasos.Text = "2"
+               
             Else
                mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
             End If
@@ -552,6 +546,14 @@ Public Class frmCapturaCySC
       chkSubCasos.Enabled = estado
    End Sub
 
+   Private Sub statusDeSubCasoMostrados(ByVal estado As Boolean)
+      cmbNoCaso.Enabled = estado
+      btnBuscaCaso.Enabled = estado
+      txtAnalisisSolicitado.Enabled = estado
+      txtNombreCliente.Enabled = estado
+   End Sub
+
+
    Private Sub estatusDesdeHasta(ByVal estado As Boolean)
       'Habilita o deshabilita la lectura sobre las cajas de texto
       txtDesdeLetra.ReadOnly = estado
@@ -610,24 +612,59 @@ Public Class frmCapturaCySC
       End Try
    End Sub
 
-   Private Sub guardaCasoEnArreglo()
+   Private Sub guardaCasoEnArreglo(ByVal posicion As Integer)
+      MessageBox.Show("valor de posicion en guardaCasoEnArreglo:" & posicion)
+      Dim colorFondo As miRGB
+      totalCasos(posicion).noCaso = cmbNoCaso.Text
+      totalCasos(posicion).noSubcasos = 0
+      totalCasos(posicion).subCaso = 0
+      totalCasos(posicion).analisis = txtAnalisisSolicitado.Text
+      totalCasos(posicion).cliente = txtNombreCliente.Text
+      totalCasos(posicion).texto = txtMensajeSobreGrafica.Text
+      totalCasos(posicion).obs = lblObservaciones.Text
+      totalCasos(posicion).desdeLetra = siValorEsLetra(txtDesdeLetra)
+      totalCasos(posicion).desdeValor = CInt(txtDesdeValor.Text)
+      totalCasos(posicion).hastaLetra = siValorEsLetra(txtHastaLetra)
+      totalCasos(posicion).hastaValor = CInt(txtHastaValor.Text)
+      'Se utiliza para colorar los casos del color aleatorio obtenido de Rnd
+      Randomize()
+      colorFondo.R = CInt(Rnd() * 255)
+      colorFondo.G = CInt(Rnd() * 255)
+      colorFondo.B = CInt(Rnd() * 255)
+      coloreaLosCasos(dgvPlacaLeida, Color.FromArgb(colorFondo.R, colorFondo.G, colorFondo.B), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
+      lblCasoDeCaso.Text = "Caso: " & posCasoActual + 1 & " de " & UBound(totalCasos)
+
+   End Sub
+
+   Private Sub guardaSubCasoEnArreglo(ByVal posicion As Integer)
       'MessageBox.Show("Voy a guardar: " & cmbNoCaso.Text & vbTab & lblNoSubCaso.Text & vbTab _
       '                & txtAnalisisSolicitado.Text & vbTab & txtNombreCliente.Text & vbTab & txtMensajeSobreGrafica.Text _
       '                & vbTab & siValorEsLetra(txtDesdeLetra) & vbTab & txtDesdeValor.Text & vbTab & siValorEsLetra(txtHastaLetra) _
       '                & vbTab & txtHastaValor.Text)
-      totalCasos(posCasoActual).noCaso = cmbNoCaso.Text
-      totalCasos(posCasoActual).subCaso = CInt(lblNoSubCaso.Text)
-      totalCasos(posCasoActual).analisis = txtAnalisisSolicitado.Text
-      totalCasos(posCasoActual).cliente = txtNombreCliente.Text
-      totalCasos(posCasoActual).texto = txtMensajeSobreGrafica.Text
-      totalCasos(posCasoActual).obs = lblObservaciones.Text
-      totalCasos(posCasoActual).desdeLetra = siValorEsLetra(txtDesdeLetra)
-      totalCasos(posCasoActual).desdeValor = CInt(txtDesdeValor.Text)
-      totalCasos(posCasoActual).hastaLetra = siValorEsLetra(txtHastaLetra)
-      totalCasos(posCasoActual).hastaValor = CInt(txtHastaValor.Text)
-      coloreaCasos(dgvPlacaLeida, Color.Yellow, txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
-      lblCasoDeCaso.Text = "Caso: " & posCasoActual + 1 & " de " & UBound(totalCasos)
+
+      Dim colorFondo As miRGB
+      totalCasos(posicion).noCaso = cmbNoCaso.Text
+      totalCasos(posicion).noSubcasos = CInt(txtNoSubcasos.Text)
+      totalCasos(posicion).subCaso = CInt(lblNoSubCaso.Text)
+      totalCasos(posicion).analisis = txtAnalisisSolicitado.Text
+      totalCasos(posicion).cliente = txtNombreCliente.Text
+      totalCasos(posicion).texto = txtMensajeSobreGrafica.Text
+      totalCasos(posicion).obs = lblObservaciones.Text
+      totalCasos(posicion).desdeLetra = siValorEsLetra(txtDesdeLetra)
+      totalCasos(posicion).desdeValor = CInt(txtDesdeValor.Text)
+      totalCasos(posicion).hastaLetra = siValorEsLetra(txtHastaLetra)
+      totalCasos(posicion).hastaValor = CInt(txtHastaValor.Text)
+      'Se utiliza para colorar los casos del color aleatorio obtenido de Rnd
+      Randomize()
+      colorFondo.R = CInt(Rnd() * 255)
+      colorFondo.G = CInt(Rnd() * 255)
+      colorFondo.B = CInt(Rnd() * 255)
+      coloreaLosCasos(dgvPlacaLeida, Color.FromArgb(colorFondo.R, colorFondo.G, colorFondo.B), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
+      lblCasoDeCaso.Text = "Subcaso: " & lblNoSubCaso.Text + 1 & " de " & txtNoSubcasos.Text
    End Sub
+
+
+
 
    Private Sub btnInicio_Click(sender As System.Object, e As System.EventArgs) Handles btnInicio.Click
       posCasoActual = 0
@@ -710,7 +747,6 @@ Public Class frmCapturaCySC
 
    Private Sub btnGuardar_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardar.Click
       Dim i As Integer = 0
-      Dim largo As Integer = 0
 
       'Try
       btnGuardar.Enabled = False
@@ -725,13 +761,13 @@ Public Class frmCapturaCySC
       'De botones atras y adelante para que el usuario tenga la opcion de editar algun registro y modifarlo.
       If numero = 0 Then
 
-         ReDim Preserve totalCasos(numero + 1)
+         ReDim Preserve totalCasos(largo + 1)
          If siComboNoEsBlanco(cmbNoCaso, cmbNoCaso.Text) AndAlso _
-             controlesValidosLetra(txtDesdeLetra, "Caso " & (numero + 1), "A", "H") AndAlso _
-             controlesValidosNumero(txtDesdeValor, "Caso " & (numero + 1), 1, 12) AndAlso _
-             controlesValidosLetra(txtHastaLetra, "Caso " & (numero + 1), "A", "H") AndAlso _
-             controlesValidosNumero(txtHastaValor, "Caso " & (numero + 1), 1, 12) AndAlso _
-             desdeHastaValidos("Caso " & (numero + 1), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor) AndAlso _
+             controlesValidosLetra(txtDesdeLetra, "Caso " & (largo + 1), "A", "H") AndAlso _
+             controlesValidosNumero(txtDesdeValor, "Caso " & (largo + 1), 1, 12) AndAlso _
+             controlesValidosLetra(txtHastaLetra, "Caso " & (largo + 1), "A", "H") AndAlso _
+             controlesValidosNumero(txtHastaValor, "Caso " & (largo + 1), 1, 12) AndAlso _
+             desdeHastaValidos("Caso " & (largo + 1), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor) AndAlso _
              revisaQueCasosNoSeanIguales(cmbNoCaso, totalCasos) AndAlso _
              validaTodosLosCPParaUnCaso(cmbNoCaso.Text, txtNoControlesPositivos.Text, _
                                     txtCP1Letra1, txtCP1Valor1, _
@@ -746,13 +782,23 @@ Public Class frmCapturaCySC
                                     txtDesdeLetra, txtDesdeValor, _
                                     txtHastaLetra, txtHastaValor) Then
             'MessageBox.Show("Entre a la validacion numero=0 y los controles positivos no se encuentran dentro del caso")
-            posCasoActual = numero
-            guardaCasoEnArreglo()
+            'posCasoActual = numero
+            guardaCasoEnArreglo(largo)
+
             numero += 1
+            largo += 1
             btnInsertar.Enabled = True
             mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text)
+
+
+            statusDeCasoMostrados(False)
+            txtMensajeSobreGrafica.Enabled = False
+            txtMensajeSobreGrafica.ReadOnly = True
+            estatusDesdeHasta(True)
+            habilitaDesdeHasta(False)
+
          Else
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
+            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
             btnInsertar.Enabled = False
             btnEditar.Enabled = False
             btnGuardar.Enabled = True
@@ -760,7 +806,7 @@ Public Class frmCapturaCySC
          'Verifica que no se han excedido el número de casos solicitados.
       ElseIf (numero <= CInt(txtNoDeCasos.Text)) Then
 
-         largo = UBound(totalCasos)
+
          'Para todos los casos validar que no se encuentre en el rango de valores positivos y negativos
          'Validar desde - hasta definido en el caso
          'Validar desde-hasta con otros casos ya guardados.
@@ -798,12 +844,21 @@ Public Class frmCapturaCySC
             End While
 
             If i = largo Then
-               ReDim Preserve totalCasos(largo + 1)
+               largo += 1
+               ReDim Preserve totalCasos(largo)
                numero += 1
-               posCasoActual = numero - 1
-               guardaCasoEnArreglo()
+               posCasoActual = largo - 1
+               guardaCasoEnArreglo(posCasoActual)
                btnInsertar.Enabled = True
                mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text)
+
+
+               statusDeCasoMostrados(False)
+               txtMensajeSobreGrafica.Enabled = False
+               txtMensajeSobreGrafica.ReadOnly = True
+               estatusDesdeHasta(True)
+               habilitaDesdeHasta(False)
+
             Else
                MessageBox.Show("Los valores que se introdujeron se encuentran en el mismo rango que los del caso" & totalCasos(i).noCaso & ", Verifique.")
                btnInsertar.Enabled = False
@@ -811,7 +866,7 @@ Public Class frmCapturaCySC
                btnGuardar.Enabled = True
             End If
          Else
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
+            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
             btnInsertar.Enabled = False
             btnEditar.Enabled = False
             btnGuardar.Enabled = True
@@ -829,10 +884,9 @@ Public Class frmCapturaCySC
             'Habilita la barrita para desplazarse sobre los análisis de caso capturados.
             habilitaBarrita(True)
          End If
+
       End If
-
-
-         'Catch ex As Exception
+      'Catch ex As Exception
          '   mensajeException(lblMensajeCaso, ex)
          'End Try
    End Sub
@@ -850,22 +904,26 @@ Public Class frmCapturaCySC
          chkSubCasos.Enabled = False
          txtNoSubcasos.Visible = True
          txtNoSubcasos.Enabled = True
-         txtNoSubcasos.Focus()
-         'btnInserta.Enabled = False
-         'btnInsertaSubcaso.Enabled = True
+         btnGuardar.Enabled = False
+         btnGuardarEditado.Enabled = False
+         btnNuevoSubcaso.Visible = True
+         btnNuevoSubcaso.Enabled = True
+         btnGuardarSubcaso.Visible = True
+         btnGuardarSubcaso.Enabled = True
+         txtMensajeSobreGrafica.Enabled = True
+         txtMensajeSobreGrafica.ReadOnly = False
+
+         estatusDesdeHasta(False)
+         habilitaDesdeHasta(False)
+
       Else
          'HACER ALGO QUE BORRE LOS CASOS DEL ARREGLO
       End If
    End Sub
 
 
-
    Private Sub btnInsertar_Click(sender As System.Object, e As System.EventArgs) Handles btnInsertar.Click
-      'If numero = 0 Then
-      '   mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Análisis No." & numero + 1 & " de " & txtNoDeCasos.Text)
-      'Else
       mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Análisis No." & numero + 1 & " de " & txtNoDeCasos.Text)
-      'End If
       limpiaInformacionCaso()
       statusDeCasoMostrados(True)
       txtMensajeSobreGrafica.Enabled = True
@@ -877,9 +935,6 @@ Public Class frmCapturaCySC
       btnEditar.Enabled = False
       btnGuardar.Enabled = True
    End Sub
-
-
-
 
    Private Sub btnGuardarEditado_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarEditado.Click
       bandera = True
@@ -927,11 +982,19 @@ Public Class frmCapturaCySC
 
          If (bandera = True) Then
             'MessageBox.Show("llego al final del arreglo y los valores son validos")
-            guardaCasoEnArreglo()
+            guardaCasoEnArreglo(posCasoActual)
             habilitaBarrita(True)
             btnGuardarEditado.Enabled = False
             btnEditar.Enabled = True
-            mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & numero & " de " & txtNoDeCasos.Text)
+
+            statusDeCasoMostrados(False)
+            txtMensajeSobreGrafica.Enabled = False
+            txtMensajeSobreGrafica.ReadOnly = True
+            estatusDesdeHasta(True)
+            habilitaDesdeHasta(False)
+
+
+            mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & posCasoActual & " de " & UBound(totalCasos))
          End If
       Else
          mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
@@ -940,4 +1003,153 @@ Public Class frmCapturaCySC
 
    End Sub
 
+   Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
+      btnEditar.Enabled = False
+      Dim i As Integer = 0
+
+      For i = 0 To largo - 1
+         arreglo = "No.Casos---No. Subcasos----Subcaso----Analisis---Cliente----Texto----Obs----DesdeLetra----DesdeValor----HastaLetra----HataValor" & vbCrLf _
+         & totalCasos(i).noCaso & " " _
+         & totalCasos(i).noSubcasos & " " _
+         & totalCasos(i).subCaso & " " _
+         & totalCasos(i).analisis & " " _
+         & totalCasos(i).cliente & " " _
+         & totalCasos(i).texto & " " _
+         & totalCasos(i).obs & " " _
+         & totalCasos(i).desdeLetra & " " _
+         & totalCasos(i).desdeValor & " " _
+         & totalCasos(i).hastaLetra & " " _
+         & totalCasos(i).hastaValor & vbCrLf
+         MessageBox.Show("valor del arreglo:" & vbCrLf & arreglo)
+      Next
+
+   End Sub
+
+   Private Sub btnNuevoSubcaso_Click(sender As System.Object, e As System.EventArgs) Handles btnNuevoSubcaso.Click
+      btnNuevoSubcaso.Enabled = False
+      txtNoSubcasos.Enabled = False
+      txtNoSubcasos.ReadOnly = True
+      mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Subcaso No." & lblNoSubCaso.Text & " de " & txtNoSubcasos.Text)
+
+      'No cambia el caso, ni el cliente, ni enfermedad y limpia el desde hasta del caso para que se coloque el numero de subcaso
+      statusDeSubCasoMostrados(False)
+      txtMensajeSobreGrafica.ReadOnly = False
+      txtMensajeSobreGrafica.Focus()
+
+      habilitaDesdeHasta(True)
+      estatusDesdeHasta(False)
+
+      txtDesdeLetra.Text = "A"
+      txtDesdeValor.Text = "1"
+      txtHastaLetra.Text = "A"
+      txtHastaValor.Text = "1"
+
+      'Habilita la barrita para desplazarse sobre los análisis de caso capturados.
+      habilitaBarrita(False)
+      btnEditar.Enabled = False
+   End Sub
+
+   Private Sub btnGuardarSubcaso_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarSubcaso.Click
+
+      Dim colorFondo As miRGB
+      'Se requiere que tenga al menos dos subcasos
+      If (txtNoSubcasos.Text >= 2) Then
+         'modificarlo porque en subcasos no aplica esta validacion de combo con casos iguales.
+         If siComboNoEsBlanco(cmbNoCaso, cmbNoCaso.Text) AndAlso _
+             controlesValidosLetra(txtDesdeLetra, "Caso " & (largo + 1), "A", "H") AndAlso _
+             controlesValidosNumero(txtDesdeValor, "Caso " & (largo + 1), 1, 12) AndAlso _
+             controlesValidosLetra(txtHastaLetra, "Caso " & (largo + 1), "A", "H") AndAlso _
+             controlesValidosNumero(txtHastaValor, "Caso " & (largo + 1), 1, 12) AndAlso _
+             desdeHastaValidos("Caso " & (largo + 1), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor) AndAlso _
+             revisaQueCasosNoSeanIguales(cmbNoCaso, totalCasos) AndAlso _
+             validaTodosLosCPParaUnCaso(cmbNoCaso.Text, txtNoControlesPositivos.Text, _
+                                    txtCP1Letra1, txtCP1Valor1, _
+                                    txtCP2Letra2, txtCP2Valor2, _
+                                    txtCP3Letra3, txtCP3Valor3, _
+                                    txtDesdeLetra, txtDesdeValor, _
+                                    txtHastaLetra, txtHastaValor) AndAlso _
+             validaTodosLosCNParaUnCaso(cmbNoCaso.Text, txtNoControlesNegativos.Text, _
+                                    txtCN1Letra1, txtCN1Valor1, _
+                                    txtCN2Letra2, txtCN2Valor2, _
+                                    txtCN3Letra3, txtCN3Valor3, _
+                                    txtDesdeLetra, txtDesdeValor, _
+                                    txtHastaLetra, txtHastaValor) Then
+
+
+
+
+            If (lblNoSubCaso.Text <= txtNoSubcasos.Text) Then
+               'Se utiliza para colorar los casos del color aleatorio obtenido de Rnd
+               Randomize()
+               colorFondo.R = CInt(Rnd() * 255)
+               colorFondo.G = CInt(Rnd() * 255)
+               colorFondo.B = CInt(Rnd() * 255)
+               coloreaLosCasos(dgvPlacaLeida, Color.FromArgb(colorFondo.R, colorFondo.G, colorFondo.B), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
+
+               If largo = 0 Then
+                  largo += 1
+                  ReDim Preserve totalCasos(largo)
+
+               Else
+                  largo = UBound(totalCasos) + 1
+                  ReDim Preserve totalCasos(largo)
+               End If
+
+               posCasoActual = largo - 1
+               guardaSubCasoEnArreglo(posCasoActual)
+
+
+               'Limpia los valores desde hasta para el siguiente subcaso.
+               txtMensajeSobreGrafica.Text = ""
+               txtDesdeLetra.Text = "A"
+               txtDesdeValor.Text = "1"
+               txtHastaLetra.Text = "A"
+               txtHastaValor.Text = "1"
+
+               btnNuevoSubcaso.Enabled = True
+
+               If (lblNoSubCaso.Text = txtNoSubcasos.Text) Then
+
+                  btnNuevoSubcaso.Enabled = False
+                  btnGuardarSubcaso.Enabled = False
+                  btnNuevoSubcaso.Visible = False
+                  btnGuardarSubcaso.Visible = False
+
+                  numero += 1
+
+                  'Verifica que no los casos no se hayan terminado de capturar y habilita el boton, en caso de que ya 
+                  'Se tenga la captura de todos los casos, deshabilita el boton y habilita la barrita de <<, <, >, >> atras y adelante.
+                  If numero < CInt(txtNoDeCasos.Text) Then
+                     btnInsertar.Enabled = True
+                  ElseIf numero = CInt(txtNoDeCasos.Text) Then
+                     btnInsertar.Enabled = False
+                     habilitaBarrita(True)
+                     btnEditar.Enabled = True
+                  End If
+
+
+               End If
+
+               lblNoSubCaso.Text = CInt(lblNoSubCaso.Text) + 1
+
+
+            Else 'De la validacion de subcasos >=2
+               'Enviar mensaje de que al menos debe haber dos subcasos.
+
+
+               MessageBox.Show("ERROR: Debe escribir un número entre 2 y 92 para la cantidad de subcasos, Verifique.")
+               btnNuevoSubcaso.Enabled = True
+               btnGuardarSubcaso.Enabled = False
+
+            End If 'De la validacion de subcasos >=2
+
+         Else
+            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, o desde-hasta que otro caso anterior, Verifique.")
+            btnNuevoSubcaso.Enabled = True
+            btnGuardarSubcaso.Enabled = False
+         End If
+      End If
+
+
+   End Sub
 End Class

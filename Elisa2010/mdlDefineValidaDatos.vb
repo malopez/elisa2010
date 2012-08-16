@@ -7,8 +7,15 @@ Imports System.Runtime.InteropServices
 Module mdlDefineValidaDatos
 
 
+   Public Structure miRGB
+      Dim R As Integer
+      Dim G As Integer
+      Dim B As Integer
+   End Structure
+
    Public Structure listaCasos
       Dim noCaso As String
+      Dim noSubcasos As Integer
       Dim subCaso As Integer
       Dim cliente As String
       Dim analisis As String

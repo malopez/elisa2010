@@ -132,13 +132,10 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="elisasandboxDataSet.Designer.vb">
+    <Compile Include="elisasandbox.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="elisasandboxDataSet.vb">
-      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
+      <DependentUpon>elisasandbox.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmAbrirArchivoExistente.Designer.vb">
       <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
@@ -453,16 +450,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ElisaBiovetsa_TemporaryKey.pfx" />
-    <None Include="elisasandboxDataSet.xsc">
-      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
+    <None Include="elisasandbox.xsc">
+      <DependentUpon>elisasandbox.xsd</DependentUpon>
     </None>
-    <None Include="elisasandboxDataSet.xsd">
+    <None Include="elisasandbox.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>elisasandboxDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>elisasandbox.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="elisasandboxDataSet.xss">
-      <DependentUpon>elisasandboxDataSet.xsd</DependentUpon>
+    <None Include="elisasandbox.xss">
+      <DependentUpon>elisasandbox.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

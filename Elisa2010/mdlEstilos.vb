@@ -1,6 +1,12 @@
 ﻿Module mdlEstilos
+
+
+   ''############################ DESDE AQUI
+   'Se pueden borrar estos dos procedimientos desde aqui hasta aqui porque se sustituyen por los dos de abajo
+   'Gracias al cambio se tienen los colores en RGB aleatorio.
+
    'Colorea en el grid view los casos cada uno con un color.
-   Public Sub coloreaCasos(ByRef dgvPlacaLeida As DataGridView, ByVal nomcolor As Color, ByVal txtDesdeLetra As TextBox, _
+   Public Sub coloreaCasos(ByRef dgvPlacaLeida As DataGridView, ByVal nomcolor As System.Drawing.Color, ByVal txtDesdeLetra As TextBox, _
                             ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox)
       Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
       Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
@@ -21,6 +27,31 @@
    'Colorea la tabla del grid view
    Public Sub coloreaTabla(ByRef placa As DataGridView, ByVal color As System.Drawing.Color, ByVal col As Integer, ByVal reng As Integer)
       placa.Rows(col).Cells(reng).Style.BackColor = color
+   End Sub
+
+   '############################HASTA AQUI
+
+   'Creados para casos con subcasos probando el valor del RGB
+   Public Sub coloreaTablaDeCasos(ByRef placa As DataGridView, ByVal colorFondo As Color, ByVal col As Integer, ByVal reng As Integer)
+      placa.Rows(col).Cells(reng).Style.BackColor = colorFondo
+   End Sub
+
+   Public Sub coloreaLosCasos(ByRef dgvPlacaLeida As DataGridView, ByVal colorFondo As Color, ByVal txtDesdeLetra As TextBox, _
+                            ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox)
+      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+      Dim desdey As Integer = CInt(txtDesdeValor.Text) - 1
+      Dim hastay As Integer = CInt(txtHastaValor.Text) - 1
+      Dim renglones As Integer = 11
+      For i = desdex To hastax
+         If (i = hastax) Then
+            renglones = hastay
+         End If
+         For j = desdey To renglones
+            coloreaTablaDeCasos(dgvPlacaLeida, colorFondo, i, j + 1)
+         Next
+         desdey = 0
+      Next
    End Sub
 
    'colorea de verde la posicion señalada para los controles positivos.
@@ -58,6 +89,5 @@
             coloreaTabla(dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), CInt(txtCN3Valor3.Text))
       End Select
    End Sub
-
 
 End Module

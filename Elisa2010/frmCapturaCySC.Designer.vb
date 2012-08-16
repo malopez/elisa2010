@@ -111,6 +111,8 @@ Partial Class frmCapturaCySC
       Me.Label34 = New System.Windows.Forms.Label()
       Me.Label35 = New System.Windows.Forms.Label()
       Me.Panel5 = New System.Windows.Forms.Panel()
+      Me.btnGuardarSubcaso = New System.Windows.Forms.Button()
+      Me.btnNuevoSubcaso = New System.Windows.Forms.Button()
       Me.btnGuardarEditado = New System.Windows.Forms.Button()
       Me.btnInsertar = New System.Windows.Forms.Button()
       Me.btnGuardar = New System.Windows.Forms.Button()
@@ -183,6 +185,7 @@ Partial Class frmCapturaCySC
       '
       'cmbNombreEnfermedad
       '
+      Me.cmbNombreEnfermedad.Enabled = False
       Me.cmbNombreEnfermedad.FormattingEnabled = True
       Me.cmbNombreEnfermedad.Location = New System.Drawing.Point(205, 4)
       Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
@@ -867,6 +870,7 @@ Partial Class frmCapturaCySC
       Me.txtNoSubcasos.Name = "txtNoSubcasos"
       Me.txtNoSubcasos.Size = New System.Drawing.Size(24, 20)
       Me.txtNoSubcasos.TabIndex = 166
+      Me.txtNoSubcasos.Text = "2"
       Me.txtNoSubcasos.Visible = False
       '
       'chkSubCasos
@@ -1073,6 +1077,8 @@ Partial Class frmCapturaCySC
       '
       Me.Panel5.BackColor = System.Drawing.SystemColors.Control
       Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel5.Controls.Add(Me.btnGuardarSubcaso)
+      Me.Panel5.Controls.Add(Me.btnNuevoSubcaso)
       Me.Panel5.Controls.Add(Me.btnGuardarEditado)
       Me.Panel5.Controls.Add(Me.btnInsertar)
       Me.Panel5.Controls.Add(Me.btnGuardar)
@@ -1086,6 +1092,28 @@ Partial Class frmCapturaCySC
       Me.Panel5.Name = "Panel5"
       Me.Panel5.Size = New System.Drawing.Size(665, 34)
       Me.Panel5.TabIndex = 143
+      '
+      'btnGuardarSubcaso
+      '
+      Me.btnGuardarSubcaso.Enabled = False
+      Me.btnGuardarSubcaso.Image = CType(resources.GetObject("btnGuardarSubcaso.Image"), System.Drawing.Image)
+      Me.btnGuardarSubcaso.Location = New System.Drawing.Point(601, 4)
+      Me.btnGuardarSubcaso.Name = "btnGuardarSubcaso"
+      Me.btnGuardarSubcaso.Size = New System.Drawing.Size(38, 23)
+      Me.btnGuardarSubcaso.TabIndex = 140
+      Me.btnGuardarSubcaso.UseVisualStyleBackColor = True
+      Me.btnGuardarSubcaso.Visible = False
+      '
+      'btnNuevoSubcaso
+      '
+      Me.btnNuevoSubcaso.Enabled = False
+      Me.btnNuevoSubcaso.Image = CType(resources.GetObject("btnNuevoSubcaso.Image"), System.Drawing.Image)
+      Me.btnNuevoSubcaso.Location = New System.Drawing.Point(557, 4)
+      Me.btnNuevoSubcaso.Name = "btnNuevoSubcaso"
+      Me.btnNuevoSubcaso.Size = New System.Drawing.Size(38, 23)
+      Me.btnNuevoSubcaso.TabIndex = 139
+      Me.btnNuevoSubcaso.UseVisualStyleBackColor = True
+      Me.btnNuevoSubcaso.Visible = False
       '
       'btnGuardarEditado
       '
@@ -1200,6 +1228,7 @@ Partial Class frmCapturaCySC
       Me.Controls.Add(Me.Panel1)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmCapturaCySC"
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Captura casos y subcasos"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
@@ -1320,4 +1349,6 @@ Partial Class frmCapturaCySC
    Friend WithEvents lblNoSubCaso As System.Windows.Forms.Label
    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
    Friend WithEvents btnGuardarEditado As System.Windows.Forms.Button
+   Friend WithEvents btnGuardarSubcaso As System.Windows.Forms.Button
+   Friend WithEvents btnNuevoSubcaso As System.Windows.Forms.Button
 End Class
