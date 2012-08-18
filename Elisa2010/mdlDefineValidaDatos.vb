@@ -624,21 +624,23 @@ Module mdlDefineValidaDatos
       End If
    End Sub
 
-   Public Function revisaQueCasosNoSeanIguales(ByVal combo As ComboBox,ByVal totalCasos() As listaCasos) As Boolean
-      Dim i As Integer = 0
-      Dim largo As Integer = UBound(totalCasos) - 1
-      Dim b As Boolean = True
-      For i = 0 To largo
-         If (combo.Text = totalCasos(i).noCaso) Then
-            MessageBox.Show("ERROR: Este No. de Caso es igual que el análisis No." & (i + 1) & ", Verifique y corrija.")
-            b = False
-            Exit For
-         Else
-            b = True
-         End If
-      Next
-      Return b
-   End Function
+
+   'PUEDE BORRARSE POR CAMBIOS AL 18-08-2012
+   'Public Function revisaQueCasosNoSeanIguales(ByVal combo As ComboBox,ByVal totalCasos() As listaCasos) As Boolean
+   '   Dim i As Integer = 0
+   '   Dim largo As Integer = UBound(totalCasos) - 1
+   '   Dim b As Boolean = True
+   '   For i = 0 To largo
+   '      If (combo.Text = totalCasos(i).noCaso) Then
+   '         MessageBox.Show("ERROR: Este No. de Caso es igual que el análisis No." & (i + 1) & ", Verifique y corrija.")
+   '         b = False
+   '         Exit For
+   '      Else
+   '         b = True
+   '      End If
+   '   Next
+   '   Return b
+   'End Function
 
 
 End Module

@@ -154,11 +154,11 @@ Public Class frmEncefalomielitisAviar
          Case 2
             '1. Valida que esten en rango de letras y numeros A-H y 1-12.
             '2. Verifica que se cumpla la tabla de validaciones mencionada en los comentarios anteriores indicados arriba.
-            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "Z") AndAlso _
+            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "H") AndAlso _
               controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
-              controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
+              controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "H") AndAlso _
               controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
-              controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
+              controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "H") AndAlso _
               controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
               controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
               controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
@@ -184,13 +184,13 @@ Public Class frmEncefalomielitisAviar
          Case 3
             '1. Valida que esten en rango de letras y numeros A-H y 1-12.
             '2. Verifica que se cumpla la tabla de validaciones mencionada en los comentarios anteriores indicados arriba.
-            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "Z") AndAlso _
+            If controlesValidosLetra(txtCP1Letra1, " Letra primer control positivo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCP1Valor1, " Número primer control positivo ", 1, 12) AndAlso _
-               controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "Z") AndAlso _
+               controlesValidosLetra(txtCP2Letra2, " Letra segundo control positivo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) AndAlso _
-               controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "Z") AndAlso _
+               controlesValidosLetra(txtCP3Letra3, " Letra tercer control positivo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 1, 12) AndAlso _
-               controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "Z") AndAlso _
+               controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
                controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso

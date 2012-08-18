@@ -90,6 +90,7 @@ Partial Class frmCapturaCySC
       Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.tbpInformacionCaso = New System.Windows.Forms.TabPage()
       Me.Panel8 = New System.Windows.Forms.Panel()
+      Me.btnAceptaSubCasos = New System.Windows.Forms.Button()
       Me.lblNoSubCaso = New System.Windows.Forms.Label()
       Me.txtNoSubcasos = New System.Windows.Forms.TextBox()
       Me.chkSubCasos = New System.Windows.Forms.CheckBox()
@@ -702,7 +703,7 @@ Partial Class frmCapturaCySC
       'txtNoDeCasos
       '
       Me.txtNoDeCasos.Location = New System.Drawing.Point(20, 28)
-      Me.txtNoDeCasos.MaxLength = 1
+      Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
       Me.txtNoDeCasos.TabIndex = 138
@@ -826,6 +827,7 @@ Partial Class frmCapturaCySC
       '
       Me.Panel8.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
       Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel8.Controls.Add(Me.btnAceptaSubCasos)
       Me.Panel8.Controls.Add(Me.lblNoSubCaso)
       Me.Panel8.Controls.Add(Me.txtNoSubcasos)
       Me.Panel8.Controls.Add(Me.chkSubCasos)
@@ -851,10 +853,22 @@ Partial Class frmCapturaCySC
       Me.Panel8.Size = New System.Drawing.Size(665, 210)
       Me.Panel8.TabIndex = 144
       '
+      'btnAceptaSubCasos
+      '
+      Me.btnAceptaSubCasos.Enabled = False
+      Me.btnAceptaSubCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.btnAceptaSubCasos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptaSubCasos.Location = New System.Drawing.Point(568, 6)
+      Me.btnAceptaSubCasos.Name = "btnAceptaSubCasos"
+      Me.btnAceptaSubCasos.Size = New System.Drawing.Size(48, 23)
+      Me.btnAceptaSubCasos.TabIndex = 167
+      Me.btnAceptaSubCasos.Text = "OK"
+      Me.btnAceptaSubCasos.UseVisualStyleBackColor = True
+      '
       'lblNoSubCaso
       '
       Me.lblNoSubCaso.AutoSize = True
-      Me.lblNoSubCaso.Location = New System.Drawing.Point(624, 8)
+      Me.lblNoSubCaso.Location = New System.Drawing.Point(238, 156)
       Me.lblNoSubCaso.Name = "lblNoSubCaso"
       Me.lblNoSubCaso.Size = New System.Drawing.Size(13, 13)
       Me.lblNoSubCaso.TabIndex = 145
@@ -865,7 +879,7 @@ Partial Class frmCapturaCySC
       Me.txtNoSubcasos.BackColor = System.Drawing.Color.White
       Me.txtNoSubcasos.Enabled = False
       Me.txtNoSubcasos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtNoSubcasos.Location = New System.Drawing.Point(594, 5)
+      Me.txtNoSubcasos.Location = New System.Drawing.Point(538, 7)
       Me.txtNoSubcasos.MaxLength = 2
       Me.txtNoSubcasos.Name = "txtNoSubcasos"
       Me.txtNoSubcasos.Size = New System.Drawing.Size(24, 20)
@@ -878,7 +892,7 @@ Partial Class frmCapturaCySC
       Me.chkSubCasos.AutoSize = True
       Me.chkSubCasos.Enabled = False
       Me.chkSubCasos.ForeColor = System.Drawing.Color.DarkGreen
-      Me.chkSubCasos.Location = New System.Drawing.Point(515, 8)
+      Me.chkSubCasos.Location = New System.Drawing.Point(459, 10)
       Me.chkSubCasos.Name = "chkSubCasos"
       Me.chkSubCasos.Size = New System.Drawing.Size(73, 17)
       Me.chkSubCasos.TabIndex = 165
@@ -1351,4 +1365,5 @@ Partial Class frmCapturaCySC
    Friend WithEvents btnGuardarEditado As System.Windows.Forms.Button
    Friend WithEvents btnGuardarSubcaso As System.Windows.Forms.Button
    Friend WithEvents btnNuevoSubcaso As System.Windows.Forms.Button
+   Friend WithEvents btnAceptaSubCasos As System.Windows.Forms.Button
 End Class
