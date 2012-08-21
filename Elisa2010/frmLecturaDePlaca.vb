@@ -254,8 +254,8 @@
             desdey = 3
             hastay = 8
          End If
-         guardaDatosExcel(placaLector, nocp, nocn, "", "", cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+         guardarDatosExcel(placaLector, nocp, nocn, "", "", cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeLecturaPlaca)
          mensajeVerde(Me.lblMensajeLecturaPlaca, "Mensaje: Los datos de la placa original se guardaron exitosamente.")
          btnGuardaDatos.Enabled = False
       Catch ex As Exception

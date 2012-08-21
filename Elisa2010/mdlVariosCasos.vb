@@ -639,8 +639,8 @@
          cny3 = CInt(txtCN3Valor3.Text) - 1
       End If
       Try
-         guardaDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+         guardarDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
          mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
@@ -691,8 +691,8 @@
          cny3 = CInt(txtCN3Valor3.Text) - 1
       End If
       Try
-         guardaDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
+         guardarDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
          mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")

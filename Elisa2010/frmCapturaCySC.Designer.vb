@@ -23,18 +23,17 @@ Partial Class frmCapturaCySC
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCySC))
       Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCySC))
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Label43 = New System.Windows.Forms.Label()
       Me.Label42 = New System.Windows.Forms.Label()
       Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.cmbNombreEnfermedad = New System.Windows.Forms.ComboBox()
-      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
-      Me.btnGuardaDatos = New System.Windows.Forms.Button()
+      Me.btnGuardaDatosExcel = New System.Windows.Forms.Button()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
@@ -124,8 +123,8 @@ Partial Class frmCapturaCySC
       Me.btnHaciaAtras = New System.Windows.Forms.Button()
       Me.lblCasoDeCaso = New System.Windows.Forms.Label()
       Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+      Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.Panel1.SuspendLayout()
-      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.Panel3.SuspendLayout()
       Me.tbcDatosDelCaso.SuspendLayout()
       Me.tbpDatosDelCaso.SuspendLayout()
@@ -137,6 +136,7 @@ Partial Class frmCapturaCySC
       Me.tbpInformacionCaso.SuspendLayout()
       Me.Panel8.SuspendLayout()
       Me.Panel5.SuspendLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
       'Panel1
@@ -194,53 +194,15 @@ Partial Class frmCapturaCySC
       Me.cmbNombreEnfermedad.TabIndex = 103
       Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
       '
-      'dgvPlacaLeida
+      'btnGuardaDatosExcel
       '
-      Me.dgvPlacaLeida.AllowUserToAddRows = False
-      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
-      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
-      Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
-      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
-      Me.dgvPlacaLeida.Location = New System.Drawing.Point(6, 331)
-      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
-      Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
-      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
-      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
-      Me.dgvPlacaLeida.TabIndex = 132
-      Me.dgvPlacaLeida.TabStop = False
-      '
-      'btnGuardaDatos
-      '
-      Me.btnGuardaDatos.Enabled = False
-      Me.btnGuardaDatos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnGuardaDatos.Location = New System.Drawing.Point(335, 535)
-      Me.btnGuardaDatos.Name = "btnGuardaDatos"
-      Me.btnGuardaDatos.Size = New System.Drawing.Size(136, 23)
-      Me.btnGuardaDatos.TabIndex = 136
-      Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
-      Me.btnGuardaDatos.UseVisualStyleBackColor = True
+      Me.btnGuardaDatosExcel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnGuardaDatosExcel.Location = New System.Drawing.Point(335, 535)
+      Me.btnGuardaDatosExcel.Name = "btnGuardaDatosExcel"
+      Me.btnGuardaDatosExcel.Size = New System.Drawing.Size(136, 23)
+      Me.btnGuardaDatosExcel.TabIndex = 136
+      Me.btnGuardaDatosExcel.Text = "Guardar Datos en Excel"
+      Me.btnGuardaDatosExcel.UseVisualStyleBackColor = True
       '
       'Panel3
       '
@@ -1226,19 +1188,57 @@ Partial Class frmCapturaCySC
       Me.lblCasoDeCaso.TabIndex = 80
       Me.lblCasoDeCaso.Text = "Caso No."
       '
+      'dgvPlacaLeida
+      '
+      Me.dgvPlacaLeida.AllowUserToAddRows = False
+      Me.dgvPlacaLeida.AllowUserToDeleteRows = False
+      Me.dgvPlacaLeida.AllowUserToResizeColumns = False
+      Me.dgvPlacaLeida.AllowUserToResizeRows = False
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+      Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+      Me.dgvPlacaLeida.BackgroundColor = System.Drawing.Color.White
+      Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+      Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+      Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+      Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
+      Me.dgvPlacaLeida.Location = New System.Drawing.Point(7, 331)
+      Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
+      Me.dgvPlacaLeida.ReadOnly = True
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
+      Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
+      Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
+      Me.dgvPlacaLeida.TabIndex = 141
+      Me.dgvPlacaLeida.TabStop = False
+      '
       'frmCapturaCySC
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(707, 600)
+      Me.ClientSize = New System.Drawing.Size(711, 600)
+      Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.tbcDatosDelCaso)
-      Me.Controls.Add(Me.btnGuardaDatos)
+      Me.Controls.Add(Me.btnGuardaDatosExcel)
       Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnObtenerResultados)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnCancelar)
-      Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.Panel1)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmCapturaCySC"
@@ -1246,7 +1246,6 @@ Partial Class frmCapturaCySC
       Me.Text = "Captura casos y subcasos"
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
-      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
       Me.tbcDatosDelCaso.ResumeLayout(False)
@@ -1266,6 +1265,7 @@ Partial Class frmCapturaCySC
       Me.Panel8.PerformLayout()
       Me.Panel5.ResumeLayout(False)
       Me.Panel5.PerformLayout()
+      CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -1275,8 +1275,7 @@ Partial Class frmCapturaCySC
    Friend WithEvents Label42 As System.Windows.Forms.Label
    Friend WithEvents dtpFechaElaboracion As System.Windows.Forms.DateTimePicker
    Friend WithEvents cmbNombreEnfermedad As System.Windows.Forms.ComboBox
-   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
-   Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
+   Friend WithEvents btnGuardaDatosExcel As System.Windows.Forms.Button
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents btnObtenerResultados As System.Windows.Forms.Button
@@ -1366,4 +1365,5 @@ Partial Class frmCapturaCySC
    Friend WithEvents btnGuardarSubcaso As System.Windows.Forms.Button
    Friend WithEvents btnNuevoSubcaso As System.Windows.Forms.Button
    Friend WithEvents btnAceptaSubCasos As System.Windows.Forms.Button
+   Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
 End Class

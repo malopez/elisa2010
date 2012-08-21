@@ -77,7 +77,7 @@ Public Class frmCapturaCySC
       Try
          formateaDatos(placaLector, dgvPlacaLeida)
          organizaEnTabla(dgvPlacaLeida, placaLector)
-         btnGuardaDatos.Enabled = True
+         btnGuardaDatosExcel.Enabled = True
 
       Catch ex As Exception
          mensajeRojo(lblMensajeCaso, "ERROR: Se ha presentado un error al formatear datos.")
@@ -129,7 +129,7 @@ Public Class frmCapturaCySC
    End Sub
 
    Private Sub txtCP2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP2Valor2.TextChanged
-      controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12) 
+      controlesValidosNumero(txtCP2Valor2, " Número segundo control positivo ", 1, 12)
    End Sub
 
    Private Sub txtCP3Letra3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP3Letra3.TextChanged
@@ -137,24 +137,24 @@ Public Class frmCapturaCySC
    End Sub
 
    Private Sub txtCP3Valor3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCP3Valor3.TextChanged
-       controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 1, 12) 
+      controlesValidosNumero(txtCP3Valor3, " Número tercer control positivo ", 1, 12)
    End Sub
 
    Private Sub txtCN1Letra1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN1Letra1.TextChanged
       'Valor positivo uno, letra y numero
-      controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "H") 
+      controlesValidosLetra(txtCN1Letra1, " Letra primer control negativo ", "A", "H")
    End Sub
 
    Private Sub txtCN1Valor1_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN1Valor1.TextChanged
-     controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12)
+      controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12)
    End Sub
 
    Private Sub txtCN2Letra2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN2Letra2.TextChanged
-      controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") 
+      controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H")
    End Sub
 
    Private Sub txtCN2Valor2_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN2Valor2.TextChanged
-      controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) 
+      controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12)
    End Sub
 
    Private Sub txtCN3Letra3_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtCN3Letra3.TextChanged
@@ -643,8 +643,8 @@ Public Class frmCapturaCySC
             btnNuevoSubcaso.Visible = True
             btnNuevoSubcaso.Focus()
 
-            btnGuardarSubcaso.Enabled = True
-            btnGuardarSubcaso.Visible = True
+            'btnGuardarSubcaso.Enabled = True
+            'btnGuardarSubcaso.Visible = True
             btnAceptaSubCasos.Enabled = False
 
          Else
@@ -765,6 +765,10 @@ Public Class frmCapturaCySC
       btnNuevoSubcaso.Enabled = False
       txtNoSubcasos.Enabled = False
       txtNoSubcasos.ReadOnly = True
+
+      btnGuardarSubcaso.Enabled = True
+      btnGuardarSubcaso.Visible = True
+
       mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Subcaso No." & lblNoSubCaso.Text & " de " & txtNoSubcasos.Text)
 
       'No cambia el caso, ni el cliente, ni enfermedad y limpia el desde hasta del caso para que se coloque el numero de subcaso
@@ -980,7 +984,7 @@ Public Class frmCapturaCySC
                                  txtDesdeLetra, txtDesdeValor, _
                                  txtHastaLetra, txtHastaValor) Then
 
-         If (lblNoSubCaso.Text <= txtNoSubcasos.Text) Then
+         If CInt(lblNoSubCaso.Text) <= CInt(txtNoSubcasos.Text) Then
             'Revisa todos los registros del arreglo para verificar que no se encuentran en el mismo rango 
             'cuando exista al menos 1 registro en el arreglo
             If (largo >= 1) Then
@@ -1045,6 +1049,7 @@ Public Class frmCapturaCySC
                txtHastaValor.Text = "1"
 
                btnNuevoSubcaso.Enabled = True
+               btnGuardarSubcaso.Enabled = False
                lblNoSubCaso.Text = CInt(lblNoSubCaso.Text) + 1
                chkSubCasos.Enabled = False
             Else
@@ -1058,8 +1063,7 @@ Public Class frmCapturaCySC
                MessageBox.Show("ERROR: Los valores que se introdujeron se encuentran en el mismo rango que los del caso: " & totalCasos(i).noCaso & ", Verifique.")
             End If
 
-
-            If (lblNoSubCaso.Text > txtNoSubcasos.Text) Then
+            If (CInt(lblNoSubCaso.Text) > CInt(txtNoSubcasos.Text)) Then
 
                btnNuevoSubcaso.Enabled = False
                btnGuardarSubcaso.Enabled = False
@@ -1067,29 +1071,44 @@ Public Class frmCapturaCySC
                btnGuardarSubcaso.Visible = False
 
                numero += 1
-               'MessageBox.Show("Valor de numero" & numero)
+
                'Verifica que no los casos no se hayan terminado de capturar y habilita el boton, en caso de que ya 
                'Se tenga la captura de todos los casos, deshabilita el boton y habilita la barrita de <<, <, >, >> atras y adelante.
-               If numero < CInt(txtNoDeCasos.Text) Then
-                  btnInsertar.Enabled = True
-                  habilitaDesdeHasta(False)
-                  txtMensajeSobreGrafica.Enabled = False
-                  txtMensajeSobreGrafica.ReadOnly = True
-                  cmbNoCaso.Focus()
-                  'MessageBox.Show("Entre a numero < CInt(txtNoDeCasos.Text) ")
-               ElseIf numero = CInt(txtNoDeCasos.Text) Then
-                  'MessageBox.Show("Entre a numero =CInt(txtNoDeCasos.Text) ")
-                  btnInsertar.Enabled = False
+
+               If numero <= CInt(txtNoDeCasos.Text) Then
+                  If CInt(lblNoSubCaso.Text) < CInt(txtNoSubcasos.Text) Then
+                     btnNuevoSubcaso.Enabled = True
+                     btnNuevoSubcaso.Visible = True
+                     'MessageBox.Show("IF LBL: Valor de numero:" & numero & "Valor de lblNoSubCaso.Text: " & lblNoSubCaso.Text & "Valor de subcasos: " & txtNoSubcasos.Text)
+                  Else
+                     btnInsertar.Enabled = True
+                     habilitaDesdeHasta(False)
+                     txtMensajeSobreGrafica.Enabled = False
+                     txtMensajeSobreGrafica.ReadOnly = True
+                     cmbNoCaso.Focus()
+                     lblNoSubCaso.Text = "1"
+                     'MessageBox.Show("ELSE LBL: Valor de numero < CInt(txtNoDeCasos.Text:" & numero)
+                  End If
+                  If numero = CInt(txtNoDeCasos.Text) Then
+                     btnInsertar.Enabled = False
+                     habilitaBarrita(True)
+                     btnEditar.Enabled = True
+                     chkSubCasos.Enabled = False
+                     MessageBox.Show("ELSE: Valor de numero:" & numero)
+                  End If
+               Else
+                  'btnInsertar.Enabled = False
                   habilitaBarrita(True)
                   btnEditar.Enabled = True
                   chkSubCasos.Enabled = False
+                  MessageBox.Show("ELSE: Valor de numero:" & numero)
                End If
-               lblNoSubCaso.Text = "1"
+               'lblNoSubCaso.Text = "1"
             End If
          Else 'De la validacion de subcasos >=2
             'Enviar mensaje de que al menos debe haber dos subcasos.
 
-            MessageBox.Show("ERROR: Debe escribir un número entre 2 y 92 para la cantidad de subcasos, Verifique.")
+            MessageBox.Show("ERROR: Debe escribir un número entre 2 y 94 para la cantidad de subcasos, Verifique.")
             btnNuevoSubcaso.Enabled = True
             btnGuardarSubcaso.Enabled = False
 
@@ -1149,7 +1168,13 @@ Public Class frmCapturaCySC
 
          If (bandera = True) Then
             'MessageBox.Show("llego al final del arreglo y los valores son validos")
-            guardaCasoEnArreglo(posCasoActual)
+            If totalCasos(posCasoActual).noSubcasos = 0 Then
+               guardaCasoEnArreglo(posCasoActual)
+            Else
+               guardaSubCasoEnArregloEditado(posCasoActual)
+            End If
+
+
             habilitaBarrita(True)
             btnGuardarEditado.Enabled = False
             btnEditar.Enabled = True
@@ -1163,13 +1188,13 @@ Public Class frmCapturaCySC
 
             mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & posCasoActual & " de " & UBound(totalCasos))
          End If
-      Else
-         mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
-         btnGuardarEditado.Enabled = True
-      End If
+         Else
+            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
+            btnGuardarEditado.Enabled = True
+         End If
 
    End Sub
- 
+
    '####################################################################################
    '#SECCION DE PROCEDIMIENTOS VARIOS QUE SIRVEN DE APOYO PARA MOSTRAR, HABILITAR O DESHABILITAR
    'EL COMBO Y LOS DISTINTOS BOTONES QUE APARECEN EN LA FORMA
@@ -1306,6 +1331,22 @@ Public Class frmCapturaCySC
       lblCasoDeCaso.Text = "Subcaso: " & lblNoSubCaso.Text + 1 & " de " & txtNoSubcasos.Text
    End Sub
 
+   Private Sub guardaSubCasoEnArregloEditado(ByVal posicion As Integer)
+      Dim colorFondo As miRGB
+      totalCasos(posicion).texto = txtMensajeSobreGrafica.Text
+      totalCasos(posicion).obs = lblObservaciones.Text
+      totalCasos(posicion).desdeLetra = siValorEsLetra(txtDesdeLetra)
+      totalCasos(posicion).desdeValor = CInt(txtDesdeValor.Text)
+      totalCasos(posicion).hastaLetra = siValorEsLetra(txtHastaLetra)
+      totalCasos(posicion).hastaValor = CInt(txtHastaValor.Text)
+      'Se utiliza para colorar los casos del color aleatorio obtenido de Rnd
+      Randomize()
+      colorFondo.R = CInt(Rnd() * 255)
+      colorFondo.G = CInt(Rnd() * 255)
+      colorFondo.B = CInt(Rnd() * 255)
+      coloreaLosCasos(dgvPlacaLeida, Color.FromArgb(colorFondo.R, colorFondo.G, colorFondo.B), txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
+      lblCasoDeCaso.Text = "Subcaso: " & lblNoSubCaso.Text + 1 & " de " & txtNoSubcasos.Text
+   End Sub
 
    Private Sub habilitaBarrita(ByVal estatus As Boolean)
       btnInicio.Enabled = estatus
@@ -1313,6 +1354,30 @@ Public Class frmCapturaCySC
       btnHaciaAtras.Enabled = estatus
       btnFin.Enabled = estatus
    End Sub
+
+   'para probar la carga de datos ficticios en pantalla
+
+   Private Sub aleatorios()
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      
+      placaLector = {{"0.825", "0.039", "0.824", "0.111", "0.149", "0.311", "0.577", "0.253", "0.73", "0.474", "0.325", "0.756"}, _
+{"0.279", "0.219", "0.613", "0.639", "0.511", "0.615", "1.029", "0.172", "0.774", "0.457", "0.486", "0.306"}, _
+{"0.31", "0.15", "0.238", "0.139", "0.565", "0.722", "0.212", "0.518", "0.21", "0.411", "0.334", "0.385"}, _
+{"0.547", "0.472", "0.715", "0.642", "0.394", "0.366", "0.722", "0.266", "0.637", "0.447", "0.391", "0.24"}, _
+{"0.212", "0.188", "0.187", "0.468", "0.298", "0.37", "0.34", "0.521", "0.318", "0.31", "0.153", "0.176"}, _
+{"0.253", "0.524", "0.45", "0.387", "0.186", "0.315", "0.421", "0.23", "0.127", "0.157", "0.31", "0.356"}, _
+{"0.248", "0.341", "0.287", "0.245", "0.221", "0.194", "0.503", "0.193", "0.33", "0.274", "0.447", "0.328"}, _
+{"0.488", "0.212", "0.245", "0.975", "0.479", "0.211", "0.15", "0.31", "0.251", "0.044", "0.906", "0.056"}}
+
+      'Randomize()
+      'For i = 0 To 7
+      '   For j = 0 To 11
+      '      placaLector(i, j) = (Rnd() * 50) / 1000
+      '   Next
+      'Next
+   End Sub
+
 
    '####################################################################################
    'PROCEDIMIENTO QUE OBTIENE LOS RESULTADOS POR CASO PASANDO COMO PARAMETRO EL DESDE HASTA 
@@ -1366,16 +1431,20 @@ Public Class frmCapturaCySC
       Dim nombre As String = tabla(1)
       Dim nombreCliente As String = txtNombreCliente.Text
       Dim observaciones As String = lblObservaciones.Text
+      Dim nombreArchivoImagen As String = ""
 
       cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
 
       ReDim calculaL(cuentaNoDatos - 1)
 
-      Try
-         mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
-      Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la sumatoria de la media geométrica.")
-      End Try
+      'Si el numero de datos es 1, entonces el cálculo de la estadística es 0, excepto para la media aritmética.
+      If cuentaNoDatos > 1 Then
+         Try
+            mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
+         Catch ex As Exception
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la sumatoria de la media geométrica.")
+         End Try
+      End If
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
@@ -1387,31 +1456,43 @@ Public Class frmCapturaCySC
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
       End Try
-      Try
-         mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
-      End Try
+
+      If cuentaNoDatos > 1 Then
+         Try
+            mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
+         Catch
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+         End Try
+      End If
+
       Try
          mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
       End Try
-      Try
-         varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: AL calcular la varianza, calculaVarianza.")
-      End Try
-      Try
-         desvEst = calculaDesvEst(varianza)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
-      End Try
-      Try
-         coefVar = calculaCoefVar(desvEst, mediaAritmetica)
-      Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
-      End Try
+
+      If cuentaNoDatos > 1 Then
+         Try
+            varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
+         Catch
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: AL calcular la varianza, calculaVarianza.")
+         End Try
+      End If
+
+      If cuentaNoDatos > 1 Then
+         Try
+            desvEst = calculaDesvEst(varianza)
+         Catch
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+         End Try
+      End If
+      If cuentaNoDatos > 1 Then
+         Try
+            coefVar = calculaCoefVar(desvEst, mediaAritmetica)
+         Catch
+            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+         End Try
+      End If
       Try
          placaoriginal = obtenPlacaLeida(placaLector)
       Catch
@@ -1446,18 +1527,25 @@ Public Class frmCapturaCySC
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         'creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
+         nombreArchivoImagen = creaChartFrecRel(lblMensajeCaso, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+                            nombre, titulox, tituloy, numcaso, analisis)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
-
    End Sub
 
+
+   '####################################################################################
+   'EN ESTA SECCION SE ENCUENTRAN LOS BOTONES DE:
+   'CAPTURA TERMINADA
+   'GUARDAR PLACA ORIGINAL EN EXCEL
+   '####################################################################################
    'se puede borrar al finalizar las pruebas
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
       btnEditar.Enabled = False
       Dim i As Integer = 0
-
+      aleatorios()
+      organizaEnTabla(dgvPlacaLeida, placaLector)
       For i = 0 To largo - 1
          arreglo = "No.Casos---No. Subcasos----Subcaso----Analisis---Cliente----Texto----Obs----DesdeLetra----DesdeValor----HastaLetra----HataValor" & vbCrLf _
          & totalCasos(i).noCaso & " " _
@@ -1475,4 +1563,57 @@ Public Class frmCapturaCySC
       Next
 
    End Sub
+
+   Private Sub btnGuardaDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatosExcel.Click
+      Dim i As Integer = 0
+      Dim cadena As String
+      Dim tabla() As String
+      Dim numCaso As String = ""
+     
+      numCaso = cmbNoCaso.Text
+
+      'Obtiene el numero de caso para ese análisis
+      cadena = cmbNombreEnfermedad.Text
+      tabla = Split(cadena, " | ")
+      Dim idAnalisis As String = tabla(0)
+      Dim analisis As String = Replace(idAnalisis, "/", "")
+
+      Dim nocp As Integer = CInt(txtNoControlesPositivos.Text)
+      Dim nocn As Integer = CInt(txtNoControlesNegativos.Text)
+
+      Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
+      Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
+      Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
+      Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
+      Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
+      Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
+      Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
+      Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
+
+      'Asigna valor default a la definición de cp y negativos, ya que al menos deben ser dos de cada uno de ellos.
+      Dim cpx3 As Integer = 0
+      Dim cnx3 As Integer = 0
+      Dim cpy3 As Integer = 0
+      Dim cny3 As Integer = 0
+
+      'Verifica si  son tres controles positivos
+      If (nocp = 3) Then
+         cpx3 = siValorEsLetra(Me.txtCP3Letra3)
+         cpy3 = CInt(Me.txtCP3Valor3.Text) - 1
+      End If
+      'Verifica si  son tres controles negativos
+      If (nocn = 3) Then
+         cnx3 = siValorEsLetra(Me.txtCN3Letra3)
+         cny3 = CInt(Me.txtCN3Valor3.Text) - 1
+      End If
+      'Guarda cada uno de los casos encontrados en el arreglo.
+      For i = 0 To largo - 1
+         guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso & "-" & totalCasos(i).subCaso, analisis, _
+                          cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
+                          totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
+                          lblMensajeCaso)
+      Next
+   End Sub
+
+  
 End Class

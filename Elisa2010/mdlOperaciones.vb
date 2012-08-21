@@ -123,6 +123,7 @@ Module mdlOperaciones
       For i = 0 To 7
          For j = 0 To 11
             placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
+            placa.Rows(i).Cells(j + 1).Style.ForeColor = Color.Black
          Next
       Next
    End Sub
