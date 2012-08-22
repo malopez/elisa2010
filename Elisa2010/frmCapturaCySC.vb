@@ -871,7 +871,7 @@ Public Class frmCapturaCySC
          End If
          'Verifica que no se han excedido el número de casos solicitados.
       ElseIf (numero <= CInt(txtNoDeCasos.Text)) Then
-
+         MessageBox.Show("Entre a numero <= CInt(txtNoDeCasos.Text) para guardar casos")
 
          'Para todos los casos validar que no se encuentre en el rango de valores positivos y negativos
          'Validar desde - hasta definido en el caso
@@ -1384,11 +1384,13 @@ Public Class frmCapturaCySC
    'DE CADA UNO DE LOS CASOS
    '####################################################################################
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef control As Control, ByRef etiqueta As Label, ByVal cmbNombreEnfermedad As ComboBox, ByVal cmbNoCaso As ComboBox, _
-                                      ByVal txtNombreCliente As TextBox, ByVal txtAnalisisSolicitado As TextBox, _
-                                      ByVal lblObservaciones As Label, _
-                                      ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, _
-                                      ByVal txtHastaValor As TextBox, ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmSalidaDatos, ByRef etiqueta As Label, _
+                                      ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
+                                      ByVal DAnoCaso As String, ByVal consecutivo As Integer, _
+                                      ByVal DAnombreCliente As String, ByVal DAanalisisSolicitado As String, ByVal DAobs As String, _
+                                      ByVal DADesdeLetra As Integer, ByVal DAhastaLetra As Integer, _
+                                      ByVal DAdesdeValor As Integer, ByVal DAhastaValor As Integer, _
+                                      ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
                                       ByRef txtNombreEnfermedadSD As TextBox, ByRef txtNombreClienteSD As TextBox, ByRef txtNoCasoSD As TextBox, _
                                       ByRef lblAnalisisSD As Label, ByRef lblObservacionesSD As Label, ByRef txtFechaElaboracionSD As TextBox, _
                                       ByRef txtTitulosObtenidosSD As TextBox, ByRef txtMediaAritmetica2SD As TextBox, _
@@ -1413,10 +1415,10 @@ Public Class frmCapturaCySC
       Dim fecha = DateTime.Now
 
       'Obtener valores desde-hasta para el caso
-      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
-      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
-      Dim desdey As Integer = CInt(txtDesdeValor.Text) - 1
-      Dim hastay As Integer = CInt(txtHastaValor.Text) - 1
+      Dim desdex As Integer = DADesdeLetra
+      Dim hastax As Integer = DAhastaLetra
+      Dim desdey As Integer = DAdesdeValor - 1
+      Dim hastay As Integer = DAhastaValor - 1
 
       'Obtener el nombre del análisis para colocar la cabecera de la gráfica
       Dim cadena As String
@@ -1426,11 +1428,18 @@ Public Class frmCapturaCySC
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
       Dim analisis As String = Replace(idAnalisis, "/", "")
-      Dim numcaso As String = cmbNoCaso.Text
+
+      Dim nom As String = tabla(1)
+
+      'Dim numcaso As String = cmbNoCaso.Text
+      Dim numcaso As String = DAnoCaso
+
+
       'MessageBox.Show("Numero de caso que voy a trabajar: " & numcaso)
-      Dim nombre As String = tabla(1)
-      Dim nombreCliente As String = txtNombreCliente.Text
-      Dim observaciones As String = lblObservaciones.Text
+      'Dim nombre As String = tabla(1)
+      Dim nombre As String = nombreSobreGrafica
+      Dim nombreCliente As String = DAnombreCliente
+      Dim observaciones As String = DAobs
       Dim nombreArchivoImagen As String = ""
 
       cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
@@ -1515,7 +1524,8 @@ Public Class frmCapturaCySC
       End Try
       Try
          'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
-         cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+
+         cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                            Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
       Catch
@@ -1528,11 +1538,27 @@ Public Class frmCapturaCySC
       End Try
       Try
          nombreArchivoImagen = creaChartFrecRel(lblMensajeCaso, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                            nombre, titulox, tituloy, numcaso, analisis)
+                            nombre, titulox, tituloy, numcaso, consecutivo, analisis)
+         MessageBox.Show("nombre del archivo de imagen: " & nombreArchivoImagen)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
+
+      mostrarResultadosEnPantalla(forma.lblNombreSobreGrafica, forma.lblMensajeSobreGrafica, _
+                                     forma.txtNombreEnfermedad, forma.txtNombreCliente, forma.txtNoCaso, _
+                                     forma.lblConsecutivo, forma.lblAnalisis, forma.lblObservaciones, forma.txtFechaElaboracion, _
+                                     forma.txtTitulosObtenidos, forma.txtMediaAritmetica2, _
+                                     forma.txtMediaGeometrica, forma.txtTotalDatosCalculados, _
+                                     forma.txtCoefVariacion2, forma.txtDesvEstandar2, forma.txtVarianza2, _
+                                     forma.imagenGrafica, nombreArchivoImagen, _
+                                     nombreSobreGrafica, mensajeSobreGrafica, _
+                                     nom, nombreCliente, numcaso, consecutivo, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                     mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+
    End Sub
+
+
+
 
 
    '####################################################################################
@@ -1569,7 +1595,7 @@ Public Class frmCapturaCySC
       Dim cadena As String
       Dim tabla() As String
       Dim numCaso As String = ""
-     
+
       numCaso = cmbNoCaso.Text
 
       'Obtiene el numero de caso para ese análisis
@@ -1608,12 +1634,98 @@ Public Class frmCapturaCySC
       End If
       'Guarda cada uno de los casos encontrados en el arreglo.
       For i = 0 To largo - 1
-         guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso & "-" & totalCasos(i).subCaso, analisis, _
+         guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
                           cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
                           totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
                           lblMensajeCaso)
       Next
    End Sub
 
-  
+
+   Private Sub btnObtenerResultados_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
+
+      Dim desdeArchivo As Integer = 0
+
+      Dim cpx1 As Integer = 0
+      Dim cpx2 As Integer = 0
+      Dim cpx3 As Integer = 0
+      Dim cnx1 As Integer = 0
+      Dim cnx2 As Integer = 0
+      Dim cnx3 As Integer = 0
+      Dim cpy1 As Integer = 0
+      Dim cpy2 As Integer = 0
+      Dim cpy3 As Integer = 0
+      Dim cny1 As Integer = 0
+      Dim cny2 As Integer = 0
+      Dim cny3 As Integer = 0
+
+
+      Dim cp1 As Decimal = 0
+      Dim cp2 As Decimal = 0
+      Dim cp3 As Decimal = 0
+      Dim cn1 As Decimal = 0
+      Dim cn2 As Decimal = 0
+      Dim cn3 As Decimal = 0
+
+
+      Dim desdex As Integer = 0
+      Dim hastax As Integer = 0
+      Dim desdey As Integer = 0
+      Dim hastay As Integer = 0
+      Dim promCP As Decimal = 0
+      Dim promCN As Decimal = 0
+      Dim difCPS As Decimal = 0
+
+      Dim nocp As Integer = txtNoControlesPositivos.Text
+      Dim nocn As Integer = txtNoControlesNegativos.Text
+
+      Dim i As Integer = 0
+
+      'Asigna los valores para controles positivos y negativos para cuando hay dos o tres controles desde el textbox
+      cpx1 = siValorEsLetra(txtCP1Letra1)
+      cpy1 = CInt(txtCP1Valor1.Text) - 1
+      cpx2 = siValorEsLetra(txtCP2Letra2)
+      cpy2 = CInt(txtCP2Valor2.Text) - 1
+      cnx1 = siValorEsLetra(txtCN1Letra1)
+      cny1 = CInt(txtCN1Valor1.Text) - 1
+      cnx2 = siValorEsLetra(txtCN2Letra2)
+      cny2 = CInt(txtCN2Valor2.Text) - 1
+      'Verifica si sin tres controles + y -, entonces le da valor al tercer control usando desde eltextbox
+      If (nocp = 3) Then
+         cpx3 = siValorEsLetra(txtCP3Letra3)
+         cpy3 = CInt(txtCP3Valor3.Text) - 1
+      End If
+      If (nocn = 3) Then
+         cnx3 = siValorEsLetra(txtCN3Letra3)
+         cny3 = CInt(txtCN3Valor3.Text) - 1
+      End If
+
+
+      Dim nombreSobreGrafica As String = txtNombreSobreGrafica.Text
+
+      'Realiza el cálculo de los títulos
+
+      calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
+                               Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
+                               Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
+                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeCaso)
+
+
+      'Realiza el cálculo estadístico de los valores desde-hasta introducidos y almacenados en el arreglo totalCasos.
+      For i = 0 To largo - 1
+         Dim forma As frmSalidaDatos
+         forma = New frmSalidaDatos
+         forma.Show()
+         obtenResultadosPorCaso("Caso No." & i + 1, forma, forma.lblSalidaDatos, nombreSobreGrafica, totalCasos(i).texto, _
+                             totalCasos(i).noCaso, totalCasos(i).subCaso, totalCasos(i).cliente, totalCasos(i).analisis, _
+                             totalCasos(i).obs, totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
+                             totalCasos(i).desdeValor, totalCasos(i).hastaValor, _
+                             promCP, promCN, difCPS, forma.txtNombreEnfermedad, forma.txtNombreCliente, forma.txtNoCaso, _
+                             forma.lblAnalisis, forma.lblObservaciones, forma.txtFechaElaboracion, _
+                             forma.txtTitulosObtenidos, forma.txtMediaAritmetica2, _
+                             forma.txtMediaGeometrica, forma.txtTotalDatosCalculados, _
+                             forma.txtCoefVariacion2, forma.txtDesvEstandar2, forma.txtVarianza2)
+      Next
+
+   End Sub
 End Class

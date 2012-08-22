@@ -2,7 +2,7 @@
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       'Try
-      guardaResultadosExcel(Me.txtNoCaso.Text, Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
+      guardaResultadosExcel(Me.txtNoCaso.Text, Me.lblConsecutivo.Text, Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
                             Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
                             Me.lblMensajeSobreGrafica.Text, Me.lblNombreSobreGrafica.Text, _
                             txtTitulosObtenidos.Text, _
@@ -22,6 +22,5 @@
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
-
 
 End Class

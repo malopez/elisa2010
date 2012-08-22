@@ -127,7 +127,7 @@ Module mldOperacionesExcel
 
    'Procedimiento que sirve para generar el archivo de excel con la placa original, con la modalidad de subcasos
    Public Sub guardarDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal nocn As Integer, _
-                               ByVal numCaso As String, ByVal analisis As String, _
+                               ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, _
                                 ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                                ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
@@ -147,7 +147,7 @@ Module mldOperacionesExcel
          nombreArchivo = rutaPlacas & "ELISA_" & Format(DateTime.Now, "yyyyMMdd_hhmm") & ".xls"
          numcolor = 2 'Para no colocar color al fondo de la placa.
       Else
-         nombreArchivo = rutaPlacas & numCaso & "-" & analisis & ".xls"
+         nombreArchivo = rutaPlacas & numCaso & "-" & consecutivo & "-" & analisis & ".xls"
          numcolor = 6 'Coloca el color amarillo al caso
       End If
       'Mostrar Excel en pantalla y crea el workbook
@@ -229,7 +229,7 @@ Module mldOperacionesExcel
 
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
+   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
                                     ByVal observaciones As String, ByVal nombrelibro As String, _
                                     ByVal mensajeEspecial As String, enfermedadAbreviada As String, _
                                     ByVal titulosObtenidos As String, _
@@ -362,7 +362,7 @@ Module mldOperacionesExcel
       'Try
       'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
       Dim strCelda As String = "E15"
-      Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".gif"
+      Dim nombreArchivo = rutaImagen & numCaso & "-" & consecutivo & "-" & analisis & ".gif"
       excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
       'Catch ex As Exception
       '   mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
@@ -415,7 +415,7 @@ Module mldOperacionesExcel
          '.Characters.Text = excelApp.Range("A12").Value2
          'Coloca el nombre del cuadrito, si cambia A12, cambia el titulo escrito dentro de él.
          .Formula = "=$A12"
-         
+
          With .Font
             .Name = "Arial"
             .FontStyle = "Regular"
@@ -549,7 +549,7 @@ Module mldOperacionesExcel
    '#################################################
    'utiliza excel para crear la grafica de barras y la guarda  como imagen.
    Public Function creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
-                               ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String) As String
+                               ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String) As String
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       Dim chartFrecRel As Excel.Chart
@@ -654,7 +654,7 @@ Module mldOperacionesExcel
 
       'Guarda la grafica como archivo y cierra el excel sin salvar la informacion, ya que solamente 
       'requerimos de la imagen guardada en disco
-      Dim nombreArchivo = rutaImagen & numCaso & "-" & analisis & ".gif"
+      Dim nombreArchivo = rutaImagen & numCaso & "-" & consecutivo & "-" & analisis & ".gif"
 
       'Esta instruccion es para excel 2010 NO BORRAR.
       'excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:=nombreArchivo, FilterName:="BMP")

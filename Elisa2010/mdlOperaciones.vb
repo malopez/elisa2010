@@ -167,7 +167,7 @@ Module mdlOperaciones
    '#      SECCION DE CARGA DE RESULTADOS EN BD     #
    '#################################################
 
-   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal idAnalisis As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
+   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal consecutivo As Integer, ByVal idAnalisis As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
                                  ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
                                  ByVal desvEst As Double, ByVal coefVar As Double, ByVal valorFR As String, ByVal cantidadFR As String, _
                                  ByRef etiqueta As Label)
@@ -178,6 +178,8 @@ Module mdlOperaciones
       cadenafecha = fechaElaboracion
       tabla = Split(cadenafecha, "/")
       fechaElaboracion = tabla(2) & "/" & tabla(1) & "/" & tabla(0)
+
+
       Try
          'Crear la conexion para establecer el acceso a la BD de MySQL
          Dim oConexion = New MySqlConnection
@@ -186,8 +188,8 @@ Module mdlOperaciones
          oConexion.Open()
          'Asigna la cadena de conexion
          comando.Connection = oConexion
-         comando.CommandText = "INSERT INTO tblplacaleida (caso,id_analysis,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar,valorFR,cantidadFR) VALUES " _
-                                & "('" & numcaso & "','" & idAnalisis & "'," & "STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
+         comando.CommandText = "INSERT INTO tblplacaleida (caso,consecutivo,id_analysis,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar,valorFR,cantidadFR) VALUES " _
+                                & "('" & numcaso & "'," & consecutivo & ",'" & idAnalisis & "'," & "STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
                                 & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desvEst & "," & coefVar & ",'" & valorFR & "','" & cantidadFR & "');"
          'MessageBox.Show("valor de la consulta:" & comando.CommandText)
@@ -312,11 +314,11 @@ Module mdlOperaciones
                                            , ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, ByRef etiqueta As Label) As Decimal
       Dim promedioPositivos As Decimal
       Try
-         If (nocp = 3) Then
-            promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
-         ElseIf (nocp = 2) Then
+         If (nocp = 2) Then
             promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / nocp))
             promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + promedioPositivos) / 3))
+         ElseIf (nocp = 3) Then
+            promedioPositivos = reduceDecimal(CDec((placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2) + placaLector(cpx3, cpy3)) / 3))
          End If
       Catch ex As Exception
          mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles positivos.")
@@ -331,11 +333,12 @@ Module mdlOperaciones
                                            , ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, ByRef etiqueta As Label) As Decimal
       Dim promedioNegativos As Decimal
       Try
-         If (nocp = 3) Then
-            promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
-         ElseIf (nocp = 2) Then
+         If (nocp = 2) Then
             promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / nocp))
             promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + promedioNegativos) / 3))
+         ElseIf (nocp = 3) Then
+            promedioNegativos = reduceDecimal(CDec((placaLector(cnx1, cny1) + placaLector(cnx2, cny2) + placaLector(cnx3, cny3)) / 3))
+         Else
          End If
       Catch ex As Exception
          mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles negativos.")
@@ -482,6 +485,7 @@ Module mdlOperaciones
       Dim valorFR As String = ""
       Dim cantidadFR As String = ""
       Dim idAnalisis As String = "TEMPORAL"
+      Dim consecutivo As Integer = 0
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
          'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
@@ -691,7 +695,7 @@ Module mdlOperaciones
       mediaGeometrica = CDec(10 ^ CDec(calculaSumatoriaMG))
 
       'Carga los datos para la frecuencia relativa y crea la gráfica
-      cargaResultadosBD(numcaso, idAnalisis, placaoriginal, resultadoTitulos, fechaElaboracion, promCP, promCN, difCPS, _
+      cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, resultadoTitulos, fechaElaboracion, promCP, promCN, difCPS, _
                         Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                         Convert.ToDouble(desviacionEstandarDatosNoAgrupados), Convert.ToDouble(coeficienteDeVariacionDatosNoAgrupados), _
                         valorFR, cantidadFR, frmSalidaDatos.lblObservaciones)

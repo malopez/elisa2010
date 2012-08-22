@@ -56,6 +56,7 @@ Partial Class frmSalidaCaso4
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
+      Me.lblConsecutivo = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
@@ -236,6 +237,7 @@ Partial Class frmSalidaCaso4
       '
       Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.lblConsecutivo)
       Me.Panel3.Controls.Add(Me.txtVarianza2)
       Me.Panel3.Controls.Add(Me.txtDesvEstandar2)
       Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
@@ -443,6 +445,16 @@ Partial Class frmSalidaCaso4
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
       '
+      'lblConsecutivo
+      '
+      Me.lblConsecutivo.AutoSize = True
+      Me.lblConsecutivo.Location = New System.Drawing.Point(241, 27)
+      Me.lblConsecutivo.Name = "lblConsecutivo"
+      Me.lblConsecutivo.Size = New System.Drawing.Size(65, 13)
+      Me.lblConsecutivo.TabIndex = 64
+      Me.lblConsecutivo.Text = "consecutivo"
+      Me.lblConsecutivo.Visible = False
+      '
       'frmSalidaCaso4
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -503,4 +515,5 @@ Partial Class frmSalidaCaso4
    Friend WithEvents Label4 As System.Windows.Forms.Label
    Friend WithEvents imagenGrafica As System.Windows.Forms.PictureBox
    Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
+   Friend WithEvents lblConsecutivo As System.Windows.Forms.Label
 End Class

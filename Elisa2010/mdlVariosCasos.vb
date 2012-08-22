@@ -515,13 +515,13 @@
    'Presenta datos para formatear la salida de los datos
    Public Sub mostrarResultadosEnPantalla(ByRef lblNombreSobreGrafica As Label, ByRef lblMensajeSobreGrafica As Label, _
                                      ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
-                                     ByRef lblAnalisis As Label, ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
+                                     ByRef lblConsecutivo As Label, ByRef lblAnalisis As Label, ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
                                      ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
                                      ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
                                      ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
-                                     ByVal nombreArchivo As String, _
+                                     ByRef imagenGrafica As PictureBox, ByVal nombreArchivo As String, _
                                      ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
-                                     ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal analisis As String, _
+                                     ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal consecutivo As Integer, ByVal analisis As String, _
                                      ByVal observaciones As String, ByVal fechaElaboracion As String, _
                                      ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
                                      ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
@@ -532,7 +532,8 @@
       txtNombreCliente.Text = nombreCliente.ToString()
       txtNoCaso.Text = numcaso.ToString()
       lblAnalisis.Text = analisis.ToString()
-      frmSalidaDatos.imagenGrafica.Image = Image.FromFile(nombreArchivo)
+      lblConsecutivo.Text = CStr(consecutivo)
+      imagenGrafica.Image = Image.FromFile(nombreArchivo)
       lblObservaciones.Text = observaciones.ToString()
       txtFechaElaboracion.Text = fechaElaboracion.ToString()
       txtTitulosObtenidos.Text = presenta1.ToString()
@@ -596,7 +597,7 @@
    End Sub
 
    'Permite guardar los casos cuando son n casos con n subcasos. Agregado el 07/Ago/2012
-   Public Sub guardaCasos(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
+   Public Sub guardaCasos(ByVal cmbCaso As ComboBox, ByVal consecutivo As Integer, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
                          ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
                           ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
                           ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
@@ -639,7 +640,7 @@
          cny3 = CInt(txtCN3Valor3.Text) - 1
       End If
       Try
-         guardarDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+         guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
                           cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
          mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
@@ -690,8 +691,9 @@
          cpy3 = CInt(txtCP3Valor3.Text) - 1
          cny3 = CInt(txtCN3Valor3.Text) - 1
       End If
+      Dim consecutivo As Integer = 0
       Try
-         guardarDatosExcel(placaLector, nocp, nocn, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+         guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
                           cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
          mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception

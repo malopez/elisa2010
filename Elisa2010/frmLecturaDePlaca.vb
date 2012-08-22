@@ -236,6 +236,7 @@
          Dim cnx3 As Integer = 0
          Dim cpy3 As Integer = 0
          Dim cny3 As Integer = 0
+         Dim consecutivo As Integer = 0
          'Verifica si  son tres controles positivos
          If (nocp = 3) Then
             cpx3 = siValorEsLetra(Me.txtCP3Letra3)
@@ -254,7 +255,7 @@
             desdey = 3
             hastay = 8
          End If
-         guardarDatosExcel(placaLector, nocp, nocn, "", "", cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+         guardarDatosExcel(placaLector, nocp, nocn, "", "", consecutivo, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
                           cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeLecturaPlaca)
          mensajeVerde(Me.lblMensajeLecturaPlaca, "Mensaje: Los datos de la placa original se guardaron exitosamente.")
          btnGuardaDatos.Enabled = False

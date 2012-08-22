@@ -49,6 +49,7 @@ Partial Class frmSalidaDatos
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtNoCaso = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.lblConsecutivo = New System.Windows.Forms.Label()
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
       Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.Panel4 = New System.Windows.Forms.Panel()
@@ -342,6 +343,7 @@ Partial Class frmSalidaDatos
       '
       Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.lblConsecutivo)
       Me.Panel3.Controls.Add(Me.txtVarianza2)
       Me.Panel3.Controls.Add(Me.txtDesvEstandar2)
       Me.Panel3.Controls.Add(Me.txtCoefVariacion2)
@@ -356,6 +358,15 @@ Partial Class frmSalidaDatos
       Me.Panel3.Name = "Panel3"
       Me.Panel3.Size = New System.Drawing.Size(569, 55)
       Me.Panel3.TabIndex = 59
+      '
+      'lblConsecutivo
+      '
+      Me.lblConsecutivo.AutoSize = True
+      Me.lblConsecutivo.Location = New System.Drawing.Point(241, 27)
+      Me.lblConsecutivo.Name = "lblConsecutivo"
+      Me.lblConsecutivo.Size = New System.Drawing.Size(65, 13)
+      Me.lblConsecutivo.TabIndex = 64
+      Me.lblConsecutivo.Text = "consecutivo"
       '
       'txtVarianza2
       '
@@ -543,4 +554,5 @@ Partial Class frmSalidaDatos
    Friend WithEvents lblNombreSobreGrafica As System.Windows.Forms.Label
    Friend WithEvents Label6 As System.Windows.Forms.Label
    Friend WithEvents Label5 As System.Windows.Forms.Label
+   Friend WithEvents lblConsecutivo As System.Windows.Forms.Label
 End Class

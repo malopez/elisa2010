@@ -1460,7 +1460,7 @@ Public Class frmEncefalomielitisAviar
       Dim nombre As String = tabla(1)
       Dim nombreCliente As String = txtNombreCliente.Text
       Dim observaciones As String = lblObservaciones.Text
-
+      Dim consecutivo = 0
       cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
 
       ReDim calculaL(cuentaNoDatos - 1)
@@ -1528,7 +1528,7 @@ Public Class frmEncefalomielitisAviar
       End Try
       Try
          'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
-         cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+         cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
                            Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
       Catch

@@ -49,6 +49,7 @@ Public Class frmAbrirArchivoExistente
       Dim difCPS As Decimal = 0
       Dim fecha = DateTime.Now
       Dim nocp As Integer = 3
+      Dim consecutivo As Integer = 0
       Try
          cp1 = CDec(Me.txtCPDAValor1.Text)
          cp2 = CDec(Me.txtCPDAValor2.Text)
@@ -152,9 +153,9 @@ Public Class frmAbrirArchivoExistente
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
          End Try
          Try
-            cargaResultadosBD(numcaso, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
-                              Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
+            cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
+                          Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
+                          Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
          Catch
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
          End Try
@@ -165,22 +166,22 @@ Public Class frmAbrirArchivoExistente
          End Try
          'Try
          nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                            nombre, titulox, tituloy, numcaso, analisis)
+                            nombre, titulox, tituloy, numcaso, 0, analisis)
          'Catch
          '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          'End Try
          Try
             frmSalidaDatos.Show()
             mostrarResultadosEnPantalla(frmSalidaDatos.lblNombreSobreGrafica, frmSalidaDatos.lblMensajeSobreGrafica, _
-                                        frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
-                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
-                                        frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
-                                        frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
-                                        frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
-                                        nombreArchivoImagen, _
-                                        Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
-                                        nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
-                                        mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
+                                     frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
+                                     frmSalidaDatos.lblConsecutivo, frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
+                                     frmSalidaDatos.txtTitulosObtenidos, frmSalidaDatos.txtMediaAritmetica2, _
+                                     frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
+                                     frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2, _
+                                     frmSalidaDatos.imagenGrafica, nombreArchivoImagen, _
+                                     Me.txtNombreSobreGrafica.Text, Me.txtMensajeSobreGrafica.Text, _
+                                     nombre, nombreCliente, numcaso, consecutivo, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
+                                     mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
          End Try

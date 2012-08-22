@@ -273,8 +273,6 @@ Module mdlDefineValidaDatos
 
    '10-AGO-2012 #######
 
-
-
    Public Function validaSiControlPNEstaEnRangoDeCaso(ByVal mensaje As String, ByVal caso As String, _
                                                       ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox, _
                                                       ByVal txtDesdeLetraRango1 As TextBox, ByVal txtDesdeValorRango1 As TextBox, _
@@ -438,16 +436,6 @@ Module mdlDefineValidaDatos
       End If
       Return valido
    End Function
-   'Permite comprobar los valores de los controles positivos y negativos en base a la siguiente tabla
-   'Utilizando  comprobarValoresCPN y comprobarValoresCPN2
-   'Tabla de validación de los controles positivos y negativos.
-   'cp1	cp2	cp3	cn1	cn2	cn3
-   'cp1	-	<	<	<	<	<
-   'cp2	>	-	<	>	<	<
-   'cp3	>	>	-	>	>	<
-   'cn1	>	<	<	-	<	<
-   'cn2	>	>	<	>	-	<
-   'cn3	>	>	>	>	>	-
 
    Public Function comprobarValoresCPN(ByVal mensaje As String, ByVal txtDesdeLetra As TextBox, ByVal txtDesdeValor As TextBox,
                                             ByVal txtHastaLetra As TextBox, ByVal txtHastaValor As TextBox) As Boolean
@@ -554,7 +542,6 @@ Module mdlDefineValidaDatos
       End Select
    End Sub
 
-
    Public Sub defineBotonesPositivos(ByVal nocp As Integer, ByRef lblCPNo1 As Label, _
                                       ByRef lblCPNo2 As Label, ByRef lblCPNo3 As Label, _
                                       ByRef txtCP1Letra1 As TextBox, ByRef txtCP1Valor1 As TextBox, _
@@ -623,24 +610,5 @@ Module mdlDefineValidaDatos
          txtCN3Valor3.Text = "12"
       End If
    End Sub
-
-
-   'PUEDE BORRARSE POR CAMBIOS AL 18-08-2012
-   'Public Function revisaQueCasosNoSeanIguales(ByVal combo As ComboBox,ByVal totalCasos() As listaCasos) As Boolean
-   '   Dim i As Integer = 0
-   '   Dim largo As Integer = UBound(totalCasos) - 1
-   '   Dim b As Boolean = True
-   '   For i = 0 To largo
-   '      If (combo.Text = totalCasos(i).noCaso) Then
-   '         MessageBox.Show("ERROR: Este No. de Caso es igual que el análisis No." & (i + 1) & ", Verifique y corrija.")
-   '         b = False
-   '         Exit For
-   '      Else
-   '         b = True
-   '      End If
-   '   Next
-   '   Return b
-   'End Function
-
 
 End Module
