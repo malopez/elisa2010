@@ -848,31 +848,58 @@ Public Class frmCapturaCySC
                                     txtHastaLetra, txtHastaValor) Then
             'MessageBox.Show("Entre a la validacion numero=0 y los controles positivos no se encuentran dentro del caso")
             'posCasoActual = numero
-            guardaCasoEnArreglo(largo)
-            cadenaDeCasos += ",'" & totalCasos(posCasoActual).noCaso & "'"
+            Try
+               guardaCasoEnArreglo(largo)
+               cadenaDeCasos += ",'" & totalCasos(posCasoActual).noCaso & "'"
+               numero += 1
+               largo += 1
+               btnInsertar.Enabled = True
+               mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text & " exitosamente.")
+               'statusDeCasoMostrados(False)
+               'txtMensajeSobreGrafica.Enabled = False
+               'txtMensajeSobreGrafica.ReadOnly = True
+               'estatusDesdeHasta(True)
+               'habilitaDesdeHasta(False)
 
-            numero += 1
-            largo += 1
-            btnInsertar.Enabled = True
-            mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text)
+               If (numero = CInt(txtNoDeCasos.Text)) Then
+                  mensajeVerde(lblMensajeCaso, "MENSAJE: Usted ha capturado el total de casos solicitados.")
+                  btnInsertar.Enabled = False
+                  statusDeCasoMostrados(False)
+                  txtMensajeSobreGrafica.Enabled = False
+                  txtMensajeSobreGrafica.ReadOnly = True
+                  estatusDesdeHasta(True)
+                  habilitaDesdeHasta(False)
+                  chkSubCasos.Enabled = False
+                  btnEditar.Enabled = True
+                  'Habilita la barrita para desplazarse sobre los análisis de caso capturados.
+                  habilitaBarrita(True)
+               Else 'Agregado el 25-Ago-2012
+                  statusDeCasoMostrados(False)
+                  txtMensajeSobreGrafica.Enabled = False
+                  txtMensajeSobreGrafica.ReadOnly = True
+                  estatusDesdeHasta(True)
+                  habilitaDesdeHasta(False)
+               End If
 
 
-            statusDeCasoMostrados(False)
-            txtMensajeSobreGrafica.Enabled = False
-            txtMensajeSobreGrafica.ReadOnly = True
-            estatusDesdeHasta(True)
-            habilitaDesdeHasta(False)
+            Catch
+               MessageBox.Show("ERROR: No se ha podido guardar correctamente el caso en el arreglo.")
+               btnInsertar.Enabled = False
+               btnEditar.Enabled = False
+               btnGuardar.Enabled = True
+               mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
+            End Try
+            
 
          Else
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
             btnInsertar.Enabled = False
             btnEditar.Enabled = False
             btnGuardar.Enabled = True
+            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
          End If
          'Verifica que no se han excedido el número de casos solicitados.
       ElseIf (numero <= CInt(txtNoDeCasos.Text)) Then
-         MessageBox.Show("Entre a numero <= CInt(txtNoDeCasos.Text) para guardar casos")
-
+         'MessageBox.Show("Entre a numero <= CInt(txtNoDeCasos.Text) para guardar casos")
          'Para todos los casos validar que no se encuentre en el rango de valores positivos y negativos
          'Validar desde - hasta definido en el caso
          'Validar desde-hasta con otros casos ya guardados.
@@ -895,19 +922,15 @@ Public Class frmCapturaCySC
                                        txtCN3Letra3, txtCN3Valor3, _
                                        txtDesdeLetra, txtDesdeValor, _
                                        txtHastaLetra, txtHastaValor) Then
-
-
+            'Este ciclo  permite revisar que el caso de pantalla y los existentes en el arreglo sean distintos.
             While (validaSiDosCasosEstanEnDistintoRangoArreglo("Caso capturado y " & numero, _
             txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor, _
             totalCasos(i).desdeLetra, totalCasos(i).desdeValor, _
             totalCasos(i).hastaLetra, totalCasos(i).hastaValor) And (i <= (largo - 1)))
-               'MessageBox.Show("Valor de largo en while: " & largo & "y con i: " & i & "desdeletra " _
-               '                & txtDesdeLetra.Text & "desdevalor " & txtDesdeValor.Text & "hastaletra " & txtHastaLetra.Text & " hastavalor " _
-               '                & txtHastaValor.Text & " letrarango1 " & totalCasos(i).desdeLetra & " valorrango1 " & totalCasos(i).desdeValor _
-               '                & " letrarango2" & totalCasos(i).hastaLetra & " valorrango2 " & totalCasos(i).hastaValor)
                i += 1
             End While
-
+            'Si i=largo indica que no hay rangos repetidos, entonces crece el arreglo y guarda los nuevos datos.
+            'En caso de que los rangos sean iguales, no guarda nada, solo habilita botones de guardar.
             If i = largo Then
                largo += 1
                ReDim Preserve totalCasos(largo)
@@ -927,7 +950,7 @@ Public Class frmCapturaCySC
                habilitaDesdeHasta(False)
 
             Else
-               MessageBox.Show("Los valores que se introdujeron se encuentran en el mismo rango que los del caso" & totalCasos(i).noCaso & ", Verifique.")
+               MessageBox.Show("Los valores que se introdujeron se encuentran en el mismo rango que los del caso: " & totalCasos(i).noCaso & ", Verifique.")
                btnInsertar.Enabled = False
                btnEditar.Enabled = False
                btnGuardar.Enabled = True
@@ -1186,7 +1209,7 @@ Public Class frmCapturaCySC
             habilitaDesdeHasta(False)
 
 
-            mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & posCasoActual & " de " & UBound(totalCasos))
+            mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & (posCasoActual + 1) & " de " & UBound(totalCasos))
          End If
          Else
             mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
@@ -1539,7 +1562,7 @@ Public Class frmCapturaCySC
       Try
          nombreArchivoImagen = creaChartFrecRel(lblMensajeCaso, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
                             nombre, titulox, tituloy, numcaso, consecutivo, analisis)
-         MessageBox.Show("nombre del archivo de imagen: " & nombreArchivoImagen)
+         'MessageBox.Show("nombre del archivo de imagen: " & nombreArchivoImagen)
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try

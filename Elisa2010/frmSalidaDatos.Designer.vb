@@ -367,6 +367,7 @@ Partial Class frmSalidaDatos
       Me.lblConsecutivo.Size = New System.Drawing.Size(65, 13)
       Me.lblConsecutivo.TabIndex = 64
       Me.lblConsecutivo.Text = "consecutivo"
+      Me.lblConsecutivo.Visible = False
       '
       'txtVarianza2
       '
