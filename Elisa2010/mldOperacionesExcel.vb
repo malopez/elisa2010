@@ -6,124 +6,35 @@ Imports System.Runtime.InteropServices
 
 Module mldOperacionesExcel
 
-   'Procedimiento que sirve para generar el archivo de excel con la placa original, puede borrarse despues del 21-08-2012
-   'Public Sub guardaDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal nocn As Integer, _
-   '                            ByVal numCaso As String, ByVal analisis As String, _
-   '                             ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
-   '                            ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
-   '                            ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
-   '                            ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
-   '                            ByVal desdex As Integer, ByVal desdey As Integer, ByVal hastax As Integer, ByVal hastay As Integer)
 
-   '   Dim excelApp As New Excel.Application
-   '   Dim libroExcel As Excel.Workbook
-   '   'Sirve para controlar el ciclo for
-   '   Dim i As Integer = 0
-   '   Dim j As Integer = 0
-   '   Dim nombreArchivo As String
-   '   Dim numcolor As Integer
-   '   'Salva el archivo de placa original leida con el nombre del caso
-   '   If numCaso = "" And analisis = "" Then
-   '      nombreArchivo = rutaPlacas & "ELISA_" & Format(DateTime.Now, "yyyyMMdd_hhmm") & ".xls"
-   '      numcolor = 2 'Para no colocar color al fondo de la placa.
-   '   Else
-   '      nombreArchivo = rutaPlacas & numCaso & "-" & analisis & ".xls"
-   '      numcolor = 6 'Coloca el color amarillo al caso
-   '   End If
-   '   'Mostrar Excel en pantalla y crea el workbook
-   '   'excelApp.Visible = True
-   '   libroExcel = excelApp.Workbooks.Add()
-   '   'Darle nombre la primer hoja activa del libro de trabajo
-   '   excelApp.ActiveSheet.Name = "PlacaLeida"
-   '   'Agregar datos a la hoja de Excel de la placa leida orignal desde el lector
-   '   For i = 0 To 7
-   '      For j = 0 To 11
-   '         'MessageBox.Show("valor de placa lector " & placaLector(i, j))
-   '         excelApp.Range(obtenLetra(i) & (j + 1)).Value2 = placaLector(i, j)
-   '      Next
-   '   Next
-   '   excelApp.Range("B15").Value2 = "Controles Positivos"
-   '   excelApp.Range("B15").Interior.ColorIndex = 4
-   '   excelApp.Range("C15").Value2 = "Controles Negativos"
-   '   excelApp.Range("C15").Interior.ColorIndex = 3
+   Private Sub agregarResultadosEnArchivoExistente()
+      Dim excelApp As New Excel.Application
+      Dim libroExcel As Excel.Workbook
+      Dim nombreArchivoResultado As String = ""
+      Dim fso As Object
+      nombreArchivoResultado = "C:\ELISA2012\Resultados\110504-1817-E01ELBI.xls"
+      'Instanciar el objeto FSO para poder usar las funciones FileExists y FolderExists
+      fso = CreateObject("Scripting.FileSystemObject")
+      ' Comprobar archivo
+      If fso.FileExists(nombreArchivoResultado) Then
+         libroExcel = excelApp.Workbooks.Open(nombreArchivoResultado, False)
+         excelApp.Range("A48").Value2 = "ESTE ES MI VALOR AGREGADO"
+         With excelApp
+            .ActiveWorkbook.Save()
+            .ActiveWorkbook.Close()
+            .Quit()
+         End With
+         releaseObject(excelApp)
+      Else
+         MessageBox.Show("ERROR: NO SE ENCUENTRA EL ARCHIVO BUSCADO")
+      End If
+      fso = Nothing
+      'Catch ex As Exception
+      '   MessageBox.Show("ERROR:" & ex.Message)
+      'End Try
+   End Sub
 
-   '   'Analiza el numero de controles positivos
-   '   If (nocp = 2) Then
-   '      'Copia los valores positivos.
-   '      excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-   '      excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-   '      Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
-   '      excelApp.Range("B18").Value2 = promp
-   '      'Para que el fondo de la celda sea color Verde=4
-   '      excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-   '      excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-   '   ElseIf (nocp = 3) Then
-   '      'Copia los valores positivos.
-   '      excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-   '      excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-   '      excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
-   '      'Para que el fondo de la celda sea color Verde=4
-   '      excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-   '      excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-   '      excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
-   '   End If
 
-   '   'Analiza si el numero de controles negativos es dos o tres
-   '   If (nocn = 2) Then
-   '      'Copia los valores positivos.
-   '      'excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-   '      'excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-   '      'Dim promp As Decimal = (placaLector(cpx1, cpy1) + placaLector(cpx2, cpy2)) / 2
-   '      'excelApp.Range("B18").Value2 = promp
-   '      'Copia valores negativos
-   '      excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
-   '      excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
-   '      Dim promn As Decimal = (placaLector(cnx1, cny1) + placaLector(cnx2, cny2)) / 2
-   '      excelApp.Range("C18").Value2 = promn
-   '      'Para que el fondo de la celda sea color Verde=4
-   '      'excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-   '      'excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-   '      'Hacer el fondo de la celda color Rojo=3
-   '      excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
-   '      excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
-   '   ElseIf (nocn = 3) Then
-   '      'Copia los valores positivos.
-   '      'excelApp.Range("B16").Value2 = placaLector(cpx1, cpy1)
-   '      'excelApp.Range("B17").Value2 = placaLector(cpx2, cpy2)
-   '      'excelApp.Range("B18").Value2 = placaLector(cpx3, cpy3)
-   '      'Copia los valores negativos.
-   '      excelApp.Range("C16").Value2 = placaLector(cnx1, cny1)
-   '      excelApp.Range("C17").Value2 = placaLector(cnx2, cny2)
-   '      excelApp.Range("C18").Value2 = placaLector(cnx3, cny3)
-   '      'Para que el fondo de la celda sea color Verde=4
-   '      'excelApp.Range(obtenLetra(cpx1) & (cpy1 + 1)).Interior.ColorIndex = 4
-   '      'excelApp.Range(obtenLetra(cpx2) & (cpy2 + 1)).Interior.ColorIndex = 4
-   '      'excelApp.Range(obtenLetra(cpx3) & (cpy3 + 1)).Interior.ColorIndex = 4
-   '      'Hacer el fondo de la celda color Rojo=3
-   '      excelApp.Range(obtenLetra(cnx1) & (cny1 + 1)).Interior.ColorIndex = 3
-   '      excelApp.Range(obtenLetra(cnx2) & (cny2 + 1)).Interior.ColorIndex = 3
-   '      excelApp.Range(obtenLetra(cnx3) & (cny3 + 1)).Interior.ColorIndex = 3
-   '   End If
-
-   '   If numcolor = 6 Then
-   '      'Llena el fondo de la celda de un color rojo para los datos utilizados en los  cálculos
-   '      Dim renglones As Integer = 11
-   '      For i = desdex To hastax
-   '         If (i = hastax) Then
-   '            renglones = hastay
-   '         End If
-   '         For j = desdey To renglones
-   '            excelApp.Range(obtenLetra(i) & (j + 1)).Interior.ColorIndex = numcolor
-   '         Next
-   '         desdey = 0
-   '      Next
-   '   End If
-   '   excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
-   '   'Cierra el libro activo de Excel
-   '   excelApp.ActiveWorkbook.Close()
-   '   excelApp.Quit()
-   '   releaseObject(excelApp)
-   'End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con la placa original, con la modalidad de subcasos
    Public Sub guardarDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal nocn As Integer, _
@@ -218,11 +129,16 @@ Module mldOperacionesExcel
             desdey = 0
          Next
       End If
-      excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
-      'Cierra el libro activo de Excel
-      excelApp.ActiveWorkbook.Close()
-      excelApp.Quit()
+
+      'Salva el archivo de excel, lo cierra, quita la aplicaciín y la libera.
+      With excelApp
+         excelApp.ActiveWorkbook.SaveAs(nombreArchivo)
+         .ActiveWorkbook.Close()
+         .Quit()
+      End With
       releaseObject(excelApp)
+
+
       mensajeVerde(etiqueta, "El Caso: " & numCaso & " se ha guardado en excel exitosamente.")
    End Sub
 
