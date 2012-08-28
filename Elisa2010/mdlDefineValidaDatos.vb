@@ -21,10 +21,17 @@ Module mdlDefineValidaDatos
       Dim analisis As String
       Dim texto As String
       Dim obs As String
+      Dim sueros As Integer
       Dim desdeLetra As Integer
       Dim desdeValor As Integer
       Dim hastaLetra As Integer
       Dim hastaValor As Integer
+      Dim medArit As Decimal
+      Dim medGeom As Decimal
+      Dim varianza As Decimal
+      Dim desvEst As Decimal
+      Dim coefVar As Decimal
+      Dim nombreArchivoImagen As String
    End Structure
 
 

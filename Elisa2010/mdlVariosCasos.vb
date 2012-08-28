@@ -1,8 +1,5 @@
 ﻿Module mdlVariosCasos
 
-   
-
-
    Public Function mediaGenerico(ByVal calculaL() As Decimal, ByVal nodatos As Integer) As Decimal
       Dim media As Decimal = 0
       Dim i As Integer
@@ -544,6 +541,48 @@
       txtDesvEstandar2.Text = desvEst.ToString()
       txtVarianza2.Text = varianza.ToString()
    End Sub
+
+   'Presenta datos para formatear la salida de los datos
+   Public Sub muestraResultadosEnPantalla(ByRef txtNoCaso As TextBox, ByVal numcaso As String, _
+                                     ByRef lblAnalisis As Label, ByVal analisis As String, _
+                                     ByRef txtFechaElaboracion As TextBox, ByVal fechaElaboracion As String, _
+                                     ByRef txtNombreEnfermedad As TextBox, ByVal nombre As String, _
+                                     ByRef txtNombreCliente As TextBox, ByVal nombreCliente As String, _
+                                     ByRef lblObservaciones As Label, ByVal observaciones As String, _
+                                     ByRef txtVarianza2 As TextBox, ByVal varianza As Decimal, _
+                                     ByRef txtTotalDatosCalculados As TextBox, ByVal cuentaNoDatos As Integer, _
+                                     ByRef txtMediaAritmetica2 As TextBox, ByVal mediaAritmetica As Decimal, _
+                                     ByRef txtMediaGeometrica As TextBox, ByVal mediaGeometrica As Decimal, _
+                                     ByRef txtCoefVariacion2 As TextBox, ByVal coefVar As Decimal, _
+                                     ByRef txtDesvEstandar2 As TextBox, ByVal desvEst As Decimal, _
+                                     ByRef lblNosubcasos As Label, ByVal nosubcasos As Integer, _
+                                     ByRef lblConsecutivo As Label, ByVal consecutivo As Integer, _
+                                     ByRef txtTitulosObtenidos As TextBox, ByVal presenta1 As String, _
+                                     ByRef lblNombreSobreGrafica As Label, ByVal nombreSobreGrafica As String, _
+                                     ByRef lblMensajeSobreGrafica As Label, ByVal mensajeSobreGrafica As String, _
+                                     ByRef imagenGrafica As PictureBox, ByVal nombreArchivoGrafica As String, _
+                                     ByRef lblNombreArchivo As Label)
+      lblNosubcasos.Text = nosubcasos
+      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
+      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
+      txtNombreEnfermedad.Text = nombre
+      txtNombreCliente.Text = nombreCliente
+      txtNoCaso.Text = numcaso.ToString()
+      lblAnalisis.Text = analisis.ToString()
+      lblConsecutivo.Text = CStr(consecutivo)
+      imagenGrafica.Image = Image.FromFile(nombreArchivoGrafica)
+      lblNombreArchivo.Text = nombreArchivoGrafica
+      lblObservaciones.Text = observaciones.ToString()
+      txtFechaElaboracion.Text = fechaElaboracion.ToString()
+      txtTitulosObtenidos.Text = presenta1.ToString()
+      txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
+      txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
+      txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
+      txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
+      txtDesvEstandar2.Text = desvEst.ToString()
+      txtVarianza2.Text = varianza.ToString()
+   End Sub
+
 
 
    'Procedimiento que calcula los resultados del analisis, recibe el nombre del analisis,el titulo de eje x-y, desdeArchivo =1 indica lectura desde archivo

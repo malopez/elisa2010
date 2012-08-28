@@ -49,10 +49,12 @@ Partial Class frmSalidaDatos
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtNoCaso = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.lblNosubcasos = New System.Windows.Forms.Label()
       Me.lblConsecutivo = New System.Windows.Forms.Label()
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
       Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.Panel4 = New System.Windows.Forms.Panel()
+      Me.lblNombreArchivo = New System.Windows.Forms.Label()
       Me.Label6 = New System.Windows.Forms.Label()
       Me.Label5 = New System.Windows.Forms.Label()
       Me.lblMensajeSobreGrafica = New System.Windows.Forms.Label()
@@ -343,6 +345,7 @@ Partial Class frmSalidaDatos
       '
       Me.Panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel3.Controls.Add(Me.lblNosubcasos)
       Me.Panel3.Controls.Add(Me.lblConsecutivo)
       Me.Panel3.Controls.Add(Me.txtVarianza2)
       Me.Panel3.Controls.Add(Me.txtDesvEstandar2)
@@ -358,6 +361,16 @@ Partial Class frmSalidaDatos
       Me.Panel3.Name = "Panel3"
       Me.Panel3.Size = New System.Drawing.Size(569, 55)
       Me.Panel3.TabIndex = 59
+      '
+      'lblNosubcasos
+      '
+      Me.lblNosubcasos.AutoSize = True
+      Me.lblNosubcasos.Location = New System.Drawing.Point(383, 27)
+      Me.lblNosubcasos.Name = "lblNosubcasos"
+      Me.lblNosubcasos.Size = New System.Drawing.Size(38, 13)
+      Me.lblNosubcasos.TabIndex = 65
+      Me.lblNosubcasos.Text = "noSub"
+      Me.lblNosubcasos.Visible = False
       '
       'lblConsecutivo
       '
@@ -397,6 +410,7 @@ Partial Class frmSalidaDatos
       '
       Me.Panel4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel4.Controls.Add(Me.lblNombreArchivo)
       Me.Panel4.Controls.Add(Me.Label6)
       Me.Panel4.Controls.Add(Me.Label5)
       Me.Panel4.Controls.Add(Me.lblMensajeSobreGrafica)
@@ -408,6 +422,19 @@ Partial Class frmSalidaDatos
       Me.Panel4.Name = "Panel4"
       Me.Panel4.Size = New System.Drawing.Size(569, 303)
       Me.Panel4.TabIndex = 62
+      '
+      'lblNombreArchivo
+      '
+      Me.lblNombreArchivo.AutoSize = True
+      Me.lblNombreArchivo.BackColor = System.Drawing.SystemColors.GradientActiveCaption
+      Me.lblNombreArchivo.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.lblNombreArchivo.ForeColor = System.Drawing.Color.Black
+      Me.lblNombreArchivo.Location = New System.Drawing.Point(440, 265)
+      Me.lblNombreArchivo.Name = "lblNombreArchivo"
+      Me.lblNombreArchivo.Size = New System.Drawing.Size(100, 16)
+      Me.lblNombreArchivo.TabIndex = 68
+      Me.lblNombreArchivo.Text = "nombreArchivo"
+      Me.lblNombreArchivo.Visible = False
       '
       'Label6
       '
@@ -506,7 +533,7 @@ Partial Class frmSalidaDatos
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmSalidaDatos"
-      Me.Text = "Resultado del Análisis Caso No. 1"
+      Me.Text = "Resultados del Caso: "
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
@@ -556,4 +583,6 @@ Partial Class frmSalidaDatos
    Friend WithEvents Label6 As System.Windows.Forms.Label
    Friend WithEvents Label5 As System.Windows.Forms.Label
    Friend WithEvents lblConsecutivo As System.Windows.Forms.Label
+   Friend WithEvents lblNosubcasos As System.Windows.Forms.Label
+   Friend WithEvents lblNombreArchivo As System.Windows.Forms.Label
 End Class

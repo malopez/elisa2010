@@ -6,36 +6,6 @@ Imports System.Runtime.InteropServices
 
 Module mldOperacionesExcel
 
-
-   Private Sub agregarResultadosEnArchivoExistente()
-      Dim excelApp As New Excel.Application
-      Dim libroExcel As Excel.Workbook
-      Dim nombreArchivoResultado As String = ""
-      Dim fso As Object
-      nombreArchivoResultado = "C:\ELISA2012\Resultados\110504-1817-E01ELBI.xls"
-      'Instanciar el objeto FSO para poder usar las funciones FileExists y FolderExists
-      fso = CreateObject("Scripting.FileSystemObject")
-      ' Comprobar archivo
-      If fso.FileExists(nombreArchivoResultado) Then
-         libroExcel = excelApp.Workbooks.Open(nombreArchivoResultado, False)
-         excelApp.Range("A48").Value2 = "ESTE ES MI VALOR AGREGADO"
-         With excelApp
-            .ActiveWorkbook.Save()
-            .ActiveWorkbook.Close()
-            .Quit()
-         End With
-         releaseObject(excelApp)
-      Else
-         MessageBox.Show("ERROR: NO SE ENCUENTRA EL ARCHIVO BUSCADO")
-      End If
-      fso = Nothing
-      'Catch ex As Exception
-      '   MessageBox.Show("ERROR:" & ex.Message)
-      'End Try
-   End Sub
-
-
-
    'Procedimiento que sirve para generar el archivo de excel con la placa original, con la modalidad de subcasos
    Public Sub guardarDatosExcel(ByVal placaLector(,) As Decimal, ByVal nocp As Integer, ByVal nocn As Integer, _
                                ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, _
@@ -136,13 +106,309 @@ Module mldOperacionesExcel
          .ActiveWorkbook.Close()
          .Quit()
       End With
+
       releaseObject(excelApp)
-
-
       mensajeVerde(etiqueta, "El Caso: " & numCaso & " se ha guardado en excel exitosamente.")
    End Sub
 
+   'Procedimiento alternativo para generar el archivo de excel de resultados, modificado el 27-Ago-2012
+   'Predefinir márgenes para la hoja de excel, los valores se deben colocar en pulgadas, por lo que se divide el cms entre 2.54
+   Public Sub defineMargenesExcel(excelApp As Excel.Application, ByVal nombrelibro As String)
+      excelApp.ActiveSheet.Name = nombrelibro
+      With excelApp.ActiveSheet.PageSetup
+         .LeftMargin = .Application.InchesToPoints(0.27559055118110237)
+         .RightMargin = .Application.InchesToPoints(0.27559055118110237)
+         .TopMargin = .Application.InchesToPoints(1.1023622047244095)
+         .BottomMargin = .Application.InchesToPoints(0.62992125984251968)
+         '.HeaderMargin = .Application.InchesToPoints(0.196850393700787)
+         '.FooterMargin = .Application.InchesToPoints(0.196850393700787)
+      End With
+   End Sub
 
+   'Definir tipo y  tamaño de letra para las celdas.
+   Public Sub defineTipoDeLetra(excelApp As Excel.Application, ByVal ubicacion As Integer)
+      With excelApp
+         .Range("A" & 2 + ubicacion).Font.Bold = True
+         .Range("H" & 2 + ubicacion).Font.Bold = True
+         .Range("B" & 2 + ubicacion & ":G" & 2 + ubicacion).MergeCells = True
+         .Range("A" & 3 + ubicacion & ":I" & 3 + ubicacion).MergeCells = True
+         .Range("A" & 1 + ubicacion & ":I" & 11 + ubicacion).Font.Name = "Century Gothic"
+         .Range("A" & 1 + ubicacion & ":I" & 11 + ubicacion).Font.Size = 10
+         .Range("A" & 12 + ubicacion).Font.Name = "Arial"
+         .Range("A" & 12 + ubicacion).Font.Size = 8
+         .Range("B" & 12 + ubicacion).Font.Name = "Arial"
+         .Range("B" & 12 + ubicacion).Font.Size = 9
+         .Range("A" & 13 + ubicacion & ":D" & 35 + ubicacion).Font.Name = "Arial"
+         .Range("A" & 13 + ubicacion & ":D" & 35 + ubicacion).Font.Size = 9
+         .Range("A" & 34 + ubicacion & ":D" & 35 + ubicacion).Font.Name = "Arial"
+         .Range("A" & 34 + ubicacion & ":D" & 35 + ubicacion).Font.Size = 9
+         .Range("A" & 39 + ubicacion).Font.Name = "Arial"
+         .Range("A" & 39 + ubicacion).Font.Size = 9
+         .Range("B" & 43 + ubicacion).Font.Name = "Century Gothic"
+         .Range("B" & 43 + ubicacion).Font.Size = 10
+      End With
+   End Sub
+
+   'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+   Public Sub defineTitulos(excelApp As Excel.Application, ByVal ubicacion As Integer)
+      With excelApp
+         .Range("F" & 1 + ubicacion).Value2 = "Resultados de Serología"
+         .Range("A" & 2 + ubicacion).Value2 = "Cliente:  "
+         .Range("H" & 2 + ubicacion).Value2 = "No. Caso: "
+         .Range("A" & 5 + ubicacion).Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+         .Range("F" & 7 + ubicacion).Value2 = "Fecha del análisis:  "
+         .Range("A" & 13 + ubicacion).Value2 = "Sueros*"
+         .Range("B" & 13 + ubicacion).Value2 = "Títulos"
+      End With
+   End Sub
+
+   'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+   Public Sub defineBordes(excelApp As Excel.Application, ByVal ubicacion As Integer)
+      With excelApp
+         'Colocar los bordes externos a las celdas para el reporte.
+         .Range("A" & 2 + ubicacion & ":I" & 3 + ubicacion).BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+         .Range("H" & 2 + ubicacion & ":I" & 3 + ubicacion).BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+      End With
+   End Sub
+
+   'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+   Public Sub colocaCabecera(excelApp As Excel.Application, ByVal ubicacion As Integer, _
+                             ByVal numCaso As String, ByVal nombreCliente As String, _
+                             ByVal observaciones As String, ByVal noHojas As String, _
+                             ByVal nombreEnfermedad As String, ByVal fechaElaboracion As String, _
+                             ByVal mensajeEspecial As String, enfermedadAbreviada As String)
+      With excelApp
+         .Range("B" & 2 + ubicacion).Value2 = nombreCliente
+         .Range("I" & 2 + ubicacion).Value2 = numCaso
+         .Range("A" & 3 + ubicacion).Value2 = LCase(observaciones)
+         .Range("H" & 1 + ubicacion).NumberFormat = "@"
+         .Range("H" & 1 + ubicacion).Value2 = noHojas
+         .Range("A" & 7 + ubicacion).Value2 = nombreEnfermedad
+         .Range("F" & 7 + ubicacion).Value2 += Format(CDate(fechaElaboracion), "dd MMM yyyy")
+         .Range("A" & 12 + ubicacion).Value2 = mensajeEspecial
+         .Range("B" & 12 + ubicacion).Value2 = enfermedadAbreviada
+      End With
+   End Sub
+
+   'Inserta en el archivo de excel el valor de los titulos resultantes
+   Public Sub insertaValoresTitulos(excelApp As Excel.Application, ByVal titulosObtenidos As String, ByRef cuentaNoDatos As Integer)
+      'La cadena recibida con todos los titulos los manipula separandolos por el retorno de carro entre ellos
+      'Lo asigna a la cadena tabla
+      Dim k As Integer = 1
+      Dim sueros As String = "A"
+      Dim titulos As String = "B"
+      Dim temp As Integer = 1
+      Dim l As Integer = 14
+      Dim cadena1 As String
+      Dim tabla1() As String
+      cadena1 = titulosObtenidos
+      tabla1 = Split(cadena1, vbCrLf)
+
+      For i = 0 To cuentaNoDatos - 1
+         excelApp.Range(sueros & l).Value2 = k
+         excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
+         k += 1
+         l += 1
+         If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
+            l = 13
+            If (k = 21) Then
+               sueros = "C"
+               titulos = "D"
+               excelApp.Range(sueros & l).Value2 = "Sueros"
+               excelApp.Range(titulos & l).Value2 = "Títulos"
+            End If
+            If (k = 41) Then
+               sueros = "E"
+               titulos = "F"
+               excelApp.Range(sueros & l).Value2 = "Sueros"
+               excelApp.Range(titulos & l).Value2 = "Títulos"
+            End If
+            If (k = 61) Then
+               sueros = "G"
+               titulos = "H"
+               excelApp.Range(sueros & l).Value2 = "Sueros"
+               excelApp.Range(titulos & l).Value2 = "Títulos"
+            End If
+            If (k = 81) Then
+               sueros = "I"
+               titulos = "J"
+               excelApp.Range(sueros & l).Value2 = "Sueros"
+               excelApp.Range(titulos & l).Value2 = "Títulos"
+            End If
+            l = 14
+         End If
+         If (i = 0) Then
+            temp = 0
+         End If
+      Next
+   End Sub
+
+   'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
+   Public Function insertaGrafica(excelApp As Excel.Application, ByVal nombreArchivoGrafica As String) As Object
+      Dim strCelda As String = "E15"
+      Dim obj As Object
+      ' Dim nombreArchivoGrafica = rutaImagen & numCaso & "-" & consecutivo & "-" & analisis & ".gif"
+      obj = excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivoGrafica, False, True, 250, 200, 220, 150)
+      Return obj
+   End Function
+
+   'Agrega un cuadrito sobre la grafica
+   Public Sub agregaCuadrito(excelApp As Excel.Application, ByVal rango As String, ByVal valorFormula As String)
+      'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
+      Dim nomenf As Excel.Shape
+      With excelApp.Range(rango)
+         nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
+             Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
+             Left:=.Left, Top:=.Top, _
+             Width:=80, Height:=20)
+      End With
+      'Quita el borde del cuadro de texto y lo trae al frente de la gráfica.
+      nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+      nomenf.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
+
+      With nomenf.DrawingObject
+         'Coloca el nombre del cuadrito, si cambia B12, cambia el titulo escrito dentro de él.
+         .Formula = valorFormula
+         With .Font
+            .Name = "Arial"
+            .FontStyle = "Bold"
+            .Size = 9
+            .Strikethrough = False
+            .Superscript = False
+            .Subscript = False
+            .OutlineFont = False
+            .Shadow = False
+         End With
+      End With
+   End Sub
+
+
+   Public Sub guardarResultadosExcel(ByVal numCaso As String, ByVal noSubcaso As Integer, _
+                                     ByVal consecutivo As Integer, ByVal analisis As String, _
+                                     ByVal fechaElaboracion As String, ByVal nombreCliente As String, _
+                                     ByVal nombreEnfermedad As String, _
+                                     ByVal observaciones As String, ByVal nombrelibro As String, _
+                                     ByVal mensajeEspecial As String, enfermedadAbreviada As String, _
+                                     ByVal titulosObtenidos As String, _
+                                     ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
+                                     ByRef cuentaNoDatos As Integer, ByRef desviacionEstandarDatosNoAgrupados As Double, _
+                                     ByRef coeficienteDeVariacionDatosNoAgrupados As Double, _
+                                     ByRef calculaVarianzaDatosNoAgrupados As Double, _
+                                     ByVal nombreArchivoGrafica As String)
+
+      'PAra formatear la salida de datos en excel de resultados
+      Dim k As Integer = 1
+      Dim sueros As String = "A"
+      Dim titulos As String = "B"
+      Dim temp As Integer = 1
+      Dim l As Integer = 14
+      Dim noHojas As String = ""
+      'Para buscar el archivo en el sistema
+      Dim fso As Object
+      fso = CreateObject("Scripting.FileSystemObject")
+      Dim nombreArchivoResultado As String = ""
+      Dim excelApp As New Excel.Application
+      Dim libroExcel As Excel.Workbook
+      'Sirve para controlar el ciclo for
+      Dim i As Integer = 0
+      Dim ubicacion As Integer = 0
+
+      Dim rangoCuadro1 As String = "F17:G17"
+      Dim rangoCuadro2 As String = "G17:H17"
+      Dim valorFormula1 As String = "=$B12"
+      Dim valorFormula2 As String = "=$A12"
+
+      If consecutivo <= 1 Then
+         ubicacion = 0
+      Else
+         ubicacion = (consecutivo - 1) * 54
+      End If
+
+      nombreArchivoResultado = rutaResutados & numCaso & ".xls"
+
+      'Valida si el consecutivo= 0, entonces es el único archivo que se va a generar de resultados
+      'el nombre se botiene con No.Caso-Analisis.xls
+
+      If fso.FileExists(nombreArchivoResultado) Then
+         excelApp.Visible = False
+         excelApp.Workbooks.Open(nombreArchivoResultado, False)
+         noHojas = consecutivo.ToString() & " / " & noSubcaso.ToString()
+      Else
+         If consecutivo <= 1 Then
+            noHojas = "1/1"
+            'nombreArchivoResultado = rutaResutados & numCaso & "-" & analisis & ".xls"
+            'No hace visible el excel en pantalla, crea el workbook y da nombre la primer hoja activa del libro de trabajo.
+            excelApp.Visible = False
+            libroExcel = excelApp.Workbooks.Add()
+            excelApp.ActiveSheet.Name = nombrelibro
+            'Define los márgenes de la hoja de excel
+            With excelApp.ActiveSheet.PageSetup
+               .LeftMargin = .Application.InchesToPoints(0.27559055118110237)
+               .RightMargin = .Application.InchesToPoints(0.27559055118110237)
+               .TopMargin = .Application.InchesToPoints(1.1023622047244095)
+               .BottomMargin = .Application.InchesToPoints(0.62992125984251968)
+               '.HeaderMargin = .Application.InchesToPoints(0.196850393700787)
+               '.FooterMargin = .Application.InchesToPoints(0.196850393700787)
+            End With
+         End If
+
+
+         End If
+         releaseObject(fso)
+
+
+         'Define el tipo de letra que se utilizara para el reporte.
+         defineTipoDeLetra(excelApp, ubicacion)
+
+         'Define cabeceras y bordes de la hoja de excel.
+         defineTitulos(excelApp, ubicacion)
+         defineBordes(excelApp, ubicacion)
+
+         'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+         colocaCabecera(excelApp, ubicacion, numCaso, nombreCliente, observaciones, _
+                        noHojas, nombreEnfermedad, fechaElaboracion, mensajeEspecial, enfermedadAbreviada)
+         'Colocar los valores de los títulos o
+         insertaValoresTitulos(excelApp, titulosObtenidos, cuentaNoDatos)
+
+         'Inserta la gráfica en el archivo
+         Dim objeto As Object
+         objeto = insertaGrafica(excelApp, nombreArchivoGrafica)
+         Console.WriteLine(nombreArchivoGrafica)
+
+         'Agrega los cuadritos sobre la gráfica.
+         agregaCuadrito(excelApp, rangoCuadro1, valorFormula1)
+         agregaCuadrito(excelApp, rangoCuadro2, valorFormula2)
+
+         'coloca los valores de la estadística al finalizar el valor de los sueros.
+         With excelApp
+            .Range("A34").Value2 = "No. Sueros"
+            .Range("B34").Value2 = "Media Arit."
+            .Range("C34").Value2 = "Med. Geom."
+            .Range("D34").Value2 = "Coef.Var."
+            .Range("A35").Value2 = cuentaNoDatos
+            .Range("B35").Value2 = Math.Round(mediaAritmetica)
+            .Range("C35").Value2 = Math.Round(mediaGeometrica)
+            .Range("D35").Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
+            .Range("A39").Value2 = "* Numeración arbitraria"
+            .Range("B43").Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
+         End With
+
+      If consecutivo <= 1 Then
+         With excelApp
+            .ActiveWorkbook.SaveAs(nombreArchivoResultado, True)
+            .ActiveWorkbook.Close()
+            .Quit()
+         End With
+      Else
+         With excelApp
+            .ActiveWorkbook.Save()
+            .ActiveWorkbook.Close()
+            .Quit()
+         End With
+      End If
+         releaseObject(objeto)
+         releaseObject(excelApp)
+   End Sub
 
    'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
    Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
@@ -575,6 +841,9 @@ Module mldOperacionesExcel
       'Esta instruccion es para excel 2010 NO BORRAR.
       'excelApp.ActiveSheet.ChartObjects(1).chart.Export(FileName:=nombreArchivo, FilterName:="BMP")
       excelApp.ActiveSheet.ChartObjects(1).chart.Export(nombreArchivo, "gif", False)
+
+      'excelApp.ActiveSheet.ChartObjects(1).Delete() para la prueba de liberar el objeto
+
 
       'Cierra el libro activo de Excel y Sale sin salvar la hoja de excel actual usando Excel 2010.
       'excelApp.ActiveWorkbook.Close(SaveChanges:=False)
