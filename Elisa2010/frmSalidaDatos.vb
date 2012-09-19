@@ -40,4 +40,6 @@ Public Class frmSalidaDatos
       Application.DoEvents()
       Kill(lblNombreArchivo.Text)
    End Sub
+
+
 End Class

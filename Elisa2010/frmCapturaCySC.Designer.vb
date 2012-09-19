@@ -24,10 +24,10 @@ Partial Class frmCapturaCySC
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCySC))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Label43 = New System.Windows.Forms.Label()
       Me.Label42 = New System.Windows.Forms.Label()
@@ -192,6 +192,7 @@ Partial Class frmCapturaCySC
       Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
       Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(221, 21)
       Me.cmbNombreEnfermedad.TabIndex = 103
+      Me.cmbNombreEnfermedad.TabStop = False
       Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
       '
       'btnGuardaDatosExcel
@@ -200,7 +201,7 @@ Partial Class frmCapturaCySC
       Me.btnGuardaDatosExcel.Location = New System.Drawing.Point(335, 535)
       Me.btnGuardaDatosExcel.Name = "btnGuardaDatosExcel"
       Me.btnGuardaDatosExcel.Size = New System.Drawing.Size(136, 23)
-      Me.btnGuardaDatosExcel.TabIndex = 136
+      Me.btnGuardaDatosExcel.TabIndex = 32
       Me.btnGuardaDatosExcel.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatosExcel.UseVisualStyleBackColor = True
       '
@@ -231,7 +232,7 @@ Partial Class frmCapturaCySC
       Me.btnObtenerResultados.Location = New System.Drawing.Point(477, 535)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
       Me.btnObtenerResultados.Size = New System.Drawing.Size(116, 23)
-      Me.btnObtenerResultados.TabIndex = 137
+      Me.btnObtenerResultados.TabIndex = 33
       Me.btnObtenerResultados.Text = "Obtener Resultados"
       Me.btnObtenerResultados.UseVisualStyleBackColor = True
       '
@@ -242,7 +243,7 @@ Partial Class frmCapturaCySC
       Me.btnLeerDatosPlaca.Location = New System.Drawing.Point(224, 535)
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(105, 23)
-      Me.btnLeerDatosPlaca.TabIndex = 135
+      Me.btnLeerDatosPlaca.TabIndex = 31
       Me.btnLeerDatosPlaca.Text = "Obtener Datos"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
@@ -253,7 +254,7 @@ Partial Class frmCapturaCySC
       Me.btnCancelar.Location = New System.Drawing.Point(599, 535)
       Me.btnCancelar.Name = "btnCancelar"
       Me.btnCancelar.Size = New System.Drawing.Size(105, 23)
-      Me.btnCancelar.TabIndex = 138
+      Me.btnCancelar.TabIndex = 34
       Me.btnCancelar.Text = "Cancelar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
@@ -264,7 +265,7 @@ Partial Class frmCapturaCySC
       Me.btnCapturaTerminada.Location = New System.Drawing.Point(113, 535)
       Me.btnCapturaTerminada.Name = "btnCapturaTerminada"
       Me.btnCapturaTerminada.Size = New System.Drawing.Size(105, 23)
-      Me.btnCapturaTerminada.TabIndex = 135
+      Me.btnCapturaTerminada.TabIndex = 30
       Me.btnCapturaTerminada.Text = "Captura Terminada"
       Me.btnCapturaTerminada.UseVisualStyleBackColor = True
       '
@@ -377,7 +378,7 @@ Partial Class frmCapturaCySC
       Me.txtCN2Letra2.MaxLength = 1
       Me.txtCN2Letra2.Name = "txtCN2Letra2"
       Me.txtCN2Letra2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCN2Letra2.TabIndex = 13
+      Me.txtCN2Letra2.TabIndex = 14
       Me.txtCN2Letra2.Visible = False
       '
       'txtCN1Letra1
@@ -386,7 +387,7 @@ Partial Class frmCapturaCySC
       Me.txtCN1Letra1.MaxLength = 1
       Me.txtCN1Letra1.Name = "txtCN1Letra1"
       Me.txtCN1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Letra1.TabIndex = 11
+      Me.txtCN1Letra1.TabIndex = 12
       Me.txtCN1Letra1.Visible = False
       '
       'lblCNNo3
@@ -406,7 +407,7 @@ Partial Class frmCapturaCySC
       Me.txtCN1Valor1.MaxLength = 2
       Me.txtCN1Valor1.Name = "txtCN1Valor1"
       Me.txtCN1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN1Valor1.TabIndex = 12
+      Me.txtCN1Valor1.TabIndex = 13
       Me.txtCN1Valor1.Visible = False
       '
       'lblCNNo2
@@ -426,7 +427,7 @@ Partial Class frmCapturaCySC
       Me.txtCN2Valor2.MaxLength = 2
       Me.txtCN2Valor2.Name = "txtCN2Valor2"
       Me.txtCN2Valor2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN2Valor2.TabIndex = 14
+      Me.txtCN2Valor2.TabIndex = 15
       Me.txtCN2Valor2.Visible = False
       '
       'lblCNNo1
@@ -446,7 +447,7 @@ Partial Class frmCapturaCySC
       Me.txtCN3Letra3.MaxLength = 1
       Me.txtCN3Letra3.Name = "txtCN3Letra3"
       Me.txtCN3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Letra3.TabIndex = 15
+      Me.txtCN3Letra3.TabIndex = 16
       Me.txtCN3Letra3.Visible = False
       '
       'txtCN3Valor3
@@ -455,7 +456,7 @@ Partial Class frmCapturaCySC
       Me.txtCN3Valor3.MaxLength = 2
       Me.txtCN3Valor3.Name = "txtCN3Valor3"
       Me.txtCN3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCN3Valor3.TabIndex = 16
+      Me.txtCN3Valor3.TabIndex = 17
       Me.txtCN3Valor3.Visible = False
       '
       'grbControlesPositivos
@@ -485,7 +486,7 @@ Partial Class frmCapturaCySC
       Me.txtCP1Letra1.MaxLength = 1
       Me.txtCP1Letra1.Name = "txtCP1Letra1"
       Me.txtCP1Letra1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Letra1.TabIndex = 5
+      Me.txtCP1Letra1.TabIndex = 6
       Me.txtCP1Letra1.Visible = False
       '
       'txtCP1Valor1
@@ -494,7 +495,7 @@ Partial Class frmCapturaCySC
       Me.txtCP1Valor1.MaxLength = 2
       Me.txtCP1Valor1.Name = "txtCP1Valor1"
       Me.txtCP1Valor1.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP1Valor1.TabIndex = 6
+      Me.txtCP1Valor1.TabIndex = 7
       Me.txtCP1Valor1.Visible = False
       '
       'txtCP2Letra2
@@ -503,7 +504,7 @@ Partial Class frmCapturaCySC
       Me.txtCP2Letra2.MaxLength = 1
       Me.txtCP2Letra2.Name = "txtCP2Letra2"
       Me.txtCP2Letra2.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP2Letra2.TabIndex = 7
+      Me.txtCP2Letra2.TabIndex = 8
       Me.txtCP2Letra2.Visible = False
       '
       'lblCPNo3
@@ -523,7 +524,7 @@ Partial Class frmCapturaCySC
       Me.txtCP2Valor2.MaxLength = 2
       Me.txtCP2Valor2.Name = "txtCP2Valor2"
       Me.txtCP2Valor2.Size = New System.Drawing.Size(24, 22)
-      Me.txtCP2Valor2.TabIndex = 8
+      Me.txtCP2Valor2.TabIndex = 9
       Me.txtCP2Valor2.Visible = False
       '
       'lblCPNo2
@@ -543,7 +544,7 @@ Partial Class frmCapturaCySC
       Me.txtCP3Letra3.MaxLength = 1
       Me.txtCP3Letra3.Name = "txtCP3Letra3"
       Me.txtCP3Letra3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Letra3.TabIndex = 9
+      Me.txtCP3Letra3.TabIndex = 10
       Me.txtCP3Letra3.Visible = False
       '
       'lblCPNo1
@@ -563,7 +564,7 @@ Partial Class frmCapturaCySC
       Me.txtCP3Valor3.MaxLength = 2
       Me.txtCP3Valor3.Name = "txtCP3Valor3"
       Me.txtCP3Valor3.Size = New System.Drawing.Size(25, 22)
-      Me.txtCP3Valor3.TabIndex = 10
+      Me.txtCP3Valor3.TabIndex = 11
       Me.txtCP3Valor3.Visible = False
       '
       'Panel6
@@ -582,7 +583,7 @@ Partial Class frmCapturaCySC
       Me.Label8.BackColor = System.Drawing.Color.Transparent
       Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label8.Location = New System.Drawing.Point(4, 14)
+      Me.Label8.Location = New System.Drawing.Point(4, 12)
       Me.Label8.Name = "Label8"
       Me.Label8.Size = New System.Drawing.Size(125, 16)
       Me.Label8.TabIndex = 126
@@ -593,7 +594,8 @@ Partial Class frmCapturaCySC
       Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(130, 10)
       Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
       Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(60, 20)
-      Me.txtNombreSobreGrafica.TabIndex = 127
+      Me.txtNombreSobreGrafica.TabIndex = 0
+      Me.ToolTip1.SetToolTip(Me.txtNombreSobreGrafica, "Abreviatura de la enfermedad")
       '
       'Panel4
       '
@@ -620,6 +622,7 @@ Partial Class frmCapturaCySC
       Me.TextBox2.ReadOnly = True
       Me.TextBox2.Size = New System.Drawing.Size(25, 20)
       Me.TextBox2.TabIndex = 145
+      Me.TextBox2.TabStop = False
       '
       'TextBox3
       '
@@ -630,6 +633,7 @@ Partial Class frmCapturaCySC
       Me.TextBox3.ReadOnly = True
       Me.TextBox3.Size = New System.Drawing.Size(25, 20)
       Me.TextBox3.TabIndex = 144
+      Me.TextBox3.TabStop = False
       '
       'Label41
       '
@@ -648,7 +652,8 @@ Partial Class frmCapturaCySC
       Me.txtNoControlesNegativos.MaxLength = 1
       Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControlesNegativos.TabIndex = 142
+      Me.txtNoControlesNegativos.TabIndex = 3
+      Me.ToolTip1.SetToolTip(Me.txtNoControlesNegativos, "No. controles negativos")
       '
       'lblNoCasos
       '
@@ -667,7 +672,8 @@ Partial Class frmCapturaCySC
       Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoDeCasos.TabIndex = 138
+      Me.txtNoDeCasos.TabIndex = 1
+      Me.ToolTip1.SetToolTip(Me.txtNoDeCasos, "No. casos en la placa")
       '
       'lblNoControles
       '
@@ -686,7 +692,8 @@ Partial Class frmCapturaCySC
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
       Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControlesPositivos.TabIndex = 140
+      Me.txtNoControlesPositivos.TabIndex = 2
+      Me.ToolTip1.SetToolTip(Me.txtNoControlesPositivos, "No. controles positivos")
       '
       'ckbControlesDefault
       '
@@ -696,8 +703,9 @@ Partial Class frmCapturaCySC
       Me.ckbControlesDefault.Location = New System.Drawing.Point(249, 60)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
       Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 49
+      Me.ckbControlesDefault.TabIndex = 5
       Me.ckbControlesDefault.Text = "Valores por default"
+      Me.ToolTip1.SetToolTip(Me.ckbControlesDefault, "Marque para valores default")
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
       'lblLogTit2
@@ -746,7 +754,7 @@ Partial Class frmCapturaCySC
       Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(131, 223)
       Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
       Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(92, 23)
-      Me.btnAceptarEnfermedad.TabIndex = 55
+      Me.btnAceptarEnfermedad.TabIndex = 4
       Me.btnAceptarEnfermedad.Text = "Aceptar"
       Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
       '
@@ -757,7 +765,7 @@ Partial Class frmCapturaCySC
       Me.btnDefinirControlesPN.Location = New System.Drawing.Point(336, 223)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
-      Me.btnDefinirControlesPN.TabIndex = 56
+      Me.btnDefinirControlesPN.TabIndex = 18
       Me.btnDefinirControlesPN.Text = "Definir Controles"
       Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
       '
@@ -768,7 +776,7 @@ Partial Class frmCapturaCySC
       Me.btnAceptarControles.Location = New System.Drawing.Point(453, 223)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarControles.TabIndex = 57
+      Me.btnAceptarControles.TabIndex = 19
       Me.btnAceptarControles.Text = "Aceptar Controles"
       Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
@@ -822,7 +830,7 @@ Partial Class frmCapturaCySC
       Me.btnAceptaSubCasos.Location = New System.Drawing.Point(568, 6)
       Me.btnAceptaSubCasos.Name = "btnAceptaSubCasos"
       Me.btnAceptaSubCasos.Size = New System.Drawing.Size(48, 23)
-      Me.btnAceptaSubCasos.TabIndex = 167
+      Me.btnAceptaSubCasos.TabIndex = 24
       Me.btnAceptaSubCasos.Text = "OK"
       Me.btnAceptaSubCasos.UseVisualStyleBackColor = True
       '
@@ -844,7 +852,7 @@ Partial Class frmCapturaCySC
       Me.txtNoSubcasos.MaxLength = 2
       Me.txtNoSubcasos.Name = "txtNoSubcasos"
       Me.txtNoSubcasos.Size = New System.Drawing.Size(24, 20)
-      Me.txtNoSubcasos.TabIndex = 166
+      Me.txtNoSubcasos.TabIndex = 23
       Me.txtNoSubcasos.Text = "2"
       Me.txtNoSubcasos.Visible = False
       '
@@ -856,8 +864,9 @@ Partial Class frmCapturaCySC
       Me.chkSubCasos.Location = New System.Drawing.Point(459, 10)
       Me.chkSubCasos.Name = "chkSubCasos"
       Me.chkSubCasos.Size = New System.Drawing.Size(73, 17)
-      Me.chkSubCasos.TabIndex = 165
+      Me.chkSubCasos.TabIndex = 22
       Me.chkSubCasos.Text = "Subcasos"
+      Me.ToolTip1.SetToolTip(Me.chkSubCasos, "Marque si existen subcasos")
       Me.chkSubCasos.UseVisualStyleBackColor = True
       '
       'txtMensajeSobreGrafica
@@ -866,7 +875,7 @@ Partial Class frmCapturaCySC
       Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(167, 92)
       Me.txtMensajeSobreGrafica.Name = "txtMensajeSobreGrafica"
       Me.txtMensajeSobreGrafica.Size = New System.Drawing.Size(236, 20)
-      Me.txtMensajeSobreGrafica.TabIndex = 164
+      Me.txtMensajeSobreGrafica.TabIndex = 25
       '
       'Label7
       '
@@ -934,7 +943,7 @@ Partial Class frmCapturaCySC
       Me.txtDesdeLetra.MaxLength = 1
       Me.txtDesdeLetra.Name = "txtDesdeLetra"
       Me.txtDesdeLetra.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeLetra.TabIndex = 150
+      Me.txtDesdeLetra.TabIndex = 26
       '
       'txtDesdeValor
       '
@@ -945,7 +954,7 @@ Partial Class frmCapturaCySC
       Me.txtDesdeValor.MaxLength = 2
       Me.txtDesdeValor.Name = "txtDesdeValor"
       Me.txtDesdeValor.Size = New System.Drawing.Size(25, 20)
-      Me.txtDesdeValor.TabIndex = 151
+      Me.txtDesdeValor.TabIndex = 27
       '
       'txtHastaLetra
       '
@@ -956,7 +965,7 @@ Partial Class frmCapturaCySC
       Me.txtHastaLetra.MaxLength = 1
       Me.txtHastaLetra.Name = "txtHastaLetra"
       Me.txtHastaLetra.Size = New System.Drawing.Size(25, 20)
-      Me.txtHastaLetra.TabIndex = 152
+      Me.txtHastaLetra.TabIndex = 28
       '
       'txtHastaValor
       '
@@ -967,7 +976,7 @@ Partial Class frmCapturaCySC
       Me.txtHastaValor.MaxLength = 2
       Me.txtHastaValor.Name = "txtHastaValor"
       Me.txtHastaValor.Size = New System.Drawing.Size(24, 20)
-      Me.txtHastaValor.TabIndex = 153
+      Me.txtHastaValor.TabIndex = 29
       '
       'txtNombreCliente
       '
@@ -1012,7 +1021,7 @@ Partial Class frmCapturaCySC
       Me.btnBuscaCaso.Location = New System.Drawing.Point(355, 5)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso.TabIndex = 149
+      Me.btnBuscaCaso.TabIndex = 21
       Me.btnBuscaCaso.UseVisualStyleBackColor = True
       '
       'cmbNoCaso
@@ -1022,7 +1031,7 @@ Partial Class frmCapturaCySC
       Me.cmbNoCaso.Location = New System.Drawing.Point(167, 6)
       Me.cmbNoCaso.Name = "cmbNoCaso"
       Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso.TabIndex = 148
+      Me.cmbNoCaso.TabIndex = 20
       '
       'Label34
       '
@@ -1193,33 +1202,33 @@ Partial Class frmCapturaCySC
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.BackgroundColor = System.Drawing.Color.White
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(7, 331)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 141

@@ -167,7 +167,7 @@ Public Class frmEncefalomielitisDA
          End Try
          Try
             nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                               nombre, titulox, tituloy, numcaso, 0, analisis)
+                            titulox, tituloy, numcaso, consecutivo, analisis)
          Catch
             mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          End Try

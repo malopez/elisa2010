@@ -14,7 +14,14 @@ Public Class frmCapturaCySC
    Dim arreglo As String = ""
    Dim chkcontrol As Boolean = True
    Dim cadenaDeCasos As String = "''"
-
+   'Para realizar los calculos de titulos
+   'ENFERMEDAD       LOGSPS     LOGTIT1   LOGTIT2
+   'Laringo           0.15       1.45        3.726
+   'Bronquitis        0.15       1.642       3.568
+   'Encefalomielitis  0.15       1.642       3.726
+   'IBF               0.18       1.172       3.614
+   'NC                0.15       1.464       3.74
+   'Reovirus          0.15       1.077       3.46
    '#########################################################
    'CARGA LA FORMA CON SU TOOL TIP Y BOTON DE CANCELAR
    '#########################################################
@@ -27,8 +34,16 @@ Public Class frmCapturaCySC
       ToolTip1.SetToolTip(btnFin, "Ir al último análisis")
       ToolTip1.SetToolTip(btnInsertar, "Insertar nuevo análisis")
       ToolTip1.SetToolTip(btnEditar, "Modificar un análisis")
-      ToolTip1.SetToolTip(btnGuardar, "Guardar un análisis nuevo")
+      ToolTip1.SetToolTip(btnGuardarEditado, "Guardar cambios al análisis")
       ToolTip1.SetToolTip(btnBuscaCaso, "Buscar un No. de Caso")
+      ToolTip1.SetToolTip(btnBuscaCaso, "Buscar un No. de Caso")
+      ToolTip1.SetToolTip(btnNuevoSubcaso, "Insertar nuevo subcaso")
+      ToolTip1.SetToolTip(btnGuardarSubcaso, "Guardar subcaso")
+      ToolTip1.SetToolTip(txtNombreSobreGrafica, "Enfermedad abreviada")
+      ToolTip1.SetToolTip(txtNoDeCasos, "No. de casos en la placa")
+      ToolTip1.SetToolTip(txtNoControlesPositivos, "No. controles positivos")
+      ToolTip1.SetToolTip(txtNoControlesNegativos, "No. controles negativos")
+      ToolTip1.SetToolTip(ckbControlesDefault, "Marque para definir controles + y - default")
    End Sub
 
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
@@ -219,9 +234,11 @@ Public Class frmCapturaCySC
       If controlesValidosNumero(txtNoDeCasos, " Valor en número de casos ", 1, 94) AndAlso _
          controlesValidosNumero(txtNoControlesPositivos, " Valor en número de controles ", 2, 3) AndAlso _
          controlesValidosNumero(txtNoControlesNegativos, " Valor en número de controles ", 2, 3) Then
-         ckbControlesDefault.Enabled = True
-         btnAceptarControles.Enabled = True
-         btnDefinirControlesPN.Enabled = True
+         '
+         'ckbControlesDefault.Enabled = True
+         'btnAceptarControles.Enabled = True
+         'btnDefinirControlesPN.Enabled = True
+
          Try
             cmbNombreEnfermedad.Enabled = False
             txtNoDeCasos.Enabled = False
@@ -263,6 +280,11 @@ Public Class frmCapturaCySC
                mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
             End If
             oConexion.Close()
+
+            ckbControlesDefault.Enabled = True
+            btnAceptarControles.Enabled = True
+            btnDefinirControlesPN.Enabled = True
+
          Catch ex As MySqlException
             mensajeExceptionSQL(lblMensajeCaso, ex)
          Catch ex As DataException
@@ -553,6 +575,7 @@ Public Class frmCapturaCySC
          For Each oFila In oTabla.Rows
             cmbNoCaso.Items.Add(oFila.Item("caso"))
          Next
+         cmbNoCaso.SelectedIndex = 0
       Catch ex As MySqlException
          mensajeExceptionSQL(lblMensajeCaso, ex)
       Catch ex As DataException
@@ -985,6 +1008,11 @@ Public Class frmCapturaCySC
 
    Private Sub btnGuardarSubcaso_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardarSubcaso.Click
       Dim i As Integer = 0
+
+      'Agregado el  17-09-2012
+      txtMensajeSobreGrafica.Enabled = False
+      txtMensajeSobreGrafica.ReadOnly = True
+
       'Se requiere que tenga al menos dos subcasos
       'modificarlo porque en subcasos no aplica esta validacion de combo con casos iguales.
       If controlesValidosNumero(txtNoSubcasos, "En número de subcasos, ", 2, 94) AndAlso _
@@ -1064,12 +1092,17 @@ Public Class frmCapturaCySC
                guardaSubCasoEnArreglo(posCasoActual)
                cadenaDeCasos += ",'" & totalCasos(posCasoActual).noCaso & "'"
 
-               'Limpia los valores desde hasta para el siguiente subcaso.
-               txtMensajeSobreGrafica.Text = ""
-               txtDesdeLetra.Text = "A"
-               txtDesdeValor.Text = "1"
-               txtHastaLetra.Text = "A"
-               txtHastaValor.Text = "1"
+               'Agregado el if el 17-Sep-2012
+               If CInt(lblNoSubCaso.Text) < CInt(txtNoSubcasos.Text) Then
+                  'Limpia los valores desde hasta para el siguiente subcaso.
+                  txtMensajeSobreGrafica.Text = ""
+                  txtDesdeLetra.Text = "A"
+                  txtDesdeValor.Text = "1"
+                  txtHastaLetra.Text = "A"
+                  txtHastaValor.Text = "1"
+               End If
+
+
 
                btnNuevoSubcaso.Enabled = True
                btnGuardarSubcaso.Enabled = False
@@ -1100,6 +1133,8 @@ Public Class frmCapturaCySC
 
                If numero <= CInt(txtNoDeCasos.Text) Then
                   If CInt(lblNoSubCaso.Text) < CInt(txtNoSubcasos.Text) Then
+
+
                      btnNuevoSubcaso.Enabled = True
                      btnNuevoSubcaso.Visible = True
                      'MessageBox.Show("IF LBL: Valor de numero:" & numero & "Valor de lblNoSubCaso.Text: " & lblNoSubCaso.Text & "Valor de subcasos: " & txtNoSubcasos.Text)
@@ -1328,10 +1363,10 @@ Public Class frmCapturaCySC
    End Sub
 
    Private Sub guardaSubCasoEnArreglo(ByVal posicion As Integer)
-      'MessageBox.Show("Voy a guardar: " & cmbNoCaso.Text & vbTab & lblNoSubCaso.Text & vbTab _
-      '                & txtAnalisisSolicitado.Text & vbTab & txtNombreCliente.Text & vbTab & txtMensajeSobreGrafica.Text _
-      '                & vbTab & siValorEsLetra(txtDesdeLetra) & vbTab & txtDesdeValor.Text & vbTab & siValorEsLetra(txtHastaLetra) _
-      '                & vbTab & txtHastaValor.Text)
+      MessageBox.Show("Voy a guardar: " & cmbNoCaso.Text & vbTab & lblNoSubCaso.Text & vbTab _
+                      & txtAnalisisSolicitado.Text & vbTab & txtNombreCliente.Text & vbTab & txtMensajeSobreGrafica.Text _
+                      & vbTab & siValorEsLetra(txtDesdeLetra) & vbTab & txtDesdeValor.Text & vbTab & siValorEsLetra(txtHastaLetra) _
+                      & vbTab & txtHastaValor.Text)
 
       Dim colorFondo As miRGB
       totalCasos(posicion).noCaso = cmbNoCaso.Text
@@ -1384,14 +1419,22 @@ Public Class frmCapturaCySC
       Dim i As Integer = 0
       Dim j As Integer = 0
       
-      placaLector = {{"0.825", "0.039", "0.824", "0.111", "0.149", "0.311", "0.577", "0.253", "0.73", "0.474", "0.325", "0.756"}, _
-{"0.279", "0.219", "0.613", "0.639", "0.511", "0.615", "1.029", "0.172", "0.774", "0.457", "0.486", "0.306"}, _
-{"0.31", "0.15", "0.238", "0.139", "0.565", "0.722", "0.212", "0.518", "0.21", "0.411", "0.334", "0.385"}, _
-{"0.547", "0.472", "0.715", "0.642", "0.394", "0.366", "0.722", "0.266", "0.637", "0.447", "0.391", "0.24"}, _
-{"0.212", "0.188", "0.187", "0.468", "0.298", "0.37", "0.34", "0.521", "0.318", "0.31", "0.153", "0.176"}, _
-{"0.253", "0.524", "0.45", "0.387", "0.186", "0.315", "0.421", "0.23", "0.127", "0.157", "0.31", "0.356"}, _
-{"0.248", "0.341", "0.287", "0.245", "0.221", "0.194", "0.503", "0.193", "0.33", "0.274", "0.447", "0.328"}, _
-{"0.488", "0.212", "0.245", "0.975", "0.479", "0.211", "0.15", "0.31", "0.251", "0.044", "0.906", "0.056"}}
+      'placaLector = {{"0.825", "0.039", "0.824", "0.111", "0.149", "0.311", "0.577", "0.253", "0.73", "0.474", "0.325", "0.756"}, _
+      '{"0.279", "0.219", "0.613", "0.639", "0.511", "0.615", "1.029", "0.172", "0.774", "0.457", "0.486", "0.306"}, _
+      '{"0.31", "0.15", "0.238", "0.139", "0.565", "0.722", "0.212", "0.518", "0.21", "0.411", "0.334", "0.385"}, _
+      '{"0.547", "0.472", "0.715", "0.642", "0.394", "0.366", "0.722", "0.266", "0.637", "0.447", "0.391", "0.24"}, _
+      '{"0.212", "0.188", "0.187", "0.468", "0.298", "0.37", "0.34", "0.521", "0.318", "0.31", "0.153", "0.176"}, _
+      '{"0.253", "0.524", "0.45", "0.387", "0.186", "0.315", "0.421", "0.23", "0.127", "0.157", "0.31", "0.356"}, _
+      '{"0.248", "0.341", "0.287", "0.245", "0.221", "0.194", "0.503", "0.193", "0.33", "0.274", "0.447", "0.328"}, _
+      '{"0.488", "0.212", "0.245", "0.975", "0.479", "0.211", "0.15", "0.31", "0.251", "0.044", "0.906", "0.056"}}
+      placaLector = {{"0.947", "0.053", "0.924", "1.144", "0.472", "0.524", "0.607", "1.364", "0.259", "0.592", "0.203", "0.855"}, _
+                   {"0.724", "0.835", "0.368", "0.46", "0.48", "1.438", "0.44", "0.572", "0.431", "0.955", "0.824", "0.426"}, _
+                   {"0.168", "0.455", "0.946", "0.758", "0.754", "0.875", "1.181", "1.05", "0.694", "1.617", "1.79", "0.788"}, _
+                   {"1.073", "0.423", "1.01", "0.641", "0.573", "0.971", "1.036", "0.738", "0.248", "0.375", "0.94", "0.576"}, _
+                   {"0.843", "0.251", "1.348", "1.362", "1.429", "0.945", "1.154", "1.336", "0.837", "0.513", "0.569", "0.645"}, _
+                   {"0.595", "0.392", "1.17", "1.235", "1.949", "0.409", "0.319", "0.542", "0.272", "0.229", "0.361", "0.39"}, _
+                   {"1.112", "0.352", "0.565", "0.501", "0.49", "0.7", "0.864", "0.922", "0.574", "0.973", "0.954", "0.713"}, _
+                   {"0.718", "1.56", "0.761", "0.629", "0.271", "0.864", "0.935", "0.536", "0.404", "0.049", "1.118", "0.053"}}
 
    End Sub
 
@@ -1401,14 +1444,14 @@ Public Class frmCapturaCySC
    'DE CADA UNO DE LOS CASOS
    '####################################################################################
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmSalidaDatos, ByRef etiqueta As Label, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmResultadosPrelim, ByRef etiqueta As Label, _
                                       ByVal posicion As Integer, _
                                       ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
                                       ByVal DAnoCaso As String, ByVal DAnoSubcasos As Integer, ByVal consecutivo As Integer, _
                                       ByVal DAanalisisSolicitado As String, ByVal DAobs As String, _
-                                      ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
                                       ByVal DADesdeLetra As Integer, ByVal DAhastaLetra As Integer, _
                                       ByVal DAdesdeValor As Integer, ByVal DAhastaValor As Integer, ByRef titulosObtenidos As String)
+      'ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
       'ByRef txtNombreEnfermedadSD As TextBox, ByRef txtNombreClienteSD As TextBox, ByRef txtNoCasoSD As TextBox, _
       'ByRef lblAnalisisSD As Label, ByRef lblObservacionesSD As Label, ByRef txtFechaElaboracionSD As TextBox, _
       'ByRef txtTitulosObtenidosSD As TextBox, ByRef txtMediaAritmetica2SD As TextBox, _
@@ -1454,7 +1497,7 @@ Public Class frmCapturaCySC
 
 
 
-      Dim nombre As String = nombreSobreGrafica
+      'Dim nombre As String = nombreSobreGrafica
       'Dim nombreCliente As String = DAnombreCliente
       Dim observaciones As String = DAobs
       Dim nombreArchivoImagen As String = ""
@@ -1475,6 +1518,7 @@ Public Class frmCapturaCySC
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
+         totalCasos(posicion).titulosObtenidos = titulosObtenidos
       Catch ex As Exception
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
@@ -1561,17 +1605,14 @@ Public Class frmCapturaCySC
       End Try
       Try
          nombreArchivoImagen = creaChartFrecRel(lblMensajeCaso, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
-                            nombre, titulox, tituloy, numcaso, consecutivo, analisis)
+                           titulox, tituloy, numcaso, consecutivo, analisis)
+
          totalCasos(posicion).nombreArchivoImagen = nombreArchivoImagen
-         MessageBox.Show("nombre del archivo de imagen: " & nombreArchivoImagen)
+
       Catch
          mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
    End Sub
-
-
-
-
 
    '####################################################################################
    'EN ESTA SECCION SE ENCUENTRAN LOS BOTONES DE:
@@ -1597,7 +1638,7 @@ Public Class frmCapturaCySC
          & totalCasos(i).desdeValor & " " _
          & totalCasos(i).hastaLetra & " " _
          & totalCasos(i).hastaValor & vbCrLf
-         MessageBox.Show("valor del arreglo:" & vbCrLf & arreglo)
+         'MessageBox.Show("valor del arreglo:" & vbCrLf & arreglo)
       Next
 
    End Sub
@@ -1727,9 +1768,6 @@ Public Class frmCapturaCySC
 
       Dim analisis As String = Replace(idAnalisis, "/", "")
 
-      MessageBox.Show("valor de idAnalisis: " & idAnalisis & " analisis: " & analisis)
-
-
       'Realiza el cálculo de los títulos
 
       calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
@@ -1738,44 +1776,93 @@ Public Class frmCapturaCySC
                                desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeCaso)
 
 
-      'Realiza el cálculo estadístico de los valores desde-hasta introducidos y almacenados en el arreglo totalCasos.
+      Dim forma As frmResultadosPrelim
+      forma = New frmResultadosPrelim
+      forma.Nombre = tabla(1)
+      forma.NombreAnalisis = analisis
+      forma.ArregloCasos = totalCasos
+      forma.Fecha = fecha.ToShortDateString()
+      forma.NombreGrafica = nombreSobreGrafica
+      Console.WriteLine(nombreSobreGrafica)
+      forma.Show()
+
       For i = 0 To largo - 1
-         Dim forma As frmSalidaDatos
-         forma = New frmSalidaDatos
-         forma.Show()
-         If (totalCasos(i).noSubcasos > 0) Then
-            forma.Text += totalCasos(i).noCaso & ", Subcaso No. " & totalCasos(i).subCaso & "."
-         Else
-            forma.Text += totalCasos(i).noCaso & "."
-         End If
          
          obtenResultadosPorCaso("Caso No." & i + 1, forma, forma.lblSalidaDatos, i, promCP, promCN, difCPS, _
-                                totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
-                                totalCasos(i).analisis, totalCasos(i).obs, _
-                                nombreSobreGrafica, mensajeSobreGrafica, _
-                                totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
-                                totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
-
-         muestraResultadosEnPantalla(forma.txtNoCaso, totalCasos(i).noCaso, _
-                                     forma.lblAnalisis, analisis, _
-                                     forma.txtFechaElaboracion, fecha.ToShortDateString(), _
-                                     forma.txtNombreEnfermedad, tabla(1), _
-                                     forma.txtNombreCliente, totalCasos(i).cliente, _
-                                     forma.lblObservaciones, totalCasos(i).obs, _
-                                     forma.txtVarianza2, totalCasos(i).varianza, _
-                                     forma.txtTotalDatosCalculados, totalCasos(i).sueros, _
-                                     forma.txtMediaAritmetica2, totalCasos(i).medArit, _
-                                     forma.txtMediaGeometrica, totalCasos(i).medGeom, _
-                                     forma.txtCoefVariacion2, totalCasos(i).coefVar, _
-                                     forma.txtDesvEstandar2, totalCasos(i).desvEst, _
-                                     forma.lblNosubcasos, totalCasos(i).noSubcasos, _
-                                     forma.lblConsecutivo, totalCasos(i).subCaso, _
-                                     forma.txtTitulosObtenidos, titulosObtenidos, _
-                                     forma.lblNombreSobreGrafica, nombreSobreGrafica, _
-                                     forma.lblMensajeSobreGrafica, mensajeSobreGrafica, _
-                                     forma.imagenGrafica, totalCasos(i).nombreArchivoImagen, _
-                                     forma.lblNombreArchivo)
+                               totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
+                               totalCasos(i).analisis, totalCasos(i).obs, _
+                               totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
+                               totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
+         forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
       Next
+      forma.cmbCasosResPrel.SelectedIndex = 0
+      presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
+                                   forma.txtFechaElaboracion, fecha.ToShortDateString(), _
+                                   forma.txtNombreEnfermedad, tabla(1), _
+                                   forma.txtNombreCliente, totalCasos(0).cliente, _
+                                   forma.lblObservaciones, totalCasos(0).obs, _
+                                   forma.txtVarianza2, totalCasos(0).varianza, _
+                                   forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
+                                   forma.txtMediaAritmetica2, totalCasos(0).medArit, _
+                                   forma.txtMediaGeometrica, totalCasos(0).medGeom, _
+                                   forma.txtCoefVariacion2, totalCasos(0).coefVar, _
+                                   forma.txtDesvEstandar2, totalCasos(0).desvEst, _
+                                   forma.lblNosubcasos, totalCasos(0).noSubcasos, _
+                                   forma.lblConsecutivo, totalCasos(0).subCaso, _
+                                   forma.txtTitulosObtenidos, totalCasos(0).titulosObtenidos, _
+                                   forma.lblNombreSobreGrafica, nombreSobreGrafica, _
+                                   forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
+                                   forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
+                                   forma.lblNombreArchivo)
 
+
+
+
+
+
+
+
+      
+
+
+      'COMENTADO EL 18 DE SEPTIEMBRE DEL 2012.
+      'Realiza el cálculo estadístico de los valores desde-hasta introducidos y almacenados en el arreglo totalCasos.
+      '   For i = 0 To largo - 1
+      '      Dim forma As frmSalidaDatos
+      '      forma = New frmSalidaDatos
+      '      forma.Show()
+      '      If (totalCasos(i).noSubcasos > 0) Then
+      '         forma.Text += totalCasos(i).noCaso & ", Subcaso No. " & totalCasos(i).subCaso & "."
+      '      Else
+      '         forma.Text += totalCasos(i).noCaso & "."
+      '      End If
+      '      obtenResultadosPorCaso("Caso No." & i + 1, forma, forma.lblSalidaDatos, i, promCP, promCN, difCPS, _
+      '                             totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
+      '                             totalCasos(i).analisis, totalCasos(i).obs, _
+      '                             totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
+      '                             totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
+
+      '      muestraResultadosEnPantalla(forma.txtNoCaso, totalCasos(i).noCaso, _
+      '                                  forma.lblAnalisis, analisis, _
+      '                                  forma.txtFechaElaboracion, fecha.ToShortDateString(), _
+      '                                  forma.txtNombreEnfermedad, tabla(1), _
+      '                                  forma.txtNombreCliente, totalCasos(i).cliente, _
+      '                                  forma.lblObservaciones, totalCasos(i).obs, _
+      '                                  forma.txtVarianza2, totalCasos(i).varianza, _
+      '                                  forma.txtTotalDatosCalculados, totalCasos(i).sueros, _
+      '                                  forma.txtMediaAritmetica2, totalCasos(i).medArit, _
+      '                                  forma.txtMediaGeometrica, totalCasos(i).medGeom, _
+      '                                  forma.txtCoefVariacion2, totalCasos(i).coefVar, _
+      '                                  forma.txtDesvEstandar2, totalCasos(i).desvEst, _
+      '                                  forma.lblNosubcasos, totalCasos(i).noSubcasos, _
+      '                                  forma.lblConsecutivo, totalCasos(i).subCaso, _
+      '                                  forma.txtTitulosObtenidos, titulosObtenidos, _
+      '                                  forma.lblNombreSobreGrafica, nombreSobreGrafica, _
+      '                                  forma.lblMensajeSobreGrafica, totalCasos(i).texto, _
+      '                                  forma.imagenGrafica, totalCasos(i).nombreArchivoImagen, _
+      '                                  forma.lblNombreArchivo)
+      '   Next
    End Sub
+
+   
 End Class

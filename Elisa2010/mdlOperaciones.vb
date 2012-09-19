@@ -39,7 +39,7 @@ Module mdlOperaciones
       Dim i As Integer = 0
       Dim j As Integer = 0
       Dim k As Integer = 1
-      'MessageBox.Show("Valor de msn antes:" & msn)
+
       msn = Replace(msn, " ", "")
       msn = Replace(msn, vbCrLf, "")
       msn = Replace(msn, vbCr, "")
@@ -48,20 +48,13 @@ Module mdlOperaciones
       msn = Replace(msn, "_Quick", "")
       'Copia en el Arreglo los valores de datos separados por comas
       a = Split(msn, ",")
-      'MessageBox.Show("Valor de msn despues:" & msn)
-      'MessageBox.Show("Llegue al split valor de msn es " & msn & "valor de largo de a: " & a.Length)
       Dim temporal As Decimal
       Dim tmp As String = ""
       For i = 0 To 7
          For j = 0 To 11
-            'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es nuérico, entonces coloca un 0.
+            'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es numérico, entonces coloca un 0.
             temporal = (Val(a(k)) / 1000)
-            ' If (temporal > 1) Then
-            'placaLector(i, j) = 0
-            'Else
             placaLector(i, j) = temporal
-            'End If
-            'MessageBox.Show("Valor de placaLector en " & i & " , " & j & ": " & placaLector(i, j) & "Valor de a(k): " & a(k) & "max val:" & UBound(a))
             k += 1
          Next
       Next
@@ -97,29 +90,6 @@ Module mdlOperaciones
 
    Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
       Dim i As Integer
-      ''Quita el indicador de fila del datagridview
-      'placa.RowHeadersVisible = False
-      'placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
-      'placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-      'placa.Columns.Add("pozo0", "")
-      'placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
-      'placa.Columns(0).AutoSizeMode = False
-
-      'For i = 1 To 12
-      '   placa.Columns.Add("pozo" & i, i)
-      '   With placa.Columns(i)
-      '      .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
-      '      .SortMode = DataGridViewColumnSortMode.NotSortable
-      '   End With
-      'Next
-      'placa.Rows.Add(8)
-      ''dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
-      'For i = 0 To 7
-      '   placa.Rows(i).Cells(0).Value = obtenLetra(i)
-      '   placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
-      '   placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
-      'Next
-
       For i = 0 To 7
          For j = 0 To 11
             placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
@@ -127,10 +97,7 @@ Module mdlOperaciones
          Next
       Next
    End Sub
-
-
-
-
+   ' Permite organizar en la tabla de pantalla obteniendo desde archivo los datos
    Public Sub organizaEnTablaDA(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
       Dim i As Integer
       'Quita el indicador de fila del datagridview
@@ -175,10 +142,10 @@ Module mdlOperaciones
       Dim comando As New MySqlCommand
       Dim cadenafecha As String
       Dim tabla() As String
+
       cadenafecha = fechaElaboracion
       tabla = Split(cadenafecha, "/")
       fechaElaboracion = tabla(2) & "/" & tabla(1) & "/" & tabla(0)
-
 
       Try
          'Crear la conexion para establecer el acceso a la BD de MySQL
@@ -192,7 +159,6 @@ Module mdlOperaciones
                                 & "('" & numcaso & "'," & consecutivo & ",'" & idAnalisis & "'," & "STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
                                 & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
                                 & desvEst & "," & coefVar & ",'" & valorFR & "','" & cantidadFR & "');"
-         'MessageBox.Show("valor de la consulta:" & comando.CommandText)
          resultado = comando.ExecuteNonQuery()
          oConexion.Close()
       Catch ex As MySqlException
@@ -223,11 +189,10 @@ Module mdlOperaciones
          'Guardar los datos de la frecuencia relativa en la BD
 
          For i = 0 To 14
-            'comando.CommandText = "UPDATE tblplacaleida set rango" & i + 1 & "=" & reduceDecimal(frecuenciaRelativa(i)) & " WHERE caso='" & numcaso & "'"
-            'resultado = comando.ExecuteNonQuery()
             comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
             resultado = comando.ExecuteNonQuery()
          Next
+
          oConexion.Close()
       Catch ex As MySqlException
          mensajeExceptionSQL(etiqueta, ex)
@@ -301,8 +266,9 @@ Module mdlOperaciones
          Next
          resultado &= vbCrLf
       Next
-      'Presenta en pantalla los valores obtenidos desde el lector ya formateados
-      frmRegistraNuevoAnalisis.txtDatosRecibidos.Text = resultado
+      'Presenta en pantalla los valores obtenidos desde el lector ya formateados MODIFICADO EL 19 DE SEPT 2012
+      'frmRegistraNuevoAnalisis.txtDatosRecibidos.Text = resultado
+
       'organizaEnTabla(dgvPlacaLeida, placaLector)
       'Return (resultado)
    End Sub
@@ -362,7 +328,6 @@ Module mdlOperaciones
       Dim promedioNegativos As Decimal
       Try
          promedioNegativos = reduceDecimal(((cn1 + cn2 + cn3) / 3))
-
       Catch ex As Exception
          mensajeRojo(etiqueta, "ERROR: al calcular el promedio de controles negativos desde archivo.")
       End Try

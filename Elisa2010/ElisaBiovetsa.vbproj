@@ -263,6 +263,12 @@
     <Compile Include="frmReovirusDA.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmResultadosPrelim.Designer.vb">
+      <DependentUpon>frmResultadosPrelim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmResultadosPrelim.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSalidaCaso2.Designer.vb">
       <DependentUpon>frmSalidaCaso2.vb</DependentUpon>
     </Compile>
@@ -409,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReovirusDA.resx">
       <DependentUpon>frmReovirusDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultadosPrelim.resx">
+      <DependentUpon>frmResultadosPrelim.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSalidaCaso2.resx">
       <DependentUpon>frmSalidaCaso2.vb</DependentUpon>

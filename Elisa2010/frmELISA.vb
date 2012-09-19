@@ -266,5 +266,6 @@
    Private Sub tsmCapturaConSubcasos_Click(sender As System.Object, e As System.EventArgs) Handles tsmCapturaConSubcasos.Click
       frmCapturaCySC.MdiParent = Me
       frmCapturaCySC.Show()
+      frmSalidaDatos.MdiParent = Me
    End Sub
 End Class

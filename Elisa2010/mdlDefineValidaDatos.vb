@@ -32,6 +32,7 @@ Module mdlDefineValidaDatos
       Dim desvEst As Decimal
       Dim coefVar As Decimal
       Dim nombreArchivoImagen As String
+      Dim titulosObtenidos As String
    End Structure
 
 

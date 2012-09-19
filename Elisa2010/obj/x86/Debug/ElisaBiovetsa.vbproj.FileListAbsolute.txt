@@ -64,3 +64,4 @@ C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\GenerateResour
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmBronquitisDA.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmLecturaDePlaca.resources
 C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmCapturaCySC.resources
+C:\Users\alopez\Projects\dotNet\Elisa2010\Elisa2010\obj\x86\Debug\Elisa2010.frmResultadosPrelim.resources
