@@ -31,8 +31,6 @@ Partial Class frmLaringotraqueitisAviar
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
-      Me.Panel4 = New System.Windows.Forms.Panel()
-      Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
@@ -201,7 +199,6 @@ Partial Class frmLaringotraqueitisAviar
       Me.Panel5 = New System.Windows.Forms.Panel()
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-      Me.Panel4.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
@@ -254,27 +251,6 @@ Partial Class frmLaringotraqueitisAviar
       Me.btnGuardaDatos.TabIndex = 110
       Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatos.UseVisualStyleBackColor = True
-      '
-      'Panel4
-      '
-      Me.Panel4.AutoSize = True
-      Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel4.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel4.Location = New System.Drawing.Point(7, 541)
-      Me.Panel4.Name = "Panel4"
-      Me.Panel4.Size = New System.Drawing.Size(943, 30)
-      Me.Panel4.TabIndex = 113
-      '
-      'lblMensajeCaso
-      '
-      Me.lblMensajeCaso.AutoSize = True
-      Me.lblMensajeCaso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeCaso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeCaso.Location = New System.Drawing.Point(3, 7)
-      Me.lblMensajeCaso.Name = "lblMensajeCaso"
-      Me.lblMensajeCaso.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeCaso.TabIndex = 72
-      Me.lblMensajeCaso.Text = "Mensaje:"
       '
       'btnObtenerResultados
       '
@@ -2226,7 +2202,6 @@ Partial Class frmLaringotraqueitisAviar
       Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.txtDatosRecibidos)
       Me.Controls.Add(Me.btnGuardaDatos)
-      Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.btnObtenerResultados)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
       Me.Controls.Add(Me.btnDefinirControlesPN)
@@ -2246,8 +2221,6 @@ Partial Class frmLaringotraqueitisAviar
       Me.Name = "frmLaringotraqueitisAviar"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Análisis de Laringotraqueitis Aviar"
-      Me.Panel4.ResumeLayout(False)
-      Me.Panel4.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.grbControlesNegativos.ResumeLayout(False)
       Me.grbControlesNegativos.PerformLayout()
@@ -2282,8 +2255,6 @@ Partial Class frmLaringotraqueitisAviar
    Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
-   Friend WithEvents Panel4 As System.Windows.Forms.Panel
-   Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents btnObtenerResultados As System.Windows.Forms.Button
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
    Friend WithEvents btnDefinirControlesPN As System.Windows.Forms.Button

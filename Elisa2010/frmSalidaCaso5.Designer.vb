@@ -25,8 +25,6 @@ Partial Class frmSalidaCaso5
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalidaCaso5))
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
-      Me.Panel1 = New System.Windows.Forms.Panel()
-      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
@@ -40,6 +38,7 @@ Partial Class frmSalidaCaso5
       Me.Label1 = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Panel3 = New System.Windows.Forms.Panel()
+      Me.lblConsecutivo = New System.Windows.Forms.Label()
       Me.txtVarianza2 = New System.Windows.Forms.TextBox()
       Me.txtDesvEstandar2 = New System.Windows.Forms.TextBox()
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
@@ -56,8 +55,6 @@ Partial Class frmSalidaCaso5
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.lblConsecutivo = New System.Windows.Forms.Label()
-      Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
@@ -81,26 +78,6 @@ Partial Class frmSalidaCaso5
       Me.btnGuardaResultados.TabIndex = 63
       Me.btnGuardaResultados.Text = "Guardar Resultados"
       Me.btnGuardaResultados.UseVisualStyleBackColor = True
-      '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(9, 508)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(569, 32)
-      Me.Panel1.TabIndex = 65
-      '
-      'lblSalidaDatos
-      '
-      Me.lblSalidaDatos.AutoSize = True
-      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 7)
-      Me.lblSalidaDatos.Name = "lblSalidaDatos"
-      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
-      Me.lblSalidaDatos.TabIndex = 45
-      Me.lblSalidaDatos.Text = "Mensaje:"
       '
       'Panel2
       '
@@ -252,6 +229,16 @@ Partial Class frmSalidaCaso5
       Me.Panel3.Name = "Panel3"
       Me.Panel3.Size = New System.Drawing.Size(569, 55)
       Me.Panel3.TabIndex = 67
+      '
+      'lblConsecutivo
+      '
+      Me.lblConsecutivo.AutoSize = True
+      Me.lblConsecutivo.Location = New System.Drawing.Point(241, 27)
+      Me.lblConsecutivo.Name = "lblConsecutivo"
+      Me.lblConsecutivo.Size = New System.Drawing.Size(65, 13)
+      Me.lblConsecutivo.TabIndex = 64
+      Me.lblConsecutivo.Text = "consecutivo"
+      Me.lblConsecutivo.Visible = False
       '
       'txtVarianza2
       '
@@ -445,16 +432,6 @@ Partial Class frmSalidaCaso5
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
       '
-      'lblConsecutivo
-      '
-      Me.lblConsecutivo.AutoSize = True
-      Me.lblConsecutivo.Location = New System.Drawing.Point(241, 27)
-      Me.lblConsecutivo.Name = "lblConsecutivo"
-      Me.lblConsecutivo.Size = New System.Drawing.Size(65, 13)
-      Me.lblConsecutivo.TabIndex = 64
-      Me.lblConsecutivo.Text = "consecutivo"
-      Me.lblConsecutivo.Visible = False
-      '
       'frmSalidaCaso5
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -462,7 +439,6 @@ Partial Class frmSalidaCaso5
       Me.ClientSize = New System.Drawing.Size(586, 547)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaResultados)
-      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel4)
@@ -470,8 +446,6 @@ Partial Class frmSalidaCaso5
       Me.MaximizeBox = False
       Me.Name = "frmSalidaCaso5"
       Me.Text = "Resultados del análisis Caso No. 5"
-      Me.Panel1.ResumeLayout(False)
-      Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
       Me.Panel3.ResumeLayout(False)
@@ -484,8 +458,6 @@ Partial Class frmSalidaCaso5
    End Sub
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
-   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents lblAnalisis As System.Windows.Forms.Label
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox

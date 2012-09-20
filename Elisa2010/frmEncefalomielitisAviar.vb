@@ -14,7 +14,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtNoDeCasos, "En número de casos, ", 1, 8)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -176,7 +176,7 @@ Public Class frmEncefalomielitisAviar
                   habilitaTabsCorrectos(txtNoDeCasos.Text)
                   btnCapturaTerminada.Enabled = True
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                End If
@@ -219,7 +219,7 @@ Public Class frmEncefalomielitisAviar
                   habilitaTabsCorrectos(txtNoDeCasos.Text)
                   btnCapturaTerminada.Enabled = True
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                End If
@@ -248,11 +248,11 @@ Public Class frmEncefalomielitisAviar
    '         cmbNombreEnfermedad.Items.Add(oFila.Item("CLAVE") & " | " & cadena.Remove(0, 24))
    '      Next
    '   Catch ex As MySqlException
-   '      mensajeExceptionSQL(lblMensajeCaso, ex)
+   '      mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   Catch ex As DataException
-   '      mensajeException(lblMensajeCaso, ex)
+   '      mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   Catch ex As Exception
-   '      mensajeException(lblMensajeCaso, ex)
+   '      mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   End Try
    'End Sub
 
@@ -284,11 +284,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso1.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -320,11 +320,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso2.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -356,11 +356,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso3.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -392,11 +392,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso4.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -428,11 +428,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso5.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -464,11 +464,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso6.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -500,11 +500,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso7.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -534,11 +534,11 @@ Public Class frmEncefalomielitisAviar
             cmbNoCaso8.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -631,17 +631,17 @@ Public Class frmEncefalomielitisAviar
                   lblLogTit2.Text = oDataReader("logTit2").ToString()
                End While
                oDataReader.Close()
-               lblMensajeCaso.Text = ""
+               frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
             Else
-               mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+               mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
             End If
             oConexion.Close()
          Catch ex As MySqlException
-            mensajeExceptionSQL(lblMensajeCaso, ex)
+            mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          Catch ex As DataException
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          Catch ex As Exception
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          End Try
       Else
          MessageBox.Show("ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
@@ -692,18 +692,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC1.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -728,18 +728,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -763,18 +763,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC3.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -798,18 +798,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC4.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -833,18 +833,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC5.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -869,18 +869,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC6.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -904,18 +904,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -939,18 +939,18 @@ Public Class frmEncefalomielitisAviar
                lblObservacionesC8.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1094,7 +1094,7 @@ Public Class frmEncefalomielitisAviar
          'Valor positivo uno, letra y numero
          controlesValidosLetra(txtDesdeLetra1C1, "1er. caso", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1102,7 +1102,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1111,7 +1111,7 @@ Public Class frmEncefalomielitisAviar
          'Valor positivo uno, letra y numero
          controlesValidosLetra(txtHastaLetra2C1, "1er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1119,7 +1119,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C1, " 1er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1128,7 +1128,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C2, " 2o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1140,7 +1140,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C2, " 2o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1148,7 +1148,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C2, " 2o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1157,7 +1157,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C3, " 3er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1165,7 +1165,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C3, " 3er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1173,7 +1173,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C3, " 3er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1181,7 +1181,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C3, " 3er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1190,7 +1190,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C4, " 4o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1198,7 +1198,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C4, " 4o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1206,7 +1206,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C4, " 4o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1214,7 +1214,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C4, " 4o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1223,7 +1223,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C5, " 5o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1231,7 +1231,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C5, " 5o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1239,7 +1239,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C5, " 5o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1247,7 +1247,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C5, " 5o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1256,7 +1256,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C6, " 6o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1264,7 +1264,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C6, " 6o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1272,7 +1272,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C6, " 6o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1280,7 +1280,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C6, " 6o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1289,7 +1289,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C7, " 7o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1297,7 +1297,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C7, " 7o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1305,7 +1305,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C7, " 7o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1313,7 +1313,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C7, " 7o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1322,7 +1322,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C8, " 8o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1330,7 +1330,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C6, " 8o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1338,7 +1338,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C8, " 8o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1346,7 +1346,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C8, " 8o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1354,17 +1354,17 @@ Public Class frmEncefalomielitisAviar
       Try
          If Me.btnLeerDatosPlaca.Text = "Obtener Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
-            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeCaso, Me.lblNombreLector)
+            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion, Me.lblNombreLector)
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
-               mensajeVerde(Me.lblMensajeCaso, "Mensaje: Cerrando el puerto COM del lector.")
+               mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                btnFormateaDatos.Enabled = True
             End If
          End If
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -1376,7 +1376,7 @@ Public Class frmEncefalomielitisAviar
       Try
          convierteCadena(msn)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, " Se ha presentado un error al convertir la cadena en valores.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, " Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
          formateaDatos(placaLector, Me.dgvPlacaLeida)
@@ -1385,7 +1385,7 @@ Public Class frmEncefalomielitisAviar
          coloreaControlesPN(nocp)
          coloreaTablaCasos(noCasos)
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, " Se ha presentado un error al formatear datos.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, " Se ha presentado un error al formatear datos.")
       End Try
    End Sub
 
@@ -1395,13 +1395,13 @@ Public Class frmEncefalomielitisAviar
          az = Me.SerialPort1.ReadExisting.Trim
          msn += az
       Catch ex As Exception
-         mensajeException(Me.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
       Me.txtDatosRecibidos.Text = msn
    End Sub
 
    Private Sub frmEncefalomielitisAviar_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-      GetSerialPortNamesParametros(cmbComboPorts, Me.lblMensajeCaso)
+      GetSerialPortNamesParametros(cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion)
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
    End Sub
 
@@ -1412,7 +1412,7 @@ Public Class frmEncefalomielitisAviar
       txtHastaValor2C1.Enabled = estatus
    End Sub
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef control As Control, ByRef etiqueta As Label, ByVal cmbNombreEnfermedad As ComboBox, ByVal cmbNoCaso As ComboBox, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef control As Control, ByRef etiqueta As ToolStripLabel, ByVal cmbNombreEnfermedad As ComboBox, ByVal cmbNoCaso As ComboBox, _
                                       ByVal txtNombreCliente As TextBox, ByVal txtAnalisisSolicitado As TextBox, _
                                       ByVal lblObservaciones As Label, _
                                       ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, _
@@ -1468,81 +1468,81 @@ Public Class frmEncefalomielitisAviar
       Try
          mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la sumatoria de la media geométrica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la sumatoria de la media geométrica.")
       End Try
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
          calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
       End Try
       Try
          mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
       End Try
       Try
          mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
       End Try
       Try
          varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: AL calcular la varianza, calculaVarianza.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: AL calcular la varianza, calculaVarianza.")
       End Try
       Try
          desvEst = calculaDesvEst(varianza)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
       End Try
       Try
          coefVar = calculaCoefVar(desvEst, mediaAritmetica)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
       End Try
       Try
          placaoriginal = obtenPlacaLeida(placaLector)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
       End Try
       Try
          calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
       End Try
       Try
          valorFR = obtenValorFR(frecuenciaRelativa)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
       End Try
       Try
          cantidadFR = obtenCantidadFR(rangoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
       End Try
       Try
          'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
          cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                           Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
+                           Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
       End Try
       Try
-         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeCaso)
+         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
          'creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
       'Try
       '   mostrarResultadosEnPantalla(txtNombreEnfermedadSD, txtNombreClienteSD, txtNoCasoSD, lblAnalisisSD, _
@@ -1553,7 +1553,7 @@ Public Class frmEncefalomielitisAviar
       '                               nombre, nombreCliente, numcaso, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
       '                               mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
       'Catch
-      '   mensajeRojo(Me.lblMensajeCaso, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+      '   mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
       'End Try
 
    End Sub
@@ -1615,13 +1615,13 @@ Public Class frmEncefalomielitisAviar
          calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
                                Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeCaso)
+                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "Error: Al calculor los valores, calculaValoresEnRango.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error: Al calculor los valores, calculaValoresEnRango.")
       End Try
       Select Case noCasos
          Case 1
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1630,7 +1630,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
          Case 2
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1638,7 +1638,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1648,7 +1648,7 @@ Public Class frmEncefalomielitisAviar
             frmSalidaCaso2.Show()
 
          Case 3
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1656,7 +1656,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1664,7 +1664,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1673,7 +1673,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
          Case 4
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1681,7 +1681,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1689,7 +1689,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1697,7 +1697,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1706,7 +1706,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
          Case 5
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1714,7 +1714,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1722,7 +1722,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1730,7 +1730,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1738,7 +1738,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1747,7 +1747,7 @@ Public Class frmEncefalomielitisAviar
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
          Case 6
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1755,7 +1755,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1763,7 +1763,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1771,7 +1771,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1779,7 +1779,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1787,7 +1787,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1796,7 +1796,7 @@ Public Class frmEncefalomielitisAviar
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
          Case 7
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1804,7 +1804,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1812,7 +1812,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1820,7 +1820,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1828,7 +1828,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1836,7 +1836,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1844,7 +1844,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                       frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1853,7 +1853,7 @@ Public Class frmEncefalomielitisAviar
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
          Case 8
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1861,7 +1861,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1869,7 +1869,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1877,7 +1877,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1885,7 +1885,7 @@ Public Class frmEncefalomielitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1893,7 +1893,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1901,7 +1901,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                       frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1909,7 +1909,7 @@ Public Class frmEncefalomielitisAviar
                                        frmSalidaCaso7.txtMediaGeometrica, frmSalidaCaso7.txtTotalDatosCalculados, _
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
-            obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmSalidaCaso8.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
+            obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
                                     lblObservacionesC8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8, _
                                     promCP, promCN, difCPS, frmSalidaCaso8.txtNombreEnfermedad, frmSalidaCaso8.txtNombreCliente, frmSalidaCaso8.txtNoCaso, _
                                       frmSalidaCaso8.lblAnalisis, frmSalidaCaso8.lblObservaciones, frmSalidaCaso8.txtFechaElaboracion, _
@@ -1925,7 +1925,7 @@ Public Class frmEncefalomielitisAviar
       Try
          controlesValidosNumero(txtNoControles, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(Me.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1972,9 +1972,9 @@ Public Class frmEncefalomielitisAviar
       'Try
       '   guardaDatosExcel(placaLector, nocp, numCaso, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
       '                    cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay)
-      '   mensajeVerde(Me.lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+      '   mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       'Catch ex As Exception
-      '   mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+      '   mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
       'End Try
    End Sub
 
@@ -2201,7 +2201,7 @@ Public Class frmEncefalomielitisAviar
          End Select
          btnObtenerResultados.Enabled = True
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "Error: Al guardar los datos de los casos en excel, btnGuardaDatos_Click.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error: Al guardar los datos de los casos en excel, btnGuardaDatos_Click.")
       End Try
 
    End Sub
@@ -2274,7 +2274,7 @@ Public Class frmEncefalomielitisAviar
       Dim noCasos As Integer = CInt(txtNoDeCasos.Text)
       Dim nocp As Integer = CInt(txtNoControles.Text)
       Try
-         mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+         mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
          Select Case noCasos
             Case 1
                If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) Then
@@ -2525,7 +2525,7 @@ Public Class frmEncefalomielitisAviar
                End If
          End Select
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
          tbcDatosDelCaso.Enabled = True
          btnCapturaTerminada.Enabled = True
          btnLeerDatosPlaca.Enabled = False

@@ -3,10 +3,9 @@ Imports System.Windows.Forms.DataVisualization.Charting
 Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
 
-
-
-
 Public Class frmResultadosPrelim
+   Dim etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
+
    Dim indice As Integer = 0
    Private nombreEnfermedad As String
    Private analisis As String
@@ -70,27 +69,27 @@ Public Class frmResultadosPrelim
    End Property
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
-      'Try
-      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
-      Dim cadena As String
-      Dim tabla() As String
-      cadena = cmbCasosResPrel.Text
-      tabla = Split(cadena, " ")
-      guardarResultadosExcel(tabla(0), CInt(Me.lblNosubcasos.Text), CInt(Me.lblConsecutivo.Text), Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
-                            Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
-                            Me.lblMensajeSobreGrafica.Text, Me.lblNombreSobreGrafica.Text, _
-                            txtTitulosObtenidos.Text, _
-                            Convert.ToDouble(txtMediaAritmetica2.Text), _
-                            Convert.ToDouble(txtMediaGeometrica.Text), _
-                            Convert.ToInt32(txtTotalDatosCalculados.Text), _
-                            Convert.ToDouble(txtDesvEstandar2.Text), _
-                            Convert.ToDouble(txtCoefVariacion2.Text), _
-                            Convert.ToDouble(txtVarianza2.Text), lblNombreArchivo.Text)
+      Try
+         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+         Dim cadena As String
+         Dim tabla() As String
+         cadena = cmbCasosResPrel.Text
+         tabla = Split(cadena, " ")
+         guardarResultadosExcel(tabla(0), CInt(Me.lblNosubcasos.Text), CInt(Me.lblConsecutivo.Text), Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
+                               Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
+                               Me.lblMensajeSobreGrafica.Text, Me.lblNombreSobreGrafica.Text, _
+                               txtTitulosObtenidos.Text, _
+                               Convert.ToDouble(txtMediaAritmetica2.Text), _
+                               Convert.ToDouble(txtMediaGeometrica.Text), _
+                               Convert.ToInt32(txtTotalDatosCalculados.Text), _
+                               Convert.ToDouble(txtDesvEstandar2.Text), _
+                               Convert.ToDouble(txtCoefVariacion2.Text), _
+                               Convert.ToDouble(txtVarianza2.Text), lblNombreArchivo.Text)
 
-      mensajeVerde(Me.lblSalidaDatos, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
-      'Catch ex As Exception
-      '   mensajeException(Me.lblSalidaDatos, ex)
-      'End Try
+         mensajeVerde(etiquetaMensaje, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
+      Catch ex As Exception
+         mensajeException(etiquetaMensaje, ex)
+      End Try
 
    End Sub
 
@@ -114,9 +113,7 @@ Public Class frmResultadosPrelim
       indice = cmbCasosResPrel.SelectedIndex
    End Sub
 
-
    Private Sub cmbCasosResPrel_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbCasosResPrel.SelectedIndexChanged
-
       presentaResultadosEnPantalla(Me.lblAnalisis, analisis, _
                                     Me.txtFechaElaboracion, laFecha, _
                                     Me.txtNombreEnfermedad, nombreEnfermedad, _
@@ -136,4 +133,6 @@ Public Class frmResultadosPrelim
                                     Me.imagenGrafica, totalCasos(indice).nombreArchivoImagen, _
                                     Me.lblNombreArchivo)
    End Sub
+
+
 End Class

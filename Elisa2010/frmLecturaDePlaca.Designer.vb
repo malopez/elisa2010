@@ -37,8 +37,6 @@ Partial Class frmLecturaDePlaca
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
       Me.btnCancelar = New System.Windows.Forms.Button()
-      Me.Panel4 = New System.Windows.Forms.Panel()
-      Me.lblMensajeLecturaPlaca = New System.Windows.Forms.Label()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.Panel3 = New System.Windows.Forms.Panel()
@@ -66,16 +64,15 @@ Partial Class frmLecturaDePlaca
       Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
-      Me.lbltNoControlesNegativos = New System.Windows.Forms.Label()
-      Me.btnAceptarCPN = New System.Windows.Forms.Button()
       Me.txtNoControlesPositivos = New System.Windows.Forms.TextBox()
+      Me.lbltNoControlesNegativos = New System.Windows.Forms.Label()
       Me.lblNoControlesPositivos = New System.Windows.Forms.Label()
+      Me.btnAceptarCPN = New System.Windows.Forms.Button()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.Panel1.SuspendLayout()
       Me.Panel5.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
-      Me.Panel4.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
@@ -204,27 +201,6 @@ Partial Class frmLecturaDePlaca
       Me.btnCancelar.TabIndex = 123
       Me.btnCancelar.Text = "Cancelar"
       Me.btnCancelar.UseVisualStyleBackColor = True
-      '
-      'Panel4
-      '
-      Me.Panel4.AutoSize = True
-      Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel4.Controls.Add(Me.lblMensajeLecturaPlaca)
-      Me.Panel4.Location = New System.Drawing.Point(6, 439)
-      Me.Panel4.Name = "Panel4"
-      Me.Panel4.Size = New System.Drawing.Size(709, 32)
-      Me.Panel4.TabIndex = 124
-      '
-      'lblMensajeLecturaPlaca
-      '
-      Me.lblMensajeLecturaPlaca.AutoSize = True
-      Me.lblMensajeLecturaPlaca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeLecturaPlaca.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeLecturaPlaca.Location = New System.Drawing.Point(4, 9)
-      Me.lblMensajeLecturaPlaca.Name = "lblMensajeLecturaPlaca"
-      Me.lblMensajeLecturaPlaca.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeLecturaPlaca.TabIndex = 73
-      Me.lblMensajeLecturaPlaca.Text = "Mensaje:"
       '
       'SerialPort1
       '
@@ -506,6 +482,14 @@ Partial Class frmLecturaDePlaca
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
       Me.txtNoControlesNegativos.TabIndex = 136
       '
+      'txtNoControlesPositivos
+      '
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(3, 8)
+      Me.txtNoControlesPositivos.MaxLength = 1
+      Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
+      Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoControlesPositivos.TabIndex = 130
+      '
       'lbltNoControlesNegativos
       '
       Me.lbltNoControlesNegativos.AutoSize = True
@@ -517,24 +501,6 @@ Partial Class frmLecturaDePlaca
       Me.lbltNoControlesNegativos.TabIndex = 137
       Me.lbltNoControlesNegativos.Text = "No. de Controles Negativos"
       '
-      'btnAceptarCPN
-      '
-      Me.btnAceptarCPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarCPN.Location = New System.Drawing.Point(110, 63)
-      Me.btnAceptarCPN.Name = "btnAceptarCPN"
-      Me.btnAceptarCPN.Size = New System.Drawing.Size(135, 23)
-      Me.btnAceptarCPN.TabIndex = 135
-      Me.btnAceptarCPN.Text = "Aceptar"
-      Me.btnAceptarCPN.UseVisualStyleBackColor = True
-      '
-      'txtNoControlesPositivos
-      '
-      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(3, 8)
-      Me.txtNoControlesPositivos.MaxLength = 1
-      Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
-      Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControlesPositivos.TabIndex = 130
-      '
       'lblNoControlesPositivos
       '
       Me.lblNoControlesPositivos.AutoSize = True
@@ -545,6 +511,16 @@ Partial Class frmLecturaDePlaca
       Me.lblNoControlesPositivos.Size = New System.Drawing.Size(146, 15)
       Me.lblNoControlesPositivos.TabIndex = 131
       Me.lblNoControlesPositivos.Text = "No. de Controles Positivos"
+      '
+      'btnAceptarCPN
+      '
+      Me.btnAceptarCPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptarCPN.Location = New System.Drawing.Point(110, 63)
+      Me.btnAceptarCPN.Name = "btnAceptarCPN"
+      Me.btnAceptarCPN.Size = New System.Drawing.Size(135, 23)
+      Me.btnAceptarCPN.TabIndex = 135
+      Me.btnAceptarCPN.Text = "Aceptar"
+      Me.btnAceptarCPN.UseVisualStyleBackColor = True
       '
       'ckbControlesDefault
       '
@@ -580,7 +556,6 @@ Partial Class frmLecturaDePlaca
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnDefinirControlesPN)
       Me.Controls.Add(Me.btnAceptarControles)
-      Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaDatos)
       Me.Controls.Add(Me.Panel5)
@@ -594,8 +569,6 @@ Partial Class frmLecturaDePlaca
       Me.Panel1.PerformLayout()
       Me.Panel5.ResumeLayout(False)
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
-      Me.Panel4.ResumeLayout(False)
-      Me.Panel4.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.grbControlesNegativos.ResumeLayout(False)
       Me.grbControlesNegativos.PerformLayout()
@@ -614,7 +587,6 @@ Partial Class frmLecturaDePlaca
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
-   Friend WithEvents Panel4 As System.Windows.Forms.Panel
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
@@ -645,7 +617,6 @@ Partial Class frmLecturaDePlaca
    Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents txtNoControlesPositivos As System.Windows.Forms.TextBox
    Friend WithEvents lblNoControlesPositivos As System.Windows.Forms.Label
-   Friend WithEvents lblMensajeLecturaPlaca As System.Windows.Forms.Label
    Friend WithEvents btnAceptarCPN As System.Windows.Forms.Button
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button

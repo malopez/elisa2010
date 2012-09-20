@@ -10,7 +10,6 @@
       Return media
    End Function
 
-
    Public Function desviacionEstandarGenerico(ByRef calculaL() As Decimal, ByVal cuentaNoDatos As Integer, _
                                      ByVal desdex As Integer, ByVal desdey As Integer, _
                                      ByVal hastax As Integer, ByVal hastay As Integer) As Decimal
@@ -35,7 +34,6 @@
          Next
          desdey = 0
       Next
-
       media = calculaMediaAritmetica(totalCalculaL, cuentaNoDatos)
       varianza = calculaVarianza(media, calculaL, cuentaNoDatos)
       desvest = calculaDesvEst(varianza)
@@ -45,7 +43,6 @@
    Public Function calculaSumatoriaMediaGeometrica(ByVal calculoDeTitulos(,) As Decimal, ByRef calculaL() As Decimal, _
                                      ByVal desdex As Integer, ByVal desdey As Integer, _
                                      ByVal hastax As Integer, ByVal hastay As Integer, ByRef totalcalculaL As Decimal) As Decimal
-
       Dim contador As Integer = 0
       Dim renglones As Integer = 11
       Dim calculaSumatoriaMG As Decimal = 0
@@ -132,14 +129,12 @@
                rangoQuince += 1
          End Select
       Next
-
       'Calculo la sumatoria de la frecuencia de clase fi
       rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
       'Asigno al arreglo los datos que son frecuencia de clase
       rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
 
    End Sub
-
 
    Public Sub calculaMarcaDeClaseEA(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
       Dim i As Integer = 0
@@ -194,7 +189,6 @@
                rangoQuince += 1
          End Select
       Next
-
       'Calculo la sumatoria de la frecuencia de clase fi
       rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
       'Asigno al arreglo los datos que son frecuencia de clase
@@ -255,7 +249,6 @@
                rangoQuince += 1
          End Select
       Next
-
       'Calculo la sumatoria de la frecuencia de clase fi
       rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
       'Asigno al arreglo los datos que son frecuencia de clase
@@ -315,14 +308,12 @@
                rangoQuince += 1
          End Select
       Next
-
       'Calculo la sumatoria de la frecuencia de clase fi
       rangoTotal = rangoUno + rangoDos + rangoTres + rangoCuatro + rangoCinco + rangoSeis + rangoSiete + rangoOcho + rangoNueve + rangoDiez + rangoOnce + rangoDoce + rangoTrece + rangoCatorce + rangoQuince
       'Asigno al arreglo los datos que son frecuencia de clase
       rangoDatos = {rangoUno, rangoDos, rangoTres, rangoCuatro, rangoCinco, rangoSeis, rangoSiete, rangoOcho, rangoNueve, rangoDiez, rangoOnce, rangoDoce, rangoTrece, rangoCatorce, rangoQuince}
 
    End Sub
-
 
    'Calcula la tabla SPS
    Public Sub calculaSPSs(ByRef placaoriginal As String, ByRef placaLector(,) As Decimal, ByRef calculaSPS(,) As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal)
@@ -427,7 +418,6 @@
       Return (placaoriginal)
    End Function
 
-
    'calcula la varianza para datos no agrupados
    Public Function calculaVarianza(ByVal mediaAritmetica As Decimal, ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As Decimal
       Dim i As Integer = 0
@@ -472,7 +462,6 @@
       coefVar = CDec(desvEst / mediaAritmetica * 100)
       Return (coefVar)
    End Function
-
 
    Public Sub calculaFrecuenciaRelativa(ByRef frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, ByVal rangoTotal As Integer)
       Dim i As Integer = 0
@@ -541,7 +530,6 @@
       txtDesvEstandar2.Text = desvEst.ToString()
       txtVarianza2.Text = varianza.ToString()
    End Sub
-
 
    'Presenta datos para formatear la salida de los datos
    Public Sub presentaResultadosEnPantalla(ByRef lblAnalisis As Label, ByVal analisis As String, _
@@ -623,8 +611,6 @@
       txtVarianza2.Text = varianza.ToString()
    End Sub
 
-
-
    'Procedimiento que calcula los resultados del analisis, recibe el nombre del analisis,el titulo de eje x-y, desdeArchivo =1 indica lectura desde archivo
    'cpx y cny son los valores de A..H,  es decir, el valor de la placa por columna   usada para control positivo-negativo
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
@@ -640,7 +626,7 @@
                              ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal, _
                              ByVal desdex As Integer, ByVal hastax As Integer, ByVal desdey As Integer, _
                              ByVal hastay As Integer, ByRef promCP As Decimal, ByRef promCN As Decimal, ByRef difCPS As Decimal,
-                             ByRef etiqueta As Label)
+                             ByRef etiqueta As ToolStripLabel)
       'Para controlar el ciclo for
       Dim i As Integer = 0
       Dim j As Integer = 0
@@ -720,10 +706,10 @@
       End If
       Try
          guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
-         mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
+         mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
       End Try
    End Sub
 
@@ -735,7 +721,7 @@
                          ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
                          ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
                          ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
-                         ByVal lblMensajeCaso As Label, ByVal mensaje As String)
+                         ByVal etiqueta As ToolStripLabel, ByVal mensaje As String)
       Dim cadena As String
       Dim tabla() As String
       Dim numCaso As String = ""
@@ -773,13 +759,11 @@
       Dim consecutivo As Integer = 0
       Try
          guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, lblMensajeCaso)
-         mensajeVerde(lblMensajeCaso, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
+         mensajeVerde(etiqueta, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+         mensajeRojo(etiqueta, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
       End Try
    End Sub
-
-
 
 End Module

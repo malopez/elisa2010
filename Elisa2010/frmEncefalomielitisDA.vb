@@ -4,18 +4,20 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmEncefalomielitisDA
 
+   Dim etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
+
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
-         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+         abreArchivoExcel(Me, Me.ofdSelArchivo, etiquetaMensaje, Me.btnLeerArchivoExistente, _
                           Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+         mensajeRojo(etiquetaMensaje, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
       Try
          organizaEnTablaDA(Me.dgvPlacaLeida, placaLector)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
+         mensajeRojo(etiquetaMensaje, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try
       botonesEstatus(True)
       btnLeerArchivoExistente.Enabled = False
@@ -83,9 +85,9 @@ Public Class frmEncefalomielitisDA
             calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeAAE)
+                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "Error: Al calculor los valores, calculaValoresEnRango.")
+            mensajeRojo(etiquetaMensaje, "Error: Al calculor los valores, calculaValoresEnRango.")
          End Try
 
          cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
@@ -95,81 +97,81 @@ Public Class frmEncefalomielitisDA
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la sumatoria de la media geométrica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
          End Try
 
          Try
             titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
          End Try
          Try
             calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
          End Try
          Try
             mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
          Try
             mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
          End Try
          Try
             varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: AL calcular la varianza, calculaVarianza.")
+            mensajeRojo(etiquetaMensaje, "ERROR: AL calcular la varianza, calculaVarianza.")
          End Try
          Try
             desvEst = calculaDesvEst(varianza)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
          End Try
          Try
             coefVar = calculaCoefVar(desvEst, mediaAritmetica)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
          End Try
          Try
             placaoriginal = obtenPlacaLeida(placaLector)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
          End Try
          Try
             calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
          End Try
          Try
             valorFR = obtenValorFR(frecuenciaRelativa)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
          End Try
          Try
             cantidadFR = obtenCantidadFR(rangoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
          End Try
          Try
             cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                               Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
+                              Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, etiquetaMensaje)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
          End Try
          Try
-            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
+            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, etiquetaMensaje)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
          End Try
          Try
-            nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+            nombreArchivoImagen = creaChartFrecRel(etiquetaMensaje, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
                             titulox, tituloy, numcaso, consecutivo, analisis)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          End Try
          Try
             frmSalidaDatos.Show()
@@ -184,10 +186,10 @@ Public Class frmEncefalomielitisDA
                                      nombre, nombreCliente, numcaso, consecutivo, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                      mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
          End Try
       Catch ex As Exception
-         mensajeException(Me.lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
          Me.btnLeerArchivoExistente.Enabled = True
          Me.btnObtenResultadosDA.Enabled = False
       End Try
@@ -219,11 +221,11 @@ Public Class frmEncefalomielitisDA
             cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -257,19 +259,19 @@ Public Class frmEncefalomielitisDA
                lblLogTit2.Text = oDataReader("logTit2").ToString()
             End While
             oDataReader.Close()
-            lblMensajeAAE.Text = ""
+            etiquetaMensaje.Text = ""
             Me.btnLeerArchivoExistente.Enabled = True
             txtDesdeLetra1.Focus()
          Else
-            mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -325,13 +327,13 @@ Public Class frmEncefalomielitisDA
                botonesEstatus(True)
             End If
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
             btnCapturaTerminada.Enabled = True
             btnObtenResultadosDA.Enabled = False
             botonesEstatus(True)
          End Try
       Else
-         mensajeRojo(Me.lblMensajeAAE, "Escriba los valores válidos.")
+         mensajeRojo(etiquetaMensaje, "Escriba los valores válidos.")
       End If
    End Sub
 

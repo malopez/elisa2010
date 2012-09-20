@@ -6,7 +6,6 @@ Imports System.Runtime.InteropServices
 
 Module mdlDefineValidaDatos
 
-
    Public Structure miRGB
       Dim R As Integer
       Dim G As Integer
@@ -34,8 +33,6 @@ Module mdlDefineValidaDatos
       Dim nombreArchivoImagen As String
       Dim titulosObtenidos As String
    End Structure
-
-
 
    '##################################################
    '# SECCION VALIDACION DE FORMATOS                 #
@@ -139,12 +136,9 @@ Module mdlDefineValidaDatos
       temporal = CStr(regresaValor(txtHastaLetraRango2)) & txtHastaValorRango2.Text.PadLeft(2, "0")
       Dim rango2 As Integer = CInt(temporal)
 
-      'MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
-
       Select Case desde
          Case rango1 To rango2
             mismoDesde = True
-            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
             mismoDesde = False
       End Select
@@ -152,11 +146,9 @@ Module mdlDefineValidaDatos
       Select Case hasta
          Case rango1 To rango2
             mismoHasta = True
-            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
             mismoHasta = False
       End Select
-      'MessageBox.Show("Valor de mismoDesde:" & mismoDesde & ", valor de mismoHasta:" & mismoHasta)
       If (mismoDesde Or mismoHasta) Then
          MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Return False
@@ -165,7 +157,7 @@ Module mdlDefineValidaDatos
       End If
    End Function
 
-   Public Function queSeanDistintos(ByRef etiqueta As Label, ByVal mensaje As String, ByVal txtDesdeLetra1 As TextBox, _
+   Public Function queSeanDistintos(ByRef etiqueta As ToolStripLabel, ByVal mensaje As String, ByVal txtDesdeLetra1 As TextBox, _
                                     ByVal txtDesdeValor1 As TextBox, ByVal txtHastaLetra1 As TextBox, _
                                     ByVal txtHastaValor1 As TextBox) As Boolean
 
@@ -203,6 +195,7 @@ Module mdlDefineValidaDatos
       End If
       Return ok
    End Function
+
    'Estas funcion se utilizan para el caso de 1 caso con n subcasos.
    Public Function validaTodosLosCNParaUnCaso(ByVal caso As String, ByVal nocp As Integer, _
                                                ByVal txtCN1Letra1 As TextBox, ByVal txtCN1Valor1 As TextBox, _
@@ -250,14 +243,9 @@ Module mdlDefineValidaDatos
       temporal = CStr(letraRango2) & valorHasta.PadLeft(2, "0")
       Dim rango2 As Integer = CInt(temporal)
 
-      'MessageBox.Show("Valores desde: " & desde & vbCrLf & " hasta: " & hasta & vbCrLf _
-      '                & " letraRango1: " & letraRango1 & vbCrLf & " letraRango2: " & letraRango2 & vbCrLf _
-      '                & " rango1: " & rango1 & vbCrLf & " rango2 :" & rango2)
-
       Select Case desde
          Case rango1 To rango2
             mismoDesde = True
-            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
             mismoDesde = False
       End Select
@@ -265,13 +253,11 @@ Module mdlDefineValidaDatos
       Select Case hasta
          Case rango1 To rango2
             mismoHasta = True
-            'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Case Else
             mismoHasta = False
       End Select
-      'MessageBox.Show("Valor de mismoDesde:" & mismoDesde & ", valor de mismoHasta:" & mismoHasta)
+
       If (mismoDesde Or mismoHasta) Then
-         'MessageBox.Show("El " & mensaje & ", se encuentran en el mismo rango de valores.")
          Return False
       Else
          Return True
@@ -295,8 +281,6 @@ Module mdlDefineValidaDatos
 
       temporal = CStr(regresaValor(txtHastaLetraRango2)) & txtHastaValorRango2.Text.PadLeft(2, "0")
       Dim rango2 As Integer = CInt(temporal)
-
-      ' MessageBox.Show(mensaje & ": El valor Desde:" & desde & ", hasta: " & hasta & ", rango1: " & rango1 & ",rango2:" & rango2)
 
       Select Case desde
          Case rango1 To rango2
@@ -354,7 +338,7 @@ Module mdlDefineValidaDatos
       Return CInt(retorno)
    End Function
 
-
+   'Esta funcion se utiliza para regresar el valor en pantalla, ya que en arreglo se manejan A=0, y aqui A=1.
    Public Function regresaValor(ByVal textbox As TextBox) As Integer
       Dim letra As String = textbox.Text.ToUpper
       Dim retorno As Integer
@@ -404,7 +388,6 @@ Module mdlDefineValidaDatos
       End Select
       Return letra
    End Function
-
 
    Public Function controlesValidosLetra(ByVal textbox As TextBox, ByVal nombre As String, _
                                          ByVal min1 As String, ByVal max1 As String) As Boolean
@@ -458,7 +441,6 @@ Module mdlDefineValidaDatos
       Else
          valido = False
       End If
-      'MessageBox.Show("Evaluando " & mensaje & ", con resultado:" & valido)
       Return valido
    End Function
 
@@ -488,34 +470,12 @@ Module mdlDefineValidaDatos
          MessageBox.Show("El valor entre " & mensaje & " no puede ser igual.")
          valido = False
       Else
-         'MessageBox.Show("Entre al else: " & valor1.ToUpper & " , " & valor2.ToUpper)
          valido = True
       End If
       Return valido
    End Function
-   '######################################################################
-   '# MENSAJES DEFAULT PARA ATRAPAR EXCEPCIONES, Y EN COLOR ROJO Y VERDE #
-   '######################################################################
 
-   Public Sub mensajeException(ByRef etiqueta As Label, ByRef ex As Exception)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
-   End Sub
-
-   Public Sub mensajeExceptionSQL(ByRef etiqueta As Label, ByRef ex As MySqlException)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
-   End Sub
-
-   Public Sub mensajeVerde(ByRef etiqueta As Label, ByRef mensaje As String)
-      etiqueta.ForeColor = System.Drawing.Color.Green
-      etiqueta.Text = mensaje
-   End Sub
-
-   Public Sub mensajeRojo(ByRef etiqueta As Label, ByRef mensaje As String)
-      etiqueta.ForeColor = System.Drawing.Color.Red
-      etiqueta.Text = mensaje
-   End Sub
+  
 
    Public Sub defineBotonesNegativos(ByVal nocn As Integer, ByRef lblCNNo1 As Label, _
                                       ByRef lblCNNo2 As Label, ByRef lblCNNo3 As Label, _

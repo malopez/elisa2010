@@ -42,8 +42,8 @@ Partial Class frmElisaBiovetsa
       Me.tsmPasteurellaHaemolytica = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmCapturaConSubcasos = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfigurarLector = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfirmarSalir = New System.Windows.Forms.ToolStripMenuItem()
@@ -57,8 +57,11 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
       Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
+      Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+      Me.lblMensajeAplicacion = New System.Windows.Forms.ToolStripStatusLabel()
       Me.mnuMainMenu.SuspendLayout()
       Me.ToolStrip1.SuspendLayout()
+      Me.StatusStrip1.SuspendLayout()
       Me.SuspendLayout()
       '
       'mnuMainMenu
@@ -188,18 +191,18 @@ Partial Class frmElisaBiovetsa
       Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(213, 22)
       Me.tsmOperacionesAnalisis.Text = "&Operaciones sobre análisis"
       '
+      'tsmCapturaConSubcasos
+      '
+      Me.tsmCapturaConSubcasos.Name = "tsmCapturaConSubcasos"
+      Me.tsmCapturaConSubcasos.Size = New System.Drawing.Size(213, 22)
+      Me.tsmCapturaConSubcasos.Text = "Captura con subcasos"
+      '
       'tsmSalir
       '
       Me.tsmSalir.Name = "tsmSalir"
       Me.tsmSalir.Size = New System.Drawing.Size(213, 22)
       Me.tsmSalir.Text = "&Salir"
       Me.tsmSalir.ToolTipText = "Abandone la aplicación"
-      '
-      'tsmCapturaConSubcasos
-      '
-      Me.tsmCapturaConSubcasos.Name = "tsmCapturaConSubcasos"
-      Me.tsmCapturaConSubcasos.Size = New System.Drawing.Size(213, 22)
-      Me.tsmCapturaConSubcasos.Text = "Captura con subcasos"
       '
       'mnuOpciones
       '
@@ -305,12 +308,30 @@ Partial Class frmElisaBiovetsa
       Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
       Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
+      'StatusStrip1
+      '
+      Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblMensajeAplicacion})
+      Me.StatusStrip1.Location = New System.Drawing.Point(0, 307)
+      Me.StatusStrip1.Name = "StatusStrip1"
+      Me.StatusStrip1.Size = New System.Drawing.Size(1008, 22)
+      Me.StatusStrip1.TabIndex = 6
+      Me.StatusStrip1.Text = "StatusStrip1"
+      '
+      'lblMensajeAplicacion
+      '
+      Me.lblMensajeAplicacion.BackColor = System.Drawing.SystemColors.Control
+      Me.lblMensajeAplicacion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.lblMensajeAplicacion.Name = "lblMensajeAplicacion"
+      Me.lblMensajeAplicacion.Size = New System.Drawing.Size(63, 17)
+      Me.lblMensajeAplicacion.Text = "MENSAJE: "
+      '
       'frmElisaBiovetsa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.BackColor = System.Drawing.Color.White
       Me.ClientSize = New System.Drawing.Size(1008, 329)
+      Me.Controls.Add(Me.StatusStrip1)
       Me.Controls.Add(Me.ToolStrip1)
       Me.Controls.Add(Me.mnuMainMenu)
       Me.ForeColor = System.Drawing.SystemColors.ButtonHighlight
@@ -328,6 +349,8 @@ Partial Class frmElisaBiovetsa
       Me.mnuMainMenu.PerformLayout()
       Me.ToolStrip1.ResumeLayout(False)
       Me.ToolStrip1.PerformLayout()
+      Me.StatusStrip1.ResumeLayout(False)
+      Me.StatusStrip1.PerformLayout()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 
@@ -366,5 +389,7 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmEncefalomielitisDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmLeerYGuardar As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmCapturaConSubcasos As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+   Friend WithEvents lblMensajeAplicacion As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

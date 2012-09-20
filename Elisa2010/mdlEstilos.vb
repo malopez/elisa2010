@@ -1,6 +1,10 @@
-﻿Module mdlEstilos
+﻿Imports System.IO
+Imports System.Windows.Forms.DataVisualization.Charting
+Imports MySql.Data.MySqlClient
+Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Runtime.InteropServices
 
-
+Module mdlEstilos
    ''############################ DESDE AQUI
    'Se pueden borrar estos dos procedimientos desde aqui hasta aqui porque se sustituyen por los dos de abajo
    'Gracias al cambio se tienen los colores en RGB aleatorio.
@@ -72,6 +76,77 @@
       End Select
    End Sub
 
+   'Dibuja la tabla en pantalla, para presentar los datos utilizando un grid.
+   Public Sub dibujaTablaEnPantalla(ByRef placa As DataGridView)
+      Dim i As Integer
+      'Quita el indicador de fila del datagridview
+      placa.RowHeadersVisible = False
+      placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+      placa.Columns.Add("pozo0", "")
+      placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
+      placa.Columns(0).AutoSizeMode = False
+
+      For i = 1 To 12
+         placa.Columns.Add("pozo" & i, i)
+         With placa.Columns(i)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+         End With
+      Next
+      placa.Rows.Add(8)
+      'dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      For i = 0 To 7
+         placa.Rows(i).Cells(0).Value = obtenLetra(i)
+         placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
+         placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
+      Next
+   End Sub
+
+   'Organizar en tabla los datos de la placa leida.
+   Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
+      Dim i As Integer
+      For i = 0 To 7
+         For j = 0 To 11
+            placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
+            placa.Rows(i).Cells(j + 1).Style.ForeColor = Color.Black
+         Next
+      Next
+   End Sub
+
+   ' Permite organizar en la tabla de pantalla obteniendo desde archivo los datos
+   Public Sub organizaEnTablaDA(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
+      Dim i As Integer
+      'Quita el indicador de fila del datagridview
+      placa.RowHeadersVisible = False
+      placa.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      placa.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+      placa.Columns.Add("pozo0", "")
+      placa.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
+      placa.Columns(0).AutoSizeMode = False
+
+      For i = 1 To 12
+         placa.Columns.Add("pozo" & i, i)
+         With placa.Columns(i)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+         End With
+      Next
+      placa.Rows.Add(8)
+      'dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      For i = 0 To 7
+         placa.Rows(i).Cells(0).Value = obtenLetra(i)
+         placa.Rows(i).Cells(0).Style.ForeColor = Color.MidnightBlue
+         placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
+      Next
+
+      For i = 0 To 7
+         For j = 0 To 11
+            placa.Rows(i).Cells(j + 1).Value = placaLector(i, j)
+         Next
+      Next
+   End Sub
+
    'colorea de verde la posicion señalada para los controles negativos.
    Public Sub coloreaControlesNegativos(ByVal nocn As Integer, ByRef dgvPlacaLeida As DataGridView, _
                                          ByVal txtCN1Letra1 As TextBox, ByVal txtCN1Valor1 As TextBox, _
@@ -88,6 +163,31 @@
             coloreaTabla(dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN2Letra2)), CInt(txtCN2Valor2.Text))
             coloreaTabla(dgvPlacaLeida, Color.Red, Val(siValorEsLetra(txtCN3Letra3)), CInt(txtCN3Valor3.Text))
       End Select
+   End Sub
+
+
+   '######################################################################
+   '# MENSAJES DEFAULT PARA ATRAPAR EXCEPCIONES, Y EN COLOR ROJO Y VERDE #
+   '######################################################################
+
+   Public Sub mensajeException(ByRef etiqueta As ToolStripLabel, ByRef ex As Exception)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+   End Sub
+
+   Public Sub mensajeExceptionSQL(ByRef etiqueta As ToolStripLabel, ByRef ex As MySqlException)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = "ERROR: " & ex.Message & " " & ex.Number & " " & ex.GetType.ToString
+   End Sub
+
+   Public Sub mensajeVerde(ByRef etiqueta As ToolStripLabel, ByRef mensaje As String)
+      etiqueta.ForeColor = System.Drawing.Color.Green
+      etiqueta.Text = mensaje
+   End Sub
+
+   Public Sub mensajeRojo(ByRef etiqueta As ToolStripLabel, ByRef mensaje As String)
+      etiqueta.ForeColor = System.Drawing.Color.Red
+      etiqueta.Text = mensaje
    End Sub
 
 End Module

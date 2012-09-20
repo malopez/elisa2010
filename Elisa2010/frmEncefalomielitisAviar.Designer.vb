@@ -30,12 +30,10 @@ Partial Class frmEncefalomielitisAviar
       Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.btnCapturaTerminada = New System.Windows.Forms.Button()
-      Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.btnGuardaDatos = New System.Windows.Forms.Button()
-      Me.Panel4 = New System.Windows.Forms.Panel()
       Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
       Me.btnFormateaDatos = New System.Windows.Forms.Button()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
@@ -201,7 +199,6 @@ Partial Class frmEncefalomielitisAviar
       Me.txtNoDeCasos = New System.Windows.Forms.TextBox()
       Me.Panel5 = New System.Windows.Forms.Panel()
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
-      Me.Panel4.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
@@ -234,17 +231,6 @@ Partial Class frmEncefalomielitisAviar
       Me.btnCapturaTerminada.TabIndex = 118
       Me.btnCapturaTerminada.Text = "Captura Terminada"
       Me.btnCapturaTerminada.UseVisualStyleBackColor = True
-      '
-      'lblMensajeCaso
-      '
-      Me.lblMensajeCaso.AutoSize = True
-      Me.lblMensajeCaso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeCaso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeCaso.Location = New System.Drawing.Point(3, 7)
-      Me.lblMensajeCaso.Name = "lblMensajeCaso"
-      Me.lblMensajeCaso.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeCaso.TabIndex = 72
-      Me.lblMensajeCaso.Text = "Mensaje:"
       '
       'txtDatosRecibidos
       '
@@ -292,16 +278,6 @@ Partial Class frmEncefalomielitisAviar
       Me.btnGuardaDatos.TabIndex = 110
       Me.btnGuardaDatos.Text = "Guardar Datos en Excel"
       Me.btnGuardaDatos.UseVisualStyleBackColor = True
-      '
-      'Panel4
-      '
-      Me.Panel4.AutoSize = True
-      Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel4.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel4.Location = New System.Drawing.Point(7, 541)
-      Me.Panel4.Name = "Panel4"
-      Me.Panel4.Size = New System.Drawing.Size(943, 30)
-      Me.Panel4.TabIndex = 113
       '
       'cmbComboPorts
       '
@@ -2228,7 +2204,6 @@ Partial Class frmEncefalomielitisAviar
       Me.Controls.Add(Me.ckbControlesDefault)
       Me.Controls.Add(Me.lblNombreLector)
       Me.Controls.Add(Me.btnGuardaDatos)
-      Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnFormateaDatos)
       Me.Controls.Add(Me.btnObtenerResultados)
@@ -2246,8 +2221,6 @@ Partial Class frmEncefalomielitisAviar
       Me.Name = "frmEncefalomielitisAviar"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Análisis de Encefalomielitis Aviar"
-      Me.Panel4.ResumeLayout(False)
-      Me.Panel4.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.grbControlesNegativos.ResumeLayout(False)
       Me.grbControlesNegativos.PerformLayout()
@@ -2281,12 +2254,10 @@ Partial Class frmEncefalomielitisAviar
    End Sub
    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
    Friend WithEvents btnCapturaTerminada As System.Windows.Forms.Button
-   Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents lblNombreLector As System.Windows.Forms.Label
    Friend WithEvents btnGuardaDatos As System.Windows.Forms.Button
-   Friend WithEvents Panel4 As System.Windows.Forms.Panel
    Friend WithEvents cmbComboPorts As System.Windows.Forms.ComboBox
    Friend WithEvents btnFormateaDatos As System.Windows.Forms.Button
    Friend WithEvents btnObtenerResultados As System.Windows.Forms.Button

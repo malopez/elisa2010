@@ -53,13 +53,11 @@ Partial Class frmRegistraNuevoAnalisis
       Me.txtNombreCliente = New System.Windows.Forms.TextBox()
       Me.txtAnalisisSolicitado = New System.Windows.Forms.TextBox()
       Me.btnBuscaCaso = New System.Windows.Forms.Button()
-      Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.pnlRegistraNuevoAnalisis = New System.Windows.Forms.Panel()
       Me.dtpFechaElaboracion = New System.Windows.Forms.DateTimePicker()
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.lblLogSPS = New System.Windows.Forms.Label()
-      Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.Label19 = New System.Windows.Forms.Label()
       Me.Label20 = New System.Windows.Forms.Label()
@@ -85,7 +83,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
       Me.grbControlesPositivos.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
-      Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -330,17 +327,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.btnBuscaCaso.TabIndex = 0
       Me.btnBuscaCaso.UseVisualStyleBackColor = True
       '
-      'lblMensajeCaso
-      '
-      Me.lblMensajeCaso.AutoSize = True
-      Me.lblMensajeCaso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeCaso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeCaso.Location = New System.Drawing.Point(3, 7)
-      Me.lblMensajeCaso.Name = "lblMensajeCaso"
-      Me.lblMensajeCaso.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeCaso.TabIndex = 72
-      Me.lblMensajeCaso.Text = "Mensaje:"
-      '
       'pnlRegistraNuevoAnalisis
       '
       Me.pnlRegistraNuevoAnalisis.AutoSize = True
@@ -398,16 +384,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.lblLogSPS.TabIndex = 10
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
-      '
-      'Panel1
-      '
-      Me.Panel1.AutoSize = True
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel1.Location = New System.Drawing.Point(4, 548)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(698, 30)
-      Me.Panel1.TabIndex = 74
       '
       'Panel2
       '
@@ -705,7 +681,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.Controls.Add(Me.btnNuevoAnalisisCancelar)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
       Me.Controls.Add(Me.Panel2)
-      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.txtDatosRecibidos)
       Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -717,8 +692,6 @@ Partial Class frmRegistraNuevoAnalisis
       Me.grbControlesPositivos.PerformLayout()
       Me.pnlRegistraNuevoAnalisis.ResumeLayout(False)
       Me.pnlRegistraNuevoAnalisis.PerformLayout()
-      Me.Panel1.ResumeLayout(False)
-      Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
@@ -753,9 +726,7 @@ Partial Class frmRegistraNuevoAnalisis
    Friend WithEvents txtNombreCliente As System.Windows.Forms.TextBox
    Friend WithEvents txtAnalisisSolicitado As System.Windows.Forms.TextBox
    Friend WithEvents btnBuscaCaso As System.Windows.Forms.Button
-   Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents pnlRegistraNuevoAnalisis As System.Windows.Forms.Panel
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents grbControlesNegativos As System.Windows.Forms.GroupBox
    Friend WithEvents txtCN2Letra2 As System.Windows.Forms.TextBox

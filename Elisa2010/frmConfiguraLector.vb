@@ -44,9 +44,9 @@ Public Class frmConfiguraLector
          'Cerrar la conexion a la BD
          oConexion.Close()
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
-         'lblMensajeLector.ForeColor = System.Drawing.Color.Red
-         'lblMensajeLector.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
+         'frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Red
+         'frmElisaBiovetsa.lblMensajeAplicacion.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
       End Try
    End Sub
 
@@ -270,11 +270,11 @@ Public Class frmConfiguraLector
          ' para el desplegado en la etiqueta
          Me.lblNRLector.Text = "Registro: " & Me.iposicFilaActual + 1 & " de " & Me.oDataSet.Tables("tbllector").Rows.Count
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
 
    End Sub
@@ -282,53 +282,53 @@ Public Class frmConfiguraLector
    Private Sub btnHaciaAdelante_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAdelante.Click
       Try
          If Me.iposicFilaActual = (Me.oDataSet.Tables("tbllector").Rows.Count - 1) Then
-            lblMensajeLector.ForeColor = System.Drawing.Color.Red
-            lblMensajeLector.Text = "Mensaje: Usted se encuentra en el último registro."
+            frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Red
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Usted se encuentra en el último registro."
          Else
             Me.iposicFilaActual += 1
             Me.cargarDatosLector()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub btnInicio_Click(sender As System.Object, e As System.EventArgs) Handles btnInicio.Click
       Try
          'Enviar la posicion del registro al 1er. elemento
-         lblMensajeLector.Text = ""
+         frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Me.iposicFilaActual = 0
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub btnHaciaAtras_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAtras.Click
       Try
-         lblMensajeLector.Text = ""
+         frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          If Me.iposicFilaActual = 0 Then
-            lblMensajeLector.ForeColor = System.Drawing.Color.Red
-            lblMensajeLector.Text = "Mensaje: Usted se encuentra en el primer registro."
+            frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Red
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Usted se encuentra en el primer registro."
          Else
             'Disminuir el marcador del registro y actualizar en pantalla con los datos del registro actual
             Me.iposicFilaActual -= 1
             Me.cargarDatosLector()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -338,18 +338,18 @@ Public Class frmConfiguraLector
          Me.iposicFilaActual = (Me.oDataSet.Tables("tbllector").Rows.Count - 1)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub btnInsertar_Click(sender As System.Object, e As System.EventArgs) Handles btnInsertar.Click
       Try
          txtNombreLector.Text = ""
-         lblMensajeLector.Text = ""
+         frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          txtNombreLector.ReadOnly = False
          desHabilitaBarra()
          btnInsertar.Enabled = False
@@ -360,11 +360,11 @@ Public Class frmConfiguraLector
          chkLectorDefault.Enabled = True
          habilitaGroupBox()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -401,15 +401,15 @@ Public Class frmConfiguraLector
                oComando.CommandText = aConsulta1
                resultado = oComando.ExecuteNonQuery()
                oConexion.Close()
-               mensajeVerde(lblMensajeLector, "Mensaje: Los datos se han guardado exitosamente.")
-               'lblMensajeLector.ForeColor = System.Drawing.Color.Green
-               'lblMensajeLector.Text = "Mensaje: Los datos se han guardado exitosamente."
+               mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos se han guardado exitosamente.")
+               'frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Green
+               'frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Los datos se han guardado exitosamente."
             Catch ex As MySqlException
-               mensajeExceptionSQL(lblMensajeLector, ex)
+               mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             Catch ex As DataException
-               mensajeException(lblMensajeLector, ex)
+               mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             Catch ex As Exception
-               mensajeException(lblMensajeLector, ex)
+               mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             End Try
          Else
             Try
@@ -419,14 +419,14 @@ Public Class frmConfiguraLector
                oConexion.Open()
                resultado = oComando.ExecuteNonQuery()
                oConexion.Close()
-               lblMensajeLector.ForeColor = System.Drawing.Color.Green
-               lblMensajeLector.Text = "Mensaje: Los datos se han guardado exitosamente."
+               frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Green
+               frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Los datos se han guardado exitosamente."
             Catch ex As MySqlException
-               mensajeExceptionSQL(lblMensajeLector, ex)
+               mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             Catch ex As DataException
-               mensajeException(lblMensajeLector, ex)
+               mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             Catch ex As Exception
-               mensajeException(lblMensajeLector, ex)
+               mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
             End Try
          End If
          'Recarga los datos
@@ -445,13 +445,13 @@ Public Class frmConfiguraLector
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
-    
+
    End Sub
 
    Private Sub btnBorrar_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrar.Click
@@ -469,14 +469,14 @@ Public Class frmConfiguraLector
          oConexion.Open()
          resultado = oComando.ExecuteNonQuery()
          oConexion.Close()
-         lblMensajeLector.ForeColor = System.Drawing.Color.Green
-         lblMensajeLector.Text = "Mensaje: Los datos del lector se han eliminado exitosamente."
+         frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Green
+         frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Los datos del lector se han eliminado exitosamente."
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
       habilitaBarra()
       btnInsertar.Enabled = True
@@ -515,8 +515,8 @@ Public Class frmConfiguraLector
          oConexion.Open()
          resultado = oComando.ExecuteNonQuery()
          oConexion.Close()
-         lblMensajeLector.ForeColor = System.Drawing.Color.Green
-         lblMensajeLector.Text = "Mensaje: El nombre del lector se ha actualizado exitosamente."
+         frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Green
+         frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: El nombre del lector se ha actualizado exitosamente."
          habilitaBarra()
          btnInsertar.Enabled = True
          btnBorrar.Enabled = True
@@ -526,11 +526,11 @@ Public Class frmConfiguraLector
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosLector()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -548,8 +548,8 @@ Public Class frmConfiguraLector
          oComando.CommandText = aConsulta
          If txtNombreLector.Text = "" Then
 
-            lblMensajeLector.ForeColor = System.Drawing.Color.Red
-            lblMensajeLector.Text = "Mensaje: Escriba un nombre de Lector válido."
+            frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Red
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Escriba un nombre de Lector válido."
          Else
             oConexion.Open()
             oDataReader = oComando.ExecuteReader()
@@ -559,21 +559,21 @@ Public Class frmConfiguraLector
 
                End While
                oDataReader.Close()
-               'lblMensajeLector.Text = ""
+               'frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
             Else
-               lblMensajeLector.ForeColor = System.Drawing.Color.Red
-               lblMensajeLector.Text = "Mensaje: No existe un lector con el nombre indicado."
+               frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Red
+               frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: No existe un lector con el nombre indicado."
             End If
             oConexion.Close()
             txtNombreLector.Focus()
             'Verifica que no sea vacia la consulta
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeLector, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeLector, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 

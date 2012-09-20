@@ -7,15 +7,15 @@ Public Class frmAbrirArchivoExistente
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs)
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
-         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+         abreArchivoExcel(Me, Me.ofdSelArchivo, frmElisaBiovetsa.lblMensajeAplicacion, Me.btnLeerArchivoExistente, _
                           Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
       Try
          organizaEnTabla(Me.dgvPlacaLeida, placaLector)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try
       botonesEstatus(True)
       btnCapturaTerminada.Enabled = True
@@ -82,9 +82,9 @@ Public Class frmAbrirArchivoExistente
             calculaValoresEnRango(placaLector, desdeArchivo, nocp, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, _
                                   Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                   Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeAAE)
+                                  desdex, hastax, desdey, hastay, promCP, promCN, difCPS, frmElisaBiovetsa.lblMensajeAplicacion)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "Error: Al calculor los valores, calculaValoresEnRango.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error: Al calculor los valores, calculaValoresEnRango.")
          End Try
 
          cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
@@ -94,81 +94,81 @@ Public Class frmAbrirArchivoExistente
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la sumatoria de la media geométrica.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la sumatoria de la media geométrica.")
          End Try
 
          Try
             titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
          End Try
          Try
             calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
          End Try
          Try
             mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
          Try
             mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
          End Try
          Try
             varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: AL calcular la varianza, calculaVarianza.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: AL calcular la varianza, calculaVarianza.")
          End Try
          Try
             desvEst = calculaDesvEst(varianza)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
          End Try
          Try
             coefVar = calculaCoefVar(desvEst, mediaAritmetica)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
          End Try
          Try
             placaoriginal = obtenPlacaLeida(placaLector)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
          End Try
          Try
             calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
          End Try
          Try
             valorFR = obtenValorFR(frecuenciaRelativa)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
          End Try
          Try
             cantidadFR = obtenCantidadFR(rangoDatos)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
          End Try
          Try
             cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                           Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                          Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeAAE)
+                          Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, frmElisaBiovetsa.lblMensajeAplicacion)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
          End Try
          Try
-            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeAAE)
+            cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmElisaBiovetsa.lblMensajeAplicacion)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
          End Try
          'Try
-         nombreArchivoImagen = creaChartFrecRel(Me.lblMensajeAAE, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+         nombreArchivoImagen = creaChartFrecRel(frmElisaBiovetsa.lblMensajeAplicacion, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
                              titulox, tituloy, numcaso, consecutivo, analisis)
          'Catch
-         '   mensajeRojo(Me.lblMensajeAAE, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+         '   mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
          'End Try
          Try
             frmSalidaDatos.Show()
@@ -183,10 +183,10 @@ Public Class frmAbrirArchivoExistente
                                      nombre, nombreCliente, numcaso, consecutivo, analisis, observaciones, fecha.ToShortDateString(), titulosObtenidos, _
                                      mediaAritmetica, mediaGeometrica, cuentaNoDatos, coefVar, desvEst, varianza)
          Catch
-            mensajeRojo(Me.lblMensajeAAE, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al mostrar resultados en pantalla, mostrarResultadosEnPantalla.")
          End Try
       Catch ex As Exception
-         mensajeException(Me.lblMensajeAAE, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          Me.btnLeerArchivoExistente.Enabled = True
          Me.btnObtenResultadosDA.Enabled = False
       End Try
@@ -218,11 +218,11 @@ Public Class frmAbrirArchivoExistente
             cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -256,19 +256,19 @@ Public Class frmAbrirArchivoExistente
                lblLogTit2.Text = oDataReader("logTit2").ToString()
             End While
             oDataReader.Close()
-            lblMensajeAAE.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
             Me.btnLeerArchivoExistente.Enabled = True
             txtDesdeLetra1.Focus()
          Else
-            mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -317,30 +317,11 @@ Public Class frmAbrirArchivoExistente
             botonesEstatus(True)
          End If
       Catch
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
          btnCapturaTerminada.Enabled = True
          btnObtenResultadosDA.Enabled = False
          botonesEstatus(True)
       End Try
    End Sub
 
- 
-   Private Sub Panel3_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
-
-   End Sub
-   Private Sub lblMensajeAAE_Click(sender As System.Object, e As System.EventArgs)
-
-   End Sub
-   Private Sub lblObservaciones_Click(sender As System.Object, e As System.EventArgs)
-
-   End Sub
-   Private Sub pnlRegistraNuevoAnalisis_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
-
-   End Sub
-   Private Sub Panel1_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs)
-
-   End Sub
-   Private Sub txtPlacaDesdeArchivo_TextChanged(sender As System.Object, e As System.EventArgs)
-
-   End Sub
 End Class

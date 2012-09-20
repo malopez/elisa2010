@@ -6,6 +6,7 @@ Imports System.Runtime.InteropServices
 
 Public Class frmCapturaCySC
 
+   Dim etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
    Dim totalCasos() As listaCasos
    Dim posCasoActual As Integer = 0
    Dim numero As Integer = 0
@@ -26,7 +27,7 @@ Public Class frmCapturaCySC
    'CARGA LA FORMA CON SU TOOL TIP Y BOTON DE CANCELAR
    '#########################################################
    Private Sub frmCapturaCySC_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-      GetSerialPortNamesParametros(cmbComboPorts, lblMensajeCaso)
+      GetSerialPortNamesParametros(cmbComboPorts, etiquetaMensaje)
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
       ToolTip1.SetToolTip(btnInicio, "Ir al 1er. análisis")
       ToolTip1.SetToolTip(btnHaciaAtras, "Ir al análisis anterior")
@@ -59,7 +60,7 @@ Public Class frmCapturaCySC
          az = SerialPort1.ReadExisting.Trim
          msn += az
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
       txtDatosRecibidos.Text = msn
    End Sub
@@ -68,17 +69,17 @@ Public Class frmCapturaCySC
       Try
          If btnLeerDatosPlaca.Text = "Obtener Datos" Then
             btnLeerDatosPlaca.Text = "Desconectar"
-            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, lblMensajeCaso, lblNombreLector)
+            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, etiquetaMensaje, lblNombreLector)
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
-               mensajeVerde(lblMensajeCaso, "Mensaje: Cerrando el puerto COM del lector.")
+               mensajeVerde(etiquetaMensaje, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                presentaDatosEnPantallaFormateados()
             End If
          End If
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(etiquetaMensaje, "Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -87,15 +88,14 @@ Public Class frmCapturaCySC
       Try
          convierteCadena(msn)
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
          formateaDatos(placaLector, dgvPlacaLeida)
          organizaEnTabla(dgvPlacaLeida, placaLector)
-         btnGuardaDatosExcel.Enabled = True
-
+         'btnGuardaDatosExcel.Enabled = True
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "ERROR: Se ha presentado un error al formatear datos.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al formatear datos.")
       End Try
    End Sub
 
@@ -119,7 +119,7 @@ Public Class frmCapturaCySC
       Try
          controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -127,7 +127,7 @@ Public Class frmCapturaCySC
       Try
          controlesValidosNumero(txtNoControlesNegativos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -190,7 +190,6 @@ Public Class frmCapturaCySC
       btnAceptarEnfermedad.Enabled = False
       If btnDefinirControlesPN.Text = "Definir Controles" Then
          btnDefinirControlesPN.Text = "Cambiar Controles"
-         'btnFormateaDatos.Enabled = False
          btnLeerDatosPlaca.Enabled = False
       Else
          btnAceptarControles.Enabled = True
@@ -201,7 +200,7 @@ Public Class frmCapturaCySC
       Try
          controlesValidosNumero(txtNoDeCasos, "En número de casos, ", 1, 94)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -234,10 +233,6 @@ Public Class frmCapturaCySC
       If controlesValidosNumero(txtNoDeCasos, " Valor en número de casos ", 1, 94) AndAlso _
          controlesValidosNumero(txtNoControlesPositivos, " Valor en número de controles ", 2, 3) AndAlso _
          controlesValidosNumero(txtNoControlesNegativos, " Valor en número de controles ", 2, 3) Then
-         '
-         'ckbControlesDefault.Enabled = True
-         'btnAceptarControles.Enabled = True
-         'btnDefinirControlesPN.Enabled = True
 
          Try
             cmbNombreEnfermedad.Enabled = False
@@ -274,10 +269,10 @@ Public Class frmCapturaCySC
                   lblLogTit2.Text = oDataReader("logTit2").ToString()
                End While
                oDataReader.Close()
-               lblMensajeCaso.Text = ""
+               etiquetaMensaje.Text = ""
                txtNoSubcasos.Text = "2"
             Else
-               mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+               mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
             End If
             oConexion.Close()
 
@@ -286,14 +281,14 @@ Public Class frmCapturaCySC
             btnDefinirControlesPN.Enabled = True
 
          Catch ex As MySqlException
-            mensajeExceptionSQL(lblMensajeCaso, ex)
+            mensajeExceptionSQL(etiquetaMensaje, ex)
          Catch ex As DataException
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(etiquetaMensaje, ex)
          Catch ex As Exception
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(etiquetaMensaje, ex)
          End Try
       Else
-         mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
          cmbNombreEnfermedad.Enabled = True
          txtNoDeCasos.Enabled = True
          txtNoControlesPositivos.Enabled = True
@@ -326,18 +321,18 @@ Public Class frmCapturaCySC
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, dgvPlacaLeida, txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3)
                      coloreaControlesNegativos(nocn, dgvPlacaLeida, txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3)
 
-                     mensajeVerde(lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -349,16 +344,15 @@ Public Class frmCapturaCySC
                      btnEditar.Enabled = False
                      btnGuardar.Enabled = True
                   Else
-                     mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
 
-
                   End If
                Else
-                  mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -376,23 +370,22 @@ Public Class frmCapturaCySC
                   controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
-                  If queSeanDistintos(lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, dgvPlacaLeida, txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3)
                      coloreaControlesNegativos(nocn, dgvPlacaLeida, txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3)
 
-
-                     mensajeVerde(lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -405,7 +398,7 @@ Public Class frmCapturaCySC
                      btnCapturaTerminada.Enabled = True
 
                   Else
-                     mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
@@ -414,7 +407,7 @@ Public Class frmCapturaCySC
 
                   End If
                Else
-                  mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -435,23 +428,23 @@ Public Class frmCapturaCySC
                  controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
-                  If queSeanDistintos(lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, dgvPlacaLeida, txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3)
                      coloreaControlesNegativos(nocn, dgvPlacaLeida, txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3)
 
-                     mensajeVerde(lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -463,14 +456,14 @@ Public Class frmCapturaCySC
 
                      btnCapturaTerminada.Enabled = True
                   Else
-                     mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                   End If
                Else
-                  mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -490,28 +483,28 @@ Public Class frmCapturaCySC
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, dgvPlacaLeida, txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3)
                      coloreaControlesNegativos(nocn, dgvPlacaLeida, txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3)
 
-                     mensajeVerde(lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -522,14 +515,14 @@ Public Class frmCapturaCySC
                      btnEditar.Enabled = False
 
                   Else
-                     mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                   End If
                Else
-                  mensajeRojo(lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -577,11 +570,11 @@ Public Class frmCapturaCySC
          Next
          cmbNoCaso.SelectedIndex = 0
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -610,15 +603,15 @@ Public Class frmCapturaCySC
             oDataReader.Close()
             chkSubCasos.Enabled = True
          Else
-            mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -665,22 +658,16 @@ Public Class frmCapturaCySC
             btnNuevoSubcaso.Enabled = True
             btnNuevoSubcaso.Visible = True
             btnNuevoSubcaso.Focus()
-
-            'btnGuardarSubcaso.Enabled = True
-            'btnGuardarSubcaso.Visible = True
             btnAceptaSubCasos.Enabled = False
-
          Else
             MessageBox.Show("ERROR: Los valores introducidos para el No. de Subcasos no es válido, Verifique.")
          End If
-
       Else
          txtNoSubcasos.Visible = True
          txtNoSubcasos.Enabled = True
          btnAceptaSubCasos.Enabled = True
          txtNoSubcasos.Text = "2"
          txtNoSubcasos.Focus()
-
       End If
 
    End Sub
@@ -702,7 +689,7 @@ Public Class frmCapturaCySC
    Private Sub btnHaciaAtras_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAtras.Click
       Try
          If posCasoActual = 0 Then
-            mensajeRojo(lblMensajeCaso, "Mensaje: Usted se encuentra en el primer Caso.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Usted se encuentra en el primer Caso.")
          Else
             'Disminuir el marcador del registro y actualizar en pantalla con los datos del registro actual
             posCasoActual -= 1
@@ -712,18 +699,18 @@ Public Class frmCapturaCySC
             cargarDatosCaso()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
    Private Sub btnHaciaAdelante_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAdelante.Click
       Try
          If posCasoActual = (UBound(totalCasos) - 1) Then
-            mensajeRojo(lblMensajeCaso, "Mensaje: Usted se encuentra en el último caso.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Usted se encuentra en el último caso.")
          Else
             posCasoActual += 1
             statusDeCasoMostrados(False)
@@ -732,11 +719,11 @@ Public Class frmCapturaCySC
             cargarDatosCaso()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -749,11 +736,11 @@ Public Class frmCapturaCySC
          estatusDesdeHasta(True)
          cargarDatosCaso()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -768,7 +755,7 @@ Public Class frmCapturaCySC
    '####################################################################################
 
    Private Sub btnInsertar_Click(sender As System.Object, e As System.EventArgs) Handles btnInsertar.Click
-      mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Análisis No." & numero + 1 & " de " & txtNoDeCasos.Text)
+      mensajeVerde(etiquetaMensaje, "Mensaje: Usted captura el Análisis No." & numero + 1 & " de " & txtNoDeCasos.Text)
       limpiaInformacionCaso()
       statusDeCasoMostrados(True)
 
@@ -792,7 +779,7 @@ Public Class frmCapturaCySC
       btnGuardarSubcaso.Enabled = True
       btnGuardarSubcaso.Visible = True
 
-      mensajeVerde(lblMensajeCaso, "Mensaje: Usted captura el Subcaso No." & lblNoSubCaso.Text & " de " & txtNoSubcasos.Text)
+      mensajeVerde(etiquetaMensaje, "Mensaje: Usted captura el Subcaso No." & lblNoSubCaso.Text & " de " & txtNoSubcasos.Text)
 
       'No cambia el caso, ni el cliente, ni enfermedad y limpia el desde hasta del caso para que se coloque el numero de subcaso
       statusDeSubCasoMostrados(False)
@@ -815,15 +802,7 @@ Public Class frmCapturaCySC
 
    Private Sub btnEditar_Click(sender As System.Object, e As System.EventArgs) Handles btnEditar.Click
       statusDeCasoMostrados(True)
-
-      'If totalCasos(posCasoActual).noSubcasos > 0 Then
       chkSubCasos.Enabled = False
-      'Else
-      '   'Indica que un caso sin subcasos puede editarse para tener subcasos
-      '   chkSubCasos.Enabled = True
-      '   chkcontrol = False
-      'End If
-
       txtMensajeSobreGrafica.ReadOnly = False
       estatusDesdeHasta(False)
       coloreaCasos(dgvPlacaLeida, Color.White, txtDesdeLetra, txtHastaLetra, txtDesdeValor, txtHastaValor)
@@ -869,23 +848,16 @@ Public Class frmCapturaCySC
                                     txtCN3Letra3, txtCN3Valor3, _
                                     txtDesdeLetra, txtDesdeValor, _
                                     txtHastaLetra, txtHastaValor) Then
-            'MessageBox.Show("Entre a la validacion numero=0 y los controles positivos no se encuentran dentro del caso")
-            'posCasoActual = numero
             Try
                guardaCasoEnArreglo(largo)
                cadenaDeCasos += ",'" & totalCasos(posCasoActual).noCaso & "'"
                numero += 1
                largo += 1
                btnInsertar.Enabled = True
-               mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text & " exitosamente.")
-               'statusDeCasoMostrados(False)
-               'txtMensajeSobreGrafica.Enabled = False
-               'txtMensajeSobreGrafica.ReadOnly = True
-               'estatusDesdeHasta(True)
-               'habilitaDesdeHasta(False)
+               mensajeVerde(etiquetaMensaje, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text & " exitosamente.")
 
                If (numero = CInt(txtNoDeCasos.Text)) Then
-                  mensajeVerde(lblMensajeCaso, "MENSAJE: Usted ha capturado el total de casos solicitados.")
+                  mensajeVerde(etiquetaMensaje, "MENSAJE: Usted ha capturado el total de casos solicitados.")
                   btnInsertar.Enabled = False
                   statusDeCasoMostrados(False)
                   txtMensajeSobreGrafica.Enabled = False
@@ -910,19 +882,18 @@ Public Class frmCapturaCySC
                btnInsertar.Enabled = False
                btnEditar.Enabled = False
                btnGuardar.Enabled = True
-               mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
+               mensajeRojo(etiquetaMensaje, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
             End Try
-            
+
 
          Else
             btnInsertar.Enabled = False
             btnEditar.Enabled = False
             btnGuardar.Enabled = True
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
+            mensajeRojo(etiquetaMensaje, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
          End If
          'Verifica que no se han excedido el número de casos solicitados.
       ElseIf (numero <= CInt(txtNoDeCasos.Text)) Then
-         'MessageBox.Show("Entre a numero <= CInt(txtNoDeCasos.Text) para guardar casos")
          'Para todos los casos validar que no se encuentre en el rango de valores positivos y negativos
          'Validar desde - hasta definido en el caso
          'Validar desde-hasta con otros casos ya guardados.
@@ -961,17 +932,13 @@ Public Class frmCapturaCySC
                posCasoActual = largo - 1
                guardaCasoEnArreglo(posCasoActual)
                btnInsertar.Enabled = True
-               mensajeVerde(lblMensajeCaso, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text)
-
+               mensajeVerde(etiquetaMensaje, "Mensaje: Usted guardó el caso No." & numero & " de " & txtNoDeCasos.Text)
                cadenaDeCasos += ",'" & totalCasos(posCasoActual).noCaso & "'"
-
-
                statusDeCasoMostrados(False)
                txtMensajeSobreGrafica.Enabled = False
                txtMensajeSobreGrafica.ReadOnly = True
                estatusDesdeHasta(True)
                habilitaDesdeHasta(False)
-
             Else
                MessageBox.Show("Los valores que se introdujeron se encuentran en el mismo rango que los del caso: " & totalCasos(i).noCaso & ", Verifique.")
                btnInsertar.Enabled = False
@@ -979,14 +946,14 @@ Public Class frmCapturaCySC
                btnGuardar.Enabled = True
             End If
          Else
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
+            mensajeRojo(etiquetaMensaje, "Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
             btnInsertar.Enabled = False
             btnEditar.Enabled = False
             btnGuardar.Enabled = True
          End If
          'En caso de que el número sea igual, manda el mensaje de que ya no se pueden capturar más casos")
          If (numero = CInt(txtNoDeCasos.Text)) Then
-            mensajeRojo(lblMensajeCaso, "MENSAJE: Usted ha capturado el total de casos solicitados.")
+            mensajeVerde(etiquetaMensaje, "MENSAJE: Usted ha capturado el total de casos solicitados.")
             btnInsertar.Enabled = False
             statusDeCasoMostrados(False)
             txtMensajeSobreGrafica.Enabled = False
@@ -1001,7 +968,7 @@ Public Class frmCapturaCySC
 
       End If
       'Catch ex As Exception
-      '   mensajeException(lblMensajeCaso, ex)
+      '   mensajeException(etiquetaMensaje, ex)
       'End Try
    End Sub
 
@@ -1044,30 +1011,8 @@ Public Class frmCapturaCySC
                txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor, _
                totalCasos(i).desdeLetra, totalCasos(i).desdeValor, _
                totalCasos(i).hastaLetra, totalCasos(i).hastaValor) And (i <= (largo - 1)))
-                     'MessageBox.Show("Valor de largo en while: " & largo & "y con i: " & i & "desdeletra " _
-                     '                & txtDesdeLetra.Text & "desdevalor " & txtDesdeValor.Text & "hastaletra " & txtHastaLetra.Text & " hastavalor " _
-                     '                & txtHastaValor.Text & " letrarango1 " & totalCasos(i).desdeLetra & " valorrango1 " & totalCasos(i).desdeValor _
-                     '                & " letrarango2" & totalCasos(i).hastaLetra & " valorrango2 " & totalCasos(i).hastaValor)
-
                      i += 1
                   End While
-                  'Else
-                  ''### AQUI VOY PARA CORREGIR CUANDO SE INSERTAN NUEVOS SUBCASOS A PARTIR DE UN CASO YA EXISTENTE. 17-aG-2012
-                  'For j = 0 To largo - 1
-
-                  '   If (j <> posCasoActual) Then
-
-                  '      If Not validaSiDosCasosEstanEnDistintoRangoArreglo("Caso capturado y caso" & (j + 1), _
-                  '                 txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor, _
-                  '                 totalCasos(j).desdeLetra, totalCasos(j).desdeValor, _
-                  '                 totalCasos(j).hastaLetra, totalCasos(j).hastaValor) Then
-                  '         MessageBox.Show("Los valores que se introdujeron e encuentran en el mismo rango que los del caso " & totalCasos(i).noCaso & ", Verifique.")
-                  '         bandera = False
-                  '         Exit For
-                  '      End If
-                  '   End If
-                  'Next
-                  ''### AQUI V
                End If
 
             End If
@@ -1075,14 +1020,10 @@ Public Class frmCapturaCySC
             ' MessageBox.Show("Valor i despues del while: " & i)
             'Cuando i = largo indica que se revisó todo el arreglo y no hay caso con rangos repetidos.
             If i = largo Then
-
                If largo = 0 Then
-
                   largo += 1
                   ReDim Preserve totalCasos(largo)
-
                Else
-
                   largo = UBound(totalCasos) + 1
                   ReDim Preserve totalCasos(largo)
                End If
@@ -1101,15 +1042,11 @@ Public Class frmCapturaCySC
                   txtHastaLetra.Text = "A"
                   txtHastaValor.Text = "1"
                End If
-
-
-
                btnNuevoSubcaso.Enabled = True
                btnGuardarSubcaso.Enabled = False
                lblNoSubCaso.Text = CInt(lblNoSubCaso.Text) + 1
                chkSubCasos.Enabled = False
             Else
-
                btnGuardarSubcaso.Enabled = True
                txtDesdeLetra.Text = "A"
                txtDesdeLetra.Focus()
@@ -1118,14 +1055,11 @@ Public Class frmCapturaCySC
                txtHastaValor.Text = "1"
                MessageBox.Show("ERROR: Los valores que se introdujeron se encuentran en el mismo rango que los del caso: " & totalCasos(i).noCaso & ", Verifique.")
             End If
-
             If (CInt(lblNoSubCaso.Text) > CInt(txtNoSubcasos.Text)) Then
-
                btnNuevoSubcaso.Enabled = False
                btnGuardarSubcaso.Enabled = False
                btnNuevoSubcaso.Visible = False
                btnGuardarSubcaso.Visible = False
-
                numero += 1
 
                'Verifica que no los casos no se hayan terminado de capturar y habilita el boton, en caso de que ya 
@@ -1133,8 +1067,6 @@ Public Class frmCapturaCySC
 
                If numero <= CInt(txtNoDeCasos.Text) Then
                   If CInt(lblNoSubCaso.Text) < CInt(txtNoSubcasos.Text) Then
-
-
                      btnNuevoSubcaso.Enabled = True
                      btnNuevoSubcaso.Visible = True
                      'MessageBox.Show("IF LBL: Valor de numero:" & numero & "Valor de lblNoSubCaso.Text: " & lblNoSubCaso.Text & "Valor de subcasos: " & txtNoSubcasos.Text)
@@ -1145,23 +1077,18 @@ Public Class frmCapturaCySC
                      txtMensajeSobreGrafica.ReadOnly = True
                      cmbNoCaso.Focus()
                      lblNoSubCaso.Text = "1"
-                     'MessageBox.Show("ELSE LBL: Valor de numero < CInt(txtNoDeCasos.Text:" & numero)
                   End If
                   If numero = CInt(txtNoDeCasos.Text) Then
                      btnInsertar.Enabled = False
                      habilitaBarrita(True)
                      btnEditar.Enabled = True
                      chkSubCasos.Enabled = False
-                     'MessageBox.Show("ELSE: Valor de numero:" & numero)
                   End If
                Else
-                  'btnInsertar.Enabled = False
                   habilitaBarrita(True)
                   btnEditar.Enabled = True
                   chkSubCasos.Enabled = False
-                  'MessageBox.Show("ELSE: Valor de numero:" & numero)
                End If
-               'lblNoSubCaso.Text = "1"
             End If
          Else 'De la validacion de subcasos >=2
             'Enviar mensaje de que al menos debe haber dos subcasos.
@@ -1175,7 +1102,7 @@ Public Class frmCapturaCySC
       Else
          btnNuevoSubcaso.Enabled = False
          btnGuardarSubcaso.Enabled = True
-         mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron tienen el mismo rango, o desde-hasta que otro caso anterior, Verifique.")
+         mensajeRojo(etiquetaMensaje, "Los valores que se introdujeron tienen el mismo rango, o desde-hasta que otro caso anterior, Verifique.")
       End If
 
    End Sub
@@ -1209,9 +1136,6 @@ Public Class frmCapturaCySC
          For i = 0 To tamano
 
             If (i <> posCasoActual) Then
-
-               'MessageBox.Show("Voy en i: " & i & " con posicion: " & posCasoActual)
-
                If Not validaSiDosCasosEstanEnDistintoRangoArreglo("Caso capturado y caso" & (i + 1), _
                           txtDesdeLetra, txtDesdeValor, txtHastaLetra, txtHastaValor, _
                           totalCasos(i).desdeLetra, totalCasos(i).desdeValor, _
@@ -1222,10 +1146,7 @@ Public Class frmCapturaCySC
                End If
             End If
          Next
-
-
          If (bandera = True) Then
-            'MessageBox.Show("llego al final del arreglo y los valores son validos")
             If totalCasos(posCasoActual).noSubcasos = 0 Then
                guardaCasoEnArreglo(posCasoActual)
             Else
@@ -1242,14 +1163,12 @@ Public Class frmCapturaCySC
             txtMensajeSobreGrafica.ReadOnly = True
             estatusDesdeHasta(True)
             habilitaDesdeHasta(False)
-
-
-            mensajeVerde(lblMensajeCaso, "Mensaje: Usted actualizó el caso No." & (posCasoActual + 1) & " de " & UBound(totalCasos))
+            mensajeVerde(etiquetaMensaje, "Mensaje: Usted actualizó el caso No." & (posCasoActual + 1) & " de " & UBound(totalCasos))
          End If
-         Else
-            mensajeRojo(lblMensajeCaso, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
-            btnGuardarEditado.Enabled = True
-         End If
+      Else
+         mensajeRojo(etiquetaMensaje, "Los valores que se introdujeron se encuentran en el mismo rango que los controles positivos o negativos, Verifique.")
+         btnGuardarEditado.Enabled = True
+      End If
 
    End Sub
 
@@ -1330,11 +1249,11 @@ Public Class frmCapturaCySC
          txtHastaValor.Text = totalCasos(posCasoActual).hastaValor
          lblCasoDeCaso.Text = "Caso: " & posCasoActual + 1 & " de " & UBound(totalCasos)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -1418,7 +1337,7 @@ Public Class frmCapturaCySC
    Private Sub aleatorios()
       Dim i As Integer = 0
       Dim j As Integer = 0
-      
+
       'placaLector = {{"0.825", "0.039", "0.824", "0.111", "0.149", "0.311", "0.577", "0.253", "0.73", "0.474", "0.325", "0.756"}, _
       '{"0.279", "0.219", "0.613", "0.639", "0.511", "0.615", "1.029", "0.172", "0.774", "0.457", "0.486", "0.306"}, _
       '{"0.31", "0.15", "0.238", "0.139", "0.565", "0.722", "0.212", "0.518", "0.21", "0.411", "0.334", "0.385"}, _
@@ -1437,26 +1356,18 @@ Public Class frmCapturaCySC
                    {"0.718", "1.56", "0.761", "0.629", "0.271", "0.864", "0.935", "0.536", "0.404", "0.049", "1.118", "0.053"}}
 
    End Sub
-
-
    '####################################################################################
    'PROCEDIMIENTO QUE OBTIENE LOS RESULTADOS POR CASO PASANDO COMO PARAMETRO EL DESDE HASTA 
    'DE CADA UNO DE LOS CASOS
    '####################################################################################
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmResultadosPrelim, ByRef etiqueta As Label, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmResultadosPrelim, ByRef etiqueta As ToolStripLabel, _
                                       ByVal posicion As Integer, _
                                       ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
                                       ByVal DAnoCaso As String, ByVal DAnoSubcasos As Integer, ByVal consecutivo As Integer, _
                                       ByVal DAanalisisSolicitado As String, ByVal DAobs As String, _
                                       ByVal DADesdeLetra As Integer, ByVal DAhastaLetra As Integer, _
                                       ByVal DAdesdeValor As Integer, ByVal DAhastaValor As Integer, ByRef titulosObtenidos As String)
-      'ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
-      'ByRef txtNombreEnfermedadSD As TextBox, ByRef txtNombreClienteSD As TextBox, ByRef txtNoCasoSD As TextBox, _
-      'ByRef lblAnalisisSD As Label, ByRef lblObservacionesSD As Label, ByRef txtFechaElaboracionSD As TextBox, _
-      'ByRef txtTitulosObtenidosSD As TextBox, ByRef txtMediaAritmetica2SD As TextBox, _
-      'ByRef txtMediaGeometricaSD As TextBox, ByRef txtTotalDatosCalculadosSD As TextBox, _
-      'ByRef txtCoefVariacion2SD As TextBox, ByRef txtDesvEstandar2SD As TextBox, ByRef txtVarianza2SD As TextBox)
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Decimal = 0
       Dim totalcalculaL As Decimal = 0
@@ -1489,16 +1400,8 @@ Public Class frmCapturaCySC
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
       Dim analisis As String = Replace(idAnalisis, "/", "")
-
       Dim nom As String = tabla(1)
-
-      'Dim numcaso As String = cmbNoCaso.Text
       Dim numcaso As String = DAnoCaso
-
-
-
-      'Dim nombre As String = nombreSobreGrafica
-      'Dim nombreCliente As String = DAnombreCliente
       Dim observaciones As String = DAobs
       Dim nombreArchivoImagen As String = ""
 
@@ -1512,7 +1415,7 @@ Public Class frmCapturaCySC
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la sumatoria de la media geométrica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
          End Try
       End If
 
@@ -1520,12 +1423,12 @@ Public Class frmCapturaCySC
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
          totalCasos(posicion).titulosObtenidos = titulosObtenidos
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
          calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
       End Try
 
       If cuentaNoDatos > 1 Then
@@ -1533,7 +1436,7 @@ Public Class frmCapturaCySC
             mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
             totalCasos(posicion).medGeom = mediaGeometrica
          Catch
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
       End If
 
@@ -1541,7 +1444,7 @@ Public Class frmCapturaCySC
          mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
          totalCasos(posicion).medArit = mediaAritmetica
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
       End Try
 
       If cuentaNoDatos > 1 Then
@@ -1549,7 +1452,7 @@ Public Class frmCapturaCySC
             varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
             totalCasos(posicion).varianza = varianza
          Catch
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: AL calcular la varianza, calculaVarianza.")
+            mensajeRojo(etiquetaMensaje, "ERROR: AL calcular la varianza, calculaVarianza.")
          End Try
       End If
 
@@ -1558,7 +1461,7 @@ Public Class frmCapturaCySC
             desvEst = calculaDesvEst(varianza)
             totalCasos(posicion).desvEst = desvEst
          Catch
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
          End Try
       End If
       If cuentaNoDatos > 1 Then
@@ -1566,51 +1469,47 @@ Public Class frmCapturaCySC
             coefVar = calculaCoefVar(desvEst, mediaAritmetica)
             totalCasos(posicion).coefVar = coefVar
          Catch
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
          End Try
       End If
       Try
          placaoriginal = obtenPlacaLeida(placaLector)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
       End Try
       Try
          calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
       End Try
       Try
          valorFR = obtenValorFR(frecuenciaRelativa)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
       End Try
       Try
          cantidadFR = obtenCantidadFR(rangoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
       End Try
       Try
-         'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
-
          cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            totalCasos(posicion).medArit, totalCasos(posicion).medGeom, _
-                           totalCasos(posicion).desvEst, totalCasos(posicion).coefVar, valorFR, cantidadFR, Me.lblMensajeCaso)
+                           totalCasos(posicion).desvEst, totalCasos(posicion).coefVar, valorFR, cantidadFR, etiquetaMensaje)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
       End Try
       Try
-         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeCaso)
+         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, etiquetaMensaje)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
-         nombreArchivoImagen = creaChartFrecRel(lblMensajeCaso, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
+         nombreArchivoImagen = creaChartFrecRel(etiquetaMensaje, frmSalidaDatos, frecuenciaRelativa, rangoDatos, _
                            titulox, tituloy, numcaso, consecutivo, analisis)
-
          totalCasos(posicion).nombreArchivoImagen = nombreArchivoImagen
-
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
    End Sub
 
@@ -1638,12 +1537,11 @@ Public Class frmCapturaCySC
          & totalCasos(i).desdeValor & " " _
          & totalCasos(i).hastaLetra & " " _
          & totalCasos(i).hastaValor & vbCrLf
-         'MessageBox.Show("valor del arreglo:" & vbCrLf & arreglo)
       Next
 
    End Sub
 
-   Private Sub btnGuardaDatosExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaDatosExcel.Click
+   Private Sub guardaDatosEnExcel()
       Dim i As Integer = 0
       Dim cadena As String
       Dim tabla() As String
@@ -1690,12 +1588,17 @@ Public Class frmCapturaCySC
          guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
                           cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
                           totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
-                          lblMensajeCaso)
+                          etiquetaMensaje)
       Next
    End Sub
 
-
    Private Sub btnObtenerResultados_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
+
+      Try
+         guardaDatosEnExcel()
+      Catch ex As Exception
+         mensajeRojo(etiquetaMensaje, "ERROR: Al guardar datos obtenidos desde el lector en archivo de excel.")
+      End Try
 
       Dim desdeArchivo As Integer = 0
 
@@ -1712,14 +1615,12 @@ Public Class frmCapturaCySC
       Dim cny2 As Integer = 0
       Dim cny3 As Integer = 0
 
-
       Dim cp1 As Decimal = 0
       Dim cp2 As Decimal = 0
       Dim cp3 As Decimal = 0
       Dim cn1 As Decimal = 0
       Dim cn2 As Decimal = 0
       Dim cn3 As Decimal = 0
-
 
       Dim desdex As Integer = 0
       Dim hastax As Integer = 0
@@ -1753,7 +1654,6 @@ Public Class frmCapturaCySC
          cny3 = CInt(txtCN3Valor3.Text) - 1
       End If
 
-
       Dim fecha = DateTime.Now
       Dim titulosObtenidos As String = ""
       Dim nombreSobreGrafica As String = txtNombreSobreGrafica.Text
@@ -1765,15 +1665,13 @@ Public Class frmCapturaCySC
       tabla = Split(cadena, " | ")
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
-
       Dim analisis As String = Replace(idAnalisis, "/", "")
 
       'Realiza el cálculo de los títulos
-
       calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
                                Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeCaso)
+                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje)
 
 
       Dim forma As frmResultadosPrelim
@@ -1787,14 +1685,16 @@ Public Class frmCapturaCySC
       forma.Show()
 
       For i = 0 To largo - 1
-         
-         obtenResultadosPorCaso("Caso No." & i + 1, forma, forma.lblSalidaDatos, i, promCP, promCN, difCPS, _
+
+         obtenResultadosPorCaso("Caso No." & i + 1, forma, etiquetaMensaje, i, promCP, promCN, difCPS, _
                                totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
                                totalCasos(i).analisis, totalCasos(i).obs, _
                                totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
                                totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
          forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
       Next
+
+      'Se coloca el índice del combobox en 0, y se presentan los primeros resultados en pantalla por default.
       forma.cmbCasosResPrel.SelectedIndex = 0
       presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
                                    forma.txtFechaElaboracion, fecha.ToShortDateString(), _
@@ -1814,17 +1714,6 @@ Public Class frmCapturaCySC
                                    forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
                                    forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
                                    forma.lblNombreArchivo)
-
-
-
-
-
-
-
-
-      
-
-
       'COMENTADO EL 18 DE SEPTIEMBRE DEL 2012.
       'Realiza el cálculo estadístico de los valores desde-hasta introducidos y almacenados en el arreglo totalCasos.
       '   For i = 0 To largo - 1
@@ -1864,5 +1753,4 @@ Public Class frmCapturaCySC
       '   Next
    End Sub
 
-   
 End Class

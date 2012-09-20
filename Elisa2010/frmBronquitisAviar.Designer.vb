@@ -24,10 +24,10 @@ Partial Class frmBronquitisAviar
    Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBronquitisAviar))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Label41 = New System.Windows.Forms.Label()
       Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
       Me.lblNoControles = New System.Windows.Forms.Label()
@@ -159,8 +159,6 @@ Partial Class frmBronquitisAviar
       Me.Label40 = New System.Windows.Forms.Label()
       Me.btnObtenerResultados = New System.Windows.Forms.Button()
       Me.btnCancelar = New System.Windows.Forms.Button()
-      Me.Panel4 = New System.Windows.Forms.Panel()
-      Me.lblMensajeCaso = New System.Windows.Forms.Label()
       Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
       Me.btnLeerDatosPlaca = New System.Windows.Forms.Button()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
@@ -213,7 +211,6 @@ Partial Class frmBronquitisAviar
       Me.tbcCaso6.SuspendLayout()
       Me.tbcCaso7.SuspendLayout()
       Me.tbcCaso8.SuspendLayout()
-      Me.Panel4.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.grbControlesNegativos.SuspendLayout()
       Me.grbControlesPositivos.SuspendLayout()
@@ -1754,27 +1751,6 @@ Partial Class frmBronquitisAviar
       Me.btnCancelar.Text = "Cancelar"
       Me.btnCancelar.UseVisualStyleBackColor = True
       '
-      'Panel4
-      '
-      Me.Panel4.AutoSize = True
-      Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel4.Controls.Add(Me.lblMensajeCaso)
-      Me.Panel4.Location = New System.Drawing.Point(8, 574)
-      Me.Panel4.Name = "Panel4"
-      Me.Panel4.Size = New System.Drawing.Size(956, 30)
-      Me.Panel4.TabIndex = 89
-      '
-      'lblMensajeCaso
-      '
-      Me.lblMensajeCaso.AutoSize = True
-      Me.lblMensajeCaso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeCaso.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeCaso.Location = New System.Drawing.Point(3, 7)
-      Me.lblMensajeCaso.Name = "lblMensajeCaso"
-      Me.lblMensajeCaso.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeCaso.TabIndex = 72
-      Me.lblMensajeCaso.Text = "Mensaje:"
-      '
       'cmbComboPorts
       '
       Me.cmbComboPorts.Enabled = False
@@ -2216,32 +2192,32 @@ Partial Class frmBronquitisAviar
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(180, 340)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 103
@@ -2274,7 +2250,6 @@ Partial Class frmBronquitisAviar
       Me.Controls.Add(Me.btnDefinirControlesPN)
       Me.Controls.Add(Me.btnAceptarControles)
       Me.Controls.Add(Me.btnGuardaDatos)
-      Me.Controls.Add(Me.Panel4)
       Me.Controls.Add(Me.cmbComboPorts)
       Me.Controls.Add(Me.btnObtenerResultados)
       Me.Controls.Add(Me.btnLeerDatosPlaca)
@@ -2303,8 +2278,6 @@ Partial Class frmBronquitisAviar
       Me.tbcCaso7.PerformLayout()
       Me.tbcCaso8.ResumeLayout(False)
       Me.tbcCaso8.PerformLayout()
-      Me.Panel4.ResumeLayout(False)
-      Me.Panel4.PerformLayout()
       Me.Panel3.ResumeLayout(False)
       Me.Panel3.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
@@ -2396,8 +2369,6 @@ Partial Class frmBronquitisAviar
    Friend WithEvents cmbNoCaso8 As System.Windows.Forms.ComboBox
    Friend WithEvents Label39 As System.Windows.Forms.Label
    Friend WithEvents Label40 As System.Windows.Forms.Label
-   Friend WithEvents Panel4 As System.Windows.Forms.Panel
-   Friend WithEvents lblMensajeCaso As System.Windows.Forms.Label
    Friend WithEvents cmbComboPorts As System.Windows.Forms.ComboBox
    Friend WithEvents btnLeerDatosPlaca As System.Windows.Forms.Button
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox

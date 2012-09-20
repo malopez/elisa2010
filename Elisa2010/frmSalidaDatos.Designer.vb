@@ -33,14 +33,12 @@ Partial Class frmSalidaDatos
       Me.txtCoefVariacion2 = New System.Windows.Forms.TextBox()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
       Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
-      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.lblELISA = New System.Windows.Forms.Label()
       Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
       Me.Label2 = New System.Windows.Forms.Label()
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.Label3 = New System.Windows.Forms.Label()
-      Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
@@ -62,7 +60,6 @@ Partial Class frmSalidaDatos
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
@@ -181,16 +178,6 @@ Partial Class frmSalidaDatos
       Me.HScrollBar1.Size = New System.Drawing.Size(999, 11)
       Me.HScrollBar1.TabIndex = 42
       '
-      'lblSalidaDatos
-      '
-      Me.lblSalidaDatos.AutoSize = True
-      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 7)
-      Me.lblSalidaDatos.Name = "lblSalidaDatos"
-      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
-      Me.lblSalidaDatos.TabIndex = 45
-      Me.lblSalidaDatos.Text = "Mensaje:"
-      '
       'lblELISA
       '
       Me.lblELISA.AutoSize = True
@@ -254,16 +241,6 @@ Partial Class frmSalidaDatos
       Me.Label3.Size = New System.Drawing.Size(113, 16)
       Me.Label3.TabIndex = 56
       Me.Label3.Text = "Fecha de Análisis:"
-      '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(9, 510)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(569, 32)
-      Me.Panel1.TabIndex = 57
       '
       'Panel2
       '
@@ -525,7 +502,6 @@ Partial Class frmSalidaDatos
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.HScrollBar1)
       Me.Controls.Add(Me.btnGuardaResultados)
-      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel4)
@@ -534,8 +510,6 @@ Partial Class frmSalidaDatos
       Me.MaximizeBox = False
       Me.Name = "frmSalidaDatos"
       Me.Text = "Resultados del Caso: "
-      Me.Panel1.ResumeLayout(False)
-      Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
       Me.Panel3.ResumeLayout(False)
@@ -556,14 +530,12 @@ Partial Class frmSalidaDatos
    Friend WithEvents txtCoefVariacion2 As System.Windows.Forms.TextBox
    Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
    Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
-   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents Label3 As System.Windows.Forms.Label
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents txtFechaElaboracion As System.Windows.Forms.TextBox

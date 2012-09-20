@@ -12,7 +12,7 @@
                             Convert.ToDouble(txtDesvEstandar2.Text), _
                             Convert.ToDouble(txtCoefVariacion2.Text), _
                             Convert.ToDouble(txtVarianza2.Text))
-      mensajeVerde(Me.lblSalidaDatos, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
+      mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
       'Catch ex As Exception
       '   mensajeException(Me.lblSalidaDatos, ex)
       'End Try
@@ -23,4 +23,7 @@
       Me.Close()
    End Sub
 
+   Private Sub frmSalidaCaso8_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class

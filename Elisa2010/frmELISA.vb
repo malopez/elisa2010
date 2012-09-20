@@ -42,12 +42,6 @@
       frmSalidaDatos.MdiParent = Me
    End Sub
 
-   'Private Sub tsmAbrirArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles tsmAbrirArchivoExistente.Click
-   '   frmAbrirArchivoExistente.MdiParent = Me
-   '   frmAbrirArchivoExistente.Show()
-   '   frmSalidaDatos.MdiParent = Me
-   'End Sub
-
    Private Sub tsmOperacionesAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles tsmOperacionesAnalisis.Click
       frmOperacionesAnalisis.MdiParent = Me
       frmOperacionesAnalisis.Show()

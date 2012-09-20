@@ -4,18 +4,20 @@ Imports MySql.Data.MySqlClient
 
 Public Class frmPasteuHaemDA
 
+   Dim etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
+
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs)
       Try
          'abreArchivoExcel(placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
-         abreArchivoExcel(Me, Me.ofdSelArchivo, Me.lblMensajeAAE, Me.btnLeerArchivoExistente, _
+         abreArchivoExcel(Me, Me.ofdSelArchivo, etiquetaMensaje, Me.btnLeerArchivoExistente, _
                           Me.btnObtenResultadosDA, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+         mensajeRojo(etiquetaMensaje, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
       End Try
       Try
          organizaEnTablaDA(Me.dgvPlacaLeida, placaLector)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
+         mensajeRojo(etiquetaMensaje, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try
       botonesEstatus(True)
       btnLeerArchivoExistente.Enabled = False
@@ -75,14 +77,14 @@ Public Class frmPasteuHaemDA
       Dim cantidadFR As String = ""
 
       Try
-         promedioPositivos = calculaPromedioPositivosDA(cp1, cp2, cp3, Me.lblMensajeAAE)
+         promedioPositivos = calculaPromedioPositivosDA(cp1, cp2, cp3, etiquetaMensaje)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "Error: Al calcular el promedio de controles positivos, calculaPromedioPositivosDA.")
+         mensajeRojo(etiquetaMensaje, "Error: Al calcular el promedio de controles positivos, calculaPromedioPositivosDA.")
       End Try
       Try
-         promedioNegativos = calculaPromedioNegativosDA(cn1, cn2, cn3, Me.lblMensajeAAE)
+         promedioNegativos = calculaPromedioNegativosDA(cn1, cn2, cn3, etiquetaMensaje)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "Error: Al calcular el promedio de controles negativos, calculaPromedioNegativosDA.")
+         mensajeRojo(etiquetaMensaje, "Error: Al calcular el promedio de controles negativos, calculaPromedioNegativosDA.")
       End Try
 
       cuentaNoDatos = calculaNoDatos(desdex, hastax, desdey, hastay)
@@ -135,7 +137,7 @@ Public Class frmPasteuHaemDA
       Next
       MessageBox.Show(resultado)
       'Catch ex As Exception
-      '   mensajeException(Me.lblMensajeAAE, ex)
+      '   mensajeException(etiquetaMensaje, ex)
       '   Me.btnLeerArchivoExistente.Enabled = True
       '   Me.btnObtenResultadosDA.Enabled = False
       'End Try
@@ -167,11 +169,11 @@ Public Class frmPasteuHaemDA
             cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -206,19 +208,19 @@ Public Class frmPasteuHaemDA
                'lblLogTit2.Text = oDataReader("logTit2").ToString()
             End While
             oDataReader.Close()
-            lblMensajeAAE.Text = ""
+            etiquetaMensaje.Text = ""
             Me.btnLeerArchivoExistente.Enabled = True
             txtDesdeLetra1.Focus()
          Else
-            mensajeRojo(Me.lblMensajeAAE, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAAE, ex)
+         mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAAE, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -271,7 +273,7 @@ Public Class frmPasteuHaemDA
             botonesEstatus(True)
          End If
       Catch
-         mensajeRojo(Me.lblMensajeAAE, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
          btnCapturaTerminada.Enabled = True
          btnObtenResultadosDA.Enabled = False
          botonesEstatus(True)

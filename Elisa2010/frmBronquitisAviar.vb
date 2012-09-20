@@ -12,7 +12,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtNoDeCasos, "En número de casos, ", 1, 8)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -141,18 +141,18 @@ Public Class frmBronquitisAviar
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(Me.lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
                      coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
 
-                     mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -161,7 +161,7 @@ Public Class frmBronquitisAviar
                      btnCapturaTerminada.Enabled = True
 
                   Else
-                     mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
@@ -170,7 +170,7 @@ Public Class frmBronquitisAviar
 
                   End If
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -188,23 +188,23 @@ Public Class frmBronquitisAviar
                   controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
-                  If queSeanDistintos(Me.lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
                      coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
 
 
-                     mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -213,7 +213,7 @@ Public Class frmBronquitisAviar
                      btnCapturaTerminada.Enabled = True
 
                   Else
-                     mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
@@ -222,7 +222,7 @@ Public Class frmBronquitisAviar
 
                   End If
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -243,23 +243,23 @@ Public Class frmBronquitisAviar
                  controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
-                  If queSeanDistintos(Me.lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
                      coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
 
-                     mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -267,14 +267,14 @@ Public Class frmBronquitisAviar
                      habilitaTabsCorrectos(txtNoDeCasos.Text)
                      btnCapturaTerminada.Enabled = True
                   Else
-                     mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                   End If
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -294,28 +294,28 @@ Public Class frmBronquitisAviar
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(Me.lblMensajeCaso, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(Me.lblMensajeCaso, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
 
                      'Colocados aqui el 6-Ago-2012
                      coloreaControlesPositivos(nocp, Me.dgvPlacaLeida, Me.txtCP1Letra1, Me.txtCP1Valor1, Me.txtCP2Letra2, Me.txtCP2Valor2, Me.txtCP3Letra3, Me.txtCP3Valor3)
                      coloreaControlesNegativos(nocn, Me.dgvPlacaLeida, Me.txtCN1Letra1, Me.txtCN1Valor1, Me.txtCN2Letra2, Me.txtCN2Valor2, Me.txtCN3Letra3, Me.txtCN3Valor3)
 
-                     mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
@@ -323,14 +323,14 @@ Public Class frmBronquitisAviar
                      habilitaTabsCorrectos(txtNoDeCasos.Text)
                      btnCapturaTerminada.Enabled = True
                   Else
-                     mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      btnAceptarControles.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                   End If
                Else
-                  mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                   grbControlesPositivos.Enabled = True
@@ -361,11 +361,11 @@ Public Class frmBronquitisAviar
    '         cmbNombreEnfermedad.Items.Add(oFila.Item("CLAVE") & " | " & cadena.Remove(0, 24))
    '      Next
    '   Catch ex As MySqlException
-   '      mensajeExceptionSQL(lblMensajeCaso, ex)
+   '      mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   Catch ex As DataException
-   '      mensajeException(lblMensajeCaso, ex)
+   '      mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   Catch ex As Exception
-   '      mensajeException(lblMensajeCaso, ex)
+   '      mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
    '   End Try
    'End Sub
 
@@ -397,11 +397,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso1.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -433,11 +433,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso2.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -469,11 +469,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso3.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -505,11 +505,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso4.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -541,11 +541,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso5.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -577,11 +577,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso6.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -613,11 +613,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso7.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -647,11 +647,11 @@ Public Class frmBronquitisAviar
             cmbNoCaso8.Items.Add(oFila.Item("caso"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -702,20 +702,20 @@ Public Class frmBronquitisAviar
                   lblLogTit2.Text = oDataReader("logTit2").ToString()
                End While
                oDataReader.Close()
-               lblMensajeCaso.Text = ""
+               frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
             Else
-               mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+               mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
             End If
             oConexion.Close()
          Catch ex As MySqlException
-            mensajeExceptionSQL(lblMensajeCaso, ex)
+            mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          Catch ex As DataException
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          Catch ex As Exception
-            mensajeException(lblMensajeCaso, ex)
+            mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
          End Try
       Else
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
          cmbNombreEnfermedad.Enabled = True
          txtNoDeCasos.Enabled = True
          txtNoControlesPositivos.Enabled = True
@@ -764,18 +764,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC1.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -800,18 +800,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -835,18 +835,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC3.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -870,18 +870,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC4.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -905,18 +905,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC5.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -941,18 +941,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC6.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -976,18 +976,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC2.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1011,18 +1011,18 @@ Public Class frmBronquitisAviar
                lblObservacionesC8.Text = oDataReader("OBS").ToString()
             End While
             oDataReader.Close()
-            lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(Me.lblMensajeCaso, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
          habilitaBotonesDesdeHasta(True, False, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8)
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1142,7 +1142,7 @@ Public Class frmBronquitisAviar
          'Valor positivo uno, letra y numero
          controlesValidosLetra(txtDesdeLetra1C1, "1er. caso", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1150,7 +1150,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C1, "1er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1159,7 +1159,7 @@ Public Class frmBronquitisAviar
          'Valor positivo uno, letra y numero
          controlesValidosLetra(txtHastaLetra2C1, "1er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1167,7 +1167,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C1, " 1er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1176,7 +1176,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C2, " 2o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1188,7 +1188,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C2, " 2o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1196,7 +1196,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C2, " 2o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1205,7 +1205,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C3, " 3er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1213,7 +1213,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C3, " 3er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1221,7 +1221,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C3, " 3er. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1229,7 +1229,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C3, " 3er. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1238,7 +1238,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C4, " 4o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1246,7 +1246,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C4, " 4o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1254,7 +1254,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C4, " 4o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1262,7 +1262,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C4, " 4o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1271,7 +1271,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C5, " 5o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1279,7 +1279,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C5, " 5o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1287,7 +1287,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C5, " 5o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1295,7 +1295,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C5, " 5o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1304,7 +1304,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C6, " 6o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1312,7 +1312,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C6, " 6o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1320,7 +1320,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C6, " 6o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1328,7 +1328,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C6, " 6o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1337,7 +1337,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C7, " 7o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1345,7 +1345,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C7, " 7o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1353,7 +1353,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C7, " 7o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1361,7 +1361,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C7, " 7o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1370,7 +1370,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtDesdeLetra1C8, " 8o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1378,7 +1378,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtDesdeValor1C6, " 8o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1386,7 +1386,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosLetra(txtHastaLetra2C8, " 8o. caso ", "A", "H")
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1394,7 +1394,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtHastaValor2C8, " 8o. caso ", 1, 12)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1402,18 +1402,18 @@ Public Class frmBronquitisAviar
       Try
          If Me.btnLeerDatosPlaca.Text = "Obtener Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
-            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, Me.lblMensajeCaso, Me.lblNombreLector)
+            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion, Me.lblNombreLector)
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
-               mensajeVerde(Me.lblMensajeCaso, "Mensaje: Cerrando el puerto COM del lector.")
+               mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                'btnFormateaDatos.Enabled = True
                presentaDatosEnPantallaFormateados()
             End If
          End If
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -1425,7 +1425,7 @@ Public Class frmBronquitisAviar
       Try
          convierteCadena(msn)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
          formateaDatos(placaLector, Me.dgvPlacaLeida)
@@ -1438,7 +1438,7 @@ Public Class frmBronquitisAviar
          'coloreaTablaCasos(noCasos)
 
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Se ha presentado un error al formatear datos.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Se ha presentado un error al formatear datos.")
       End Try
    End Sub
 
@@ -1448,13 +1448,13 @@ Public Class frmBronquitisAviar
          az = Me.SerialPort1.ReadExisting.Trim
          msn += az
       Catch ex As Exception
-         mensajeException(Me.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
       Me.txtDatosRecibidos.Text = msn
    End Sub
 
    Private Sub frmBronquitisAviar_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-      GetSerialPortNamesParametros(cmbComboPorts, Me.lblMensajeCaso)
+      GetSerialPortNamesParametros(cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion)
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
    End Sub
 
@@ -1465,7 +1465,7 @@ Public Class frmBronquitisAviar
       txtHastaValor2C1.Enabled = estatus
    End Sub
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef control As Control, ByRef etiqueta As Label, ByVal cmbNombreEnfermedad As ComboBox, ByVal cmbNoCaso As ComboBox, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef control As Control, ByRef etiqueta As ToolStripLabel, ByVal cmbNombreEnfermedad As ComboBox, ByVal cmbNoCaso As ComboBox, _
                                       ByVal txtNombreCliente As TextBox, ByVal txtAnalisisSolicitado As TextBox, _
                                       ByVal lblObservaciones As Label, _
                                       ByVal txtDesdeLetra As TextBox, ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, _
@@ -1521,81 +1521,81 @@ Public Class frmBronquitisAviar
       Try
          mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la sumatoria de la media geométrica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la sumatoria de la media geométrica.")
       End Try
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
          calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
       End Try
       Try
          mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
       End Try
       Try
          mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
       End Try
       Try
          varianza = calculaVarianza(mediaAritmetica, calculaL, cuentaNoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: AL calcular la varianza, calculaVarianza.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: AL calcular la varianza, calculaVarianza.")
       End Try
       Try
          desvEst = calculaDesvEst(varianza)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
       End Try
       Try
          coefVar = calculaCoefVar(desvEst, mediaAritmetica)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
       End Try
       Try
          placaoriginal = obtenPlacaLeida(placaLector)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al obtener el string de la placa original, obtenPlacaLeida.")
       End Try
       Try
          calculaFrecuenciaRelativa(frecuenciaRelativa, rangoDatos, rangoTotal)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular la frecuencia relativa, calculaFrecuenciaRelativa.")
       End Try
       Try
          valorFR = obtenValorFR(frecuenciaRelativa)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de valor de la Frec. Rel., obtenValorFR.")
       End Try
       Try
          cantidadFR = obtenCantidadFR(rangoDatos)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al calcular el string de cantidad de la Frec. Rel., obtenCantidadFR.")
       End Try
       Try
          'MessageBox.Show("Numero de caso que voy a guardar en la base de datos: " & numcaso)
          cargaResultadosBD(numcaso, consecutivo, idAnalisis, placaoriginal, titulosObtenidos, fecha.ToShortDateString(), promCP, promCN, difCPS, _
                            Convert.ToDouble(mediaAritmetica), Convert.ToDouble(mediaGeometrica), _
-                           Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, Me.lblMensajeCaso)
+                           Convert.ToDouble(desvEst), Convert.ToDouble(coefVar), valorFR, cantidadFR, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al cargar resultados a la BD, cargaResultadosBD.")
       End Try
       Try
-         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, Me.lblMensajeCaso)
+         cargaFrecRelBD(frecuenciaRelativa, numcaso, rangoDatos, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar la frecuencia relativa en BD, cargaFrecRelBD.")
       End Try
       Try
          'creaChartFrecRel(etiqueta, control, nombre, titulox, tituloy, numcaso, analisis)
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
 
    End Sub
@@ -1657,13 +1657,13 @@ Public Class frmBronquitisAviar
          calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
                                Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, Me.lblMensajeCaso)
+                               desdex, hastax, desdey, hastay, promCP, promCN, difCPS, frmElisaBiovetsa.lblMensajeAplicacion)
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso, "Error: Al calculor los valores, calculaValoresEnRango.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error: Al calculor los valores, calculaValoresEnRango.")
       End Try
       Select Case noCasos
          Case 1
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1672,7 +1672,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
          Case 2
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                        frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1680,7 +1680,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1690,7 +1690,7 @@ Public Class frmBronquitisAviar
             frmSalidaCaso2.Show()
 
          Case 3
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1698,7 +1698,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1706,7 +1706,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1715,7 +1715,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
          Case 4
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1723,7 +1723,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                         frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1731,7 +1731,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                         frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1739,7 +1739,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1748,7 +1748,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
          Case 5
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1756,7 +1756,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1764,7 +1764,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1772,7 +1772,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1780,7 +1780,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1789,7 +1789,7 @@ Public Class frmBronquitisAviar
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
          Case 6
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1797,7 +1797,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1805,7 +1805,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1813,7 +1813,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1821,7 +1821,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1829,7 +1829,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1838,7 +1838,7 @@ Public Class frmBronquitisAviar
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
          Case 7
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1846,7 +1846,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1854,7 +1854,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1862,7 +1862,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1870,7 +1870,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1878,7 +1878,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1886,7 +1886,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                       frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1895,7 +1895,7 @@ Public Class frmBronquitisAviar
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
          Case 8
-            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmSalidaDatos.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
+            obtenResultadosPorCaso("Caso 1", frmSalidaDatos, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso1, txtNombreClienteC1, txtAnalisisSolicitadoC1, _
                                      lblObservacionesC1, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, txtHastaValor2C1, _
                                      promCP, promCN, difCPS, frmSalidaDatos.txtNombreEnfermedad, frmSalidaDatos.txtNombreCliente, frmSalidaDatos.txtNoCaso, _
                                         frmSalidaDatos.lblAnalisis, frmSalidaDatos.lblObservaciones, frmSalidaDatos.txtFechaElaboracion, _
@@ -1903,7 +1903,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaDatos.txtMediaGeometrica, frmSalidaDatos.txtTotalDatosCalculados, _
                                         frmSalidaDatos.txtCoefVariacion2, frmSalidaDatos.txtDesvEstandar2, frmSalidaDatos.txtVarianza2)
             frmSalidaDatos.Show()
-            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmSalidaCaso2.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
+            obtenResultadosPorCaso("Caso 2", frmSalidaCaso2, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso2, txtNombreClienteC2, txtAnalisisSolicitadoC2, _
                                      lblObservacionesC2, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, txtHastaValor2C2, _
                                      promCP, promCN, difCPS, frmSalidaCaso2.txtNombreEnfermedad, frmSalidaCaso2.txtNombreCliente, frmSalidaCaso2.txtNoCaso, _
                                          frmSalidaCaso2.lblAnalisis, frmSalidaCaso2.lblObservaciones, frmSalidaCaso2.txtFechaElaboracion, _
@@ -1911,7 +1911,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso2.txtMediaGeometrica, frmSalidaCaso2.txtTotalDatosCalculados, _
                                        frmSalidaCaso2.txtCoefVariacion2, frmSalidaCaso2.txtDesvEstandar2, frmSalidaCaso2.txtVarianza2)
             frmSalidaCaso2.Show()
-            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmSalidaCaso3.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
+            obtenResultadosPorCaso("Caso 3", frmSalidaCaso3, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso3, txtNombreClienteC3, txtAnalisisSolicitadoC3, _
                                      lblObservacionesC3, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, txtHastaValor2C3, _
                                      promCP, promCN, difCPS, frmSalidaCaso3.txtNombreEnfermedad, frmSalidaCaso3.txtNombreCliente, frmSalidaCaso3.txtNoCaso, _
                                          frmSalidaCaso3.lblAnalisis, frmSalidaCaso3.lblObservaciones, frmSalidaCaso3.txtFechaElaboracion, _
@@ -1919,7 +1919,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso3.txtMediaGeometrica, frmSalidaCaso3.txtTotalDatosCalculados, _
                                        frmSalidaCaso3.txtCoefVariacion2, frmSalidaCaso3.txtDesvEstandar2, frmSalidaCaso3.txtVarianza2)
             frmSalidaCaso3.Show()
-            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmSalidaCaso4.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
+            obtenResultadosPorCaso("Caso 4", frmSalidaCaso4, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso4, txtNombreClienteC4, txtAnalisisSolicitadoC4, _
                                      lblObservacionesC4, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, txtHastaValor2C4, _
                                      promCP, promCN, difCPS, frmSalidaCaso4.txtNombreEnfermedad, frmSalidaCaso4.txtNombreCliente, frmSalidaCaso4.txtNoCaso, _
                                         frmSalidaCaso4.lblAnalisis, frmSalidaCaso4.lblObservaciones, frmSalidaCaso4.txtFechaElaboracion, _
@@ -1927,7 +1927,7 @@ Public Class frmBronquitisAviar
                                         frmSalidaCaso4.txtMediaGeometrica, frmSalidaCaso4.txtTotalDatosCalculados, _
                                        frmSalidaCaso4.txtCoefVariacion2, frmSalidaCaso4.txtDesvEstandar2, frmSalidaCaso4.txtVarianza2)
             frmSalidaCaso4.Show()
-            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmSalidaCaso5.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
+            obtenResultadosPorCaso("Caso 5", frmSalidaCaso5, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso5, txtNombreClienteC5, txtAnalisisSolicitadoC5, _
                                     lblObservacionesC5, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, txtHastaValor2C5, _
                                     promCP, promCN, difCPS, frmSalidaCaso5.txtNombreEnfermedad, frmSalidaCaso5.txtNombreCliente, frmSalidaCaso5.txtNoCaso, _
                                         frmSalidaCaso5.lblAnalisis, frmSalidaCaso5.lblObservaciones, frmSalidaCaso5.txtFechaElaboracion, _
@@ -1935,7 +1935,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso5.txtMediaGeometrica, frmSalidaCaso5.txtTotalDatosCalculados, _
                                       frmSalidaCaso5.txtCoefVariacion2, frmSalidaCaso5.txtDesvEstandar2, frmSalidaCaso5.txtVarianza2)
             frmSalidaCaso5.Show()
-            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmSalidaCaso6.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
+            obtenResultadosPorCaso("Caso 6", frmSalidaCaso6, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso6, txtNombreClienteC6, txtAnalisisSolicitadoC6, _
                                     lblObservacionesC6, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, txtHastaValor2C6, _
                                     promCP, promCN, difCPS, frmSalidaCaso6.txtNombreEnfermedad, frmSalidaCaso6.txtNombreCliente, frmSalidaCaso6.txtNoCaso, _
                                        frmSalidaCaso6.lblAnalisis, frmSalidaCaso6.lblObservaciones, frmSalidaCaso6.txtFechaElaboracion, _
@@ -1943,7 +1943,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso6.txtMediaGeometrica, frmSalidaCaso6.txtTotalDatosCalculados, _
                                       frmSalidaCaso6.txtCoefVariacion2, frmSalidaCaso6.txtDesvEstandar2, frmSalidaCaso6.txtVarianza2)
             frmSalidaCaso6.Show()
-            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmSalidaCaso7.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
+            obtenResultadosPorCaso("Caso 7", frmSalidaCaso7, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso7, txtNombreClienteC7, txtAnalisisSolicitadoC7, _
                                     lblObservacionesC7, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, txtHastaValor2C7, _
                                     promCP, promCN, difCPS, frmSalidaCaso7.txtNombreEnfermedad, frmSalidaCaso7.txtNombreCliente, frmSalidaCaso7.txtNoCaso, _
                                       frmSalidaCaso7.lblAnalisis, frmSalidaCaso7.lblObservaciones, frmSalidaCaso7.txtFechaElaboracion, _
@@ -1951,7 +1951,7 @@ Public Class frmBronquitisAviar
                                        frmSalidaCaso7.txtMediaGeometrica, frmSalidaCaso7.txtTotalDatosCalculados, _
                                       frmSalidaCaso7.txtCoefVariacion2, frmSalidaCaso7.txtDesvEstandar2, frmSalidaCaso7.txtVarianza2)
             frmSalidaCaso7.Show()
-            obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmSalidaCaso8.lblSalidaDatos, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
+            obtenResultadosPorCaso("Caso 8", frmSalidaCaso8, frmElisaBiovetsa.lblMensajeAplicacion, cmbNombreEnfermedad, cmbNoCaso8, txtNombreClienteC8, txtAnalisisSolicitadoC8, _
                                     lblObservacionesC8, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, txtHastaValor2C8, _
                                     promCP, promCN, difCPS, frmSalidaCaso8.txtNombreEnfermedad, frmSalidaCaso8.txtNombreCliente, frmSalidaCaso8.txtNoCaso, _
                                       frmSalidaCaso8.lblAnalisis, frmSalidaCaso8.lblObservaciones, frmSalidaCaso8.txtFechaElaboracion, _
@@ -1967,7 +1967,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(Me.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -1976,7 +1976,7 @@ Public Class frmBronquitisAviar
       Try
          controlesValidosNumero(txtNoControlesNegativos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(Me.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -2049,163 +2049,163 @@ Public Class frmBronquitisAviar
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                              txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                              txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                             txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                             txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
             Case 2
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
 
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
             Case 3
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
 
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
 
             Case 4
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
                guardaCaso(cmbNoCaso4, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 4")
 
             Case 5
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                           txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
                guardaCaso(cmbNoCaso4, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 4")
                guardaCaso(cmbNoCaso5, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 5")
             Case 6
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
                guardaCaso(cmbNoCaso4, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 4")
                guardaCaso(cmbNoCaso5, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 5")
                guardaCaso(cmbNoCaso6, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 6")
             Case 7
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
                guardaCaso(cmbNoCaso4, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 4")
                guardaCaso(cmbNoCaso5, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 5")
                guardaCaso(cmbNoCaso6, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 6")
                guardaCaso(cmbNoCaso7, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 7")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 7")
 
             Case 8
                guardaCaso(cmbNoCaso1, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C1, txtHastaLetra2C1, txtDesdeValor1C1, _
                                       txtHastaValor2C1, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                                       txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 1")
+                                      txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 1")
                guardaCaso(cmbNoCaso2, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C2, txtHastaLetra2C2, txtDesdeValor1C2, _
                           txtHastaValor2C2, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 2")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 2")
                guardaCaso(cmbNoCaso3, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C3, txtHastaLetra2C3, txtDesdeValor1C3, _
                           txtHastaValor2C3, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 3")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 3")
                guardaCaso(cmbNoCaso4, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C4, txtHastaLetra2C4, txtDesdeValor1C4, _
                           txtHastaValor2C4, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 4")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 4")
                guardaCaso(cmbNoCaso5, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C5, txtHastaLetra2C5, txtDesdeValor1C5, _
                           txtHastaValor2C5, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 5")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 5")
                guardaCaso(cmbNoCaso6, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C6, txtHastaLetra2C6, txtDesdeValor1C6, _
                           txtHastaValor2C6, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 6")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 6")
                guardaCaso(cmbNoCaso7, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C7, txtHastaLetra2C7, txtDesdeValor1C7, _
                           txtHastaValor2C7, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                           txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 7")
+                          txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 7")
                guardaCaso(cmbNoCaso8, analisis, txtNoControlesPositivos, txtNoControlesNegativos, txtDesdeLetra1C8, txtHastaLetra2C8, txtDesdeValor1C8, _
                          txtHastaValor2C8, txtCP1Letra1, txtCP2Letra2, txtCP3Letra3, txtCP1Valor1, _
                          txtCP2Valor2, txtCP3Valor3, txtCN1Letra1, _
-                         txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, lblMensajeCaso, "Caso 8")
+                         txtCN2Letra2, txtCN3Letra3, txtCN1Valor1, txtCN2Valor2, txtCN3Valor3, frmElisaBiovetsa.lblMensajeAplicacion, "Caso 8")
          End Select
          btnObtenerResultados.Enabled = True
       Catch
-         mensajeRojo(Me.lblMensajeCaso, "Error: Al guardar los datos de los casos en excel, btnGuardaDatos_Click.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error: Al guardar los datos de los casos en excel, btnGuardaDatos_Click.")
       End Try
 
    End Sub
@@ -2283,7 +2283,7 @@ Public Class frmBronquitisAviar
          Try
             'colocado aqui el e-Ago-2012
             coloreaTablaCasos(noCasos)
-            mensajeVerde(Me.lblMensajeCaso, "Mensaje:")
+            mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
             Select Case noCasos
                Case 1
                   If verificaEstanTodosLosValores(nocp, "Caso 1", tbcCaso1, cmbNoCaso1, txtDesdeLetra1C1, txtDesdeValor1C1, txtHastaLetra2C1, txtHastaValor2C1) Then
@@ -2534,13 +2534,13 @@ Public Class frmBronquitisAviar
                   End If
             End Select
          Catch
-            mensajeRojo(Me.lblMensajeCaso, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido son erróneos, trate nuevamente, btnCapturaTerminada_Click.")
             tbcDatosDelCaso.Enabled = True
             btnCapturaTerminada.Enabled = True
             btnLeerDatosPlaca.Enabled = False
          End Try
       Else
-         mensajeRojo(Me.lblMensajeCaso, "MENSAJE: Trate nuevamente y escriba los valores válidos.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "MENSAJE: Trate nuevamente y escriba los valores válidos.")
       End If
    End Sub
 

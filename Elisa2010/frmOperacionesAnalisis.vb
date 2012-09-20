@@ -39,11 +39,11 @@ Public Class frmOperacionesAnalisis
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosAnalisis()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -64,11 +64,11 @@ Public Class frmOperacionesAnalisis
          'Cerrar la conexion a la BD
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
 
    End Sub
@@ -85,28 +85,28 @@ Public Class frmOperacionesAnalisis
          ' para el desplegado en la etiqueta
          lblNRAnalisis.Text = "Registro: " & Me.iposicFilaActual + 1 & " de " & Me.oDataSet.Tables("analisis").Rows.Count
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub btnHaciaAdelante_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAdelante.Click
       Try
          If Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1) Then
-            mensajeRojo(lblMensajeAnalisis, "Mensaje: Usted se encuentra en el último registro.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Usted se encuentra en el último registro.")
          Else
             Me.iposicFilaActual += 1
             Me.cargarDatosAnalisis()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -116,29 +116,29 @@ Public Class frmOperacionesAnalisis
          Me.iposicFilaActual = 0
          Me.cargarDatosAnalisis()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub btnHaciaAtras_Click(sender As System.Object, e As System.EventArgs) Handles btnHaciaAtras.Click
       Try
          If Me.iposicFilaActual = 0 Then
-            mensajeRojo(lblMensajeAnalisis, "Mensaje: Usted se encuentra en el primer registro.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Usted se encuentra en el primer registro.")
          Else
             'Disminuir el marcador del registro y actualizar en pantalla con los datos del registro actual
             Me.iposicFilaActual -= 1
             Me.cargarDatosAnalisis()
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -148,11 +148,11 @@ Public Class frmOperacionesAnalisis
          Me.iposicFilaActual = (Me.oDataSet.Tables("analisis").Rows.Count - 1)
          Me.cargarDatosAnalisis()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -174,13 +174,13 @@ Public Class frmOperacionesAnalisis
          oConexion.Close()
 
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
-      mensajeVerde(lblMensajeAnalisis, "Mensaje: Los datos se han guardado exitosamente.")
+      mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos se han guardado exitosamente.")
       'Recarga los datos
       Dim dbConsulta = "SELECT * FROM analisis"
       Dim nombreTabla = "analisis"
@@ -203,7 +203,7 @@ Public Class frmOperacionesAnalisis
    Private Sub btnInsAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles btnInsAnalisis.Click
       txtClaveAnalisis.Text = ""
       txtNombreAnalisis.Text = ""
-      lblMensajeAnalisis.Text = ""
+      frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
       txtClaveAnalisis.ReadOnly = False
       txtNombreAnalisis.ReadOnly = False
       desHabilitaBarra()
@@ -233,13 +233,13 @@ Public Class frmOperacionesAnalisis
          oConexion.Close()
 
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
-      mensajeVerde(lblMensajeAnalisis, "Mensaje: Los datos del análisis se han eliminado exitosamente.")
+      mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos del análisis se han eliminado exitosamente.")
       habilitaBarra()
       btnInsAnalisis.Enabled = True
       btnGuardaAnalisis.Enabled = False
@@ -277,7 +277,7 @@ Public Class frmOperacionesAnalisis
          oConexion.Open()
          resultado = oComando.ExecuteNonQuery()
          oConexion.Close()
-         mensajeVerde(lblMensajeAnalisis, "Mensaje: El nombre del análisis se ha actualizado exitosamente.")
+         mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: El nombre del análisis se ha actualizado exitosamente.")
          habilitaBarra()
          btnInsAnalisis.Enabled = True
          btnDelAnalisis.Enabled = True
@@ -289,11 +289,11 @@ Public Class frmOperacionesAnalisis
          llenaDataSet(dbConsulta, nombreTabla)
          Me.cargarDatosAnalisis()
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -311,7 +311,7 @@ Public Class frmOperacionesAnalisis
          oComando.CommandText = aConsulta
          If txtClaveAnalisis.Text = "" Then
             txtNombreAnalisis.Text = ""
-            mensajeRojo(lblMensajeAnalisis, "Mensaje:Escriba un valor en la clave del análisis.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:Escriba un valor en la clave del análisis.")
          Else
             oConexion.Open()
             oDataReader = oComando.ExecuteReader()
@@ -321,26 +321,26 @@ Public Class frmOperacionesAnalisis
                   txtNombreAnalisis.Text = oDataReader("analysis_desc")
                End While
                oDataReader.Close()
-               'lblMensajeAnalisis.Text = ""
+               'frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
             Else
-               mensajeRojo(lblMensajeAnalisis, "Mensaje: No existe un análisis con la clave indicada.")
+               mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: No existe un análisis con la clave indicada.")
             End If
             oConexion.Close()
             txtClaveAnalisis.Focus()
             'Verifica que no sea vacia la consulta
          End If
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeAnalisis, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeAnalisis, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    Private Sub txtClaveAnalisis_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtClaveAnalisis.TextChanged
       txtNombreAnalisis.Text = ""
-      'lblMensajeAnalisis.Text = ""
+      'frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
    End Sub
 
 

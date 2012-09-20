@@ -24,8 +24,6 @@ Partial Class frmResultadosPrelim
     Private Sub InitializeComponent()
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
-      Me.Panel1 = New System.Windows.Forms.Panel()
-      Me.lblSalidaDatos = New System.Windows.Forms.Label()
       Me.Panel2 = New System.Windows.Forms.Panel()
       Me.cmbCasosResPrel = New System.Windows.Forms.ComboBox()
       Me.lblAnalisis = New System.Windows.Forms.Label()
@@ -60,7 +58,6 @@ Partial Class frmResultadosPrelim
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
@@ -84,26 +81,6 @@ Partial Class frmResultadosPrelim
       Me.btnGuardaResultados.TabIndex = 63
       Me.btnGuardaResultados.Text = "Guardar Resultados"
       Me.btnGuardaResultados.UseVisualStyleBackColor = True
-      '
-      'Panel1
-      '
-      Me.Panel1.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel1.Controls.Add(Me.lblSalidaDatos)
-      Me.Panel1.Location = New System.Drawing.Point(9, 508)
-      Me.Panel1.Name = "Panel1"
-      Me.Panel1.Size = New System.Drawing.Size(569, 32)
-      Me.Panel1.TabIndex = 65
-      '
-      'lblSalidaDatos
-      '
-      Me.lblSalidaDatos.AutoSize = True
-      Me.lblSalidaDatos.BackColor = System.Drawing.SystemColors.Window
-      Me.lblSalidaDatos.Location = New System.Drawing.Point(5, 7)
-      Me.lblSalidaDatos.Name = "lblSalidaDatos"
-      Me.lblSalidaDatos.Size = New System.Drawing.Size(50, 13)
-      Me.lblSalidaDatos.TabIndex = 45
-      Me.lblSalidaDatos.Text = "Mensaje:"
       '
       'Panel2
       '
@@ -515,15 +492,12 @@ Partial Class frmResultadosPrelim
       Me.ClientSize = New System.Drawing.Size(586, 547)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaResultados)
-      Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel4)
       Me.MaximizeBox = False
       Me.Name = "frmResultadosPrelim"
       Me.Text = "Resultados Preliminares de los casos"
-      Me.Panel1.ResumeLayout(False)
-      Me.Panel1.PerformLayout()
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()
       Me.Panel3.ResumeLayout(False)
@@ -536,8 +510,6 @@ Partial Class frmResultadosPrelim
    End Sub
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents btnGuardaResultados As System.Windows.Forms.Button
-   Friend WithEvents Panel1 As System.Windows.Forms.Panel
-   Friend WithEvents lblSalidaDatos As System.Windows.Forms.Label
    Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents lblAnalisis As System.Windows.Forms.Label
    Friend WithEvents txtInmunoEnsayo As System.Windows.Forms.TextBox

@@ -68,8 +68,6 @@ Partial Class frmConfiguraLector
       Me.Panel4 = New System.Windows.Forms.Panel()
       Me.lblMensajeAnalisis = New System.Windows.Forms.Label()
       Me.TextBox1 = New System.Windows.Forms.TextBox()
-      Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.lblMensajeLector = New System.Windows.Forms.Label()
       Me.Panel1.SuspendLayout()
       Me.Panel2.SuspendLayout()
       Me.gpbSB.SuspendLayout()
@@ -77,7 +75,6 @@ Partial Class frmConfiguraLector
       Me.gpbParidad.SuspendLayout()
       Me.gpbBPS.SuspendLayout()
       Me.Panel4.SuspendLayout()
-      Me.Panel3.SuspendLayout()
       Me.SuspendLayout()
       '
       'Panel1
@@ -591,33 +588,11 @@ Partial Class frmConfiguraLector
       Me.TextBox1.Size = New System.Drawing.Size(311, 20)
       Me.TextBox1.TabIndex = 3
       '
-      'Panel3
-      '
-      Me.Panel3.AutoSize = True
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.lblMensajeLector)
-      Me.Panel3.Location = New System.Drawing.Point(8, 346)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(616, 30)
-      Me.Panel3.TabIndex = 75
-      '
-      'lblMensajeLector
-      '
-      Me.lblMensajeLector.AutoSize = True
-      Me.lblMensajeLector.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeLector.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeLector.Location = New System.Drawing.Point(3, 7)
-      Me.lblMensajeLector.Name = "lblMensajeLector"
-      Me.lblMensajeLector.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeLector.TabIndex = 72
-      Me.lblMensajeLector.Text = "Mensaje:"
-      '
       'frmConfiguraLector
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
       Me.ClientSize = New System.Drawing.Size(632, 379)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnCancelaCL)
       Me.Controls.Add(Me.btnAceptarCL)
       Me.Controls.Add(Me.Panel2)
@@ -637,10 +612,7 @@ Partial Class frmConfiguraLector
       Me.gpbBPS.ResumeLayout(False)
       Me.Panel4.ResumeLayout(False)
       Me.Panel4.PerformLayout()
-      Me.Panel3.ResumeLayout(False)
-      Me.Panel3.PerformLayout()
       Me.ResumeLayout(False)
-      Me.PerformLayout()
 
    End Sub
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -688,6 +660,4 @@ Partial Class frmConfiguraLector
    Friend WithEvents lblMensajeAnalisis As System.Windows.Forms.Label
    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
    Friend WithEvents txtNombreLector As System.Windows.Forms.TextBox
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
-   Friend WithEvents lblMensajeLector As System.Windows.Forms.Label
 End Class

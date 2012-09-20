@@ -14,7 +14,7 @@ Module mldOperacionesExcel
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                                ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
                                ByVal desdex As Integer, ByVal desdey As Integer, ByVal hastax As Integer, ByVal hastay As Integer, _
-                               ByVal etiqueta As Label)
+                               ByVal etiqueta As ToolStripLabel)
 
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
@@ -691,7 +691,7 @@ Module mldOperacionesExcel
    'de una placa leida previamente
 
    Public Sub abreArchivoExcel(ByRef control As Control, ByRef dialogo As System.Windows.Forms.OpenFileDialog, _
-                               ByRef etiqueta As Label, ByRef boton1 As System.Windows.Forms.Button, _
+                               ByRef etiqueta As ToolStripLabel, ByRef boton1 As System.Windows.Forms.Button, _
                                ByRef boton2 As System.Windows.Forms.Button, ByVal placaLector(,) As Decimal, _
                                ByRef txtCPDAValor1 As TextBox, ByRef txtCPDAValor2 As TextBox, _
                                ByRef txtCPDAValor3 As TextBox, ByRef txtCNDAValor1 As TextBox,
@@ -781,7 +781,7 @@ Module mldOperacionesExcel
    '#CREA GRAFICA DE BARRAS UTILIZANDO EXCEL        #
    '#################################################
    'utiliza excel para crear la grafica de barras y la guarda  como imagen.
-   Public Function creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
+   Public Function creaChartFrecRel(ByRef etiqueta As ToolStripLabel, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
                                     ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String) As String
       'ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String) As String
       Dim excelApp As New Excel.Application
@@ -906,9 +906,6 @@ Module mldOperacionesExcel
       releaseObject(excelApp)
       Return nombreArchivo
    End Function
-
-
-
 
 
    'Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal nombre As String, ByVal titulox As String, _

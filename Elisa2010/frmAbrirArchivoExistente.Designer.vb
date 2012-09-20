@@ -44,8 +44,6 @@ Partial Class frmAbrirArchivoExistente
       Me.cmbNoCaso = New System.Windows.Forms.ComboBox()
       Me.lblNombreAnalisis = New System.Windows.Forms.Label()
       Me.lblNombreCliente = New System.Windows.Forms.Label()
-      Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.lblMensajeAAE = New System.Windows.Forms.Label()
       Me.btnCancelarDA = New System.Windows.Forms.Button()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
       Me.btnObtenResultadosDA = New System.Windows.Forms.Button()
@@ -77,7 +75,6 @@ Partial Class frmAbrirArchivoExistente
       Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel2.SuspendLayout()
       Me.pnlRegistraNuevoAnalisis.SuspendLayout()
-      Me.Panel3.SuspendLayout()
       Me.Panel1.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.grbCNDesdeArchivo.SuspendLayout()
@@ -261,27 +258,6 @@ Partial Class frmAbrirArchivoExistente
       Me.lblNombreCliente.Size = New System.Drawing.Size(125, 16)
       Me.lblNombreCliente.TabIndex = 2
       Me.lblNombreCliente.Text = "Nombre del Cliente:"
-      '
-      'Panel3
-      '
-      Me.Panel3.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel3.Controls.Add(Me.lblMensajeAAE)
-      Me.Panel3.Location = New System.Drawing.Point(7, 437)
-      Me.Panel3.Name = "Panel3"
-      Me.Panel3.Size = New System.Drawing.Size(869, 30)
-      Me.Panel3.TabIndex = 117
-      '
-      'lblMensajeAAE
-      '
-      Me.lblMensajeAAE.AutoSize = True
-      Me.lblMensajeAAE.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeAAE.ForeColor = System.Drawing.Color.Green
-      Me.lblMensajeAAE.Location = New System.Drawing.Point(5, 5)
-      Me.lblMensajeAAE.Name = "lblMensajeAAE"
-      Me.lblMensajeAAE.Size = New System.Drawing.Size(56, 15)
-      Me.lblMensajeAAE.TabIndex = 2
-      Me.lblMensajeAAE.Text = "Mensaje:"
       '
       'btnCancelarDA
       '
@@ -629,7 +605,6 @@ Partial Class frmAbrirArchivoExistente
       Me.Controls.Add(Me.btnCapturaTerminada)
       Me.Controls.Add(Me.lblObservaciones)
       Me.Controls.Add(Me.pnlRegistraNuevoAnalisis)
-      Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.btnCancelarDA)
       Me.Controls.Add(Me.btnLeerArchivoExistente)
       Me.Controls.Add(Me.btnObtenResultadosDA)
@@ -645,8 +620,6 @@ Partial Class frmAbrirArchivoExistente
       Me.Panel2.PerformLayout()
       Me.pnlRegistraNuevoAnalisis.ResumeLayout(False)
       Me.pnlRegistraNuevoAnalisis.PerformLayout()
-      Me.Panel3.ResumeLayout(False)
-      Me.Panel3.PerformLayout()
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
@@ -675,8 +648,6 @@ Partial Class frmAbrirArchivoExistente
    Friend WithEvents cmbNoCaso As System.Windows.Forms.ComboBox
    Friend WithEvents lblNombreAnalisis As System.Windows.Forms.Label
    Friend WithEvents lblNombreCliente As System.Windows.Forms.Label
-   Friend WithEvents Panel3 As System.Windows.Forms.Panel
-   Friend WithEvents lblMensajeAAE As System.Windows.Forms.Label
    Friend WithEvents btnCancelarDA As System.Windows.Forms.Button
    Friend WithEvents btnLeerArchivoExistente As System.Windows.Forms.Button
    Friend WithEvents btnObtenResultadosDA As System.Windows.Forms.Button

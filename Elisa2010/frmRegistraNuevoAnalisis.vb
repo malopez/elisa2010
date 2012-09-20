@@ -34,14 +34,14 @@ Public Class frmRegistraNuevoAnalisis
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
-               lblMensajeCaso.ForeColor = System.Drawing.Color.Green
-               lblMensajeCaso.Text = "Mensaje: Cerrando el puerto COM del lector."
+               frmElisaBiovetsa.lblMensajeAplicacion.ForeColor = System.Drawing.Color.Green
+               frmElisaBiovetsa.lblMensajeAplicacion.Text = "Mensaje: Cerrando el puerto COM del lector."
                btnLeerDatosPlaca.Enabled = False
                btnFormateaDatos.Enabled = True
             End If
          End If
       Catch ex As Exception
-         mensajeRojo(Me.lblMensajeCaso,"Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -108,7 +108,7 @@ Public Class frmRegistraNuevoAnalisis
             cnx3 = siValorEsLetra(txtCN3Letra3)
             cny3 = Val(txtCN3Valor3.Text)
          Catch ex As Exception
-            mensajeRojo(Me.lblMensajeCaso, "Los datos no son válidos, cambie los controles e intente nuevamente.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Los datos no son válidos, cambie los controles e intente nuevamente.")
             btnObtenerResultados.Enabled = False
             btnDefinirControlesPN.Enabled = True
          End Try
@@ -123,10 +123,10 @@ Public Class frmRegistraNuevoAnalisis
          Dim tabla1() As String
          cadena1 = cmbNoCaso.Text
          tabla1 = Split(cadena1, " | ")
-         calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.Text, "Grupo de títulos", "%", 0, tabla1(0), CStr(dtpFechaElaboracion.Value), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
+         'calculaValores(tabla(1), txtNombreCliente.Text, lblObservaciones.Text, "Grupo de títulos", "%", 0, tabla1(0), CStr(dtpFechaElaboracion.Value), cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), Convert.ToDecimal(lblLogTit2.Text), 0, 0, 0, 0, 0, 0)
          frmSalidaDatos.Show()
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
 
    End Sub
@@ -253,7 +253,7 @@ Public Class frmRegistraNuevoAnalisis
          btnGuardarDatosExcel.Enabled = True
          btnObtenerResultados.Enabled = True
       Else
-         mensajeRojo(Me.lblMensajeCaso, "Los valores que ha introducido no son válidos, trate nuevamente.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Los valores que ha introducido no son válidos, trate nuevamente.")
          btnDefinirControlesPN.Enabled = True
          btnAceptarControles.Enabled = True
       End If
@@ -280,11 +280,11 @@ Public Class frmRegistraNuevoAnalisis
             cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
          Next
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
 
 
@@ -310,28 +310,28 @@ Public Class frmRegistraNuevoAnalisis
          oComando.CommandText = aConsulta
          oConexion.Open()
          oDataReader = oComando.ExecuteReader()
-            If oDataReader.HasRows Then
-               While oDataReader.Read()
+         If oDataReader.HasRows Then
+            While oDataReader.Read()
                txtNombreCliente.Text = oDataReader("NombreCliente").ToString()
                txtAnalisisSolicitado.Text = oDataReader("AnalisisSolicitados").ToString()
                lblObservaciones.Text = oDataReader("OBS").ToString()
                lblLogSPS.Text = oDataReader("logSPS").ToString()
                lblLogTit1.Text = oDataReader("logTit1").ToString()
                lblLogTit2.Text = oDataReader("logTit2").ToString()
-               End While
-               oDataReader.Close()
-            lblMensajeCaso.Text = ""
-            Else
-            mensajeRojo(lblMensajeCaso, "Mensaje: Seleccione un número de caso.")
-            End If
+            End While
+            oDataReader.Close()
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
+         Else
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Seleccione un número de caso.")
+         End If
          oConexion.Close()
          Me.btnLeerDatosPlaca.Enabled = True
       Catch ex As MySqlException
-         mensajeExceptionSQL(lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
@@ -341,14 +341,14 @@ Public Class frmRegistraNuevoAnalisis
       ' Try
       convierteCadena(msn)
       ' Catch ex As Exception
-      'mensajeRojo(Me.lblMensajeCaso," Se ha presentado un error al convertir la cadena en valores.")
-      'mensajeException(Me.lblMensajeCaso, ex)
+      'mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion," Se ha presentado un error al convertir la cadena en valores.")
+      'mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       ' End Try
       Try
          formateaDatos(placaLector, Me.dgvPlacaLeida)
          btnDefinirControlesPN.Enabled = True
       Catch ex As Exception
-         mensajeRojo(lblMensajeCaso, "Se ha presentado un error al formatear datos.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Se ha presentado un error al formatear datos.")
       End Try
 
    End Sub

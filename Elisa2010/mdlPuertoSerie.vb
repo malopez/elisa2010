@@ -29,17 +29,17 @@ Module mdlPuertoSerie
                stopBitsLector = oDataReader("stopBitsLector")
             End While
             oDataReader.Close()
-            frmRegistraNuevoAnalisis.lblMensajeCaso.Text = ""
+            frmElisaBiovetsa.lblMensajeAplicacion.Text = ""
          Else
-            mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "Mensaje: No se ha encontrado un lector default.")
+            mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: No se ha encontrado un lector default.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
-         mensajeExceptionSQL(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeExceptionSQL(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As DataException
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       Catch ex As Exception
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
 
    End Sub
@@ -72,13 +72,13 @@ Module mdlPuertoSerie
             .Open() ' ABRE EL PUERTO SERIE
          End With
       Catch ex As Exception
-         mensajeRojo(frmRegistraNuevoAnalisis.lblMensajeCaso, "ERROR: Al abrir el puerto serial con los datos configurados.")
+         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al abrir el puerto serial con los datos configurados.")
       End Try
    End Sub
 
    'configura el puerto serial utilizando parametros para el despliegue
    Public Sub Setup_Puerto_SerieParametros(ByVal puerto As System.IO.Ports.SerialPort, ByRef comboPuerto As System.Windows.Forms.ComboBox, _
-                                           ByRef etiqueta As System.Windows.Forms.Label, ByRef nombreLector As System.Windows.Forms.Label)
+                                           ByRef etiqueta As ToolStripLabel, ByRef nombreLector As System.Windows.Forms.Label)
       Dim nomLector As String = ""
       Dim bpsLector As Integer
       Dim paridadLector As Integer
@@ -134,12 +134,12 @@ Module mdlPuertoSerie
             frmRegistraNuevoAnalisis.cmbComboPorts.Text = ""
          End If
       Catch ex As Exception
-         mensajeException(frmRegistraNuevoAnalisis.lblMensajeCaso, ex)
+         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
       End Try
    End Sub
 
    'Obtiene los puertos seriales disponibles utilizando parametros para colocar el valor en la Forma indicada
-   Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As System.Windows.Forms.Label)
+   Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As ToolStripLabel)
       ' muestra COM ports disponibles.
       Dim l As Integer
       Dim ncom As String

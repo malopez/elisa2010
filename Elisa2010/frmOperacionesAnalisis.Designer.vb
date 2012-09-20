@@ -28,9 +28,7 @@ Partial Class frmOperacionesAnalisis
       Me.Label1 = New System.Windows.Forms.Label()
       Me.txtNombreAnalisis = New System.Windows.Forms.TextBox()
       Me.txtClaveAnalisis = New System.Windows.Forms.TextBox()
-      Me.lblMensajeAnalisis = New System.Windows.Forms.Label()
       Me.btnCancelarAnalisis = New System.Windows.Forms.Button()
-      Me.Panel2 = New System.Windows.Forms.Panel()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.btnInsAnalisis = New System.Windows.Forms.Button()
       Me.btnUpdAnalisis = New System.Windows.Forms.Button()
@@ -43,7 +41,6 @@ Partial Class frmOperacionesAnalisis
       Me.btnEditarAnalisis = New System.Windows.Forms.Button()
       Me.btnDelAnalisis = New System.Windows.Forms.Button()
       Me.Panel3 = New System.Windows.Forms.Panel()
-      Me.Panel2.SuspendLayout()
       Me.Panel1.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.SuspendLayout()
@@ -103,17 +100,6 @@ Partial Class frmOperacionesAnalisis
       Me.txtClaveAnalisis.Size = New System.Drawing.Size(125, 21)
       Me.txtClaveAnalisis.TabIndex = 0
       '
-      'lblMensajeAnalisis
-      '
-      Me.lblMensajeAnalisis.AutoSize = True
-      Me.lblMensajeAnalisis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMensajeAnalisis.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.lblMensajeAnalisis.Location = New System.Drawing.Point(3, 9)
-      Me.lblMensajeAnalisis.Name = "lblMensajeAnalisis"
-      Me.lblMensajeAnalisis.Size = New System.Drawing.Size(58, 13)
-      Me.lblMensajeAnalisis.TabIndex = 71
-      Me.lblMensajeAnalisis.Text = "Mensaje:"
-      '
       'btnCancelarAnalisis
       '
       Me.btnCancelarAnalisis.BackColor = System.Drawing.SystemColors.Control
@@ -127,16 +113,6 @@ Partial Class frmOperacionesAnalisis
       Me.btnCancelarAnalisis.TabIndex = 12
       Me.btnCancelarAnalisis.Text = "Cancelar"
       Me.btnCancelarAnalisis.UseVisualStyleBackColor = False
-      '
-      'Panel2
-      '
-      Me.Panel2.BackColor = System.Drawing.SystemColors.Window
-      Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.Panel2.Controls.Add(Me.lblMensajeAnalisis)
-      Me.Panel2.Location = New System.Drawing.Point(7, 202)
-      Me.Panel2.Name = "Panel2"
-      Me.Panel2.Size = New System.Drawing.Size(621, 33)
-      Me.Panel2.TabIndex = 73
       '
       'Panel1
       '
@@ -274,9 +250,8 @@ Partial Class frmOperacionesAnalisis
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.ClientSize = New System.Drawing.Size(635, 244)
+      Me.ClientSize = New System.Drawing.Size(635, 201)
       Me.Controls.Add(Me.btnCancelarAnalisis)
-      Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel1)
       Me.Controls.Add(Me.Panel3)
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -284,8 +259,6 @@ Partial Class frmOperacionesAnalisis
       Me.Name = "frmOperacionesAnalisis"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
       Me.Text = "Operaciones sobre análisis"
-      Me.Panel2.ResumeLayout(False)
-      Me.Panel2.PerformLayout()
       Me.Panel1.ResumeLayout(False)
       Me.Panel1.PerformLayout()
       Me.Panel3.ResumeLayout(False)
@@ -298,9 +271,7 @@ Partial Class frmOperacionesAnalisis
    Friend WithEvents Label1 As System.Windows.Forms.Label
    Friend WithEvents txtNombreAnalisis As System.Windows.Forms.TextBox
    Friend WithEvents txtClaveAnalisis As System.Windows.Forms.TextBox
-   Friend WithEvents lblMensajeAnalisis As System.Windows.Forms.Label
    Friend WithEvents btnCancelarAnalisis As System.Windows.Forms.Button
-   Friend WithEvents Panel2 As System.Windows.Forms.Panel
    Friend WithEvents Panel1 As System.Windows.Forms.Panel
    Friend WithEvents btnInsAnalisis As System.Windows.Forms.Button
    Friend WithEvents btnUpdAnalisis As System.Windows.Forms.Button

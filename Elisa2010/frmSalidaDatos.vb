@@ -18,7 +18,7 @@ Public Class frmSalidaDatos
                             Convert.ToDouble(txtCoefVariacion2.Text), _
                             Convert.ToDouble(txtVarianza2.Text), lblNombreArchivo.Text)
       
-      mensajeVerde(Me.lblSalidaDatos, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
+      mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "El archivo de resultados para el caso se ha guardado exitosamente en excel.")
       'Catch ex As Exception
       '   mensajeException(Me.lblSalidaDatos, ex)
       'End Try
@@ -42,4 +42,7 @@ Public Class frmSalidaDatos
    End Sub
 
 
+   Private Sub frmSalidaDatos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+   End Sub
 End Class
