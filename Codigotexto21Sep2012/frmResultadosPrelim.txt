@@ -1,4 +1,4 @@
-ï»¿Imports System.IO
+Imports System.IO
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
@@ -70,7 +70,7 @@ Public Class frmResultadosPrelim
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       Try
-         'Obtener el nombre del anÃ¡lisis para colocar la cabecera de la grÃ¡fica
+         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
          Dim cadena As String
          Dim tabla() As String
          cadena = cmbCasosResPrel.Text
@@ -99,7 +99,7 @@ Public Class frmResultadosPrelim
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       imagenGrafica.Image.Dispose()
       releaseObject(imagenGrafica)
-      'ATENCIÃ“N:!!NO Descomentar las siguientes dos lÃ­neas a menos que se requiera borrar desde disco el archivo de la imagen.
+      'ATENCIÓN:!!NO Descomentar las siguientes dos líneas a menos que se requiera borrar desde disco el archivo de la imagen.
       'Application.DoEvents()
       'Kill(lblNombreArchivo.Text)
       Me.Close()

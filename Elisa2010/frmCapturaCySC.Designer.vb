@@ -24,10 +24,10 @@ Partial Class frmCapturaCySC
     Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCySC))
-      Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Label43 = New System.Windows.Forms.Label()
       Me.Label42 = New System.Windows.Forms.Label()
@@ -41,7 +41,6 @@ Partial Class frmCapturaCySC
       Me.tbcDatosDelCaso = New System.Windows.Forms.TabControl()
       Me.tbpDatosDelCaso = New System.Windows.Forms.TabPage()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
-      Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
       Me.Panel7 = New System.Windows.Forms.Panel()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
       Me.txtCN2Letra2 = New System.Windows.Forms.TextBox()
@@ -53,6 +52,7 @@ Partial Class frmCapturaCySC
       Me.lblCNNo1 = New System.Windows.Forms.Label()
       Me.txtCN3Letra3 = New System.Windows.Forms.TextBox()
       Me.txtCN3Valor3 = New System.Windows.Forms.TextBox()
+      Me.cmbComboPorts = New System.Windows.Forms.ComboBox()
       Me.grbControlesPositivos = New System.Windows.Forms.GroupBox()
       Me.txtCP1Letra1 = New System.Windows.Forms.TextBox()
       Me.txtCP1Valor1 = New System.Windows.Forms.TextBox()
@@ -63,25 +63,23 @@ Partial Class frmCapturaCySC
       Me.txtCP3Letra3 = New System.Windows.Forms.TextBox()
       Me.lblCPNo1 = New System.Windows.Forms.Label()
       Me.txtCP3Valor3 = New System.Windows.Forms.TextBox()
+      Me.btnAceptarControles = New System.Windows.Forms.Button()
+      Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
+      Me.lblLogTit1 = New System.Windows.Forms.Label()
+      Me.lblIdAnalisis = New System.Windows.Forms.Label()
+      Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
+      Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel4 = New System.Windows.Forms.Panel()
       Me.Label8 = New System.Windows.Forms.Label()
       Me.txtNombreSobreGrafica = New System.Windows.Forms.TextBox()
-      Me.TextBox2 = New System.Windows.Forms.TextBox()
-      Me.TextBox3 = New System.Windows.Forms.TextBox()
       Me.Label41 = New System.Windows.Forms.Label()
       Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
       Me.lblNoCasos = New System.Windows.Forms.Label()
       Me.txtNoDeCasos = New System.Windows.Forms.TextBox()
       Me.lblNoControles = New System.Windows.Forms.Label()
       Me.txtNoControlesPositivos = New System.Windows.Forms.TextBox()
-      Me.lblLogTit2 = New System.Windows.Forms.Label()
-      Me.lblIdAnalisis = New System.Windows.Forms.Label()
-      Me.lblLogSPS = New System.Windows.Forms.Label()
-      Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.btnAceptarEnfermedad = New System.Windows.Forms.Button()
-      Me.btnDefinirControlesPN = New System.Windows.Forms.Button()
-      Me.btnAceptarControles = New System.Windows.Forms.Button()
       Me.tbpInformacionCaso = New System.Windows.Forms.TabPage()
       Me.Panel8 = New System.Windows.Forms.Panel()
       Me.btnAceptaSubCasos = New System.Windows.Forms.Button()
@@ -187,7 +185,6 @@ Partial Class frmCapturaCySC
       Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(221, 21)
       Me.cmbNombreEnfermedad.TabIndex = 103
       Me.cmbNombreEnfermedad.TabStop = False
-      Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
       '
       'btnObtenerResultados
       '
@@ -249,7 +246,6 @@ Partial Class frmCapturaCySC
       'tbpDatosDelCaso
       '
       Me.tbpDatosDelCaso.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-      Me.tbpDatosDelCaso.Controls.Add(Me.txtDatosRecibidos)
       Me.tbpDatosDelCaso.Controls.Add(Me.Panel7)
       Me.tbpDatosDelCaso.Controls.Add(Me.Panel4)
       Me.tbpDatosDelCaso.Controls.Add(Me.btnAceptarEnfermedad)
@@ -263,29 +259,20 @@ Partial Class frmCapturaCySC
       'txtDatosRecibidos
       '
       Me.txtDatosRecibidos.BackColor = System.Drawing.Color.White
-      Me.txtDatosRecibidos.Location = New System.Drawing.Point(11, 54)
+      Me.txtDatosRecibidos.Location = New System.Drawing.Point(506, 96)
       Me.txtDatosRecibidos.Multiline = True
       Me.txtDatosRecibidos.Name = "txtDatosRecibidos"
       Me.txtDatosRecibidos.ReadOnly = True
-      Me.txtDatosRecibidos.Size = New System.Drawing.Size(74, 21)
+      Me.txtDatosRecibidos.Size = New System.Drawing.Size(105, 21)
       Me.txtDatosRecibidos.TabIndex = 148
       Me.txtDatosRecibidos.TabStop = False
       Me.txtDatosRecibidos.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
       Me.txtDatosRecibidos.Visible = False
       '
-      'cmbComboPorts
-      '
-      Me.cmbComboPorts.Enabled = False
-      Me.cmbComboPorts.FormattingEnabled = True
-      Me.cmbComboPorts.Location = New System.Drawing.Point(21, 60)
-      Me.cmbComboPorts.Name = "cmbComboPorts"
-      Me.cmbComboPorts.Size = New System.Drawing.Size(100, 21)
-      Me.cmbComboPorts.TabIndex = 147
-      Me.cmbComboPorts.TabStop = False
-      '
       'Panel7
       '
       Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel7.Controls.Add(Me.txtDatosRecibidos)
       Me.Panel7.Controls.Add(Me.grbControlesNegativos)
       Me.Panel7.Controls.Add(Me.cmbComboPorts)
       Me.Panel7.Controls.Add(Me.grbControlesPositivos)
@@ -296,7 +283,7 @@ Partial Class frmCapturaCySC
       Me.Panel7.Controls.Add(Me.lblLogTit2)
       Me.Panel7.Controls.Add(Me.ckbControlesDefault)
       Me.Panel7.Controls.Add(Me.lblLogSPS)
-      Me.Panel7.Location = New System.Drawing.Point(14, 83)
+      Me.Panel7.Location = New System.Drawing.Point(14, 118)
       Me.Panel7.Name = "Panel7"
       Me.Panel7.Size = New System.Drawing.Size(664, 134)
       Me.Panel7.TabIndex = 145
@@ -409,6 +396,17 @@ Partial Class frmCapturaCySC
       Me.txtCN3Valor3.TabIndex = 17
       Me.txtCN3Valor3.Visible = False
       '
+      'cmbComboPorts
+      '
+      Me.cmbComboPorts.Enabled = False
+      Me.cmbComboPorts.FormattingEnabled = True
+      Me.cmbComboPorts.Location = New System.Drawing.Point(21, 60)
+      Me.cmbComboPorts.Name = "cmbComboPorts"
+      Me.cmbComboPorts.Size = New System.Drawing.Size(100, 21)
+      Me.cmbComboPorts.TabIndex = 147
+      Me.cmbComboPorts.TabStop = False
+      Me.cmbComboPorts.Visible = False
+      '
       'grbControlesPositivos
       '
       Me.grbControlesPositivos.Controls.Add(Me.txtCP1Letra1)
@@ -517,6 +515,58 @@ Partial Class frmCapturaCySC
       Me.txtCP3Valor3.TabIndex = 11
       Me.txtCP3Valor3.Visible = False
       '
+      'btnAceptarControles
+      '
+      Me.btnAceptarControles.Enabled = False
+      Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptarControles.Location = New System.Drawing.Point(506, 63)
+      Me.btnAceptarControles.Name = "btnAceptarControles"
+      Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
+      Me.btnAceptarControles.TabIndex = 19
+      Me.btnAceptarControles.Text = "Aceptar Controles"
+      Me.btnAceptarControles.UseVisualStyleBackColor = True
+      '
+      'btnDefinirControlesPN
+      '
+      Me.btnDefinirControlesPN.Enabled = False
+      Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(506, 28)
+      Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
+      Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
+      Me.btnDefinirControlesPN.TabIndex = 18
+      Me.btnDefinirControlesPN.Text = "Definir Controles"
+      Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
+      '
+      'lblLogTit1
+      '
+      Me.lblLogTit1.AutoSize = True
+      Me.lblLogTit1.Location = New System.Drawing.Point(76, 108)
+      Me.lblLogTit1.Name = "lblLogTit1"
+      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
+      Me.lblLogTit1.TabIndex = 129
+      Me.lblLogTit1.Text = "logTit1: "
+      Me.lblLogTit1.Visible = False
+      '
+      'lblIdAnalisis
+      '
+      Me.lblIdAnalisis.AutoSize = True
+      Me.lblIdAnalisis.Location = New System.Drawing.Point(18, 108)
+      Me.lblIdAnalisis.Name = "lblIdAnalisis"
+      Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
+      Me.lblIdAnalisis.TabIndex = 131
+      Me.lblIdAnalisis.Text = "id_analisis"
+      Me.lblIdAnalisis.Visible = False
+      '
+      'lblLogTit2
+      '
+      Me.lblLogTit2.AutoSize = True
+      Me.lblLogTit2.Location = New System.Drawing.Point(77, 92)
+      Me.lblLogTit2.Name = "lblLogTit2"
+      Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
+      Me.lblLogTit2.TabIndex = 130
+      Me.lblLogTit2.Text = "logTit2:"
+      Me.lblLogTit2.Visible = False
+      '
       'ckbControlesDefault
       '
       Me.ckbControlesDefault.AutoSize = True
@@ -530,14 +580,22 @@ Partial Class frmCapturaCySC
       Me.ToolTip1.SetToolTip(Me.ckbControlesDefault, "Marque para valores default")
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
       '
+      'lblLogSPS
+      '
+      Me.lblLogSPS.AutoSize = True
+      Me.lblLogSPS.Location = New System.Drawing.Point(18, 89)
+      Me.lblLogSPS.Name = "lblLogSPS"
+      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
+      Me.lblLogSPS.TabIndex = 128
+      Me.lblLogSPS.Text = "logsSPS: "
+      Me.lblLogSPS.Visible = False
+      '
       'Panel4
       '
       Me.Panel4.BackColor = System.Drawing.SystemColors.Control
       Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
       Me.Panel4.Controls.Add(Me.Label8)
       Me.Panel4.Controls.Add(Me.txtNombreSobreGrafica)
-      Me.Panel4.Controls.Add(Me.TextBox2)
-      Me.Panel4.Controls.Add(Me.TextBox3)
       Me.Panel4.Controls.Add(Me.Label41)
       Me.Panel4.Controls.Add(Me.txtNoControlesNegativos)
       Me.Panel4.Controls.Add(Me.lblNoCasos)
@@ -546,7 +604,7 @@ Partial Class frmCapturaCySC
       Me.Panel4.Controls.Add(Me.txtNoControlesPositivos)
       Me.Panel4.Location = New System.Drawing.Point(14, 11)
       Me.Panel4.Name = "Panel4"
-      Me.Panel4.Size = New System.Drawing.Size(664, 37)
+      Me.Panel4.Size = New System.Drawing.Size(664, 72)
       Me.Panel4.TabIndex = 140
       '
       'Label8
@@ -555,48 +613,26 @@ Partial Class frmCapturaCySC
       Me.Label8.BackColor = System.Drawing.Color.Transparent
       Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label8.Location = New System.Drawing.Point(9, 7)
+      Me.Label8.Location = New System.Drawing.Point(108, 7)
       Me.Label8.Name = "Label8"
-      Me.Label8.Size = New System.Drawing.Size(135, 16)
+      Me.Label8.Size = New System.Drawing.Size(260, 16)
       Me.Label8.TabIndex = 150
-      Me.Label8.Text = "Enfermedad en siglas:"
+      Me.Label8.Text = "Abreviatura del nombre de la enfermedad:"
       '
       'txtNombreSobreGrafica
       '
-      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(146, 5)
+      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(368, 6)
       Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
-      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(60, 20)
+      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(166, 20)
       Me.txtNombreSobreGrafica.TabIndex = 149
       Me.ToolTip1.SetToolTip(Me.txtNombreSobreGrafica, "Abreviatura de la enfermedad")
-      '
-      'TextBox2
-      '
-      Me.TextBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.TextBox2.Location = New System.Drawing.Point(489, 8)
-      Me.TextBox2.MaxLength = 1
-      Me.TextBox2.Name = "TextBox2"
-      Me.TextBox2.ReadOnly = True
-      Me.TextBox2.Size = New System.Drawing.Size(25, 20)
-      Me.TextBox2.TabIndex = 145
-      Me.TextBox2.TabStop = False
-      '
-      'TextBox3
-      '
-      Me.TextBox3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-      Me.TextBox3.Location = New System.Drawing.Point(329, 7)
-      Me.TextBox3.MaxLength = 1
-      Me.TextBox3.Name = "TextBox3"
-      Me.TextBox3.ReadOnly = True
-      Me.TextBox3.Size = New System.Drawing.Size(25, 20)
-      Me.TextBox3.TabIndex = 144
-      Me.TextBox3.TabStop = False
       '
       'Label41
       '
       Me.Label41.AutoSize = True
       Me.Label41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label41.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label41.Location = New System.Drawing.Point(520, 11)
+      Me.Label41.Location = New System.Drawing.Point(403, 45)
       Me.Label41.Name = "Label41"
       Me.Label41.Size = New System.Drawing.Size(100, 15)
       Me.Label41.TabIndex = 143
@@ -604,7 +640,8 @@ Partial Class frmCapturaCySC
       '
       'txtNoControlesNegativos
       '
-      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(628, 8)
+      Me.txtNoControlesNegativos.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(509, 42)
       Me.txtNoControlesNegativos.MaxLength = 1
       Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
@@ -616,7 +653,7 @@ Partial Class frmCapturaCySC
       Me.lblNoCasos.AutoSize = True
       Me.lblNoCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoCasos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCasos.Location = New System.Drawing.Point(212, 10)
+      Me.lblNoCasos.Location = New System.Drawing.Point(108, 44)
       Me.lblNoCasos.Name = "lblNoCasos"
       Me.lblNoCasos.Size = New System.Drawing.Size(80, 15)
       Me.lblNoCasos.TabIndex = 139
@@ -624,7 +661,7 @@ Partial Class frmCapturaCySC
       '
       'txtNoDeCasos
       '
-      Me.txtNoDeCasos.Location = New System.Drawing.Point(298, 6)
+      Me.txtNoDeCasos.Location = New System.Drawing.Point(196, 42)
       Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
@@ -636,7 +673,7 @@ Partial Class frmCapturaCySC
       Me.lblNoControles.AutoSize = True
       Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoControles.Location = New System.Drawing.Point(360, 10)
+      Me.lblNoControles.Location = New System.Drawing.Point(246, 44)
       Me.lblNoControles.Name = "lblNoControles"
       Me.lblNoControles.Size = New System.Drawing.Size(92, 15)
       Me.lblNoControles.TabIndex = 141
@@ -644,84 +681,23 @@ Partial Class frmCapturaCySC
       '
       'txtNoControlesPositivos
       '
-      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(458, 7)
+      Me.txtNoControlesPositivos.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(344, 42)
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
       Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
       Me.txtNoControlesPositivos.TabIndex = 2
       Me.ToolTip1.SetToolTip(Me.txtNoControlesPositivos, "No. controles positivos")
       '
-      'lblLogTit2
-      '
-      Me.lblLogTit2.AutoSize = True
-      Me.lblLogTit2.Location = New System.Drawing.Point(77, 92)
-      Me.lblLogTit2.Name = "lblLogTit2"
-      Me.lblLogTit2.Size = New System.Drawing.Size(42, 13)
-      Me.lblLogTit2.TabIndex = 130
-      Me.lblLogTit2.Text = "logTit2:"
-      Me.lblLogTit2.Visible = False
-      '
-      'lblIdAnalisis
-      '
-      Me.lblIdAnalisis.AutoSize = True
-      Me.lblIdAnalisis.Location = New System.Drawing.Point(18, 108)
-      Me.lblIdAnalisis.Name = "lblIdAnalisis"
-      Me.lblIdAnalisis.Size = New System.Drawing.Size(55, 13)
-      Me.lblIdAnalisis.TabIndex = 131
-      Me.lblIdAnalisis.Text = "id_analisis"
-      Me.lblIdAnalisis.Visible = False
-      '
-      'lblLogSPS
-      '
-      Me.lblLogSPS.AutoSize = True
-      Me.lblLogSPS.Location = New System.Drawing.Point(18, 89)
-      Me.lblLogSPS.Name = "lblLogSPS"
-      Me.lblLogSPS.Size = New System.Drawing.Size(53, 13)
-      Me.lblLogSPS.TabIndex = 128
-      Me.lblLogSPS.Text = "logsSPS: "
-      Me.lblLogSPS.Visible = False
-      '
-      'lblLogTit1
-      '
-      Me.lblLogTit1.AutoSize = True
-      Me.lblLogTit1.Location = New System.Drawing.Point(76, 108)
-      Me.lblLogTit1.Name = "lblLogTit1"
-      Me.lblLogTit1.Size = New System.Drawing.Size(45, 13)
-      Me.lblLogTit1.TabIndex = 129
-      Me.lblLogTit1.Text = "logTit1: "
-      Me.lblLogTit1.Visible = False
-      '
       'btnAceptarEnfermedad
       '
       Me.btnAceptarEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(573, 54)
+      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(573, 89)
       Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
       Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(105, 23)
       Me.btnAceptarEnfermedad.TabIndex = 4
       Me.btnAceptarEnfermedad.Text = "Aceptar"
       Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
-      '
-      'btnDefinirControlesPN
-      '
-      Me.btnDefinirControlesPN.Enabled = False
-      Me.btnDefinirControlesPN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnDefinirControlesPN.Location = New System.Drawing.Point(506, 28)
-      Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
-      Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
-      Me.btnDefinirControlesPN.TabIndex = 18
-      Me.btnDefinirControlesPN.Text = "Definir Controles"
-      Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
-      '
-      'btnAceptarControles
-      '
-      Me.btnAceptarControles.Enabled = False
-      Me.btnAceptarControles.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarControles.Location = New System.Drawing.Point(506, 63)
-      Me.btnAceptarControles.Name = "btnAceptarControles"
-      Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarControles.TabIndex = 19
-      Me.btnAceptarControles.Text = "Aceptar Controles"
-      Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
       'tbpInformacionCaso
       '
@@ -780,7 +756,7 @@ Partial Class frmCapturaCySC
       'lblNoSubCaso
       '
       Me.lblNoSubCaso.AutoSize = True
-      Me.lblNoSubCaso.Location = New System.Drawing.Point(238, 156)
+      Me.lblNoSubCaso.Location = New System.Drawing.Point(645, 9)
       Me.lblNoSubCaso.Name = "lblNoSubCaso"
       Me.lblNoSubCaso.Size = New System.Drawing.Size(13, 13)
       Me.lblNoSubCaso.TabIndex = 145
@@ -848,6 +824,7 @@ Partial Class frmCapturaCySC
       'lblObservaciones
       '
       Me.lblObservaciones.AutoSize = True
+      Me.lblObservaciones.ForeColor = System.Drawing.Color.Black
       Me.lblObservaciones.Location = New System.Drawing.Point(166, 127)
       Me.lblObservaciones.Name = "lblObservaciones"
       Me.lblObservaciones.Size = New System.Drawing.Size(45, 13)
@@ -1157,33 +1134,33 @@ Partial Class frmCapturaCySC
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+      DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.BackgroundColor = System.Drawing.Color.White
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle10.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+      DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle22.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle22.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle22.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(7, 356)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle11.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
-      DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle12
+      DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle23.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle23.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle23
+      DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle24
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 141
@@ -1193,7 +1170,7 @@ Partial Class frmCapturaCySC
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(708, 620)
+      Me.ClientSize = New System.Drawing.Size(708, 590)
       Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.tbcDatosDelCaso)
       Me.Controls.Add(Me.lblNombreLector)
@@ -1211,7 +1188,6 @@ Partial Class frmCapturaCySC
       Me.Panel1.PerformLayout()
       Me.tbcDatosDelCaso.ResumeLayout(False)
       Me.tbpDatosDelCaso.ResumeLayout(False)
-      Me.tbpDatosDelCaso.PerformLayout()
       Me.Panel7.ResumeLayout(False)
       Me.Panel7.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)
@@ -1267,7 +1243,6 @@ Partial Class frmCapturaCySC
    Friend WithEvents lblCPNo1 As System.Windows.Forms.Label
    Friend WithEvents txtCP3Valor3 As System.Windows.Forms.TextBox
    Friend WithEvents Panel4 As System.Windows.Forms.Panel
-   Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
    Friend WithEvents Label41 As System.Windows.Forms.Label
    Friend WithEvents txtNoControlesNegativos As System.Windows.Forms.TextBox
    Friend WithEvents lblNoCasos As System.Windows.Forms.Label
@@ -1321,5 +1296,4 @@ Partial Class frmCapturaCySC
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Label8 As System.Windows.Forms.Label
    Friend WithEvents txtNombreSobreGrafica As System.Windows.Forms.TextBox
-   Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
 End Class

@@ -22,6 +22,7 @@ Partial Class frmResultadosPrelim
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmResultadosPrelim))
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
@@ -162,7 +163,7 @@ Partial Class frmResultadosPrelim
       '
       Me.Label3.AutoSize = True
       Me.Label3.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label3.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.Label3.ForeColor = System.Drawing.Color.DarkBlue
       Me.Label3.Location = New System.Drawing.Point(334, 14)
       Me.Label3.Name = "Label3"
       Me.Label3.Size = New System.Drawing.Size(113, 16)
@@ -173,7 +174,7 @@ Partial Class frmResultadosPrelim
       '
       Me.Label2.AutoSize = True
       Me.Label2.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label2.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.Label2.ForeColor = System.Drawing.Color.DarkBlue
       Me.Label2.Location = New System.Drawing.Point(22, 41)
       Me.Label2.Name = "Label2"
       Me.Label2.Size = New System.Drawing.Size(52, 16)
@@ -184,7 +185,7 @@ Partial Class frmResultadosPrelim
       '
       Me.lblELISA.AutoSize = True
       Me.lblELISA.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblELISA.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblELISA.ForeColor = System.Drawing.Color.MidnightBlue
       Me.lblELISA.Location = New System.Drawing.Point(22, 68)
       Me.lblELISA.Name = "lblELISA"
       Me.lblELISA.Size = New System.Drawing.Size(44, 16)
@@ -195,7 +196,7 @@ Partial Class frmResultadosPrelim
       '
       Me.Label1.AutoSize = True
       Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label1.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.Label1.ForeColor = System.Drawing.Color.DarkBlue
       Me.Label1.Location = New System.Drawing.Point(22, 14)
       Me.Label1.Name = "Label1"
       Me.Label1.Size = New System.Drawing.Size(61, 16)
@@ -295,7 +296,7 @@ Partial Class frmResultadosPrelim
       '
       Me.lblCoefVariacionDNA.AutoSize = True
       Me.lblCoefVariacionDNA.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblCoefVariacionDNA.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblCoefVariacionDNA.ForeColor = System.Drawing.Color.DarkBlue
       Me.lblCoefVariacionDNA.Location = New System.Drawing.Point(435, 4)
       Me.lblCoefVariacionDNA.Name = "lblCoefVariacionDNA"
       Me.lblCoefVariacionDNA.Size = New System.Drawing.Size(63, 15)
@@ -319,7 +320,7 @@ Partial Class frmResultadosPrelim
       '
       Me.lblMediaGeometrica.AutoSize = True
       Me.lblMediaGeometrica.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblMediaGeometrica.ForeColor = System.Drawing.Color.DarkBlue
       Me.lblMediaGeometrica.Location = New System.Drawing.Point(293, 4)
       Me.lblMediaGeometrica.Name = "lblMediaGeometrica"
       Me.lblMediaGeometrica.Size = New System.Drawing.Size(107, 15)
@@ -343,7 +344,7 @@ Partial Class frmResultadosPrelim
       '
       Me.lblMediaPromedio.AutoSize = True
       Me.lblMediaPromedio.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblMediaPromedio.ForeColor = System.Drawing.Color.DarkBlue
       Me.lblMediaPromedio.Location = New System.Drawing.Point(162, 4)
       Me.lblMediaPromedio.Name = "lblMediaPromedio"
       Me.lblMediaPromedio.Size = New System.Drawing.Size(98, 15)
@@ -367,7 +368,7 @@ Partial Class frmResultadosPrelim
       '
       Me.lblTotalDatosCalculados.AutoSize = True
       Me.lblTotalDatosCalculados.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkSlateBlue
+      Me.lblTotalDatosCalculados.ForeColor = System.Drawing.Color.DarkBlue
       Me.lblTotalDatosCalculados.Location = New System.Drawing.Point(50, 5)
       Me.lblTotalDatosCalculados.Name = "lblTotalDatosCalculados"
       Me.lblTotalDatosCalculados.Size = New System.Drawing.Size(82, 15)
@@ -456,7 +457,7 @@ Partial Class frmResultadosPrelim
       Me.Label4.AutoSize = True
       Me.Label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Label4.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label4.ForeColor = System.Drawing.Color.DarkSlateGray
+      Me.Label4.ForeColor = System.Drawing.Color.DarkBlue
       Me.Label4.Location = New System.Drawing.Point(430, 17)
       Me.Label4.Name = "Label4"
       Me.Label4.Size = New System.Drawing.Size(122, 16)
@@ -489,14 +490,16 @@ Partial Class frmResultadosPrelim
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(586, 547)
+      Me.ClientSize = New System.Drawing.Size(586, 509)
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.btnGuardaResultados)
       Me.Controls.Add(Me.Panel2)
       Me.Controls.Add(Me.Panel3)
       Me.Controls.Add(Me.Panel4)
+      Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmResultadosPrelim"
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Resultados Preliminares de los casos"
       Me.Panel2.ResumeLayout(False)
       Me.Panel2.PerformLayout()

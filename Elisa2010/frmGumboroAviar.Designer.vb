@@ -2191,7 +2191,7 @@ Partial Class frmGumboroAviar
       Me.cmbNombreEnfermedad.Name = "cmbNombreEnfermedad"
       Me.cmbNombreEnfermedad.Size = New System.Drawing.Size(287, 21)
       Me.cmbNombreEnfermedad.TabIndex = 0
-      Me.cmbNombreEnfermedad.Text = "E01/ELBI | BRONQUITIS INFECCIOSA"
+      Me.cmbNombreEnfermedad.Text = "E03/ELIBF | GUMBORO"
       '
       'lblNoCasos
       '

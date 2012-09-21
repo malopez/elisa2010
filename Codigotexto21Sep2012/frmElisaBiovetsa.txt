@@ -1,4 +1,4 @@
-ï»¿Public Class frmElisaBiovetsa
+Public Class frmElisaBiovetsa
 
    Const c_mnuConfirmarSalir As Boolean = False
    Private m_blnConfirmarSalir As Boolean
@@ -78,18 +78,18 @@
       frmConfiguraLector.Show()
    End Sub
 
-   'En el menu de Opciones configura el check de salir confirmando la acciÃ³n o solo abandonar el programa
+   'En el menu de Opciones configura el check de salir confirmando la acción o solo abandonar el programa
    Private Sub tsmConfirmarSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsmConfirmarSalir.Click
       tsmConfirmarSalir.Checked = Not (tsmConfirmarSalir.Checked)
       m_blnConfirmarSalir = tsmConfirmarSalir.Checked
    End Sub
 
-   'Aparece la ventana de mensaje para preguntar si desea salir de la aplicaciÃ³n, solo se mostrarÃ¡ cuando se configura
+   'Aparece la ventana de mensaje para preguntar si desea salir de la aplicación, solo se mostrará cuando se configura
    'en opciones con un check el confirmar antes de salir
    Private Sub frmElisaBiovetsa_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
       If m_blnConfirmarSalir Then
          Beep()
-         If MessageBox.Show("Â¿Desea salir del programa ELISA?", "Elisa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+         If MessageBox.Show("¿Desea salir del programa ELISA?", "Elisa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             e.Cancel = True
          End If
       End If
