@@ -14,7 +14,6 @@
       m_blnConfirmarSalir = c_mnuConfirmarSalir
       tsmConfirmarSalir.Checked = m_blnConfirmarSalir
 
-
       ' Loop through all of the form's controls looking
       ' for the control of type MdiClient.
       For Each ctl In Me.Controls
@@ -36,11 +35,6 @@
    '###################################
    '##    Opcion de Analisis        ###
    '###################################
-   Private Sub mnuNuevo_Click(sender As System.Object, e As System.EventArgs) Handles mnuNuevo.Click
-      frmRegistraNuevoAnalisis.MdiParent = Me
-      frmRegistraNuevoAnalisis.Show()
-      frmSalidaDatos.MdiParent = Me
-   End Sub
 
    Private Sub tsmOperacionesAnalisis_Click(sender As System.Object, e As System.EventArgs) Handles tsmOperacionesAnalisis.Click
       frmOperacionesAnalisis.MdiParent = Me
@@ -103,10 +97,6 @@
    '###################################
    '##    Menu de iconitos          ###
    '###################################
-   Private Sub tsbAbrirExcel_Click(sender As System.Object, e As System.EventArgs) Handles tsbAbrirExcel.Click
-      frmAbrirArchivoExistente.MdiParent = Me
-      frmAbrirArchivoExistente.Show()
-   End Sub
 
    Private Sub tsbConfigurarLector_Click(sender As System.Object, e As System.EventArgs) Handles tsbConfigurarLector.Click
       frmConfiguraLector.MdiParent = Me
@@ -117,17 +107,7 @@
       Me.Close()
    End Sub
 
-   Private Sub tsmBronquitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisAviar.Click
-      'frmBronquitisAviar.MdiParent = Me
-      'frmBronquitisAviar.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
+   Private Sub tsmBronquitisInfecciosa_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisInfecciosa.Click
       Dim forma As frmCapturaCySC
       forma = New frmCapturaCySC
       forma.MdiParent = Me
@@ -138,16 +118,6 @@
 
 
    Private Sub tsmLaringotraqueitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmLaringotraqueitisAviar.Click
-      'frmLaringotraqueitisAviar.MdiParent = Me
-      'frmLaringotraqueitisAviar.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
       Dim forma As frmCapturaCySC
       forma = New frmCapturaCySC
       forma.MdiParent = Me
@@ -156,17 +126,7 @@
       forma.Show()
    End Sub
 
-   Private Sub tsmEnfermedadDeNewcastle_Click(sender As System.Object, e As System.EventArgs) Handles tsmEnfermedadDeNewcastle.Click
-      'frmNewcastle.MdiParent = Me
-      'frmNewcastle.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
+   Private Sub tsmEnfermedadDeNewcaste_Click(sender As System.Object, e As System.EventArgs) Handles tsmEnfermedadDeNewcaste.Click
       Dim forma As frmCapturaCySC
       forma = New frmCapturaCySC
       forma.MdiParent = Me
@@ -176,16 +136,6 @@
    End Sub
 
    Private Sub tsmReovirus_Click(sender As System.Object, e As System.EventArgs) Handles tsmReovirus.Click
-      'frmReovirusAviar.MdiParent = Me
-      'frmReovirusAviar.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
       Dim forma As frmCapturaCySC
       forma = New frmCapturaCySC
       forma.MdiParent = Me
@@ -195,23 +145,12 @@
    End Sub
 
    Private Sub tsmEncefalomielitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmEncefalomielitisAviar.Click
-      'frmEncefalomielitisAviar.MdiParent = Me
-      'frmEncefalomielitisAviar.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
       Dim forma As frmCapturaCySC
       forma = New frmCapturaCySC
       forma.MdiParent = Me
       forma.Enfermedad = "E08/ELEA | ENCEFALOMIELITIS AVIAR"
       forma.Text = "ENCEFALOMIELITIS AVIAR"
       forma.Show()
-
    End Sub
 
    Private Sub tsmGumboro_Click(sender As System.Object, e As System.EventArgs) Handles tsmGumboro.Click
@@ -221,68 +160,70 @@
       forma.Enfermedad = "E03/ELIBF | GUMBORO"
       forma.Text = "GUMBORO"
       forma.Show()
-      'frmGumboroAviar.MdiParent = Me
-      'frmGumboroAviar.Show()
-      'frmSalidaDatos.MdiParent = Me
-      'frmSalidaCaso2.MdiParent = Me
-      'frmSalidaCaso3.MdiParent = Me
-      'frmSalidaCaso4.MdiParent = Me
-      'frmSalidaCaso5.MdiParent = Me
-      'frmSalidaCaso6.MdiParent = Me
-      'frmSalidaCaso7.MdiParent = Me
-      'frmSalidaCaso8.MdiParent = Me
    End Sub
 
    Private Sub tsmAnemiaInfecciosa_Click(sender As System.Object, e As System.EventArgs) Handles tsmAnemiaInfecciosa.Click
-      Dim forma As frmCapturaCySC
-      forma = New frmCapturaCySC
+      Dim forma As frmAnemiaInfecciosa
+      forma = New frmAnemiaInfecciosa
       forma.MdiParent = Me
       forma.Enfermedad = "E17/ELANEM | ANEMIA INFECCIOSA"
       forma.Text = "ANEMIA INFECCIOSA"
       forma.Show()
    End Sub
 
-   
-   Private Sub tsmPasteurellaHaemolytica_Click(sender As System.Object, e As System.EventArgs) Handles tsmPasteurellaHaemolytica.Click
-      frmPasteuHaemDA.MdiParent = Me
-      frmPasteuHaemDA.Show()
-      frmSalidaDatos.MdiParent = Me
-   End Sub
-
    Private Sub tsmBronquitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisDA.Click
-      frmBronquitisDA.MdiParent = Me
-      frmBronquitisDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E01/ELBI | BRONQUITIS INFECCIOSA"
+      forma.Text = "BRONQUITIS INFECCIOSA"
+      forma.Show()
    End Sub
 
    Private Sub tsmLaringotraqueitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmLaringotraqueitisDA.Click
-      frmLaringotraqueitisDA.MdiParent = Me
-      frmLaringotraqueitisDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E06/ELLT | LARINGOTRAQUEITIS AVIAR"
+      forma.Text = "LARINGOTRAQUEITIS AVIAR"
+      forma.Show()
+
    End Sub
 
    Private Sub tsmNewcastleDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmNewcastleDA.Click
-      frmNewcastleDA.MdiParent = Me
-      frmNewcastleDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E04/ELNC | ENFERMEDAD DE NEWCASTLE"
+      forma.Text = "ENFERMEDAD DE NEWCASTLE"
+      forma.Show()
    End Sub
 
    Private Sub tsmReovirusDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmReovirusDA.Click
-      frmReovirusDA.MdiParent = Me
-      frmReovirusDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E02/ELREO | REOVIRUS"
+      forma.Text = "REOVIRUS"
+      forma.Show()
    End Sub
 
    Private Sub tsmGumboroDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmGumboroDA.Click
-      frmGumboroDA.MdiParent = Me
-      frmGumboroDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E03/ELIBF | GUMBORO"
+      forma.Text = "GUMBORO"
+      forma.Show()
    End Sub
 
    Private Sub tsmEncefalomielitisDA_Click(sender As System.Object, e As System.EventArgs) Handles tsmEncefalomielitisDA.Click
-      frmEncefalomielitisDA.MdiParent = Me
-      frmEncefalomielitisDA.Show()
-      frmSalidaDatos.MdiParent = Me
+      Dim forma As frmAbrirArchivo
+      forma = New frmAbrirArchivo
+      forma.MdiParent = Me
+      forma.Enfermedad = "E08/ELEA | ENCEFALOMIELITIS AVIAR"
+      forma.Text = "ENCEFALOMIELITIS AVIAR"
+      forma.Show()
    End Sub
 
    Private Sub tsmLeerYGuardar_Click(sender As System.Object, e As System.EventArgs) Handles tsmLeerYGuardar.Click
@@ -290,15 +231,4 @@
       frmLecturaDePlaca.Show()
    End Sub
 
-   Private Sub tsmCapturaConSubcasos_Click(sender As System.Object, e As System.EventArgs) Handles tsmCapturaConSubcasos.Click
-      'frmCapturaCySC.MdiParent = Me
-      'frmCapturaCySC.Show()
-      'frmSalidaDatos.MdiParent = Me
-      Dim forma As frmCapturaCySC
-      forma = New frmCapturaCySC
-      forma.MdiParent = Me
-      forma.Enfermedad = "E01/ELBI | BRONQUITIS INFECCIOSA"
-      forma.Text = "BRONQUITIS INFECCIOSA"
-      forma.Show()
-   End Sub
 End Class

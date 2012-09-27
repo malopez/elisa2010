@@ -137,16 +137,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>elisasandbox.xsd</DependentUpon>
     </Compile>
-    <Compile Include="frmAbrirArchivoExistente.Designer.vb">
-      <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
+    <Compile Include="frmAnemiaInfecciosa.Designer.vb">
+      <DependentUpon>frmAnemiaInfecciosa.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmAbrirArchivoExistente.vb">
+    <Compile Include="frmAnemiaInfecciosa.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBronquitisDA.Designer.vb">
-      <DependentUpon>frmBronquitisDA.vb</DependentUpon>
+    <Compile Include="frmAbrirArchivo.Designer.vb">
+      <DependentUpon>frmAbrirArchivo.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBronquitisDA.vb">
+    <Compile Include="frmAbrirArchivo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCapturaCySC.Designer.vb">
@@ -155,28 +155,10 @@
     <Compile Include="frmCapturaCySC.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEncefalomielitisDA.Designer.vb">
-      <DependentUpon>frmEncefalomielitisDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmEncefalomielitisDA.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGumboroDA.Designer.vb">
-      <DependentUpon>frmGumboroDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmGumboroDA.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmInicioPrograma.Designer.vb">
       <DependentUpon>frmInicioPrograma.vb</DependentUpon>
     </Compile>
     <Compile Include="frmInicioPrograma.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLaringotraqueitisDA.Designer.vb">
-      <DependentUpon>frmLaringotraqueitisDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLaringotraqueitisDA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLecturaDePlaca.Designer.vb">
@@ -185,58 +167,10 @@
     <Compile Include="frmLecturaDePlaca.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewcastleDA.Designer.vb">
-      <DependentUpon>frmNewcastleDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmNewcastleDA.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPasteuHaemDA.Designer.vb">
-      <DependentUpon>frmPasteuHaemDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmPasteuHaemDA.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPasteurellaHaemAviar.Designer.vb">
-      <DependentUpon>frmPasteurellaHaemAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmPasteurellaHaemAviar.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmConfiguraLector.Designer.vb">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguraLector.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEncefalomielitisAviar.Designer.vb">
-      <DependentUpon>frmEncefalomielitisAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmEncefalomielitisAviar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmNewcastle.Designer.vb">
-      <DependentUpon>frmNewcastle.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmNewcastle.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmGumboroAviar.Designer.vb">
-      <DependentUpon>frmGumboroAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmGumboroAviar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLaringotraqueitisAviar.Designer.vb">
-      <DependentUpon>frmLaringotraqueitisAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLaringotraqueitisAviar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmBronquitisAviar.Designer.vb">
-      <DependentUpon>frmBronquitisAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmBronquitisAviar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
@@ -245,70 +179,16 @@
     <Compile Include="frmOperacionesAnalisis.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistraNuevoAnalisis.Designer.vb">
-      <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>
+    <Compile Include="frmResultadosAnemia.Designer.vb">
+      <DependentUpon>frmResultadosAnemia.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistraNuevoAnalisis.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReovirusAviar.Designer.vb">
-      <DependentUpon>frmReovirusAviar.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmReovirusAviar.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReovirusDA.Designer.vb">
-      <DependentUpon>frmReovirusDA.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmReovirusDA.vb">
+    <Compile Include="frmResultadosAnemia.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmResultadosPrelim.Designer.vb">
       <DependentUpon>frmResultadosPrelim.vb</DependentUpon>
     </Compile>
     <Compile Include="frmResultadosPrelim.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso2.Designer.vb">
-      <DependentUpon>frmSalidaCaso2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso2.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso3.Designer.vb">
-      <DependentUpon>frmSalidaCaso3.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso3.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso4.Designer.vb">
-      <DependentUpon>frmSalidaCaso4.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso4.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso5.Designer.vb">
-      <DependentUpon>frmSalidaCaso5.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso5.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso6.Designer.vb">
-      <DependentUpon>frmSalidaCaso6.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso6.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso7.Designer.vb">
-      <DependentUpon>frmSalidaCaso7.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso7.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSalidaCaso8.Designer.vb">
-      <DependentUpon>frmSalidaCaso8.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaCaso8.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="mdlEstilos.vb" />
@@ -320,12 +200,7 @@
       <DependentUpon>frmELISA.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSalidaDatos.Designer.vb">
-      <DependentUpon>frmSalidaDatos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmSalidaDatos.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="mdlOperacionesBD.vb" />
     <Compile Include="mdlPuertoSerie.vb" />
     <Compile Include="mdlDefineValidaDatos.vb" />
     <Compile Include="mdlVariosCasos.vb" />
@@ -353,38 +228,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmAbrirArchivoExistente.resx">
-      <DependentUpon>frmAbrirArchivoExistente.vb</DependentUpon>
+    <EmbeddedResource Include="frmAnemiaInfecciosa.resx">
+      <DependentUpon>frmAnemiaInfecciosa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBronquitisDA.resx">
-      <DependentUpon>frmBronquitisDA.vb</DependentUpon>
+    <EmbeddedResource Include="frmAbrirArchivo.resx">
+      <DependentUpon>frmAbrirArchivo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCapturaCySC.resx">
       <DependentUpon>frmCapturaCySC.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEncefalomielitisDA.resx">
-      <DependentUpon>frmEncefalomielitisDA.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGumboroDA.resx">
-      <DependentUpon>frmGumboroDA.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmInicioPrograma.resx">
       <DependentUpon>frmInicioPrograma.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLaringotraqueitisDA.resx">
-      <DependentUpon>frmLaringotraqueitisDA.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmLecturaDePlaca.resx">
       <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNewcastleDA.resx">
-      <DependentUpon>frmNewcastleDA.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPasteuHaemDA.resx">
-      <DependentUpon>frmPasteuHaemDA.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPasteurellaHaemAviar.resx">
-      <DependentUpon>frmPasteurellaHaemAviar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguraLector.resx">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
@@ -392,59 +249,14 @@
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEncefalomielitisAviar.resx">
-      <DependentUpon>frmEncefalomielitisAviar.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmNewcastle.resx">
-      <DependentUpon>frmNewcastle.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmGumboroAviar.resx">
-      <DependentUpon>frmGumboroAviar.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLaringotraqueitisAviar.resx">
-      <DependentUpon>frmLaringotraqueitisAviar.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBronquitisAviar.resx">
-      <DependentUpon>frmBronquitisAviar.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmOperacionesAnalisis.resx">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReovirusAviar.resx">
-      <DependentUpon>frmReovirusAviar.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmReovirusDA.resx">
-      <DependentUpon>frmReovirusDA.vb</DependentUpon>
+    <EmbeddedResource Include="frmResultadosAnemia.resx">
+      <DependentUpon>frmResultadosAnemia.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResultadosPrelim.resx">
       <DependentUpon>frmResultadosPrelim.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso2.resx">
-      <DependentUpon>frmSalidaCaso2.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso3.resx">
-      <DependentUpon>frmSalidaCaso3.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso4.resx">
-      <DependentUpon>frmSalidaCaso4.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso5.resx">
-      <DependentUpon>frmSalidaCaso5.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso6.resx">
-      <DependentUpon>frmSalidaCaso6.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso7.resx">
-      <DependentUpon>frmSalidaCaso7.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaCaso8.resx">
-      <DependentUpon>frmSalidaCaso8.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSalidaDatos.resx">
-      <DependentUpon>frmSalidaDatos.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistraNuevoAnalisis.resx">
-      <DependentUpon>frmRegistraNuevoAnalisis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

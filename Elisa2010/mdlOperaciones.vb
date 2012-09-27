@@ -8,6 +8,7 @@ Imports System.Runtime.InteropServices
 'TODAS LAS EXTENSIONES SE CAMBIARON DE XLSX A XLS PARA QUE FUNCIONE EL PROGRAMA CON LA VERSION 2003 DE EXCEL.
 'SE CONSERVA EL CÓDIGO PARA EJECUTARLO CON EXCEL 2010 COMENTADO ARRIBA DE DONDE SE UTILIZA LA INSTRUCCION PARA 2003.
 Module mdlOperaciones
+   Public etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
    Public Const cadenaConexion = "server=localhost;User Id=bvtselisa;password=password;Persist Security Info=True;database=bvtselisa"
    '################################
    '# SECCION DE VARIABLES GLOBALES#
@@ -32,7 +33,7 @@ Module mdlOperaciones
    'Como los valores vienen separados por comas, los elimina y obtiene mediante la funcion <val> el valor real de cada
    'cadena, es una funcion estandar de visual basic.
    Public Sub convierteCadena(ByVal msn As String)
-       'Arreglo de cadenas temporal para eliminar las comas
+      'Arreglo de cadenas temporal para eliminar las comas
       Dim a() As String
       'control del ciclo de recorrido
       Dim i As Integer = 0
@@ -59,77 +60,7 @@ Module mdlOperaciones
       Next
    End Sub
 
-   '#################################################
-   '#      SECCION DE CARGA DE RESULTADOS EN BD     #
-   '#################################################
-   Public Sub cargaResultadosBD(ByRef numcaso As String, ByVal consecutivo As Integer, ByVal idAnalisis As String, ByVal placaLeida As String, ByRef resultadoTitulos As String, ByVal fechaElaboracion As String, ByVal promCP As Double, ByVal promCN As Double, _
-                                 ByVal promCPS As Double, ByVal mediaAritmetica As Double, ByVal mediaGeometrica As Double, _
-                                 ByVal desvEst As Double, ByVal coefVar As Double, ByVal valorFR As String, ByVal cantidadFR As String, _
-                                 ByRef etiqueta As ToolStripLabel)
-      Dim resultado As Integer
-      Dim comando As New MySqlCommand
-      Dim cadenafecha As String
-      Dim tabla() As String
-
-      cadenafecha = fechaElaboracion
-      tabla = Split(cadenafecha, "/")
-      fechaElaboracion = tabla(2) & "/" & tabla(1) & "/" & tabla(0)
-
-      Try
-         'Crear la conexion para establecer el acceso a la BD de MySQL
-         Dim oConexion = New MySqlConnection
-         oConexion.ConnectionString = cadenaConexion
-         'Abrir la conexion a la base de datos
-         oConexion.Open()
-         'Asigna la cadena de conexion
-         comando.Connection = oConexion
-         comando.CommandText = "INSERT INTO tblplacaleida (caso,consecutivo,id_analysis,fechaElaboracion,placaLeida,resultadoTitulos,promCP,promCN,promCPS,medArit,medGeom,desvEst,coefVar,valorFR,cantidadFR) VALUES " _
-                                & "('" & numcaso & "'," & consecutivo & ",'" & idAnalisis & "'," & "STR_TO_DATE('" & fechaElaboracion & "','" & "%Y/%m/%d" & "'),'" _
-                                & placaLeida & "','" & resultadoTitulos & "'," & promCP & "," & promCN & "," & promCPS & "," & mediaAritmetica & "," & mediaGeometrica & "," _
-                                & desvEst & "," & coefVar & ",'" & valorFR & "','" & cantidadFR & "');"
-         resultado = comando.ExecuteNonQuery()
-         oConexion.Close()
-      Catch ex As MySqlException
-         mensajeExceptionSQL(etiqueta, ex)
-      Catch ex As DataException
-         mensajeException(etiqueta, ex)
-      Catch ex As Exception
-         mensajeException(etiqueta, ex)
-      End Try
-   End Sub
-
-   Public Sub cargaFrecRelBD(ByVal frecuenciaRelativa() As Decimal, ByRef numcaso As String, ByVal rangoDatos() As Integer, _
-                             ByRef etiqueta As ToolStripLabel)
-      Dim i As Integer
-      Dim resultado As Integer
-      Dim comando As New MySqlCommand
-      Try
-         'Crear la conexion para establecer el acceso a la BD de MySQL
-         Dim oConexion = New MySqlConnection
-         oConexion.ConnectionString = cadenaConexion
-         'Abrir la conexion a la base de datos
-         oConexion.Open()
-         'Asigna la cadena de conexion
-         comando.Connection = oConexion
-         comando.CommandText = "truncate table tblfrecrelativa;"
-         resultado = comando.ExecuteNonQuery()
-         'Guardar los datos de la frecuencia relativa en la BD
-
-         For i = 0 To 14
-            comando.CommandText = "INSERT INTO tblfrecrelativa (rango,valor,cantidad) values (" & i & "," & reduceDecimal(frecuenciaRelativa(i)) & "," & rangoDatos(i) & ");"
-            resultado = comando.ExecuteNonQuery()
-         Next
-
-         oConexion.Close()
-      Catch ex As MySqlException
-         mensajeExceptionSQL(etiqueta, ex)
-      Catch ex As DataException
-         mensajeException(etiqueta, ex)
-      Catch ex As Exception
-         mensajeException(etiqueta, ex)
-      End Try
-   End Sub
-
+  
    '#####################################
    '# SECCION ORGANIZACION DE DATOS     #
    '#####################################
@@ -259,7 +190,10 @@ Module mdlOperaciones
       Return (promedioNegativos)
    End Function
 
-   'Calcula la diferencia de controles positivos y negativos
+   '###############################################################################################
+   '# CALCULA EL VALOR DE CONTROL, EN ALGUNOS CASOS ES PROMP-PROMN, EN OTROS CASOS ES PROMP/PROMN #
+   '###############################################################################################
+   'Calcula la diferencia de controles positivos y negativos cuando es promedio positivo - promedio negativo
    Public Function calculaDiferenciaSPS(ByVal promCP As Decimal, ByVal promCN As Decimal, ByRef etiqueta As ToolStripLabel) As Decimal
       Dim difCPS As Decimal
       Try
@@ -270,4 +204,14 @@ Module mdlOperaciones
       Return (difCPS)
    End Function
 
+   'Calcula el valor de SPS cuando el cálculo se basa en promedio positivos dividido entre promedio negativos
+   Public Function calculaDivisionSPS(ByVal promCP As Decimal, ByVal promCN As Decimal, ByRef etiqueta As ToolStripLabel) As Decimal
+      Dim difCPS As Decimal
+      Try
+         difCPS = reduceDecimal(CDec(promCP / promCN))
+      Catch
+         mensajeRojo(etiqueta, "ERROR: al calcular el valor del la diferencia de controles.")
+      End Try
+      Return (difCPS)
+   End Function
 End Module

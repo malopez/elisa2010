@@ -25,15 +25,16 @@ Partial Class frmElisaBiovetsa
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmElisaBiovetsa))
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
-      Me.mnuNuevo = New System.Windows.Forms.ToolStripMenuItem()
+      Me.DesdeLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmAnemiaInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmBronquitisAviar = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmBronquitisInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmEncefalomielitisAviar = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmEnfermedadDeNewcastle = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmGumboro = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmLaringotraqueitisAviar = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEnfermedadDeNewcaste = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmReovirus = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmAbrirArchivoExistente = New System.Windows.Forms.ToolStripMenuItem()
+      Me.AnemiaInfecciosaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmBronquitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmEncefalomielitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmNewcastleDA = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,7 +43,6 @@ Partial Class frmElisaBiovetsa
       Me.tsmPasteurellaHaemolytica = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmCapturaConSubcasos = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmConfigurarLector = New System.Windows.Forms.ToolStripMenuItem()
@@ -52,7 +52,6 @@ Partial Class frmElisaBiovetsa
       Me.mnuAcercaDe = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-      Me.tsbAbrirExcel = New System.Windows.Forms.ToolStripButton()
       Me.tsbConfigurarLector = New System.Windows.Forms.ToolStripButton()
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
       Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
@@ -77,45 +76,37 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuNuevo, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmCapturaConSubcasos, Me.tsmSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DesdeLectorToolStripMenuItem, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
       Me.mnuMainAnalisis.Size = New System.Drawing.Size(59, 20)
       Me.mnuMainAnalisis.Text = "&Analisis"
       '
-      'mnuNuevo
+      'DesdeLectorToolStripMenuItem
       '
-      Me.mnuNuevo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAnemiaInfecciosa, Me.tsmBronquitisAviar, Me.tsmEncefalomielitisAviar, Me.tsmEnfermedadDeNewcastle, Me.tsmGumboro, Me.tsmLaringotraqueitisAviar, Me.tsmReovirus})
-      Me.mnuNuevo.Name = "mnuNuevo"
-      Me.mnuNuevo.Size = New System.Drawing.Size(213, 22)
-      Me.mnuNuevo.Text = "&Nuevo"
-      Me.mnuNuevo.ToolTipText = "Realice nuevo análisis"
+      Me.DesdeLectorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAnemiaInfecciosa, Me.tsmBronquitisInfecciosa, Me.tsmEncefalomielitisAviar, Me.tsmGumboro, Me.tsmLaringotraqueitisAviar, Me.tsmEnfermedadDeNewcaste, Me.tsmReovirus})
+      Me.DesdeLectorToolStripMenuItem.Name = "DesdeLectorToolStripMenuItem"
+      Me.DesdeLectorToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+      Me.DesdeLectorToolStripMenuItem.Text = "Desde Lector"
       '
       'tsmAnemiaInfecciosa
       '
       Me.tsmAnemiaInfecciosa.Name = "tsmAnemiaInfecciosa"
       Me.tsmAnemiaInfecciosa.Size = New System.Drawing.Size(211, 22)
       Me.tsmAnemiaInfecciosa.Text = "Anemia Infecciosa"
-      Me.tsmAnemiaInfecciosa.Visible = False
       '
-      'tsmBronquitisAviar
+      'tsmBronquitisInfecciosa
       '
-      Me.tsmBronquitisAviar.Name = "tsmBronquitisAviar"
-      Me.tsmBronquitisAviar.Size = New System.Drawing.Size(211, 22)
-      Me.tsmBronquitisAviar.Text = "Bronquitis Aviar"
+      Me.tsmBronquitisInfecciosa.Name = "tsmBronquitisInfecciosa"
+      Me.tsmBronquitisInfecciosa.Size = New System.Drawing.Size(211, 22)
+      Me.tsmBronquitisInfecciosa.Text = "Bronquitis Infecciosa"
       '
       'tsmEncefalomielitisAviar
       '
       Me.tsmEncefalomielitisAviar.Name = "tsmEncefalomielitisAviar"
       Me.tsmEncefalomielitisAviar.Size = New System.Drawing.Size(211, 22)
       Me.tsmEncefalomielitisAviar.Text = "Encefalomielitis Aviar"
-      '
-      'tsmEnfermedadDeNewcastle
-      '
-      Me.tsmEnfermedadDeNewcastle.Name = "tsmEnfermedadDeNewcastle"
-      Me.tsmEnfermedadDeNewcastle.Size = New System.Drawing.Size(211, 22)
-      Me.tsmEnfermedadDeNewcastle.Text = "Enfermedad de Newcastle"
       '
       'tsmGumboro
       '
@@ -129,6 +120,12 @@ Partial Class frmElisaBiovetsa
       Me.tsmLaringotraqueitisAviar.Size = New System.Drawing.Size(211, 22)
       Me.tsmLaringotraqueitisAviar.Text = "Laringotraqueitis Aviar"
       '
+      'tsmEnfermedadDeNewcaste
+      '
+      Me.tsmEnfermedadDeNewcaste.Name = "tsmEnfermedadDeNewcaste"
+      Me.tsmEnfermedadDeNewcaste.Size = New System.Drawing.Size(211, 22)
+      Me.tsmEnfermedadDeNewcaste.Text = "Enfermedad de Newcastle"
+      '
       'tsmReovirus
       '
       Me.tsmReovirus.Name = "tsmReovirus"
@@ -137,10 +134,16 @@ Partial Class frmElisaBiovetsa
       '
       'tsmAbrirArchivoExistente
       '
-      Me.tsmAbrirArchivoExistente.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmBronquitisDA, Me.tsmEncefalomielitisDA, Me.tsmNewcastleDA, Me.tsmGumboroDA, Me.tsmLaringotraqueitisDA, Me.tsmPasteurellaHaemolytica, Me.tsmReovirusDA})
+      Me.tsmAbrirArchivoExistente.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnemiaInfecciosaToolStripMenuItem, Me.tsmBronquitisDA, Me.tsmEncefalomielitisDA, Me.tsmNewcastleDA, Me.tsmGumboroDA, Me.tsmLaringotraqueitisDA, Me.tsmPasteurellaHaemolytica, Me.tsmReovirusDA})
       Me.tsmAbrirArchivoExistente.Name = "tsmAbrirArchivoExistente"
       Me.tsmAbrirArchivoExistente.Size = New System.Drawing.Size(213, 22)
       Me.tsmAbrirArchivoExistente.Text = "Abrir archivo existente"
+      '
+      'AnemiaInfecciosaToolStripMenuItem
+      '
+      Me.AnemiaInfecciosaToolStripMenuItem.Name = "AnemiaInfecciosaToolStripMenuItem"
+      Me.AnemiaInfecciosaToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+      Me.AnemiaInfecciosaToolStripMenuItem.Text = "Anemia Infecciosa"
       '
       'tsmBronquitisDA
       '
@@ -190,12 +193,6 @@ Partial Class frmElisaBiovetsa
       Me.tsmOperacionesAnalisis.Name = "tsmOperacionesAnalisis"
       Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(213, 22)
       Me.tsmOperacionesAnalisis.Text = "&Operaciones sobre análisis"
-      '
-      'tsmCapturaConSubcasos
-      '
-      Me.tsmCapturaConSubcasos.Name = "tsmCapturaConSubcasos"
-      Me.tsmCapturaConSubcasos.Size = New System.Drawing.Size(213, 22)
-      Me.tsmCapturaConSubcasos.Text = "Captura con subcasos"
       '
       'tsmSalir
       '
@@ -258,21 +255,12 @@ Partial Class frmElisaBiovetsa
       'ToolStrip1
       '
       Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ControlLight
-      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbAbrirExcel, Me.tsbConfigurarLector, Me.tsbReporte, Me.tsbImprimir, Me.tsbSalir})
+      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbConfigurarLector, Me.tsbReporte, Me.tsbImprimir, Me.tsbSalir})
       Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
       Me.ToolStrip1.Name = "ToolStrip1"
       Me.ToolStrip1.Size = New System.Drawing.Size(1008, 25)
       Me.ToolStrip1.TabIndex = 4
       Me.ToolStrip1.Text = "ToolStrip1"
-      '
-      'tsbAbrirExcel
-      '
-      Me.tsbAbrirExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tsbAbrirExcel.Image = CType(resources.GetObject("tsbAbrirExcel.Image"), System.Drawing.Image)
-      Me.tsbAbrirExcel.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tsbAbrirExcel.Name = "tsbAbrirExcel"
-      Me.tsbAbrirExcel.Size = New System.Drawing.Size(23, 22)
-      Me.tsbAbrirExcel.ToolTipText = "Abrir datos desde excel"
       '
       'tsbConfigurarLector
       '
@@ -357,7 +345,6 @@ Partial Class frmElisaBiovetsa
    End Sub
    Friend WithEvents mnuMainMenu As System.Windows.Forms.MenuStrip
    Friend WithEvents mnuMainAnalisis As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents mnuNuevo As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmSalir As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuOpciones As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmConfigurarLector As System.Windows.Forms.ToolStripMenuItem
@@ -368,18 +355,10 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents mnuAcercaDe As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmAbrirArchivoExistente As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-   Friend WithEvents tsbAbrirExcel As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbConfigurarLector As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbReporte As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
-   Friend WithEvents tsmAnemiaInfecciosa As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmBronquitisAviar As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmEncefalomielitisAviar As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmEnfermedadDeNewcastle As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmGumboro As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmLaringotraqueitisAviar As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmReovirus As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmPasteurellaHaemolytica As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmBronquitisDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmLaringotraqueitisDA As System.Windows.Forms.ToolStripMenuItem
@@ -388,8 +367,16 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmGumboroDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmEncefalomielitisDA As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmLeerYGuardar As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmCapturaConSubcasos As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
    Friend WithEvents lblMensajeAplicacion As System.Windows.Forms.ToolStripStatusLabel
+   Friend WithEvents AnemiaInfecciosaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents DesdeLectorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmAnemiaInfecciosa As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmBronquitisInfecciosa As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEncefalomielitisAviar As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmGumboro As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmLaringotraqueitisAviar As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEnfermedadDeNewcaste As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmReovirus As System.Windows.Forms.ToolStripMenuItem
 
 End Class

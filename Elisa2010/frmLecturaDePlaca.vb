@@ -10,13 +10,13 @@
          az = Me.SerialPort1.ReadExisting.Trim
          msn += az
       Catch ex As Exception
-         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
       Me.txtDatosRecibidos.Text = msn
    End Sub
 
    Private Sub frmLecturaDePlaca_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-      GetSerialPortNamesParametros(cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion)
+      GetSerialPortNamesParametros(cmbComboPorts, etiquetaMensaje)
       CheckForIllegalCrossThreadCalls = False ' DESACTIVA ERROR POR SUBPROCESO
    End Sub
 
@@ -85,11 +85,11 @@
          Dim nocn As Integer = Val(txtNoControlesNegativos.Text)
          If Me.btnLeerDatosPlaca.Text = "Obtener Datos" Then
             Me.btnLeerDatosPlaca.Text = "Desconectar"
-            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, frmElisaBiovetsa.lblMensajeAplicacion, Me.lblNombreLector)
+            Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, etiquetaMensaje, Me.lblNombreLector)
          Else
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
-               mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Cerrando el puerto COM del lector.")
+               mensajeVerde(etiquetaMensaje, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                formatearDatos()
                coloreaControlesPositivos(nocp)
@@ -101,7 +101,7 @@
             End If
          End If
       Catch ex As Exception
-         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "Error al recuperar datos desde el lector de Placa.")
+         mensajeRojo(etiquetaMensaje, "Error al recuperar datos desde el lector de Placa.")
       End Try
    End Sub
 
@@ -145,7 +145,7 @@
       Try
          controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -153,7 +153,7 @@
       Try
          controlesValidosNumero(txtNoControlesNegativos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 
@@ -198,7 +198,7 @@
       Try
          convierteCadena(msn)
       Catch ex As Exception
-         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, " Se ha presentado un error al convertir la cadena en valores.")
+         mensajeRojo(etiquetaMensaje, " Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
          formateaDatos(placaLector, Me.dgvPlacaLeida)
@@ -207,7 +207,7 @@
          coloreaControlesPositivos(nocp)
          coloreaControlesNegativos(nocn)
       Catch ex As Exception
-         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, " Se ha presentado un error al formatear datos.")
+         mensajeRojo(etiquetaMensaje, " Se ha presentado un error al formatear datos.")
       End Try
    End Sub
 
@@ -256,11 +256,11 @@
             hastay = 8
          End If
          guardarDatosExcel(placaLector, nocp, nocn, "", "", consecutivo, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
-         mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos de la placa original se guardaron exitosamente.")
+                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, etiquetaMensaje)
+         mensajeVerde(etiquetaMensaje, "Mensaje: Los datos de la placa original se guardaron exitosamente.")
          btnGuardaDatos.Enabled = False
       Catch ex As Exception
-         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar los datos de la placa original en excel, btnGuardaDatos_Click.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al guardar los datos de la placa original en excel, btnGuardaDatos_Click.")
       End Try
    End Sub
 
@@ -285,28 +285,28 @@
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
-                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
                      btnGuardaDatos.Enabled = True
 
                   Else
-                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                      btnAceptarControles.Enabled = True
                   End If
                Else
-                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                End If
@@ -322,32 +322,32 @@
                   controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) AndAlso
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
-                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
-                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
                      btnGuardaDatos.Enabled = True
 
                   Else
-                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                      btnAceptarControles.Enabled = True
                   End If
                Else
-                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   grbControlesPositivos.Enabled = True
                   grbControlesNegativos.Enabled = True
@@ -368,32 +368,32 @@
                  controlesValidosNumero(txtCN1Valor1, " Número primer control negativo ", 1, 12) AndAlso _
                  controlesValidosLetra(txtCN2Letra2, " Letra segundo control negativo ", "A", "H") AndAlso _
                  controlesValidosNumero(txtCN2Valor2, " Número segundo control negativo ", 1, 12) Then
-                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                     queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                     queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) Then
 
-                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
                      btnGuardaDatos.Enabled = True
 
                   Else
-                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                      btnAceptarControles.Enabled = True
                   End If
                Else
-                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                End If
@@ -411,37 +411,37 @@
                   controlesValidosLetra(txtCN3Letra3, " Letra tercer control negativo ", "A", "H") AndAlso _
                   controlesValidosNumero(txtCN3Valor3, " Número tercer control negativo ", 1, 12) Then
 
-                  If queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
-                   queSeanDistintos(frmElisaBiovetsa.lblMensajeAplicacion, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
+                  If queSeanDistintos(etiquetaMensaje, "CP1-CP2", txtCP1Letra1, txtCP1Valor1, txtCP2Letra2, txtCP2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CP3", txtCP1Letra1, txtCP1Valor1, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN1", txtCP1Letra1, txtCP1Valor1, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN2", txtCP1Letra1, txtCP1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP1-CN3", txtCP1Letra1, txtCP1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CP3", txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN1", txtCP2Letra2, txtCP2Valor2, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN2", txtCP2Letra2, txtCP2Valor2, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP2-CN3", txtCP2Letra2, txtCP2Valor2, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN1", txtCP3Letra3, txtCP3Valor3, txtCN1Letra1, txtCN1Valor1) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN2", txtCP3Letra3, txtCP3Valor3, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CP3-CN3", txtCP3Letra3, txtCP3Valor3, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN1-CN2", txtCN1Letra1, txtCN1Valor1, txtCN2Letra2, txtCN2Valor2) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN1-CN3", txtCN1Letra1, txtCN1Valor1, txtCN3Letra3, txtCN3Valor3) AndAlso _
+                   queSeanDistintos(etiquetaMensaje, "CN2-CN3", txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3) Then
 
-                     mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje:")
+                     mensajeVerde(etiquetaMensaje, "Mensaje:")
                      btnAceptarControles.Enabled = False
                      btnDefinirControlesPN.Enabled = False
                      ckbControlesDefault.Enabled = False
                      btnGuardaDatos.Enabled = True
 
                   Else
-                     mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                     mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                      btnDefinirControlesPN.Enabled = True
                      grbControlesPositivos.Enabled = True
                      grbControlesNegativos.Enabled = True
                      btnAceptarControles.Enabled = True
                   End If
                Else
-                  mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
+                  mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para controles + y - no son válidos, trate nuevamente.")
                   btnDefinirControlesPN.Enabled = True
                   btnAceptarControles.Enabled = True
                End If
@@ -465,7 +465,7 @@
       Try
          controlesValidosNumero(txtNoControlesPositivos, " En número de controles + y - ", 2, 3)
       Catch ex As Exception
-         mensajeException(frmElisaBiovetsa.lblMensajeAplicacion, ex)
+         mensajeException(etiquetaMensaje, ex)
       End Try
    End Sub
 

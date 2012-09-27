@@ -4,8 +4,8 @@ Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
 
-Public Class frmCapturaCySC
-
+Public Class frmAnemiaInfecciosa
+   Dim etiquetaMensaje As ToolStripLabel = frmElisaBiovetsa.lblMensajeAplicacion
    Dim totalCasos() As listaCasos
    Dim posCasoActual As Integer = 0
    Dim numero As Integer = 0
@@ -14,6 +14,7 @@ Public Class frmCapturaCySC
    Dim arreglo As String = ""
    Dim chkcontrol As Boolean = True
    Dim cadenaDeCasos As String = "''"
+   Dim dilucion As Integer = 0
    'Para realizar los calculos de titulos
    'ENFERMEDAD       LOGSPS     LOGTIT1   LOGTIT2
    'Laringo           0.15       1.45        3.726
@@ -22,6 +23,7 @@ Public Class frmCapturaCySC
    'IBF               0.18       1.172       3.614
    'NC                0.15       1.464       3.74
    'Reovirus          0.15       1.077       3.46
+   'Anemia Infecciosa 0.6        2.72        -0.64
    '#########################################################
    'CARGA LA FORMA CON SU TOOL TIP Y BOTON DE CANCELAR
    '#########################################################
@@ -764,7 +766,7 @@ Public Class frmCapturaCySC
    'INSERTAR SUBCASO
    'GUARDAR CASO
    'GUARDAR SUBCASO
-   'EDITAR CASO-SUBCASO
+   'EDITAR CASO-SUBCASO  
    'GUARDAR CASO EDITADO
    '####################################################################################
 
@@ -961,7 +963,7 @@ Public Class frmCapturaCySC
                mensajeRojo(etiquetaMensaje, "ERROR: Los valores que se introdujeron se encuentran en el mismo rango que los del caso: " & totalCasos(i).noCaso & ", Verifique.")
                btnInsertar.Enabled = False
                btnEditar.Enabled = False
-               btnGuardar.Enabled = True
+               'btnGuardar.Enabled = True
             End If
          Else
             mensajeRojo(etiquetaMensaje, "ERROR: Los valores que se introdujeron tienen el mismo rango, caso o desde-hasta que otro caso anterior, Verifique.")
@@ -1367,14 +1369,24 @@ Public Class frmCapturaCySC
       '{"0.253", "0.524", "0.45", "0.387", "0.186", "0.315", "0.421", "0.23", "0.127", "0.157", "0.31", "0.356"}, _
       '{"0.248", "0.341", "0.287", "0.245", "0.221", "0.194", "0.503", "0.193", "0.33", "0.274", "0.447", "0.328"}, _
       '{"0.488", "0.212", "0.245", "0.975", "0.479", "0.211", "0.15", "0.31", "0.251", "0.044", "0.906", "0.056"}}
-      placaLector = {{"0.947", "0.053", "0.924", "1.144", "0.472", "0.524", "0.607", "1.364", "0.259", "0.592", "0.203", "0.855"}, _
-                   {"0.724", "0.835", "0.368", "0.46", "0.48", "1.438", "0.44", "0.572", "0.431", "0.955", "0.824", "0.426"}, _
-                   {"0.168", "0.455", "0.946", "0.758", "0.754", "0.875", "1.181", "1.05", "0.694", "1.617", "1.79", "0.788"}, _
-                   {"1.073", "0.423", "1.01", "0.641", "0.573", "0.971", "1.036", "0.738", "0.248", "0.375", "0.94", "0.576"}, _
-                   {"0.843", "0.251", "1.348", "1.362", "1.429", "0.945", "1.154", "1.336", "0.837", "0.513", "0.569", "0.645"}, _
-                   {"0.595", "0.392", "1.17", "1.235", "1.949", "0.409", "0.319", "0.542", "0.272", "0.229", "0.361", "0.39"}, _
-                   {"1.112", "0.352", "0.565", "0.501", "0.49", "0.7", "0.864", "0.922", "0.574", "0.973", "0.954", "0.713"}, _
-                   {"0.718", "1.56", "0.761", "0.629", "0.271", "0.864", "0.935", "0.536", "0.404", "0.049", "1.118", "0.053"}}
+      'para bi ejemplo
+      'placaLector = {{"0.947", "0.053", "0.924", "1.144", "0.472", "0.524", "0.607", "1.364", "0.259", "0.592", "0.203", "0.855"}, _
+      '             {"0.724", "0.835", "0.368", "0.46", "0.48", "1.438", "0.44", "0.572", "0.431", "0.955", "0.824", "0.426"}, _
+      '             {"0.168", "0.455", "0.946", "0.758", "0.754", "0.875", "1.181", "1.05", "0.694", "1.617", "1.79", "0.788"}, _
+      '             {"1.073", "0.423", "1.01", "0.641", "0.573", "0.971", "1.036", "0.738", "0.248", "0.375", "0.94", "0.576"}, _
+      '             {"0.843", "0.251", "1.348", "1.362", "1.429", "0.945", "1.154", "1.336", "0.837", "0.513", "0.569", "0.645"}, _
+      '             {"0.595", "0.392", "1.17", "1.235", "1.949", "0.409", "0.319", "0.542", "0.272", "0.229", "0.361", "0.39"}, _
+      '             {"1.112", "0.352", "0.565", "0.501", "0.49", "0.7", "0.864", "0.922", "0.574", "0.973", "0.954", "0.713"}, _
+      '             {"0.718", "1.56", "0.761", "0.629", "0.271", "0.864", "0.935", "0.536", "0.404", "0.049", "1.118", "0.053"}}
+      'Para anemia infecciosa
+      placaLector = {{"0.032", "0.098", "0.028", "0.038", "0.031", "0.077", "0.062", "0.031", "0.032", "0.036", "0.04", "0.054"}, _
+                     {"0.081	", "0.031", "0.033", "0.044", "0.02", "0.049", "0.02", "0.029", "0.024", "0.04", "0.04", "0.095"}, _
+                     {"0.17", "0.953", "0.174", "0.116", "0.638", "0.459", "0.477", "0.639", "0.549", "0.112", "0.114", "0.143"}, _
+                     {"0.312", "0.747", "0.898", "0.24", "0.7", "0.43", "	0.632", "0.226", "0.172", "0.64", "0.535", "0.233"}, _
+                     {"0.279", "0.079", "0.461", "0.325", "0.538", "0.256", "0.122", "0.153", "0.267", "0.261", "0.336", "0.239"}, _
+                     {"0.123", "0.292	", "0.254", "0.228", "0.117", "0.222", "0.102", "0.09	", "0.473", "0.195", "0.322", "0.601"}, _
+                     {"0.829	", "0.9", "0.863	", "0.792", "0.924", "0.605", "0.578", "0.099", "0.578", "0.107", "0.65	", "0.668"}, _
+                     {"0.764	", "0.626", "0.502", "0.376", "0.497", "0.461", "0.453", "0.545", "0.073", "0.736", "0.235", "0.903"}}
 
    End Sub
    '####################################################################################
@@ -1382,7 +1394,7 @@ Public Class frmCapturaCySC
    'DE CADA UNO DE LOS CASOS
    '####################################################################################
 
-   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmResultadosPrelim, ByRef etiqueta As ToolStripLabel, _
+   Private Sub obtenResultadosPorCaso(ByVal mensaje As String, ByRef forma As frmResultadosAnemia, ByRef etiqueta As ToolStripLabel, _
                                       ByVal posicion As Integer, _
                                       ByVal promCP As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal, _
                                       ByVal DAnoCaso As String, ByVal DAnoSubcasos As Integer, ByVal consecutivo As Integer, _
@@ -1447,6 +1459,7 @@ Public Class frmCapturaCySC
          mensajeRojo(etiquetaMensaje, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
+         'calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
          seleccionaMarcaDeClase(analisis, calculaL, rangoDatos, rangoTotal)
       Catch ex As Exception
          mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la marca de clase, calculaMarcaDeClase.")
@@ -1454,7 +1467,7 @@ Public Class frmCapturaCySC
 
       If cuentaNoDatos > 1 Then
          Try
-            mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
+            mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, cuentaNoDatos)
             totalCasos(posicion).medGeom = mediaGeometrica
          Catch
             mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
@@ -1674,55 +1687,82 @@ Public Class frmCapturaCySC
       'Obtiene el numero de caso para ese análisis
       Dim idAnalisis As String = tabla(0)
       Dim analisis As String = Replace(idAnalisis, "/", "")
+
       'Realiza el cálculo de los títulos seleccionando un procedimiento de acuerdo a la enfermedad.
-     
-      calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
+      'Si la funcion regresa false, quiere decir que el ensayo no es válido.
+
+      If calculaValoresEnRangoAnemia(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
                                      Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
                                      Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                     desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje)
-         
+                                     desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje) Then
+         etiquetaMensaje.Text = "Ensayo Valido."
 
-      Dim forma As frmResultadosPrelim
-      forma = New frmResultadosPrelim
-      forma.Nombre = tabla(1)
-      forma.NombreAnalisis = analisis
-      forma.ArregloCasos = totalCasos
-      forma.Fecha = fecha.ToShortDateString()
-      forma.NombreGrafica = nombreSobreGrafica
-      Console.WriteLine(nombreSobreGrafica)
-      forma.MdiParent = frmElisaBiovetsa
-      forma.Show()
+         Dim forma As frmResultadosAnemia
+         forma = New frmResultadosAnemia
+         forma.Nombre = tabla(1)
+         forma.NombreAnalisis = analisis
+         forma.ArregloCasos = totalCasos
+         forma.Fecha = fecha.ToShortDateString()
+         forma.NombreGrafica = nombreSobreGrafica
+         Console.WriteLine(nombreSobreGrafica)
+         forma.MdiParent = frmElisaBiovetsa
+         forma.Show()
 
-      For i = 0 To largo - 1
+         For i = 0 To largo - 1
 
-         obtenResultadosPorCaso("Caso No." & i + 1, forma, etiquetaMensaje, i, promCP, promCN, difCPS, _
-                               totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
-                               totalCasos(i).analisis, totalCasos(i).obs, _
-                               totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
-                               totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
-         forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
-      Next
+            obtenResultadosPorCaso("Caso No." & i + 1, forma, etiquetaMensaje, i, promCP, promCN, difCPS, _
+                                  totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
+                                  totalCasos(i).analisis, totalCasos(i).obs, _
+                                  totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
+                                  totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
+            forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
+         Next
 
-      'Se coloca el índice del combobox en 0, y se presentan los primeros resultados en pantalla por default.
-      forma.cmbCasosResPrel.SelectedIndex = 0
-      presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
-                                   forma.txtFechaElaboracion, fecha.ToShortDateString(), _
-                                   forma.txtNombreEnfermedad, tabla(1), _
-                                   forma.txtNombreCliente, totalCasos(0).cliente, _
-                                   forma.lblObservaciones, totalCasos(0).obs, _
-                                   forma.txtVarianza2, totalCasos(0).varianza, _
-                                   forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
-                                   forma.txtMediaAritmetica2, totalCasos(0).medArit, _
-                                   forma.txtMediaGeometrica, totalCasos(0).medGeom, _
-                                   forma.txtCoefVariacion2, totalCasos(0).coefVar, _
-                                   forma.txtDesvEstandar2, totalCasos(0).desvEst, _
-                                   forma.lblNosubcasos, totalCasos(0).noSubcasos, _
-                                   forma.lblConsecutivo, totalCasos(0).subCaso, _
-                                   forma.txtTitulosObtenidos, totalCasos(0).titulosObtenidos, _
-                                   forma.lblNombreSobreGrafica, nombreSobreGrafica, _
-                                   forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
-                                   forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
-                                   forma.lblNombreArchivo)
+         'Se coloca el índice del combobox en 0, y se presentan los primeros resultados en pantalla por default.
+         forma.cmbCasosResPrel.SelectedIndex = 0
+         'presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
+         '                             forma.txtFechaElaboracion, fecha.ToShortDateString(), _
+         '                             forma.txtNombreEnfermedad, tabla(1), _
+         '                             forma.txtNombreCliente, totalCasos(0).cliente, _
+         '                             forma.lblObservaciones, totalCasos(0).obs, _
+         '                             forma.txtVarianza2, totalCasos(0).varianza, _
+         '                             forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
+         '                             forma.txtMediaAritmetica2, totalCasos(0).medArit, _
+         '                             forma.txtMediaGeometrica, totalCasos(0).medGeom, _
+         '                             forma.txtCoefVariacion2, totalCasos(0).coefVar, _
+         '                             forma.txtDesvEstandar, totalCasos(0).desvEst, _
+         '                             forma.lblNosubcasos, totalCasos(0).noSubcasos, _
+         '                             forma.lblConsecutivo, totalCasos(0).subCaso, _
+         '                             forma.txtTitulosObtenidos, totalCasos(0).titulosObtenidos, _
+         '                             forma.lblNombreSobreGrafica, nombreSobreGrafica, _
+         '                             forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
+         '                             forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
+         '                             forma.lblNombreArchivo)
+      Else
+         If (MessageBox.Show("ERROR: El ensayo no es valido debido a que el valor de controles positivos/controles negativos no es <= 0.5", _
+                               "Mensaje durante la validación", MessageBoxButtons.OK, MessageBoxIcon.Error) = _
+           Windows.Forms.DialogResult.OK) Then
+            Me.Close()
+         End If
+      End If
+
    End Sub
 
+   Private Sub chkDil1a10_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkDil1a10.CheckedChanged
+      If chkDil1a10.Checked = True Then
+         chkDil1a100.Enabled = False
+         dilucion = 10
+      Else
+         chkDil1a100.Enabled = True
+      End If
+   End Sub
+
+   Private Sub chkDil1a100_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkDil1a100.CheckedChanged
+      If chkDil1a100.Checked = True Then
+         chkDil1a10.Enabled = False
+         dilucion = 100
+      Else
+         chkDil1a10.Enabled = True
+      End If
+   End Sub
 End Class

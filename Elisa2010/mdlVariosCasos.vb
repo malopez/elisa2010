@@ -1,44 +1,45 @@
 ﻿Module mdlVariosCasos
 
-   Public Function mediaGenerico(ByVal calculaL() As Decimal, ByVal nodatos As Integer) As Decimal
-      Dim media As Decimal = 0
-      Dim i As Integer
-      For i = 0 To nodatos - 1
-         media += calculaL(i)
-      Next
-      media = media / nodatos
-      Return media
-   End Function
+   'Borrar cuando se hagan pruebas con el lector. 27/SEP/2012
+   'Public Function mediaGenerico(ByVal calculaL() As Decimal, ByVal nodatos As Integer) As Decimal
+   '   Dim media As Decimal = 0
+   '   Dim i As Integer
+   '   For i = 0 To nodatos - 1
+   '      media += calculaL(i)
+   '   Next
+   '   media = media / nodatos
+   '   Return media
+   'End Function
 
-   Public Function desviacionEstandarGenerico(ByRef calculaL() As Decimal, ByVal cuentaNoDatos As Integer, _
-                                     ByVal desdex As Integer, ByVal desdey As Integer, _
-                                     ByVal hastax As Integer, ByVal hastay As Integer) As Decimal
-      Dim i, j As Integer
-      Dim contador As Integer = 0
-      Dim renglones As Integer = 11
-      Dim desvest As Decimal = 0
-      Dim sumatoriaMG As Decimal = 0
-      Dim media As Decimal
-      Dim varianza As Decimal = 0
-      Dim totalCalculaL As Decimal = 0
-      'Pasa los datos de la placa a calculaL en base a desde-hasta
-      For i = desdex To hastax
-         If (i = hastax) Then
-            renglones = hastay
-         End If
-         For j = desdey To renglones
-            calculaL(contador) = CDec(placaLector(i, j))
-            totalCalculaL += CDec(calculaL(contador))
-            'Calcula el logaritmo  base 10 del la columna L, que se utilizara para la calcular ma media geometrica
-            contador += 1
-         Next
-         desdey = 0
-      Next
-      media = calculaMediaAritmetica(totalCalculaL, cuentaNoDatos)
-      varianza = calculaVarianza(media, calculaL, cuentaNoDatos)
-      desvest = calculaDesvEst(varianza)
-      Return desvest
-   End Function
+   'Public Function desviacionEstandarGenerico(ByRef calculaL() As Decimal, ByVal cuentaNoDatos As Integer, _
+   '                                  ByVal desdex As Integer, ByVal desdey As Integer, _
+   '                                  ByVal hastax As Integer, ByVal hastay As Integer) As Decimal
+   '   Dim i, j As Integer
+   '   Dim contador As Integer = 0
+   '   Dim renglones As Integer = 11
+   '   Dim desvest As Decimal = 0
+   '   Dim sumatoriaMG As Decimal = 0
+   '   Dim media As Decimal
+   '   Dim varianza As Decimal = 0
+   '   Dim totalCalculaL As Decimal = 0
+   '   'Pasa los datos de la placa a calculaL en base a desde-hasta
+   '   For i = desdex To hastax
+   '      If (i = hastax) Then
+   '         renglones = hastay
+   '      End If
+   '      For j = desdey To renglones
+   '         calculaL(contador) = CDec(placaLector(i, j))
+   '         totalCalculaL += CDec(calculaL(contador))
+   '         'Calcula el logaritmo  base 10 del la columna L, que se utilizara para la calcular ma media geometrica
+   '         contador += 1
+   '      Next
+   '      desdey = 0
+   '   Next
+   '   media = calculaMediaAritmetica(totalCalculaL, cuentaNoDatos)
+   '   varianza = calculaVarianza(media, calculaL, cuentaNoDatos)
+   '   desvest = calculaDesvEst(varianza)
+   '   Return desvest
+   'End Function
 
    Public Function calculaSumatoriaMediaGeometrica(ByVal calculoDeTitulos(,) As Decimal, ByRef calculaL() As Decimal, _
                                      ByVal desdex As Integer, ByVal desdey As Integer, _
@@ -75,6 +76,22 @@
       Return (MG)
    End Function
 
+   Public Sub seleccionaMarcaDeClase(ByVal analisis As String, ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
+      Select Case analisis
+         Case "E01ELBI"
+            calculaMarcaDeClaseBI(calculaL, rangoDatos, rangoTotal)
+         Case "E02ELREO"
+            calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
+         Case "E03ELIBF"
+            calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
+         Case "E06ELLT"
+            calculaMarcaDeClase(calculaL, rangoDatos, rangoTotal)
+         Case "E04ELNC"
+            calculaMarcaDeClaseNC(calculaL, rangoDatos, rangoTotal)
+         Case "E08ELEA"
+            calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
+      End Select
+   End Sub
 
    Public Sub calculaMarcaDeClaseBI(ByVal calculaL() As Decimal, ByRef rangoDatos() As Integer, ByRef rangoTotal As Integer)
       Dim i As Integer = 0
@@ -351,9 +368,8 @@
       End Try
    End Sub
 
-
    Public Sub calculaLogaritmoTitulos(ByVal logaritmoSPS(,) As Decimal, ByRef logaritmoTitulos(,) As Decimal, ByVal logtit1 As Decimal, _
-                                      ByVal logtit2 As Decimal)
+                                   ByVal logtit2 As Decimal)
       Dim i As Integer = 0
       Dim j As Integer = 0
       'Calcula los Titulos de la tabla de logaritmos SPS
@@ -362,7 +378,6 @@
             For j = 0 To 11
                logaritmoTitulos(i, j) = reduceDecimal(((logtit1 * logaritmoSPS(i, j)) + logtit2))
             Next
-
          Next
       Catch ex As Exception
          MessageBox.Show("ERROR LOGARITMO TITULOS: " & ex.Message & " " & ex.GetType.ToString)
@@ -386,6 +401,60 @@
          MessageBox.Show("ERROR CALCULA TITULOS: " & ex.Message & " " & ex.GetType.ToString)
       End Try
    End Sub
+
+   '--- Para anemia infecciosa.---
+   'Calcula la tabla SPS para la anemia infecciosa
+   Public Sub calculaSPSsAnemia(ByRef placaoriginal As String, ByRef placaLector(,) As Decimal, ByRef calculaSPS(,) As Decimal, ByVal promCN As Decimal, ByVal difCPS As Decimal)
+      Try
+         For i = 0 To 7
+            For j = 0 To 11
+
+               If (placaLector(i, j) > 0) Then
+                  calculaSPS(i, j) = reduceDecimal((placaLector(i, j) / promCN))
+               Else
+                  calculaSPS(i, j) = 0
+               End If
+               placaoriginal += placaLector(i, j) & vbTab
+            Next
+         Next
+      Catch ex As Exception
+         MessageBox.Show("ERROR: Al calcular el SPS Anemia " & ex.Message & " " & ex.GetType.ToString)
+      End Try
+   End Sub
+
+   Public Sub calculaLogaritmoSPSAnemia(ByRef logaritmoSPS(,) As Decimal, ByVal calculaSPS(,) As Decimal, _
+                                        ByVal logtit1 As Decimal, ByVal logtit2 As Decimal)
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      Try
+         For i = 0 To 7
+            For j = 0 To 11
+               logaritmoSPS(i, j) = reduceDecimal(((calculaSPS(i, j) - logtit1) / logtit2))
+            Next
+         Next
+      Catch ex As Exception
+         MessageBox.Show("ERROR: Al calcular logaritmo de SPS Anemia" & ex.Message & " " & ex.GetType.ToString)
+      End Try
+   End Sub
+
+   Public Sub calculoDeTituloAnemia(ByRef logaritmoSPS(,) As Decimal, ByRef calculoDeTitulos(,) As Decimal)
+      'Calcula el titulo mendiante la exponenciacion 10 ^ A1..H1, en la hoja de excel corresponde a la columna K, y que tambien 
+      'se utilizan en la columna AE para tomar los titulos de los sueros en resultados finales
+      Try
+         For i = 0 To 7
+            For j = 0 To 11
+               If (logaritmoSPS(i, j) > 0) Then
+                  calculoDeTitulos(i, j) = reduceDecimal(CDec((10 ^ logaritmoSPS(i, j))))
+               Else
+                  calculoDeTitulos(i, j) = 0
+               End If
+            Next
+         Next
+      Catch ex As Exception
+         MessageBox.Show("ERROR: En cálculo de títulos Anemia." & ex.Message & " " & ex.GetType.ToString)
+      End Try
+   End Sub
+   '---termina anemia infecciosa.---
 
    Public Function titulosObtenidosEnCalculaL(ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As String
       Dim i As Integer = 0
@@ -498,38 +567,186 @@
       Return (cantidad)
    End Function
 
-   'Presenta datos para formatear la salida de los datos
-   Public Sub mostrarResultadosEnPantalla(ByRef lblNombreSobreGrafica As Label, ByRef lblMensajeSobreGrafica As Label, _
-                                     ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
-                                     ByRef lblConsecutivo As Label, ByRef lblAnalisis As Label, ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
-                                     ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
-                                     ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
-                                     ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
-                                     ByRef imagenGrafica As PictureBox, ByVal nombreArchivo As String, _
-                                     ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
-                                     ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal consecutivo As Integer, ByVal analisis As String, _
-                                     ByVal observaciones As String, ByVal fechaElaboracion As String, _
-                                     ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
-                                     ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
-                                     ByVal coefVar As Decimal, ByVal desvEst As Decimal, ByVal varianza As Decimal)
-      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
-      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
-      txtNombreEnfermedad.Text = nombre.ToString()
-      txtNombreCliente.Text = nombreCliente.ToString()
-      txtNoCaso.Text = numcaso.ToString()
-      lblAnalisis.Text = analisis.ToString()
-      lblConsecutivo.Text = CStr(consecutivo)
-      imagenGrafica.Image = Image.FromFile(nombreArchivo)
-      lblObservaciones.Text = observaciones.ToString()
-      txtFechaElaboracion.Text = fechaElaboracion.ToString()
-      txtTitulosObtenidos.Text = presenta1.ToString()
-      txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
-      txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
-      txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
-      txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
-      txtDesvEstandar2.Text = desvEst.ToString()
-      txtVarianza2.Text = varianza.ToString()
-   End Sub
+   'Presenta datos para formatear la salida de los datos. PUEDE BORRARSE al finalizar pruebas del lector. 27/SEP/2012
+   'Public Sub mostrarResultadosEnPantalla(ByRef lblNombreSobreGrafica As Label, ByRef lblMensajeSobreGrafica As Label, _
+   '                                  ByRef txtNombreEnfermedad As TextBox, ByRef txtNombreCliente As TextBox, ByRef txtNoCaso As TextBox, _
+   '                                  ByRef lblConsecutivo As Label, ByRef lblAnalisis As Label, ByRef lblObservaciones As Label, ByRef txtFechaElaboracion As TextBox, _
+   '                                  ByRef txtTitulosObtenidos As TextBox, ByRef txtMediaAritmetica2 As TextBox, _
+   '                                  ByRef txtMediaGeometrica As TextBox, ByRef txtTotalDatosCalculados As TextBox, _
+   '                                  ByRef txtCoefVariacion2 As TextBox, ByRef txtDesvEstandar2 As TextBox, ByRef txtVarianza2 As TextBox, _
+   '                                  ByRef imagenGrafica As PictureBox, ByVal nombreArchivo As String, _
+   '                                  ByVal nombreSobreGrafica As String, ByVal mensajeSobreGrafica As String, _
+   '                                  ByVal nombre As String, ByVal nombreCliente As String, ByVal numcaso As String, ByVal consecutivo As Integer, ByVal analisis As String, _
+   '                                  ByVal observaciones As String, ByVal fechaElaboracion As String, _
+   '                                  ByVal presenta1 As String, ByVal mediaAritmetica As Decimal, _
+   '                                  ByVal mediaGeometrica As Decimal, ByVal cuentaNoDatos As Integer, _
+   '                                  ByVal coefVar As Decimal, ByVal desvEst As Decimal, ByVal varianza As Decimal)
+   '   lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
+   '   lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
+   '   txtNombreEnfermedad.Text = nombre.ToString()
+   '   txtNombreCliente.Text = nombreCliente.ToString()
+   '   txtNoCaso.Text = numcaso.ToString()
+   '   lblAnalisis.Text = analisis.ToString()
+   '   lblConsecutivo.Text = CStr(consecutivo)
+   '   imagenGrafica.Image = Image.FromFile(nombreArchivo)
+   '   lblObservaciones.Text = observaciones.ToString()
+   '   txtFechaElaboracion.Text = fechaElaboracion.ToString()
+   '   txtTitulosObtenidos.Text = presenta1.ToString()
+   '   txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
+   '   txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
+   '   txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
+   '   txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
+   '   txtDesvEstandar2.Text = desvEst.ToString()
+   '   txtVarianza2.Text = varianza.ToString()
+   'End Sub
+
+
+   'Public Sub muestraResultadosEnPantalla(ByRef txtNoCaso As TextBox, ByVal numcaso As String, _
+   '                                  ByRef lblAnalisis As Label, ByVal analisis As String, _
+   '                                  ByRef txtFechaElaboracion As TextBox, ByVal fechaElaboracion As String, _
+   '                                  ByRef txtNombreEnfermedad As TextBox, ByVal nombre As String, _
+   '                                  ByRef txtNombreCliente As TextBox, ByVal nombreCliente As String, _
+   '                                  ByRef lblObservaciones As Label, ByVal observaciones As String, _
+   '                                  ByRef txtVarianza2 As TextBox, ByVal varianza As Decimal, _
+   '                                  ByRef txtTotalDatosCalculados As TextBox, ByVal cuentaNoDatos As Integer, _
+   '                                  ByRef txtMediaAritmetica2 As TextBox, ByVal mediaAritmetica As Decimal, _
+   '                                  ByRef txtMediaGeometrica As TextBox, ByVal mediaGeometrica As Decimal, _
+   '                                  ByRef txtCoefVariacion2 As TextBox, ByVal coefVar As Decimal, _
+   '                                  ByRef txtDesvEstandar2 As TextBox, ByVal desvEst As Decimal, _
+   '                                  ByRef lblNosubcasos As Label, ByVal nosubcasos As Integer, _
+   '                                  ByRef lblConsecutivo As Label, ByVal consecutivo As Integer, _
+   '                                  ByRef txtTitulosObtenidos As TextBox, ByVal presenta1 As String, _
+   '                                  ByRef lblNombreSobreGrafica As Label, ByVal nombreSobreGrafica As String, _
+   '                                  ByRef lblMensajeSobreGrafica As Label, ByVal mensajeSobreGrafica As String, _
+   '                                  ByRef imagenGrafica As PictureBox, ByVal nombreArchivoGrafica As String, _
+   '                                  ByRef lblNombreArchivo As Label)
+   '   lblNosubcasos.Text = nosubcasos
+   '   lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
+   '   lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
+   '   txtNombreEnfermedad.Text = nombre
+   '   txtNombreCliente.Text = nombreCliente
+   '   txtNoCaso.Text = numcaso.ToString()
+   '   lblAnalisis.Text = analisis.ToString()
+   '   lblConsecutivo.Text = CStr(consecutivo)
+   '   imagenGrafica.Image = Image.FromFile(nombreArchivoGrafica)
+   '   lblNombreArchivo.Text = nombreArchivoGrafica
+   '   lblObservaciones.Text = observaciones.ToString()
+   '   txtFechaElaboracion.Text = fechaElaboracion.ToString()
+   '   txtTitulosObtenidos.Text = presenta1.ToString()
+   '   txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
+   '   txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
+   '   txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
+   '   txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
+   '   txtDesvEstandar2.Text = desvEst.ToString()
+   '   txtVarianza2.Text = varianza.ToString()
+   'End Sub
+
+   'Public Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
+   '                     ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
+   '                      ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
+   '                      ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
+   '                      ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+   '                      ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
+   '                      ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
+   '                      ByVal etiqueta As ToolStripLabel, ByVal mensaje As String)
+   '   Dim cadena As String
+   '   Dim tabla() As String
+   '   Dim numCaso As String = ""
+   '   cadena = cmbCaso.Text
+   '   tabla = Split(cadena, " | ")
+   '   numCaso = tabla(0)
+   '   Dim nocp As Integer = CInt(noControlesPositivos.Text)
+   '   Dim nocn As Integer = CInt(noControlesNegativos.Text)
+   '   Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+   '   Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+   '   Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
+   '   Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
+   '   Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
+   '   Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
+   '   Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
+   '   Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
+   '   Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
+   '   Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
+   '   Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
+   '   Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
+
+   '   'Asigna valor default a la definición de cp para x y y.
+
+   '   Dim cpx3 As Integer = 0
+   '   Dim cnx3 As Integer = 0
+   '   Dim cpy3 As Integer = 0
+   '   Dim cny3 As Integer = 0
+   '   'Verifica si  son tres controles positivos
+   '   If (nocp = 3) Then
+   '      cpx3 = siValorEsLetra(txtCP3Letra3)
+   '      cnx3 = siValorEsLetra(txtCN3Letra3)
+   '      cpy3 = CInt(txtCP3Valor3.Text) - 1
+   '      cny3 = CInt(txtCN3Valor3.Text) - 1
+   '   End If
+   '   Dim consecutivo As Integer = 0
+   '   Try
+   '      guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+   '                       cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
+   '      mensajeVerde(etiqueta, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+   '   Catch ex As Exception
+   '      mensajeRojo(etiqueta, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+   '   End Try
+   'End Sub
+
+   'Permite guardar los casos cuando son n casos con n subcasos. Agregado el 07/Ago/2012
+   'Public Sub guardaCasos(ByVal cmbCaso As ComboBox, ByVal consecutivo As Integer, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
+   '                      ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
+   '                       ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
+   '                       ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
+   '                       ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
+   '                       ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
+   '                       ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
+   '                       ByVal lblMensajeCaso As Label, ByVal mensaje As String)
+   '   Dim cadena As String
+   '   Dim tabla() As String
+   '   Dim numCaso As String = ""
+   '   cadena = cmbCaso.Text
+   '   tabla = Split(cadena, " | ")
+   '   numCaso = tabla(0)
+   '   Dim nocp As Integer = CInt(noControlesPositivos.Text)
+   '   Dim nocn As Integer = CInt(noControlesNegativos.Text)
+   '   Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
+   '   Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
+   '   Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
+   '   Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
+   '   Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
+   '   Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
+   '   Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
+   '   Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
+   '   Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
+   '   Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
+   '   Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
+   '   Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
+
+   '   'Asigna valor default a la definición de cp para x y y.
+
+   '   Dim cpx3 As Integer = 0
+   '   Dim cnx3 As Integer = 0
+   '   Dim cpy3 As Integer = 0
+   '   Dim cny3 As Integer = 0
+   '   'Verifica si  son tres controles positivos
+   '   If (nocp = 3) Then
+   '      cpx3 = siValorEsLetra(txtCP3Letra3)
+   '      cnx3 = siValorEsLetra(txtCN3Letra3)
+   '      cpy3 = CInt(txtCP3Valor3.Text) - 1
+   '      cny3 = CInt(txtCN3Valor3.Text) - 1
+   '   End If
+   '   Try
+   '      guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
+   '                       cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
+   '      mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
+   '   Catch ex As Exception
+   '      mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
+   '   End Try
+   'End Sub
+
+   'HASTA AQUI 27/SEP/2012
+
 
    'Presenta datos para formatear la salida de los datos
    Public Sub presentaResultadosEnPantalla(ByRef lblAnalisis As Label, ByVal analisis As String, _
@@ -542,7 +759,7 @@
                                      ByRef txtMediaAritmetica2 As TextBox, ByVal mediaAritmetica As Decimal, _
                                      ByRef txtMediaGeometrica As TextBox, ByVal mediaGeometrica As Decimal, _
                                      ByRef txtCoefVariacion2 As TextBox, ByVal coefVar As Decimal, _
-                                     ByRef txtDesvEstandar2 As TextBox, ByVal desvEst As Decimal, _
+                                     ByRef txtDesvEstandar As TextBox, ByVal desvEst As Decimal, _
                                      ByRef lblNosubcasos As Label, ByVal nosubcasos As Integer, _
                                      ByRef lblConsecutivo As Label, ByVal consecutivo As Integer, _
                                      ByRef txtTitulosObtenidos As TextBox, ByVal presenta1 As String, _
@@ -566,48 +783,7 @@
       txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
       txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
       txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
-      txtDesvEstandar2.Text = desvEst.ToString()
-      txtVarianza2.Text = varianza.ToString()
-   End Sub
-
-   'Presenta datos para formatear la salida de los datos
-   Public Sub muestraResultadosEnPantalla(ByRef txtNoCaso As TextBox, ByVal numcaso As String, _
-                                     ByRef lblAnalisis As Label, ByVal analisis As String, _
-                                     ByRef txtFechaElaboracion As TextBox, ByVal fechaElaboracion As String, _
-                                     ByRef txtNombreEnfermedad As TextBox, ByVal nombre As String, _
-                                     ByRef txtNombreCliente As TextBox, ByVal nombreCliente As String, _
-                                     ByRef lblObservaciones As Label, ByVal observaciones As String, _
-                                     ByRef txtVarianza2 As TextBox, ByVal varianza As Decimal, _
-                                     ByRef txtTotalDatosCalculados As TextBox, ByVal cuentaNoDatos As Integer, _
-                                     ByRef txtMediaAritmetica2 As TextBox, ByVal mediaAritmetica As Decimal, _
-                                     ByRef txtMediaGeometrica As TextBox, ByVal mediaGeometrica As Decimal, _
-                                     ByRef txtCoefVariacion2 As TextBox, ByVal coefVar As Decimal, _
-                                     ByRef txtDesvEstandar2 As TextBox, ByVal desvEst As Decimal, _
-                                     ByRef lblNosubcasos As Label, ByVal nosubcasos As Integer, _
-                                     ByRef lblConsecutivo As Label, ByVal consecutivo As Integer, _
-                                     ByRef txtTitulosObtenidos As TextBox, ByVal presenta1 As String, _
-                                     ByRef lblNombreSobreGrafica As Label, ByVal nombreSobreGrafica As String, _
-                                     ByRef lblMensajeSobreGrafica As Label, ByVal mensajeSobreGrafica As String, _
-                                     ByRef imagenGrafica As PictureBox, ByVal nombreArchivoGrafica As String, _
-                                     ByRef lblNombreArchivo As Label)
-      lblNosubcasos.Text = nosubcasos
-      lblNombreSobreGrafica.Text = nombreSobreGrafica.ToString()
-      lblMensajeSobreGrafica.Text = mensajeSobreGrafica.ToString()
-      txtNombreEnfermedad.Text = nombre
-      txtNombreCliente.Text = nombreCliente
-      txtNoCaso.Text = numcaso.ToString()
-      lblAnalisis.Text = analisis.ToString()
-      lblConsecutivo.Text = CStr(consecutivo)
-      imagenGrafica.Image = Image.FromFile(nombreArchivoGrafica)
-      lblNombreArchivo.Text = nombreArchivoGrafica
-      lblObservaciones.Text = observaciones.ToString()
-      txtFechaElaboracion.Text = fechaElaboracion.ToString()
-      txtTitulosObtenidos.Text = presenta1.ToString()
-      txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
-      txtMediaGeometrica.Text = CStr(Math.Round(CDec(mediaGeometrica)))
-      txtTotalDatosCalculados.Text = cuentaNoDatos.ToString()
-      txtCoefVariacion2.Text = CStr(Math.Round(CDec(coefVar)))
-      txtDesvEstandar2.Text = desvEst.ToString()
+      txtDesvEstandar.Text = desvEst.ToString()
       txtVarianza2.Text = varianza.ToString()
    End Sub
 
@@ -661,109 +837,61 @@
       calculoDeTitulo(logaritmoTitulos, calculoDeTitulos)
    End Sub
 
-   'Permite guardar los casos cuando son n casos con n subcasos. Agregado el 07/Ago/2012
-   Public Sub guardaCasos(ByVal cmbCaso As ComboBox, ByVal consecutivo As Integer, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
-                         ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
-                          ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
-                          ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
-                          ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
-                          ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
-                          ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
-                          ByVal lblMensajeCaso As Label, ByVal mensaje As String)
-      Dim cadena As String
-      Dim tabla() As String
-      Dim numCaso As String = ""
-      cadena = cmbCaso.Text
-      tabla = Split(cadena, " | ")
-      numCaso = tabla(0)
-      Dim nocp As Integer = CInt(noControlesPositivos.Text)
-      Dim nocn As Integer = CInt(noControlesNegativos.Text)
-      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
-      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
-      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
-      Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
-      Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
-      Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
-      Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
-      Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
-      Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
-      Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
-      Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
-      Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
-
-      'Asigna valor default a la definición de cp para x y y.
-
-      Dim cpx3 As Integer = 0
-      Dim cnx3 As Integer = 0
-      Dim cpy3 As Integer = 0
-      Dim cny3 As Integer = 0
-      'Verifica si  son tres controles positivos
-      If (nocp = 3) Then
-         cpx3 = siValorEsLetra(txtCP3Letra3)
-         cnx3 = siValorEsLetra(txtCN3Letra3)
-         cpy3 = CInt(txtCP3Valor3.Text) - 1
-         cny3 = CInt(txtCN3Valor3.Text) - 1
+   'Calcula los valores para la anemia infecciosa
+   Public Function calculaValoresEnRangoAnemia(ByRef placaLector(,) As Decimal, ByRef desdeArchivo As Integer, ByVal nocp As Integer, _
+                             ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
+                             ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
+                             ByVal cnx1 As Integer, ByVal cnx2 As Integer, ByVal cnx3 As Integer, _
+                             ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
+                             ByVal logsps As Decimal, ByVal logtit1 As Decimal, ByVal logtit2 As Decimal, _
+                             ByVal cp1 As Decimal, ByVal cp2 As Decimal, ByVal cp3 As Decimal, _
+                             ByVal cn1 As Decimal, ByVal cn2 As Decimal, ByVal cn3 As Decimal, _
+                             ByVal desdex As Integer, ByVal hastax As Integer, ByVal desdey As Integer, _
+                             ByVal hastay As Integer, ByRef promCP As Decimal, ByRef promCN As Decimal, ByRef difCPS As Decimal,
+                             ByRef etiqueta As ToolStripLabel) As Boolean
+      'Booleano que controla la validez del ensayo.
+      Dim ensayoValido = True
+      'Para controlar el ciclo for
+      Dim i As Integer = 0
+      Dim j As Integer = 0
+      Dim k As Integer = 0
+      Dim placaOriginal As String = ""
+      'Para calcular el numero de datos seleccionados de los pozos para realizar el analisis
+      Dim cuentaNoDatos As Integer = 0
+      'Matriz para calculo de SPS
+      Dim calculaSPS(7, 11) As Decimal
+      'Matriz para calculo de Logaritmo de SPS
+      Dim logaritmoSPS(7, 11) As Decimal
+      'Matriz para calculo de Logaritmo de Titulos
+      Dim logaritmoTitulos(7, 11) As Decimal
+      'Para los valores del calculo estadistico
+      Dim temp As Decimal = 0
+      'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
+      If (desdeArchivo <> 1) Then
+         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la función
+         promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, etiqueta)
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
+         promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3, etiqueta)
+      Else
+         'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
+         promCP = calculaPromedioPositivosDA(cp1, cp2, cp3, etiqueta)
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la función
+         promCN = calculaPromedioNegativosDA(cn1, cn2, cn3, etiqueta)
       End If
-      Try
-         guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
-         mensajeVerde(frmElisaBiovetsa.lblMensajeAplicacion, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
-      Catch ex As Exception
-         mensajeRojo(frmElisaBiovetsa.lblMensajeAplicacion, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
-      End Try
-   End Sub
 
-
-   Public Sub guardaCaso(ByVal cmbCaso As ComboBox, ByVal analisis As String, ByVal noControlesPositivos As TextBox, _
-                        ByVal noControlesNegativos As TextBox, ByVal txtDesdeLetra As TextBox, _
-                         ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox, _
-                         ByVal txtCP1Letra1 As TextBox, ByVal txtCP2Letra2 As TextBox, ByVal txtCP3Letra3 As TextBox, _
-                         ByVal txtCP1Valor1 As TextBox, ByVal txtCP2Valor2 As TextBox, ByVal txtCP3Valor3 As TextBox, _
-                         ByVal txtCN1Letra1 As TextBox, ByVal txtCN2Letra2 As TextBox, ByVal txtCN3Letra3 As TextBox, _
-                         ByVal txtCN1Valor1 As TextBox, ByVal txtCN2Valor2 As TextBox, ByVal txtCN3Valor3 As TextBox, _
-                         ByVal etiqueta As ToolStripLabel, ByVal mensaje As String)
-      Dim cadena As String
-      Dim tabla() As String
-      Dim numCaso As String = ""
-      cadena = cmbCaso.Text
-      tabla = Split(cadena, " | ")
-      numCaso = tabla(0)
-      Dim nocp As Integer = CInt(noControlesPositivos.Text)
-      Dim nocn As Integer = CInt(noControlesNegativos.Text)
-      Dim desdex As Integer = siValorEsLetra(txtDesdeLetra)
-      Dim hastax As Integer = siValorEsLetra(txtHastaLetra)
-      Dim desdey As Integer = Convert.ToInt32(txtDesdeValor.Text) - 1
-      Dim hastay As Integer = Convert.ToInt32(txtHastaValor.Text) - 1
-      Dim cpx1 As Integer = siValorEsLetra(txtCP1Letra1)
-      Dim cpx2 As Integer = siValorEsLetra(txtCP2Letra2)
-      Dim cpy1 As Integer = CInt(txtCP1Valor1.Text) - 1
-      Dim cpy2 As Integer = CInt(txtCP2Valor2.Text) - 1
-      Dim cnx1 As Integer = siValorEsLetra(txtCN1Letra1)
-      Dim cnx2 As Integer = siValorEsLetra(txtCN2Letra2)
-      Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
-      Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
-
-      'Asigna valor default a la definición de cp para x y y.
-
-      Dim cpx3 As Integer = 0
-      Dim cnx3 As Integer = 0
-      Dim cpy3 As Integer = 0
-      Dim cny3 As Integer = 0
-      'Verifica si  son tres controles positivos
-      If (nocp = 3) Then
-         cpx3 = siValorEsLetra(txtCP3Letra3)
-         cnx3 = siValorEsLetra(txtCN3Letra3)
-         cpy3 = CInt(txtCP3Valor3.Text) - 1
-         cny3 = CInt(txtCN3Valor3.Text) - 1
+      difCPS = calculaDivisionSPS(promCP, promCN, etiqueta)
+      'De acuerdo al kit, el ensayo es válido solamente si la division de los controles es menor o igual a 0.5
+      'en otro caso no es válido, entonces no se calcula ningún otro valor.
+      If (difCPS <= 0.5) Then
+         calculaSPSsAnemia(placaOriginal, placaLector, calculaSPS, promCN, difCPS)
+         calculaLogaritmoSPSAnemia(logaritmoSPS, calculaSPS, logtit1, logtit2)
+         calculoDeTituloAnemia(logaritmoSPS, calculoDeTitulos)
+         mensajeVerde(etiqueta, "Ensayo de Anemia Infecciosa Válido.")
+      Else
+         ensayoValido = False
+         mensajeRojo(etiqueta, "Ensayo de Anemia Infecciosa NO Válido.")
       End If
-      Dim consecutivo As Integer = 0
-      Try
-         guardarDatosExcel(placaLector, nocp, nocn, numCaso, consecutivo, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, _
-                          cpy2, cpy3, cny1, cny2, cny3, desdex, desdey, hastax, hastay, frmElisaBiovetsa.lblMensajeAplicacion)
-         mensajeVerde(etiqueta, "Mensaje: Los datos del: " & mensaje & " de la placa original se guardaron exitosamente.")
-      Catch ex As Exception
-         mensajeRojo(etiqueta, "ERROR: Al guardar los datos del: " & mensaje & " de la placa original en excel, guardaCaso.")
-      End Try
-   End Sub
+      Return ensayoValido
+   End Function
 
 End Module

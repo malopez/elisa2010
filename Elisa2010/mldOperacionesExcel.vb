@@ -283,14 +283,11 @@ Module mldOperacionesExcel
       End With
    End Sub
 
-
    'Public Function insertaGrafica(excelApp As Excel.Application, ByVal nombreArchivoGrafica As String, ByVal celdas As Integer) As Object
    '   Dim obj As Object
    '   obj = excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivoGrafica, False, True, 250, celdas, 220, 150)
    '   Return obj
    'End Function
-
-
 
    'Agrega un cuadrito sobre la grafica
    Public Sub agregaCuadrito(excelApp As Excel.Application, ByVal rango As String, ByVal valorFormula As String)
@@ -357,8 +354,8 @@ Module mldOperacionesExcel
          ubicacion = 0
          celdas = "E15"
       Else
-         ubicacion = (consecutivo - 1) * 54
-         celdas = "E" & (15 + ((consecutivo - 1) * 55))
+         ubicacion = (consecutivo - 1) * 53
+         celdas = "E" & (15 + ((consecutivo - 1) * 53))
       End If
 
       Dim rangoCuadro1 As String = "F" & CStr(17 + ubicacion) & ":G" & CStr(17 + ubicacion)
@@ -376,7 +373,7 @@ Module mldOperacionesExcel
          noHojas = consecutivo.ToString() & " / " & noSubcaso.ToString()
       Else
          If consecutivo <= 1 Then
-            If consecutivo = 0 Then
+            If consecutivo = 0 And noSubcaso = 0 Then
                noHojas = "1/1"
             Else
                noHojas = consecutivo.ToString() & " / " & noSubcaso.ToString()
@@ -781,7 +778,8 @@ Module mldOperacionesExcel
    '#CREA GRAFICA DE BARRAS UTILIZANDO EXCEL        #
    '#################################################
    'utiliza excel para crear la grafica de barras y la guarda  como imagen.
-   Public Function creaChartFrecRel(ByRef etiqueta As ToolStripLabel, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
+   'Public Function creaChartFrecRel(ByRef etiqueta As ToolStripLabel, ByRef control As Control, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
+   Public Function creaChartFrecRel(ByRef etiqueta As ToolStripLabel, ByVal frecuenciaRelativa() As Decimal, ByVal rangoDatos() As Integer, _
                                     ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String) As String
       'ByVal nombre As String, ByVal titulox As String, ByVal tituloy As String, ByRef numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String) As String
       Dim excelApp As New Excel.Application

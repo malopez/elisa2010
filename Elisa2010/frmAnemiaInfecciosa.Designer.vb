@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmCapturaCySC
+Partial Class frmAnemiaInfecciosa
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -17,17 +17,17 @@ Partial Class frmCapturaCySC
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
-    Private Sub InitializeComponent()
+   'NOTE: The following procedure is required by the Windows Form Designer
+   'It can be modified using the Windows Form Designer.  
+   'Do not modify it using the code editor.
+   <System.Diagnostics.DebuggerStepThrough()> _
+   Private Sub InitializeComponent()
       Me.components = New System.ComponentModel.Container()
-      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCySC))
-      Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAnemiaInfecciosa))
+      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.Panel1 = New System.Windows.Forms.Panel()
       Me.Label43 = New System.Windows.Forms.Label()
       Me.Label42 = New System.Windows.Forms.Label()
@@ -71,6 +71,9 @@ Partial Class frmCapturaCySC
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.lblLogSPS = New System.Windows.Forms.Label()
       Me.Panel4 = New System.Windows.Forms.Panel()
+      Me.chkDil1a100 = New System.Windows.Forms.CheckBox()
+      Me.chkDil1a10 = New System.Windows.Forms.CheckBox()
+      Me.Label2 = New System.Windows.Forms.Label()
       Me.Label8 = New System.Windows.Forms.Label()
       Me.txtNombreSobreGrafica = New System.Windows.Forms.TextBox()
       Me.Label41 = New System.Windows.Forms.Label()
@@ -594,6 +597,9 @@ Partial Class frmCapturaCySC
       '
       Me.Panel4.BackColor = System.Drawing.SystemColors.Control
       Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel4.Controls.Add(Me.chkDil1a100)
+      Me.Panel4.Controls.Add(Me.chkDil1a10)
+      Me.Panel4.Controls.Add(Me.Label2)
       Me.Panel4.Controls.Add(Me.Label8)
       Me.Panel4.Controls.Add(Me.txtNombreSobreGrafica)
       Me.Panel4.Controls.Add(Me.Label41)
@@ -607,23 +613,58 @@ Partial Class frmCapturaCySC
       Me.Panel4.Size = New System.Drawing.Size(664, 72)
       Me.Panel4.TabIndex = 140
       '
+      'chkDil1a100
+      '
+      Me.chkDil1a100.AutoSize = True
+      Me.chkDil1a100.ForeColor = System.Drawing.Color.DarkGreen
+      Me.chkDil1a100.Location = New System.Drawing.Point(208, 44)
+      Me.chkDil1a100.Name = "chkDil1a100"
+      Me.chkDil1a100.Size = New System.Drawing.Size(53, 17)
+      Me.chkDil1a100.TabIndex = 152
+      Me.chkDil1a100.Text = "1:100"
+      Me.ToolTip1.SetToolTip(Me.chkDil1a100, "Marque paradilución 1 a 100.")
+      Me.chkDil1a100.UseVisualStyleBackColor = True
+      '
+      'chkDil1a10
+      '
+      Me.chkDil1a10.AutoSize = True
+      Me.chkDil1a10.ForeColor = System.Drawing.Color.DarkGreen
+      Me.chkDil1a10.Location = New System.Drawing.Point(155, 44)
+      Me.chkDil1a10.Name = "chkDil1a10"
+      Me.chkDil1a10.Size = New System.Drawing.Size(47, 17)
+      Me.chkDil1a10.TabIndex = 149
+      Me.chkDil1a10.Text = "1:10"
+      Me.ToolTip1.SetToolTip(Me.chkDil1a10, "Marque para dilución 1 a 10.")
+      Me.chkDil1a10.UseVisualStyleBackColor = True
+      '
+      'Label2
+      '
+      Me.Label2.AutoSize = True
+      Me.Label2.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label2.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label2.Location = New System.Drawing.Point(18, 44)
+      Me.Label2.Name = "Label2"
+      Me.Label2.Size = New System.Drawing.Size(131, 15)
+      Me.Label2.TabIndex = 151
+      Me.Label2.Text = "Dilución de la Muestra:"
+      '
       'Label8
       '
       Me.Label8.AutoSize = True
       Me.Label8.BackColor = System.Drawing.Color.Transparent
       Me.Label8.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label8.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label8.Location = New System.Drawing.Point(108, 7)
+      Me.Label8.Location = New System.Drawing.Point(22, 7)
       Me.Label8.Name = "Label8"
-      Me.Label8.Size = New System.Drawing.Size(260, 16)
+      Me.Label8.Size = New System.Drawing.Size(113, 16)
       Me.Label8.TabIndex = 150
-      Me.Label8.Text = "Abreviatura del nombre de la enfermedad:"
+      Me.Label8.Text = "Mensaje Especial:"
       '
       'txtNombreSobreGrafica
       '
-      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(368, 6)
+      Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(141, 6)
       Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
-      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(166, 20)
+      Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(307, 20)
       Me.txtNombreSobreGrafica.TabIndex = 149
       Me.ToolTip1.SetToolTip(Me.txtNombreSobreGrafica, "Abreviatura de la enfermedad")
       '
@@ -632,7 +673,7 @@ Partial Class frmCapturaCySC
       Me.Label41.AutoSize = True
       Me.Label41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label41.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label41.Location = New System.Drawing.Point(403, 45)
+      Me.Label41.Location = New System.Drawing.Point(480, 45)
       Me.Label41.Name = "Label41"
       Me.Label41.Size = New System.Drawing.Size(100, 15)
       Me.Label41.TabIndex = 143
@@ -642,7 +683,7 @@ Partial Class frmCapturaCySC
       '
       Me.txtNoControlesNegativos.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
       Me.txtNoControlesNegativos.ForeColor = System.Drawing.Color.Yellow
-      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(509, 42)
+      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(586, 42)
       Me.txtNoControlesNegativos.MaxLength = 1
       Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
@@ -655,7 +696,7 @@ Partial Class frmCapturaCySC
       Me.lblNoCasos.AutoSize = True
       Me.lblNoCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoCasos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCasos.Location = New System.Drawing.Point(108, 44)
+      Me.lblNoCasos.Location = New System.Drawing.Point(500, 8)
       Me.lblNoCasos.Name = "lblNoCasos"
       Me.lblNoCasos.Size = New System.Drawing.Size(80, 15)
       Me.lblNoCasos.TabIndex = 139
@@ -663,10 +704,11 @@ Partial Class frmCapturaCySC
       '
       'txtNoDeCasos
       '
-      Me.txtNoDeCasos.Location = New System.Drawing.Point(196, 42)
+      Me.txtNoDeCasos.BackColor = System.Drawing.Color.White
+      Me.txtNoDeCasos.Location = New System.Drawing.Point(587, 6)
       Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
-      Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
+      Me.txtNoDeCasos.Size = New System.Drawing.Size(23, 20)
       Me.txtNoDeCasos.TabIndex = 1
       Me.ToolTip1.SetToolTip(Me.txtNoDeCasos, "No. casos en la placa")
       '
@@ -675,7 +717,7 @@ Partial Class frmCapturaCySC
       Me.lblNoControles.AutoSize = True
       Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoControles.Location = New System.Drawing.Point(246, 44)
+      Me.lblNoControles.Location = New System.Drawing.Point(323, 44)
       Me.lblNoControles.Name = "lblNoControles"
       Me.lblNoControles.Size = New System.Drawing.Size(92, 15)
       Me.lblNoControles.TabIndex = 141
@@ -685,7 +727,7 @@ Partial Class frmCapturaCySC
       '
       Me.txtNoControlesPositivos.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
       Me.txtNoControlesPositivos.ForeColor = System.Drawing.Color.Yellow
-      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(344, 42)
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(421, 42)
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
       Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
@@ -939,10 +981,11 @@ Partial Class frmCapturaCySC
       '
       'btnBuscaCaso
       '
+      Me.btnBuscaCaso.BackgroundImage = CType(resources.GetObject("btnBuscaCaso.BackgroundImage"), System.Drawing.Image)
+      Me.btnBuscaCaso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
       Me.btnBuscaCaso.Enabled = False
       Me.btnBuscaCaso.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.btnBuscaCaso.ForeColor = System.Drawing.Color.SteelBlue
-      Me.btnBuscaCaso.Image = CType(resources.GetObject("btnBuscaCaso.Image"), System.Drawing.Image)
       Me.btnBuscaCaso.Location = New System.Drawing.Point(355, 5)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
@@ -1138,43 +1181,43 @@ Partial Class frmCapturaCySC
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
+      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.BackgroundColor = System.Drawing.Color.White
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle10.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(7, 356)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle11.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle11.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
-      DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle12
+      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 141
       Me.dgvPlacaLeida.TabStop = False
       '
-      'frmCapturaCySC
+      'frmAnemiaInfecciosa
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.ClientSize = New System.Drawing.Size(708, 590)
+      Me.ClientSize = New System.Drawing.Size(713, 590)
       Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.tbcDatosDelCaso)
       Me.Controls.Add(Me.lblNombreLector)
@@ -1184,9 +1227,8 @@ Partial Class frmCapturaCySC
       Me.Controls.Add(Me.btnCancelar)
       Me.Controls.Add(Me.Panel1)
       Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-      Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
-      Me.Name = "frmCapturaCySC"
+      Me.Name = "frmAnemiaInfecciosa"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Captura casos y subcasos"
       Me.Panel1.ResumeLayout(False)
@@ -1301,4 +1343,7 @@ Partial Class frmCapturaCySC
    Friend WithEvents dgvPlacaLeida As System.Windows.Forms.DataGridView
    Friend WithEvents Label8 As System.Windows.Forms.Label
    Friend WithEvents txtNombreSobreGrafica As System.Windows.Forms.TextBox
+   Friend WithEvents chkDil1a100 As System.Windows.Forms.CheckBox
+   Friend WithEvents chkDil1a10 As System.Windows.Forms.CheckBox
+   Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

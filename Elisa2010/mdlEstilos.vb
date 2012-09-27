@@ -5,10 +5,6 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Runtime.InteropServices
 
 Module mdlEstilos
-   ''############################ DESDE AQUI
-   'Se pueden borrar estos dos procedimientos desde aqui hasta aqui porque se sustituyen por los dos de abajo
-   'Gracias al cambio se tienen los colores en RGB aleatorio.
-
    'Colorea en el grid view los casos cada uno con un color.
    Public Sub coloreaCasos(ByRef dgvPlacaLeida As DataGridView, ByVal nomcolor As System.Drawing.Color, ByVal txtDesdeLetra As TextBox, _
                             ByVal txtHastaLetra As TextBox, ByVal txtDesdeValor As TextBox, ByVal txtHastaValor As TextBox)
@@ -32,8 +28,6 @@ Module mdlEstilos
    Public Sub coloreaTabla(ByRef placa As DataGridView, ByVal color As System.Drawing.Color, ByVal col As Integer, ByVal reng As Integer)
       placa.Rows(col).Cells(reng).Style.BackColor = color
    End Sub
-
-   '############################HASTA AQUI
 
    'Creados para casos con subcasos probando el valor del RGB
    Public Sub coloreaTablaDeCasos(ByRef placa As DataGridView, ByVal colorFondo As Color, ByVal col As Integer, ByVal reng As Integer)
@@ -76,7 +70,7 @@ Module mdlEstilos
       End Select
    End Sub
 
-   'Dibuja la tabla en pantalla, para presentar los datos utilizando un grid.
+   'Dibuja la tabla en pantalla, para presentar los datos utilizando un grid, este si es utilizado por la nueva version del programa
    Public Sub dibujaTablaEnPantalla(ByRef placa As DataGridView)
       Dim i As Integer
       'Quita el indicador de fila del datagridview
@@ -102,6 +96,36 @@ Module mdlEstilos
          placa.Rows(i).Cells(0).Style.BackColor = Color.LightSteelBlue
       Next
    End Sub
+
+   'Dibuja la tabla de resultados en pantalla para anemia infecciosa.
+   Public Sub tablaEnPantallaAnemia(ByRef dgvPlaca As DataGridView, ByRef cuentaNoDatos As Integer, ByVal calculaSPS(,) As Decimal, _
+                                    ByVal logaritmoSPS(,) As Decimal)
+      Dim i As Integer
+      'Quita el indicador de fila del datagridview
+      dgvPlaca.RowHeadersVisible = False
+      dgvPlaca.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Raised
+      dgvPlaca.RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+      dgvPlaca.Rows.Add(cuentaNoDatos)
+      For i = 1 To cuentaNoDatos
+         dgvPlaca.Columns.Add("pozo" & i, i)
+         With dgvPlaca.Columns(i)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft
+            .SortMode = DataGridViewColumnSortMode.NotSortable
+         End With
+      Next
+
+      'dgvPlaca.Columns(0).Frozen = True  Descomentar si se requiere la primer celda fija.
+      For i = 0 To 7
+         dgvPlaca.Rows(i).Cells(0).Value = obtenLetra(i)
+      Next
+   End Sub
+
+
+
+
+
+
 
    'Organizar en tabla los datos de la placa leida.
    Public Sub organizaEnTabla(ByRef placa As DataGridView, ByVal placaLector(,) As Decimal)
