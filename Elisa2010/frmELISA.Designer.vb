@@ -25,23 +25,34 @@ Partial Class frmElisaBiovetsa
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmElisaBiovetsa))
       Me.mnuMainMenu = New System.Windows.Forms.MenuStrip()
       Me.mnuMainAnalisis = New System.Windows.Forms.ToolStripMenuItem()
-      Me.DesdeLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmAnemiaInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmBronquitisInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmEncefalomielitisAviar = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmGumboro = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmLaringotraqueitisAviar = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmEnfermedadDeNewcaste = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmReovirus = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmAbrirArchivoExistente = New System.Windows.Forms.ToolStripMenuItem()
       Me.AnemiaInfecciosaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmBronquitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmEncefalomielitisDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisAviarPROANDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmNewcastleDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmGumboroDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmLaringotraqueitisDA = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmPasteurellaHaemolytica = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmReovirusDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmVariosCasosDesdeArchivo = New System.Windows.Forms.ToolStripMenuItem()
+      Me.AnemiaInfecciosaToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmBronquitisVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisAviarVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisAviarPROANVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEnfermedadDeNewcastleVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmGumboroVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmLaringotraqueitisVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmReovirusVCDA = New System.Windows.Forms.ToolStripMenuItem()
+      Me.DesdeLectorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmAnemiaInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmBronquitisInfecciosa = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisAviar = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEncefalomielitisAviarPROAN = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmGumboro = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmLaringotraqueitisAviar = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmEnfermedadDeNewcaste = New System.Windows.Forms.ToolStripMenuItem()
+      Me.tsmReovirus = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmOperacionesAnalisis = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuOpciones = New System.Windows.Forms.ToolStripMenuItem()
@@ -76,128 +87,195 @@ Partial Class frmElisaBiovetsa
       '
       'mnuMainAnalisis
       '
-      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DesdeLectorToolStripMenuItem, Me.tsmAbrirArchivoExistente, Me.tsmOperacionesAnalisis, Me.tsmSalir})
+      Me.mnuMainAnalisis.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAbrirArchivoExistente, Me.tsmVariosCasosDesdeArchivo, Me.DesdeLectorToolStripMenuItem, Me.tsmOperacionesAnalisis, Me.tsmSalir})
       Me.mnuMainAnalisis.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuMainAnalisis.Name = "mnuMainAnalisis"
       Me.mnuMainAnalisis.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
       Me.mnuMainAnalisis.Size = New System.Drawing.Size(59, 20)
       Me.mnuMainAnalisis.Text = "&Analisis"
       '
-      'DesdeLectorToolStripMenuItem
-      '
-      Me.DesdeLectorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAnemiaInfecciosa, Me.tsmBronquitisInfecciosa, Me.tsmEncefalomielitisAviar, Me.tsmGumboro, Me.tsmLaringotraqueitisAviar, Me.tsmEnfermedadDeNewcaste, Me.tsmReovirus})
-      Me.DesdeLectorToolStripMenuItem.Name = "DesdeLectorToolStripMenuItem"
-      Me.DesdeLectorToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
-      Me.DesdeLectorToolStripMenuItem.Text = "Desde Lector"
-      '
-      'tsmAnemiaInfecciosa
-      '
-      Me.tsmAnemiaInfecciosa.Name = "tsmAnemiaInfecciosa"
-      Me.tsmAnemiaInfecciosa.Size = New System.Drawing.Size(211, 22)
-      Me.tsmAnemiaInfecciosa.Text = "Anemia Infecciosa"
-      '
-      'tsmBronquitisInfecciosa
-      '
-      Me.tsmBronquitisInfecciosa.Name = "tsmBronquitisInfecciosa"
-      Me.tsmBronquitisInfecciosa.Size = New System.Drawing.Size(211, 22)
-      Me.tsmBronquitisInfecciosa.Text = "Bronquitis Infecciosa"
-      '
-      'tsmEncefalomielitisAviar
-      '
-      Me.tsmEncefalomielitisAviar.Name = "tsmEncefalomielitisAviar"
-      Me.tsmEncefalomielitisAviar.Size = New System.Drawing.Size(211, 22)
-      Me.tsmEncefalomielitisAviar.Text = "Encefalomielitis Aviar"
-      '
-      'tsmGumboro
-      '
-      Me.tsmGumboro.Name = "tsmGumboro"
-      Me.tsmGumboro.Size = New System.Drawing.Size(211, 22)
-      Me.tsmGumboro.Text = "Gumboro"
-      '
-      'tsmLaringotraqueitisAviar
-      '
-      Me.tsmLaringotraqueitisAviar.Name = "tsmLaringotraqueitisAviar"
-      Me.tsmLaringotraqueitisAviar.Size = New System.Drawing.Size(211, 22)
-      Me.tsmLaringotraqueitisAviar.Text = "Laringotraqueitis Aviar"
-      '
-      'tsmEnfermedadDeNewcaste
-      '
-      Me.tsmEnfermedadDeNewcaste.Name = "tsmEnfermedadDeNewcaste"
-      Me.tsmEnfermedadDeNewcaste.Size = New System.Drawing.Size(211, 22)
-      Me.tsmEnfermedadDeNewcaste.Text = "Enfermedad de Newcastle"
-      '
-      'tsmReovirus
-      '
-      Me.tsmReovirus.Name = "tsmReovirus"
-      Me.tsmReovirus.Size = New System.Drawing.Size(211, 22)
-      Me.tsmReovirus.Text = "Reovirus"
-      '
       'tsmAbrirArchivoExistente
       '
-      Me.tsmAbrirArchivoExistente.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnemiaInfecciosaToolStripMenuItem, Me.tsmBronquitisDA, Me.tsmEncefalomielitisDA, Me.tsmNewcastleDA, Me.tsmGumboroDA, Me.tsmLaringotraqueitisDA, Me.tsmPasteurellaHaemolytica, Me.tsmReovirusDA})
+      Me.tsmAbrirArchivoExistente.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnemiaInfecciosaToolStripMenuItem, Me.tsmBronquitisDA, Me.tsmEncefalomielitisDA, Me.tsmEncefalomielitisAviarPROANDA, Me.tsmNewcastleDA, Me.tsmGumboroDA, Me.tsmLaringotraqueitisDA, Me.tsmPasteurellaHaemolytica, Me.tsmReovirusDA})
       Me.tsmAbrirArchivoExistente.Name = "tsmAbrirArchivoExistente"
-      Me.tsmAbrirArchivoExistente.Size = New System.Drawing.Size(213, 22)
-      Me.tsmAbrirArchivoExistente.Text = "Abrir archivo existente"
+      Me.tsmAbrirArchivoExistente.Size = New System.Drawing.Size(216, 22)
+      Me.tsmAbrirArchivoExistente.Text = "Un caso desde Archivo"
       '
       'AnemiaInfecciosaToolStripMenuItem
       '
       Me.AnemiaInfecciosaToolStripMenuItem.Name = "AnemiaInfecciosaToolStripMenuItem"
-      Me.AnemiaInfecciosaToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+      Me.AnemiaInfecciosaToolStripMenuItem.Size = New System.Drawing.Size(230, 22)
       Me.AnemiaInfecciosaToolStripMenuItem.Text = "Anemia Infecciosa"
       '
       'tsmBronquitisDA
       '
       Me.tsmBronquitisDA.Name = "tsmBronquitisDA"
-      Me.tsmBronquitisDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmBronquitisDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmBronquitisDA.Text = "Bronquitis Infecciosa"
       '
       'tsmEncefalomielitisDA
       '
       Me.tsmEncefalomielitisDA.Name = "tsmEncefalomielitisDA"
-      Me.tsmEncefalomielitisDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmEncefalomielitisDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmEncefalomielitisDA.Text = "Encefalomielitis Aviar"
+      '
+      'tsmEncefalomielitisAviarPROANDA
+      '
+      Me.tsmEncefalomielitisAviarPROANDA.Name = "tsmEncefalomielitisAviarPROANDA"
+      Me.tsmEncefalomielitisAviarPROANDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEncefalomielitisAviarPROANDA.Text = "Encefalomielitis Aviar PROAN"
       '
       'tsmNewcastleDA
       '
       Me.tsmNewcastleDA.Name = "tsmNewcastleDA"
-      Me.tsmNewcastleDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmNewcastleDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmNewcastleDA.Text = "Enfermedad de Newcastle"
       '
       'tsmGumboroDA
       '
       Me.tsmGumboroDA.Name = "tsmGumboroDA"
-      Me.tsmGumboroDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmGumboroDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmGumboroDA.Text = "Gumboro"
       '
       'tsmLaringotraqueitisDA
       '
       Me.tsmLaringotraqueitisDA.Name = "tsmLaringotraqueitisDA"
-      Me.tsmLaringotraqueitisDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmLaringotraqueitisDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmLaringotraqueitisDA.Text = "Laringotraqueitis Aviar"
       '
       'tsmPasteurellaHaemolytica
       '
       Me.tsmPasteurellaHaemolytica.Name = "tsmPasteurellaHaemolytica"
-      Me.tsmPasteurellaHaemolytica.Size = New System.Drawing.Size(211, 22)
+      Me.tsmPasteurellaHaemolytica.Size = New System.Drawing.Size(230, 22)
       Me.tsmPasteurellaHaemolytica.Text = "Pasteurella Haemolytica"
       Me.tsmPasteurellaHaemolytica.Visible = False
       '
       'tsmReovirusDA
       '
       Me.tsmReovirusDA.Name = "tsmReovirusDA"
-      Me.tsmReovirusDA.Size = New System.Drawing.Size(211, 22)
+      Me.tsmReovirusDA.Size = New System.Drawing.Size(230, 22)
       Me.tsmReovirusDA.Text = "Reovirus"
+      '
+      'tsmVariosCasosDesdeArchivo
+      '
+      Me.tsmVariosCasosDesdeArchivo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AnemiaInfecciosaToolStripMenuItem1, Me.tsmBronquitisVCDA, Me.tsmEncefalomielitisAviarVCDA, Me.tsmEncefalomielitisAviarPROANVCDA, Me.tsmEnfermedadDeNewcastleVCDA, Me.tsmGumboroVCDA, Me.tsmLaringotraqueitisVCDA, Me.tsmReovirusVCDA})
+      Me.tsmVariosCasosDesdeArchivo.Name = "tsmVariosCasosDesdeArchivo"
+      Me.tsmVariosCasosDesdeArchivo.Size = New System.Drawing.Size(216, 22)
+      Me.tsmVariosCasosDesdeArchivo.Text = "Varios casos desde Archivo"
+      '
+      'AnemiaInfecciosaToolStripMenuItem1
+      '
+      Me.AnemiaInfecciosaToolStripMenuItem1.Name = "AnemiaInfecciosaToolStripMenuItem1"
+      Me.AnemiaInfecciosaToolStripMenuItem1.Size = New System.Drawing.Size(230, 22)
+      Me.AnemiaInfecciosaToolStripMenuItem1.Text = "Anemia Infecciosa"
+      '
+      'tsmBronquitisVCDA
+      '
+      Me.tsmBronquitisVCDA.Name = "tsmBronquitisVCDA"
+      Me.tsmBronquitisVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmBronquitisVCDA.Text = "Bronquitis Infecciosa"
+      '
+      'tsmEncefalomielitisAviarVCDA
+      '
+      Me.tsmEncefalomielitisAviarVCDA.Name = "tsmEncefalomielitisAviarVCDA"
+      Me.tsmEncefalomielitisAviarVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEncefalomielitisAviarVCDA.Text = "Encefalomielitis Aviar"
+      '
+      'tsmEncefalomielitisAviarPROANVCDA
+      '
+      Me.tsmEncefalomielitisAviarPROANVCDA.Name = "tsmEncefalomielitisAviarPROANVCDA"
+      Me.tsmEncefalomielitisAviarPROANVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEncefalomielitisAviarPROANVCDA.Text = "Encefalomielitis Aviar PROAN"
+      '
+      'tsmEnfermedadDeNewcastleVCDA
+      '
+      Me.tsmEnfermedadDeNewcastleVCDA.Name = "tsmEnfermedadDeNewcastleVCDA"
+      Me.tsmEnfermedadDeNewcastleVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEnfermedadDeNewcastleVCDA.Text = "Enfermedad de Newcastle"
+      '
+      'tsmGumboroVCDA
+      '
+      Me.tsmGumboroVCDA.Name = "tsmGumboroVCDA"
+      Me.tsmGumboroVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmGumboroVCDA.Text = "Gumboro"
+      '
+      'tsmLaringotraqueitisVCDA
+      '
+      Me.tsmLaringotraqueitisVCDA.Name = "tsmLaringotraqueitisVCDA"
+      Me.tsmLaringotraqueitisVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmLaringotraqueitisVCDA.Text = "Laringotraqueitis Aviar"
+      '
+      'tsmReovirusVCDA
+      '
+      Me.tsmReovirusVCDA.Name = "tsmReovirusVCDA"
+      Me.tsmReovirusVCDA.Size = New System.Drawing.Size(230, 22)
+      Me.tsmReovirusVCDA.Text = "Reovirus"
+      '
+      'DesdeLectorToolStripMenuItem
+      '
+      Me.DesdeLectorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAnemiaInfecciosa, Me.tsmBronquitisInfecciosa, Me.tsmEncefalomielitisAviar, Me.tsmEncefalomielitisAviarPROAN, Me.tsmGumboro, Me.tsmLaringotraqueitisAviar, Me.tsmEnfermedadDeNewcaste, Me.tsmReovirus})
+      Me.DesdeLectorToolStripMenuItem.Name = "DesdeLectorToolStripMenuItem"
+      Me.DesdeLectorToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+      Me.DesdeLectorToolStripMenuItem.Text = "Varios casos desde Lector"
+      '
+      'tsmAnemiaInfecciosa
+      '
+      Me.tsmAnemiaInfecciosa.Name = "tsmAnemiaInfecciosa"
+      Me.tsmAnemiaInfecciosa.Size = New System.Drawing.Size(230, 22)
+      Me.tsmAnemiaInfecciosa.Text = "Anemia Infecciosa"
+      '
+      'tsmBronquitisInfecciosa
+      '
+      Me.tsmBronquitisInfecciosa.Name = "tsmBronquitisInfecciosa"
+      Me.tsmBronquitisInfecciosa.Size = New System.Drawing.Size(230, 22)
+      Me.tsmBronquitisInfecciosa.Text = "Bronquitis Infecciosa"
+      '
+      'tsmEncefalomielitisAviar
+      '
+      Me.tsmEncefalomielitisAviar.Name = "tsmEncefalomielitisAviar"
+      Me.tsmEncefalomielitisAviar.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEncefalomielitisAviar.Text = "Encefalomielitis Aviar"
+      '
+      'tsmEncefalomielitisAviarPROAN
+      '
+      Me.tsmEncefalomielitisAviarPROAN.Name = "tsmEncefalomielitisAviarPROAN"
+      Me.tsmEncefalomielitisAviarPROAN.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEncefalomielitisAviarPROAN.Text = "Encefalomielitis Aviar PROAN"
+      '
+      'tsmGumboro
+      '
+      Me.tsmGumboro.Name = "tsmGumboro"
+      Me.tsmGumboro.Size = New System.Drawing.Size(230, 22)
+      Me.tsmGumboro.Text = "Gumboro"
+      '
+      'tsmLaringotraqueitisAviar
+      '
+      Me.tsmLaringotraqueitisAviar.Name = "tsmLaringotraqueitisAviar"
+      Me.tsmLaringotraqueitisAviar.Size = New System.Drawing.Size(230, 22)
+      Me.tsmLaringotraqueitisAviar.Text = "Laringotraqueitis Aviar"
+      '
+      'tsmEnfermedadDeNewcaste
+      '
+      Me.tsmEnfermedadDeNewcaste.Name = "tsmEnfermedadDeNewcaste"
+      Me.tsmEnfermedadDeNewcaste.Size = New System.Drawing.Size(230, 22)
+      Me.tsmEnfermedadDeNewcaste.Text = "Enfermedad de Newcastle"
+      '
+      'tsmReovirus
+      '
+      Me.tsmReovirus.Name = "tsmReovirus"
+      Me.tsmReovirus.Size = New System.Drawing.Size(230, 22)
+      Me.tsmReovirus.Text = "Reovirus"
       '
       'tsmOperacionesAnalisis
       '
       Me.tsmOperacionesAnalisis.Name = "tsmOperacionesAnalisis"
-      Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(213, 22)
+      Me.tsmOperacionesAnalisis.Size = New System.Drawing.Size(216, 22)
       Me.tsmOperacionesAnalisis.Text = "&Operaciones sobre análisis"
       '
       'tsmSalir
       '
       Me.tsmSalir.Name = "tsmSalir"
-      Me.tsmSalir.Size = New System.Drawing.Size(213, 22)
+      Me.tsmSalir.Size = New System.Drawing.Size(216, 22)
       Me.tsmSalir.Text = "&Salir"
       Me.tsmSalir.ToolTipText = "Abandone la aplicación"
       '
@@ -378,5 +456,16 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmLaringotraqueitisAviar As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmEnfermedadDeNewcaste As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmReovirus As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEncefalomielitisAviarPROAN As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEncefalomielitisAviarPROANDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmVariosCasosDesdeArchivo As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents AnemiaInfecciosaToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmBronquitisVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEncefalomielitisAviarVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEncefalomielitisAviarPROANVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmEnfermedadDeNewcastleVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmGumboroVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmLaringotraqueitisVCDA As System.Windows.Forms.ToolStripMenuItem
+   Friend WithEvents tsmReovirusVCDA As System.Windows.Forms.ToolStripMenuItem
 
 End Class

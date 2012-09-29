@@ -1,4 +1,4 @@
-ï»¿Imports System.IO
+Imports System.IO
 Imports System.Windows.Forms.DataVisualization.Charting
 Imports MySql.Data.MySqlClient
 Imports Excel = Microsoft.Office.Interop.Excel
@@ -68,13 +68,13 @@ Public Class frmResultadosPrelim
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
       Try
-         'Obtener el nombre del anÃ¡lisis para colocar la cabecera de la grÃ¡fica
+         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
          Dim cadena As String
          Dim tabla() As String
          cadena = cmbCasosResPrel.Text
          tabla = Split(cadena, " ")
          guardarResultadosExcel(tabla(0), CInt(Me.lblNosubcasos.Text), CInt(Me.lblConsecutivo.Text), Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
-                               Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.txtObservaciones.Text, "Resultados", _
+                               Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.lblObservaciones.Text, "Resultados", _
                                Me.lblMensajeSobreGrafica.Text, Me.lblNombreSobreGrafica.Text, _
                                txtTitulosObtenidos.Text, _
                                Convert.ToDouble(txtMediaAritmetica2.Text), _
@@ -97,7 +97,7 @@ Public Class frmResultadosPrelim
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       imagenGrafica.Image.Dispose()
       releaseObject(imagenGrafica)
-      'ATENCIÃ“N:!!NO Descomentar las siguientes dos lÃ­neas a menos que se requiera borrar desde disco el archivo de la imagen.
+      'ATENCIÓN:!!NO Descomentar las siguientes dos líneas a menos que se requiera borrar desde disco el archivo de la imagen.
       'Application.DoEvents()
       'Kill(lblNombreArchivo.Text)
       Me.Close()
@@ -119,7 +119,7 @@ Public Class frmResultadosPrelim
                                     Me.txtFechaElaboracion, laFecha, _
                                     Me.txtNombreEnfermedad, nombreEnfermedad, _
                                     Me.txtNombreCliente, totalCasos(indice).cliente, _
-                                    Me.txtObservaciones, totalCasos(indice).obs, _
+                                    Me.lblObservaciones, totalCasos(indice).obs, _
                                     Me.txtVarianza2, totalCasos(indice).varianza, _
                                     Me.txtTotalDatosCalculados, totalCasos(indice).sueros, _
                                     Me.txtMediaAritmetica2, totalCasos(indice).medArit, _

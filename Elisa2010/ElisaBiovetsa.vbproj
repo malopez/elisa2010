@@ -149,10 +149,16 @@
     <Compile Include="frmAbrirArchivo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCapturaCySC.Designer.vb">
-      <DependentUpon>frmCapturaCySC.vb</DependentUpon>
+    <Compile Include="frmCapturaCasos.Designer.vb">
+      <DependentUpon>frmCapturaCasos.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCapturaCySC.vb">
+    <Compile Include="frmCapturaCasos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCapturaCasosDA.Designer.vb">
+      <DependentUpon>frmCapturaCasosDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCapturaCasosDA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmInicioPrograma.Designer.vb">
@@ -234,8 +240,11 @@
     <EmbeddedResource Include="frmAbrirArchivo.resx">
       <DependentUpon>frmAbrirArchivo.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCapturaCySC.resx">
-      <DependentUpon>frmCapturaCySC.vb</DependentUpon>
+    <EmbeddedResource Include="frmCapturaCasos.resx">
+      <DependentUpon>frmCapturaCasos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCapturaCasosDA.resx">
+      <DependentUpon>frmCapturaCasosDA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicioPrograma.resx">
       <DependentUpon>frmInicioPrograma.vb</DependentUpon>

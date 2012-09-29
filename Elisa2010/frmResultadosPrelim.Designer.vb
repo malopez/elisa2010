@@ -36,7 +36,6 @@ Partial Class frmResultadosPrelim
       Me.Label2 = New System.Windows.Forms.Label()
       Me.lblELISA = New System.Windows.Forms.Label()
       Me.Label1 = New System.Windows.Forms.Label()
-      Me.lblObservaciones = New System.Windows.Forms.Label()
       Me.Panel3 = New System.Windows.Forms.Panel()
       Me.lblNosubcasos = New System.Windows.Forms.Label()
       Me.lblConsecutivo = New System.Windows.Forms.Label()
@@ -59,6 +58,7 @@ Partial Class frmResultadosPrelim
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
+      Me.txtObservaciones = New System.Windows.Forms.TextBox()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
@@ -89,6 +89,7 @@ Partial Class frmResultadosPrelim
       '
       Me.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
       Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.Panel2.Controls.Add(Me.txtObservaciones)
       Me.Panel2.Controls.Add(Me.cmbCasosResPrel)
       Me.Panel2.Controls.Add(Me.lblAnalisis)
       Me.Panel2.Controls.Add(Me.txtInmunoEnsayo)
@@ -99,7 +100,6 @@ Partial Class frmResultadosPrelim
       Me.Panel2.Controls.Add(Me.Label2)
       Me.Panel2.Controls.Add(Me.lblELISA)
       Me.Panel2.Controls.Add(Me.Label1)
-      Me.Panel2.Controls.Add(Me.lblObservaciones)
       Me.Panel2.Location = New System.Drawing.Point(9, 6)
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
@@ -204,17 +204,6 @@ Partial Class frmResultadosPrelim
       Me.Label1.Size = New System.Drawing.Size(61, 16)
       Me.Label1.TabIndex = 52
       Me.Label1.Text = "No.Caso:"
-      '
-      'lblObservaciones
-      '
-      Me.lblObservaciones.AutoSize = True
-      Me.lblObservaciones.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.lblObservaciones.Location = New System.Drawing.Point(440, 70)
-      Me.lblObservaciones.Name = "lblObservaciones"
-      Me.lblObservaciones.Size = New System.Drawing.Size(101, 17)
-      Me.lblObservaciones.TabIndex = 51
-      Me.lblObservaciones.Text = "Observaciones:"
-      Me.lblObservaciones.Visible = False
       '
       'Panel3
       '
@@ -488,6 +477,16 @@ Partial Class frmResultadosPrelim
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
       '
+      'txtObservaciones
+      '
+      Me.txtObservaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtObservaciones.Location = New System.Drawing.Point(427, 67)
+      Me.txtObservaciones.Name = "txtObservaciones"
+      Me.txtObservaciones.ReadOnly = True
+      Me.txtObservaciones.Size = New System.Drawing.Size(114, 20)
+      Me.txtObservaciones.TabIndex = 105
+      Me.txtObservaciones.Visible = False
+      '
       'frmResultadosPrelim
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -526,7 +525,6 @@ Partial Class frmResultadosPrelim
    Friend WithEvents Label2 As System.Windows.Forms.Label
    Friend WithEvents lblELISA As System.Windows.Forms.Label
    Friend WithEvents Label1 As System.Windows.Forms.Label
-   Friend WithEvents lblObservaciones As System.Windows.Forms.Label
    Friend WithEvents Panel3 As System.Windows.Forms.Panel
    Friend WithEvents lblNosubcasos As System.Windows.Forms.Label
    Friend WithEvents lblConsecutivo As System.Windows.Forms.Label
@@ -550,4 +548,5 @@ Partial Class frmResultadosPrelim
    Friend WithEvents imagenGrafica As System.Windows.Forms.PictureBox
    Friend WithEvents txtTitulosObtenidos As System.Windows.Forms.TextBox
    Friend WithEvents cmbCasosResPrel As System.Windows.Forms.ComboBox
+   Friend WithEvents txtObservaciones As System.Windows.Forms.TextBox
 End Class

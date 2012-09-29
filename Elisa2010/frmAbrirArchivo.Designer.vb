@@ -614,7 +614,6 @@ Partial Class frmAbrirArchivo
       Me.MaximizeBox = False
       Me.Name = "frmAbrirArchivo"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-      Me.Text = "Abrir archivo de Bronquitis Infecciosa"
       Me.pnlRegistraNuevoAnalisis.ResumeLayout(False)
       Me.pnlRegistraNuevoAnalisis.PerformLayout()
       Me.Panel1.ResumeLayout(False)

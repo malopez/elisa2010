@@ -1,4 +1,4 @@
-ï»¿Imports System.IO
+Imports System.IO
 Imports System.Data.SqlClient
 Imports MySql.Data.MySqlClient
 
@@ -53,7 +53,7 @@ Public Class frmAbrirArchivo
       Dim desvEst As Decimal = 0
       Dim coefVar As Decimal = 0
       Dim titulosObtenidos As String = ""
-      Dim titulox As String = "Grupo de tÃ­tulos"
+      Dim titulox As String = "Grupo de títulos"
       Dim tituloy As String = "%"
       Dim promCP As Decimal = 0
       Dim promCN As Decimal = 0
@@ -69,12 +69,12 @@ Public Class frmAbrirArchivo
       cn3 = CDec(Me.txtCNDAValor3.Text)
       btnCapturaTerminada.Enabled = False
       btnObtenResultadosDA.Enabled = False
-      'Obtener el nombre del anÃ¡lisis para colocar la cabecera de la grÃ¡fica
+      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
       Dim cadena As String
       Dim tabla() As String
       cadena = txtAnalisisSolicitado.Text
       tabla = Split(cadena, "/")
-      'Obtiene el numero de caso para ese anÃ¡lisis
+      'Obtiene el numero de caso para ese análisis
       Dim cadena1 As String
       Dim tabla1() As String
       cadena1 = cmbNoCaso.Text
@@ -121,12 +121,12 @@ Public Class frmAbrirArchivo
 
       ReDim calculaL(cuentaNoDatos - 1)
 
-      'Si el numero de datos es 1, entonces el cÃ¡lculo de la estadÃ­stica es 0, excepto para la media aritmÃ©tica.
+      'Si el numero de datos es 1, entonces el cálculo de la estadística es 0, excepto para la media aritmética.
       If cuentaNoDatos > 1 Then
          Try
             mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
          Catch ex As Exception
-            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geomÃ©trica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
          End Try
       End If
 
@@ -134,7 +134,7 @@ Public Class frmAbrirArchivo
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
          totalCasos(posicion).titulosObtenidos = titulosObtenidos
       Catch ex As Exception
-         mensajeRojo(etiquetaMensaje, "ERROR: Al formatear los tÃ­tulos en cadena, titulosObtenidosEnCalculaL.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al formatear los títulos en cadena, titulosObtenidosEnCalculaL.")
       End Try
       Try
          seleccionaMarcaDeClase(analisis, calculaL, rangoDatos, rangoTotal)
@@ -147,7 +147,7 @@ Public Class frmAbrirArchivo
             mediaGeometrica = calculaMediaGeometrica(mediaGeometrica, rangoTotal)
             totalCasos(posicion).medGeom = mediaGeometrica
          Catch
-            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geomÃ©trica, calculaMediaGeometrica.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
       End If
 
@@ -155,7 +155,7 @@ Public Class frmAbrirArchivo
          mediaAritmetica = calculaMediaAritmetica(totalcalculaL, cuentaNoDatos)
          totalCasos(posicion).medArit = mediaAritmetica
       Catch
-         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media aritmÃ©tica, calculaMediaAritmetica.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media aritmética, calculaMediaAritmetica.")
       End Try
 
       If cuentaNoDatos > 1 Then
@@ -172,7 +172,7 @@ Public Class frmAbrirArchivo
             desvEst = calculaDesvEst(varianza)
             totalCasos(posicion).desvEst = desvEst
          Catch
-            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular desviaciÃ³n estÃ¡ndar, calculaDesvEst.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular desviación estándar, calculaDesvEst.")
          End Try
       End If
       If cuentaNoDatos > 1 Then
@@ -180,7 +180,7 @@ Public Class frmAbrirArchivo
             coefVar = calculaCoefVar(desvEst, mediaAritmetica)
             totalCasos(posicion).coefVar = coefVar
          Catch
-            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el coeficiente de variaciÃ³n, calculaCoefVar.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular el coeficiente de variación, calculaCoefVar.")
          End Try
       End If
       Try
@@ -220,7 +220,7 @@ Public Class frmAbrirArchivo
                            titulox, tituloy, numcaso, consecutivo, analisis)
          totalCasos(posicion).nombreArchivoImagen = nombreArchivoImagen
       Catch
-         mensajeRojo(etiquetaMensaje, "ERROR: Al crear la grÃ¡fica en pantalla, creaChartFrecRel.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al crear la gráfica en pantalla, creaChartFrecRel.")
       End Try
       
       Try
@@ -240,7 +240,7 @@ Public Class frmAbrirArchivo
                                       forma.txtFechaElaboracion, fecha.ToShortDateString(), _
                                       forma.txtNombreEnfermedad, tabla(1), _
                                       forma.txtNombreCliente, totalCasos(0).cliente, _
-                                      forma.txtObservaciones, totalCasos(0).obs, _
+                                      forma.lblObservaciones, totalCasos(0).obs, _
                                       forma.txtVarianza2, totalCasos(0).varianza, _
                                       forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
                                       forma.txtMediaAritmetica2, totalCasos(0).medArit, _
@@ -292,7 +292,7 @@ Public Class frmAbrirArchivo
          oConexion.Close()
          Dim oTabla As DataTable
          oTabla = oDataSet.Tables("ordenes")
-         'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la bÃºsqueda.
+         'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la búsqueda.
          Dim oFila As DataRow
          For Each oFila In oTabla.Rows
             cmbNoCaso.Items.Add(oFila.Item("caso") & " | " & oFila.Item("IDAN"))
@@ -302,7 +302,7 @@ Public Class frmAbrirArchivo
       Catch ex As DataException
          mensajeException(etiquetaMensaje, ex)
       Catch ex As Exception
-         mensajeRojo(etiquetaMensaje, "ERROR: Al buscar informaciÃ³n en el comboBox de casos en pantalla de Nuevo AnÃ¡lisis.")
+         mensajeRojo(etiquetaMensaje, "ERROR: Al buscar información en el comboBox de casos en pantalla de Nuevo Análisis.")
       End Try
    End Sub
 
@@ -340,7 +340,7 @@ Public Class frmAbrirArchivo
             Me.btnLeerArchivoExistente.Enabled = True
             txtDesdeLetra1.Focus()
          Else
-            mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un nÃºmero de caso de los listados en el comboBox.")
+            mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
       Catch ex As MySqlException
@@ -384,7 +384,7 @@ Public Class frmAbrirArchivo
    End Sub
 
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
-      If (MessageBox.Show("Â¿Es correcta la captura de datos?", "Confirme los datos ingresados", _
+      If (MessageBox.Show("¿Es correcta la captura de datos?", "Confirme los datos ingresados", _
             MessageBoxButtons.YesNo, MessageBoxIcon.Question) = _
             Windows.Forms.DialogResult.Yes) Then
          Try
@@ -392,9 +392,9 @@ Public Class frmAbrirArchivo
             btnLeerArchivoExistente.Enabled = False
             coloreaCasos(Me.dgvPlacaLeida, Color.Yellow, txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2)
             If controlesValidosLetra(txtDesdeLetra1, "desde letra", "A", "H") AndAlso _
-                controlesValidosNumero(txtDesdeValor1, "desde nÃºmero", 1, 12) AndAlso _
+                controlesValidosNumero(txtDesdeValor1, "desde número", 1, 12) AndAlso _
                 controlesValidosLetra(txtHastaLetra2, "hasta letra", "A", "H") AndAlso _
-                controlesValidosNumero(txtHastaValor2, "hasta nÃºmero", 1, 12) AndAlso _
+                controlesValidosNumero(txtHastaValor2, "hasta número", 1, 12) AndAlso _
                desdeHastaValidos("", txtDesdeLetra1, txtHastaLetra2, txtDesdeValor1, txtHastaValor2) Then
                btnCapturaTerminada.Enabled = False
                btnObtenResultadosDA.Enabled = True
@@ -404,13 +404,13 @@ Public Class frmAbrirArchivo
                botonesEstatus(True)
             End If
          Catch
-            mensajeRojo(etiquetaMensaje, "ERROR: Los valores introducidos Desde pozo - Hasta pozo invÃ¡lidos.")
+            mensajeRojo(etiquetaMensaje, "ERROR: Los valores introducidos Desde pozo - Hasta pozo inválidos.")
             btnCapturaTerminada.Enabled = True
             btnObtenResultadosDA.Enabled = False
             botonesEstatus(True)
          End Try
       Else
-         mensajeRojo(etiquetaMensaje, "Escriba los valores vÃ¡lidos.")
+         mensajeRojo(etiquetaMensaje, "Escriba los valores válidos.")
       End If
    End Sub
 

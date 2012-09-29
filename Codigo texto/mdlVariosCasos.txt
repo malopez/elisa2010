@@ -1,4 +1,4 @@
-锘縈odule mdlVariosCasos
+Module mdlVariosCasos
 
    'Borrar cuando se hagan pruebas con el lector. 27/SEP/2012
    'Public Function mediaGenerico(ByVal calculaL() As Decimal, ByVal nodatos As Integer) As Decimal
@@ -89,8 +89,6 @@
          Case "E04ELNC"
             calculaMarcaDeClaseNC(calculaL, rangoDatos, rangoTotal)
          Case "E08ELEA"
-            calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
-         Case "E07EAPROA"
             calculaMarcaDeClaseEA(calculaL, rangoDatos, rangoTotal)
       End Select
    End Sub
@@ -453,7 +451,7 @@
             Next
          Next
       Catch ex As Exception
-         MessageBox.Show("ERROR: En c谩lculo de t铆tulos Anemia." & ex.Message & " " & ex.GetType.ToString)
+         MessageBox.Show("ERROR: En c醠culo de t韙ulos Anemia." & ex.Message & " " & ex.GetType.ToString)
       End Try
    End Sub
    '---termina anemia infecciosa.---
@@ -461,7 +459,7 @@
    Public Function titulosObtenidosEnCalculaL(ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As String
       Dim i As Integer = 0
       Dim j As Integer = cuentaNoDatos - 1
-      'Dim presenta As String = "Sueros  T铆tulos" & vbCrLf & " " & vbCrLf
+      'Dim presenta As String = "Sueros  T韙ulos" & vbCrLf & " " & vbCrLf
       Dim presenta As String = ""
       For i = 0 To j
          If (i <> j) Then
@@ -672,7 +670,7 @@
    '   Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
    '   Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
 
-   '   'Asigna valor default a la definici贸n de cp para x y y.
+   '   'Asigna valor default a la definici髇 de cp para x y y.
 
    '   Dim cpx3 As Integer = 0
    '   Dim cnx3 As Integer = 0
@@ -725,7 +723,7 @@
    '   Dim cny1 As Integer = CInt(txtCN1Valor1.Text) - 1
    '   Dim cny2 As Integer = CInt(txtCN2Valor2.Text) - 1
 
-   '   'Asigna valor default a la definici贸n de cp para x y y.
+   '   'Asigna valor default a la definici髇 de cp para x y y.
 
    '   Dim cpx3 As Integer = 0
    '   Dim cnx3 As Integer = 0
@@ -755,7 +753,7 @@
                                      ByRef txtFechaElaboracion As TextBox, ByVal fechaElaboracion As String, _
                                      ByRef txtNombreEnfermedad As TextBox, ByVal nombre As String, _
                                      ByRef txtNombreCliente As TextBox, ByVal nombreCliente As String, _
-                                     ByRef txtObservaciones As TextBox, ByVal observaciones As String, _
+                                     ByRef lblObservaciones As Label, ByVal observaciones As String, _
                                      ByRef txtVarianza2 As TextBox, ByVal varianza As Decimal, _
                                      ByRef txtTotalDatosCalculados As TextBox, ByVal cuentaNoDatos As Integer, _
                                      ByRef txtMediaAritmetica2 As TextBox, ByVal mediaAritmetica As Decimal, _
@@ -778,7 +776,7 @@
       lblConsecutivo.Text = CStr(consecutivo)
       imagenGrafica.Image = Image.FromFile(nombreArchivoGrafica)
       lblNombreArchivo.Text = nombreArchivoGrafica
-      txtObservaciones.Text = observaciones.ToString()
+      lblObservaciones.Text = observaciones.ToString()
       txtFechaElaboracion.Text = fechaElaboracion.ToString()
       txtTitulosObtenidos.Text = presenta1.ToString()
       txtMediaAritmetica2.Text = CStr(Math.Round(CDec(mediaAritmetica)))
@@ -793,7 +791,7 @@
    'cpx y cny son los valores de A..H,  es decir, el valor de la placa por columna   usada para control positivo-negativo
    'cpy y cny son los valores de 1..12, es decir, el valor de la placa por renglones usada para control positivo-negativo
    'logsps, logtit1 y logtit2 son valores utilizados para definir valores especiales que varian de acuerdo a la enfermedad 
-   'seleccionada. El parametro nombre es el nombre del an谩lisis/Enfermedad que se ha evaluado
+   'seleccionada. El parametro nombre es el nombre del an醠isis/Enfermedad que se ha evaluado
    Public Sub calculaValoresEnRango(ByRef placaLector(,) As Decimal, ByRef desdeArchivo As Integer, ByVal nocp As Integer, _
                              ByVal cpx1 As Integer, ByVal cpx2 As Integer, ByVal cpx3 As Integer, _
                              ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
@@ -822,14 +820,14 @@
       Dim temp As Decimal = 0
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
-         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la funci髇
          promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, etiqueta)
-         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci髇
          promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3, etiqueta)
       Else
          'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
          promCP = calculaPromedioPositivosDA(cp1, cp2, cp3, etiqueta)
-         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci髇
          promCN = calculaPromedioNegativosDA(cn1, cn2, cn3, etiqueta)
       End If
       difCPS = calculaDiferenciaSPS(promCP, promCN, etiqueta)
@@ -870,28 +868,28 @@
       Dim temp As Decimal = 0
       'Si no es desde archivo la lectura de la placa, entonces calcula los valores en base a los valores x,y introducidos
       If (desdeArchivo <> 1) Then
-         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio positivo, si no, despliega un mensaje de error relacionado con la funci髇
          promCP = calculaPromedioPositivos(nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, etiqueta)
-         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci髇
          promCN = calculaPromedioNegativos(nocp, cnx1, cnx2, cnx3, cny1, cny2, cny3, etiqueta)
       Else
          'si es desde archivo la lectura, toma los valores obtenidos de leer el archivo excel
          promCP = calculaPromedioPositivosDA(cp1, cp2, cp3, etiqueta)
-         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci贸n
+         'Valida que se ejecute el calculo de promedio negativo, si no, despliega un mensaje de error relacionado con la funci髇
          promCN = calculaPromedioNegativosDA(cn1, cn2, cn3, etiqueta)
       End If
 
       difCPS = calculaDivisionSPS(promCP, promCN, etiqueta)
-      'De acuerdo al kit, el ensayo es v谩lido solamente si la division de los controles es menor o igual a 0.5
-      'en otro caso no es v谩lido, entonces no se calcula ning煤n otro valor.
+      'De acuerdo al kit, el ensayo es v醠ido solamente si la division de los controles es menor o igual a 0.5
+      'en otro caso no es v醠ido, entonces no se calcula ning鷑 otro valor.
       If (difCPS <= 0.5) Then
          calculaSPSsAnemia(placaOriginal, placaLector, calculaSPS, promCN, difCPS)
          calculaLogaritmoSPSAnemia(logaritmoSPS, calculaSPS, logtit1, logtit2)
          calculoDeTituloAnemia(logaritmoSPS, calculoDeTitulos)
-         mensajeVerde(etiqueta, "Ensayo de Anemia Infecciosa V谩lido.")
+         mensajeVerde(etiqueta, "Ensayo de Anemia Infecciosa V醠ido.")
       Else
          ensayoValido = False
-         mensajeRojo(etiqueta, "Ensayo de Anemia Infecciosa NO V谩lido.")
+         mensajeRojo(etiqueta, "Ensayo de Anemia Infecciosa NO V醠ido.")
       End If
       Return ensayoValido
    End Function
