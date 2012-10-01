@@ -24,6 +24,36 @@ Public Class frmCapturaCasosDA
    '###############################
    '#SECCION DE PROPIEDADES
    '###############################
+   Private valorLOGSPS As String
+   Public Property VLOGSPS() As String
+      Get
+         Return valorLOGSPS
+      End Get
+      Set(ByVal value As String)
+         valorLOGSPS = value
+      End Set
+   End Property
+
+   Private valorTIT1 As String
+   Public Property VTIT1() As String
+      Get
+         Return valorTIT1
+      End Get
+      Set(ByVal value As String)
+         valorTIT1 = value
+      End Set
+   End Property
+
+   Private valorTIT2 As String
+   Public Property VTIT2() As String
+      Get
+         Return valorTIT2
+      End Get
+      Set(ByVal value As String)
+         valorTIT2 = value
+      End Set
+   End Property
+
    'Propiedad donde se recibe el nombre de la enfermedad.
    Private pasaEnfermedad As String
    Public Property Enfermedad() As String
@@ -166,11 +196,11 @@ Public Class frmCapturaCasosDA
       txtHastaLetra.Text = "A"
       txtHastaValor.Text = "1"
       chkSubCasos.Checked = False
-      'Habilita o deshabilita la lectura sobre las cajas de texto
-      txtDesdeLetra.ReadOnly = False
-      txtDesdeValor.ReadOnly = False
-      txtHastaLetra.ReadOnly = False
-      txtHastaValor.ReadOnly = False
+      'Habilita o deshabilita la lectura sobre las cajas de texto comentado el 01/OCT/2012
+      'txtDesdeLetra.ReadOnly = False
+      'txtDesdeValor.ReadOnly = False
+      'txtHastaLetra.ReadOnly = False
+      'txtHastaValor.ReadOnly = False
    End Sub
 
    Private Sub cargarDatosCaso()
@@ -286,51 +316,54 @@ Public Class frmCapturaCasosDA
       Dim nocp As Integer = 3
       Dim nocn As Integer = 3
       If controlesValidosNumero(txtNoDeCasos, " Valor en número de casos ", 1, 94) Then
-         Try
-            txtNoDeCasos.Enabled = False
-            txtNoControlesPositivos.Enabled = False
-            txtNoControlesNegativos.Enabled = False
-            btnInsertar.Enabled = True
-            'dibujaTablaEnPantalla(dgvPlacaLeida)
-            btnAceptarNoCasos.Enabled = False
-            Dim oConexion As MySqlConnection
-            Dim aConsulta As String = ""
-            Dim oDataReader As MySqlDataReader
-            Dim oComando As New MySqlCommand
-            oConexion = New MySqlConnection
-            'Separa el texto del comboBox 
-            Dim cadena As String
-            Dim tabla() As String
-            'cmbNombreEnfermedad.Text = pasaEnfermedad
-            cadena = pasaEnfermedad
-            tabla = Split(cadena, " | ")
-            oConexion.ConnectionString = cadenaConexion
-            aConsulta = "SELECT logSPS,logTit1,logTit2 FROM analisis a WHERE id_analysis='" & tabla(0) & "';"
-            oComando.Connection = oConexion
-            oComando.CommandText = aConsulta
-            oConexion.Open()
-            oDataReader = oComando.ExecuteReader()
-            If oDataReader.HasRows Then
-               While oDataReader.Read()
-                  lblIdAnalisis.Text = tabla(0)
-                  lblLogSPS.Text = oDataReader("logSPS").ToString()
-                  lblLogTit1.Text = oDataReader("logTit1").ToString()
-                  lblLogTit2.Text = oDataReader("logTit2").ToString()
-               End While
-               oDataReader.Close()
-               etiquetaMensaje.Text = ""
-               txtNoSubcasos.Text = "2"
-            Else
-               mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
-            End If
-            oConexion.Close()
-         Catch ex As MySqlException
-            mensajeExceptionSQL(etiquetaMensaje, ex)
-         Catch ex As DataException
-            mensajeException(etiquetaMensaje, ex)
-         Catch ex As Exception
-            mensajeException(etiquetaMensaje, ex)
-         End Try
+         'Try
+         txtNoDeCasos.Enabled = False
+         txtNoControlesPositivos.Enabled = False
+         txtNoControlesNegativos.Enabled = False
+         btnInsertar.Enabled = True
+         'dibujaTablaEnPantalla(dgvPlacaLeida)
+         btnAceptarNoCasos.Enabled = False
+         'Dim oConexion As MySqlConnection
+         'Dim aConsulta As String = ""
+         'Dim oDataReader As MySqlDataReader
+         'Dim oComando As New MySqlCommand
+         'oConexion = New MySqlConnection
+         ''Separa el texto del comboBox 
+         Dim cadena As String
+         Dim tabla() As String
+         ''cmbNombreEnfermedad.Text = pasaEnfermedad
+         cadena = pasaEnfermedad
+         tabla = Split(cadena, " | ")
+         'oConexion.ConnectionString = cadenaConexion
+         'aConsulta = "SELECT logSPS,logTit1,logTit2 FROM analisis a WHERE id_analysis='" & tabla(0) & "';"
+         'oComando.Connection = oConexion
+         'oComando.CommandText = aConsulta
+         'oConexion.Open()
+         'oDataReader = oComando.ExecuteReader()
+         'If oDataReader.HasRows Then
+         '   While oDataReader.Read()
+         lblIdAnalisis.Text = tabla(0)
+         '      lblLogSPS.Text = oDataReader("logSPS").ToString()
+         '      lblLogTit1.Text = oDataReader("logTit1").ToString()
+         '      lblLogTit2.Text = oDataReader("logTit2").ToString()
+         '   End While
+         '   oDataReader.Close()
+         lblLogSPS.Text = valorLOGSPS
+         lblLogTit1.Text = valorTIT1
+         lblLogTit2.Text = valorTIT2
+         etiquetaMensaje.Text = ""
+         txtNoSubcasos.Text = "2"
+         'Else
+         '   mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
+         'End If
+         'oConexion.Close()
+         'Catch ex As MySqlException
+         '   mensajeExceptionSQL(etiquetaMensaje, ex)
+         'Catch ex As DataException
+         '   mensajeException(etiquetaMensaje, ex)
+         'Catch ex As Exception
+         '   mensajeException(etiquetaMensaje, ex)
+         'End Try
       Else
          mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
          txtNoDeCasos.Enabled = True
@@ -391,14 +424,11 @@ Public Class frmCapturaCasosDA
 
       ReDim calculaL(cuentaNoDatos - 1)
 
-      'Si el numero de datos es 1, entonces el cálculo de la estadística es 0, excepto para la media aritmética.
-      If cuentaNoDatos > 1 Then
-         Try
-            mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
-         Catch ex As Exception
-            mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
-         End Try
-      End If
+      Try
+         mediaGeometrica = calculaSumatoriaMediaGeometrica(calculoDeTitulos, calculaL, desdex, desdey, hastax, hastay, totalcalculaL)
+      Catch ex As Exception
+         mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
+      End Try
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)
@@ -419,6 +449,8 @@ Public Class frmCapturaCasosDA
          Catch
             mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la media geométrica, calculaMediaGeometrica.")
          End Try
+      Else
+         mediaGeometrica = 0
       End If
 
       Try
@@ -594,7 +626,10 @@ Public Class frmCapturaCasosDA
       cmbNoCaso.Focus()
       txtMensajeSobreGrafica.Enabled = True
       txtMensajeSobreGrafica.ReadOnly = False
-      estatusDesdeHasta(False)
+
+      'Modificado a TRUE el 01/OCT/2012
+      estatusDesdeHasta(True)
+
       tbcDatosDelCaso.SelectTab(1)
       btnInsertar.Enabled = False
       'Habilita la barrita para desplazarse sobre los análisis de caso capturados.
@@ -803,6 +838,7 @@ Public Class frmCapturaCasosDA
       mensajeVerde(etiquetaMensaje, "Mensaje: Usted captura el Subcaso No." & lblNoSubCaso.Text & " de " & txtNoSubcasos.Text)
       'No cambia el caso, ni el cliente, ni enfermedad y limpia el desde hasta del caso para que se coloque el numero de subcaso
       statusDeSubCasoMostrados(False)
+      txtObservaciones.Enabled = False
       txtMensajeSobreGrafica.Enabled = True
       txtMensajeSobreGrafica.ReadOnly = False
       txtMensajeSobreGrafica.Focus()
@@ -929,11 +965,12 @@ Public Class frmCapturaCasosDA
    End Sub
 
    Private Sub btnCapturaTerminada_Click(sender As System.Object, e As System.EventArgs) Handles btnCapturaTerminada.Click
-      'habilitaBarrita(False)
+      habilitaBarrita(True)
       btnEditar.Enabled = False
       btnCapturaTerminada.Enabled = False
       tbcDatosDelCaso.SelectTab(0)
       btnLeerArchivoExistente.Enabled = True
+      btnLeerArchivoExistente.Focus()
    End Sub
 
    Private Sub cmbNoCaso_Click(sender As Object, e As System.EventArgs) Handles cmbNoCaso.Click
@@ -1000,6 +1037,8 @@ Public Class frmCapturaCasosDA
             End While
             oDataReader.Close()
             chkSubCasos.Enabled = True
+            'Agregado el 12/OCT/2012
+            estatusDesdeHasta(False)
          Else
             mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
@@ -1068,4 +1107,5 @@ Public Class frmCapturaCasosDA
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
+
 End Class

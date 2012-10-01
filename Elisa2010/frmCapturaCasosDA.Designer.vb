@@ -23,13 +23,15 @@ Partial Class frmCapturaCasosDA
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
       Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCapturaCasosDA))
-      Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-      Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+      Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
       Me.btnLeerArchivoExistente = New System.Windows.Forms.Button()
       Me.tbcDatosDelCaso = New System.Windows.Forms.TabControl()
       Me.tbpDatosDelCaso = New System.Windows.Forms.TabPage()
+      Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+      Me.Label11 = New System.Windows.Forms.Label()
       Me.Label41 = New System.Windows.Forms.Label()
       Me.txtNoControlesNegativos = New System.Windows.Forms.TextBox()
       Me.lblNoControles = New System.Windows.Forms.Label()
@@ -60,6 +62,7 @@ Partial Class frmCapturaCasosDA
       Me.lblLogTit1 = New System.Windows.Forms.Label()
       Me.lblIdAnalisis = New System.Windows.Forms.Label()
       Me.tbpInformacionCaso = New System.Windows.Forms.TabPage()
+      Me.txtObservaciones = New System.Windows.Forms.TextBox()
       Me.btnAceptaSubCasos = New System.Windows.Forms.Button()
       Me.lblNoSubCaso = New System.Windows.Forms.Label()
       Me.txtNoSubcasos = New System.Windows.Forms.TextBox()
@@ -99,17 +102,14 @@ Partial Class frmCapturaCasosDA
       Me.btnHaciaAtras = New System.Windows.Forms.Button()
       Me.lblCasoDeCaso = New System.Windows.Forms.Label()
       Me.ofdSelArchivo = New System.Windows.Forms.OpenFileDialog()
-      Me.Label11 = New System.Windows.Forms.Label()
-      Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-      Me.txtObservaciones = New System.Windows.Forms.TextBox()
       Me.tbcDatosDelCaso.SuspendLayout()
       Me.tbpDatosDelCaso.SuspendLayout()
+      CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.grbCNDesdeArchivo.SuspendLayout()
       Me.grbCPDesdeArchivo.SuspendLayout()
       Me.tbpInformacionCaso.SuspendLayout()
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.Panel5.SuspendLayout()
-      CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
       Me.SuspendLayout()
       '
       'btnLeerArchivoExistente
@@ -161,6 +161,30 @@ Partial Class frmCapturaCasosDA
       Me.tbpDatosDelCaso.Size = New System.Drawing.Size(690, 215)
       Me.tbpDatosDelCaso.TabIndex = 0
       Me.tbpDatosDelCaso.Text = "Datos del caso y controles"
+      '
+      'PictureBox1
+      '
+      Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+      Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+      Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+      Me.PictureBox1.Location = New System.Drawing.Point(18, 20)
+      Me.PictureBox1.Name = "PictureBox1"
+      Me.PictureBox1.Size = New System.Drawing.Size(234, 179)
+      Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+      Me.PictureBox1.TabIndex = 175
+      Me.PictureBox1.TabStop = False
+      '
+      'Label11
+      '
+      Me.Label11.AutoSize = True
+      Me.Label11.BackColor = System.Drawing.Color.Transparent
+      Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.Label11.ForeColor = System.Drawing.Color.MidnightBlue
+      Me.Label11.Location = New System.Drawing.Point(265, 77)
+      Me.Label11.Name = "Label11"
+      Me.Label11.Size = New System.Drawing.Size(270, 16)
+      Me.Label11.TabIndex = 174
+      Me.Label11.Text = "Datos de los controles positivos y negativos:"
       '
       'Label41
       '
@@ -485,6 +509,16 @@ Partial Class frmCapturaCasosDA
       Me.tbpInformacionCaso.TabIndex = 1
       Me.tbpInformacionCaso.Text = "Información específica de los casos"
       '
+      'txtObservaciones
+      '
+      Me.txtObservaciones.BackColor = System.Drawing.Color.White
+      Me.txtObservaciones.Enabled = False
+      Me.txtObservaciones.Location = New System.Drawing.Point(186, 104)
+      Me.txtObservaciones.Name = "txtObservaciones"
+      Me.txtObservaciones.ReadOnly = True
+      Me.txtObservaciones.Size = New System.Drawing.Size(449, 20)
+      Me.txtObservaciones.TabIndex = 185
+      '
       'btnAceptaSubCasos
       '
       Me.btnAceptaSubCasos.Enabled = False
@@ -534,8 +568,9 @@ Partial Class frmCapturaCasosDA
       '
       'txtMensajeSobreGrafica
       '
+      Me.txtMensajeSobreGrafica.BackColor = System.Drawing.Color.White
       Me.txtMensajeSobreGrafica.Enabled = False
-      Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(186, 99)
+      Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(186, 134)
       Me.txtMensajeSobreGrafica.Name = "txtMensajeSobreGrafica"
       Me.txtMensajeSobreGrafica.Size = New System.Drawing.Size(449, 20)
       Me.txtMensajeSobreGrafica.TabIndex = 169
@@ -546,7 +581,7 @@ Partial Class frmCapturaCasosDA
       Me.Label7.BackColor = System.Drawing.Color.Transparent
       Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label7.Location = New System.Drawing.Point(57, 104)
+      Me.Label7.Location = New System.Drawing.Point(57, 134)
       Me.Label7.Name = "Label7"
       Me.Label7.Size = New System.Drawing.Size(38, 15)
       Me.Label7.TabIndex = 184
@@ -558,7 +593,7 @@ Partial Class frmCapturaCasosDA
       Me.Label1.BackColor = System.Drawing.Color.Transparent
       Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label1.Location = New System.Drawing.Point(57, 134)
+      Me.Label1.Location = New System.Drawing.Point(57, 104)
       Me.Label1.Name = "Label1"
       Me.Label1.Size = New System.Drawing.Size(100, 16)
       Me.Label1.TabIndex = 183
@@ -680,6 +715,7 @@ Partial Class frmCapturaCasosDA
       '
       'cmbNoCaso
       '
+      Me.cmbNoCaso.BackColor = System.Drawing.Color.White
       Me.cmbNoCaso.Enabled = False
       Me.cmbNoCaso.FormattingEnabled = True
       Me.cmbNoCaso.Location = New System.Drawing.Point(186, 13)
@@ -738,33 +774,33 @@ Partial Class frmCapturaCasosDA
       Me.dgvPlacaLeida.AllowUserToDeleteRows = False
       Me.dgvPlacaLeida.AllowUserToResizeColumns = False
       Me.dgvPlacaLeida.AllowUserToResizeRows = False
-      DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+      DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
       Me.dgvPlacaLeida.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
       Me.dgvPlacaLeida.BackgroundColor = System.Drawing.Color.White
       Me.dgvPlacaLeida.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-      DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle6.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+      DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle2.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
       Me.dgvPlacaLeida.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
       Me.dgvPlacaLeida.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
       Me.dgvPlacaLeida.GridColor = System.Drawing.Color.Gray
       Me.dgvPlacaLeida.Location = New System.Drawing.Point(2, 319)
       Me.dgvPlacaLeida.Name = "dgvPlacaLeida"
       Me.dgvPlacaLeida.ReadOnly = True
-      DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      DataGridViewCellStyle7.BackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      DataGridViewCellStyle7.ForeColor = System.Drawing.Color.MidnightBlue
-      DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-      DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.MidnightBlue
-      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-      DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle8
+      DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      DataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      DataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue
+      DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+      DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue
+      Me.dgvPlacaLeida.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+      DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+      Me.dgvPlacaLeida.RowsDefaultCellStyle = DataGridViewCellStyle4
       Me.dgvPlacaLeida.ScrollBars = System.Windows.Forms.ScrollBars.None
       Me.dgvPlacaLeida.Size = New System.Drawing.Size(698, 200)
       Me.dgvPlacaLeida.TabIndex = 147
@@ -947,39 +983,6 @@ Partial Class frmCapturaCasosDA
       Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
       Me.ofdSelArchivo.Title = "Abrir archivo de datos"
       '
-      'Label11
-      '
-      Me.Label11.AutoSize = True
-      Me.Label11.BackColor = System.Drawing.Color.Transparent
-      Me.Label11.Font = New System.Drawing.Font("Century Gothic", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-      Me.Label11.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label11.Location = New System.Drawing.Point(265, 77)
-      Me.Label11.Name = "Label11"
-      Me.Label11.Size = New System.Drawing.Size(270, 16)
-      Me.Label11.TabIndex = 174
-      Me.Label11.Text = "Datos de los controles positivos y negativos:"
-      '
-      'PictureBox1
-      '
-      Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-      Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-      Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-      Me.PictureBox1.Location = New System.Drawing.Point(18, 20)
-      Me.PictureBox1.Name = "PictureBox1"
-      Me.PictureBox1.Size = New System.Drawing.Size(234, 179)
-      Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-      Me.PictureBox1.TabIndex = 175
-      Me.PictureBox1.TabStop = False
-      '
-      'txtObservaciones
-      '
-      Me.txtObservaciones.Enabled = False
-      Me.txtObservaciones.Location = New System.Drawing.Point(186, 131)
-      Me.txtObservaciones.Name = "txtObservaciones"
-      Me.txtObservaciones.ReadOnly = True
-      Me.txtObservaciones.Size = New System.Drawing.Size(449, 20)
-      Me.txtObservaciones.TabIndex = 185
-      '
       'frmCapturaCasosDA
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1002,6 +1005,7 @@ Partial Class frmCapturaCasosDA
       Me.tbcDatosDelCaso.ResumeLayout(False)
       Me.tbpDatosDelCaso.ResumeLayout(False)
       Me.tbpDatosDelCaso.PerformLayout()
+      CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
       Me.grbCNDesdeArchivo.ResumeLayout(False)
       Me.grbCNDesdeArchivo.PerformLayout()
       Me.grbCPDesdeArchivo.ResumeLayout(False)
@@ -1011,7 +1015,6 @@ Partial Class frmCapturaCasosDA
       CType(Me.dgvPlacaLeida, System.ComponentModel.ISupportInitialize).EndInit()
       Me.Panel5.ResumeLayout(False)
       Me.Panel5.PerformLayout()
-      CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)
       Me.PerformLayout()
 

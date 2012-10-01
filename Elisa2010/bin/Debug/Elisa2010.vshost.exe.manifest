@@ -173,14 +173,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elisa2010.exe" size="1402368">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elisa2010.exe" size="1490944">
       <assemblyIdentity name="Elisa2010" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Diywkgcp2HRVziPSv//6xvzYAKQ=</dsig:DigestValue>
+        <dsig:DigestValue>2D9pHjsfan8gnyOihyQ1OMC6JoQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

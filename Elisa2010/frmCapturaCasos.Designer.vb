@@ -40,6 +40,7 @@ Partial Class frmCapturaCasos
       Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
       Me.tbcDatosDelCaso = New System.Windows.Forms.TabControl()
       Me.tbpDatosDelCaso = New System.Windows.Forms.TabPage()
+      Me.btnAceptarEnfermedad = New System.Windows.Forms.Button()
       Me.PictureBox1 = New System.Windows.Forms.PictureBox()
       Me.txtDatosRecibidos = New System.Windows.Forms.TextBox()
       Me.grbControlesNegativos = New System.Windows.Forms.GroupBox()
@@ -70,7 +71,6 @@ Partial Class frmCapturaCasos
       Me.lblLogTit2 = New System.Windows.Forms.Label()
       Me.ckbControlesDefault = New System.Windows.Forms.CheckBox()
       Me.lblLogSPS = New System.Windows.Forms.Label()
-      Me.btnAceptarEnfermedad = New System.Windows.Forms.Button()
       Me.Label8 = New System.Windows.Forms.Label()
       Me.txtNombreSobreGrafica = New System.Windows.Forms.TextBox()
       Me.Label41 = New System.Windows.Forms.Label()
@@ -242,6 +242,7 @@ Partial Class frmCapturaCasos
       'tbpDatosDelCaso
       '
       Me.tbpDatosDelCaso.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+      Me.tbpDatosDelCaso.Controls.Add(Me.btnAceptarEnfermedad)
       Me.tbpDatosDelCaso.Controls.Add(Me.PictureBox1)
       Me.tbpDatosDelCaso.Controls.Add(Me.txtDatosRecibidos)
       Me.tbpDatosDelCaso.Controls.Add(Me.grbControlesNegativos)
@@ -254,7 +255,6 @@ Partial Class frmCapturaCasos
       Me.tbpDatosDelCaso.Controls.Add(Me.lblLogTit2)
       Me.tbpDatosDelCaso.Controls.Add(Me.ckbControlesDefault)
       Me.tbpDatosDelCaso.Controls.Add(Me.lblLogSPS)
-      Me.tbpDatosDelCaso.Controls.Add(Me.btnAceptarEnfermedad)
       Me.tbpDatosDelCaso.Controls.Add(Me.Label8)
       Me.tbpDatosDelCaso.Controls.Add(Me.txtNombreSobreGrafica)
       Me.tbpDatosDelCaso.Controls.Add(Me.Label41)
@@ -269,6 +269,16 @@ Partial Class frmCapturaCasos
       Me.tbpDatosDelCaso.Size = New System.Drawing.Size(690, 259)
       Me.tbpDatosDelCaso.TabIndex = 0
       Me.tbpDatosDelCaso.Text = "Datos del caso y controles"
+      '
+      'btnAceptarEnfermedad
+      '
+      Me.btnAceptarEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(549, 91)
+      Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
+      Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(105, 23)
+      Me.btnAceptarEnfermedad.TabIndex = 4
+      Me.btnAceptarEnfermedad.Text = "Aceptar Casos"
+      Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
       '
       'PictureBox1
       '
@@ -529,7 +539,7 @@ Partial Class frmCapturaCasos
       Me.btnAceptarControles.Location = New System.Drawing.Point(549, 220)
       Me.btnAceptarControles.Name = "btnAceptarControles"
       Me.btnAceptarControles.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarControles.TabIndex = 161
+      Me.btnAceptarControles.TabIndex = 6
       Me.btnAceptarControles.Text = "Aceptar Controles"
       Me.btnAceptarControles.UseVisualStyleBackColor = True
       '
@@ -540,7 +550,7 @@ Partial Class frmCapturaCasos
       Me.btnDefinirControlesPN.Location = New System.Drawing.Point(549, 185)
       Me.btnDefinirControlesPN.Name = "btnDefinirControlesPN"
       Me.btnDefinirControlesPN.Size = New System.Drawing.Size(105, 23)
-      Me.btnDefinirControlesPN.TabIndex = 160
+      Me.btnDefinirControlesPN.TabIndex = 7
       Me.btnDefinirControlesPN.Text = "Definir Controles"
       Me.btnDefinirControlesPN.UseVisualStyleBackColor = True
       '
@@ -582,7 +592,7 @@ Partial Class frmCapturaCasos
       Me.ckbControlesDefault.Location = New System.Drawing.Point(549, 151)
       Me.ckbControlesDefault.Name = "ckbControlesDefault"
       Me.ckbControlesDefault.Size = New System.Drawing.Size(114, 17)
-      Me.ckbControlesDefault.TabIndex = 159
+      Me.ckbControlesDefault.TabIndex = 5
       Me.ckbControlesDefault.Text = "Valores por default"
       Me.ToolTip1.SetToolTip(Me.ckbControlesDefault, "Marque para valores default")
       Me.ckbControlesDefault.UseVisualStyleBackColor = True
@@ -596,17 +606,6 @@ Partial Class frmCapturaCasos
       Me.lblLogSPS.TabIndex = 162
       Me.lblLogSPS.Text = "logsSPS: "
       Me.lblLogSPS.Visible = False
-      '
-      'btnAceptarEnfermedad
-      '
-      Me.btnAceptarEnfermedad.Enabled = False
-      Me.btnAceptarEnfermedad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.btnAceptarEnfermedad.Location = New System.Drawing.Point(549, 88)
-      Me.btnAceptarEnfermedad.Name = "btnAceptarEnfermedad"
-      Me.btnAceptarEnfermedad.Size = New System.Drawing.Size(105, 23)
-      Me.btnAceptarEnfermedad.TabIndex = 149
-      Me.btnAceptarEnfermedad.Text = "Aceptar Datos"
-      Me.btnAceptarEnfermedad.UseVisualStyleBackColor = True
       '
       'Label8
       '
@@ -625,7 +624,7 @@ Partial Class frmCapturaCasos
       Me.txtNombreSobreGrafica.Location = New System.Drawing.Point(459, 16)
       Me.txtNombreSobreGrafica.Name = "txtNombreSobreGrafica"
       Me.txtNombreSobreGrafica.Size = New System.Drawing.Size(191, 20)
-      Me.txtNombreSobreGrafica.TabIndex = 157
+      Me.txtNombreSobreGrafica.TabIndex = 0
       Me.ToolTip1.SetToolTip(Me.txtNombreSobreGrafica, "Abreviatura de la enfermedad")
       '
       'Label41
@@ -647,7 +646,7 @@ Partial Class frmCapturaCasos
       Me.txtNoControlesNegativos.MaxLength = 1
       Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControlesNegativos.TabIndex = 153
+      Me.txtNoControlesNegativos.TabIndex = 3
       Me.txtNoControlesNegativos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       Me.ToolTip1.SetToolTip(Me.txtNoControlesNegativos, "No. controles negativos")
       '
@@ -659,7 +658,7 @@ Partial Class frmCapturaCasos
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
       Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoControlesPositivos.TabIndex = 152
+      Me.txtNoControlesPositivos.TabIndex = 2
       Me.txtNoControlesPositivos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
       Me.ToolTip1.SetToolTip(Me.txtNoControlesPositivos, "No. controles positivos")
       '
@@ -691,7 +690,7 @@ Partial Class frmCapturaCasos
       Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)
-      Me.txtNoDeCasos.TabIndex = 151
+      Me.txtNoDeCasos.TabIndex = 1
       Me.ToolTip1.SetToolTip(Me.txtNoDeCasos, "No. casos en la placa")
       '
       'tbpInformacionCaso
@@ -728,8 +727,9 @@ Partial Class frmCapturaCasos
       '
       'txtObservaciones
       '
+      Me.txtObservaciones.BackColor = System.Drawing.Color.White
       Me.txtObservaciones.Enabled = False
-      Me.txtObservaciones.Location = New System.Drawing.Point(181, 128)
+      Me.txtObservaciones.Location = New System.Drawing.Point(181, 99)
       Me.txtObservaciones.Name = "txtObservaciones"
       Me.txtObservaciones.ReadOnly = True
       Me.txtObservaciones.Size = New System.Drawing.Size(449, 20)
@@ -785,8 +785,9 @@ Partial Class frmCapturaCasos
       '
       'txtMensajeSobreGrafica
       '
+      Me.txtMensajeSobreGrafica.BackColor = System.Drawing.Color.White
       Me.txtMensajeSobreGrafica.Enabled = False
-      Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(181, 97)
+      Me.txtMensajeSobreGrafica.Location = New System.Drawing.Point(181, 131)
       Me.txtMensajeSobreGrafica.Name = "txtMensajeSobreGrafica"
       Me.txtMensajeSobreGrafica.Size = New System.Drawing.Size(449, 20)
       Me.txtMensajeSobreGrafica.TabIndex = 170
@@ -797,7 +798,7 @@ Partial Class frmCapturaCasos
       Me.Label7.BackColor = System.Drawing.Color.Transparent
       Me.Label7.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label7.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label7.Location = New System.Drawing.Point(52, 102)
+      Me.Label7.Location = New System.Drawing.Point(52, 134)
       Me.Label7.Name = "Label7"
       Me.Label7.Size = New System.Drawing.Size(38, 15)
       Me.Label7.TabIndex = 184
@@ -809,7 +810,7 @@ Partial Class frmCapturaCasos
       Me.Label1.BackColor = System.Drawing.Color.Transparent
       Me.Label1.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label1.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label1.Location = New System.Drawing.Point(52, 132)
+      Me.Label1.Location = New System.Drawing.Point(52, 104)
       Me.Label1.Name = "Label1"
       Me.Label1.Size = New System.Drawing.Size(100, 16)
       Me.Label1.TabIndex = 183
@@ -926,18 +927,19 @@ Partial Class frmCapturaCasos
       Me.btnBuscaCaso.Location = New System.Drawing.Point(369, 10)
       Me.btnBuscaCaso.Name = "btnBuscaCaso"
       Me.btnBuscaCaso.Size = New System.Drawing.Size(48, 23)
-      Me.btnBuscaCaso.TabIndex = 166
+      Me.btnBuscaCaso.TabIndex = 10
       Me.ToolTip1.SetToolTip(Me.btnBuscaCaso, "Buscar el caso desplegado en combo.")
       Me.btnBuscaCaso.UseVisualStyleBackColor = True
       '
       'cmbNoCaso
       '
+      Me.cmbNoCaso.BackColor = System.Drawing.Color.White
       Me.cmbNoCaso.Enabled = False
       Me.cmbNoCaso.FormattingEnabled = True
       Me.cmbNoCaso.Location = New System.Drawing.Point(181, 11)
       Me.cmbNoCaso.Name = "cmbNoCaso"
       Me.cmbNoCaso.Size = New System.Drawing.Size(182, 21)
-      Me.cmbNoCaso.TabIndex = 165
+      Me.cmbNoCaso.TabIndex = 9
       '
       'Label34
       '
@@ -1022,7 +1024,7 @@ Partial Class frmCapturaCasos
       Me.btnInsertar.Location = New System.Drawing.Point(382, 4)
       Me.btnInsertar.Name = "btnInsertar"
       Me.btnInsertar.Size = New System.Drawing.Size(37, 23)
-      Me.btnInsertar.TabIndex = 137
+      Me.btnInsertar.TabIndex = 8
       Me.btnInsertar.Tag = ""
       Me.btnInsertar.UseVisualStyleBackColor = True
       '
@@ -1246,7 +1248,6 @@ Partial Class frmCapturaCasos
    Friend WithEvents cmbNoCaso As System.Windows.Forms.ComboBox
    Friend WithEvents Label34 As System.Windows.Forms.Label
    Friend WithEvents Label35 As System.Windows.Forms.Label
-   Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
    Friend WithEvents txtDatosRecibidos As System.Windows.Forms.TextBox
    Friend WithEvents grbControlesNegativos As System.Windows.Forms.GroupBox
@@ -1277,4 +1278,5 @@ Partial Class frmCapturaCasos
    Friend WithEvents lblLogTit2 As System.Windows.Forms.Label
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
+   Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
 End Class

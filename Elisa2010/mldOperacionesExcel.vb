@@ -366,7 +366,7 @@ Module mldOperacionesExcel
       Dim rangoCuadro2 As String = "G" & (17 + ubicacion) & ":H" & (17 + ubicacion)
       Dim valorFormula1 As String = "=$B" & (12 + ubicacion)
       Dim valorFormula2 As String = "=$A" & (12 + ubicacion)
-      nombreArchivoResultado = rutaResutados & numCaso & ".xls"
+      nombreArchivoResultado = rutaResutados & numCaso & "-" & analisis & ".xls"
       Dim existeArchivo As Boolean
       'Valida si el consecutivo= 0, entonces es el único archivo que se va a generar de resultados
       'el nombre se botiene con No.Caso-Analisis.xls
