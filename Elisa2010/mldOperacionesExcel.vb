@@ -458,228 +458,229 @@ Module mldOperacionesExcel
          releaseObject(excelApp)
    End Sub
 
-   'Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
-   Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
-                                    ByVal observaciones As String, ByVal nombrelibro As String, _
-                                    ByVal mensajeEspecial As String, enfermedadAbreviada As String, _
-                                    ByVal titulosObtenidos As String, _
-                                    ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
-                                    ByRef cuentaNoDatos As Integer, ByRef desviacionEstandarDatosNoAgrupados As Double, _
-                                    ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
+   'PUEDE BORRARSE DESPUES DE LA PRUEBA DEL LECTOR. 01/OCT/2012
+   ''Procedimiento que sirve para generar el archivo de excel con los resultados del análisis y su gráfica
+   'Public Sub guardaResultadosExcel(ByVal numCaso As String, ByVal consecutivo As Integer, ByVal analisis As String, ByVal fechaElaboracion As String, ByVal nombreCliente As String, ByVal nombreEnfermedad As String, _
+   '                                 ByVal observaciones As String, ByVal nombrelibro As String, _
+   '                                 ByVal mensajeEspecial As String, enfermedadAbreviada As String, _
+   '                                 ByVal titulosObtenidos As String, _
+   '                                 ByRef mediaAritmetica As Double, ByRef mediaGeometrica As Double, _
+   '                                 ByRef cuentaNoDatos As Integer, ByRef desviacionEstandarDatosNoAgrupados As Double, _
+   '                                 ByRef coeficienteDeVariacionDatosNoAgrupados As Double, ByRef calculaVarianzaDatosNoAgrupados As Double)
 
-      'PAra formatear la salida de datos en excel de resultados
-      Dim k As Integer = 1
-      Dim sueros As String = "A"
-      Dim titulos As String = "B"
-      Dim temp As Integer = 1
-      Dim l As Integer = 14
-
-
-      Dim excelApp As New Excel.Application
-      Dim libroExcel As Excel.Workbook
-      'Sirve para controlar el ciclo for
-      Dim i As Integer = 0
-
-      'Mostrar Excel en pantalla y crea el workbook
-      excelApp.Visible = False
-      libroExcel = excelApp.Workbooks.Add()
-
-      'Darle nombre la primer hoja activa del libro de trabajo
-      excelApp.ActiveSheet.Name = nombrelibro
-
-      'Predefinir márgenes para la hoja de excel, los valores se deben colocar en pulgadas, por lo que se divide el cms entre 2.54
-      With excelApp.ActiveSheet.PageSetup
-         .LeftMargin = .Application.InchesToPoints(0.27559055118110237)
-         .RightMargin = .Application.InchesToPoints(0.27559055118110237)
-         .TopMargin = .Application.InchesToPoints(1.1023622047244095)
-         .BottomMargin = .Application.InchesToPoints(0.62992125984251968)
-         '.HeaderMargin = .Application.InchesToPoints(0.196850393700787)
-         '.FooterMargin = .Application.InchesToPoints(0.196850393700787)
-      End With
+   '   'PAra formatear la salida de datos en excel de resultados
+   '   Dim k As Integer = 1
+   '   Dim sueros As String = "A"
+   '   Dim titulos As String = "B"
+   '   Dim temp As Integer = 1
+   '   Dim l As Integer = 14
 
 
-      'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
-      With excelApp
-         .Range("A2").Font.Bold = True
-         .Range("H2").Font.Bold = True
-         .Range("B2:G2").MergeCells = True
-         .Range("A3:I3").MergeCells = True
-         .Range("A1:I11").Font.Name = "Century Gothic"
-         .Range("A1:I11").Font.Size = 10
-         .Range("A12").Font.Name = "Arial"
-         .Range("A12").Font.Size = 8
-         .Range("B12").Font.Name = "Arial"
-         .Range("B12").Font.Size = 9
-         .Range("A13:D35").Font.Name = "Arial"
-         .Range("A13:D35").Font.Size = 9
-         .Range("A34:D35").Font.Name = "Arial"
-         .Range("A34:D35").Font.Size = 9
-         .Range("A39").Font.Name = "Arial"
-         .Range("A39").Font.Size = 9
-         .Range("B43").Font.Name = "Century Gothic"
-         .Range("B43").Font.Size = 10
-         'Coloca los valores de los campos
-         .Range("F1").Value2 = "Resultados de Serología"
-         .Range("A2").Value2 = "Cliente:  "
-         .Range("B2").Value2 = nombreCliente
-         .Range("H2").Value2 = "No. Caso: "
-         .Range("I2").Value2 = numCaso
-         .Range("A3").Value2 = LCase(observaciones)
+   '   Dim excelApp As New Excel.Application
+   '   Dim libroExcel As Excel.Workbook
+   '   'Sirve para controlar el ciclo for
+   '   Dim i As Integer = 0
 
-         'Colocar los bordes externos a las celdas para el reporte.
-         .Range("A2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
-         .Range("H2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
-      End With
-      'Colocar los datos relacionados a la fecha y el análisis realizado.
-      With excelApp
-         .Range("A5").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
-         .Range("A7").Value2 = nombreEnfermedad
-         .Range("F7").Value2 = "Fecha del análisis:  " & Format(CDate(fechaElaboracion), "dd MMM yyyy")
-         .Range("A12").Value2 = mensajeEspecial
-         .Range("B12").Value2 = enfermedadAbreviada
+   '   'Mostrar Excel en pantalla y crea el workbook
+   '   excelApp.Visible = False
+   '   libroExcel = excelApp.Workbooks.Add()
 
-         'Esta funcion se utiliza para mandar a impresión el reporte, no usada en ésta versión.
-         'excelApp.ActiveSheet.PrintOut()
+   '   'Darle nombre la primer hoja activa del libro de trabajo
+   '   excelApp.ActiveSheet.Name = nombrelibro
 
-         'copia los valores de los títulos resultantes
-         .Range("A13").Value2 = "Sueros*"
-         .Range("B13").Value2 = "Títulos"
-      End With
-      'La cadena recibida con todos los titulos los manipula separandolos por el retorno de carro entre ellos
-      'Lo asigna a la cadena tabla
-      Dim cadena1 As String
-      Dim tabla1() As String
-      cadena1 = titulosObtenidos
-      tabla1 = Split(cadena1, vbCrLf)
-
-      For i = 0 To cuentaNoDatos - 1
-         excelApp.Range(sueros & l).Value2 = k
-         excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
-         k += 1
-         l += 1
-         If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
-            l = 13
-            If (k = 21) Then
-               sueros = "C"
-               titulos = "D"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            If (k = 41) Then
-               sueros = "E"
-               titulos = "F"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            If (k = 61) Then
-               sueros = "G"
-               titulos = "H"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            If (k = 81) Then
-               sueros = "I"
-               titulos = "J"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            l = 14
-         End If
-         If (i = 0) Then
-            temp = 0
-         End If
-      Next
-      'Try
-      'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
-      Dim strCelda As String = "E15"
-      Dim nombreArchivo = rutaImagen & numCaso & "-" & consecutivo & "-" & analisis & ".gif"
-      excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
-      'Catch ex As Exception
-      '   mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
-      'End Try
-
-      'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
-      Dim nomenf As Excel.Shape
-      With excelApp.Range("F17:G17")
-         nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
-             Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
-             Left:=.Left, Top:=.Top, _
-             Width:=80, Height:=20)
-      End With
-      'Quita el borde del cuadro de texto y lo trae al frente de la gráfica.
-      nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
-      nomenf.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
-
-      With nomenf.DrawingObject
-         '.Characters.Text = excelApp.Range("B12").Value2
-         'Coloca el nombre del cuadrito, si cambia B12, cambia el titulo escrito dentro de él.
-         .Formula = "=$B12"
-         With .Font
-            .Name = "Arial"
-            .FontStyle = "Bold"
-            .Size = 9
-            .Strikethrough = False
-            .Superscript = False
-            .Subscript = False
-            .OutlineFont = False
-            .Shadow = False
-         End With
-      End With
+   '   'Predefinir márgenes para la hoja de excel, los valores se deben colocar en pulgadas, por lo que se divide el cms entre 2.54
+   '   With excelApp.ActiveSheet.PageSetup
+   '      .LeftMargin = .Application.InchesToPoints(0.27559055118110237)
+   '      .RightMargin = .Application.InchesToPoints(0.27559055118110237)
+   '      .TopMargin = .Application.InchesToPoints(1.1023622047244095)
+   '      .BottomMargin = .Application.InchesToPoints(0.62992125984251968)
+   '      '.HeaderMargin = .Application.InchesToPoints(0.196850393700787)
+   '      '.FooterMargin = .Application.InchesToPoints(0.196850393700787)
+   '   End With
 
 
-      'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO SOBRE LA GRAFICA IMAGEN
-      Dim tbox As Excel.Shape
-      With excelApp.Range("G17:H17")
-         tbox = excelApp.ActiveSheet.Shapes.AddTextbox( _
-             Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
-             Left:=.Left, Top:=.Top, _
-             Width:=80, Height:=20)
-      End With
+   '   'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+   '   With excelApp
+   '      .Range("A2").Font.Bold = True
+   '      .Range("H2").Font.Bold = True
+   '      .Range("B2:G2").MergeCells = True
+   '      .Range("A3:I3").MergeCells = True
+   '      .Range("A1:I11").Font.Name = "Century Gothic"
+   '      .Range("A1:I11").Font.Size = 10
+   '      .Range("A12").Font.Name = "Arial"
+   '      .Range("A12").Font.Size = 8
+   '      .Range("B12").Font.Name = "Arial"
+   '      .Range("B12").Font.Size = 9
+   '      .Range("A13:D35").Font.Name = "Arial"
+   '      .Range("A13:D35").Font.Size = 9
+   '      .Range("A34:D35").Font.Name = "Arial"
+   '      .Range("A34:D35").Font.Size = 9
+   '      .Range("A39").Font.Name = "Arial"
+   '      .Range("A39").Font.Size = 9
+   '      .Range("B43").Font.Name = "Century Gothic"
+   '      .Range("B43").Font.Size = 10
+   '      'Coloca los valores de los campos
+   '      .Range("F1").Value2 = "Resultados de Serología"
+   '      .Range("A2").Value2 = "Cliente:  "
+   '      .Range("B2").Value2 = nombreCliente
+   '      .Range("H2").Value2 = "No. Caso: "
+   '      .Range("I2").Value2 = numCaso
+   '      .Range("A3").Value2 = LCase(observaciones)
 
-      'Quita el borde del cuadro de texto y lo trae al frente del la grafica.
-      tbox.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
-      tbox.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
+   '      'Colocar los bordes externos a las celdas para el reporte.
+   '      .Range("A2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+   '      .Range("H2:I3").BorderAround(, Excel.XlBorderWeight.xlThin, Excel.XlColorIndex.xlColorIndexAutomatic, )
+   '   End With
+   '   'Colocar los datos relacionados a la fecha y el análisis realizado.
+   '   With excelApp
+   '      .Range("A5").Value2 = "ELISA: INMUNOENSAYO ENZIMÁTICO"
+   '      .Range("A7").Value2 = nombreEnfermedad
+   '      .Range("F7").Value2 = "Fecha del análisis:  " & Format(CDate(fechaElaboracion), "dd MMM yyyy")
+   '      .Range("A12").Value2 = mensajeEspecial
+   '      .Range("B12").Value2 = enfermedadAbreviada
+
+   '      'Esta funcion se utiliza para mandar a impresión el reporte, no usada en ésta versión.
+   '      'excelApp.ActiveSheet.PrintOut()
+
+   '      'copia los valores de los títulos resultantes
+   '      .Range("A13").Value2 = "Sueros*"
+   '      .Range("B13").Value2 = "Títulos"
+   '   End With
+   '   'La cadena recibida con todos los titulos los manipula separandolos por el retorno de carro entre ellos
+   '   'Lo asigna a la cadena tabla
+   '   Dim cadena1 As String
+   '   Dim tabla1() As String
+   '   cadena1 = titulosObtenidos
+   '   tabla1 = Split(cadena1, vbCrLf)
+
+   '   For i = 0 To cuentaNoDatos - 1
+   '      excelApp.Range(sueros & l).Value2 = k
+   '      excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
+   '      k += 1
+   '      l += 1
+   '      If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
+   '         l = 13
+   '         If (k = 21) Then
+   '            sueros = "C"
+   '            titulos = "D"
+   '            excelApp.Range(sueros & l).Value2 = "Sueros"
+   '            excelApp.Range(titulos & l).Value2 = "Títulos"
+   '         End If
+   '         If (k = 41) Then
+   '            sueros = "E"
+   '            titulos = "F"
+   '            excelApp.Range(sueros & l).Value2 = "Sueros"
+   '            excelApp.Range(titulos & l).Value2 = "Títulos"
+   '         End If
+   '         If (k = 61) Then
+   '            sueros = "G"
+   '            titulos = "H"
+   '            excelApp.Range(sueros & l).Value2 = "Sueros"
+   '            excelApp.Range(titulos & l).Value2 = "Títulos"
+   '         End If
+   '         If (k = 81) Then
+   '            sueros = "I"
+   '            titulos = "J"
+   '            excelApp.Range(sueros & l).Value2 = "Sueros"
+   '            excelApp.Range(titulos & l).Value2 = "Títulos"
+   '         End If
+   '         l = 14
+   '      End If
+   '      If (i = 0) Then
+   '         temp = 0
+   '      End If
+   '   Next
+   '   'Try
+   '   'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
+   '   Dim strCelda As String = "E15"
+   '   Dim nombreArchivo = rutaImagen & numCaso & "-" & consecutivo & "-" & analisis & ".gif"
+   '   excelApp.ActiveSheet.Shapes.AddPicture(nombreArchivo, False, True, 250, 200, 220, 150)
+   '   'Catch ex As Exception
+   '   '   mensajeException(frmSalidaDatos.lblSalidaDatos, ex)
+   '   'End Try
+
+   '   'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
+   '   Dim nomenf As Excel.Shape
+   '   With excelApp.Range("F17:G17")
+   '      nomenf = excelApp.ActiveSheet.Shapes.AddTextbox( _
+   '          Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
+   '          Left:=.Left, Top:=.Top, _
+   '          Width:=80, Height:=20)
+   '   End With
+   '   'Quita el borde del cuadro de texto y lo trae al frente de la gráfica.
+   '   nomenf.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+   '   nomenf.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
+
+   '   With nomenf.DrawingObject
+   '      '.Characters.Text = excelApp.Range("B12").Value2
+   '      'Coloca el nombre del cuadrito, si cambia B12, cambia el titulo escrito dentro de él.
+   '      .Formula = "=$B12"
+   '      With .Font
+   '         .Name = "Arial"
+   '         .FontStyle = "Bold"
+   '         .Size = 9
+   '         .Strikethrough = False
+   '         .Superscript = False
+   '         .Subscript = False
+   '         .OutlineFont = False
+   '         .Shadow = False
+   '      End With
+   '   End With
 
 
-      With tbox.DrawingObject
-         '.Characters.Text = excelApp.Range("A12").Value2
-         'Coloca el nombre del cuadrito, si cambia A12, cambia el titulo escrito dentro de él.
-         .Formula = "=$A12"
+   '   'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO SOBRE LA GRAFICA IMAGEN
+   '   Dim tbox As Excel.Shape
+   '   With excelApp.Range("G17:H17")
+   '      tbox = excelApp.ActiveSheet.Shapes.AddTextbox( _
+   '          Orientation:=Microsoft.Office.Core.MsoTextOrientation.msoTextOrientationHorizontal, _
+   '          Left:=.Left, Top:=.Top, _
+   '          Width:=80, Height:=20)
+   '   End With
 
-         With .Font
-            .Name = "Arial"
-            .FontStyle = "Regular"
-            .Size = 8
-            .Strikethrough = False
-            .Superscript = False
-            .Subscript = False
-            .OutlineFont = False
-            .Shadow = False
-         End With
-      End With
+   '   'Quita el borde del cuadro de texto y lo trae al frente del la grafica.
+   '   tbox.Line.Visible = Microsoft.Office.Core.MsoTriState.msoFalse
+   '   tbox.ZOrder(Microsoft.Office.Core.MsoZOrderCmd.msoBringToFront)
 
-      'coloca los valores de la estadística al finalizar el valor de los sueros.
-      With excelApp
-         .Range("A34").Value2 = "No. Sueros"
-         .Range("B34").Value2 = "Media Arit."
-         .Range("C34").Value2 = "Med. Geom."
-         .Range("D34").Value2 = "Coef.Var."
-         .Range("A35").Value2 = cuentaNoDatos
-         .Range("B35").Value2 = Math.Round(mediaAritmetica)
-         .Range("C35").Value2 = Math.Round(mediaGeometrica)
-         .Range("D35").Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
-         .Range("A39").Value2 = "* Numeración arbitraria"
-         .Range("B43").Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
-      End With
-      'Salva el archivo de placa original leida con el nombre del caso
-      Dim nombreArchivoResultado As String = rutaResutados & numCaso & "-" & analisis & ".xls"
-      With excelApp
-         .ActiveWorkbook.SaveAs(nombreArchivoResultado)
-         .ActiveWorkbook.Close()
-         .Quit()
-      End With
-      releaseObject(excelApp)
-   End Sub
+
+   '   With tbox.DrawingObject
+   '      '.Characters.Text = excelApp.Range("A12").Value2
+   '      'Coloca el nombre del cuadrito, si cambia A12, cambia el titulo escrito dentro de él.
+   '      .Formula = "=$A12"
+
+   '      With .Font
+   '         .Name = "Arial"
+   '         .FontStyle = "Regular"
+   '         .Size = 8
+   '         .Strikethrough = False
+   '         .Superscript = False
+   '         .Subscript = False
+   '         .OutlineFont = False
+   '         .Shadow = False
+   '      End With
+   '   End With
+
+   '   'coloca los valores de la estadística al finalizar el valor de los sueros.
+   '   With excelApp
+   '      .Range("A34").Value2 = "No. Sueros"
+   '      .Range("B34").Value2 = "Media Arit."
+   '      .Range("C34").Value2 = "Med. Geom."
+   '      .Range("D34").Value2 = "Coef.Var."
+   '      .Range("A35").Value2 = cuentaNoDatos
+   '      .Range("B35").Value2 = Math.Round(mediaAritmetica)
+   '      .Range("C35").Value2 = Math.Round(mediaGeometrica)
+   '      .Range("D35").Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
+   '      .Range("A39").Value2 = "* Numeración arbitraria"
+   '      .Range("B43").Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
+   '   End With
+   '   'Salva el archivo de placa original leida con el nombre del caso
+   '   Dim nombreArchivoResultado As String = rutaResutados & numCaso & "-" & analisis & ".xls"
+   '   With excelApp
+   '      .ActiveWorkbook.SaveAs(nombreArchivoResultado)
+   '      .ActiveWorkbook.Close()
+   '      .Quit()
+   '   End With
+   '   releaseObject(excelApp)
+   'End Sub
 
    '##################################################################
    '#SECCION PARA ABRIR DATOS EXISTENTES DESDE UN ARCHIVO DE EXCEL   #
@@ -901,7 +902,7 @@ Module mldOperacionesExcel
       Return nombreArchivo
    End Function
 
-
+   'No borrar, ya que es el ejemplo para hacer la grafica utilizando VB solamente.
    'Public Sub creaChartFrecRel(ByRef etiqueta As Label, ByRef control As Control, ByVal nombre As String, ByVal titulox As String, _
    '                            ByVal tituloy As String, ByRef numCaso As String, ByVal analisis As String)
    '   Dim oConexion As MySqlConnection = New MySqlConnection()
@@ -982,7 +983,6 @@ Module mldOperacionesExcel
    '         .AxisX.Title = titulox
    '         .AxisY.Title = tituloy
    '      End With
-
 
    '      'Indica que tienen etiquetas las barra, asigna los valores de las series para miembros que se trazan en X y Y y lee del
    '      'data reader los valores de rango, valor y etiqueta
