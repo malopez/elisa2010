@@ -24,9 +24,11 @@ Module mdlOperaciones
    'Matriz para calculo de Logaritmo de Titulos
    Public calculoDeTitulos(7, 11) As Decimal
    'Ruta donde se guardaran los archivos
-   Public rutaImagen As String = "C:\ELISA2012\Imagenes\"
-   Public rutaPlacas As String = "C:\ELISA2012\Placas Originales\"
-   Public rutaResutados As String = "C:\ELISA2012\Resultados\"
+   Public Const rutaImagen As String = "C:\ELISA2012\Imagenes\"
+   Public Const rutaPlacas As String = "C:\ELISA2012\Placas Originales\"
+   Public Const rutaInformeFinal As String = "C:\ELISA2012\Informe Final\"
+   Public Const rutaParaImprimir As String = "C:\ELISA2012\Para Imprimir\"
+   Public Const rutaResutados As String = "C:\ELISA2012\Resultados\"
 
    'Procedimiento utilizado para convertir la cadena de entrada desde el puerto en un arreglo, quitando los blancos
    'Los <Enter>, <retorno de carro>, <Tabs>, <Nuevas líneas> y el <_Quick> que coloca el lector al final de lo que lee

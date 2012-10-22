@@ -262,6 +262,10 @@
    '###################################
 
 
+   Private Sub tsmGenerarArchivoDeResultados_Click(sender As System.Object, e As System.EventArgs) Handles tsmGenerarArchivoDeResultados.Click
+      frmIntegrarResultados.MdiParent = Me
+      frmIntegrarResultados.Show()
+   End Sub
 
 
    '###################################
@@ -298,6 +302,5 @@
    Private Sub tsbSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsbSalir.Click
       Me.Close()
    End Sub
-
 
 End Class
