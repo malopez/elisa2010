@@ -161,10 +161,16 @@
     <Compile Include="frmCapturaCasosDA.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmInicioPrograma.Designer.vb">
-      <DependentUpon>frmInicioPrograma.vb</DependentUpon>
+    <Compile Include="frmCargaPrograma.Designer.vb">
+      <DependentUpon>frmCargaPrograma.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmInicioPrograma.vb">
+    <Compile Include="frmCargaPrograma.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIniciaPrograma.Designer.vb">
+      <DependentUpon>frmIniciaPrograma.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmIniciaPrograma.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIntegrarResultados.Designer.vb">
@@ -173,16 +179,16 @@
     <Compile Include="frmIntegrarResultados.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLecturaDePlaca.Designer.vb">
-      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmLecturaDePlaca.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmConfiguraLector.Designer.vb">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConfiguraLector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLecturaDePlaca.Designer.vb">
+      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLecturaDePlaca.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmOperacionesAnalisis.Designer.vb">
@@ -252,20 +258,23 @@
     <EmbeddedResource Include="frmCapturaCasosDA.resx">
       <DependentUpon>frmCapturaCasosDA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmInicioPrograma.resx">
-      <DependentUpon>frmInicioPrograma.vb</DependentUpon>
+    <EmbeddedResource Include="frmCargaPrograma.resx">
+      <DependentUpon>frmCargaPrograma.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIniciaPrograma.resx">
+      <DependentUpon>frmIniciaPrograma.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIntegrarResultados.resx">
       <DependentUpon>frmIntegrarResultados.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLecturaDePlaca.resx">
-      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguraLector.resx">
       <DependentUpon>frmConfiguraLector.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmELISA.resx">
       <DependentUpon>frmELISA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLecturaDePlaca.resx">
+      <DependentUpon>frmLecturaDePlaca.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOperacionesAnalisis.resx">
       <DependentUpon>frmOperacionesAnalisis.vb</DependentUpon>

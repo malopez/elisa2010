@@ -40,7 +40,6 @@ Partial Class frmIntegrarResultados
       Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
       Me.btnCopiarInforme = New System.Windows.Forms.Button()
       Me.grbCopiarParaImprimir = New System.Windows.Forms.GroupBox()
-      Me.lblMensajeCopia = New System.Windows.Forms.Label()
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.mnuPreverAnalisis.SuspendLayout()
       Me.grbNoCaso.SuspendLayout()
@@ -203,7 +202,6 @@ Partial Class frmIntegrarResultados
       '
       'grbCopiarParaImprimir
       '
-      Me.grbCopiarParaImprimir.Controls.Add(Me.lblMensajeCopia)
       Me.grbCopiarParaImprimir.Controls.Add(Me.btnCopiarInforme)
       Me.grbCopiarParaImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
       Me.grbCopiarParaImprimir.Location = New System.Drawing.Point(4, 326)
@@ -212,15 +210,6 @@ Partial Class frmIntegrarResultados
       Me.grbCopiarParaImprimir.TabIndex = 12
       Me.grbCopiarParaImprimir.TabStop = False
       Me.grbCopiarParaImprimir.Text = "Copiar Infome Final en capeta ""Para Imprimir"""
-      '
-      'lblMensajeCopia
-      '
-      Me.lblMensajeCopia.AutoSize = True
-      Me.lblMensajeCopia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.lblMensajeCopia.Location = New System.Drawing.Point(6, 35)
-      Me.lblMensajeCopia.Name = "lblMensajeCopia"
-      Me.lblMensajeCopia.Size = New System.Drawing.Size(0, 13)
-      Me.lblMensajeCopia.TabIndex = 12
       '
       'btnCancelar
       '
@@ -247,6 +236,7 @@ Partial Class frmIntegrarResultados
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmIntegrarResultados"
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Integrar resultados en Informe Final"
       Me.mnuPreverAnalisis.ResumeLayout(False)
       Me.grbNoCaso.ResumeLayout(False)
@@ -257,7 +247,6 @@ Partial Class frmIntegrarResultados
       Me.grpArchivoFinal.ResumeLayout(False)
       Me.grpArchivoFinal.PerformLayout()
       Me.grbCopiarParaImprimir.ResumeLayout(False)
-      Me.grbCopiarParaImprimir.PerformLayout()
       Me.ResumeLayout(False)
 
    End Sub
@@ -278,7 +267,6 @@ Partial Class frmIntegrarResultados
    Friend WithEvents grbCopiarParaImprimir As System.Windows.Forms.GroupBox
    Friend WithEvents btnCancelar As System.Windows.Forms.Button
    Friend WithEvents btnPreverInfome As System.Windows.Forms.Button
-   Friend WithEvents lblMensajeCopia As System.Windows.Forms.Label
 
 End Class
 

@@ -1567,7 +1567,7 @@ Public Class frmAnemiaInfecciosa
       Dim cadena As String
       Dim tabla() As String
       Dim numCaso As String = ""
-
+      Dim nombreArchivo As String = ""
       numCaso = cmbNoCaso.Text
 
       'Obtiene el numero de caso para ese análisis
@@ -1609,7 +1609,7 @@ Public Class frmAnemiaInfecciosa
          guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
                           cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
                           totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
-                          etiquetaMensaje)
+                          etiquetaMensaje, nombreArchivo)
       Next
    End Sub
 

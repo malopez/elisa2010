@@ -14,14 +14,14 @@ Module mldOperacionesExcel
                                ByVal cpy1 As Integer, ByVal cpy2 As Integer, ByVal cpy3 As Integer, _
                                ByVal cny1 As Integer, ByVal cny2 As Integer, ByVal cny3 As Integer, _
                                ByVal desdex As Integer, ByVal desdey As Integer, ByVal hastax As Integer, ByVal hastay As Integer, _
-                               ByVal etiqueta As ToolStripLabel)
+                               ByVal etiqueta As ToolStripLabel, ByRef nombreArchivo As String)
 
       Dim excelApp As New Excel.Application
       Dim libroExcel As Excel.Workbook
       'Sirve para controlar el ciclo for
       Dim i As Integer = 0
       Dim j As Integer = 0
-      Dim nombreArchivo As String
+      'Dim nombreArchivo As String
       Dim numcolor As Integer
       'Salva el archivo de placa original leida con el nombre del caso
       If numCaso = "" And analisis = "" Then
@@ -212,13 +212,17 @@ Module mldOperacionesExcel
          .Range(a & (7 + ubicacion)).Value2 = nombreEnfermedad
          .Range(f & (7 + ubicacion)).Value2 += Format(CDate(fechaElaboracion), "dd MMM yyyy")
          .Range(a & (12 + ubicacion)).Value2 = mensajeEspecial
+         .Range(a & (12 + ubicacion)).Font.FontStyle = "Normal"
+         .Range(a & (12 + ubicacion)).Font.Size = 8
          .Range(b & (12 + ubicacion)).Value2 = enfermedadAbreviada
+         .Range(b & (12 + ubicacion)).Font.FontStyle = "Bold"
+         .Range(b & (12 + ubicacion)).Font.Size = 9
       End With
    End Sub
 
    'Inserta en el archivo de excel el valor de los titulos resultantes
-   Public Sub insertaValoresTitulos(excelApp As Excel.Application, ByVal titulosObtenidos As String, _
-                                    ByRef cuentaNoDatos As Integer, ByVal ubicacion As Integer)
+   Public Sub insertaValoresTitulos(ByVal excelApp As Excel.Application, ByVal titulosObtenidos As String, _
+                                    ByRef cuentaNoDatos As Integer, ByVal ubicacion As Integer, ByRef siguienteRenglon As Integer)
       'La cadena recibida con todos los titulos los manipula separandolos por el retorno de carro entre ellos
       'Lo asigna a la cadena tabla
       Dim k As Integer = 1
@@ -231,57 +235,102 @@ Module mldOperacionesExcel
       cadena1 = titulosObtenidos
       tabla1 = Split(cadena1, vbCrLf)
 
-      For i = 0 To cuentaNoDatos - 1
-         excelApp.Range(sueros & l).Value2 = k
-         excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
-         k += 1
-         l += 1
-         If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
-            l = 13 + ubicacion
-            If (k = 21) Then
-               sueros = "C"
-               titulos = "D"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
+      'Si los valores son menores o iguales a 31 muestras hace dos culumnas, listando de 20 en 20 los títulos.
+      If cuentaNoDatos <= 31 Then
+         For i = 0 To cuentaNoDatos - 1
+            excelApp.Range(sueros & l).Value2 = k
+            excelApp.Range(sueros & l).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft
+            excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
+            excelApp.Range(titulos & l).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft
+            k += 1
+            l += 1
+            If (k = 21) Or (k = 41) Or (k = 61) Or (k = 81) Then
+               l = 13 + ubicacion
+               If (k = 21) Then
+                  sueros = "C"
+                  titulos = "D"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               If (k = 41) Then
+                  sueros = "E"
+                  titulos = "F"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               If (k = 61) Then
+                  sueros = "G"
+                  titulos = "H"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               If (k = 81) Then
+                  sueros = "I"
+                  titulos = "J"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               l = 14 + ubicacion
             End If
-            If (k = 41) Then
-               sueros = "E"
-               titulos = "F"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
+         Next
+      Else
+         'si las muestras son mas de 31 cambia de columna hasta 90 títulos.
+         For i = 0 To cuentaNoDatos - 1
+            excelApp.Range(sueros & l).Value2 = k
+            excelApp.Range(sueros & l).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft
+            excelApp.Range(titulos & l).Value2 = Math.Round(CDec(tabla1(i)))
+            excelApp.Range(titulos & l).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft
+            k += 1
+            l += 1
+            If (k = 32) Or (k = 63) Or (k = 92) Then
+               l = 13 + ubicacion
+               If (k = 32) Then
+                  sueros = "C"
+                  titulos = "D"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               If (k = 63) Then
+                  sueros = "E"
+                  titulos = "F"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               If (k = 92) Then
+                  sueros = "G"
+                  titulos = "H"
+                  excelApp.Range(sueros & l).Value2 = "Sueros"
+                  excelApp.Range(titulos & l).Value2 = "Títulos"
+               End If
+               l = 14 + ubicacion
             End If
-            If (k = 61) Then
-               sueros = "G"
-               titulos = "H"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            If (k = 81) Then
-               sueros = "I"
-               titulos = "J"
-               excelApp.Range(sueros & l).Value2 = "Sueros"
-               excelApp.Range(titulos & l).Value2 = "Títulos"
-            End If
-            l = 14 + ubicacion
-         End If
-         If (i = 0) Then
-            temp = 0
-         End If
-      Next
+         Next
+      End If
+      If cuentaNoDatos >= 21 Then
+         siguienteRenglon = 14 + ubicacion + 20
+         Console.WriteLine("valor de siguiente en IF renglon en calcula titulos: " & siguienteRenglon.ToString())
+      Else
+         siguienteRenglon = 14 + ubicacion + cuentaNoDatos
+         Console.WriteLine("valor de siguiente renglon en ELSE en calcula titulos: " & siguienteRenglon.ToString())
+      End If
    End Sub
 
    'Inserta la gráfica en el archivo Excel en el rango de E15 del archivo de excel.
 
-   Public Sub insertaGrafica(excelApp As Excel.Application, ByVal nombreArchivoGrafica As String, ByVal celdas As String)
+   Public Sub insertaGrafica(excelApp As Excel.Application, ByVal nombreArchivoGrafica As String, _
+                             ByVal celdas As String, ByVal nombre As String)
       Dim obj As Object
       With excelApp.Range(celdas)
          .Select()
          obj = excelApp.ActiveSheet.Pictures.Insert(nombreArchivoGrafica)
          With obj
+            .Name = nombre
             .Left = .Left
             .Top = .Top
-            .Width = 220
-            .Height = 150
+            .Width = 200
+            .Height = 130
+            '.Width = 220
+            '.Height = 150
          End With
       End With
    End Sub
@@ -293,7 +342,8 @@ Module mldOperacionesExcel
    'End Function
 
    'Agrega un cuadrito sobre la grafica
-   Public Sub agregaCuadrito(excelApp As Excel.Application, ByVal rango As String, ByVal valorFormula As String)
+   Public Sub agregaCuadrito(ByVal excelApp As Excel.Application, ByVal rango As String, ByVal valorFormula As String, _
+                             ByVal tipo As String, ByVal tamano As Integer, ByVal nombreCuadro As String)
       'DEFINIDO PARA AGREGAR UN CUADRITO DE TEXTO INDICANDO EL NOMBRE DE LA ENFERMEDAD ABREVIADO
       Dim nomenf As Excel.Shape
       With excelApp.Range(rango)
@@ -309,10 +359,12 @@ Module mldOperacionesExcel
       With nomenf.DrawingObject
          'Coloca el nombre del cuadrito, si cambia B12, cambia el titulo escrito dentro de él.
          .Formula = valorFormula
+         .Name = nombreCuadro
+
          With .Font
             .Name = "Arial"
-            .FontStyle = "Bold"
-            .Size = 9
+            .FontStyle = tipo
+            .Size = tamano
             .Strikethrough = False
             .Superscript = False
             .Subscript = False
@@ -322,7 +374,55 @@ Module mldOperacionesExcel
       End With
    End Sub
 
+   Public Sub escribeValoresEstadistica(ByVal excelApp As Excel.Application, ByVal ubicacion As Integer, _
+                                        ByRef cuentaNoDatos As Integer, ByRef mediaAritmetica As Double, _
+                                        ByRef mediaGeometrica As Double, ByRef coeficienteDeVariacionDatosNoAgrupados As Double, _
+                                        ByVal fechaElaboracion As String, ByVal siguienteRenglon As Integer)
+      Dim postit As Integer = 0
+      Dim posvalor As Integer = 0
+      Dim posmensaje As Integer = 48
+      Dim posfecha As Integer = 50
+      Dim posubicacion As Integer = 0
 
+      If cuentaNoDatos <= 31 Then
+         postit = siguienteRenglon
+         posvalor = siguienteRenglon + 1
+         posubicacion = 0
+      Else
+         postit = 45
+         posvalor = 46
+         posubicacion = ubicacion
+      End If
+
+      Console.WriteLine("------------------------------------------------")
+      Console.WriteLine("Valor de cuentanodatos: " & cuentaNoDatos.ToString())
+      Console.WriteLine("Valor de ubicacion: " & ubicacion.ToString())
+      Console.WriteLine("Valor de postit (sig renglon): " & siguienteRenglon.ToString() & " + ubicacion: " & CStr(postit + posubicacion))
+      Console.WriteLine("Valor de posvalor (sig renglon): " & CStr(siguienteRenglon + 1) & " + ubicacion: " & CStr(posvalor + posubicacion))
+      Console.WriteLine("------------------------------------------------")
+      'coloca los valores de la estadística al finalizar el valor de los sueros.
+      With excelApp
+         .Range("A" & postit + posubicacion).Value2 = "No. Sueros"
+         .Range("B" & postit + posubicacion).Value2 = "Media Arit."
+         .Range("C" & postit + posubicacion).Value2 = "Med. Geom."
+         .Range("D" & postit + posubicacion).Value2 = "Coef.Var. %"
+         .Range("A" & posvalor + posubicacion).Value2 = cuentaNoDatos
+         .Range("A" & posvalor + posubicacion).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+         .Range("B" & posvalor + posubicacion).Value2 = Math.Round(mediaAritmetica)
+         .Range("B" & posvalor + posubicacion).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+         .Range("C" & posvalor + posubicacion).Value2 = Math.Round(mediaGeometrica)
+         .Range("C" & posvalor + posubicacion).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+         .Range("D" & posvalor + posubicacion).Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
+         .Range("D" & posvalor + posubicacion).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+         posubicacion = ubicacion
+         .Range("A" & (posmensaje + posubicacion)).Value2 = "* Numeración arbitraria"
+         .Range("B" & (posfecha + posubicacion)).Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
+         .Range("B" & (posfecha + posubicacion)).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+      End With
+   End Sub
+
+
+   'Guarda los resultados de los casos en excel.
    Public Sub guardarResultadosExcel(ByVal numCaso As String, ByVal noSubcaso As Integer, _
                                      ByVal consecutivo As Integer, ByVal analisis As String, _
                                      ByVal fechaElaboracion As String, ByVal nombreCliente As String, _
@@ -341,7 +441,7 @@ Module mldOperacionesExcel
       Dim sueros As String = "A"
       Dim titulos As String = "B"
       Dim temp As Integer = 1
-      Dim l As Integer = 14
+      Dim siguienteRenglon As Integer = 0
       Dim hojaActual As String = ""
       Dim noHojas As Integer = 0
       'Para buscar el archivo en el sistema
@@ -354,16 +454,23 @@ Module mldOperacionesExcel
       Dim i As Integer = 0
       Dim ubicacion As Integer = 0
       Dim celdas As String = ""
+      Dim letra As String = "F"
+      'Para colocar la imagen, DESCOMENTAR SI SE REQUIERE EN LA CELDA E O F. A GUSTO DEL USUARIO.
+      'If cuentaNoDatos <= 31 Then
+      '   letra = "E"
+      'Else
+      '   letra = "F"
+      'End If
       If consecutivo <= 1 Then
          ubicacion = 0
-         celdas = "E15"
+         celdas = letra & "13"
       Else
          ubicacion = (consecutivo - 1) * 53
-         celdas = "E" & (15 + ((consecutivo - 1) * 53))
+         celdas = letra & (13 + ((consecutivo - 1) * 53))
       End If
 
-      Dim rangoCuadro1 As String = "F" & CStr(17 + ubicacion) & ":G" & CStr(17 + ubicacion)
-      Dim rangoCuadro2 As String = "G" & (17 + ubicacion) & ":H" & (17 + ubicacion)
+      Dim rangoCuadro1 As String = "G" & CStr(17 + ubicacion) & ":H" & CStr(17 + ubicacion)
+      Dim rangoCuadro2 As String = "H" & (17 + ubicacion) & ":I" & (17 + ubicacion)
       Dim valorFormula1 As String = "=$B" & (12 + ubicacion)
       Dim valorFormula2 As String = "=$A" & (12 + ubicacion)
       nombreArchivoResultado = rutaResutados & numCaso & "-" & analisis & ".xls"
@@ -386,7 +493,6 @@ Module mldOperacionesExcel
                hojaActual = consecutivo.ToString() & "/"
                noHojas = noSubcaso
             End If
-
             'nombreArchivoResultado = rutaResutados & numCaso & "-" & analisis & ".xls"
             'No hace visible el excel en pantalla, crea el workbook y da nombre la primer hoja activa del libro de trabajo.
             excelApp.Visible = False
@@ -407,39 +513,23 @@ Module mldOperacionesExcel
          defineTitulos(excelApp, ubicacion)
          defineBordes(excelApp, ubicacion)
 
-         'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
+      'Colocar las cabeceras para los rangos de datos, tipo y tamaño de letra
       colocaCabecera(excelApp, ubicacion, numCaso, nombreCliente, observaciones, _
                      hojaActual, noHojas, nombreEnfermedad, fechaElaboracion, mensajeEspecial, enfermedadAbreviada)
-         'Colocar los valores de los títulos o
-      insertaValoresTitulos(excelApp, titulosObtenidos, cuentaNoDatos, ubicacion)
+      'Colocar los valores de los títulos o
+      insertaValoresTitulos(excelApp, titulosObtenidos, cuentaNoDatos, ubicacion, siguienteRenglon)
 
-      'Inserta la gráfica en el archivo
-      'Dim strCelda As String = "E" & (15 + ubicacion)
-      'Console.WriteLine(strCelda & " ubicacion: " & ubicacion & nombreArchivoGrafica)
+      'Inserta la gráfica.
+      insertaGrafica(excelApp, nombreArchivoGrafica, celdas, "Imagen" & consecutivo.ToString())
 
+      'Agrega los cuadritos sobre la gráfica.
+      agregaCuadrito(excelApp, rangoCuadro1, valorFormula1, "Bold", 9, "Enfermedad" & consecutivo.ToString())
+      agregaCuadrito(excelApp, rangoCuadro2, valorFormula2, "Normal", 8, "Mensaje" & consecutivo.ToString())
 
+      'Escribe los valores de la estadística en la hoja de acuerdo al número de datos existentes.
+      escribeValoresEstadistica(excelApp, ubicacion, cuentaNoDatos, mediaAritmetica, mediaGeometrica, _
+                                coeficienteDeVariacionDatosNoAgrupados, fechaElaboracion, siguienteRenglon)
 
-      'Dim objeto As Object
-      'objeto = insertaGrafica(excelApp, nombreArchivoGrafica, celdas)
-      insertaGrafica(excelApp, nombreArchivoGrafica, celdas)
-
-         'Agrega los cuadritos sobre la gráfica.
-         agregaCuadrito(excelApp, rangoCuadro1, valorFormula1)
-         agregaCuadrito(excelApp, rangoCuadro2, valorFormula2)
-
-         'coloca los valores de la estadística al finalizar el valor de los sueros.
-         With excelApp
-         .Range("A" & (34 + ubicacion)).Value2 = "No. Sueros"
-         .Range("B" & (34 + ubicacion)).Value2 = "Media Arit."
-         .Range("C" & (34 + ubicacion)).Value2 = "Med. Geom."
-         .Range("D" & (34 + ubicacion)).Value2 = "Coef.Var."
-         .Range("A" & (35 + ubicacion)).Value2 = cuentaNoDatos
-         .Range("B" & (35 + ubicacion)).Value2 = Math.Round(mediaAritmetica)
-         .Range("C" & (35 + ubicacion)).Value2 = Math.Round(mediaGeometrica)
-         .Range("D" & (35 + ubicacion)).Value2 = Math.Round(coeficienteDeVariacionDatosNoAgrupados)
-         .Range("A" & (39 + ubicacion)).Value2 = "* Numeración arbitraria"
-         .Range("B" & (43 + ubicacion)).Value2 = Format(CDate(fechaElaboracion), "dd-MMM-yyyy")
-         End With
       'Si el consecutivo es menor o igual que 1, entonces guarda el archivo con el nombre indicado. De solo lectura.
       If consecutivo <= 1 Then
          With excelApp
@@ -993,10 +1083,6 @@ Module mldOperacionesExcel
    '         .CustomProperties = "labelStyle := Top , Font.Size := 7"
    '         .Points.DataBind(oDataReader, "rango", "valor", "Label=cantidad")
    '      End With
-
-
-
-
 
    '      'Cerrar la conexion a la base de datos 
    '      oDataReader.Close()

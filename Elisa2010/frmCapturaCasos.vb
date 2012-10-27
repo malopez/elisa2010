@@ -609,6 +609,7 @@ Public Class frmCapturaCasos
          oConexion.Open()
          oDataAdapter.Fill(oDataSet, "ordenes")
          oConexion.Close()
+         oConexion.Dispose()
          Dim oTabla As DataTable
          oTabla = oDataSet.Tables("ordenes")
          'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la búsqueda.
@@ -662,6 +663,7 @@ Public Class frmCapturaCasos
             mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
+         oConexion.Dispose()
       Catch ex As MySqlException
          mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
@@ -1564,6 +1566,7 @@ Public Class frmCapturaCasos
       Dim tabla() As String
       Dim numCaso As String = ""
       numCaso = cmbNoCaso.Text
+      Dim nombreArchivo As String = ""
       'Obtiene el numero de caso para ese análisis
       cadena = cmbNombreEnfermedad.Text
       tabla = Split(cadena, " | ")
@@ -1601,7 +1604,7 @@ Public Class frmCapturaCasos
          guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
                           cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
                           totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
-                          etiquetaMensaje)
+                          etiquetaMensaje, nombreArchivo)
       Next
    End Sub
 

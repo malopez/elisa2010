@@ -90,7 +90,7 @@ Partial Class frmAcercaDe
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-      Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
+      Me.BackColor = System.Drawing.Color.White
       Me.ClientSize = New System.Drawing.Size(539, 184)
       Me.Controls.Add(Me.Label2)
       Me.Controls.Add(Me.lblAcercaDe)
@@ -101,7 +101,7 @@ Partial Class frmAcercaDe
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.MaximizeBox = False
       Me.Name = "frmAcercaDe"
-      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+      Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
       Me.Text = "Acerca De"
       CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
       Me.ResumeLayout(False)

@@ -998,6 +998,7 @@ Public Class frmCapturaCasosDA
          oConexion.Open()
          oDataAdapter.Fill(oDataSet, "ordenes")
          oConexion.Close()
+         oConexion.Dispose()
          Dim oTabla As DataTable
          oTabla = oDataSet.Tables("ordenes")
          'Llena  el comboBox con los datos de la tabla y los registros que coinciden con la búsqueda.
@@ -1043,6 +1044,7 @@ Public Class frmCapturaCasosDA
             mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
          End If
          oConexion.Close()
+         oConexion.Dispose()
       Catch ex As MySqlException
          mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException

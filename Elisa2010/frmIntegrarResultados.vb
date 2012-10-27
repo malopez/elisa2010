@@ -122,18 +122,6 @@ Public Class frmIntegrarResultados
       End Try
    End Sub
 
-   'Verifica si existe un archivo. Regresa TRUE o FALSE según sea el caso.
-   Private Function verificarSiExisteArchivo(ByVal nombreArchivo As String) As Boolean
-      Dim fso As New System.Object
-      fso = CreateObject("Scripting.FileSystemObject")
-      If fso.FileExists(nombreArchivo) Then
-         Return True
-      Else
-         Return False
-      End If
-      releaseObject(fso)
-   End Function
-
    'Se utiliza para revisar cuales archivos desean integrarse en los de resultados
    Private Sub btnIntegrarArchivos_Click(sender As System.Object, e As System.EventArgs) Handles btnIntegrarArchivos.Click
 
@@ -158,8 +146,6 @@ Public Class frmIntegrarResultados
       Dim listaTotal As Integer = chbAnalisis.Items.Count - 1
 
       cmbCasos.Enabled = False
-
-
 
       'Valida si esta marcado al menos un archivo en el checkboxlist
 
@@ -310,18 +296,6 @@ Public Class frmIntegrarResultados
       fso = Nothing
    End Sub
 
-   'Procedimiento que sirve para liberar el objeto  Aplicacion Excel
-   Private Sub releaseObject(ByVal obj As Object)
-      Try
-         System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-         obj = Nothing
-      Catch ex As Exception
-         obj = Nothing
-      Finally
-         GC.Collect()
-      End Try
-   End Sub
-
    Private Sub tsmPreverArchivo_Click(sender As System.Object, e As System.EventArgs) Handles tsmPreverArchivo.Click
       Dim checado = chbAnalisis.SelectedIndex
       Dim nombreArchivoResultado As String = rutaResultados & cmbCasos.Text & "-" & chbAnalisis.Items(checado).ToString & ".xls"
@@ -349,7 +323,7 @@ Public Class frmIntegrarResultados
 
    Private Sub btnCopiarInforme_Click(sender As System.Object, e As System.EventArgs) Handles btnCopiarInforme.Click
       Dim nombreArchivoResultado As String = txtInformeFinal.Text
-      lblMensajeCopia.Text = ""
+      mensajeVerde(etiquetaMensaje, "Mensaje:")
       'si desea moverlo en lugar de copiar el archivo, cambie el comando comentado.
       'My.Computer.FileSystem.MoveFile(nombreArchivoResultado, rutaParaImprimir & "ArchivoFinal" & cmbCasos.Text & ".xls", _
       '                                 FileIO.UIOption.AllDialogs, FileIO.UICancelOption.ThrowException)
@@ -357,15 +331,14 @@ Public Class frmIntegrarResultados
       If verificarSiExisteArchivo(nombreArchivoResultado) Then
          Try
             My.Computer.FileSystem.CopyFile(nombreArchivoResultado, rutaParaImprimir & "ArchivoFinal-" & cmbCasos.Text & ".xls")
-            lblMensajeCopia.Text = "Copia en <<Para Imprimir>> Existosa."
+            mensajeVerde(etiquetaMensaje, "Mensaje: Copia en <<Para Imprimir>> Existosa.")
          Catch ex As IOException
             If MessageBox.Show("El archivo final de resultados ya existe, ¿Desea guardar una copia?.", "ERROR: Mensaje del Sistema", _
                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = System.Windows.Forms.DialogResult.Yes Then
                My.Computer.FileSystem.MoveFile(rutaParaImprimir & "ArchivoFinal-" & cmbCasos.Text & ".xls", rutaParaImprimir & "ArchivoFinal-" & cmbCasos.Text & "_" & Format(Now(), "hh_mm_ss") & ".xls")
-               lblMensajeCopia.Text = "Respaldo realizado."
+               mensajeVerde(etiquetaMensaje, "Mensaje: Respaldo realizado.")
                My.Computer.FileSystem.CopyFile(nombreArchivoResultado, rutaParaImprimir & "ArchivoFinal-" & cmbCasos.Text & ".xls")
-               lblMensajeCopia.Text = "Copia en <<Para Imprimir>> Existosa."
-
+               mensajeVerde(etiquetaMensaje, "Mensaje: Copia en <<Para Imprimir>> Existosa.")
             End If
          End Try
       Else

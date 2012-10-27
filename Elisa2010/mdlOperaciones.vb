@@ -29,7 +29,7 @@ Module mdlOperaciones
    Public Const rutaInformeFinal As String = "C:\ELISA2012\Informe Final\"
    Public Const rutaParaImprimir As String = "C:\ELISA2012\Para Imprimir\"
    Public Const rutaResutados As String = "C:\ELISA2012\Resultados\"
-
+   Public Const rutaPlacasLeidas As String = "C:\ELISA2012\Placas Leidas\"
    'Procedimiento utilizado para convertir la cadena de entrada desde el puerto en un arreglo, quitando los blancos
    'Los <Enter>, <retorno de carro>, <Tabs>, <Nuevas líneas> y el <_Quick> que coloca el lector al final de lo que lee
    'Como los valores vienen separados por comas, los elimina y obtiene mediante la funcion <val> el valor real de cada

@@ -49,14 +49,11 @@ Partial Class frmElisaBiovetsa
       Me.tsmLeerYGuardar = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuResultados = New System.Windows.Forms.ToolStripMenuItem()
       Me.tsmGenerarArchivoDeResultados = New System.Windows.Forms.ToolStripMenuItem()
-      Me.tsmImprimirArchivoDeResultados = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuAcercaDe = New System.Windows.Forms.ToolStripMenuItem()
       Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
       Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
       Me.tsbConfigurarLector = New System.Windows.Forms.ToolStripButton()
       Me.tsbReporte = New System.Windows.Forms.ToolStripButton()
-      Me.tsbImprimir = New System.Windows.Forms.ToolStripButton()
-      Me.tsbSalir = New System.Windows.Forms.ToolStripButton()
       Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
       Me.lblMensajeAplicacion = New System.Windows.Forms.ToolStripStatusLabel()
       Me.mnuMainMenu.SuspendLayout()
@@ -228,7 +225,7 @@ Partial Class frmElisaBiovetsa
       '
       'mnuResultados
       '
-      Me.mnuResultados.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmGenerarArchivoDeResultados, Me.tsmImprimirArchivoDeResultados})
+      Me.mnuResultados.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmGenerarArchivoDeResultados})
       Me.mnuResultados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.mnuResultados.Name = "mnuResultados"
       Me.mnuResultados.Size = New System.Drawing.Size(76, 20)
@@ -237,14 +234,8 @@ Partial Class frmElisaBiovetsa
       'tsmGenerarArchivoDeResultados
       '
       Me.tsmGenerarArchivoDeResultados.Name = "tsmGenerarArchivoDeResultados"
-      Me.tsmGenerarArchivoDeResultados.Size = New System.Drawing.Size(235, 22)
+      Me.tsmGenerarArchivoDeResultados.Size = New System.Drawing.Size(233, 22)
       Me.tsmGenerarArchivoDeResultados.Text = "Generar archivo de resultados "
-      '
-      'tsmImprimirArchivoDeResultados
-      '
-      Me.tsmImprimirArchivoDeResultados.Name = "tsmImprimirArchivoDeResultados"
-      Me.tsmImprimirArchivoDeResultados.Size = New System.Drawing.Size(235, 22)
-      Me.tsmImprimirArchivoDeResultados.Text = "Imprimir archivo de resultados"
       '
       'mnuAcercaDe
       '
@@ -264,7 +255,7 @@ Partial Class frmElisaBiovetsa
       'ToolStrip1
       '
       Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ControlLight
-      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbConfigurarLector, Me.tsbReporte, Me.tsbImprimir, Me.tsbSalir})
+      Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbConfigurarLector, Me.tsbReporte})
       Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
       Me.ToolStrip1.Name = "ToolStrip1"
       Me.ToolStrip1.Size = New System.Drawing.Size(1008, 25)
@@ -286,24 +277,6 @@ Partial Class frmElisaBiovetsa
       Me.tsbReporte.ImageTransparentColor = System.Drawing.Color.Magenta
       Me.tsbReporte.Name = "tsbReporte"
       Me.tsbReporte.Size = New System.Drawing.Size(23, 22)
-      '
-      'tsbImprimir
-      '
-      Me.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tsbImprimir.Image = CType(resources.GetObject("tsbImprimir.Image"), System.Drawing.Image)
-      Me.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tsbImprimir.Name = "tsbImprimir"
-      Me.tsbImprimir.Size = New System.Drawing.Size(23, 22)
-      Me.tsbImprimir.Text = "ToolStripButton1"
-      '
-      'tsbSalir
-      '
-      Me.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-      Me.tsbSalir.Image = CType(resources.GetObject("tsbSalir.Image"), System.Drawing.Image)
-      Me.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta
-      Me.tsbSalir.Name = "tsbSalir"
-      Me.tsbSalir.Size = New System.Drawing.Size(23, 22)
-      Me.tsbSalir.ToolTipText = "Salir de la aplicación"
       '
       'StatusStrip1
       '
@@ -362,9 +335,7 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents mnuAcercaDe As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
    Friend WithEvents tsbConfigurarLector As System.Windows.Forms.ToolStripButton
-   Friend WithEvents tsbSalir As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsbReporte As System.Windows.Forms.ToolStripButton
-   Friend WithEvents tsbImprimir As System.Windows.Forms.ToolStripButton
    Friend WithEvents tsmLeerYGuardar As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
    Friend WithEvents lblMensajeAplicacion As System.Windows.Forms.ToolStripStatusLabel
@@ -378,7 +349,6 @@ Partial Class frmElisaBiovetsa
    Friend WithEvents tsmEncefalomielitisAviarPROAN As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuResultados As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmGenerarArchivoDeResultados As System.Windows.Forms.ToolStripMenuItem
-   Friend WithEvents tsmImprimirArchivoDeResultados As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents mnuArchivo As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmAbrirDesdeArchivoExistent As System.Windows.Forms.ToolStripMenuItem
    Friend WithEvents tsmDABronquitisAviar As System.Windows.Forms.ToolStripMenuItem

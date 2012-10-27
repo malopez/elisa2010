@@ -171,7 +171,8 @@ Module mdlDefineValidaDatos
          valido = True
       Else
          valido = False
-         mensajeRojo(etiqueta, "Los valores de " & mensaje & " no pueden ser iguales, verifíquelos.")
+         MessageBox.Show("Los valores de " & mensaje & " no pueden ser iguales, verifíquelos.", _
+                        "ERROR: Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning)
       End If
       Return valido
    End Function
@@ -577,4 +578,15 @@ Module mdlDefineValidaDatos
       End If
    End Sub
 
+   'Verifica si existe un archivo. Regresa TRUE o FALSE según sea el caso.
+   Public Function verificarSiExisteArchivo(ByVal nombreArchivo As String) As Boolean
+      Dim fso As New System.Object
+      fso = CreateObject("Scripting.FileSystemObject")
+      If fso.FileExists(nombreArchivo) Then
+         Return True
+      Else
+         Return False
+      End If
+      releaseObject(fso)
+   End Function
 End Module

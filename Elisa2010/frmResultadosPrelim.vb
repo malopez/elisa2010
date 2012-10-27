@@ -67,12 +67,13 @@ Public Class frmResultadosPrelim
    End Property
 
    Private Sub btnGuardaResutados_Click(sender As System.Object, e As System.EventArgs) Handles btnGuardaResultados.Click
+
+      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+      Dim cadena As String
+      Dim tabla() As String
+      cadena = cmbCasosResPrel.Text
+      tabla = Split(cadena, " ")
       Try
-         'Obtener el nombre del análisis para colocar la cabecera de la gráfica
-         Dim cadena As String
-         Dim tabla() As String
-         cadena = cmbCasosResPrel.Text
-         tabla = Split(cadena, " ")
          guardarResultadosExcel(tabla(0), CInt(Me.lblNosubcasos.Text), CInt(Me.lblConsecutivo.Text), Me.lblAnalisis.Text, txtFechaElaboracion.Text, _
                                Me.txtNombreCliente.Text, Me.txtNombreEnfermedad.Text, Me.txtObservaciones.Text, "Resultados", _
                                Me.lblMensajeSobreGrafica.Text, Me.lblNombreSobreGrafica.Text, _
@@ -89,9 +90,10 @@ Public Class frmResultadosPrelim
             mensajeVerde(etiquetaMensaje, "MENSAJE: El archivo de resultados para el caso " & tabla(0) & " Subcaso: " & Me.lblConsecutivo.Text & " se ha guardado exitosamente en excel.")
          End If
       Catch ex As Exception
-         mensajeException(etiquetaMensaje, ex)
+         MessageBox.Show("mensaje error: " & ex.Message)
+         'MessageBox.Show("Guarde en excel el el primer subcaso en orden, el resto es indistinto.", _
+         '       "ERROR: Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning)
       End Try
-
    End Sub
 
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click

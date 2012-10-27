@@ -12,7 +12,8 @@
    Private m_blnConfirmarSalir As Boolean
 
    Private Sub frmElisaBiovetsa_FormClosed(sender As Object, e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
-      frmInicioPrograma.Close()
+      frmIniciaPrograma.Close()
+      'frmCargaPrograma.Close()
    End Sub
 
    Private Sub frmElisaBiovetsa_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -299,8 +300,13 @@
       frmConfiguraLector.Show()
    End Sub
 
-   Private Sub tsbSalir_Click(sender As System.Object, e As System.EventArgs) Handles tsbSalir.Click
+   Private Sub tsbSalir_Click(sender As System.Object, e As System.EventArgs)
       Me.Close()
    End Sub
 
+
+   Private Sub tsbReporte_Click(sender As System.Object, e As System.EventArgs) Handles tsbReporte.Click
+      frmIntegrarResultados.MdiParent = Me
+      frmIntegrarResultados.Show()
+   End Sub
 End Class
