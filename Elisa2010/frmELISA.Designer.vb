@@ -220,8 +220,8 @@ Partial Class frmElisaBiovetsa
       'tsmLeerYGuardar
       '
       Me.tsmLeerYGuardar.Name = "tsmLeerYGuardar"
-      Me.tsmLeerYGuardar.Size = New System.Drawing.Size(238, 22)
-      Me.tsmLeerYGuardar.Text = "Obtener desde lector y Guardar"
+      Me.tsmLeerYGuardar.Size = New System.Drawing.Size(215, 22)
+      Me.tsmLeerYGuardar.Text = "Obtener placa desde lector"
       '
       'mnuResultados
       '

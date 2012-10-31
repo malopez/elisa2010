@@ -3,7 +3,6 @@ Imports System.IO
 Imports MySql.Data.MySqlClient
 
 Public Class frmConfiguraLector
-   Const cadenaConexion As String = "server=biobuntu;User Id=bvtselisa;password=password;Persist Security Info=True;database=elisasandbox"
    Dim iposicFilaActual As Integer = 0
    Dim oDataAdapter As MySqlDataAdapter
    Dim oDataSet As DataSet
@@ -27,7 +26,6 @@ Public Class frmConfiguraLector
       Me.cargarDatosLector()
    End Sub
 
-
    Private Sub llenaDataSet(ByRef dbConsulta As String, ByRef nombreTabla As String)
       Try
          Dim oConexion As New MySqlConnection
@@ -45,8 +43,6 @@ Public Class frmConfiguraLector
          oConexion.Close()
       Catch ex As Exception
          mensajeException(etiquetaMensaje, ex)
-         'etiquetaMensaje.ForeColor = System.Drawing.Color.Red
-         'etiquetaMensaje.Text = "ERROR: " & ex.Message & " " & ex.GetType.ToString
       End Try
    End Sub
 
@@ -195,7 +191,6 @@ Public Class frmConfiguraLector
       Return (bps)
    End Function
 
-
    Private Sub marcaLectorDefault(ByVal lectorDefault As Integer)
       If lectorDefault = 1 Then
          chkLectorDefault.Checked = True
@@ -241,7 +236,6 @@ Public Class frmConfiguraLector
       gpbParidad.Enabled = False
       gpbSB.Enabled = False
    End Sub
-
 
    Private Sub cargarDatosLector()
       Try
@@ -451,7 +445,6 @@ Public Class frmConfiguraLector
       Catch ex As Exception
          mensajeException(etiquetaMensaje, ex)
       End Try
-
    End Sub
 
    Private Sub btnBorrar_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrar.Click
@@ -485,7 +478,6 @@ Public Class frmConfiguraLector
       btnActualizar.Enabled = False
       chkLectorDefault.Enabled = False
       deshabilitaGroupBox()
-
       'EStablecer la posicion del registro a mostrar en la tabla
       Me.iposicFilaActual = 0
       'Recarga los datos
@@ -547,7 +539,6 @@ Public Class frmConfiguraLector
          oComando.Connection = oConexion
          oComando.CommandText = aConsulta
          If txtNombreLector.Text = "" Then
-
             etiquetaMensaje.ForeColor = System.Drawing.Color.Red
             etiquetaMensaje.Text = "Mensaje: Escriba un nombre de Lector válido."
          Else
@@ -556,10 +547,8 @@ Public Class frmConfiguraLector
             If oDataReader.HasRows Then
                While oDataReader.Read()
                   txtNombreLector.Text = oDataReader("nomLector")
-
                End While
                oDataReader.Close()
-               'etiquetaMensaje.Text = ""
             Else
                etiquetaMensaje.ForeColor = System.Drawing.Color.Red
                etiquetaMensaje.Text = "Mensaje: No existe un lector con el nombre indicado."

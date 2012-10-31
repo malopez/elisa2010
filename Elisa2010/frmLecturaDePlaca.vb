@@ -23,7 +23,19 @@ Public Class frmLecturaDePlaca
       ToolTip1.SetToolTip(btnPreverInfome, "Prever el archivo excel de valores capturados en la placa.")
    End Sub
 
- 
+   '#########################################################
+   'PARA RECIBIR LOS DATOS DESDE EL PUERTO
+   '#########################################################
+   Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
+      Try
+         txtDatosRecibidos.Text = ""
+         az = SerialPort1.ReadExisting.Trim
+         msn += az
+      Catch ex As Exception
+         mensajeException(etiquetaMensaje, ex)
+      End Try
+      txtDatosRecibidos.Text = msn
+   End Sub
 
    '#########################################################
    'CUADROS DE TEXTO PARA LOS CONTROLES POSITIVOS Y NEGATIVOS Y CHECKBOX PARA VALORES DEFAULT
@@ -350,8 +362,14 @@ Public Class frmLecturaDePlaca
          mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
-         formateaDatos(placaLector, dgvPlacaLeida)
-         organizaEnTabla(dgvPlacaLeida, placaLector)
+         If msn <> "" Then
+            formateaDatos(placaLector, dgvPlacaLeida)
+            organizaEnTabla(dgvPlacaLeida, placaLector)
+            txtNombrePlaca.Text = guardaDatosEnExcel()
+            btnPreverInfome.Enabled = True
+         Else
+            mensajeRojo(etiquetaMensaje, "ERROR: No se han formateado datos debido a que no se han recibido desde el lector.")
+         End If
       Catch ex As Exception
          mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al formatear datos.")
       End Try
@@ -429,14 +447,13 @@ Public Class frmLecturaDePlaca
          If btnLeerDatosPlaca.Text = "Obtener datos desde el lector" Then
             btnLeerDatosPlaca.Text = "Desconectar Lector"
             Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, etiquetaMensaje, lblNombreLector)
-         Else
+         ElseIf btnLeerDatosPlaca.Text = "Desconectar Lector" Then
+            btnLeerDatosPlaca.Text = "Obtener datos desde el lector"
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
                mensajeVerde(etiquetaMensaje, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                presentaDatosEnPantallaFormateados()
-               txtNombrePlaca.Text = guardaDatosEnExcel()
-               btnPreverInfome.Enabled = True
             End If
          End If
       Catch ex As Exception

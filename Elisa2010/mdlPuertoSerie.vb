@@ -34,6 +34,7 @@ Module mdlPuertoSerie
             mensajeRojo(etiquetaMensaje, "Mensaje: No se ha encontrado un lector default.")
          End If
          oConexion.Close()
+         oConexion.Dispose()
       Catch ex As MySqlException
          mensajeExceptionSQL(etiquetaMensaje, ex)
       Catch ex As DataException
@@ -140,9 +141,6 @@ Module mdlPuertoSerie
       End Try
    End Sub
 
-
-   
-
    'Obtiene los puertos seriales disponibles utilizando parametros para colocar el valor en la Forma indicada
    Public Sub GetSerialPortNamesParametros(ByRef comboPuerto As System.Windows.Forms.ComboBox, ByRef etiqueta As ToolStripLabel)
       ' muestra COM ports disponibles.
@@ -168,4 +166,5 @@ Module mdlPuertoSerie
          mensajeException(etiqueta, ex)
       End Try
    End Sub
+
 End Module

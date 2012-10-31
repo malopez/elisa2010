@@ -643,7 +643,7 @@ Partial Class frmLecturaDePlaca
       Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
       Me.Name = "frmLecturaDePlaca"
       Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-      Me.Text = "frmLecturaDePlaca"
+      Me.Text = "Leer datos de placa y guardar en archivo excel"
       Me.GroupBox1.ResumeLayout(False)
       Me.GroupBox1.PerformLayout()
       Me.grbControlesNegativos.ResumeLayout(False)

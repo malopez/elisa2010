@@ -117,6 +117,7 @@ Partial Class frmCapturaCasos
       Me.lblNombreLector = New System.Windows.Forms.Label()
       Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
       Me.dgvPlacaLeida = New System.Windows.Forms.DataGridView()
+      Me.txtNombrePlaca = New System.Windows.Forms.TextBox()
       Me.Panel1.SuspendLayout()
       Me.tbcDatosDelCaso.SuspendLayout()
       Me.tbpDatosDelCaso.SuspendLayout()
@@ -185,6 +186,7 @@ Partial Class frmCapturaCasos
       '
       'btnObtenerResultados
       '
+      Me.btnObtenerResultados.Enabled = False
       Me.btnObtenerResultados.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnObtenerResultados.Location = New System.Drawing.Point(442, 562)
       Me.btnObtenerResultados.Name = "btnObtenerResultados"
@@ -201,7 +203,7 @@ Partial Class frmCapturaCasos
       Me.btnLeerDatosPlaca.Name = "btnLeerDatosPlaca"
       Me.btnLeerDatosPlaca.Size = New System.Drawing.Size(156, 23)
       Me.btnLeerDatosPlaca.TabIndex = 31
-      Me.btnLeerDatosPlaca.Text = "Obtener Datos del Lector"
+      Me.btnLeerDatosPlaca.Text = "Obtener datos desde el lector"
       Me.btnLeerDatosPlaca.UseVisualStyleBackColor = True
       '
       'btnCancelar
@@ -1162,11 +1164,24 @@ Partial Class frmCapturaCasos
       Me.dgvPlacaLeida.TabIndex = 141
       Me.dgvPlacaLeida.TabStop = False
       '
+      'txtNombrePlaca
+      '
+      Me.txtNombrePlaca.BackColor = System.Drawing.Color.White
+      Me.txtNombrePlaca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+      Me.txtNombrePlaca.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
+      Me.txtNombrePlaca.Location = New System.Drawing.Point(308, 331)
+      Me.txtNombrePlaca.Name = "txtNombrePlaca"
+      Me.txtNombrePlaca.ReadOnly = True
+      Me.txtNombrePlaca.Size = New System.Drawing.Size(94, 20)
+      Me.txtNombrePlaca.TabIndex = 147
+      Me.txtNombrePlaca.Visible = False
+      '
       'frmCapturaCasos
       '
       Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
       Me.ClientSize = New System.Drawing.Size(708, 590)
+      Me.Controls.Add(Me.txtNombrePlaca)
       Me.Controls.Add(Me.dgvPlacaLeida)
       Me.Controls.Add(Me.tbcDatosDelCaso)
       Me.Controls.Add(Me.lblNombreLector)
@@ -1288,4 +1303,5 @@ Partial Class frmCapturaCasos
    Friend WithEvents ckbControlesDefault As System.Windows.Forms.CheckBox
    Friend WithEvents lblLogSPS As System.Windows.Forms.Label
    Friend WithEvents btnAceptarEnfermedad As System.Windows.Forms.Button
+   Friend WithEvents txtNombrePlaca As System.Windows.Forms.TextBox
 End Class

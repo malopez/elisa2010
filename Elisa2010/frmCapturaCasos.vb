@@ -109,15 +109,17 @@ Public Class frmCapturaCasos
 
    Private Sub btnLeerDatosPlaca_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerDatosPlaca.Click
       Try
-         If btnLeerDatosPlaca.Text = "Obtener Datos del Lector" Then
+         If btnLeerDatosPlaca.Text = "Obtener datos desde el lector" Then
             btnLeerDatosPlaca.Text = "Desconectar Lector"
             Setup_Puerto_SerieParametros(SerialPort1, cmbComboPorts, etiquetaMensaje, lblNombreLector)
-         Else
+         ElseIf btnLeerDatosPlaca.Text = "Desconectar Lector" Then
+            btnLeerDatosPlaca.Text = "Obtener datos desde el lector"
             If SerialPort1.IsOpen Then
                SerialPort1.Close()
                mensajeVerde(etiquetaMensaje, "Mensaje: Cerrando el puerto COM del lector.")
                btnLeerDatosPlaca.Enabled = False
                presentaDatosEnPantallaFormateados()
+               btnObtenerResultados.Enabled = True
             End If
          End If
       Catch ex As Exception
@@ -125,6 +127,8 @@ Public Class frmCapturaCasos
       End Try
    End Sub
 
+   'Presenta los datos en pantalla formateados, validando que la cadena recibida del lector no se encuentre vacia
+   'Tambien guarda los datos recibidos del lector en excel.
    Private Sub presentaDatosEnPantallaFormateados()
       btnLeerDatosPlaca.Enabled = False
       Try
@@ -133,9 +137,17 @@ Public Class frmCapturaCasos
          mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al convertir la cadena en valores.")
       End Try
       Try
-         formateaDatos(placaLector, dgvPlacaLeida)
-         organizaEnTabla(dgvPlacaLeida, placaLector)
-         'btnGuardaDatosExcel.Enabled = True
+         If msn <> "" Then
+            formateaDatos(placaLector, dgvPlacaLeida)
+            organizaEnTabla(dgvPlacaLeida, placaLector)
+            Try
+               guardaDatosEnExcel()
+            Catch ex As Exception
+               mensajeRojo(etiquetaMensaje, "ERROR: Al guardar datos obtenidos desde el lector en archivo de excel.")
+            End Try
+         Else
+            mensajeRojo(etiquetaMensaje, "ERROR: No se han formateado datos debido a que no se han recibido desde el lector.")
+         End If
       Catch ex As Exception
          mensajeRojo(etiquetaMensaje, "ERROR: Se ha presentado un error al formatear datos.")
       End Try
@@ -284,52 +296,24 @@ Public Class frmCapturaCasos
                                 txtCP2Letra2, txtCP2Valor2, txtCP3Letra3, txtCP3Valor3)
          defineBotonesNegativos(nocn, lblCNNo1, lblCNNo2, lblCNNo3, txtCN1Letra1, txtCN1Valor1, _
                                 txtCN2Letra2, txtCN2Valor2, txtCN3Letra3, txtCN3Valor3)
-         ''dibujaTablaEnPantalla(dgvPlacaLeida)
+
          btnAceptarEnfermedad.Enabled = False
-         'Dim oConexion As MySqlConnection
-         'Dim aConsulta As String = ""
-         'Dim oDataReader As MySqlDataReader
-         'Dim oComando As New MySqlCommand
-         'oConexion = New MySqlConnection
-         ''Separa el texto del comboBox 
+         
+         'Separa el texto del comboBox 
          Dim cadena As String
          Dim tabla() As String
-         ''cmbNombreEnfermedad.Text = pasaEnfermedad
+
          cadena = cmbNombreEnfermedad.Text
          tabla = Split(cadena, " | ")
-         'oConexion.ConnectionString = cadenaConexion
-         'aConsulta = "SELECT logSPS,logTit1,logTit2 FROM analisis a WHERE id_analysis='" & tabla(0) & "';"
-         'oComando.Connection = oConexion
-         'oComando.CommandText = aConsulta
-         'oConexion.Open()
-         'oDataReader = oComando.ExecuteReader()
-         'If oDataReader.HasRows Then
-         '   While oDataReader.Read()
          lblIdAnalisis.Text = tabla(0)
-         '      lblLogSPS.Text = oDataReader("logSPS").ToString()
-         '      lblLogTit1.Text = oDataReader("logTit1").ToString()
-         '      lblLogTit2.Text = oDataReader("logTit2").ToString()
-         '   End While
-         '   oDataReader.Close()
          lblLogSPS.Text = valorLOGSPS
          lblLogTit1.Text = valorTIT1
          lblLogTit2.Text = valorTIT2
          etiquetaMensaje.Text = ""
          txtNoSubcasos.Text = "2"
-         'Else
-         '   mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
-         'End If
-         'oConexion.Close()
          ckbControlesDefault.Enabled = True
          btnAceptarControles.Enabled = True
          btnDefinirControlesPN.Enabled = True
-         'Catch ex As MySqlException
-         '   mensajeExceptionSQL(etiquetaMensaje, ex)
-         'Catch ex As DataException
-         '   mensajeException(etiquetaMensaje, ex)
-         'Catch ex As Exception
-         '   mensajeException(etiquetaMensaje, ex)
-         'End Try
       Else
          mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
          cmbNombreEnfermedad.Enabled = True
@@ -1269,11 +1253,6 @@ Public Class frmCapturaCasos
       txtHastaLetra.Text = "A"
       txtHastaValor.Text = "1"
       chkSubCasos.Checked = False
-      'Habilita o deshabilita la lectura sobre las cajas de texto. comentado el 12/OCT/2012
-      'txtDesdeLetra.ReadOnly = False
-      'txtDesdeValor.ReadOnly = False
-      'txtHastaLetra.ReadOnly = False
-      'txtHastaValor.ReadOnly = False
    End Sub
 
    Private Sub cargarDatosCaso()
@@ -1554,8 +1533,8 @@ Public Class frmCapturaCasos
       'habilitaBarrita(False)
       btnEditar.Enabled = False
       Dim i As Integer = 0
-      aleatorios()
-      organizaEnTabla(dgvPlacaLeida, placaLector)
+      'aleatorios()
+      'organizaEnTabla(dgvPlacaLeida, placaLector)
       btnCapturaTerminada.Enabled = False
       btnLeerDatosPlaca.Enabled = True
    End Sub
@@ -1600,21 +1579,19 @@ Public Class frmCapturaCasos
          cny3 = CInt(Me.txtCN3Valor3.Text) - 1
       End If
       'Guarda cada uno de los casos encontrados en el arreglo.
-      For i = 0 To largo - 1
-         guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
-                          cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
-                          totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
-                          etiquetaMensaje, nombreArchivo)
-      Next
+      'MODIFICACION HCHA EL 31-OCT-2012
+      'For i = 0 To largo - 1
+      'guardarDatosExcel(placaLector, nocp, nocn, totalCasos(i).noCaso, totalCasos(i).subCaso, analisis, _
+      '                 cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, cpy1, cpy2, cpy3, cny1, cny2, cny3, _
+      '                 totalCasos(i).desdeLetra, totalCasos(i).desdeValor - 1, totalCasos(i).hastaLetra, totalCasos(i).hastaValor - 1, _
+      '                 etiquetaMensaje, nombreArchivo)
+      ' Next
+      'guarda un unico archivo de placa
+      guardarDatosExcelcolor(placaLector, totalCasos, nocp, nocn, analisis, cpx1, cpx2, cpx3, cnx1, cnx2, cnx3, _
+                             cpy1, cpy2, cpy3, cny1, cny2, cny3, etiquetaMensaje, nombreArchivo)
    End Sub
 
    Private Sub btnObtenerResultados_Click(sender As System.Object, e As System.EventArgs) Handles btnObtenerResultados.Click
-      Try
-         guardaDatosEnExcel()
-      Catch ex As Exception
-         mensajeRojo(etiquetaMensaje, "ERROR: Al guardar datos obtenidos desde el lector en archivo de excel.")
-      End Try
-
       Dim desdeArchivo As Integer = 0
       Dim cpx1 As Integer = 0
       Dim cpx2 As Integer = 0

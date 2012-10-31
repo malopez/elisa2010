@@ -12,6 +12,7 @@ Public Class frmCapturaCasosDA
    Dim arreglo As String = ""
    Dim chkcontrol As Boolean = True
    Dim cadenaDeCasos As String = "''"
+   Dim abreArchivo As Boolean = False
    'Para realizar los calculos de titulos
    'ENFERMEDAD       LOGSPS     LOGTIT1   LOGTIT2
    'Laringo           0.15       1.45        3.726
@@ -297,11 +298,14 @@ Public Class frmCapturaCasosDA
    End Sub
 
    Private Sub btnLeerArchivoExistente_Click(sender As System.Object, e As System.EventArgs) Handles btnLeerArchivoExistente.Click
+      ofdSelArchivo.InitialDirectory = rutaPlacas
       Try
          abreArchivoExcel(Me.ofdSelArchivo, etiquetaMensaje, Me.btnLeerArchivoExistente, _
                           Me.btnLeerArchivoExistente, placaLector, Me.txtCPDAValor1, Me.txtCPDAValor2, Me.txtCPDAValor3, txtCNDAValor1, txtCNDAValor2, txtCNDAValor3)
+         abreArchivo = True
       Catch ex As Exception
          mensajeRojo(etiquetaMensaje, "ERROR: al abrir el archivo Excel, abreArchivoExcel.")
+         abreArchivo = False
       End Try
       Try
          organizaEnTabla(Me.dgvPlacaLeida, placaLector)
@@ -309,61 +313,31 @@ Public Class frmCapturaCasosDA
          mensajeRojo(etiquetaMensaje, "ERROR: al abrir organizar datos en el datagridview, organizaEnTabla.")
       End Try
       habilitaBarrita(False)
-      btnLeerArchivoExistente.Enabled = False
+      ' btnLeerArchivoExistente.Enabled = False
    End Sub
 
    Private Sub btnAceptarNoCasos_Click(sender As System.Object, e As System.EventArgs) Handles btnAceptarNoCasos.Click
       Dim nocp As Integer = 3
       Dim nocn As Integer = 3
+
       If controlesValidosNumero(txtNoDeCasos, " Valor en número de casos ", 1, 94) Then
-         'Try
          txtNoDeCasos.Enabled = False
          txtNoControlesPositivos.Enabled = False
          txtNoControlesNegativos.Enabled = False
          btnInsertar.Enabled = True
-         'dibujaTablaEnPantalla(dgvPlacaLeida)
          btnAceptarNoCasos.Enabled = False
-         'Dim oConexion As MySqlConnection
-         'Dim aConsulta As String = ""
-         'Dim oDataReader As MySqlDataReader
-         'Dim oComando As New MySqlCommand
-         'oConexion = New MySqlConnection
-         ''Separa el texto del comboBox 
+        
+         'Separa el texto del comboBox 
          Dim cadena As String
          Dim tabla() As String
-         ''cmbNombreEnfermedad.Text = pasaEnfermedad
          cadena = pasaEnfermedad
          tabla = Split(cadena, " | ")
-         'oConexion.ConnectionString = cadenaConexion
-         'aConsulta = "SELECT logSPS,logTit1,logTit2 FROM analisis a WHERE id_analysis='" & tabla(0) & "';"
-         'oComando.Connection = oConexion
-         'oComando.CommandText = aConsulta
-         'oConexion.Open()
-         'oDataReader = oComando.ExecuteReader()
-         'If oDataReader.HasRows Then
-         '   While oDataReader.Read()
          lblIdAnalisis.Text = tabla(0)
-         '      lblLogSPS.Text = oDataReader("logSPS").ToString()
-         '      lblLogTit1.Text = oDataReader("logTit1").ToString()
-         '      lblLogTit2.Text = oDataReader("logTit2").ToString()
-         '   End While
-         '   oDataReader.Close()
          lblLogSPS.Text = valorLOGSPS
          lblLogTit1.Text = valorTIT1
          lblLogTit2.Text = valorTIT2
          etiquetaMensaje.Text = ""
          txtNoSubcasos.Text = "2"
-         'Else
-         '   mensajeRojo(etiquetaMensaje, "Mensaje: Seleccione un número de caso de los listados en el comboBox.")
-         'End If
-         'oConexion.Close()
-         'Catch ex As MySqlException
-         '   mensajeExceptionSQL(etiquetaMensaje, ex)
-         'Catch ex As DataException
-         '   mensajeException(etiquetaMensaje, ex)
-         'Catch ex As Exception
-         '   mensajeException(etiquetaMensaje, ex)
-         'End Try
       Else
          mensajeRojo(etiquetaMensaje, "ERROR: Los valores que ha introducido para no. de casos y no. de controles + y - no son válidos, trate nuevamente.")
          txtNoDeCasos.Enabled = True
@@ -554,69 +528,89 @@ Public Class frmCapturaCasosDA
       Dim difCPS As Decimal = 0
       Dim nocp As Integer = 3
       Dim nocn As Integer = 3
-      cp1 = CDec(Me.txtCPDAValor1.Text)
-      cp2 = CDec(Me.txtCPDAValor2.Text)
-      cp3 = CDec(Me.txtCPDAValor3.Text)
-      cn1 = CDec(Me.txtCNDAValor1.Text)
-      cn2 = CDec(Me.txtCNDAValor2.Text)
-      cn3 = CDec(Me.txtCNDAValor3.Text)
-      Dim i As Integer = 0
-      Dim fecha = DateTime.Now
-      Dim titulosObtenidos As String = ""
-      Dim nombreSobreGrafica As String = txtNombreSobreGrafica.Text
-      Dim mensajeSobreGrafica As String = txtMensajeSobreGrafica.Text
-      'Obtener el nombre del análisis para colocar la cabecera de la gráfica
-      Dim cadena As String
-      Dim tabla() As String
-      cadena = pasaEnfermedad
-      tabla = Split(cadena, " | ")
-      'Obtiene el numero de caso para ese análisis
-      Dim idAnalisis As String = tabla(0)
-      Dim analisis As String = Replace(idAnalisis, "/", "")
-      'Realiza el cálculo de los títulos seleccionando un procedimiento de acuerdo a la enfermedad.
-      calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
-                                     Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
-                                     Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
-                                     desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje)
-      Dim forma As frmResultadosPrelim
-      forma = New frmResultadosPrelim
-      forma.Nombre = tabla(1)
-      forma.NombreAnalisis = analisis
-      forma.ArregloCasos = totalCasos
-      forma.Fecha = fecha.ToShortDateString()
-      forma.NombreGrafica = nombreSobreGrafica
-      Console.WriteLine(nombreSobreGrafica)
-      forma.MdiParent = frmElisaBiovetsa
-      forma.Show()
-      For i = 0 To largo - 1
-         obtenResultadosPorCaso("Caso No." & i + 1, forma, etiquetaMensaje, i, promCP, promCN, difCPS, _
-                               totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
-                               totalCasos(i).analisis, totalCasos(i).obs, _
-                               totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
-                               totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
-         forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
-      Next
 
-      'Se coloca el índice del combobox en 0, y se presentan los primeros resultados en pantalla por default.
-      forma.cmbCasosResPrel.SelectedIndex = 0
-      presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
-                                   forma.txtFechaElaboracion, fecha.ToShortDateString(), _
-                                   forma.txtNombreEnfermedad, tabla(1), _
-                                   forma.txtNombreCliente, totalCasos(0).cliente, _
-                                   forma.txtObservaciones, totalCasos(0).obs, _
-                                   forma.txtVarianza2, totalCasos(0).varianza, _
-                                   forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
-                                   forma.txtMediaAritmetica2, totalCasos(0).medArit, _
-                                   forma.txtMediaGeometrica, totalCasos(0).medGeom, _
-                                   forma.txtCoefVariacion2, totalCasos(0).coefVar, _
-                                   forma.txtDesvEstandar2, totalCasos(0).desvEst, _
-                                   forma.lblNosubcasos, totalCasos(0).noSubcasos, _
-                                   forma.lblConsecutivo, totalCasos(0).subCaso, _
-                                   forma.txtTitulosObtenidos, totalCasos(0).titulosObtenidos, _
-                                   forma.lblNombreSobreGrafica, nombreSobreGrafica, _
-                                   forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
-                                   forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
-                                   forma.lblNombreArchivo)
+      'Si abreArchivo es false, indica que hubo no se selecciono algun archivo válido.
+      If abreArchivo Then
+         'Valida que no se encuentren en blanco los valores de los controles positivos y negativos
+         If siBlanco(txtCPDAValor1, "CP1, ") AndAlso siBlanco(txtCPDAValor2, "CP2, ") AndAlso siBlanco(txtCPDAValor3, "CP3, ") _
+            AndAlso siBlanco(txtCNDAValor1, "CN1, ") AndAlso siBlanco(txtCNDAValor2, "CN2, ") AndAlso siBlanco(txtCNDAValor3, "CN3, ") Then
+            cp1 = CDec(Me.txtCPDAValor1.Text)
+            cp2 = CDec(Me.txtCPDAValor2.Text)
+            cp3 = CDec(Me.txtCPDAValor3.Text)
+            cn1 = CDec(Me.txtCNDAValor1.Text)
+            cn2 = CDec(Me.txtCNDAValor2.Text)
+            cn3 = CDec(Me.txtCNDAValor3.Text)
+            Dim i As Integer = 0
+            Dim fecha = DateTime.Now
+            Dim titulosObtenidos As String = ""
+            Dim nombreSobreGrafica As String = txtNombreSobreGrafica.Text
+            Dim mensajeSobreGrafica As String = txtMensajeSobreGrafica.Text
+            'Obtener el nombre del análisis para colocar la cabecera de la gráfica
+            Dim cadena As String
+            Dim tabla() As String
+            cadena = pasaEnfermedad
+            tabla = Split(cadena, " | ")
+            'Obtiene el numero de caso para ese análisis
+            Dim idAnalisis As String = tabla(0)
+            Dim analisis As String = Replace(idAnalisis, "/", "")
+            'Realiza el cálculo de los títulos seleccionando un procedimiento de acuerdo a la enfermedad.
+            Try
+               calculaValoresEnRango(placaLector, desdeArchivo, nocp, cpx1, cpx2, cpx3, cpy1, cpy2, cpy3, cnx1, cnx2, cnx3, cny1, cny2, cny3, _
+                                              Convert.ToDecimal(lblLogSPS.Text), Convert.ToDecimal(lblLogTit1.Text), _
+                                              Convert.ToDecimal(lblLogTit2.Text), cp1, cp2, cp3, cn1, cn2, cn3, _
+                                              desdex, hastax, desdey, hastay, promCP, promCN, difCPS, etiquetaMensaje)
+            Catch ex As Exception
+               mensajeRojo(etiquetaMensaje, "ERROR: al ejecutar el calculo de los títulos.")
+            End Try
+
+            Dim forma As frmResultadosPrelim
+            forma = New frmResultadosPrelim
+            forma.Nombre = tabla(1)
+            forma.NombreAnalisis = analisis
+            forma.ArregloCasos = totalCasos
+            forma.Fecha = fecha.ToShortDateString()
+            forma.NombreGrafica = nombreSobreGrafica
+            Console.WriteLine(nombreSobreGrafica)
+            forma.MdiParent = frmElisaBiovetsa
+            forma.Show()
+            For i = 0 To largo - 1
+               obtenResultadosPorCaso("Caso No." & i + 1, forma, etiquetaMensaje, i, promCP, promCN, difCPS, _
+                                     totalCasos(i).noCaso, totalCasos(i).noSubcasos, totalCasos(i).subCaso, _
+                                     totalCasos(i).analisis, totalCasos(i).obs, _
+                                     totalCasos(i).desdeLetra, totalCasos(i).hastaLetra, _
+                                     totalCasos(i).desdeValor, totalCasos(i).hastaValor, titulosObtenidos)
+               forma.cmbCasosResPrel.Items.Insert(i, totalCasos(i).noCaso & " Subcaso: " & totalCasos(i).subCaso)
+            Next
+
+            'Se coloca el índice del combobox en 0, y se presentan los primeros resultados en pantalla por default.
+            forma.cmbCasosResPrel.SelectedIndex = 0
+            presentaResultadosEnPantalla(forma.lblAnalisis, analisis, _
+                                         forma.txtFechaElaboracion, fecha.ToShortDateString(), _
+                                         forma.txtNombreEnfermedad, tabla(1), _
+                                         forma.txtNombreCliente, totalCasos(0).cliente, _
+                                         forma.txtObservaciones, totalCasos(0).obs, _
+                                         forma.txtVarianza2, totalCasos(0).varianza, _
+                                         forma.txtTotalDatosCalculados, totalCasos(0).sueros, _
+                                         forma.txtMediaAritmetica2, totalCasos(0).medArit, _
+                                         forma.txtMediaGeometrica, totalCasos(0).medGeom, _
+                                         forma.txtCoefVariacion2, totalCasos(0).coefVar, _
+                                         forma.txtDesvEstandar2, totalCasos(0).desvEst, _
+                                         forma.lblNosubcasos, totalCasos(0).noSubcasos, _
+                                         forma.lblConsecutivo, totalCasos(0).subCaso, _
+                                         forma.txtTitulosObtenidos, totalCasos(0).titulosObtenidos, _
+                                         forma.lblNombreSobreGrafica, nombreSobreGrafica, _
+                                         forma.lblMensajeSobreGrafica, totalCasos(0).texto, _
+                                         forma.imagenGrafica, totalCasos(0).nombreArchivoImagen, _
+                                         forma.lblNombreArchivo)
+         Else
+            MessageBox.Show("El archivo no tiene el formato excel adecuado, intente nuevamente.", "ERROR: Mensaje del Sistema", _
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+         End If
+      Else
+         MessageBox.Show("Aún no ha seleccionado un archivo, trate nuevamente.", "ERROR: Mensaje del Sistema", _
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+      End If
+
    End Sub
 
    Private Sub btnInsertar_Click(sender As System.Object, e As System.EventArgs) Handles btnInsertar.Click
@@ -626,12 +620,10 @@ Public Class frmCapturaCasosDA
       cmbNoCaso.Focus()
       txtMensajeSobreGrafica.Enabled = True
       txtMensajeSobreGrafica.ReadOnly = False
-
-      'Modificado a TRUE el 01/OCT/2012
       estatusDesdeHasta(True)
-
       tbcDatosDelCaso.SelectTab(1)
       btnInsertar.Enabled = False
+
       'Habilita la barrita para desplazarse sobre los análisis de caso capturados.
       habilitaBarrita(False)
       btnEditar.Enabled = False

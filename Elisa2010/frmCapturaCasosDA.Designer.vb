@@ -980,7 +980,7 @@ Partial Class frmCapturaCasosDA
       'ofdSelArchivo
       '
       Me.ofdSelArchivo.Filter = "Archivos Excel(*.xls)|*.xls"
-      Me.ofdSelArchivo.InitialDirectory = "c:\ELISA2010\Placa desde archivo"
+      Me.ofdSelArchivo.InitialDirectory = "C:\ELISA2010\Placa desde archivo"
       Me.ofdSelArchivo.Title = "Abrir archivo de datos"
       '
       'frmCapturaCasosDA

@@ -57,6 +57,16 @@ Module mdlDefineValidaDatos
       End If
    End Function
 
+   'Verifica que si es blanco un cuadro de texto. 
+   Public Function siBlanco(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
+      If textBox.Text = "" Then
+         Return False
+      Else
+         Return True
+      End If
+   End Function
+
+
    Public Function siEsLargoUno(ByVal textBox As TextBox, ByVal nombre As String) As Boolean
       If textBox.Text.Length > 1 Then
          MessageBox.Show(nombre & "El control debe tener una letra solamente.")

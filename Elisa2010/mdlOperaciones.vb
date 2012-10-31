@@ -30,6 +30,7 @@ Module mdlOperaciones
    Public Const rutaParaImprimir As String = "C:\ELISA2012\Para Imprimir\"
    Public Const rutaResutados As String = "C:\ELISA2012\Resultados\"
    Public Const rutaPlacasLeidas As String = "C:\ELISA2012\Placas Leidas\"
+
    'Procedimiento utilizado para convertir la cadena de entrada desde el puerto en un arreglo, quitando los blancos
    'Los <Enter>, <retorno de carro>, <Tabs>, <Nuevas líneas> y el <_Quick> que coloca el lector al final de lo que lee
    'Como los valores vienen separados por comas, los elimina y obtiene mediante la funcion <val> el valor real de cada
@@ -48,18 +49,27 @@ Module mdlOperaciones
       msn = Replace(msn, vbTab, "")
       msn = Replace(msn, vbNewLine, "")
       msn = Replace(msn, "_Quick", "")
+
+      Console.WriteLine("Valor de msn: " & msn)
+
       'Copia en el Arreglo los valores de datos separados por comas
       a = Split(msn, ",")
-      Dim temporal As Decimal
-      Dim tmp As String = ""
-      For i = 0 To 7
-         For j = 0 To 11
-            'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es numérico, entonces coloca un 0.
-            temporal = (Val(a(k)) / 1000)
-            placaLector(i, j) = temporal
-            k += 1
+      Console.WriteLine("Valor de ubound(a): " & UBound(a))
+
+      If UBound(a) > 0 Then
+         Dim temporal As Decimal
+         Dim tmp As String = ""
+         For i = 0 To 7
+            For j = 0 To 11
+               'La funcion val regresa el valor correcto de los datos cuando es numérico, si no es numérico, entonces coloca un 0.
+               temporal = (Val(a(k)) / 1000)
+               placaLector(i, j) = temporal
+               k += 1
+            Next
          Next
-      Next
+      else
+         mensajeRojo(etiquetaMensaje, "ERROR: No se ha obtenido una cadena de valores desde el lector default.")
+      End If
    End Sub
 
   

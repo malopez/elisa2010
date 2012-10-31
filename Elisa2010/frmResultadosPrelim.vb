@@ -94,6 +94,31 @@ Public Class frmResultadosPrelim
          'MessageBox.Show("Guarde en excel el el primer subcaso en orden, el resto es indistinto.", _
          '       "ERROR: Mensaje del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning)
       End Try
+
+
+
+      ''Dim cuantos As Integer = cmbCasosResPrel.Items.Count - 1
+      ''Console.WriteLine("Valor de cuantos: " & cuantos & "valor de largo del arreglo: " & totalCasos.Length)
+
+      ''For i = 0 To cuantos
+      ''   Dim cadena As String
+      ''   Dim tabla() As String
+      ''   cadena = cmbCasosResPrel.Text
+      ''   tabla = Split(cadena, " ")
+
+      ''   guardarResultadosExcel(tabla(0), totalCasos(i).noSubcasos, totalCasos(i).subCaso, Me.lblAnalisis.Text, _
+      ''                          txtFechaElaboracion.Text, totalCasos(i).cliente, Me.txtNombreEnfermedad.Text, _
+      ''                          Me.txtObservaciones.Text, "Resultados", totalCasos(i).texto, Me.lblNombreSobreGrafica.Text, _
+      ''                          totalCasos(i).titulosObtenidos, totalCasos(i).medArit, totalCasos(i).medGeom, _
+      ''                          totalCasos(i).sueros, totalCasos(i).desvEst, totalCasos(i).coefVar, totalCasos(i).varianza, _
+      ''                          totalCasos(i).nombreArchivoImagen)
+      ''   If totalCasos(i).noSubcasos = 0 Then
+      ''      mensajeVerde(etiquetaMensaje, "MENSAJE: El archivo de resultados para el caso " & tabla(0) & " se ha guardado exitosamente en excel.")
+      ''   Else
+      ''      mensajeVerde(etiquetaMensaje, "MENSAJE: El archivo de resultados para el caso " & tabla(0) & " Subcaso: " & Me.lblConsecutivo.Text & " se ha guardado exitosamente en excel.")
+      ''   End If
+      ''Next
+
    End Sub
 
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click

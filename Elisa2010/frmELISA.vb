@@ -58,8 +58,8 @@
       forma.Enfermedad = "E01/ELBI | BRONQUITIS INFECCIOSA"
       forma.Text = "BRONQUITIS INFECCIOSA"
       forma.VLOGSPS = 0.15
-      forma.VTIT1 = 1.45
-      forma.VTIT2 = 3.726
+      forma.VTIT1 = 1.642
+      forma.VTIT2 = 3.568
       forma.Show()
    End Sub
 
@@ -118,8 +118,8 @@
       forma.Enfermedad = "E06/ELLT | LARINGOTRAQUEITIS AVIAR"
       forma.Text = "LARINGOTRAQUEITIS AVIAR"
       forma.VLOGSPS = 0.15
-      forma.VTIT1 = 1.642
-      forma.VTIT2 = 3.568
+      forma.VTIT1 = 1.45
+      forma.VTIT2 = 3.726
       forma.Show()
    End Sub
 
@@ -146,8 +146,8 @@
       forma.Enfermedad = "E01/ELBI | BRONQUITIS INFECCIOSA"
       forma.Text = "BRONQUITIS INFECCIOSA"
       forma.VLOGSPS = 0.15
-      forma.VTIT1 = 1.45
-      forma.VTIT2 = 3.726
+      forma.VTIT1 = 1.642
+      forma.VTIT2 = 3.568
       forma.Show()
    End Sub
 
@@ -206,8 +206,8 @@
       forma.Enfermedad = "E06/ELLT | LARINGOTRAQUEITIS AVIAR"
       forma.Text = "LARINGOTRAQUEITIS AVIAR"
       forma.VLOGSPS = 0.15
-      forma.VTIT1 = 1.642
-      forma.VTIT2 = 3.568
+      forma.VTIT1 = 1.45
+      forma.VTIT2 = 3.726
       forma.Show()
    End Sub
 

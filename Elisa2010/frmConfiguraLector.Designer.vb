@@ -444,6 +444,7 @@ Partial Class frmConfiguraLector
       '
       'btnCancelaCL
       '
+      Me.btnCancelaCL.DialogResult = System.Windows.Forms.DialogResult.Cancel
       Me.btnCancelaCL.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
       Me.btnCancelaCL.Location = New System.Drawing.Point(549, 317)
       Me.btnCancelaCL.Name = "btnCancelaCL"
@@ -592,7 +593,7 @@ Partial Class frmConfiguraLector
       '
       Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
       Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-      Me.ClientSize = New System.Drawing.Size(632, 379)
+      Me.ClientSize = New System.Drawing.Size(632, 343)
       Me.Controls.Add(Me.btnCancelaCL)
       Me.Controls.Add(Me.btnAceptarCL)
       Me.Controls.Add(Me.Panel2)

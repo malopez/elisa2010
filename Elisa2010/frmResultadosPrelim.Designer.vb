@@ -26,6 +26,7 @@ Partial Class frmResultadosPrelim
       Me.btnCancelar = New System.Windows.Forms.Button()
       Me.btnGuardaResultados = New System.Windows.Forms.Button()
       Me.Panel2 = New System.Windows.Forms.Panel()
+      Me.txtObservaciones = New System.Windows.Forms.TextBox()
       Me.cmbCasosResPrel = New System.Windows.Forms.ComboBox()
       Me.lblAnalisis = New System.Windows.Forms.Label()
       Me.txtInmunoEnsayo = New System.Windows.Forms.TextBox()
@@ -58,7 +59,6 @@ Partial Class frmResultadosPrelim
       Me.Label4 = New System.Windows.Forms.Label()
       Me.imagenGrafica = New System.Windows.Forms.PictureBox()
       Me.txtTitulosObtenidos = New System.Windows.Forms.TextBox()
-      Me.txtObservaciones = New System.Windows.Forms.TextBox()
       Me.Panel2.SuspendLayout()
       Me.Panel3.SuspendLayout()
       Me.Panel4.SuspendLayout()
@@ -104,6 +104,16 @@ Partial Class frmResultadosPrelim
       Me.Panel2.Name = "Panel2"
       Me.Panel2.Size = New System.Drawing.Size(568, 95)
       Me.Panel2.TabIndex = 66
+      '
+      'txtObservaciones
+      '
+      Me.txtObservaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+      Me.txtObservaciones.Location = New System.Drawing.Point(427, 67)
+      Me.txtObservaciones.Name = "txtObservaciones"
+      Me.txtObservaciones.ReadOnly = True
+      Me.txtObservaciones.Size = New System.Drawing.Size(114, 20)
+      Me.txtObservaciones.TabIndex = 105
+      Me.txtObservaciones.Visible = False
       '
       'cmbCasosResPrel
       '
@@ -476,16 +486,6 @@ Partial Class frmResultadosPrelim
       Me.txtTitulosObtenidos.Size = New System.Drawing.Size(105, 227)
       Me.txtTitulosObtenidos.TabIndex = 61
       Me.txtTitulosObtenidos.TabStop = False
-      '
-      'txtObservaciones
-      '
-      Me.txtObservaciones.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-      Me.txtObservaciones.Location = New System.Drawing.Point(427, 67)
-      Me.txtObservaciones.Name = "txtObservaciones"
-      Me.txtObservaciones.ReadOnly = True
-      Me.txtObservaciones.Size = New System.Drawing.Size(114, 20)
-      Me.txtObservaciones.TabIndex = 105
-      Me.txtObservaciones.Visible = False
       '
       'frmResultadosPrelim
       '
