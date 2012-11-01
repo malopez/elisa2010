@@ -1385,16 +1385,18 @@ Public Class frmCapturaCasos
                                       ByVal DAdesdeValor As Integer, ByVal DAhastaValor As Integer, ByRef titulosObtenidos As String)
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Integer = 0
-      Dim totalcalculaL As Decimal = 0
+      Dim totalcalculaL As Double = 0
       Dim rangoTotal As Integer = 0
       Dim rangoDatos(14) As Integer
       Dim placaoriginal As String = ""
-      Dim mediaGeometrica As Decimal
-      Dim mediaAritmetica As Decimal = 0
-      Dim varianza As Decimal = 0
-      Dim desvEst As Decimal = 0
-      Dim coefVar As Decimal = 0
-      'Dim titulosObtenidos As String = ""
+
+      Dim mediaGeometrica As Double
+      Dim mediaAritmetica As Double = 0
+      Dim varianza As Double = 0
+      Dim desvEst As Double = 0
+      Dim coefVar As Double = 0
+
+
       Dim titulox As String = "Grupo de títulos"
       Dim valorFR As String = ""
       Dim cantidadFR As String = ""

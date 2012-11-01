@@ -25,11 +25,11 @@ Module mdlDefineValidaDatos
       Dim desdeValor As Integer
       Dim hastaLetra As Integer
       Dim hastaValor As Integer
-      Dim medArit As Decimal
-      Dim medGeom As Decimal
-      Dim varianza As Decimal
-      Dim desvEst As Decimal
-      Dim coefVar As Decimal
+      Dim medArit As Double
+      Dim medGeom As Double
+      Dim varianza As Double
+      Dim desvEst As Double
+      Dim coefVar As Double
       Dim nombreArchivoImagen As String
       Dim titulosObtenidos As String
    End Structure

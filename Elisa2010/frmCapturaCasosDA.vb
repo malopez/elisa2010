@@ -358,15 +358,15 @@ Public Class frmCapturaCasosDA
                                       ByVal DAdesdeValor As Integer, ByVal DAhastaValor As Integer, ByRef titulosObtenidos As String)
       Dim calculaL() As Decimal
       Dim cuentaNoDatos As Integer = 0
-      Dim totalcalculaL As Decimal = 0
+      Dim totalcalculaL As Double = 0
       Dim rangoTotal As Integer = 0
       Dim rangoDatos(14) As Integer
       Dim placaoriginal As String = ""
-      Dim mediaGeometrica As Decimal
-      Dim mediaAritmetica As Decimal = 0
-      Dim varianza As Decimal = 0
-      Dim desvEst As Decimal = 0
-      Dim coefVar As Decimal = 0
+      Dim mediaGeometrica As Double
+      Dim mediaAritmetica As Double = 0
+      Dim varianza As Double = 0
+      Dim desvEst As Double = 0
+      Dim coefVar As Double = 0
       'Dim titulosObtenidos As String = ""
       Dim titulox As String = "Grupo de títulos"
       Dim valorFR As String = ""
@@ -403,6 +403,11 @@ Public Class frmCapturaCasosDA
       Catch ex As Exception
          mensajeRojo(etiquetaMensaje, "ERROR: Al calcular la sumatoria de la media geométrica.")
       End Try
+
+      For i = 0 To cuentaNoDatos - 1
+         Console.WriteLine(i & " :  " & calculaL(i))
+      Next
+
 
       Try
          titulosObtenidos = titulosObtenidosEnCalculaL(calculaL, cuentaNoDatos)

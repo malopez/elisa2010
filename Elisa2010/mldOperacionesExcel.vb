@@ -516,9 +516,9 @@ Module mldOperacionesExcel
       'coloca los valores de la estadística al finalizar el valor de los sueros.
       With excelApp
          .Range("A" & postit + posubicacion).Value2 = "No. Sueros"
-         .Range("B" & postit + posubicacion).Value2 = "Media Arit."
+         .Range("B" & postit + posubicacion).Value2 = "Med. Arit."
          .Range("C" & postit + posubicacion).Value2 = "Med. Geom."
-         .Range("D" & postit + posubicacion).Value2 = "Coef.Var. %"
+         .Range("D" & postit + posubicacion).Value2 = "Coef.Var.%"
          .Range("A" & posvalor + posubicacion).Value2 = cuentaNoDatos
          .Range("A" & posvalor + posubicacion).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
          .Range("B" & posvalor + posubicacion).Value2 = Math.Round(mediaAritmetica)

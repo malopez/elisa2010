@@ -51,6 +51,7 @@
       forma.Show()
    End Sub
 
+   'Valores Bronquitis        0.15       1.642       3.568
    Private Sub tsmBronquitisInfecciosa_Click(sender As System.Object, e As System.EventArgs) Handles tsmBronquitisInfecciosa.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -63,6 +64,7 @@
       forma.Show()
    End Sub
 
+   'Encefalomielitis  0.15       1.642       3.726
    Private Sub tsmEncefalomielitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmEncefalomielitisAviar.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -87,6 +89,7 @@
       forma.Show()
    End Sub
 
+   'NC                0.15       1.464       3.74
    Private Sub tsmEnfermedadDeNewcaste_Click(sender As System.Object, e As System.EventArgs) Handles tsmEnfermedadDeNewcaste.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -99,6 +102,7 @@
       forma.Show()
    End Sub
 
+   'IBF               0.18       1.172       3.614
    Private Sub tsmGumboro_Click(sender As System.Object, e As System.EventArgs) Handles tsmGumboro.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -111,6 +115,7 @@
       forma.Show()
    End Sub
 
+   'Laringo           0.15       1.45        3.726
    Private Sub tsmLaringotraqueitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmLaringotraqueitisAviar.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -123,6 +128,7 @@
       forma.Show()
    End Sub
 
+   'Reovirus          0.15       1.077       3.46
    Private Sub tsmReovirus_Click(sender As System.Object, e As System.EventArgs) Handles tsmReovirus.Click
       Dim forma As frmCapturaCasos
       forma = New frmCapturaCasos
@@ -138,7 +144,7 @@
    '###################################
    '##    Menu de Archivo           ###
    '###################################
-
+   'Valores Bronquitis        0.15       1.642       3.568
    Private Sub tsmDABronquitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmDABronquitisAviar.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA
@@ -151,6 +157,7 @@
       forma.Show()
    End Sub
 
+   'Encefalomielitis  0.15       1.642       3.726
    Private Sub tsmDAEncefalomielitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmDAEncefalomielitisAviar.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA
@@ -175,6 +182,7 @@
       forma.Show()
    End Sub
 
+   'NC                0.15       1.464       3.74
    Private Sub tsmDAEnfermedadDeNewcastle_Click(sender As System.Object, e As System.EventArgs) Handles tsmDAEnfermedadDeNewcastle.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA
@@ -187,6 +195,7 @@
       forma.Show()
    End Sub
 
+   'IBF               0.18       1.172       3.614
    Private Sub tsmDAGumboro_Click(sender As System.Object, e As System.EventArgs) Handles tsmDAGumboro.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA
@@ -199,6 +208,7 @@
       forma.Show()
    End Sub
 
+   'Laringo           0.15       1.45        3.726
    Private Sub tsmDALaringotraqueitisAviar_Click(sender As System.Object, e As System.EventArgs) Handles tsmDALaringotraqueitisAviar.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA
@@ -211,6 +221,7 @@
       forma.Show()
    End Sub
 
+   'Reovirus          0.15       1.077       3.46
    Private Sub tsmDAReovirus_Click(sender As System.Object, e As System.EventArgs) Handles tsmDAReovirus.Click
       Dim forma As frmCapturaCasosDA
       forma = New frmCapturaCasosDA

@@ -490,19 +490,22 @@
    End Function
 
    'calcula la varianza para datos no agrupados
-   Public Function calculaVarianza(ByVal mediaAritmetica As Decimal, ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As Decimal
+   Public Function calculaVarianza(ByVal mediaAritmetica As Double, ByVal calculaL() As Decimal, ByVal cuentaNoDatos As Integer) As Double
       Dim i As Integer = 0
-      Dim temp As Decimal
-      Dim calculaVar As Decimal = 0
+      Dim temp As Double
+      Dim calculaVar As Double = 0
+      Console.Write("Valores calculo varianza sin reduccion de decimal:")
       Try
          For i = 0 To cuentaNoDatos - 1
-            temp = reduceDecimal(((calculaL(i) - mediaAritmetica) ^ 2))
+            'temp = reduceDecimal(((calculaL(i) - mediaAritmetica) ^ 2))
+            temp = ((calculaL(i) - mediaAritmetica) ^ 2)
+            Console.Write(i.ToString() & " , " & temp.ToString())
             calculaVar += temp
          Next
       Catch ex As Exception
          MessageBox.Show("ERROR CALCULA VARIANZA: " & ex.Message & " " & ex.GetType.ToString)
       End Try
-      Return CDec(calculaVar / (cuentaNoDatos - 1))
+      Return CDbl(calculaVar / (cuentaNoDatos - 1))
    End Function
 
    'Obtengo el promedio de los valores de la columna L o Media aritmetica
@@ -513,9 +516,9 @@
    End Function
 
    'Calcula la desviacion estandar no considerando los datos agrupados
-   Public Function calculaDesvEst(ByVal varianza As Decimal) As Decimal
-      Dim desviacionEstandar As Decimal = 0
-      desviacionEstandar = CDec(Math.Sqrt(varianza))
+   Public Function calculaDesvEst(ByVal varianza As Double) As Double
+      Dim desviacionEstandar As Double = 0
+      desviacionEstandar = CDbl(Math.Sqrt(varianza))
       Return (desviacionEstandar)
    End Function
 
