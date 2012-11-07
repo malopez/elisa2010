@@ -184,6 +184,7 @@ Public Class frmIntegrarResultados
                   'Copia las celdas del archivo de resultados.
                   libroExcelOrigen.Sheets(1).Range("A1:I" & (filas * numeroHojas)).Copy()
 
+
                   'Seleccionar el archivo de informe final pega los datos.
                   libroExcelDestino.Activate()
                   excelApp.ActiveSheet.Paste(Destination:=libroExcelDestino.Sheets(1).Range("A" & rangoA))
@@ -351,5 +352,9 @@ Public Class frmIntegrarResultados
    Private Sub btnCancelar_Click(sender As System.Object, e As System.EventArgs) Handles btnCancelar.Click
       Me.Close()
    End Sub
+
+   'Para guardar los datos de la excepcion cuando no se encuentra el archivo.
+   'Catch e As FileNotFoundException
+   'Console.WriteLine("[Data File Missing] {0}", e)
 
 End Class

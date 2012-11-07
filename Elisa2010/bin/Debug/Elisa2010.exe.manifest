@@ -180,17 +180,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2ERIIdITvUHy8PDR4H6drf7nRB0=</dsig:DigestValue>
+        <dsig:DigestValue>crT0wGtMqtfhd9iJ2pRUv8VT4o0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Elisa2010.exe.config" size="1543">
+  <file name="Elisa2010.exe.config" size="1408">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ny2Bv+TGnc+6yXry0t1WY6n1hGY=</dsig:DigestValue>
+      <dsig:DigestValue>Un9Wykr4g9mLYvfuDk2EX9EquzM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Going-up-two-bars.ico" size="37400">

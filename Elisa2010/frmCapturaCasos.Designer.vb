@@ -635,7 +635,7 @@ Partial Class frmCapturaCasos
       Me.Label41.AutoSize = True
       Me.Label41.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.Label41.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.Label41.Location = New System.Drawing.Point(519, 57)
+      Me.Label41.Location = New System.Drawing.Point(351, 91)
       Me.Label41.Name = "Label41"
       Me.Label41.Size = New System.Drawing.Size(100, 15)
       Me.Label41.TabIndex = 156
@@ -645,7 +645,7 @@ Partial Class frmCapturaCasos
       '
       Me.txtNoControlesNegativos.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
       Me.txtNoControlesNegativos.ForeColor = System.Drawing.Color.Yellow
-      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(625, 54)
+      Me.txtNoControlesNegativos.Location = New System.Drawing.Point(457, 88)
       Me.txtNoControlesNegativos.MaxLength = 1
       Me.txtNoControlesNegativos.Name = "txtNoControlesNegativos"
       Me.txtNoControlesNegativos.Size = New System.Drawing.Size(25, 20)
@@ -657,7 +657,7 @@ Partial Class frmCapturaCasos
       '
       Me.txtNoControlesPositivos.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
       Me.txtNoControlesPositivos.ForeColor = System.Drawing.Color.Yellow
-      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(462, 54)
+      Me.txtNoControlesPositivos.Location = New System.Drawing.Point(297, 89)
       Me.txtNoControlesPositivos.MaxLength = 1
       Me.txtNoControlesPositivos.Name = "txtNoControlesPositivos"
       Me.txtNoControlesPositivos.Size = New System.Drawing.Size(25, 20)
@@ -670,7 +670,7 @@ Partial Class frmCapturaCasos
       Me.lblNoCasos.AutoSize = True
       Me.lblNoCasos.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoCasos.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoCasos.Location = New System.Drawing.Point(199, 54)
+      Me.lblNoCasos.Location = New System.Drawing.Point(199, 55)
       Me.lblNoCasos.Name = "lblNoCasos"
       Me.lblNoCasos.Size = New System.Drawing.Size(80, 15)
       Me.lblNoCasos.TabIndex = 154
@@ -681,7 +681,7 @@ Partial Class frmCapturaCasos
       Me.lblNoControles.AutoSize = True
       Me.lblNoControles.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
       Me.lblNoControles.ForeColor = System.Drawing.Color.MidnightBlue
-      Me.lblNoControles.Location = New System.Drawing.Point(364, 56)
+      Me.lblNoControles.Location = New System.Drawing.Point(199, 91)
       Me.lblNoControles.Name = "lblNoControles"
       Me.lblNoControles.Size = New System.Drawing.Size(92, 15)
       Me.lblNoControles.TabIndex = 155
@@ -689,7 +689,7 @@ Partial Class frmCapturaCasos
       '
       'txtNoDeCasos
       '
-      Me.txtNoDeCasos.Location = New System.Drawing.Point(287, 52)
+      Me.txtNoDeCasos.Location = New System.Drawing.Point(297, 53)
       Me.txtNoDeCasos.MaxLength = 2
       Me.txtNoDeCasos.Name = "txtNoDeCasos"
       Me.txtNoDeCasos.Size = New System.Drawing.Size(25, 20)

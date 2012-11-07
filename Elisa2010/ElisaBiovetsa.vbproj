@@ -87,6 +87,9 @@
   <PropertyGroup>
     <ApplicationIcon>Going-up-two-bars.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -303,12 +306,13 @@
     </None>
     <None Include="elisasandbox.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>elisasandbox.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>elisasandbox.Designer.vb</LastGenOutput>
     </None>
     <None Include="elisasandbox.xss">
       <DependentUpon>elisasandbox.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
